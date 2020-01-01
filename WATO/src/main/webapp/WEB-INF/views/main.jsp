@@ -2,30 +2,25 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 <meta charset="UTF-8"> 
- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>스터디어스</title> 
+  
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./css/social-icon.css"> 
 <link rel="stylesheet" type="text/css" href="./css/nav-bar.css">
 <link rel="stylesheet" type="text/css" href="./css/search.css">
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css"> 
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-<!--===============================================================================================-->
+ 
+<link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>
+<link rel="icon" type="image/png" href="./images/icons/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="./js/bootstrap.js"></script>
 <style> 
-	.seletetype{
+	.seletetype{  
 		position: absolute;
 		top:10%;
 		left:18%;   
@@ -96,7 +91,24 @@
 		height:200px;
 		background: mistyrose;  
 	}
-	
+	.container-login100 {
+	  width: 100%;  
+	  min-height: 100vh;
+	  display: -webkit-box;
+	  display: -webkit-flex;
+	  display: -moz-box;
+	  display: -ms-flexbox;
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: center;
+	  align-items: center;
+	  padding: 15px;
+	  background: #9053c7;
+	  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+	  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+	  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+	  background: linear-gradient(-135deg, #c850c0, #4158d0);
+	}
 </style>  
 </head>
 <body style="background: white;">
@@ -138,14 +150,14 @@
 						   <img src="./images/click.jpg">
 						 </a> 
 	 			</div>
-			</div> 
-			<div class="wrap"> <!-- search -->
+			</div>  
+			<div class="wrap" style="cursor: pointer;"> <!-- search --> 
 			   <div class="search">
 			      <input type="text" class="searchTerm" placeholder="What are you looking for?">
 			      <button type="submit" class="searchButton">
-			        <i class="fa fa-search"></i>
+			        <i class="fa fa-search"></i>  
 			     </button>
-			   </div>
+			   </div>  
 			</div>
 			<div class="catalog row">
 				<div class="col-sm-2">
@@ -225,7 +237,7 @@
 			<div class="teacher">
 				<div style="width: 80%">
 				asdadasd
-				</div>
+				</div>  
 			</div> 
 </div>
 <footer class="footer">

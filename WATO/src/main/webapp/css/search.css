@@ -17,9 +17,6 @@
   color: #9DBFAF;
 }
 
-.searchTerm:focus{
-  color: #00B4CC;
-}
 
 .searchButton {
   width: 40px;
@@ -35,9 +32,9 @@
 
 /*Resize the wrap to see the search bar change!*/
 .wrap{
-  width: 65%;
+  width: 64%;
   position: absolute;
   top: 60%;
-  left: 50%;
+  left: 50%; 
   transform: translate(-50%, -50%);
 }
