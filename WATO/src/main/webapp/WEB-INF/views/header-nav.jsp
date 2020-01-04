@@ -5,18 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./css/nav-bar.css">
-<%
-	String sss = "알로항";
-	String ddd = "ㄴㄴㄴ";
-%>
-<script>
-var sss = <%=sss%>
-
-function ssss() {
-	alert(sss);
-}
-</script>
+<link rel="stylesheet" type="text/css" href="/css/nav-bar.css">
 </head>
 <body>
   <div class="nav-container"  style="display: block;">
@@ -43,7 +32,5 @@ function ssss() {
 		      </ul>
 		    </nav>
 		  </div>
-			<br><br><br><br><br><br><br><br><br><br><br><br><br>
-		  <button onclick="ssss()">버튼</button>
 </body>
 </html>

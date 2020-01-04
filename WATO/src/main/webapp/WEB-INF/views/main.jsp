@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>스터디어스</title> 
+<title>스터디어스 - 세상을 뒤흔들어라</title> 
   
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./css/social-icon.css"> 
@@ -19,7 +19,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="./js/bootstrap.js"></script>
-<style> 
+<style>  
 	.seletetype{  
 		position: absolute;
 		top:10%;
@@ -150,10 +150,10 @@
 						   <img src="./images/click.jpg">
 						 </a> 
 	 			</div>
-			</div>  
-			<div class="wrap" style="cursor: pointer;"> <!-- search --> 
+			</div>   
+			<div class="wrap"> <!-- search --> 
 			   <div class="search">
-			      <input type="text" class="searchTerm" placeholder="What are you looking for?">
+			      <input style="cursor: pointer;" id="search" type="text" class="searchTerm" placeholder="What are you looking for?">
 			      <button type="submit" class="searchButton">
 			        <i class="fa fa-search"></i>  
 			     </button>
@@ -235,7 +235,7 @@
 				</div>
 			</div>
 			<div class="teacher">
-				<div style="width: 80%">
+				<div style="width: 80%"> 
 				asdadasd
 				</div>  
 			</div> 
@@ -265,7 +265,7 @@ This footer will always be positioned at the bottom of the page, but not fixed.
 						<div class="container-login100" >
 								<%@ include  file="./loginform.jsp"%>
 						</div>
-					</div>
+					</div>  
 				</div>
 			</div>
 		</div>
@@ -293,10 +293,12 @@ This footer will always be positioned at the bottom of the page, but not fixed.
 		    $('#nav-toggle').on('click', function() {
 		      this.classList.toggle('active');
 		    });
+		    $('#search').on('click', () => {
+		    	location.href='/User/search' 
+		    });
 		  }); // end DOM ready
 		})(jQuery); // end jQuery
 	</script>
-<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 </body>
 </html>
