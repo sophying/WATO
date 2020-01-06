@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="/css/searchpageform.css">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-3.4.1.min.js"></script> 
-<link rel="stylesheet" type="text/css" href="/css/nav-bar.css">
+<link rel="stylesheet" type="text/css" href="/css/nav-bar.css"> 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -43,7 +43,7 @@
 		    </nav>
 		  </div>
 		 </div>
-	<form >
+	<form method="post" role="form" action="/board/searchResult">
 		<input type="text" name="searchKey" id="searchKey" />
 		<div class="after"></div>
 		<input type="submit" /> 
@@ -105,17 +105,7 @@
 					f.removeClass('close');
 				}, 1300);
 			})
-	
-			f.submit(function(e) {
-				e.preventDefault();
-				m.html('Thanks, high five!').addClass('show');
-				f.addClass('explode');
-				setTimeout(function() {
-					s.val('');
-					f.removeClass('explode');
-					m.removeClass('show');
-				}, 3000); 
-			})
+	 
 		    $('nav ul li a:not(:only-child)').click(function(e) {
 		      $(this).siblings('.nav-dropdown').toggle();
 		      // Close one dropdown when selecting another

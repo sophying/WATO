@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
-<html> 
+<html>  
 <head>
 <meta charset="UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -10,7 +10,6 @@
   
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./css/social-icon.css"> 
-<link rel="stylesheet" type="text/css" href="./css/nav-bar.css">
 <link rel="stylesheet" type="text/css" href="./css/search.css">
  
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>
@@ -98,7 +97,7 @@
 	}
 	.container-login100 {
 	  width: 100%;  
-	  min-height: 100vh;
+	  min-height: 80vh;
 	  display: -webkit-box;
 	  display: -webkit-flex;
 	  display: -moz-box;
@@ -158,32 +157,7 @@
 </head>
 <body style="background: white;">
 <div style="display: block; background-color: white;"> 
-	<div class="navigation">
-		  <div class="nav-container">
-		    <div class="brand">
-		      <a href="/">LOGO</a>
-		    </div>
-		    <nav>
-		      <div class="nav-mobile">
-		        <a id="nav-toggle" href="#!"><span></span></a>
-		      </div>
-		      <ul class="nav-list">
-		        <!-- Setting the links to #! will ensure that no action takes place on click. -->
-		        <li><a href="#!">Home</a></li>
-		        <li><a href="#!">About</a></li> 
-		        <li><a href="#!">Services</a>
-		          <ul class="nav-dropdown">
-		            <li><a href="#!">Web Design</a></li>
-		            <li><a href="#!">Web Development</a></li>
-		            <li><a href="#!">Graphic Design</a></li>
-		          </ul> 
-		        </li>
-		        <li><a href="#!">Pricing</a></li>
-		        <li><a href="#!">Contact</a></li>
-		      </ul>
-		    </nav>
-		  </div>
-		  </div>
+			<%@ include  file="./nav-bar.jsp"%>
 			<div class="seletetype row" style="display: block;"> 
 				<div class="col-sm-6" style="background: white; width:490px; height:300px; display: inline-block;">
 					<a href="#" data-target="#modal" data-toggle="modal">
@@ -241,7 +215,7 @@
 					<figcaption>Ruby</figcaption>
 				</figure>
 				</div>
-		
+		 
 			</div> 
 			<div class="catalog2 row">
 				<div class="col-sm-2"> 
@@ -261,48 +235,25 @@
 				<div style="width: 80%">
 						<div class="main">
 						  <div class="slider slider-nav">
-						    <div>
-						    	<div class="container">
-										<a href="#" data-target="#numno1" data-toggle="modal">
-										   <img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%">
-										 </a>
-									  <div class="middle">
-									  자바스크립트
-									  </div>
-								</div>
-						    </div>
-						    <div>
-						    	<div class="container">
-								  <img src="./images/icons/python-iocn.png" alt="Avatar" class="image" style="width:100%">
-								  <div class="middle">
-								    <div class="text">John Doe</div>
-								  </div>
-								</div>
-							</div>
-						    <div>
-								<div class="container">
-								  <a href="#"><img src="./images/icons/sql-icon.jpg" alt="Avatar" class="image" style="width:100%"></a>
-								  <div class="middle">
-								   (서울) SQL공부하실분
-								  </div>
-								</div>
-							</div>
-						    <div>
-						    	<div class="container">
-								  <img src="./images/icons/visualbasic-icon.png" alt="Avatar" class="image" style="width:100%">
-								  <div class="middle">
-								    <div class="text">John Doe</div>
-								  </div>
-								</div>
-						    </div>
-						    <div>
-								<div class="container">
-								  <img src="./images/icons/java-icon.png" alt="Avatar" class="image" style="width:100%">
-								  <div class="middle">
-								    <div class="text">John Doe</div>
-								  </div>
-								</div>
-							</div>
+								<%int i = 1;%>
+							  <c:forEach items="${listRank}" var="listRank"> 
+								<div>
+									<%if(i == 1){ %>
+										<img alt="1등이미지" src="./images/bttrfly1.jpg">
+									<%}else if( i ==2) {%>
+										<img alt="2등이미지" src="./images/fi.png">
+									<%} %>
+							    	<div class="container">
+											<a href="#" data-target="#numno${listRank.bno}" data-toggle="modal">
+											   <img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%">
+											 </a>
+										  <div class="middle">
+										  	${listRank.title} (number<%=i%>)
+										  </div>
+									</div> 
+						    	</div>
+						    	<% i++; %>
+							  </c:forEach>
 						  </div>
 						</div>
 						<script type="text/javascript">
@@ -318,9 +269,41 @@
 				</div>
 			</div>
 			<div class="teacher">
-				<div style="width: 80%"> 
-				asdadasd
-				</div>  
+					<div style="width: 80%">
+						<div class="main">
+						  <div class="slider slider-nav" id="teacher">
+								<%int j = 1;%>
+							  <c:forEach items="${listRank}" var="listRank"> 
+								<div>
+									<%if(j == 1){ %>
+										<img alt="1등이미지" src="./images/bttrfly1.jpg">
+									<%}else if( j ==2) {%>
+										<img alt="2등이미지" src="./images/fi.png">
+									<%} %>
+							    	<div class="container">
+											<a href="#" data-target="#numno${listRank.bno}" data-toggle="modal">
+											   <img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%">
+											 </a>
+										  <div class="middle">
+										  	${listRank.title} (number<%=j%>)
+										  </div>
+									</div> 
+						    	</div>
+						    	<% j++; %>
+							  </c:forEach>
+						  </div>
+						</div>
+						<script type="text/javascript">
+							 $('#teacher').slick({
+							   slidesToShow: 3,
+							   slidesToScroll: 1,
+							   dots: true,
+							   focusOnSelect: true,
+							   autoplay: true,
+								  autoplaySpeed: 2000,
+							 });
+						</script>
+				</div>
 			</div> 
 </div>
 <footer class="footer">
@@ -334,18 +317,18 @@ If you know the height of the footer, then you should set it explicitly, and set
 This is to prevent the footer from overlapping the content above it, since it is being removed from the document flow with position: absolute;.
 
 This footer will always be positioned at the bottom of the page, but not fixed.
-</footer>
+</footer> 
 <div class="row">
-	<div class="modal" id="modal" tabindex="-1">
-		<div class="modal-dialog" style="width: 65%">
-			<div class="modal-content">
+	<div class="modal" id="modal" tabindex="-1"> 
+		<div class="modal-dialog" style="width: 50%;">  
+			<div class="modal-content">  
 				<div class="modal-header">
-					로그인
+					로그인 
 					<button class="close" data-dismiss="modal">&times;</button>
-				</div>
+				</div> 
 				<div class="modal-body" style="text-align: center;">
-					<div class="limiter" >
-						<div class="container-login100" >
+					<div class="limiter">
+						<div class="container-login100" style="height: auto"> 
 								<%@ include  file="./loginform.jsp"%>
 						</div>
 					</div>  
@@ -354,56 +337,40 @@ This footer will always be positioned at the bottom of the page, but not fixed.
 		</div>
 	</div> 
 </div>
+
+<c:forEach items="${listRank}" var="listRank">
 <div class="row">
-	<div class="modal" id="numno1" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content"  style="max-width: 100%; width: auto; display: table;">
-				<div class="modal-header">
-					스터디 소개
-					<button class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body" style="text-align: center;">
-					<div class="limiter">
-						<div style="display: block; margin: 0px 70px;">
-							<img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%; max-width: 100px; display: block;">
-						</div> 
-						   <div class="pull-left" style="display: block;">
-								<p>사용하는 언어 : JavaScript 
-								<p>모집 인원 : 5명
-								<p>집합 장소 : 서울시 강서구 스타벅스
-								<p>빠지지 않고 같이 공부할 흑우 구합니다
-						   </div>
-						   <div>
-							<a href="#" class="btn btn-primary">스터디 상세보기</a>
-						   </div>
-					</div>  
+		<div class="modal" id="numno${listRank.bno}" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content"  style="max-width: 100%; width: auto; display: table;">
+					<div class="modal-header">
+						스터디 소개
+						<button class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body" style="text-align: center;">
+						<div class="limiter"> 
+							<div style="display: block; margin: 0px 70px;">
+								<img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%; max-width: 100px; display: block;">
+							</div> 
+							<div class="pull-left" style="display: block;">
+								<p>사용하는 언어 : ${listRank.bno}  
+								<p>모집 인원 : ${listRank.viewCnt }
+								<p>집합 장소 : ${listRank.regDate }
+								<p>${listRank.content }
+							</div>
+							<div>
+								<a href="/board/details?bno=${listRank.bno}" class="btn btn-primary">스터디 상세보기</a>
+						 	</div>
+						</div>  
+					</div>			
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</c:forEach>						
 	<script >
 	(function($) { // Begin jQuery
 		  $(function() { // DOM ready
-		    // If a link has a dropdown, add sub menu toggle.
-		    $('nav ul li a:not(:only-child)').click(function(e) {
-		      $(this).siblings('.nav-dropdown').toggle();
-		      // Close one dropdown when selecting another
-		      $('.nav-dropdown').not($(this).siblings()).hide();
-		      e.stopPropagation();
-		    });
-		    // Clicking away from dropdown will remove the dropdown class
-		    $('html').click(function() {
-		      $('.nav-dropdown').hide();
-		    });
-		    // Toggle open and close nav styles on click
-		    $('#nav-toggle').click(function() {
-		      $('nav ul').slideToggle();
-		    });
-		    // Hamburger to X toggle
-		    $('#nav-toggle').on('click', function() {
-		      this.classList.toggle('active');
-		    });
 		    $('#search').on('click', () => {
 		    	location.href='/User/search' 
 		    });
