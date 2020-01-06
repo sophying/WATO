@@ -19,6 +19,11 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="./js/bootstrap.js"></script>
+<link rel="stylesheet" type="text/css" href="./slick/slick.css">
+<link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="./slick/slick.min.js"></script>
 <style>  
 	.seletetype{  
 		position: absolute;
@@ -108,6 +113,46 @@
 	  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
 	  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
 	  background: linear-gradient(-135deg, #c850c0, #4158d0);
+	}
+	.main {
+	  position:absolute;
+	  top:30%;
+	  left:4%;
+	  font-family:Arial;
+	  width:90%;
+	  height:300px;
+	  display:block;
+	  margin:0 auto;
+	}
+	h3 {
+	    background: #fff;
+	    color: #3498db;
+	    font-size: 36px;
+	    line-height: 100px;
+	    margin: 10px;
+	    padding: 2%;
+	    position: relative;
+	    text-align: center;
+	}
+	
+	 .main > .slider .container  img {
+	 	width:100%;
+	 	height: auto;
+	 	max-width: 100px;
+	 }
+	 .main > .slider .container:hover .image {
+	  opacity: 0.3;
+	}
+	
+	 .main > .slider .container:hover .middle {
+	  opacity: 1;
+	}
+	
+	 .main > .slider .container:hover .middle.text {
+	  color: white;
+	  font-size: 16px;
+	  text-align:center;
+	  padding: 16px 32px;
 	}
 </style>  
 </head>
@@ -214,24 +259,62 @@
 			</div>
 			<div class="stady"> 
 				<div style="width: 80%">
-						<table border="1" style="width: 125%">
-							<tr>
-								<th>NO</th>
-								<th>제목</th>
-								<th>작성자</th>
-								<th>작성일</th>
-								<th>조회수</th>
-							</tr>
-							<c:forEach var="board" items="${boardList}" varStatus="loop">
-							<tr>
-								<td>${board.seq }</td>
-								<td><a href="<c:url value="/board/read/${board.seq}"/>">${board.title }</a></td>
-								<td>${board.writer }</td>
-								<td>${board.regDate }</td>
-								<td>${board.cnt }</td>
-							</tr>
-							</c:forEach>
-						</table>
+						<div class="main">
+						  <div class="slider slider-nav">
+						    <div>
+						    	<div class="container">
+										<a href="#" data-target="#numno1" data-toggle="modal">
+										   <img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%">
+										 </a>
+									  <div class="middle">
+									  자바스크립트
+									  </div>
+								</div>
+						    </div>
+						    <div>
+						    	<div class="container">
+								  <img src="./images/icons/python-iocn.png" alt="Avatar" class="image" style="width:100%">
+								  <div class="middle">
+								    <div class="text">John Doe</div>
+								  </div>
+								</div>
+							</div>
+						    <div>
+								<div class="container">
+								  <a href="#"><img src="./images/icons/sql-icon.jpg" alt="Avatar" class="image" style="width:100%"></a>
+								  <div class="middle">
+								   (서울) SQL공부하실분
+								  </div>
+								</div>
+							</div>
+						    <div>
+						    	<div class="container">
+								  <img src="./images/icons/visualbasic-icon.png" alt="Avatar" class="image" style="width:100%">
+								  <div class="middle">
+								    <div class="text">John Doe</div>
+								  </div>
+								</div>
+						    </div>
+						    <div>
+								<div class="container">
+								  <img src="./images/icons/java-icon.png" alt="Avatar" class="image" style="width:100%">
+								  <div class="middle">
+								    <div class="text">John Doe</div>
+								  </div>
+								</div>
+							</div>
+						  </div>
+						</div>
+						<script type="text/javascript">
+							 $('.slider-nav').slick({
+							   slidesToShow: 3,
+							   slidesToScroll: 1,
+							   dots: true,
+							   focusOnSelect: true,
+							   autoplay: true,
+								  autoplaySpeed: 2000,
+							 });
+						</script>
 				</div>
 			</div>
 			<div class="teacher">
@@ -265,6 +348,34 @@ This footer will always be positioned at the bottom of the page, but not fixed.
 						<div class="container-login100" >
 								<%@ include  file="./loginform.jsp"%>
 						</div>
+					</div>  
+				</div>
+			</div>
+		</div>
+	</div> 
+</div>
+<div class="row">
+	<div class="modal" id="numno1" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content"  style="max-width: 100%; width: auto; display: table;">
+				<div class="modal-header">
+					스터디 소개
+					<button class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body" style="text-align: center;">
+					<div class="limiter">
+						<div style="display: block; margin: 0px 70px;">
+							<img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%; max-width: 100px; display: block;">
+						</div> 
+						   <div class="pull-left" style="display: block;">
+								<p>사용하는 언어 : JavaScript 
+								<p>모집 인원 : 5명
+								<p>집합 장소 : 서울시 강서구 스타벅스
+								<p>빠지지 않고 같이 공부할 흑우 구합니다
+						   </div>
+						   <div>
+							<a href="#" class="btn btn-primary">스터디 상세보기</a>
+						   </div>
 					</div>  
 				</div>
 			</div>
