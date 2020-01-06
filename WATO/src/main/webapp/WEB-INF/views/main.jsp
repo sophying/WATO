@@ -136,8 +136,15 @@
 	
 	 .main > .slider .container  img {
 	 	width:100%;
-	 	height: auto;
+	 	height: auto; 
 	 	max-width: 100px;
+	 }
+	 .main > .slider .imgrank img{
+	    position:absolute;
+	    background:none;
+	 	width:100%;
+	 	height: auto;
+	 	max-width: 40px;
 	 }
 	 .main > .slider .container:hover .image {
 	  opacity: 0.3;
@@ -227,22 +234,30 @@
 				<div class="col-sm-2">
 				<figure>
 					<a href="#"><img src="./images/icons/visualbasic-icon.png" ></a>  
-					<figcaption>VisualBasic</figcaption>
+					<figcaption>VisualBasic</figcaption> 
 				</figure>
 				</div>
 			</div>
 			<div class="stady"> 
 				<div style="width: 80%">
-						<div class="main">
+						<div class="main">  
 						  <div class="slider slider-nav">
 								<%int i = 1;%>
 							  <c:forEach items="${listRank}" var="listRank"> 
-								<div>
-									<%if(i == 1){ %>
-										<img alt="1등이미지" src="./images/bttrfly1.jpg">
+								<div style="position: relative;"> 
+									<div class="imgrank">
+									<%if(i== 1){ %> 
+										<img alt="1등이미지" src="./images/rank1st.png"> 
 									<%}else if( i ==2) {%>
-										<img alt="2등이미지" src="./images/fi.png">
+										<img alt="2등이미지" src="./images/rank2st.png"> 
+									<%}else if( i ==3) {%>
+										<img alt="3등이미지" src="./images/rank3st.png">
+									<%}else if( i ==4) { %>
+										<img alt="4등이미지" src="./images/rank4st.png">
+									<%}else{ %>
+										<img alt="5등이미지" src="./images/rank5st.png">
 									<%} %>
+									</div>
 							    	<div class="container">
 											<a href="#" data-target="#numno${listRank.bno}" data-toggle="modal">
 											   <img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%">
@@ -274,12 +289,21 @@
 						  <div class="slider slider-nav" id="teacher">
 								<%int j = 1;%>
 							  <c:forEach items="${listRank}" var="listRank"> 
-								<div>
+								<div style="position: relative;">
+									<div class="imgrank">
 									<%if(j == 1){ %>
-										<img alt="1등이미지" src="./images/bttrfly1.jpg">
+										<img alt="1등이미지" src="./images/rank1st.png">
 									<%}else if( j ==2) {%>
-										<img alt="2등이미지" src="./images/fi.png">
+										<img alt="2등이미지" src="./images/rank2st.png">
+									<%}else if( j ==3) {%>
+										<img alt="3등이미지" src="./images/rank3st.png">
+									<%}else if( j ==4) { %>
+										<img alt="4등이미지" src="./images/rank4st.png">
+									<%}else{ %>
+										<img alt="5등이미지" src="./images/rank1st.png">
 									<%} %>
+									
+									</div>
 							    	<div class="container">
 											<a href="#" data-target="#numno${listRank.bno}" data-toggle="modal">
 											   <img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%">
