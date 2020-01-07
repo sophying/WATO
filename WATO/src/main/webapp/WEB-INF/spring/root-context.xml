@@ -19,13 +19,18 @@
 		<property name="password" value="tiger"></property>
 	</bean>
 	<!-- 마이바티스연동 -->
-	<!-- <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property> 
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
 		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml"></property>
-	</bean> -->
+	</bean>
 	<!-- 마이바티스 스프링 -->
-	<!-- <bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
-	</bean>	 -->
+	</bean>	
+	
+		
+	<context:component-scan base-package="com.king.myapp.persistence"></context:component-scan>	
+	<context:component-scan base-package="com.king.myapp.domain"></context:component-scan>	
+	<context:component-scan base-package="com.king.myapp.service"></context:component-scan>	
 </beans>

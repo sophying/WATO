@@ -7,23 +7,23 @@
 <meta charset="UTF-8"> 
  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="./css/social-icon.css"> 
-<link rel="stylesheet" type="text/css" href="./css/nav-bar.css">
-<link rel="stylesheet" type="text/css" href="./css/search.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/social-icon.css"> 
+<link rel="stylesheet" type="text/css" href="../resources/css/nav-bar.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/search.css">
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="../resources/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css"> 
-	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/util.css"> 
+	<link rel="stylesheet" type="text/css" href="../resources/css/main.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 <!--===============================================================================================-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="./js/bootstrap.js"></script>
+<script type="text/javascript" src="../resources/js/bootstrap.js"></script>
 <style> 
 	.seletetype{
 		position: absolute;
@@ -130,12 +130,12 @@
 			<div class="seletetype row" style="display: block;"> 
 				<div class="col-sm-6" style="background: white; width:490px; height:300px; display: inline-block;">
 					<a href="#" data-target="#modal" data-toggle="modal">
-					   <img src="./images/click.jpg">
+					   <img src="../resources/images/click.jpg">
 					 </a>
 				</div>
 				<div class="col-sm-6" style="background:  white; width:490px; height:300px; display: inline-block;">
 	 				   <a href="#" data-target="#modal" data-toggle="modal">
-						   <img src="./images/click.jpg">
+						   <img src="../resources/images/click.jpg">
 						 </a> 
 	 			</div>
 			</div> 
@@ -150,37 +150,37 @@
 			<div class="catalog row">
 				<div class="col-sm-2">
 				<figure >
-					<a href="#"><img src="./images/icons/c-icon.png" ></a>
+					<a href="#"><img src="../resources/images/icons/c-icon.png" ></a>
 					<figcaption>C</figcaption>
 				</figure>
 				</div> 
 				<div class="col-sm-2">
 				<figure>
-					<a href="#"><img src="./images/icons/cshap-icon.png" ></a>
+					<a href="#"><img src="../resources/images/icons/cshap-icon.png" ></a>
 					<figcaption>C#</figcaption>
 				</figure>
 				</div>
 				<div class="col-sm-2">
 				<figure>
-					<a href="#"><img src="./images/icons/java-icon.png" ></a>
+					<a href="#"><img src="../resources/images/icons/java-icon.png" ></a>
 					<figcaption>Java</figcaption>
 				</figure> 
 				</div>
 				<div class="col-sm-2">
 				<figure>
-					<a href="#"><img src="./images/icons/javascript-icon.jpg" ></a> 
+					<a href="#"><img src="../resources/images/icons/javascript-icon.jpg" ></a> 
 					<figcaption>JavaScript</figcaption>
 				</figure>
 				</div>
 				<div class="col-sm-2">
 				<figure>
-					<a href="#"><img src="./images/icons/python-iocn.png" ></a>
+					<a href="#"><img src="../resources/images/icons/python-iocn.png" ></a>
 					<figcaption>Python</figcaption>
 				</figure>
 				</div>
 				<div class="col-sm-2">
 				<figure>
-					<a href="#"><img src="./images/icons/ruby-icon.jpg" ></a>
+					<a href="#"><img src="../resources/images/icons/ruby-icon.jpg" ></a>
 					<figcaption>Ruby</figcaption>
 				</figure>
 				</div>
@@ -189,13 +189,13 @@
 			<div class="catalog2 row">
 				<div class="col-sm-2"> 
 				<figure>
-					<a href="#"><img src="./images/icons/sql-icon.jpg" ></a>
+					<a href="#"><img src="../resources/images/icons/sql-icon.jpg" ></a>
 					<figcaption>SQL</figcaption>
 				</figure>
 				</div>
 				<div class="col-sm-2">
 				<figure>
-					<a href="#"><img src="./images/icons/visualbasic-icon.png" ></a>  
+					<a href="#"><img src="../resources/images/icons/visualbasic-icon.png" ></a>  
 					<figcaption>VisualBasic</figcaption>
 				</figure>
 				</div>
