@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: klear
-  Date: 2020-01-07
-  Time: AM 12:54
-  To change this template use File | Settings | File Templates.
---%>
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -182,7 +177,7 @@
  
     </div>
     <nav id="studyusnav" class="navbar navbar-expand-lg">
-        <div class="container"><a href="/" class="navbar-brand home"><img src="/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container"><a href="index.jsp" class="navbar-brand home"><img src="/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -278,7 +273,7 @@
             </div>
         </div>
                             </li>
-                        </ul> 
+                        </ul>  
                     </li> 
                     <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link">더보기<b class="caret"></b></a>
                         <ul class="dropdown-menu megamenu">
@@ -708,7 +703,7 @@ _________________________________________________________
                 <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a><a href="#" class="email external"><i class="fa fa-envelope"></i></a></p>
             </div>
             <!-- /.col-lg-3-->
-        </div>
+        </div> 
         <!-- /.row-->
     </div>
     <!-- /.container-->
