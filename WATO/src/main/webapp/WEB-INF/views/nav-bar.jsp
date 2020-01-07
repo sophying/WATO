@@ -2,14 +2,15 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
+<head> 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Insert title here</title> 
 <link rel="stylesheet" type="text/css" href="/css/nav-bar.css">
-</head>
+<link rel="stylesheet" type="text/css" href="/css/searchpageform.css">
+</head> 
 <body>
 <div class="navigation">
-		  <div class="nav-container"> 
+		  <div class="nav-container">  
 		    <div class="brand">
 		      <a href="/">LOGO</a>
 		    </div>

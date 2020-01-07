@@ -18,46 +18,21 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardDAO dao;
 	
-	public void write(BoardVO vo) throws Exception {
-		dao.write(vo);
-	};
-	@Override
-	public List<BoardVO> list() throws Exception {
-		return dao.list();
-	}
-	
-	@Override
-	public List<BoardVO> listPage(Criteria cri) throws Exception {
-		return dao.listPage(cri);
-	}
-	@Override
-	public int listCount() throws Exception {
-		return dao.listCount();
-	}
-	
-	@Override
-	public BoardVO read(int bno) throws Exception {
-		return dao.read(bno);
-	}
-	@Override
-	public List<BoardVO> listSearch(SearchCriteria scri) throws Exception {
-		return dao.listSearch(scri);
-	}
-	@Override
-	public void update(BoardVO vo) throws Exception {
-		dao.update(vo);
-	}
-	@Override
-	public void delete(int bno) throws Exception {
-		dao.delete(bno);
-	}
 	@Override
 	public List<BoardVO> listRank() throws Exception {
-		return dao.listRank();  
+		return dao.listRank();   
 	}
 	@Override
-	public List<BoardVO> searchResult(String searchKey) {
-		return dao.searchResult(searchKey);
+	public List<BoardVO> searchResultStudy(String searchKey) throws Exception {
+		return dao.searchResultStudy(searchKey);
+	}
+	@Override
+	public List<BoardVO> searchResultTeacher(String searchKey) throws Exception {
+		return dao.searchResultTeacher(searchKey);
+	}
+	@Override
+	public List<BoardVO> searchResultQna(String searchKey) throws Exception {
+		return dao.searchResultQna(searchKey);
 	}
 
 }

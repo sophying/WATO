@@ -14,70 +14,67 @@
  
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>
 <link rel="icon" type="image/png" href="./images/icons/favicon.ico"/>
-<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css"> 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="./js/bootstrap.js"></script>
+<script type="text/javascript" src="./js/bootstrap.js"></script> 
 <link rel="stylesheet" type="text/css" href="./slick/slick.css">
 <link rel="stylesheet" type="text/css" href="./slick/slick-theme.css">
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="./slick/slick.min.js"></script>
 <style>  
-	.seletetype{  
-		position: absolute;
-		top:10%;
-		left:18%;   
+	.selectype {
+		width: 75%; margin-left: 18%; height: auto;
 	}
-	.seletetype>div>a>img{
-		width: 490px;
-		height:300px;
+	.selectype img {
+		width: 100%; height: auto; max-width: 450px; 
 	}
 	.catalog{
 		position: absolute;
 		top:70%; 
 		left:18%; 
 		width:70%; /* 선택 아이콘  */
-		height:100px;
+		height:auto;
 		
 	}
-	.catalog >div> figure{
-		display: inline-block;
+	.catalog figure{
+		text-align: center;
+	} 
+	.catalog figcaption{
 		text-align: center;
 	}
-	.catalog >div>figure> figcaption{
-		text-align: center;
-	}
-	.catalog>div>figure>a>img {
-	width: 50px;
-	height: 50px;
+	.catalog img { 
+	width: 100%;
+	height: auto;
+	max-width: 50px;
 	}
 	.catalog2{
 		position: absolute;
 		top:85%; 
 		left:18%; 
 		width:70%; /* 선택 아이콘  */
-		height:100px;
+		height:auto;
 		
 	}
-	.catalog2 >div> figure{
-		display: inline-block;
+	.catalog2  figure{
 		text-align: center;
 	}
-	.catalog2 >div>figure> figcaption{
+	.catalog2 figcaption{
 		text-align: center;
 	}
-	.catalog2>div>figure>a>img {
-	width: 50px;
-	height: 50px;
+	.catalog2 img {
+	 	width: 100%;
+	 	height: auto;
+	 	max-width: 50px;
 	}
-	.stady{ 
+	.study{ 
 		position: absolute; 
 		top:100%; 
 		left:18%;
 		width:65%; 
 		height:300px;
-		background: skyblue;
+		background: black;
 	}
 	.teacher{
 		position: absolute; 
@@ -85,7 +82,7 @@
 		left:18%;
 		width:65%;  
 		height:300px; 
-		background: skyblue;  
+		background: black;  
 	} 
 	.footer{
 		position: absolute; 
@@ -95,25 +92,25 @@
 		height:200px;
 		background: mistyrose;  
 	}
-	.container-login100 {
+	.container-login100 { 
 	  width: 100%;  
 	  min-height: 80vh;
 	  display: -webkit-box;
-	  display: -webkit-flex;
-	  display: -moz-box;
-	  display: -ms-flexbox;
-	  display: flex;
-	  flex-wrap: wrap;
+	  display: -webkit-flex; 
+	  display: -moz-box; 
+	  display: -ms-flexbox; 
+	  display: flex;  
+	  flex-wrap: wrap;  
 	  justify-content: center;
 	  align-items: center;
 	  padding: 15px;
-	  background: #9053c7;
+	  background: #9053c7; 
 	  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
 	  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
 	  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
 	  background: linear-gradient(-135deg, #c850c0, #4158d0);
 	}
-	.main {
+	.main { 
 	  position:absolute;
 	  top:30%;
 	  left:4%;
@@ -128,7 +125,7 @@
 	    color: #3498db;
 	    font-size: 36px;
 	    line-height: 100px;
-	    margin: 10px;
+	    margin: 10px; 
 	    padding: 2%;
 	    position: relative;
 	    text-align: center;
@@ -144,16 +141,16 @@
 	    background:none;
 	 	width:100%;
 	 	height: auto;
-	 	max-width: 40px;
+	 	max-width: 40px; 
 	 }
 	 .main > .slider .container:hover .image {
 	  opacity: 0.3;
 	}
-	
+	 
 	 .main > .slider .container:hover .middle {
 	  opacity: 1;
 	}
-	
+	 
 	 .main > .slider .container:hover .middle.text {
 	  color: white;
 	  font-size: 16px;
@@ -161,84 +158,87 @@
 	  padding: 16px 32px;
 	}
 </style>  
-</head>
+</head> 
 <body style="background: white;">
 <div style="display: block; background-color: white;"> 
 			<%@ include  file="./nav-bar.jsp"%>
-			<div class="seletetype row" style="display: block;"> 
-				<div class="col-sm-6" style="background: white; width:490px; height:300px; display: inline-block;">
-					<a href="#" data-target="#modal" data-toggle="modal">
+			<div class="selectype row"> 
+				<div class="col-sm-6">
+					<a href="#" data-target="#modal" data-toggle="modal"> 
 					   <img src="./images/click.jpg">
 					 </a>
 				</div>
-				<div class="col-sm-6" style="background:  white; width:490px; height:300px; display: inline-block;">
-	 				   <a href="#" data-target="#modal" data-toggle="modal">
+				<div class="col-sm-6">
+	 				   <a href="#" data-target="#modal" data-toggle="modal"> 
 						   <img src="./images/click.jpg">
 						 </a> 
-	 			</div>
+	 			</div> 
 			</div>   
-			<div class="wrap"> <!-- search --> 
-			   <div class="search">
-			      <input style="cursor: pointer;" id="search" type="text" class="searchTerm" placeholder="What are you looking for?">
-			      <button type="submit" class="searchButton">
-			        <i class="fa fa-search"></i>  
-			     </button>
-			   </div>  
+			<div class="row">
+				<div class="wrap"> <!-- search --> 
+				   <div class="search">
+				      <input style="cursor: pointer;" id="search" type="text" class="searchTerm" placeholder="What are you looking for?">
+				      <button type="submit" class="searchButton">
+				        <i class="fa fa-search"></i>  
+				     </button>
+				   </div>  
+				</div>
 			</div>
-			<div class="catalog row">
-				<div class="col-sm-2">
-				<figure >
-					<a href="#"><img src="./images/icons/c-icon.png" ></a>
-					<figcaption>C</figcaption>
-				</figure>
+			<div class="row">
+				<div class="catalog row">
+					<div class="col-sm-2">
+						<figure> 
+							<a href="#"><img src="./images/icons/c-icon.png" ></a>
+							<figcaption>C</figcaption>
+						</figure>
+					</div>  
+					<div class="col-sm-2">
+						<figure>
+							<a href="#"><img src="./images/icons/cshap-icon.png" ></a>
+							<figcaption>C#</figcaption>
+						</figure>
+					</div>
+					<div class="col-sm-2">
+						<figure>
+							<a href="#"><img src="./images/icons/java-icon.png" ></a>
+							<figcaption>Java</figcaption>
+						</figure> 
+					</div>
+					<div class="col-sm-2">
+						<figure>
+							<a href="#"><img src="./images/icons/javascript-icon.jpg" ></a> 
+							<figcaption>JavaScript</figcaption>
+						</figure>
+					</div>
+					<div class="col-sm-2">
+						<figure>
+							<a href="#"><img src="./images/icons/python-iocn.png" ></a>
+							<figcaption>Python</figcaption>
+						</figure>
+					</div>
+					<div class="col-sm-2">
+						<figure>
+							<a href="#"><img src="./images/icons/ruby-icon.jpg" ></a>
+							<figcaption>Ruby</figcaption>
+						</figure>
+					</div>
 				</div> 
-				<div class="col-sm-2">
-				<figure>
-					<a href="#"><img src="./images/icons/cshap-icon.png" ></a>
-					<figcaption>C#</figcaption>
-				</figure>
-				</div>
-				<div class="col-sm-2">
-				<figure>
-					<a href="#"><img src="./images/icons/java-icon.png" ></a>
-					<figcaption>Java</figcaption>
-				</figure> 
-				</div>
-				<div class="col-sm-2">
-				<figure>
-					<a href="#"><img src="./images/icons/javascript-icon.jpg" ></a> 
-					<figcaption>JavaScript</figcaption>
-				</figure>
-				</div>
-				<div class="col-sm-2">
-				<figure>
-					<a href="#"><img src="./images/icons/python-iocn.png" ></a>
-					<figcaption>Python</figcaption>
-				</figure>
-				</div>
-				<div class="col-sm-2">
-				<figure>
-					<a href="#"><img src="./images/icons/ruby-icon.jpg" ></a>
-					<figcaption>Ruby</figcaption>
-				</figure>
-				</div>
-		 
-			</div> 
-			<div class="catalog2 row">
-				<div class="col-sm-2"> 
-				<figure>
-					<a href="#"><img src="./images/icons/sql-icon.jpg" ></a>
-					<figcaption>SQL</figcaption>
-				</figure>
-				</div>
-				<div class="col-sm-2">
-				<figure>
-					<a href="#"><img src="./images/icons/visualbasic-icon.png" ></a>  
-					<figcaption>VisualBasic</figcaption> 
-				</figure>
+				<div class="catalog2 row">
+					<div class="col-sm-2"> 
+					<figure>
+						<a href="#"><img src="./images/icons/sql-icon.jpg" ></a>
+						<figcaption>SQL</figcaption>
+					</figure>
+					</div>
+					<div class="col-sm-2">
+					<figure>
+						<a href="#"><img src="./images/icons/visualbasic-icon.png" ></a>  
+						<figcaption>VisualBasic</figcaption> 
+					</figure>
+					</div>
 				</div>
 			</div>
-			<div class="stady"> 
+			<div class="study row"> 
 				<div style="width: 80%">
 						<div class="main">  
 						  <div class="slider slider-nav">
@@ -258,12 +258,12 @@
 										<img alt="5등이미지" src="./images/rank5st.png">
 									<%} %>
 									</div>
-							    	<div class="container">
+							    	<div class="container"> 
 											<a href="#" data-target="#numno${listRank.bno}" data-toggle="modal">
-											   <img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%">
+											   <img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image">
 											 </a>
 										  <div class="middle">
-										  	${listRank.title} (number<%=i%>)
+										  	${listRank.title} 
 										  </div>
 									</div> 
 						    	</div>
@@ -283,7 +283,7 @@
 						</script>
 				</div>
 			</div>
-			<div class="teacher">
+			<div class="teacher row">
 					<div style="width: 80%">
 						<div class="main">
 						  <div class="slider slider-nav" id="teacher">
@@ -300,16 +300,16 @@
 									<%}else if( j ==4) { %>
 										<img alt="4등이미지" src="./images/rank4st.png">
 									<%}else{ %>
-										<img alt="5등이미지" src="./images/rank1st.png">
+										<img alt="5등이미지" src="./images/rank5st.png">
 									<%} %>
 									
 									</div>
 							    	<div class="container">
 											<a href="#" data-target="#numno${listRank.bno}" data-toggle="modal">
-											   <img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image" style="width:100%">
+											   <img src="./images/icons/javascript-icon.jpg" alt="Avatar" class="image">
 											 </a>
 										  <div class="middle">
-										  	${listRank.title} (number<%=j%>)
+										  	${listRank.title}
 										  </div>
 									</div> 
 						    	</div>
@@ -330,7 +330,8 @@
 				</div>
 			</div> 
 </div>
-<footer class="footer">
+<footer class="footer row"> 
+<a href="/board/index">index이동</a>
 CSS “Always on the bottom” Footer
 I often find myself designing a website where the footer must rest at the bottom of the page, even if the content above it is too short to push it to the bottom of the viewport naturally.
 
@@ -342,7 +343,7 @@ This is to prevent the footer from overlapping the content above it, since it is
 
 This footer will always be positioned at the bottom of the page, but not fixed.
 </footer> 
-<div class="row">
+<div class="row"> 
 	<div class="modal" id="modal" tabindex="-1"> 
 		<div class="modal-dialog" style="width: 50%;">  
 			<div class="modal-content">  
@@ -396,6 +397,9 @@ This footer will always be positioned at the bottom of the page, but not fixed.
 	(function($) { // Begin jQuery
 		  $(function() { // DOM ready
 		    $('#search').on('click', () => {
+		    	location.href='/User/search' 
+		    });
+		    $('.searchButton').on('click', () => {
 		    	location.href='/User/search' 
 		    });
 		  }); // end DOM ready

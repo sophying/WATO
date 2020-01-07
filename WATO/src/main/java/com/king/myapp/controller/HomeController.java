@@ -26,9 +26,9 @@ public class HomeController {
 	@Inject 
 	BoardService service; 
 	
-	/**
+	/** 
 	 * Simply selects the home view to render by returning its name.
-	 * @throws Exception 
+	 * @throws Exception  
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) throws Exception {
@@ -36,7 +36,7 @@ public class HomeController {
 		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
+		 
 		String formattedDate = dateFormat.format(date);
 		
 		service.listRank();
