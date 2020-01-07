@@ -19,7 +19,7 @@
             align-items: center;
             flex-direction: column;
             font-family: 'Montserrat', sans-serif;
-            height: 60vh;
+            height: 0; 
             margin: -20px 0 50px;
         }
 

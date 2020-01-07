@@ -5,7 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="./css/nav-bar.css">
+=======
+<link rel="stylesheet" type="text/css" href="/css/nav-bar.css">
+>>>>>>> branch 'minseok' of https://github.com/sophying/WATO.git
 </head>
 <body>
   <div class="nav-container"  style="display: block;">
@@ -32,7 +36,5 @@
 		      </ul>
 		    </nav>
 		  </div>
-			<br><br><br><br><br><br><br><br><br><br><br><br><br>
-		  <button onclick="ssss()">버튼</button>
 </body>
 </html>
