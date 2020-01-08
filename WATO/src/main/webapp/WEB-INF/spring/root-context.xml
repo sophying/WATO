@@ -28,5 +28,10 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>	
-	<context:component-scan base-package="com.king.myapp"></context:component-scan>
+	<context:component-scan base-package="com.king.myapp"></context:component-scan>	
+	
+		
+	<context:component-scan base-package="com.king.myapp.persistence"></context:component-scan>	
+	<context:component-scan base-package="com.king.myapp.domain"></context:component-scan>	
+	<context:component-scan base-package="com.king.myapp.service"></context:component-scan>	
 </beans>
