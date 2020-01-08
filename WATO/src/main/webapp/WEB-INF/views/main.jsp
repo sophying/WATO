@@ -161,7 +161,7 @@
 </head> 
 <body style="background: white;">
 <div style="display: block; background-color: white;"> 
-			<%@ include  file="./nav-bar.jsp"%>
+			<%@ include  file="include/nav-bar.jsp"%>
 			<div class="selectype row"> 
 				<div class="col-sm-6">
 					<a href="#" data-target="#modal" data-toggle="modal"> 
@@ -212,7 +212,7 @@
 					</div>
 					<div class="col-sm-2">
 						<figure>
-							<a href="#"><img src="./images/icons/python-iocn.png" ></a>
+							<a href="#"><img src="./images/icons/python-iocn.png" ></a> 
 							<figcaption>Python</figcaption>
 						</figure>
 					</div>
@@ -220,7 +220,7 @@
 						<figure>
 							<a href="#"><img src="./images/icons/ruby-icon.jpg" ></a>
 							<figcaption>Ruby</figcaption>
-						</figure>
+						</figure> 
 					</div>
 				</div> 
 				<div class="catalog2 row">
@@ -354,7 +354,7 @@ This footer will always be positioned at the bottom of the page, but not fixed.
 				<div class="modal-body" style="text-align: center;">
 					<div class="limiter">
 						<div class="container-login100" style="height: auto"> 
-								<%@ include  file="./loginform.jsp"%>
+								<%@ include  file="include/loginform.jsp"%>
 						</div>
 					</div>  
 				</div>

@@ -18,7 +18,7 @@ import com.king.myapp.service.BoardService;
 
 @Controller
 @RequestMapping("/board/*")
-public class BoardController {
+public class BoardController { 
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
@@ -40,7 +40,7 @@ public class BoardController {
 			model.addAttribute("listStudy",listStudy);
 			model.addAttribute("listTeacher",listTeacher);
 			model.addAttribute("listQna",listQna); 
-			return "/searchResult"; 
+			return "board/searchResult";  
 		} 
 		@RequestMapping(value="/index" , method=RequestMethod.GET)
 		public String index(Model model) throws Exception {

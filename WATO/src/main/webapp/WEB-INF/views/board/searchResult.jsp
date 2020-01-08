@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
          <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+            <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -409,26 +410,6 @@
                         <a href="blog.jsp"><img src="/resource/images/android.png"><br/><span class="text">안드로이드</span></a>
                     </div>
                 </div> 
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2"> 
-                        <a href="blog.jsp"><img src="/resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
             </div>
         </div>
         <!--
@@ -440,7 +421,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="mb-0">이주의 핫한 교실</h2>
+                            <h2 class="mb-0">인기 스터디</h2>
                         </div>
                     </div>
                 </div>
@@ -448,7 +429,7 @@
             <div class="container">
                 <div class="product-slider owl-carousel owl-theme">
                 	<%int i = 1;%>
-                	<c:forEach items="${listRank}" var="listRank">
+                	<c:forEach items="${listStudy}" var="listStudy">
                 	<div style="position: relative;"> 
                 		<div class="imgrank">
 									<%if(i== 1){ %> 
@@ -472,7 +453,7 @@
                                 </div>
                             </div><a href="detail.jsp" class="invisible"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listRank.title}</a></h3>
+                                <h3><a href="detail.jsp">${listStudy.title}</a></h3>
                                 <p class="price"> 
                                     <del></del><a href="#" class="btn btn-primary" >상세보기</a>
                                 </p>
@@ -509,7 +490,7 @@
                 <div class="container"> 
                     <div class="row"> 
                         <div class="col-md-12"> 
-                            <h2 class="mb-0">이번달 베스트 강사</h2>
+                            <h2 class="mb-0">베스트 강사</h2>
                         </div>
                     </div>
                 </div>
@@ -517,7 +498,7 @@
             <div class="container">
                 <div class="product-slider owl-carousel owl-theme">
                 	<%int j = 1;%>
-                	<c:forEach items="${listRank}" var="listRank"> 
+                	<c:forEach items="${listTeacher}" var="listTeacher"> 
                 	<div style="position: relative;"> 
                 		<div class="imgrank">
 									<%if(j== 1){ %> 
@@ -541,7 +522,7 @@
                                 </div>
                             </div><a href="detail.jsp" class="invisible"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listRank.title}</a></h3>
+                                <h3><a href="detail.jsp">${listTeacher.title}</a></h3>
                                 <p class="price"> 
                                     <del></del><a href="#" class="btn btn-primary" >상세보기</a>
                                 </p>
@@ -573,6 +554,27 @@
             <!-- /#hot-->
             <!-- *** HOT END ***-->
         </div>
+         <div  id="hot">
+            <div class="box py-4 mt-0">
+                <div class="container"> 
+                    <div class="row"> 
+                        <div class="col-md-12"> 
+                            <h2 class="mb-0">Q&A</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <table class="table table-hover">
+        	<tr>
+        		<th>글 번호</th><th>글 제목</th><th>작성자</th><th>작성날짜</th>
+        	</tr>
+        	<c:forEach items="${listQna}" var="listQna">
+        	<tr>
+        		<td>${listQna.bno}</td><td>${listQna.title}</td><td>${listQna.writer}</td><td><fmt:formatDate value="${listQna.regDate}" pattern=""/></td>
+        	</tr>
+        	</c:forEach>
+        </table>
 
     </div>
 </div>

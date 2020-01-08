@@ -40,11 +40,11 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		service.listRank();
-		model.addAttribute("listRank",service.listRank());
+		model.addAttribute("listRank",service.listRank()); 
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "main";
+		return "index";
 	}
 	
 }

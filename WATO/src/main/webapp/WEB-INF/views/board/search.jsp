@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="/css/searchpageform.css">
 </head> 
 <body style="background: white;">    
-	<%@ include  file="./nav-bar.jsp"%>
+	<%@ include  file="../include/nav-bar.jsp"%> 
 	<form method="post" role="form" action="/board/searchResult">
 		<input type="text" name="searchKey" id="searchKey" />
 		<div class="after"></div>

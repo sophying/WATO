@@ -7,22 +7,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <select id="listRank" resultType="com.king.myweb.domain.BoardVO">
    	<![CDATA[ 
-   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=5
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10
    	 ]]> 
    </select>
    <select id="searchResultStudy" resultType="com.king.myweb.domain.BoardVO">
-   	  <![CDATA[ 
-   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=5 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	  <![CDATA[  
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
    	 ]]>
    </select>
    <select id="searchResultTeacher" resultType="com.king.myweb.domain.BoardVO"> 
    	  <![CDATA[ 
-   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=5 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
    	 ]]>
    </select>
    <select id="searchResultQna" resultType="com.king.myweb.domain.BoardVO">
    	  <![CDATA[ 
-   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=5 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
    	 ]]>
    </select>
   
