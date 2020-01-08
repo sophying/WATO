@@ -4,13 +4,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="study">
-	<insert id="enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
+	<insert id="s_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
 	insert into STUDYENROLL (SNO, USERID, USERPASS, EMAIL, PHOTO, CATEGORY, STITLE, STARTDATE, ENDDATE, SDAY, SPLACE, SCONTENT )
 	values( study_seq.nextval , #{userId}, #{userPass}, #{email}, #{photo}, #{category}, #{stitle}, #{startDate}, #{endDate}, #{sDay}, #{sPlace}, #{sContent})
 <!-- 		insert into studytest_1 (bno, userid, category, title, regdate, place, content, photo)
 		values((select nvl(max(bno)+1, 1) from studytest_1), #{userId}, #{category}, #{title}, #{regDate}, #{place}, #{content}, #{photo}) -->
 	</insert>
+
+	<insert id="t_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
 	
+	</insert>
+
 	
 	
 	

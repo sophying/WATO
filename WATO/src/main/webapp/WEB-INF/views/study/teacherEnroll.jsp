@@ -160,24 +160,29 @@
         </div>
       </div>
     </div>
-    <div class="form-group container-fluid">
+        <div class="form-group container-fluid">
       <div class="card">
-        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><font size="5">이력서파일등록</font></label>
+        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
           <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
            <div class="card-body">
              <div class="input-group d-flex justify-content-center">
-             
-<!-- 이력서 파일 등록 버튼  --> 
-				<div class="custom-file" id="custom-file">
-<!-- resumeFile 파일업로드 -->	  <input name="resumeFile" type="file" class="custom-file-input" id="fileInput" >
-				  <label class="custom-file-label" for="customFileLangHTML" data-browse="파일등록"></label> 
-				</div>
+				<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	          	<label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">자격증 </label>&nbsp;&nbsp;
+					<select name="license" class="selectpicker form-control">
+					  <option value="ocjp" selected="selected">OCJP</option>
+					  <option value="리눅스마스터">리눅스마스터</option>
+					  <option value="네트워크관리사">네트워크 관리사</option>
+					  <option value="정보보안기사">정보 보안 기사</option>
+					  <option value="정보보안산업기사">정보 보안 산업기사</option>
+					  <option value="정보처리기사">정보처리기사</option>
+					  <option value="정보처리산업기사">정보처리 산업기사</option>
+					</select>
              </div> 
            </div>
          </div>
       </div>
   	</div>
-     </div>       
+  </div>       
 <!-- // 스터디 기간 설정  -->
 <!-- // 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
 
@@ -185,27 +190,8 @@
 <!-- <2> Study Info Enroll -->
     <div class="col-md-7 d-inline-block">
       <div class="card">
-        <div class="pb-1 row m-0 card-header font-weight-bold d-flex justify-content-center"><h4>스터디 모집 등록</h4></div>
+        <div class="pb-1 row m-0 card-header font-weight-bold d-flex justify-content-center"><h4>강의 등록</h4></div>
           <div class="card-body">
-                      <div class="form-group">
-                          <label for="userId" class="cols-sm-2 control-label font-weight-bold">아이디</label>
-                              <div class="cols-sm-10">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-  <!-- userId -->                     <input type="text" class="form-control" name="userId" id="userId" placeholder="Enter your Name" />
-                                  </div>
-                              </div>
-                      </div>
-                      <div class="form-group">
-                          <label for="email" class="cols-sm-2 control-label font-weight-bold">이메일</label>
-                              <div class="cols-sm-10">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
- <!-- email 이메일 -->                   <input type="email" class="form-control" name="email" id="email" placeholder="이메일을 알려주세요!" />
-                                  </div>
-                              </div>
-                      </div>
-
                       <div class="form-group">
                           <label for="category" class="cols-sm-2 control-label font-weight-bold">카테고리</label>
                           <div class="cols-sm-10">
@@ -273,8 +259,7 @@
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">강의 상세내용</label>
                            <div class="cols-sm-10">
                              <div class="md-form">
-	 <!-- content -->               <textarea id="form7" name="content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!">
-	 								</textarea>
+	 <!-- content -->               <textarea id="form7" name="content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
                              </div>
                            </div>
                     </div>
@@ -288,16 +273,7 @@
                                 </div>
                            </div>
                     </div>
-                    
-                      <div class="form-group">
-                         <label for="confirm" class="cols-sm-2 control-label">비밀번호 확인</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
- <!-- userPass -->                  <input type="password" class="form-control" name="userPass" id="userPass" placeholder="비밀번호 확인해주세요!" />
-                                </div>
-                            </div>
-                      </div>
+  
                       <div class="form-group ">
  <!-- startDate -->       <input type="hidden" name="startDate" id="startDate" value="">
  <!-- endDate -->         <input type="hidden" name="endDate" id="endDate" value="">
