@@ -1,5 +1,3 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
          <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
@@ -13,24 +11,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="/resource/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="/resource/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./resource/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="/resource/vendor/owl.carousel/assets/owl.carousel.css"> 
-    <link rel="stylesheet" href="/resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="./resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="./resource/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="/resource/css/style.default.css" id="theme-stylesheet"> 
+    <link rel="stylesheet" href="./resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
-    <link rel="stylesheet" href="/resource/css/custom.css">
+    <link rel="stylesheet" href="./resource/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
-    <link rel="icon" type="image/png" href="/resource/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
 </head>
 <style>
     #top{
@@ -187,7 +185,7 @@
  
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
-        <div class="container"><a href="/" class="navbar-brand home"><img src="/resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="/resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container"><a href="/" class="navbar-brand home"><img src="./resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -278,8 +276,8 @@
                         </ul>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="banner"><a href="#"><img src="/resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
-                <div class="banner"><a href="#"><img src="/resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="./resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="./resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
             </div>
         </div>
                             </li>
@@ -391,42 +389,42 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/c.png"><br/><span class="text">c언어</span></a>
+                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
                     </div>
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
+                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
                     </div>
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/java.png"><br/><span class="text">자바</span></a>
+                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
                     </div>
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
+                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
                     </div>
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/python.png"><br/><span class="text">파이썬</span></a>
+                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
                     </div>
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/android.png"><br/><span class="text">안드로이드</span></a>
+                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
                     </div>
                 </div> 
                 <div class="row">
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/c.png"><br/><span class="text">c언어</span></a>
+                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
                     </div>
                     <div class="col-lg-2"> 
-                        <a href="blog.jsp"><img src="/resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
+                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
                     </div>
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/java.png"><br/><span class="text">자바</span></a>
+                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
                     </div>
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
+                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
                     </div>
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/python.png"><br/><span class="text">파이썬</span></a>
+                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
                     </div>
                     <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/android.png"><br/><span class="text">안드로이드</span></a>
+                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
                     </div>
                 </div> 
             </div>
@@ -452,25 +450,25 @@
                 	<div style="position: relative;"> 
                 		<div class="imgrank">
 									<%if(i== 1){ %> 
-										<img alt="1등이미지" src="/resource/images/rank1st.png"> 
+										<img alt="1등이미지" src="./resource/images/rank1st.png"> 
 									<%}else if( i ==2) {%>
-										<img alt="2등이미지" src="/resource/images/rank2st.png"> 
+										<img alt="2등이미지" src="./resource/images/rank2st.png"> 
 									<%}else if( i ==3) {%>
-										<img alt="3등이미지" src="/resource/images/rank3st.png">
+										<img alt="3등이미지" src="./resource/images/rank3st.png">
 									<%}else if( i ==4) { %>
-										<img alt="4등이미지" src="/resource/images/rank4st.png">
+										<img alt="4등이미지" src="./resource/images/rank4st.png">
 									<%}else{ %>
-										<img alt="5등이미지" src="/resource/images/rank5st.png">
+										<img alt="5등이미지" src="./resource/images/rank5st.png">
 									<%} %>
 						</div>
                     <div class="item">
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
+                            </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
                             <div class="text">
                                 <h3><a href="detail.jsp">${listRank.title}</a></h3>
                                 <p class="price"> 
@@ -521,25 +519,25 @@
                 	<div style="position: relative;"> 
                 		<div class="imgrank">
 									<%if(j== 1){ %> 
-										<img alt="1등이미지" src="/resource/images/rank1st.png"> 
+										<img alt="1등이미지" src="./resource/images/rank1st.png"> 
 									<%}else if( j ==2) {%>
-										<img alt="2등이미지" src="/resource/images/rank2st.png"> 
+										<img alt="2등이미지" src="./resource/images/rank2st.png"> 
 									<%}else if( j ==3) {%>
-										<img alt="3등이미지" src="/resource/images/rank3st.png">
+										<img alt="3등이미지" src="./resource/images/rank3st.png">
 									<%}else if( j ==4) { %>
-										<img alt="4등이미지" src="/resource/images/rank4st.png">
+										<img alt="4등이미지" src="./resource/images/rank4st.png">
 									<%}else{ %>
-										<img alt="5등이미지" src="/resource/images/rank5st.png">
+										<img alt="5등이미지" src="./resource/images/rank5st.png">
 									<%} %>
 						</div>
                     <div class="item">
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
+                            </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
                             <div class="text">
                                 <h3><a href="detail.jsp">${listRank.title}</a></h3>
                                 <p class="price"> 
@@ -672,18 +670,18 @@ _________________________________________________________
             </div>
             <!-- /.col-lg-3-->
         </div> 
-        <!-- /.row--> 
+        <!-- /.row-->  
     </div>
     <!-- /.container-->  
 </div>
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
-<script src="/resource/vendor/jquery/jquery.min.js"></script>
-<script src="/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="/resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="/resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="/resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="/resource/js/front.js"></script>
+<script src="./resource/vendor/jquery/jquery.min.js"></script>
+<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="./resource/js/front.js"></script> 
 </body>
 </html>
