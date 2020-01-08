@@ -23,14 +23,14 @@ public class StudyenrollController {
 	
 	
 	// 1. 일반인 Study 모집 등록하러 가기
-	@RequestMapping(value = "/normalEnroll", method = RequestMethod.GET)
+	@RequestMapping(value = "/teacherEnroll", method = RequestMethod.GET)
 	public void getEnroll() throws Exception{
 		logger.info(">--------------------[ 일반인 스터디 모집 등록 GET ]---------------------------<");
 		
 	}
 	
 	// 1. 일반인 Study 모집 글 작성 등록
-	@RequestMapping(value = "/normalEnroll", method = RequestMethod.POST)
+	@RequestMapping(value = "/teacherEnroll", method = RequestMethod.POST)
 	public String postEnroll(StudyEnrollVO studyVO) throws Exception{
 
 		logger.info(">--------------------[ 일반인 스터디 모집 등록 POST ]---------------------------<");		
