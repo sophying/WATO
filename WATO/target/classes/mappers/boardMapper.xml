@@ -5,22 +5,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="board"> 
    
-   <select id="listRank" resultType="com.king.myweb.domain.BoardVO">
+   <select id="listRank" resultType="com.king.myapp.domain.BoardVO">
    	<![CDATA[ 
    	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10
    	 ]]> 
    </select>
-   <select id="searchResultStudy" resultType="com.king.myweb.domain.BoardVO">
+   <select id="searchResultStudy" resultType="com.king.myapp.domain.BoardVO">
    	  <![CDATA[  
    	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
    	 ]]>
    </select>
-   <select id="searchResultTeacher" resultType="com.king.myweb.domain.BoardVO"> 
+   <select id="searchResultTeacher" resultType="com.king.myapp.domain.BoardVO"> 
    	  <![CDATA[ 
    	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
    	 ]]>
    </select>
-   <select id="searchResultQna" resultType="com.king.myweb.domain.BoardVO">
+   <select id="searchResultQna" resultType="com.king.myapp.domain.BoardVO">
    	  <![CDATA[ 
    	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
    	 ]]>

@@ -15,23 +15,41 @@ public class TeacherEnrollVO {
 	t_place   VARCHAR2(70),
 	t_content VARCHAR2(1000)  NOT NULL,
 	t_URL varchar2(300),
+	t
+	
+	
 	PRIMARY KEY(SNO)
 
-	*/
+	*/ 
 	
 	private int t_no;
 	private String t_userId;
 	private String t_category;
 	private String t_title;
 	private String t_startDate;
-	private String t_endDate;
+	private String t_endDate; 
 	private String t_day;
 	private int t_postnum;
 	private String t_place;
 	private String t_content;
 	private String t_URL;
-	
-	
+	private String t_photo; 
+	private String t_license;
+	private String t_level;
+	private int t_people;
+
+	public String getT_level() {
+		return t_level;
+	}
+	public void setT_level(String t_level) {
+		this.t_level = t_level;
+	}
+	public int getT_people() {
+		return t_people;
+	}
+	public void setT_people(int t_people) {
+		this.t_people = t_people;
+	}
 	public int getT_no() {
 		return t_no;
 	}
@@ -98,7 +116,17 @@ public class TeacherEnrollVO {
 	public void setT_URL(String t_URL) {
 		this.t_URL = t_URL;
 	}
-	
-	
+	public String getT_photo() {
+		return t_photo;
+	}
+	public void setT_photo(String t_photo) {
+		this.t_photo = t_photo;
+	}
+	public String getT_license() {
+		return t_license;
+	}
+	public void setT_license(String t_license) {
+		this.t_license = t_license;
+	}
 	
 }

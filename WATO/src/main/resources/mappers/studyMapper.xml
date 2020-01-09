@@ -11,8 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values((select nvl(max(bno)+1, 1) from studytest_1), #{userId}, #{category}, #{title}, #{regDate}, #{place}, #{content}, #{photo}) -->
 	</insert>
 
-	<insert id="t_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
-	
+	<insert id="t_enroll" parameterType="com.king.myapp.domain.TeacherEnrollVO">
+		insert into T_ENROLL (T_NO, T_USERID, T_CATEGORY, T_TITLE, T_STARTDATE, T_ENDDATE, T_DAY, T_POSTNUM, T_PLACE, T_CONTENT, T_URL, T_PHOTO, T_LICENSE, T_LEVEL, T_PEOPLE)
+		values (T_ENROLL_SEQ.nextval, #{t_userId}, #{t_category}, #{t_title}, #{t_startDate}, #{t_endDate}, #{t_day}, #{t_postnum}, #{t_place}, #{t_content}, #{t_URL}, #{t_photo}, #{t_license},#{t_level},#{t_people}) 
 	</insert>
 
 	
@@ -21,19 +22,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </mapper>
 
 <!-- 
-SNO  		NUMBER
-USERID 		VARCHAR2(20) 
-USERPASS 	VARCHAR2(100) 
-EMAIL  		VARCHAR2(30),
-PHOTO 		VARCHAR2(20),
-CATEGORY	 VARCHAR2(15) 
-STITLE	 	VARCHAR2(50) 
-STARTDATE  	DATE,
-ENDDATE  	DATE,
-SDAY		VARCHAR2(25) 
-SPLACE 		VARCHAR2(70),
-SCONTENT 	VARCHAR2(1000)
-
 
 SNO 	 	NUMBER  NOT NULL,
 USERID 		VARCHAR2(20)  NOT NULL,

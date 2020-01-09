@@ -398,8 +398,13 @@ $(document).ready(function($){
 				
 			 });
 		 
-		 
 	}
+	 
+
+	 
+	 
+	 
+	 
 	 if ( t_title.value == null || t_title.value =="") {
 			$('#stitle').css('color','red');
 			t_title.value ="강의주제를 작성하십시오.";
@@ -523,12 +528,12 @@ $(document).ready(function($){
 	  var img2 = $('#img_btn_2').attr('src');
 	  var img3 = $('#img_btn_3').attr('src');
 	  var img4 = $('#img_btn_4').attr('src');
-	  var img5 = $('#img_btn_5').attr('src');
+	  var img5 = $('#img_btn_5').attr('src'); 
 	
 	  $('#img_btn_0').on({'click': function(){
+		  $('#category').css('color','black');
 	        $('#input_img').attr('src',img0);
 	        document.getElementById("category").value = "직접입력";
-	        $('input #category').text("기타");
 	     }
 	 });
 	  $('#img_btn_1').on({'click': function(){
@@ -538,7 +543,7 @@ $(document).ready(function($){
 	 });
 	
 	 $('#img_btn_2').on({'click': function(){
-	        $('#input_img').attr('src',img2);
+	        $('#input_img').attr('src',img2); 
 	        document.getElementById("category").value = "자바스크립트";
 	        alert(document.getElementById("category").value);
 	    }
