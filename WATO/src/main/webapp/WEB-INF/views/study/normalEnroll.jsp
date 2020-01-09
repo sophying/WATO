@@ -17,7 +17,7 @@
 
 .btn-circle.btn-xl {
   width: 60px;
-  height: 60px; 
+  height: 60px;
   padding: 5px 5px 5px 5px;
   border-radius: 35px;
   font-size: 24px;
@@ -48,6 +48,7 @@
 </style>
 </head>
 <body>
+<form name="studyForm"class="form-horizontal" role="form" method="post" action="/study/normalEnroll">
 <div class="container  mx-auto">
 <!-- <1> image Enroll -->
   <div class="row mt-3 justify-content-md-center">
@@ -62,7 +63,7 @@
                 </div>
               </div>
             </div>
-            
+
 <!-- button Enroll -->
             <!-- <div class="cols-sm-5">
             <div class="form-group"> -->
@@ -121,37 +122,39 @@
                         <input type="checkbox" class="form-check-input" id="wed" name="day">
                         <label class="form-check-label" for="wed">수</label>
                     </div>
-                    
+
                     <!-- 목요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
                         <input type="checkbox" class="form-check-input" id="thu" name="day">
                         <label class="form-check-label" for="thu">목</label>
                     </div>
-                    
+
                     <!-- 금요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
                         <input type="checkbox" class="form-check-input" id="fri" name="day">
                         <label class="form-check-label" for="fri">금</label>
                     </div>
-                    
+
                     <!--  토요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
                         <input type="checkbox" class="form-check-input" id="sat" name="day">
                         <label class="form-check-label" for="sat">토</label>
                     </div>
-                    
+
                     <!-- 일요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
                         <input type="checkbox" class="form-check-input" id="sun" name="day">
                         <label class="form-check-label" for="sun">일</label>
                     </div>
-                    
-                    <!-- 추후결정 --> 
+
+                    <!-- 추후결정 -->
                     <div class="form-check form-check-inline cols-sm-2">
                         <input type="checkbox" class="form-check-input" id="other" name="day">
                         <label class="form-check-label" for="other">추후결정</label>
                     </div>
                   </div>
+                  <div id="nullText" class=" d-flex pt-2 d-flex justify-content-center"></div>
+
               </div>
            </div>
         </div>
@@ -169,72 +172,109 @@
       <div class="card">
         <div class="pb-1 row m-0 card-header font-weight-bold d-flex justify-content-center"><h4>스터디 모집 등록</h4></div>
           <div class="card-body">
-                  <form name="studyForm"class="form-horizontal" role="form" method="post" action="/study/enroll1">
-                      <div class="form-group">
+            <div class="form-group">
+                <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
+                    <label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
+	                      <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	 <!-- t_level -->     <select name="t_level" class="selectpicker form-control w-50" >
+    										  <option value="입문"selected="selected">입문</option>
+    										  <option value="초급">초급</option>
+    										  <option value="중급">중급</option>
+    										  <option value="고급">고급</option>
+    										</select>
+
+                    <label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
+	                       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	 <!-- t_people -->     <select name="s_people" class="selectpicker form-control w-50">
+    											   <option value="1"selected="selected">1</option>
+    											  <option value="2">2</option>
+    											  <option value="3">3</option>
+    											  <option value="4">4</option>
+    											  <option value="5">5</option>
+    											  <option value="6">6</option>
+    											  <option value="7">7</option>
+    											  <option value="8">8</option>
+    											  <option value="9">9</option>
+    											  <option value="10">10</option>
+    											  <option value="11">11</option>
+    											  <option value="12">12</option>
+    											  <option value="13">13</option>
+    											  <option value="14">14</option>
+    											  <option value="15">15</option>
+    											  <option value="16">16</option>
+    											  <option value="17">17</option>
+    											  <option value="18">18</option>
+    											  <option value="19">19</option>
+    											  <option value="20">20</option>
+    										</select>
+                </div>
+            </div>
+
+                      <!-- <div class="form-group">
                           <label for="name" class="cols-sm-2 control-label font-weight-bold">아이디</label>
                               <div class="cols-sm-10">
                                   <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-                                          <input type="text" class="form-control" name="userId" id="userId" placeholder="Enter your Name" />
-                                  </div>
+                                      <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span> -->
+ <!-- userId -->                         <input type="hidden" class="form-control" name="s_userId" id="userId" placeholder="Enter your Name" />
+                                  <!-- </div>
                               </div>
-                      </div>
-                      <div class="form-group">
+                      </div> -->
+                      <!-- <div class="form-group">
                           <label for="email" class="cols-sm-2 control-label font-weight-bold">이메일</label>
                               <div class="cols-sm-10">
                                   <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-                                          <input type="email" class="form-control" name="email" id="email" placeholder="이메일을 알려주세요!" />
-                                  </div>
+                                      <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span> -->
+  <!-- email -->                        <input type="hidden" class="form-control" name="s_email" id="email" placeholder="이메일을 알려주세요!" />
+                                  <!-- </div>
                               </div>
-                      </div>
+                      </div> -->
                       <div class="form-group">
                           <label for="username" class="cols-sm-2 control-label font-weight-bold">카테고리</label>
                           <div class="cols-sm-10">
                             <div class="input-group">
-	                              <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-	                              <input type="text" class="form-control" name="category" id="category" placeholder="과목 카테고리를 알려주세요!" />
-                        </div>
-                      </div>
+	                           <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+<!-- category -->	             <input type="text" class="form-control" name="s_category" id="category" placeholder="과목 카테고리를 알려주세요!" />
+                           </div>
+                         </div>
                       </div>
                       <div class="form-group">
                           <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 주제</label>
                              <div class="cols-sm-10">
                                 <div class="input-group">
                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                      <input type="text" class="form-control" name="stitle" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
+  <!-- stitle -->                    <input type="text" class="form-control" name="s_title" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
                                 </div>
                              </div>
                       </div>
-                      <div class="form-group">
+      <!--                 <div class="form-group">
                           <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 요일</label>
                              <div class="cols-sm-10">
                                 <div class="input-group">
-                                   <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                   <input type="text" class="form-control" name="sDay" id="schedule" placeholder="그룹의 스터디 주제를 알려주세요!" />
-                             </div>
+                                   <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span> -->
+  <!-- sDay -->                      <input type="hidden" class="form-control" name="s_day" id="schedule" />
+               <!--               </div>
                           </div>
-                   </div>
+                   </div> -->
                    <!-- 우편번호 찾기 API -->
                    <div class="form-group">
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
                        		&nbsp;&nbsp;&nbsp;&nbsp;<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
                        </label>
-                       
+
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       
+
                        <div class="d-inline row mx-md-n6">
                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                                <!--  <input type="text" class="form-control" name="schedule" id="schedule" placeholder="함께 모일 장소를 알려주세요!" /> -->
                                 <input type="button" class="btn btn-primary box " id="execDaumPostcode" value="우편번호 찾기">
                          </div>
-                          
+
                           <div class="cols-sm-10">
                             <div class="input-group mt-1 mb-1">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                              <input type="text" class="form-control" id="postcode"  placeholder="우편번호" required>
+  <!-- s_postnum -->            <input type="text" class="form-control" name="s_postnum" id="postcode"  placeholder="우편번호" required>
                             </div>
                           </div>
                           <div class="cols-sm-10 mb-1 ">
@@ -255,32 +295,24 @@
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 상세내용</label>
                            <div class="cols-sm-10">
                              <div class="md-form">
-                               <textarea id="form7" name="sContent" class="md-textarea form-control" rows="6" placeholder="그룹을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+ <!-- s_content -->              <textarea id="form7" name="s_content" class="md-textarea form-control" rows="6" placeholder="그룹을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
                              </div>
                            </div>
                     </div>
-                      <div class="form-group">
-                         <label for="confirm" class="cols-sm-2 control-label">비밀번호 확인</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-                                        <input type="password" class="form-control" name="userPass" id="userPass" placeholder="비밀번호 확인해주세요!" />
-                                </div>
-                            </div>
-                      </div>
-                      <div class="form-group ">
-                      	  <input type="hidden" name="startDate" id="startDate" value="">
-                      	  <input type="hidden" name="endDate" id="endDate" value="">
-                      	  <input type="hidden" name="photo" id="photoval" value="">
-                      	  <input type="hidden" name="sPlace" id="sPlace" value="" >
+                     <div class="form-group ">
+                      	  <input type="hidden" name="s_startDate" id="startDate" value="">
+                      	  <input type="hidden" name="s_endDate" id="endDate" value="">
+                      	  <input type="hidden" name="s_photo" id="photoval" value="">
+                      	  <input type="hidden" name="s_place" id="Place" value="" >
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
-                 </form> 
+
           </div>
         </div>
       </div>
     </div> <!-- 2-->
 </div><!--  1 -->
+ </form>
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -288,56 +320,105 @@
 
 $(document).ready(function($){
 
-// 조건_____________  
-	 
- $('#enroll_btn').click(function(){
-	  var start = document.getElementById('start').value;
+// 조건_____________
 
-	   document.getElementById('startDate').value = start;
-	  
-	  var end = document.getElementById('end').value;
-	  document.getElementById('endDate').value = end;
-	  
-	  var post =  document.getElementById('postcode').value;
-	  var road =  document.getElementById('roadAddress').value; 
-	  var jibun =  document.getElementById('jibunAddress').value;
-	  
-	  var sPlace = "["+post+"]"+road+"("+jibun+")";
-	  document.getElementById('sPlace').value = sPlace;
- 
-	 alert(document.getElementById('startDate').value);
-	 alert(document.getElementById('endDate').value);
-	 alert(document.getElementById('sPlace').value);
-	 
-	 
-	 var password = document.getElementById("userPass");
-	 
-	 if (password == null) {
-		
-		 
-		 
-	}
-	 
-	 
-	 
-	 document.studyForm.submit();
- 
- });
+$('#enroll_btn').click(function(){
+   var start = document.getElementById('start').value;
+
+    document.getElementById('startDate').value = start;
+
+   var end = document.getElementById('end').value;
+   document.getElementById('endDate').value = end;
+
+   var road =  document.getElementById('roadAddress').value;
+   var jibun =  document.getElementById('jibunAddress').value;
+
+   var s_place = road+"( "+jibun+" )";
+   document.getElementById('Place').value = s_place;
 
 
-  
+/* null 확인  */
+  var t_category = document.getElementById('category');
+  var t_title = document.getElementById('stitle');
+  var t_day = document.getElementById('schedule');
+
+
+  if ((t_category.value == null || t_category.value == "")) {
+
+    $('#category').css('color','red');
+    t_category.value ="카테고리를 작성하십시오.";
+
+    $('#category').focus(function(){
+
+      if ( t_category.value=="카테고리를 작성하십시오.") {
+        t_category.value="";
+     }
+       $('#category').css('color','black');
+
+      });
+
+    $('#category').blur(function(){
+
+      if (t_category.value == null || t_category.value == "") {
+       t_category.value = "카테고리를 작성하십시오";
+       $('#category').css('color','red');
+
+     }
+
+      });
+
+
+ }
+  if ( t_title.value == null || t_title.value =="") {
+     $('#stitle').css('color','red');
+     t_title.value ="강의주제를 작성하십시오.";
+
+      $('#stitle').focus(function(){
+
+        if ( t_title.value=="강의주제를 작성하십시오.") {
+          t_title.value="";
+       }
+         $('#stitle').css('color','black');
+
+        });
+
+      $('#stitle').blur(function(){
+
+        if (t_title.value == null || t_title.value == "") {
+          t_title.value = "강의주제를 작성하십시오";
+         $('#stitle').css('color','red');
+
+       }
+
+        });
+ }
+
+  if (t_day.value == null || t_day.value == "") {
+    $('#nullText').css('color','red');
+   $('#nullText').text("구체적인 날짜를 정해주십시오.");
+
+ }
+
+  if (t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
+   document.studyForm.submit();
+ }
+
+});
+
+
+
 // 우편번호 검색 ___________________________________________________________
 
 	  $("#execDaumPostcode").click(function sample4_execDaumPostcode() {
 	      new daum.Postcode(
 	              {
 	                  oncomplete : function(data) {
-	                	  
-	                	  // 도로명 주소 변수 
+
+	                	  // 도로명 주소 변수
 	                      var fullRoadAddr = data.roadAddress;
-	                      // 도로명 조합형 주소 변수 
-	                      var extraRoadAddr = '';  
-	
+	                      // 도로명 조합형 주소 변수
+	                      var extraRoadAddr = '';
+
 	                      // 법정동명이 있을 경우 추가한다. (법정리는 제외)
 	                      // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
 	                      if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
@@ -357,12 +438,12 @@ $(document).ready(function($){
 	                      if (fullRoadAddr !== '') {
 	                          fullRoadAddr += extraRoadAddr;
 	                      }
-	
+
 	                      // 우편번호와 주소 정보를 해당 필드에 넣는다.
 	                      document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
 	                      document.getElementById('roadAddress').value = fullRoadAddr;
 	                      document.getElementById('jibunAddress').value = data.jibunAddress;
-	
+
 	                      // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
 	                      if (data.autoRoadAddress) {
 	                          //예상되는 도로명 주소에 조합형 주소를 추가한다.
@@ -370,12 +451,12 @@ $(document).ready(function($){
 	                                  + extraRoadAddr;
 	                          document.getElementById('guide').innerHTML = '(예상 도로명 주소 : '
 	                                  + expRoadAddr + ')';
-	
+
 	                      } else if (data.autoJibunAddress) {
 	                          var expJibunAddr = data.autoJibunAddress;
 	                          document.getElementById('guide').innerHTML = '(예상 지번 주소 : '
 	                                  + expJibunAddr + ')';
-	
+
 	                      } else {
 	                          document.getElementById('guide').innerHTML = '';
 	                      }
@@ -386,21 +467,23 @@ $(document).ready(function($){
 // 요일 선택___________________________________________________________
 
 	$(".form-check-input").click(function(){
-		var str = "";  
-		$(".form-check-input").each(function(){ 
-			if($(this).is(":checked")) 
-				str += $(this).next().text() + " "; 
+		var str = "";
+		$(".form-check-input").each(function(){
+			if($(this).is(":checked"))
+				str += $(this).next().text() + " ";
 		});
-				document.getElementById("schedule").value= str;  
+				document.getElementById("schedule").value= str;
+        $('#nullText').css("color","green");
+        $("#nullText").text(str);
 	});
 
 
 // 이미지 버튼___________________________________________________________
 
   var photo = document.getElementById("input_img");
-  var photoSrc = photo.getAttribute('src');  
+  var photoSrc = photo.getAttribute('src');
   document.getElementById('photoval').value = photoSrc;
- 
+
 
   var img0 = $('#img_btn_0').attr('src');
   var img1 = $('#img_btn_1').attr('src');
@@ -449,6 +532,7 @@ $('#img_btn_5').on({'click': function(){
 </script>
 </body>
 </html>
+
 
 
 

@@ -45,6 +45,10 @@
 #text{
  display: none;
 }
+
+.card-header{
+background:#5a7fa2;
+}
 /* .content{
     outline: 2px dashed #92b0b3 ;
     outline-offset:-10px;  
@@ -57,6 +61,7 @@
 </style>
 </head> 
 <body>
+
 <div class="container  mx-auto">
 <form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherEnroll.do">
 <!-- <1> image Enroll -->
@@ -344,13 +349,6 @@ $(document).ready(function($){
 // 조건_____________  
 // Add the following code if you want the name of the file appear on select
 
-
-
- $(".custom-file-input").on("change", function() {
-     var fileName = $(this).val().split("\\").pop();
-	 $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-	 
- });
 
 					
  $('#enroll_btn').click(function(){

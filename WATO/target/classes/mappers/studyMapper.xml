@@ -4,12 +4,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="study">
+<!--  모집글 등록 -->
 	<insert id="s_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
-	insert into STUDYENROLL (SNO, USERID, USERPASS, EMAIL, PHOTO, CATEGORY, STITLE, STARTDATE, ENDDATE, SDAY, SPLACE, SCONTENT )
-	values( study_seq.nextval , #{userId}, #{userPass}, #{email}, #{photo}, #{category}, #{stitle}, #{startDate}, #{endDate}, #{sDay}, #{sPlace}, #{sContent})
+	insert into STUDYENROLL (S_NO, S_USERID, S_EMAIL, S_PHOTO, S_CATEGORY, S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM , S_PLACE, S_CONTENT, S_PEOPLE, S_LEVEL )
+	values( study_seq.nextval , #{s_userId}, #{s_email}, #{s_photo}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_people} ,#{s_level})
 <!-- 		insert into studytest_1 (bno, userid, category, title, regdate, place, content, photo)
 		values((select nvl(max(bno)+1, 1) from studytest_1), #{userId}, #{category}, #{title}, #{regDate}, #{place}, #{content}, #{photo}) -->
 	</insert>
+<!-- 모집글 수정 불러오기 -->	
+	<select id="s_modify" resultType="com.king.myapp.domain.StudyEnrollVO">
+		select S_NO, S_PHOTO, S_CATEGORY , S_TITLE ,S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT
+		from STUDYENROLL 
+		where S_NO = #{s_no}
+	</select>
+<!-- 수정글 등록 -->	
+	<update id="s_modfyUpdate">
+		update STUDYENROLL
+		set S_PHOTO = #{s_photo}, S_CATEGORY = #{s_category}, S_TITLE = #{s_title} ,S_STARTDATE  = #{s_startDate}, S_ENDDATE = #{s_endDate} , S_DAY = #{s_day}, S_POSTNUM =#{s_postnum}, S_PLACE =#{s_place}, S_CONTENT = #{s_content}
+		where S_NO = #{s_no}
+	</update>
+	
+	
+	
 
 	<insert id="t_enroll" parameterType="com.king.myapp.domain.TeacherEnrollVO">
 		insert into T_ENROLL (T_NO, T_USERID, T_CATEGORY, T_TITLE, T_STARTDATE, T_ENDDATE, T_DAY, T_POSTNUM, T_PLACE, T_CONTENT, T_URL, T_PHOTO, T_LICENSE, T_LEVEL, T_PEOPLE)
@@ -21,20 +37,3 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 </mapper>
 
-<!-- 
-
-SNO 	 	NUMBER  NOT NULL,
-USERID 		VARCHAR2(20)  NOT NULL,
-USERPASS 	VARCHAR2(100) NOT NULL,
-EMAIL  		VARCHAR2(30),
-PHOTO 		VARCHAR2(20),
-CATEGORY 	VARCHAR2(15)  NOT NULL,
-STITLE 		VARCHAR2(50)  NOT NULL,
-STARTDATE  	VARCHAR2(20),
-ENDDATE  	VARCHAR2(20),
-SDAY 		VARCHAR2(25)  NOT NULL,
-SPLACE 		VARCHAR2(200),
-SCONTENT 	VARCHAR2(1000)  NOT NULL,
-PRIMARY KEY(SNO)
-
- -->

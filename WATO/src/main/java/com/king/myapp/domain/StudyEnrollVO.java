@@ -1,5 +1,7 @@
 package com.king.myapp.domain;
 
+import java.util.Date;
+
 public class StudyEnrollVO {
 /*
     SNO  NUMBER  NOT NULL,
@@ -21,93 +23,112 @@ public class StudyEnrollVO {
 */
  
 
-	private int sno;
-	private String userId;
-	private String userPass;
-	private String email;
-	private String photo;
-	private String category;
-	private String stitle;
-	private String startDate;
-	private String endDate;
-	private String sDay;
-	private String sPlace;
-	private String sContent;
+	private int s_no;
+	private String s_userId="sophy";
+	private String s_email="sophy@gmail.com";
+	private String s_photo;
+	private String s_category;
+	private String s_title;
+	private Date s_startDate;
+	private Date s_endDate;
+	private String s_Day;
+	private int s_postnum;
+	private String s_Place;
+	private String s_content;
+	private String t_level;
+	private int s_people;
 	
 	
-	public int getSno() {
-		return sno;
+	
+	
+	public String getT_level() {
+		return t_level;
 	}
-	public void setSno(int sno) {
-		this.sno = sno;
+	public void setT_level(String t_level) {
+		this.t_level = t_level;
 	}
-	public String getUserId() {
-		return userId;
+	public int getS_people() {
+		return s_people;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setS_people(int s_people) {
+		this.s_people = s_people;
 	}
-	public String getUserPass() {
-		return userPass;
+	public int getS_no() {
+		return s_no;
 	}
-	public void setUserPass(String userPass) {
-		this.userPass = userPass;
+	public void setS_no(int s_no) {
+		this.s_no = s_no;
 	}
-	public String getEmail() {
-		return email;
+	public String getS_userId() {
+		return s_userId;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setS_userId(String s_userId) {
+		this.s_userId = s_userId;
 	}
-	public String getPhoto() {
-		return photo;
+	public String getS_email() {
+		return s_email;
 	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setS_email(String s_email) {
+		this.s_email = s_email;
 	}
-	public String getCategory() {
-		return category;
+	public String getS_photo() {
+		return s_photo;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setS_photo(String s_photo) {
+		this.s_photo = s_photo;
 	}
-	public String getStitle() {
-		return stitle;
+	public String getS_category() {
+		return s_category;
 	}
-	public void setStitle(String stitle) {
-		this.stitle = stitle;
+	public void setS_category(String s_category) {
+		this.s_category = s_category;
 	}
-	public String getStartDate() {
-		return startDate;
+	public String getS_title() {
+		return s_title;
 	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setS_title(String s_title) {
+		this.s_title = s_title;
 	}
-	public String getEndDate() {
-		return endDate;
+	public Date getS_startDate() {
+		return s_startDate;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	} 
-	public String getsDay() {
-		return sDay;
+	public void setS_startDate(Date s_startDate) {
+		this.s_startDate = s_startDate;
 	}
-	public void setsDay(String sDay) {
-		this.sDay = sDay;
+	public Date getS_endDate() {
+		return s_endDate;
 	}
-	public String getsPlace() {
-		return sPlace;
+	public void setS_endDate(Date s_endDate) {
+		this.s_endDate = s_endDate;
 	}
-	public void setsPlace(String sPlace) {
-		this.sPlace = sPlace;
+	public String getS_Day() {
+		return s_Day;
 	}
-	public String getsContent() {
-		return sContent;
+	public void setS_Day(String s_Day) {
+		this.s_Day = s_Day;
 	}
-	public void setsContent(String sContent) {
-		this.sContent = sContent;
+	public int getS_postnum() {
+		return s_postnum;
 	}
-		
+	public void setS_postnum(int s_postnum) {
+		this.s_postnum = s_postnum;
+	}
+	public String getS_Place() {
+		return s_Place;
+	}
+	public void setS_Place(String s_Place) {
+		this.s_Place = s_Place;
+	}
+	public String getS_content() {
+		return s_content;
+	}
+	public void setS_content(String s_content) {
+		this.s_content = s_content;
+	}
+	
+	
+	
+	
 	
 	
 	}
