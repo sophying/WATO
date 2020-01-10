@@ -38,5 +38,9 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<BoardVO> searchResultQna(String searchKey) throws Exception {
 		return sql.selectList("board.searchResultQna",searchKey);
 	}
+	@Override
+	public List<BoardVO> studylistAll() throws Exception {
+		return sql.selectList("board.studylistAll");
+	}
 	
 }

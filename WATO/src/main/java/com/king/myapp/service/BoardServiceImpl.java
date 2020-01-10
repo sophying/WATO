@@ -34,5 +34,9 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardVO> searchResultQna(String searchKey) throws Exception {
 		return dao.searchResultQna(searchKey);
 	}
+	@Override
+	public List<BoardVO> studylistAll() throws Exception {
+		return dao.studylistAll();
+	}
 
 }
