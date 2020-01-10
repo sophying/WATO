@@ -169,7 +169,7 @@
                         <form action="customer-orders.jsp" method="post">
                             <div class="form-group">
                                 <input id="email-modal" type="text" placeholder="email" class="form-control">
-                            </div>
+                            </div> 
                             <div class="form-group">
                                 <input id="password-modal" type="password" placeholder="password" class="form-control">
                             </div>
