@@ -1,5 +1,8 @@
 package com.king.myapp.domain;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class TeacherEnrollVO {
 	
 	
@@ -26,8 +29,8 @@ public class TeacherEnrollVO {
 	private String t_userId;
 	private String t_category;
 	private String t_title;
-	private String t_startDate;
-	private String t_endDate; 
+	private Date t_startDate;
+	private Date t_endDate; 
 	private String t_day;
 	private int t_postnum;
 	private String t_place;
@@ -37,7 +40,17 @@ public class TeacherEnrollVO {
 	private String t_license;
 	private String t_level;
 	private int t_people;
+	private Timestamp t_creatdate;
+	
+	
+	
 
+	public final Timestamp getT_creatdate() {
+		return t_creatdate;
+	}
+	public final void setT_creatdate(Timestamp t_creatdate) {
+		this.t_creatdate = t_creatdate;
+	}
 	public String getT_level() {
 		return t_level;
 	}
@@ -74,16 +87,17 @@ public class TeacherEnrollVO {
 	public void setT_title(String t_title) {
 		this.t_title = t_title;
 	}
-	public String getT_startDate() {
+	
+	public final Date getT_startDate() {
 		return t_startDate;
 	}
-	public void setT_startDate(String t_startDate) {
+	public final void setT_startDate(Date t_startDate) {
 		this.t_startDate = t_startDate;
 	}
-	public String getT_endDate() {
+	public final Date getT_endDate() {
 		return t_endDate;
 	}
-	public void setT_endDate(String t_endDate) {
+	public final void setT_endDate(Date t_endDate) {
 		this.t_endDate = t_endDate;
 	}
 	public String getT_day() {

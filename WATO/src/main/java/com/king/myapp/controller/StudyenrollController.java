@@ -36,7 +36,19 @@ public class StudyenrollController {
 	public String postEnroll(StudyEnrollVO studyVO) throws Exception{
 
 		logger.info(">--------------------[ 일반인 스터디 모집 등록 POST ]---------------------------<");		
+		System.out.println(studyVO.getS_category());
+		System.out.println(studyVO.getS_title());
+		System.out.println(studyVO.getS_level());
+		System.out.println(studyVO.getS_photo());
+		System.out.println(studyVO.getS_people());
+		System.out.println(studyVO.getS_content());
+		System.out.println(studyVO.getS_day());
+		System.out.println(studyVO.getS_place());
+		System.out.println(studyVO.getS_userId());
+		System.out.println(studyVO.getS_startDate());
+		System.out.println(studyVO.getS_endDate());
 		studyService.enroll(studyVO);
+		
 		
 		return "redirect:/";
 		
@@ -58,7 +70,6 @@ public class StudyenrollController {
 		
 		studyService.modifyEnroll(studyVO);
 		return "redirect:/";
-		
 	}
 	
 	

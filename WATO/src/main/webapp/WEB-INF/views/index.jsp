@@ -201,6 +201,7 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="/study/normalEnroll" class="nav-link">과외</a></li>
+                                            <li class="nav-item"><a href="/study/classBoard" class="nav-link">강의탐방</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
                                         </ul>
                                     </div>

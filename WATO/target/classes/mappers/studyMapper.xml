@@ -6,31 +6,40 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="study">
 <!--  모집글 등록 -->
 	<insert id="s_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
-	insert into STUDYENROLL (S_NO, S_USERID, S_EMAIL, S_PHOTO, S_CATEGORY, S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM , S_PLACE, S_CONTENT, S_PEOPLE, S_LEVEL )
-	values( study_seq.nextval , #{s_userId}, #{s_email}, #{s_photo}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_people} ,#{s_level})
+	insert into S_ENROLL (S_NO, S_USERID, S_CATEGORY , S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT, S_PHOTO, S_LEVEL, S_PEOPLE, S_CREATDATE)
+	values( S_ENROLL_SEQ.nextval , #{s_userId}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_photo},#{s_level}, #{s_people} , SYSDATE )
 <!-- 		insert into studytest_1 (bno, userid, category, title, regdate, place, content, photo)
 		values((select nvl(max(bno)+1, 1) from studytest_1), #{userId}, #{category}, #{title}, #{regDate}, #{place}, #{content}, #{photo}) -->
 	</insert>
+	
 <!-- 모집글 수정 불러오기 -->	
 	<select id="s_modify" resultType="com.king.myapp.domain.StudyEnrollVO">
-		select S_NO, S_PHOTO, S_CATEGORY , S_TITLE ,S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT
-		from STUDYENROLL 
-		where S_NO = #{s_no}
+
+
 	</select>
+	
 <!-- 수정글 등록 -->	
 	<update id="s_modfyUpdate">
-		update STUDYENROLL
-		set S_PHOTO = #{s_photo}, S_CATEGORY = #{s_category}, S_TITLE = #{s_title} ,S_STARTDATE  = #{s_startDate}, S_ENDDATE = #{s_endDate} , S_DAY = #{s_day}, S_POSTNUM =#{s_postnum}, S_PLACE =#{s_place}, S_CONTENT = #{s_content}
-		where S_NO = #{s_no}
+
 	</update>
 	
 	
 	
 
 	<insert id="t_enroll" parameterType="com.king.myapp.domain.TeacherEnrollVO">
-		insert into T_ENROLL (T_NO, T_USERID, T_CATEGORY, T_TITLE, T_STARTDATE, T_ENDDATE, T_DAY, T_POSTNUM, T_PLACE, T_CONTENT, T_URL, T_PHOTO, T_LICENSE, T_LEVEL, T_PEOPLE)
-		values (T_ENROLL_SEQ.nextval, #{t_userId}, #{t_category}, #{t_title}, #{t_startDate}, #{t_endDate}, #{t_day}, #{t_postnum}, #{t_place}, #{t_content}, #{t_URL}, #{t_photo}, #{t_license},#{t_level},#{t_people}) 
+		insert into T_ENROLL (T_NO, T_USERID, T_CATEGORY, T_TITLE, T_STARTDATE, T_ENDDATE, T_DAY, T_POSTNUM, T_PLACE, T_CONTENT, T_URL, T_PHOTO, T_LICENSE, T_LEVEL, T_PEOPLE ,T_CREATDATE)
+		values (T_ENROLL_SEQ.nextval, #{t_userId}, #{t_category}, #{t_title}, #{t_startDate}, #{t_endDate}, #{t_day}, #{t_postnum}, #{t_place}, #{t_content}, #{t_URL}, #{t_photo}, #{t_license},#{t_level},#{t_people}, sysdate) 
 	</insert>
+	
+	<select id="t_class_list" resultType="com.king.myapp.domain.TeacherEnrollVO">
+		select * from t_enroll
+		order by t_no desc
+	</select>
+	
+	<select id="t_class_detail" resultType="com.king.myapp.domain.TeacherEnrollVO">
+		select * from t_enroll
+		where t_no =#{t_no}
+	</select>
 
 	
 	

@@ -1,12 +1,16 @@
 package com.king.myapp.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.service.TeacherEnrollService;
@@ -56,18 +60,50 @@ public class TeacherenrollController {
 		
 	}
 	
-	//2. 강의 내용 수정 페이지 이동 
-	@RequestMapping(value = "/teacherModify", method = RequestMethod.GET)
-	public void getTeacherModify() throws Exception{
-		
-		
-	}
-	//3. 강의 내용 수정 페이지 이동 
+	//2. 강의 등록 리스트 출력 
 	@RequestMapping(value = "/classBoard", method = RequestMethod.GET)
-	public void getClassBoard() throws Exception{
+	public void getClassBoard(Model model) throws Exception{
+		logger.info("--------------[ 강의 리스트 출력  GET ]-----------------");
 		
-		logger.info("--------------[ 강의 리스트 GET ]-----------------");
-			
+		List<TeacherEnrollVO> classlist = teacherService.list();
+		
+		model.addAttribute("classlist", classlist);
 	}
+
+	
+	//3. 강의 내용 수정 페이지 이동 
+	@RequestMapping(value = "/detailRead", method = RequestMethod.GET)
+	public void getDetailRead(@RequestParam("t_no") int t_no, Model model) throws Exception{
+		
+		logger.info("--------------[ 강의 상세보기  GET ]-----------------");
+			
+		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
+		
+		model.addAttribute("listOne",listOne);
+	}	
+	
+	// 4.
+	@RequestMapping(value = "/reply", method = RequestMethod.GET)
+	public String getReply(Model model) throws Exception{
+		logger.info("--------------[ 모집글 댓글  GET ]-----------------");
+		
+		return "/include/studyReply/reply";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

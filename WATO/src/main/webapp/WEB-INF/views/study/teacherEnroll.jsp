@@ -108,12 +108,12 @@ background:#5a7fa2;
 	    <div class="input-group d-flex justify-content-center">
 	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 	          <label for="start" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">시작</label>&nbsp;&nbsp;
-	          <input type="date" class="form-control col-sm-8" id="start" value="" />
+	          <input type="date" name="t_startDate" class="form-control col-sm-8" id="start" value="" />
 	    </div>
 	    <div class="input-group d-flex justify-content-center">
 	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 	          <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">&nbsp;&nbsp;&nbsp;끝&nbsp;</label>&nbsp;&nbsp;
-	          <input type="date" class="form-control col-sm-8 " id="end" value="" />
+	          <input type="date" name="t_endDate"  class="form-control col-sm-8 " id="end" value="" />
 	    </div>
     <div class="form-group">
            <div class="cols-sm-10">
@@ -260,15 +260,9 @@ background:#5a7fa2;
                                 </div>
                              </div>
                       </div>
-<!--                       <div class="form-group">
-                          <label for="sDay" class="cols-sm-2 control-label font-weight-bold">강의 요일</label>
-                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                   <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span> -->
- <!-- day -->                      <input type="hidden" class="form-control" name="t_day" id="schedule" placeholder="그룹의 스터디 주제를 알려주세요!" />
-<!--                              </div>
-                          </div>
-                   </div> -->
+
+ <!-- day -->                      <input type="hidden" class="form-control" name="t_day" id="schedule" />
+
                    <!-- 우편번호 찾기 API -->
                    <div class="form-group">
                        <label for="sPlace" class="cols-sm-2 control-label font-weight-bold">강의 장소
@@ -326,8 +320,6 @@ background:#5a7fa2;
   
                       <div class="form-group ">
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="sophy">
- <!-- t_startDate -->       <input type="hidden" name="t_startDate" id="startDate" value="">
- <!-- t_endDate -->         <input type="hidden" name="t_endDate" id="endDate" value="">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
@@ -352,13 +344,6 @@ $(document).ready(function($){
 
 					
  $('#enroll_btn').click(function(){
-	  var start = document.getElementById('start').value;
-
-	   document.getElementById('startDate').value = start;
-	  
-	  var end = document.getElementById('end').value;
-	  document.getElementById('endDate').value = end;
-	  
 	  var road =  document.getElementById('roadAddress').value; 
 	  var jibun =  document.getElementById('jibunAddress').value;
 	  
