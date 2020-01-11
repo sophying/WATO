@@ -5,9 +5,10 @@
 <head> 
     <meta charset="UTF-8">
     <title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" href="../resource/css/social-icon.css"> 
     <style> 
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
-
+ 
         *  {
             box-sizing: border-box;
         }
@@ -33,7 +34,7 @@
         }
 
         #loginform p {
-            font-size: 14px;
+            font-size: 14px; 
             font-weight: 100;
             line-height: 20px;
             letter-spacing: 0.5px;
@@ -66,13 +67,40 @@
 
         #loginform button:active {
             transform: scale(0.95);
-        }
+        } 
 
         #loginform button:focus {
             outline: none;
         }
 
         #loginform button.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+        }
+
+		/* button 대신 쓰는 input 버튼. 학생&강사 회원가입에서 쓰임 */
+        #loginform input.angel {
+            border-radius: 20px;
+            border: 1px solid #7B90D5;
+            background-color: #7B90D5;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+
+        #loginform input.angel:active {
+            transform: scale(0.95);
+        } 
+
+        #loginform input.angel:focus {
+            outline: none;
+        }
+
+        #loginform input.angel.ghost {
             background-color: transparent;
             border-color: #FFFFFF;
         }
@@ -237,7 +265,7 @@
             background-color: #222;
             color: #fff;
             font-size: 14px;
-            bottom: 0;
+            bottom: 0; 
             position: fixed;
             left: 0;
             right: 0;
@@ -263,8 +291,8 @@
 <div id="loginform">
 	<div class="container" id="container" >
 	    <div class="form-container sign-up-container">
-	        <form action="#">
-	            <h1>Create Account</h1>
+	        <form action="#"> 
+	            <h1>Create Account</h1> 
 	            <div class="social-container">
 	                <a href="#" class="social-icon-button twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a>
 			
@@ -272,14 +300,14 @@
 										
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
-	            <a href="#"><button class="angel">학생 회원가입</button></a>
-	            <a href="#"><button class="angel">강사 회원가입</button></a>
+	            <a href="../sign_up/terms"><input type="button" class="angel" value="학생 회원가입"></a>
+	            <a href="../teach/terms"><input type="button" class="angel" value="강사 회원가입"></a>
 	        </form>
 	
 	    </div>
 	    <div class="form-container sign-in-container">
 	        <form action="#">
-	            <h1>Sign in</h1>
+	            <h1>Sign in</h1> 
 	            <div class="social-container">
 	               <a href="#" class="social-icon-button twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a>
 			
@@ -309,15 +337,6 @@
 	        </div>
 	    </div>
 	</div>
-
-<footer>
-    <p>
-        Created with <i class="fa fa-heart"></i> by
-        <a target="_blank" href="https://florin-pop.com">Florin Pop</a>
-        - Read how I created this and how you can join the challenge
-        <a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
-    </p>
-</footer>
 </div>
 <script>
     var modal = document.getElementById('container');

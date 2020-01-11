@@ -42,6 +42,12 @@ public class BoardController {
 			model.addAttribute("listQna",listQna); 
 			return "board/searchResult";  
 		} 
+		@RequestMapping(value="/studylist" , method=RequestMethod.GET) 
+		public String studylist(Model model) throws Exception { 
+			logger.info("get studylist");
+			
+			return "/studylist";  
+		} 
 		@RequestMapping(value="/index" , method=RequestMethod.GET)
 		public String index(Model model) throws Exception {
 			logger.info("get list search");
@@ -50,6 +56,8 @@ public class BoardController {
 			
 			return "/index";
 		} 
+		 
+		
 	
 	//글 읽기
 	@RequestMapping(value="/read", method = RequestMethod.GET)

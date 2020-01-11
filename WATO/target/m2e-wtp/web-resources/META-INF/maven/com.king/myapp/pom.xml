@@ -12,10 +12,10 @@
 		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.10</org.aspectj-version>
 		<org.slf4j-version>1.7.25</org.slf4j-version>
-	</properties>
+	</properties> 
 	
 <!--  추가  -->	
-	<repositories>
+	<repositories> 
 		<repository>
 			<id>codelds</id>
 			<url>http://code.lds.org/nexus/content/groups/main-repo</url>
