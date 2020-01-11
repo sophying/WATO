@@ -332,6 +332,7 @@
                             </li>
                         </ul>  
                     </li>
+                    <li class="nav-item menu-large"><a href="/board/studylist"  class="nav-link" >스터디찾기<b class="caret"></b></a> 
                 </ul>    
                 <form role="search" class="ml-auto" method="post" action="/board/searchResult">
                     <div class="input-group">   
@@ -388,6 +389,30 @@
             </div>
         </header>
         <!-- 아이콘 -->
+        <div id="icon" class="box text-center mt-0 mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <a href="blog.jsp"><img src="/resource/images/c.png"><br/><span class="text">c언어</span></a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a href="blog.jsp"><img src="/resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
+                    </div>
+                    <div class="col-lg-2">
+                        <a href="blog.jsp"><img src="/resource/images/java.png"><br/><span class="text">자바</span></a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a href="blog.jsp"><img src="/resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a href="blog.jsp"><img src="/resource/images/python.png"><br/><span class="text">파이썬</span></a>
+                    </div>
+                    <div class="col-lg-2">
+                        <a href="blog.jsp"><img src="/resource/images/android.png"><br/><span class="text">안드로이드</span></a>
+                    </div>
+                </div> 
+            </div>
+        </div>
         <div id="icon" class="box text-center mt-0 mb-0">
             <div class="container">
                 <div class="row">

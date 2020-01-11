@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="board"> 
    
    <select id="listRank" resultType="com.king.myweb.domain.BoardVO">
-   	<![CDATA[ 
+   	<![CDATA[  
    	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10
    	 ]]> 
    </select>
