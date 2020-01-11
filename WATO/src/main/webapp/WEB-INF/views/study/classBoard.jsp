@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,36 +16,30 @@
 
 
 <form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherEnroll.do">
-	<div class="container  m-0 p-0  d-inline-block">
-	     <div class="container">
-	      <div class="row  d-inline-block  w-100 ">
-	        <div class="col-4">
-	          <p>Card</p>
-	            <div class="card-header">
-	              My Card
-	            </div>
-	            <div class="card-body">
-	              <h5 class="card-title">Lorem</h5>
-	              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas sed sem ut malesuada.</p>
-	              <a href="#" class="btn btn-primary">More</a>
-	            </div>
-	        </div>
-	      </div>
-        </div>
-	      <div class="row  d-inline-block  w-100">
-	        <div class="col-4">
-	          <p>Card</p>
-	            <div class="card-header">
-	              My Card
-	            </div>
-	            <div class="card-body">
-	              <h5 class="card-title">Lorem</h5>
-	              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam egestas sed sem ut malesuada.</p>
-	              <a href="#" class="btn btn-primary">More</a>
-	            </div>
-	        </div>
-	      </div>
-	</div>		
+	<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">카테고리</th>
+      <th scope="col">난이도</th>
+      <th scope="col">인원수</th>
+      <th scope="col">주제</th>
+      <th scope="col">생성된 날짜</th>
+    </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${classlist}" var="classlist">
+    <tr>
+      <th scope="row">${classlist.t_no}</th>
+      <td><a href="detailRead?t_no=${classlist.t_no}">${classlist.t_category}</a></td>
+      <td>${classlist.t_level}</td>
+      <td>${classlist.t_people}</td>
+      <td>${classlist.t_title}</td>
+      <td><fmt:formatDate value="${classlist.t_creatdate}" pattern="yyyy-MM-dd"/></td>
+    </tr>
+  </c:forEach>  
+  </tbody>
+</table>
 </form>
 </body>
 </html>

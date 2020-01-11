@@ -59,7 +59,7 @@
             <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
               <div class="card-body">
                 <div class="input-group d-flex justify-content-center">
-<!-- photo -->     <img id="input_img" src="../resources/imgs/studyUs.png" alt="이미지">
+<!-- s_photo -->     <img id="input_img" src="../resources/imgs/studyUs.png" alt="이미지">
                 </div>
               </div>
             </div>
@@ -75,8 +75,6 @@
                 <img id="img_btn_3" src="../resources/imgs/cplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_4" src="../resources/imgs/php1.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_5" src="../resources/imgs/android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <!-- <button type="button" class="btn btn-primary btn-circle btn-xl"><i class="fa fa-list"></i></button>&nbsp;&nbsp;
-                <button type="button" class="btn btn-success btn-circle btn-xl"><i class="fa fa-link"></i></button> -->
               </div>
             </div>
             <!-- </div>
@@ -94,67 +92,66 @@
 	    <div class="input-group d-flex justify-content-center">
 	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 	          <label for="start" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">시작</label>&nbsp;&nbsp;
-	          <input type="date" class="form-control col-sm-8" id="start" value="" />
+<!-- s_startDate  -->	<input type="date" name="s_startDate"  class="form-control col-sm-8" id="start"  value=""/>
 	    </div>
 	    <div class="input-group d-flex justify-content-center">
 	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 	          <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">&nbsp;&nbsp;&nbsp;끝&nbsp;</label>&nbsp;&nbsp;
-	          <input type="date" class="form-control col-sm-8 " id="end" value="" />
+<!-- s_endtDate  -->	<input type="date" name="s_endDate" class="form-control col-sm-8 " id="end" value=""/>
 	    </div>
-    <div class="form-group">
+    	<div class="form-group">
            <div class="cols-sm-10">
               <div class="input-group d-flex justify-content-center ">
                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                 	<!-- 월요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                      <input type="checkbox" class="form-check-input" id="mon" name="day">
+                      <input type="checkbox" class="form-check-input" id="mon" value="월">
                       <label class="form-check-label" for="mon">월</label>
                     </div>
 
                     <!-- 화요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="tue" name="day">
+                        <input type="checkbox" class="form-check-input" id="tue" value="화" >
                         <label class="form-check-label" for="tue">화</label>
                     </div>
 
                     <!-- 수요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="wed" name="day">
+                        <input type="checkbox" class="form-check-input" id="wed" value="수">
                         <label class="form-check-label" for="wed">수</label>
                     </div>
 
                     <!-- 목요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="thu" name="day">
+                        <input type="checkbox" class="form-check-input" id="thu" value="목">
                         <label class="form-check-label" for="thu">목</label>
                     </div>
 
                     <!-- 금요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="fri" name="day">
+                        <input type="checkbox" class="form-check-input" id="fri" value="금">
                         <label class="form-check-label" for="fri">금</label>
                     </div>
 
                     <!--  토요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sat" name="day">
+                        <input type="checkbox" class="form-check-input" id="sat" value="토">
                         <label class="form-check-label" for="sat">토</label>
                     </div>
 
                     <!-- 일요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sun" name="day">
+                        <input type="checkbox" class="form-check-input" id="sun" value="일">
                         <label class="form-check-label" for="sun">일</label>
                     </div>
 
                     <!-- 추후결정 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="other" name="day">
+                        <input type="checkbox" class="form-check-input" id="other" value="추후결정">
                         <label class="form-check-label" for="other">추후결정</label>
                     </div>
                   </div>
                   <div id="nullText" class=" d-flex pt-2 d-flex justify-content-center"></div>
-
               </div>
            </div>
         </div>
@@ -176,7 +173,7 @@
                 <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
                     <label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
 	                      <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-	 <!-- t_level -->     <select name="t_level" class="selectpicker form-control w-50" >
+<!-- s_level -->	      <select name="s_level" class="selectpicker form-control w-50" >
     										  <option value="입문"selected="selected">입문</option>
     										  <option value="초급">초급</option>
     										  <option value="중급">중급</option>
@@ -185,7 +182,7 @@
 
                     <label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
 	                       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-	 <!-- t_people -->     <select name="s_people" class="selectpicker form-control w-50">
+<!-- s_people -->	       <select name="s_people" class="selectpicker form-control w-50">
     											   <option value="1"selected="selected">1</option>
     											  <option value="2">2</option>
     											  <option value="3">3</option>
@@ -210,30 +207,12 @@
                 </div>
             </div>
 
-                      <!-- <div class="form-group">
-                          <label for="name" class="cols-sm-2 control-label font-weight-bold">아이디</label>
-                              <div class="cols-sm-10">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span> -->
- <!-- userId -->                         <input type="hidden" class="form-control" name="s_userId" id="userId" placeholder="Enter your Name" />
-                                  <!-- </div>
-                              </div>
-                      </div> -->
-                      <!-- <div class="form-group">
-                          <label for="email" class="cols-sm-2 control-label font-weight-bold">이메일</label>
-                              <div class="cols-sm-10">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span> -->
-  <!-- email -->                        <input type="hidden" class="form-control" name="s_email" id="email" placeholder="이메일을 알려주세요!" />
-                                  <!-- </div>
-                              </div>
-                      </div> -->
                       <div class="form-group">
                           <label for="username" class="cols-sm-2 control-label font-weight-bold">카테고리</label>
                           <div class="cols-sm-10">
                             <div class="input-group">
 	                           <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-<!-- category -->	             <input type="text" class="form-control" name="s_category" id="category" placeholder="과목 카테고리를 알려주세요!" />
+<!-- s_category -->	             <input type="text" name="s_category" class="form-control"  id="category" placeholder="과목 카테고리를 알려주세요!" />
                            </div>
                          </div>
                       </div>
@@ -242,19 +221,12 @@
                              <div class="cols-sm-10">
                                 <div class="input-group">
                                    <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-  <!-- stitle -->                    <input type="text" class="form-control" name="s_title" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
+  <!-- s_title -->                    <input type="text"  name="s_title" class="form-control" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
                                 </div>
                              </div>
                       </div>
-      <!--                 <div class="form-group">
-                          <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 요일</label>
-                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                   <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span> -->
-  <!-- sDay -->                      <input type="hidden" class="form-control" name="s_day" id="schedule" />
-               <!--               </div>
-                          </div>
-                   </div> -->
+
+
                    <!-- 우편번호 찾기 API -->
                    <div class="form-group">
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
@@ -274,7 +246,7 @@
                           <div class="cols-sm-10">
                             <div class="input-group mt-1 mb-1">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-  <!-- s_postnum -->            <input type="text" class="form-control" name="s_postnum" id="postcode"  placeholder="우편번호" required>
+  <!-- s_postnum -->            <input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" required>
                             </div>
                           </div>
                           <div class="cols-sm-10 mb-1 ">
@@ -295,15 +267,15 @@
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 상세내용</label>
                            <div class="cols-sm-10">
                              <div class="md-form">
- <!-- s_content -->              <textarea id="form7" name="s_content" class="md-textarea form-control" rows="6" placeholder="그룹을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+ <!-- s_content -->              <textarea id="s_content" name="s_content" class="md-textarea form-control" rows="6" placeholder="그룹을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
                              </div>
                            </div>
                     </div>
                      <div class="form-group ">
-                      	  <input type="hidden" name="s_startDate" id="startDate" value="">
-                      	  <input type="hidden" name="s_endDate" id="endDate" value="">
-                      	  <input type="hidden" name="s_photo" id="photoval" value="">
-                      	  <input type="hidden" name="s_place" id="Place" value="" >
+  <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value="">
+  <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >
+  <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="sophy"/>
+  <!-- s_day -->			<input type="hidden" name="s_day"  class="form-control" id="schedule" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
 
@@ -316,19 +288,14 @@
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript">
+<script type="text/javascript"> 
 
 $(document).ready(function($){
 
 // 조건_____________
 
 $('#enroll_btn').click(function(){
-   var start = document.getElementById('start').value;
 
-    document.getElementById('startDate').value = start;
-
-   var end = document.getElementById('end').value;
-   document.getElementById('endDate').value = end;
 
    var road =  document.getElementById('roadAddress').value;
    var jibun =  document.getElementById('jibunAddress').value;
@@ -495,7 +462,6 @@ $('#enroll_btn').click(function(){
   $('#img_btn_0').on({'click': function(){
         $('#input_img').attr('src',img0);
         document.getElementById("category").value = "직접입력";
-        $('input #category').text("기타");
      }
  });
   $('#img_btn_1').on({'click': function(){
