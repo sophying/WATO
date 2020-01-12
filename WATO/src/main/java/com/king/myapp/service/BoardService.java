@@ -13,7 +13,9 @@ public interface BoardService {
 
 	public List<BoardVO> searchResultTeacher(String searchKey) throws Exception;
 
-	public List<BoardVO> searchResultQna(String searchKey) throws Exception; 
+	public List<BoardVO> searchResultQna(String searchKey) throws Exception;
+
+	public List<BoardVO> studylistAll() throws Exception;  
 
 
 	

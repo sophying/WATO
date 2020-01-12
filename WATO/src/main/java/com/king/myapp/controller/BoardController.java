@@ -22,7 +22,7 @@ public class BoardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
-	@Autowired
+	@Autowired 
 	BoardService service; 
 	
 	/*
@@ -38,23 +38,33 @@ public class BoardController {
 			List<BoardVO> listTeacher = service.searchResultTeacher(searchKey); 
 			List<BoardVO> listQna = service.searchResultQna(searchKey);
 			model.addAttribute("listStudy",listStudy);
-			model.addAttribute("listTeacher",listTeacher);
-			model.addAttribute("listQna",listQna); 
-			return "board/searchResult";  
+			model.addAttribute("listTeacher",listTeacher); 
+			model.addAttribute("listQna",listQna);  
+			return "board/searchResult";   
 		} 
 		@RequestMapping(value="/studylist" , method=RequestMethod.GET) 
 		public String studylist(Model model) throws Exception { 
-			logger.info("get studylist");
+			logger.info("get studylist"); 
 			
 			return "/studylist";  
 		} 
 		@RequestMapping(value="/index" , method=RequestMethod.GET)
 		public String index(Model model) throws Exception {
 			logger.info("get list search");
-			service.listRank();
+			service.listRank();  
 			model.addAttribute("listRank",service.listRank());
 			
 			return "/index";
+		} 
+		@RequestMapping(value="/studylistview" , method=RequestMethod.GET)
+		public String studylistview(Model model) throws Exception {
+			logger.info("get studylistview");
+			
+			List<BoardVO> studylistAll = service.studylistAll();
+			
+			model.addAttribute("studylistAll",studylistAll);
+			
+			return "/include/studylistview";
 		} 
 		 
 		
