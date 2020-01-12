@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="study">
 <!--  모집글 등록 -->
 	<insert id="s_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
-	insert into S_ENROLL (S_NO, S_USERID, S_CATEGORY , S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT, S_PHOTO, S_LEVEL, S_PEOPLE, S_CREATDATE)
-	values( S_ENROLL_SEQ.nextval , #{s_userId}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_photo},#{s_level}, #{s_people} , SYSDATE )
+	insert into S_ENROLL (S_NO, S_USERID, S_CATEGORY , S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT, S_PHOTO, S_LEVEL, S_PEOPLE, S_CREADATE, S_INTRO)
+	values( S_ENROLL_SEQ.nextval , #{s_userId}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_photo},#{s_level}, #{s_people} , SYSDATE, #{s_intro} )
 <!-- 		insert into studytest_1 (bno, userid, category, title, regdate, place, content, photo)
 		values((select nvl(max(bno)+1, 1) from studytest_1), #{userId}, #{category}, #{title}, #{regDate}, #{place}, #{content}, #{photo}) -->
 	</insert>
@@ -27,8 +27,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 
 	<insert id="t_enroll" parameterType="com.king.myapp.domain.TeacherEnrollVO">
-		insert into T_ENROLL (T_NO, T_USERID, T_CATEGORY, T_TITLE, T_STARTDATE, T_ENDDATE, T_DAY, T_POSTNUM, T_PLACE, T_CONTENT, T_URL, T_PHOTO, T_LICENSE, T_LEVEL, T_PEOPLE ,T_CREATDATE)
-		values (T_ENROLL_SEQ.nextval, #{t_userId}, #{t_category}, #{t_title}, #{t_startDate}, #{t_endDate}, #{t_day}, #{t_postnum}, #{t_place}, #{t_content}, #{t_URL}, #{t_photo}, #{t_license},#{t_level},#{t_people}, sysdate) 
+		insert into T_ENROLL (T_NO, T_USERID, T_CATEGORY, T_TITLE, T_STARTDATE, T_ENDDATE, T_DAY, T_POSTNUM, T_PLACE, T_CONTENT,T_PRICE, T_URL, T_PHOTO, T_LICENSE, T_LEVEL, T_PEOPLE ,T_CREADATE, T_INTRO)
+		values (T_ENROLL_SEQ.nextval, #{t_userId}, #{t_category}, #{t_title}, #{t_startDate}, #{t_endDate}, #{t_day}, #{t_postnum}, #{t_place}, #{t_content}, #{t_price}, #{t_URL}, #{t_photo}, #{t_license},#{t_level},#{t_people}, sysdate, #{t_intro}) 
 	</insert>
 	
 	<select id="t_class_list" resultType="com.king.myapp.domain.TeacherEnrollVO">
@@ -41,7 +41,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where t_no =#{t_no}
 	</select>
 
+	<update id="viewCnt">
+		update t_enroll
+		set t_viewcnt = (t_viewcnt + 1)
+		where t_no = #{t_no}
+	</update>
 	
+	<update id="t_modify">
+		update t_enroll
+		set   T_CATEGORY=#{t_category} , T_TITLE=#{t_title} , T_STARTDATE=#{t_startDate}, T_ENDDATE=#{t_endDate}, T_DAY=#{t_day}, T_POSTNUM=#{t_postnum}, T_PLACE=#{t_place}, T_CONTENT=#{t_content},T_PRICE=#{t_price}, T_URL=#{t_URL}, T_PHOTO=#{t_photo}, T_LICENSE=#{t_license}, T_LEVEL=#{t_level}, T_PEOPLE=#{t_people} , T_INTRO=#{t_intro}, T_UPDATEDATE= sysdate
+		where T_NO = #{t_no}
+	</update>
 	
 	
 </mapper>

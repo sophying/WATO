@@ -27,12 +27,25 @@ public class TeacherEnrollServiceImpl implements TeacherEnrollService {
 		return teacherDAO.listAll();
 	}
 
+	//  조회수 viewCnt
+	@Override
+	public void viewCount(int t_no) throws Exception {
+		teacherDAO.viewCnt(t_no);
+		
+	}
 	// 3. 상세보기 
 	@Override
 	public TeacherEnrollVO detailRead(int t_no) throws Exception {
 		
 		return teacherDAO.detailRead(t_no);
 	}
+
+	// 5. 수정글 등록 
+	@Override
+	public void modify(TeacherEnrollVO teacherVO) throws Exception {
+		teacherDAO.update(teacherVO);
+	}
+
 
 
 

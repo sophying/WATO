@@ -24,18 +24,22 @@
       <th scope="col">난이도</th>
       <th scope="col">인원수</th>
       <th scope="col">주제</th>
+      <th scope="col">참여진행</th>
       <th scope="col">생성된 날짜</th>
+      <th scope="col">조회수</th>
     </tr>
   </thead>
   <tbody>
   <c:forEach items="${classlist}" var="classlist">
     <tr>
       <th scope="row">${classlist.t_no}</th>
-      <td><a href="detailRead?t_no=${classlist.t_no}">${classlist.t_category}</a></td>
+      <td><a href="header_DetailRead?t_no=${classlist.t_no}">${classlist.t_category}</a></td>
       <td>${classlist.t_level}</td>
       <td>${classlist.t_people}</td>
       <td>${classlist.t_title}</td>
-      <td><fmt:formatDate value="${classlist.t_creatdate}" pattern="yyyy-MM-dd"/></td>
+      <td>${classlist.t_parti} / ${classlist.t_people }</td>
+      <td><fmt:formatDate value="${classlist.t_creadate}" pattern="yyyy-MM-dd"/></td>
+      <td>${classlist.t_viewcnt}</td>
     </tr>
   </c:forEach>  
   </tbody>
