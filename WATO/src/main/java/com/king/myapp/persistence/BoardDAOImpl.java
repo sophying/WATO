@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.BoardVO;
-import com.king.myapp.domain.Criteria;
-import com.king.myapp.domain.SearchCriteria;
+import com.king.myapp.domain.StudyListFilter;
+import com.king.myapp.domain.TeacherEnrollVO;
 
 
 @Repository
@@ -41,6 +41,10 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public List<BoardVO> studylistAll() throws Exception {
 		return sql.selectList("board.studylistAll");
+	}
+	@Override
+	public List<TeacherEnrollVO> studylistfilter(StudyListFilter sLF) throws Exception {
+		return sql.selectList("board.studylistfilter",sLF);
 	}
 	
 }

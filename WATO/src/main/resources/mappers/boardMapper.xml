@@ -23,10 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="searchResultQna" resultType="com.king.myapp.domain.BoardVO">
    	  <![CDATA[ 
    	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
-   	 ]]>
+   	 ]]> 
    </select>
    <select id="studylistAll" resultType="com.king.myapp.domain.BoardVO">
    	  SELECT * FROM MYBOARD
+   </select>
+   <select id="studylistfilter" resultType="com.king.myapp.domain.TeacherEnrollVO">
+   	  SELECT * FROM T_ENROLL WHERE T_CATEGORY LIKE '%' || #{category} || '%' AND T_LEVEL LIKE '%' || #{level} || '%' AND T_DAY LIKE '%' || #{time} || '%' 
    </select>
   
    

@@ -1,9 +1,7 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
          <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-            <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+          <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,15 +49,12 @@
         margin-right: auto;
         width: 53.8%;
     }
-
-
     #new{
         position: static;
         margin-left: auto;
         margin-right: auto;
         width: 53.8%;
     }
-
     #content{
         margin-left: auto;
         margin-right: auto;
@@ -79,7 +74,6 @@
         margin-right: auto;
         width: 100%;
     }
-
     .cate_list{
         padding-bottom: 10px;
     }
@@ -134,8 +128,6 @@
 	 	max-width: 40px; 
 	 	z-index: 10;
 	 }
-
-
 </style>
 <body>
 <!-- navbar-->
@@ -178,7 +170,7 @@
                             </p>
                         </form>
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.jsp"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
+                        <p class="text-center text-muted"><a href="register.jsp"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
                     </div>
                 </div>
             </div>
@@ -392,16 +384,17 @@
         <!-- 
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________ 
-        -->  
+        -->   
         <div  id="hot">
-            <div class="container">   
-                	 <iframe id="studylistview" src="http://localhost:8080/board/studylistview" style="width:100%; border: none;"></iframe> 
+            <div class="container">
+            	<br><br>
+                	 <iframe id="studylistview" src="http://localhost:8080/board/studylistview" style="width:100%; border: none;"></iframe>
                 <!-- /.container-->
             </div>      
             <!-- /#hot-->    
             <!-- *** HOT END ***-->    
         </div>    
-
+ 
     </div>   
 </div>
 <!-- 

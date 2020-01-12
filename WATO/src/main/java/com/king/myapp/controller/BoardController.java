@@ -12,12 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.king.myapp.domain.BoardVO;
+import com.king.myapp.domain.StudyListFilter;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.service.BoardService;
 
 
 
 @Controller
-@RequestMapping("/board/*")
+@RequestMapping("/board/*")  
 public class BoardController { 
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
@@ -41,7 +43,8 @@ public class BoardController {
 			model.addAttribute("listTeacher",listTeacher); 
 			model.addAttribute("listQna",listQna);  
 			return "board/searchResult";   
-		} 
+		}
+		
 		@RequestMapping(value="/studylist" , method=RequestMethod.GET) 
 		public String studylist(Model model) throws Exception { 
 			logger.info("get studylist"); 
@@ -57,16 +60,38 @@ public class BoardController {
 			return "/index";
 		} 
 		@RequestMapping(value="/studylistview" , method=RequestMethod.GET)
-		public String studylistview(Model model) throws Exception {
+		public String getstudylistview(Model model) throws Exception {
 			logger.info("get studylistview");
 			
-			List<BoardVO> studylistAll = service.studylistAll();
+				List<BoardVO> studylistAll = service.studylistAll(); 
+				model.addAttribute("studylistAll",studylistAll);
 			
-			model.addAttribute("studylistAll",studylistAll);
+			return "/include/studylistview";   
+		}  
+		@RequestMapping(value="/studylistview" , method=RequestMethod.POST)
+		public String poststudylistview(Model model, StudyListFilter SLF) throws Exception {
+			logger.info("post studylistview"); 
+			if (SLF.getCategory() == null) {
+				SLF.setCategory(""); 
+			}
+			if (SLF.getLevel() == null) {
+				SLF.setLevel("");
+			} 
+			if (SLF.getTime() == null) { 
+				SLF.setTime(""); 
+			}
+			List<TeacherEnrollVO> StudyListFilter = service.studylistfilter(SLF);
 			
-			return "/include/studylistview";
-		} 
+			model.addAttribute("StudyListFilterdata",StudyListFilter);
+			
+			System.out.println("SLF.getCategory() : "+SLF.getCategory());
+			System.out.println("SLF.getRank() : "+SLF.getLevel());
+			System.out.println("SLF.getTime() : "+SLF.getTime());
+			
+			return "/include/studylistview"; 
+		}  
 		 
+		
 		
 	
 	//글 읽기

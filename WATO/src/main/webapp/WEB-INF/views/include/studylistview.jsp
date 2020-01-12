@@ -4,22 +4,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>Insert title here</title>
 <head>
 <meta charset="UTF-8">
-<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
-<meta name="apple-mobile-web-app-title" content="CodePen">
-<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
-<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
 <title>CodePen - Material Design About  Card</title>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 <script>
   window.console = window.console || function(t) {};
 </script>
@@ -155,54 +151,163 @@
     -o-transition-property: -o-transform;
     transition-property: transform;
 }
-</style>
-</head>  
-<body style="overflow-x:hidden; overflow-y:hidden;">  
-<div class="studylistviewbody">
-	<div class="row" style="margin-top: 5%">   
-	    <div class="container"> 
-	       <div class="row">
-	          <div class="col-md-12"> 
-	              <h2 class="mb-0">필터 위치</h2>  
-	          </div>
-	       </div>
-	  	</div>
-  	</div> 
-  <div class="valign-wrapper">
-  	<div class="row">
-  <% int cnt = 0; %> 
-  <c:forEach items="${studylistAll}" var="studylistAll">
-	    <div class="col s12 m4">
-	      <div class="card" id="about"> 
-	        <div class="card-header">
-	          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-	          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
-	        </div>
-	        <h5 class="card-title">
-	                ${studylistAll.title}
-	        </h5> 
-	        <h6 class="description">  
-	                ${studylistAll.writer} 
-	              </h6>
-	        <div class="social">
-	          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
-	        </div>
-	        <div class='wrap'>
-	          <div class='content'>
-	            <span>Follow me:</span>
-	            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
-	            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-	            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
-	          </div> 
-	        </div>
-	      </div>
-	    </div>
-		<% cnt++; %>
-	  </c:forEach>
-	  </div>  
-   
-</div>
-</div>  
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-control {
+  display: block; 
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.col-xs-6{position:relative;min-height:1px;padding-right:15px;padding-left:15px;float:left;width:50%}
+.col-xs-3{position:relative;min-height:1px;padding-right:15px;padding-left:15px;float:left;width:25%} 
+ .col-sm-3 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 25%;
+  } 
+  input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+[type="checkbox"]:not(:checked),[type="checkbox"]:checked{position:static;left:0px;visibility:visible;}
+
+ 
+ 
+</style>  
+</head>   
+<body style="overflow-x:hidden; overflow-y:hidden;">   
+	<div class="container"> 
+		<form method="post"> 
+			<div style="	 
+			  display: -webkit-box;
+			  display: -ms-flexbox; 
+			  display: flex;
+			  -ms-flex-wrap: wrap;
+			  flex-wrap: wrap; 
+			  margin-right: -15px; 
+			  margin-left: -15px;" 
+			  id="filter">
+					<div class="form-group col-sm-3 col-xs-6">
+						<select class="form-control" name="category">
+							<option value="">카테고리</option>
+							<option value="">Show All</option>  
+							<option value="자바">자바</option>  
+							<option value="C">C</option>  
+							<option value="파이선">파이선</option>  
+						</select> 
+					</div>
+					<div class="form-group col-sm-3 col-xs-6">
+						<select class="form-control" name="level">
+							<option value="">레벨</option>
+							<option value="">Show All</option>
+							<option value="초급">초급</option>
+							<option value="중급">중급</option>
+							<option value="고급">고급</option>
+						</select> 
+					</div>    
+					<div class="form-group col-sm-3 col-xs-6">  
+						<select class="form-control" name="time"> 
+							<option value="">시간</option> 
+							<option value="">Show All</option>
+							<option value="">
+							</option>
+						</select>
+					</div>
+					<div class="form-group col-sm-3 col-xs-6">
+					월<input type="checkbox"/>
+					화<input type="checkbox"/>
+					수<input type="checkbox"/>
+					목<input type="checkbox"/>
+					금<input type="checkbox"/>
+					토<input type="checkbox"/>
+					일<input type="checkbox"/>
+					
+					</div>
+					<div class="form-group col-sm-3 col-xs-6">
+						<button type="submit" class="btn btn-block btn-primary">Search</button>
+					</div>  
+			</div> 
+		</form>
+	</div> 
+	<br>
+	<div class="studylistviewbody"> 
+	  <div class="valign-wrapper">
+	  	<div class="row"> 
+		  <% int cnt = 0; %> 
+	  <c:forEach items="${studylistAll}" var="studylistAll">
+		    <div class="col s12 m4">
+		      <div class="card" id="about"> 
+		        <div class="card-header">
+		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
+		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		        </div>
+		        <h5 class="card-title">
+		                ${studylistAll.title}
+		        </h5> 
+		        <h6 class="description">  
+		                ${studylistAll.writer} 
+		              </h6>
+		        <div class="social">
+		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
+		        </div>
+		        <div class='wrap'>
+		          <div class='content'>
+		            <span>Follow me:</span>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          </div> 
+		        </div>
+		      </div>
+		    </div>
+			<% cnt++; %>
+		  </c:forEach>
+		  <% int cnt1 = 0; %> 
+	  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
+		    <div class="col s12 m4">
+		      <div class="card" id="about">  
+		        <div class="card-header">
+		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
+		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		        </div>
+		        <h5 class="card-title" style="  overflow: hidden;
+												  text-overflow: ellipsis;
+												  white-space: nowrap;
+												  width: 200px;
+												  height: 30px;"> 
+		                ${StudyListFilterdata.t_title} 
+		        </h5>  
+		        <h6 class="description">  
+		                ${StudyListFilterdata.t_userId} 
+		              </h6>
+		        <div class="social">
+		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
+		        </div>
+		        <div class='wrap'>  
+		          <div class='content'>
+		            <span>Follow me:</span>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          </div> 
+		        </div>
+		      </div>
+		    </div>
+			<% cnt1++; %>
+		  </c:forEach>
+		  </div>  
+		</div>
+	</div>  
   
 <script type="text/javascript">
 	
