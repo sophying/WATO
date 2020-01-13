@@ -14,7 +14,9 @@
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 <style media="screen">
-
+	body{
+	 background-color: #e0e0e0;
+	 }
 .btn-circle.btn-xl {
   width: 60px;
   height: 60px;

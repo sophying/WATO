@@ -7,21 +7,7 @@ public class TeacherEnrollVO {
 	
 	
 	/*
-	t_no      NUMBER  NOT NULL,
-	t_userId   VARCHAR2(20)  NOT NULL,
-	t_category VARCHAR2(15)  NOT NULL,
-	t_title   VARCHAR2(50)  NOT NULL,
-	t_startDate
-	t_endDate
-	t_day     VARCHAR2(25)  NOT NULL,	
-	t_postnum number,
-	t_place   VARCHAR2(70),
-	t_content VARCHAR2(1000)  NOT NULL,
-	t_URL varchar2(300),
-	t
-	
-	
-	PRIMARY KEY(SNO)
+
 
 	*/ 
 	
@@ -40,16 +26,67 @@ public class TeacherEnrollVO {
 	private String t_license;
 	private String t_level;
 	private int t_people;
-	private Timestamp t_creatdate;
+	private int t_parti;
+	private int t_viewcnt;
+	private Timestamp t_creadate;
+	private Timestamp t_updatedate;
+	private String t_price;
+	private String t_intro;
+	
+	private String road;
+	private String jibun;
 	
 	
 	
 
-	public final Timestamp getT_creatdate() {
-		return t_creatdate;
+	public String getRoad() {
+		return road;
 	}
-	public final void setT_creatdate(Timestamp t_creatdate) {
-		this.t_creatdate = t_creatdate;
+	public void setRoad(String road) {
+		this.road = road;
+	}
+	public String getJibun() {
+		return jibun;
+	}
+	public void setJibun(String jibun) {
+		this.jibun = jibun;
+	}
+	public int getT_parti() {
+		return t_parti;
+	}
+	public void setT_parti(int t_parti) {
+		this.t_parti = t_parti;
+	}
+	public int getT_viewcnt() {
+		return t_viewcnt;
+	}
+	public void setT_viewcnt(int t_viewcnt) {
+		this.t_viewcnt = t_viewcnt;
+	}
+	public String getT_intro() {
+		return t_intro;
+	}
+	public void setT_intro(String t_intro) {
+		this.t_intro = t_intro;
+	}
+	public String getT_price() {
+		return t_price;
+	}
+	public void setT_price(String t_price) {
+		this.t_price = t_price;
+	}
+	public Timestamp getT_updatedate() {
+		return t_updatedate;
+	}
+	public void setT_updatedate(Timestamp t_updatedate) {
+		this.t_updatedate = t_updatedate;
+	}
+
+	public Timestamp getT_creadate() {
+		return t_creadate;
+	}
+	public void setT_creadate(Timestamp t_creadate) {
+		this.t_creadate = t_creadate;
 	}
 	public String getT_level() {
 		return t_level;

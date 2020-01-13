@@ -54,6 +54,8 @@ public class TeacherenrollController {
 		System.out.println("T_level--"+teacherVO.getT_level());
 		
 		
+		
+		
 		teacherService.addClass(teacherVO);
 		 
 		return"redirect:/";
@@ -72,6 +74,7 @@ public class TeacherenrollController {
 
 	
 	//3. 강의 내용 수정 페이지 이동 
+/*	
 	@RequestMapping(value = "/detailRead", method = RequestMethod.GET)
 	public void getDetailRead(@RequestParam("t_no") int t_no, Model model) throws Exception{
 		
@@ -81,23 +84,57 @@ public class TeacherenrollController {
 		
 		model.addAttribute("listOne",listOne);
 	}	
-	
+*/	
 	// 4.
-	@RequestMapping(value = "/reply", method = RequestMethod.GET)
-	public String getReply(Model model) throws Exception{
-		logger.info("--------------[ 모집글 댓글  GET ]-----------------");
+	@RequestMapping(value = "/header_DetailRead", method = RequestMethod.GET)
+	public void getDetailRead(@RequestParam("t_no") int t_no, Model model) throws Exception{
+		logger.info("--------------[ 강의 상세보기  GET ]-----------------");
 		
-		return "/include/studyReply/reply";
+		teacherService.viewCount(t_no);
+		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
+		
+		model.addAttribute("listOne",listOne);
 	}
 	
+	// 5. 강사 수정페이지 이동 
+	@RequestMapping(value = "/teacherModi", method = RequestMethod.GET)
+	public void getModify(@RequestParam("t_no") int t_no, Model model) throws Exception{
+		
+		logger.info("--------------[ 강의 수정페이지 이동  GET ]-----------------");
+			
+		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
+		
+		String road;
+		String jibun;
+		String str = listOne.getT_place();
+		String[] arry = str.split("/");
+		
+		for (int i = 0; i < arry.length; i++) {
+			
+			System.out.println(arry[i]);
+			
+			
+		}
+		road = arry[0];
+		jibun = arry[1];
+		
+		listOne.setRoad(road);
+		listOne.setJibun(jibun);
+
+		model.addAttribute("listOne",listOne);
+	}	
 	
-	
-	
-	
-	
-	
-	
-	
+	// 6.
+	@RequestMapping(value = "/teacherModi.do", method = RequestMethod.POST)
+	public String postModify(@RequestParam("t_no") int t_no, TeacherEnrollVO teacherVO) throws Exception{
+		
+		logger.info("--------------[ 강의 수정 내용 등록  POST ]-----------------");		
+		
+		teacherService.modify(teacherVO);
+		
+		return "redirect:/study/header_DetailRead?t_no="+t_no;
+		
+	}
 	
 	
 	

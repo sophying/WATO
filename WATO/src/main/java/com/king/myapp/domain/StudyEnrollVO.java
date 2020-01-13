@@ -36,9 +36,16 @@ public class StudyEnrollVO {
 	private String s_photo;
 	private String s_level;
 	private int s_people;
-	private Timestamp s_creatdate;
+	private Timestamp s_creadate;
+	private Timestamp s_updatedate ;
 	
 	
+	public Timestamp getS_updatedate() {
+		return s_updatedate;
+	}
+	public void setS_updatedate(Timestamp s_updatedate) {
+		this.s_updatedate = s_updatedate;
+	}
 	public final int getS_no() {
 		return s_no;
 	}
@@ -118,11 +125,11 @@ public class StudyEnrollVO {
 	public final void setS_people(int s_people) {
 		this.s_people = s_people;
 	}
-	public final Timestamp getS_creatdate() {
-		return s_creatdate;
+	public Timestamp getS_creadate() {
+		return s_creadate;
 	}
-	public final void setS_creatdate(Timestamp s_creatdate) {
-		this.s_creatdate = s_creatdate;
+	public void setS_creadate(Timestamp s_creadate) {
+		this.s_creadate = s_creadate;
 	}
 	
 	

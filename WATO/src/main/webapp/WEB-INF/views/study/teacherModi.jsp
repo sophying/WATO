@@ -65,7 +65,7 @@ background:#5a7fa2;
 <body>
 
 <div class="container  mx-auto">
-<form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherEnroll.do">
+<form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherModi.do">
 <!-- <1> image Enroll -->
   <div class="row mt-3 justify-content-md-center">
     <div class="col-sm-5 d-inline-block"> <!-- 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
@@ -75,7 +75,7 @@ background:#5a7fa2;
             <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
               <div class="card-body">
                 <div class="input-group d-flex justify-content-center">
-<!-- photo -->     <img id="input_img" src="../resources/imgs/studyUs.png" alt="이미지">
+<!-- photo -->     <img id="input_img" src="${listOne.t_photo }" alt="이미지">
                 </div>
               </div>
             </div>
@@ -110,12 +110,12 @@ background:#5a7fa2;
 	    <div class="input-group d-flex justify-content-center">
 	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 	          <label for="start" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">시작</label>&nbsp;&nbsp;
-	          <input type="date" name="t_startDate" class="form-control col-sm-8" id="start" value="" />
+	          <input type="date" name="t_startDate" class="form-control col-sm-8" id="start" value="${listOne.t_startDate }" />
 	    </div>
 	    <div class="input-group d-flex justify-content-center">
 	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 	          <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">&nbsp;&nbsp;&nbsp;끝&nbsp;</label>&nbsp;&nbsp;
-	          <input type="date" name="t_endDate"  class="form-control col-sm-8 " id="end" value="" />
+	          <input type="date" name="t_endDate"  class="form-control col-sm-8 " id="end" value="${listOne.t_endDate }" />
 	    </div>
     <div class="form-group">
            <div class="cols-sm-10">
@@ -123,6 +123,7 @@ background:#5a7fa2;
                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                 	<!-- 월요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
+              
                       <input type="checkbox" class="form-check-input" id="mon" value="월">
                       <label class="form-check-label" for="mon">월</label>
                     </div>
@@ -164,10 +165,7 @@ background:#5a7fa2;
                     </div>
                   </div>
              
-                  <label id="nullText" class="cols-sm-2 pt-2 control-label d-flex justify-content-center font-weight-bold"></label>
-                  <!-- <div id="nullText" class=" d-flex pt-2 d-flex justify-content-center"></div> -->
-                  
-                  
+                  <label id="nullText" class="cols-sm-2 pt-2 control-label d-flex justify-content-center font-weight-bold">${listOne.t_day}</label> 
               </div>
            </div>
         </div>
@@ -218,7 +216,7 @@ background:#5a7fa2;
 										
                           		<label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
 	                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-<!-- t_people --> 	       			<input type="text" class="form-control" name="t_people" id="t_people" placeholder="인원을 정해주세요!" />
+<!-- t_people --> 	       			<input type="text" class="form-control" name="t_people" id="t_people" value="${listOne.t_people }" placeholder="인원을 정해주세요!" />
 	               	
                       	 </div>
                       </div>
@@ -228,7 +226,7 @@ background:#5a7fa2;
                           <div class="cols-sm-10">
                             <div class="input-group">
 	                           <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
- <!-- category 주제 -->	       <input type="text" class="form-control" name="t_category" id="category" placeholder="과목 카테고리를 알려주세요!" />
+ <!-- category 주제 -->	       <input type="text" class="form-control" name="t_category" id="category" value="${listOne.t_category }"placeholder="과목 카테고리를 알려주세요!" />
                         </div>
                       </div>
                       </div>
@@ -240,7 +238,7 @@ background:#5a7fa2;
                              <div class="cols-sm-10">
                                 <div class="input-group">
                                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
- <!-- title 주제 -->               <input type="text" class="form-control" name="t_title" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
+ <!-- title 주제 -->               <input type="text" class="form-control" name="t_title"  value="${listOne.t_title }" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
                                 </div>
                              </div>
                       </div>
@@ -266,19 +264,19 @@ background:#5a7fa2;
                           <div class="cols-sm-10">
                             <div class="input-group mt-1 mb-1">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-<!-- post 우편번호 -->            <input type="text" class="form-control" id="postcode" name="t_postnum" placeholder="우편번호" required>
+<!-- post 우편번호 -->            <input type="text" class="form-control" id="postcode" name="t_postnum" placeholder="우편번호" value="${listOne.t_postnum }"required>
                             </div>
                           </div>
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text"  class="form-control" id="roadAddress" placeholder="도로명주소" required>
+                                <input type="text"  class="form-control" id="roadAddress" placeholder="도로명주소" value="${listOne.road }" required>
                             </div>
                           </div>
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" id="jibunAddress" placeholder="지번주소" required>
+                                <input type="text" class="form-control" id="jibunAddress" value="${listOne.jibun}" placeholder="지번주소" required>
                            </div>
                           </div>
                     </div>
@@ -287,7 +285,7 @@ background:#5a7fa2;
                         <label for="info" class="cols-sm-2 control-label font-weight-bold">강사님을 소개해주세요!</label>
                            <div class="cols-sm-10 " >
                              <div class="md-form" id="inputHtml">
-	 <!-- t_intro -->               <textarea name="t_intro" class="md-textarea form-control" rows="10" placeholder="편하게 나를 어필해주세요!"></textarea>
+	 <!-- t_intro -->               <textarea name="t_intro" class="md-textarea form-control" rows="10" placeholder="편하게 나를 어필해주세요!">${listOne.t_intro }</textarea>
                              </div>
                            </div>
                     </div>
@@ -295,7 +293,9 @@ background:#5a7fa2;
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">상세내용</label>
                            <div class="cols-sm-10">
                              <div class="md-form">
-	 <!-- t_content -->               <textarea id="form7" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+	 <!-- t_content -->               <textarea id="form7" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!">
+	 									${listOne.t_content }
+	 								  </textarea>
                              </div>
                            </div>
                     </div>
@@ -305,7 +305,7 @@ background:#5a7fa2;
  					   <label id="price-Text" class="cols-sm-2 control-label font-weight-bold"></label>
                         <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
 	                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-	                            <input type="text" class="form-control mr-3" name="t_price" id="t_price" placeholder="합리적인 참여비를 작성해주세요" />     
+	                            <input type="text" class="form-control mr-3" name="t_price" id="t_price" value="${listOne.t_price }" placeholder="합리적인 참여비를 작성해주세요" />     
                           		<label class="pt-1 mt-1 control-label font-weight-bold w-25">&nbsp;&nbsp;&nbsp;원</label>
 	                                 
                       	 </div>
@@ -315,7 +315,7 @@ background:#5a7fa2;
                            <div class="cols-sm-10">
                                 <div class="input-group">
                                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
- <!-- t_url 주제 -->               <input type="text" class="form-control" name="t_URL" id="t_URL" placeholder="강사님을 어필해주세요~!" />
+ <!-- t_url 주제 -->               <input type="text" class="form-control" name="t_URL" id="t_URL" value="${listOne.t_URL }" placeholder="강사님을 어필해주세요~!" />
                                 </div>
                            </div>
                     </div>
@@ -324,6 +324,7 @@ background:#5a7fa2;
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="sophy">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
+ 							<input type="hidden" name="t_no" value="${listOne.t_no }"/>
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
           </div> 
@@ -342,28 +343,7 @@ $(document).ready(function($){
 
 // 조건_____________  
 
-/*
-  $('#toggle-info').click(function () {
-	
-  var inputHtml = '<textarea id="form7" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>';	
-  $("#inputHtml").html(inputHtml);
-  
-  if (true) {
-	  $('#toggle-info').click(function () {
-		  $("#inputHtml").hide();
-	  });
-	  
-	  if ($("#inputHtml").hide()) {
-		  
-		  $('#toggle-info').click(function () {
-			  $("#inputHtml").show();
-		  });
-	}
-}
-	  
-  
-});
-*/
+
 
 // 금액 천단위 
 $(function() {
@@ -390,12 +370,9 @@ function AddComma(dataValue) {
   return separateValue;
 }
 
-function isNumber(checkValue) {
-    checkValue = '' + checkValue;
-    if (isNaN(checkValue) || checkValue == "") {
-      alert('숫자만 입력해 주세요!!!');
-      return;
-    }}
+
+
+
 
 
 

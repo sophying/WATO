@@ -11,9 +11,15 @@ public interface TeacherEnrollService {
 
 	// 2. list 출력 
 	public List<TeacherEnrollVO> list() throws Exception;
+	
+	//3. viewCnt 조회수 
+	public void viewCount(int t_no) throws Exception;
 
 	// 3. 상세보기 
 	public TeacherEnrollVO detailRead(int t_no) throws Exception;
+
+	//4. 수정글 등록 
+	public void modify(TeacherEnrollVO teacherVO) throws Exception;
 
 
 }
