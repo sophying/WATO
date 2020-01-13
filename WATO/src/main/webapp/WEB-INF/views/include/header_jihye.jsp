@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="../css/header_nav_jihye.css">
+<link rel="stylesheet" type="text/css" href="../resource/css/header_nav_jihye.css">
 
 </head>
 <body>
 <div id="header">
-            <div style="float: left"><a href="javascript:;"><img src="../images/book_main_icon.png" width="80" height="50"></a></div>
+            <div style="float: left"><a href="javascript:;"><img src="../resource/images/book_main_icon.png" width="80" height="50"></a></div>
             <ul>
                 <li style="float: left;"><a href="javascript:;">처음 오신 분들께</a></li>
                 <li style="float: left;"><a href="javascript:;">스터디</a>

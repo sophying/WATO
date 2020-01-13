@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="../css/footer_jihye.css">
+	<link rel="stylesheet" type="text/css" href="../resource/css/footer_jihye.css">
 </head>
 <body>
 <footer class="footer1">

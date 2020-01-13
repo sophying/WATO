@@ -86,7 +86,7 @@ public class TeachController {
 			session.setAttribute("teach", login);
 		}
 		
-		return "index";
+		return "redirect:/";
 	}
 	
 	// 강사 회원정보 수정 get
