@@ -58,6 +58,20 @@ public class AdminController {
 		logger.info("post manage");
 	}
 	
+	// 인증(강사2)
+	@RequestMapping(value = "/terms2", method = RequestMethod.GET)
+	public void getTerms2(Model model) throws Exception {
+		logger.info("get terms222222");
+	}
+	
+	// 인증(강사2)
+	@RequestMapping(value = "/terms2", method = RequestMethod.POST)
+	public String postTerms2(Model model) throws Exception {
+		logger.info("get terms222222");
+		
+		return "/teach/teach_join_2";
+	}
+	
 	// 인증센터 GET
 	@RequestMapping(value = "/email", method = RequestMethod.GET)
 	public void getInjeung(Model model) throws Exception {
@@ -96,7 +110,7 @@ public class AdminController {
                 
                 System.getProperty("line.separator")+
                 
-                "http://localhost:8080/teach/teach_join?terms1=on&terms2=on"      
+                "http://localhost:8080/teach/teach_join_2?terms1=on&terms2=on&terms3=on"   
 						/* " 인증번호는 " +dice+ " 입니다. " */
                 
                 +System.getProperty("line.separator")+

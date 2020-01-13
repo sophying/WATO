@@ -197,13 +197,13 @@
                         <c:if test="${!member.std_Id.substring(0,5).equals('admin')}">
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
-                        <c:if test="${member != null && !member.std_Id.substring(0,5).equals('admin')">
+                        <c:if test="${member != null && !member.std_Id.substring(0,5).equals('admin')}">
                         <li class="list-inline-item"><a href="/sign_up/std_info" class="text-black-50 font-weight-bold">내정보수정</a></li>
                         </c:if>
                         <c:if test="${member.std_Id.substring(0,5).equals('admin')}">
                         <li class="list-inline-item"><a href="/admin/adminmanage" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
-                        <!-- <li class="list-inline-item"><a href="/admin/email" class="text-black-50 font-weight-bold">인증센터</a></li> -->                        
+                        <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
                     </ul>
                 </div>
             </div>
