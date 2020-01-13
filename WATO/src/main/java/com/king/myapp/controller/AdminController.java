@@ -110,8 +110,8 @@ public class AdminController {
                 
                 System.getProperty("line.separator")+
                 
-                "http://localhost:8080/teach/teach_join_2?terms1=on&terms2=on&terms3=on"   
-						/* " 인증번호는 " +dice+ " 입니다. " */
+                "http://localhost:8080/teach/teach_join_2?terms1=on&terms2=on&terms3=on" +  
+						 " 인증번호는 " +dice+ " 입니다. " 
                 
                 +System.getProperty("line.separator")+
                 
