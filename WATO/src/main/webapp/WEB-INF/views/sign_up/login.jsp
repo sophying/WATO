@@ -150,7 +150,6 @@
             </ul>
         </div>
 
-            <form role="form" method="post" autocomplete="off">
                 <div><img src="../images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div>
                 <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">회원 정보 수정</div>
                 <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
@@ -160,6 +159,8 @@
                         <br>종료 예정 스터디는 0건이 있습니다.
                     </div>
                 </div>
+                <c:if test="${member == null}">
+            <form role="form" method="post" autocomplete="off" action="/sign_up/login">
                 <div style="font-size: 17px;">로그인</div>
                 <div>
                     <table class="table_main" style="text-align: left;">
@@ -179,12 +180,13 @@
                 <button type="reset" style="width: 150px; height: 50px;">취소</button>
             </div>
             </form>
+            </c:if>
 <c:if test="${msg == false}">
 	<p style="color:#foo;">로그인에 실패했습니다. 아이디 또는 패스워드를 다시 입력해주십시오.</p>
 </c:if>
 
-<c:if test="${sign_up != null }">
-	<p>${sign_up.Std_Id}님 환영합니다.</p>
+<c:if test="${member != null }">
+	<p>${members.Std_Id}님 환영합니다.</p>
 	
 	<a href="member/modify">회원정보 수정</a>&nbsp;<a href="member/withdrawal">회원탈퇴</a><br> <!-- 컨트롤을 찾아서 -->
 	<a href="member/logout">로그아웃</a>

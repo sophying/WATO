@@ -24,6 +24,7 @@
                 	<ul>
                 		<li><a href="../sign_up/login">login</a>
                 		<li><a href="../sign_up/std_info">개인정보수정</a>
+                		<li><a href="../teach/teach_join_2">teach_join2</a>
                 	</ul>
                 </li>
 

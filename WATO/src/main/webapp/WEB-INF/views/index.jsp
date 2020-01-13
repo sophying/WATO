@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-         <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %> --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -185,10 +186,24 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
+                    	<c:if test="${member == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
-                        <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
+                        </c:if>
+                        <c:if test="${member != null}">
+                        	<p class="list-inline-item">${member.std_Id}님 환영합니다!</p>
+                        	<li class="list-inline-item"><p><a href="sign_up/logout" class="text-black-50 font-weight-bold">로그아웃</a></p></li>
+                        </c:if>
+                        <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
+                        <c:if test="${!member.std_Id.substring(0,5).equals('admin')}">
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
-                        <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
+                        </c:if>
+                        <c:if test="${member != null && !member.std_Id.substring(0,5).equals('admin')">
+                        <li class="list-inline-item"><a href="/sign_up/std_info" class="text-black-50 font-weight-bold">내정보수정</a></li>
+                        </c:if>
+                        <c:if test="${member.std_Id.substring(0,5).equals('admin')}">
+                        <li class="list-inline-item"><a href="/admin/adminmanage" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                        </c:if>
+                        <!-- <li class="list-inline-item"><a href="/admin/email" class="text-black-50 font-weight-bold">인증센터</a></li> -->                        
                     </ul>
                 </div>
             </div>
@@ -201,7 +216,7 @@
 							<div class="limiter">
 								<button class="close-button" data-dismiss="modal">&times;</button> 
 								<div class="container-login100">   
-										<%@ include  file="include/loginform.jsp"%>
+										<%@ include  file="sign_up/loginform.jsp"%>
 								</div>
 							</div>  
 						</div> 

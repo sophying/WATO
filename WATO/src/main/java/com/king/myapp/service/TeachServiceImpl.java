@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.persistence.TeachDAO;
 
@@ -15,7 +16,7 @@ public class TeachServiceImpl implements TeachService {
 
 	// 회원 가입
 	@Override
-	public void teach_join(TeachVO vo) throws Exception {
+	public void teach_join(ApprovalVO vo) throws Exception {
 		dao.teach_join(vo);		
 	}
 
@@ -36,6 +37,18 @@ public class TeachServiceImpl implements TeachService {
 	@Override
 	public TeachVO login(TeachVO vo) throws Exception {
 		return dao.login(vo);
+	}
+
+	// 회원가입2
+	@Override
+	public void teach_join2(TeachVO vo) throws Exception {
+		dao.teach_join2(vo);	
+	}
+
+	// 강사 회원 가입3
+	@Override
+	public void teach_join3(TeachVO vo) throws Exception {
+		dao.teach_join3(vo);
 	}
 
 }

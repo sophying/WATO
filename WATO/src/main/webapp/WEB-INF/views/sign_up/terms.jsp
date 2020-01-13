@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 	<title>king 게시판</title>
-	<link rel="stylesheet" type="text/css" href="../css/terms_jihye.css">
+	<link rel="stylesheet" type="text/css" href="/css/terms_jihye.css">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
             <div style="padding: 20px;">
                 <div>
                     <form role="form" name="frmJoin" onsubmit="return CheckForm(this)" autocomplete="off" action="/sign_up/std_join">
-                        <h3 class="title">회원이용약관<input value="${std.Std_Id}"></h3>
+                        <h3 class="title">회원이용약관</h3>
                         <h4 class="title1">회원이용약관</h4>
                         <!-- <iframe src="./join_std_terms_01" style="width: 680px;"></iframe> -->
                         <div class="terms1">

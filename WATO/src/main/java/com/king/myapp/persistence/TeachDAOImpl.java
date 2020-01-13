@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
+import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.TeachVO;
 
 @Service
@@ -19,7 +20,7 @@ public class TeachDAOImpl implements TeachDAO {
 
 	// 회원가입
 	@Override
-	public void teach_join(TeachVO vo) throws Exception {
+	public void teach_join(ApprovalVO vo) throws Exception {
 		sql.insert(namespace + ".teach_join", vo);
 	}
 
@@ -40,5 +41,17 @@ public class TeachDAOImpl implements TeachDAO {
 	@Override
 	public TeachVO login(TeachVO vo) throws Exception {
 		return sql.selectOne(namespace + ".login", vo);
+	}
+
+	// 회원 가입2
+	@Override
+	public void teach_join2(TeachVO vo) {
+		sql.insert(namespace + ".teach_join2", vo);
+	}
+
+	// 강사 회원 가입3
+	@Override
+	public void teach_join3(TeachVO vo) throws Exception {
+		sql.update(namespace + ".teach_join3", vo);
 	}
 }

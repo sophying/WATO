@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../css/std_join.css"> 
+    <link rel="stylesheet" type="text/css" href="/css/std_join.css"> 
 </head>
 <body>
 <div id="wrap0">
@@ -88,6 +88,10 @@
                         </td>
                     </tr>
                     <tr>
+                    	<th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                    	<td colspan="2"><input type="email" id="email" id="Std_Email1" name="Std_Email1" size="55" maxlength="80" onfocus="focus()"></td>
+                    </tr>
+                    <!-- <tr>
                         <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td colspan="2"><input type="text" id="email" id="Std_Email1" name="Std_Email1" size="10" maxlength="12" onfocus="focus()"> @ <input type="txet" id="email2" id="Std_Email2" name="Std_Email2" size="10" maxlength="12" onfocus="focus()">&nbsp;
                             <select onChange="selEmail(this.value)" style="width: 100px;">
@@ -98,7 +102,7 @@
                                 <option value="daum.com">daum.com</option>
                             </select>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td><input type="text" id="sample4_postcode" id="Std_Addr1" name="Std_Addr1" placeholder="우편번호"></td>
@@ -125,7 +129,7 @@
     	<%@ include file="../include/footer_jihye.jsp"%>
     </footer>
 
-<script type="text/javascript" src="../js/std_join.js"></script>
+<script type="text/javascript" src="/js/std_join.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
 <script type="text/javascript"> 

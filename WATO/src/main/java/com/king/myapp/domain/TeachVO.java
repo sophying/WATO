@@ -12,8 +12,7 @@ public class TeachVO {
 	private String Teach_Phone1;
 	private String Teach_Phone2;
 	private String Teach_Phone3;
-	private String Teach_Email1;
-	private String Teach_Email2;
+	private String Teach_Email;
 	private String Teach_Addr1;
 	private String Teach_Addr2;
 	private String Teach_Addr3;
@@ -78,17 +77,11 @@ public class TeachVO {
 	public void setTeach_Phone3(String teach_Phone3) {
 		Teach_Phone3 = teach_Phone3;
 	}
-	public String getTeach_Email1() {
-		return Teach_Email1;
+	public String getTeach_Email() {
+		return Teach_Email;
 	}
-	public void setTeach_Email1(String teach_Email1) {
-		Teach_Email1 = teach_Email1;
-	}
-	public String getTeach_Email2() {
-		return Teach_Email2;
-	}
-	public void setTeach_Email2(String teach_Email2) {
-		Teach_Email2 = teach_Email2;
+	public void setTeach_Email(String teach_Email) {
+		Teach_Email = teach_Email;
 	}
 	public String getTeach_Addr1() {
 		return Teach_Addr1;

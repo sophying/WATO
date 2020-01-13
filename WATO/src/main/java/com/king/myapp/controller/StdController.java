@@ -73,31 +73,39 @@ public class StdController {
 	}
 	
 	// 로그인 get
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/loginform", method = RequestMethod.GET)
 	public void getlogin() throws Exception {
 		logger.info("get login");
 	}
 	
 	// 로그인 post
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/loginform", method = RequestMethod.POST)
 	public String postlogin(StdVO vo, HttpServletRequest req, RedirectAttributes rttr, Model model) throws Exception {
 		logger.info("post login");
 		
 		HttpSession session = req.getSession();
 		
-		StdVO std = (StdVO)session.getAttribute("std");
-		
 		StdVO login = service.login(vo);
 		
 		if(login == null) {
-			session.setAttribute("sign_up", null);
+			session.setAttribute("member", null);
 			
 			rttr.addFlashAttribute("msg", false);
 		} else {
-			session.setAttribute("sign_up", login);
+			session.setAttribute("member", login);
 		}
 		
-		return "/sign_up/terms";
+		return "redirect:/";
+	}
+	
+	// 로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) throws Exception {
+		logger.info("get logout");
+		
+		session.invalidate();
+		
+		return "redirect:/";
 	}
 	 
 }

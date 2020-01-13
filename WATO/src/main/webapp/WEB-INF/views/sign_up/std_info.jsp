@@ -155,7 +155,7 @@
         <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">회원 정보 수정</div>
         <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
             <p style="float: left; margin: 0px;"><img src="../images/book_main_icon.png" width="70px;"></p>
-            <div>저희 스터디어스를 이용해 주셔서 감사합니다. <input value="${std.Std_Id}">은 학생이십니다.
+            <div>저희 스터디어스를 이용해 주셔서 감사합니다. <span>${member.std_Id}</span>님은 학생이십니다.
                 <p style="float: right; margin: 0px;"><img src="../images/book_main_icon.png" width="70px;"></p>
                 <br>종료 예정 스터디는 0건이 있습니다.
             </div>
@@ -166,15 +166,15 @@
                 <caption style="text-align: right;"><img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"> 필수입력사항</caption>
                 <tr>
                     <th>아이디 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                    <td><input type="text" id="Std_Id" name="Std_Id" placeholder="아이디입력"></td>
+                    <td><span>${member.std_Id}</span></td>
                 </tr>
                 <tr>
-                    <th>비밀번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                    <td><input type="password" id="Std_Pwd" name="Std_Pwd" placeholder="비밀번호 입력"></td>
+                    <th>새 비밀번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                    <td><input type="password" id="Std_Pwd" name="Std_Pwd" placeholder="새 비밀번호 입력"></td>
                 </tr>
                 <tr>
-                    <th>비밀번호 확인 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                    <td><input type="password" id="Std_Pwd_Qs" name="Std_Pwd_Qs" placeholder="비밀번호 확인"></td>
+                    <th>새 비밀번호 확인 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                    <td><input type="password" id="Std_Pwd_Qs" name="Std_Pwd_Qs" placeholder="새 비밀번호 확인"></td>
                 </tr>
                 <tr>
                     <th>비밀번호 확인 질문 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -195,24 +195,16 @@
                 </tr>
                 <tr>
                     <th>성별 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                    <td><input type="radio" id="" name="">남자
-                        <input type="radio" id="" name="" checked>여자</td>
+                    <td><span>${member.std_Gender}</span></td>
                 </tr>
                 <tr>
                     <th>휴대폰 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                     <td>
-                        <select id="" name="">
-                            <option value="010" selected>010</option>
-                            <option value="011" selected>011</option>
-                            <option value="016" selected>016</option>
-                            <option value="017" selected>017</option>
-                            <option value="018" selected>018</option>
-                            <option value="019" selected>019</option>
-                        </select>
-                        -
-                        <input type="text" id="" name="" placeholder="0000">
-                        -
-                        <input type="text" id="" name="" placeholder="0000">
+                    <input type="text" id="Std_Phone1" name="Std_Phone1" value="${member.std_Phone1}">
+                    -
+                    <input type="text" id="Std_Phone2" name="Std_Phone2" value="${member.std_Phone2}">
+                    -
+                    <input type="text" id="Std_Phone3" name="Std_Phone3" value="${member.std_Phone3}">
                     </td>
                 </tr>
                 <tr>

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../css/std_join.css"> 
+    <link rel="stylesheet" type="text/css" href="/css/std_join.css"> 
 </head>
 <body>
 <div id="wrap0">
@@ -20,7 +20,7 @@
             <form role="form" method="post" autocomplete="off">
                 <table style="margin: auto; margin-top: 20px;" cellspacing="0"> <!-- 일반 회원가입 폼 -->
                     <tr>
-                        <th id="teach" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">강사 회원가입</th>
+                        <th id="teach" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">강사 승인신청폼</th>
                     </tr>
                     
                     <tr>
@@ -35,15 +35,15 @@
                     <tr>
                         <th>이력서첨부<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td colspan="2"><input type='file' id="app_Resume" name="app_Resume"/></td>
-                    </tr>
+                    </tr><!-- 
                     <tr>
                         <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td><input type="text" id="app_Id" name="app_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
 						</td>
                         <td><button type="button" class="idCheck" onclick="fn_idChk();">아이디 중복확인</button></td>
-<!--                         <p class="result">
+                        <p class="result">
                         	<span class="msg">아이디를 확인해주십시오.</span>
-                        </p> -->
+                        </p>
                     </tr>
                     <tr>
                         <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -67,7 +67,7 @@
                     <tr>
                         <th>비밀번호 확인 답변<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td colspan="2"><input type="text" id="app_Pwd_As" name="app_Pwd_As" size="55" maxlength="12"></td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th>성별<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td colspan="2"><label><input type="radio" id="app_Gender" name="app_Gender" value="남자">남자</label>
@@ -91,6 +91,10 @@
                         </td>
                     </tr>
                     <tr>
+                    	<th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                    	<td colspan="2"><input type="email" id="email" id="app_Email" name="app_Email" size="55" maxlength="80" onfocus="focus()"></td>
+                    </tr>
+                    <!-- <tr>
                         <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td colspan="2"><input type="text" id="email" id="app_Email1" name="app_Email1" size="10" maxlength="12" onfocus="focus()"> @ <input type="txet" id="email2" id="app_Email2" name="app_Email2" size="10" maxlength="12" onfocus="focus()">&nbsp;
                             <select onChange="selEmail(this.value)" style="width: 100px;">
@@ -101,7 +105,7 @@
                                 <option value="daum.com">daum.com</option>
                             </select>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td><input type="text" id="sample4_postcode" id="app_Addr1" name="app_Addr1" placeholder="우편번호"></td>
@@ -128,7 +132,7 @@
     	<%@ include file="../include/footer_jihye.jsp"%>
     </footer>
 
-<script type="text/javascript" src="../js/teach_join.js"></script>
+<script type="text/javascript" src="/js/teach_join.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
 <script type="text/javascript"> 
