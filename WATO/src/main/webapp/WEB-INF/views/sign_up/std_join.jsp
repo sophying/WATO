@@ -1,12 +1,12 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/css/std_join.css"> 
+    <link rel="stylesheet" type="text/css" href="../resource/css/std_join.css"> 
 </head>
 <body>
 <div id="wrap0">
@@ -89,7 +89,7 @@
                     </tr>
                     <tr>
                     	<th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                    	<td colspan="2"><input type="email" id="email" id="Std_Email1" name="Std_Email1" size="55" maxlength="80" onfocus="focus()"></td>
+                    	<td colspan="2"><input type="email" id="email" id="Std_Email" name="Std_Email" size="55" maxlength="80" onfocus="focus()"></td>
                     </tr>
                     <!-- <tr>
                         <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -129,7 +129,7 @@
     	<%@ include file="../include/footer_jihye.jsp"%>
     </footer>
 
-<script type="text/javascript" src="/js/std_join.js"></script>
+<script type="text/javascript" src="../resource/js/std_join.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
 <script type="text/javascript"> 

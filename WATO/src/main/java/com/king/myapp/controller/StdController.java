@@ -80,19 +80,19 @@ public class StdController {
 	
 	// 로그인 post
 	@RequestMapping(value = "/loginform", method = RequestMethod.POST)
-	public String postlogin(StdVO vo, HttpServletRequest req, RedirectAttributes rttr, Model model) throws Exception {
+	public String postlogin(StdVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		logger.info("post login");
 		
 		HttpSession session = req.getSession();
 		
 		StdVO login = service.login(vo);
 		
-		if(login == null) {
+		if(login == null) { // login 값이 null 일 때 member 값은 null 이고
 			session.setAttribute("member", null);
 			
 			rttr.addFlashAttribute("msg", false);
 		} else {
-			session.setAttribute("member", login);
+			session.setAttribute("member", login); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
 		}
 		
 		return "redirect:/";

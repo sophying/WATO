@@ -11,12 +11,12 @@
 		std_info(Std_Profile, Std_Id, 
 				 Std_Pwd, Std_Pwd_Qs, Std_Pwd_As, Std_Gender, 
 				 Std_Phone1, Std_Phone2, Std_Phone3, 
-				 Std_Email1, Std_Email2, 
+				 Std_Email,
 				 Std_Addr1, Std_Addr2, Std_Addr3)
 		values (#{Std_Profile}, #{Std_Id}, 
 				#{Std_Pwd}, #{Std_Pwd_Qs}, #{Std_Pwd_As}, #{Std_Gender}, 
 				#{Std_Phone1}, #{Std_Phone2}, #{Std_Phone3}, 
-				#{Std_Email1}, #{Std_Email2}, 
+				#{Std_Email}, 
 				#{Std_Addr1}, #{Std_Addr2}, #{Std_Addr3})
 	</insert>
 	
@@ -36,8 +36,7 @@
 			Std_Phone1 = #{Std_Phone1},
 			Std_Phone2 = #{Std_Phone2},
 			Std_Phone3 = #{Std_Phone3},
-			Std_Email1 = #{Std_Email1},
-			Std_Email2 = #{Std_Email2},
+			Std_Email = #{Std_Email},
 			Std_Addr1 = #{Std_Addr1},
 			Std_Addr2 = #{Std_Addr2},
 			Std_Addr3 = #{Std_Addr3}
