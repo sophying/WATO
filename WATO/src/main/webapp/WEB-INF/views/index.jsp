@@ -203,7 +203,7 @@
 								<input type="hidden" id="Std_Addr1" name="Std_Addr1" value="${member.std_Addr1}" readonly="readonly">
 								<input type="hidden" id="Std_Addr2" name="Std_Addr2" value="${member.std_Addr2}" readonly="readonly">
 								<input type="hidden" id="Std_Addr3" name="Std_Addr3" value="${member.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정(${member.std_Addr1})</a>
                         	</form>
                         	</li>
                         </c:if>
