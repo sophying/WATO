@@ -52,10 +52,7 @@ public class TeacherenrollController {
 		System.out.println("getT_license"+teacherVO.getT_license());
 		System.out.println("T_people--"+teacherVO.getT_people());
 		System.out.println("T_level--"+teacherVO.getT_level());
-		
-		
-		
-		
+
 		teacherService.addClass(teacherVO);
 		 
 		return"redirect:/";
@@ -120,8 +117,37 @@ public class TeacherenrollController {
 		
 		listOne.setRoad(road);
 		listOne.setJibun(jibun);
-
+		
+		/*
+		 * String beforeDay = listOne.getT_day(); // DB 문자열
+		 * 
+		 * String[] day = beforeDay.split(" "); // DB 문자열 분할
+		 */		
+		
+		/*
+		 * for (int i = 0; i < day.length; i++) { System.out.println(i +"=" +day[i]);
+		 * 
+		 * if (day[i].equals("월")) { listOne.setMon(day[i]); }else if
+		 * (day[i].equals("화")) { listOne.setThu(day[i]);
+		 * 
+		 * }else if (day[i].equals("수")) { listOne.setThu(day[i]);
+		 * 
+		 * }else if (day[i].equals("목")) { listOne.setThu(day[i]);
+		 * 
+		 * }else if (day[i].equals("금")) { listOne.setThu(day[i]);
+		 * 
+		 * }else if (day[i].equals("토")) { listOne.setThu(day[i]);
+		 * 
+		 * }else if (day[i].equals("일")) { listOne.setThu(day[i]); }else if (day[i] ==
+		 * null) { day[i] ="";
+		 * 
+		 * }
+		 * 
+		 * }
+		 */
+		
 		model.addAttribute("listOne",listOne);
+		
 	}	
 	
 	// 6.
@@ -135,7 +161,6 @@ public class TeacherenrollController {
 		return "redirect:/study/header_DetailRead?t_no="+t_no;
 		
 	}
-	
 	
 	
 	

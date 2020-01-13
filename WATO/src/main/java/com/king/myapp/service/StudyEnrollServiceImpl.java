@@ -1,5 +1,7 @@
 package com.king.myapp.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -20,16 +22,34 @@ public class StudyEnrollServiceImpl implements StudyEnrollService{
 		studyEnrollDAO.enroll(studyVO);
 	}
 
-	// 2. 일반 스터디 모집글 수정
+	// 2. 목차 출력
 	@Override
-	public StudyEnrollVO modifySelect(int s_no) throws Exception {
-		
-		return studyEnrollDAO.modify(s_no);
+	public List<StudyEnrollVO> list() throws Exception {
+		return studyEnrollDAO.listAll();
+	}
+	
+	// viewcnt 조회수 
+	@Override
+	public void viewCount(int s_no) throws Exception {
+		studyEnrollDAO.viewCnt(s_no);
 	}
 
+	
+	// 3. 일반 스터디 모집글 수정
+
 	@Override
-	public void modifyEnroll(StudyEnrollVO studyVO) throws Exception {
-		studyEnrollDAO.modifyUpdate(studyVO);
+	public StudyEnrollVO detailRead(int s_no) throws Exception  {
+
+		return studyEnrollDAO.detailRead(s_no);
 	}
+
+	// 4. 수정글 등록 
+	@Override
+	public void modify(StudyEnrollVO studyVO) throws Exception {
+		studyEnrollDAO.update(studyVO);
+	}
+
+
+
 
 } 

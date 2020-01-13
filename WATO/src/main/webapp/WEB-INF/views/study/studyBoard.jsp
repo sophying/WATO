@@ -31,17 +31,17 @@
     </tr>
   </thead>
   <tbody>
-  <c:forEach items="${classlist}" var="classlist">
+  <c:forEach items="${studylist}" var="studylist">
     <tr>
-      <th scope="row">${classlist.t_no}</th>
-      <td><a href="header_DetailRead?t_no=${classlist.t_no}">${classlist.t_category}</a></td>
-      <td>${classlist.t_level}</td>
-      <td>${classlist.t_people}</td>
-      <td>${classlist.t_title}</td>
-      <td>${classlist.t_parti} / ${classlist.t_people }</td>
-      <td><fmt:formatDate value="${classlist.t_creadate}" pattern="yyyy-MM-dd"/></td>
-      <td><fmt:formatDate value="${classlist.t_updatedate}" pattern="yyyy-MM-dd"/></td>
-      <td>${classlist.t_viewcnt}</td>
+      <th scope="row">${studylist.s_no}</th>
+      <td><a href="study_DetailRead?s_no=${studylist.s_no}">${studylist.s_category}</a></td>
+      <td>${studylist.s_level}</td>
+      <td>${studylist.s_people}</td>
+      <td>${studylist.s_title}</td>
+      <td>${studylist.s_parti} / ${studylist.s_people }</td>
+      <td><fmt:formatDate value="${studylist.s_creadate}" pattern="yyyy-MM-dd"/></td>
+      <td><fmt:formatDate value="${studylist.s_updatedate}" pattern="yyyy-MM-dd"/></td>
+      <td>${studylist.s_viewcnt}</td> 
     </tr>
   </c:forEach>  
   </tbody>

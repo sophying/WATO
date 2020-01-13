@@ -41,9 +41,7 @@
   height: 200px;
 
 }
-#img_btn_0:hover{
 
-}
 #text{
  display: none;
 }
@@ -123,43 +121,43 @@ background:#5a7fa2;
                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                 	<!-- 월요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                      <input type="checkbox" class="form-check-input" id="mon" value="월">
+                      <input type="checkbox" class="form-check-input" id="mon" name="mon" value="월">
                       <label class="form-check-label" for="mon">월</label>
                     </div>
 
                     <!-- 화요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="tue" value="화" >
+                        <input type="checkbox" class="form-check-input" id="tue"name="tue" value="화" >
                         <label class="form-check-label" for="tue">화</label>
                     </div>
 
                     <!-- 수요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="wed" value="수">
+                        <input type="checkbox" class="form-check-input" id="wed"name="wed" value="수">
                         <label class="form-check-label" for="wed">수</label>
                     </div>
                     
                     <!-- 목요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="thu" value="목">
+                        <input type="checkbox" class="form-check-input" id="thu" name="thu"value="목">
                         <label class="form-check-label" for="thu">목</label>
                     </div>
                     
                     <!-- 금요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="fri" value="금">
+                        <input type="checkbox" class="form-check-input" id="fri" name="fri"value="금">
                         <label class="form-check-label" for="fri">금</label>
                     </div>
                     
                     <!--  토요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sat" value="토">
+                        <input type="checkbox" class="form-check-input" id="sat"name="sat" value="토">
                         <label class="form-check-label" for="sat">토</label>
                     </div>
                     
                     <!-- 일요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sun" value="일">
+                        <input type="checkbox" class="form-check-input" id="sun" name="sun"value="일">
                         <label class="form-check-label" for="sun">일</label>
                     </div>
                   </div>
@@ -223,7 +221,7 @@ background:#5a7fa2;
                       	 </div>
                       </div>
                       <div class="form-group">
-                          <label for="category" class="cols-sm-2 control-label font-weight-bold">카테고리</label>
+                          <label for="t_category" class="cols-sm-2 control-label font-weight-bold">카테고리</label>
                           <label id="t_category" class="cols-sm-2 control-label font-weight-bold"></label>
                           <div class="cols-sm-10">
                             <div class="input-group">
@@ -234,7 +232,7 @@ background:#5a7fa2;
                       </div>
  
                       <div class="form-group">
-                          <label for="stitle" class="cols-sm-2 control-label font-weight-bold">강의 주제</label>
+                          <label for="t_title" class="cols-sm-2 control-label font-weight-bold">강의 주제</label>
                           <label id="t_title" class="cols-sm-2 control-label font-weight-bold"></label>
                           
                              <div class="cols-sm-10">
@@ -245,7 +243,6 @@ background:#5a7fa2;
                              </div>
                       </div>
 
- <!-- day -->                      <input type="hidden" class="form-control" name="t_day" id="schedule" />
 
                    <!-- 우편번호 찾기 API -->
                    <div class="form-group">
@@ -324,6 +321,7 @@ background:#5a7fa2;
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="sophy">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
+ <!-- day -->               <!-- <input type="hidden" class="form-control" name="t_day" id="schedule" /> -->
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
           </div> 
@@ -413,7 +411,7 @@ function isNumber(checkValue) {
 /* null 확인  */
 	 var t_category = document.getElementById('category');
 	 var t_title = document.getElementById('stitle');
-	 var t_day = document.getElementById('schedule');
+	 var t_day = document.getElementById('nullText');
 	 var t_price = document.getElementById('t_price');
 	 
 	 
@@ -446,6 +444,7 @@ function isNumber(checkValue) {
 		 
 		 
 	}
+
 	 if ( t_title.value == null || t_title.value =="") {
 			$('#t_title').css('color','red');
 			$('#t_title').text("강의주제를 작성하십시오.");
@@ -562,12 +561,11 @@ function isNumber(checkValue) {
 					str += $(this).next().text() + " "; 
 			});
 			
-					document.getElementById("schedule").value= str;  
+		/* 			document.getElementById("schedule").value= str;   */
 					$('#nullText').css("color","green");
 					$('#nullText').text(str);
 		});
 		 
-
 // 이미지 버튼___________________________________________________________
 
 	  var photo = document.getElementById("input_img");
