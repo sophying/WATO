@@ -283,7 +283,7 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
                                         </ul>
-                                    </div>
+                                    </div> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>동영상 강의</h5>
                                         <ul class="list-unstyled mb-3">

@@ -58,7 +58,7 @@ public class BoardController {
 			model.addAttribute("listRank",service.listRank());
 			
 			return "/index";
-		} 
+		}  
 		@RequestMapping(value="/studylistview" , method=RequestMethod.GET)
 		public String getstudylistview(Model model) throws Exception {
 			logger.info("get studylistview");
@@ -78,12 +78,16 @@ public class BoardController {
 				SLF.setLevel("");
 			} 
 			if (SLF.getTime() == null) { 
-				SLF.setTime(""); 
+				SLF.setTime("");   
+			}
+			if (SLF.getPlace()== null) {
+				SLF.setPlace("");
 			}
 			List<TeacherEnrollVO> StudyListFilter = service.studylistfilter(SLF);
 			
 			model.addAttribute("StudyListFilterdata",StudyListFilter);
 			
+			System.out.println("SLF.getPlace() : "+SLF.getPlace());
 			System.out.println("SLF.getCategory() : "+SLF.getCategory());
 			System.out.println("SLF.getRank() : "+SLF.getLevel());
 			System.out.println("SLF.getTime() : "+SLF.getTime());

@@ -5,7 +5,14 @@ public class StudyListFilter {
 	private String category;
 	private String level;
 	private String time;
+	private String place;
 	 
+	public String getPlace() {
+		return place;
+	}
+	public void setPlace(String place) {
+		this.place = place;
+	}
 	public String getCategory() {
 		return category;
 	}

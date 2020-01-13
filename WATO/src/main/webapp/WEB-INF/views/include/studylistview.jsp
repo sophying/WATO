@@ -9,25 +9,15 @@
 <head>
 <meta charset="UTF-8">
 <title>CodePen - Material Design About  Card</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<script>
-  window.console = window.console || function(t) {};
-</script>
-<script>
-  if (document.location.search.match(/type=embed/gi)) { 
-    window.parent.postMessage("resize", "*");
-  }
-</script>
 </head> 
 <style> 
-
-
 .studylistviewbody #about {
   width: 80%;
   margin: auto;
@@ -181,23 +171,38 @@
 }
 [type="checkbox"]:not(:checked),[type="checkbox"]:checked{position:static;left:0px;visibility:visible;}
 
- 
- 
-</style>  
-</head>   
+  .col-sm-2 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 16.666667%;
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+  } 
+  
+</style>   
+</head>    
 <body style="overflow-x:hidden; overflow-y:hidden;">   
-	<div class="container"> 
-		<form method="post"> 
-			<div style="	 
+<br>
+<br>
+		<form method="post" name="filterform"> 
+			<div style="	  
 			  display: -webkit-box;
 			  display: -ms-flexbox; 
 			  display: flex;
 			  -ms-flex-wrap: wrap;
-			  flex-wrap: wrap; 
-			  margin-right: -15px; 
-			  margin-left: -15px;" 
-			  id="filter">
-					<div class="form-group col-sm-3 col-xs-6">
+			  flex-wrap: wrap;  
+			  margin-right: -15px;   
+			  margin-left: 24px;"  
+			  id="filter"> 
+					<div class="form-group col-sm-2 col-xs-6"> 
+						<select class="form-control" name="place"> 
+							<option value="">지역</option> 
+							<option value="">Show All</option>    
+							<option value="서울">서울</option>   
+							<option value="인천">인천</option>   
+							<option value="세종">세종</option>  
+						</select>  
+					</div>
+					<div class="form-group col-sm-2 col-xs-6">
 						<select class="form-control" name="category">
 							<option value="">카테고리</option>
 							<option value="">Show All</option>  
@@ -206,39 +211,77 @@
 							<option value="파이선">파이선</option>  
 						</select> 
 					</div>
-					<div class="form-group col-sm-3 col-xs-6">
-						<select class="form-control" name="level">
-							<option value="">레벨</option>
-							<option value="">Show All</option>
-							<option value="초급">초급</option>
-							<option value="중급">중급</option>
-							<option value="고급">고급</option>
-						</select> 
-					</div>    
-					<div class="form-group col-sm-3 col-xs-6">  
-						<select class="form-control" name="time"> 
-							<option value="">시간</option> 
-							<option value="">Show All</option>
-							<option value="">
-							</option>
-						</select>
-					</div>
-					<div class="form-group col-sm-3 col-xs-6">
-					월<input type="checkbox"/>
-					화<input type="checkbox"/>
-					수<input type="checkbox"/>
-					목<input type="checkbox"/>
-					금<input type="checkbox"/>
-					토<input type="checkbox"/>
-					일<input type="checkbox"/>
-					
-					</div>
-					<div class="form-group col-sm-3 col-xs-6">
-						<button type="submit" class="btn btn-block btn-primary">Search</button>
-					</div>  
-			</div> 
-		</form>
-	</div> 
+					<div class="form-group col-sm-2 col-xs-6">
+						<select class="form-control" name="level"> 
+							<option value="">레벨</option> 
+							<option value="">Show All</option> 
+							<option value="초급">초급</option> 
+							<option value="중급">중급</option> 
+							<option value="고급">고급</option>  
+						</select>  
+					</div>      
+					<div class="form-group col-sm-2 col-xs-6">
+						<div class="button-group"> 
+					        <button onfocus="this.style.backgroundColor='white';" type="button" class="form-control dropdown-toggle" data-toggle="dropdown"><span class="pull-left">시간 </span><div class="pull-right"><span class="caret"></span></div></button>
+							<ul class="dropdown-menu" id="timevalue">
+							  <li><a href="#" class="small" data-value="월" tabIndex="-1"><input type="checkbox" value="월"/>&nbsp;월</a></li>
+							  <li><a href="#" class="small" data-value="화" tabIndex="-1"><input type="checkbox" value="화"/>&nbsp;화</a></li> 
+							  <li><a href="#" class="small" data-value="수" tabIndex="-1"><input type="checkbox" value="수"/>&nbsp;수</a></li> 
+							  <li><a href="#" class="small" data-value="목" tabIndex="-1"><input type="checkbox" value="목"/>&nbsp;목</a></li>
+							  <li><a href="#" class="small" data-value="금" tabIndex="-1"><input type="checkbox" value="금"/>&nbsp;금</a></li> 
+							  <li><a href="#" class="small" data-value="토" tabIndex="-1"><input type="checkbox" value="토"/>&nbsp;토</a></li>
+							  <li><a href="#" class="small" data-value="일" tabIndex="-1"><input type="checkbox" value="일"/>&nbsp;일</a></li>
+							</ul>
+							<input type="hidden" name="time" id="timevalue">      
+					  	</div> 
+					</div> 
+					<div class="form-group col-sm-2 col-xs-6">
+						<button type="button" id="filtersubmit" class="btn btn-block btn-primary">Search</button>
+					</div>   
+			</div>  
+		</form> 
+					<script type="text/javascript"> 
+					$(function() {
+						var options = [];
+						 
+						$( '.dropdown-menu a' ).on( 'click', function( event ) {
+						    
+						   var $target = $( event.currentTarget ),
+						       val = $target.attr( 'data-value' ),
+						       $inp = $target.find( 'input' ),
+						       idx; 
+						
+						   if ( ( idx = options.indexOf( val ) ) > -1 ) { 
+						      options.splice( idx, 1 );
+						      setTimeout( function() { $inp.prop( 'checked', false ) }, 0); 
+						   } else {
+						      options.push( val ); 
+						      setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
+						   }
+						   $( event.target ).blur(); 
+						    
+						   console.log( options );   
+						   return false;  
+						});
+						   
+						$('#filtersubmit').click(function() { 
+							var str = "";  
+							$("input[type='checkbox']").each(function() {
+								if ($(this).is(':checked')) {  
+									str += $(this).val() + "_";
+								}
+							}); 
+							if (str.substr(-1,1) == '_') {
+								str = str.substring(0,str.length-1);
+							}
+							
+							document.getElementsByName('time')[0].value = str;  
+							/* document.getElementById('timevalue').value = str;  */
+							alert(document.getElementsByName('time')[0].value);
+							filterform.submit();
+						});
+					});
+					</script> 
 	<br>
 	<div class="studylistviewbody"> 
 	  <div class="valign-wrapper">
@@ -335,17 +378,18 @@
 	    //alert($( this ).css( "transform" ));
 	    if (  $( this ).css( "transform" ) == 'none' ){
 	        $(this).css("transform","rotate(45deg)");
-	    } else {
+	    } else { 
 	        $(this).css("transform","" );
 	    }
 	}); */
-	
+	 
 </script>
 <script type="text/javascript"> 
 document.body.scrollIntoView(true);
 parent.document.all.studylistview.height = document.body.scrollHeight;
 
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 </body>
 
