@@ -7,13 +7,13 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.TeachVO;
 import com.king.myapp.service.StdService;
 
 @Controller
@@ -83,20 +83,66 @@ public class StdController {
 	
 	// 로그인 post
 	@RequestMapping(value = "/loginform", method = RequestMethod.POST)
-	public String postlogin(StdVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+	public String postlogin(StdVO svo, TeachVO tvo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		logger.info("post login");
 		
 		HttpSession session = req.getSession();
 		
-		StdVO login = service.login(vo);
+		StdVO login1 = service.login1(svo);
 		
-		if(login == null) { // login 값이 null 일 때 member 값은 null 이고
-			session.setAttribute("member", null);
-			
-			rttr.addFlashAttribute("msg", false);
-		} else {
-			session.setAttribute("member", login); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
-		}
+		TeachVO login2 = service.login2(tvo);	
+		
+		
+		  if(login1.getNo() == "10") { 
+			  session.setAttribute("teach", null);
+			  session.setAttribute("member", login1);
+		  
+		  } else if(login1.getNo() == "20") { 
+			  rttr.addFlashAttribute("msg", false);
+		  
+		  } else if(login2.getNo() == "20") { 
+			  session.setAttribute("member", null);
+			  session.setAttribute("teach", login2);
+		  
+		  } else if(login2.getNo() == "10") { 
+			  rttr.addFlashAttribute("msg", false);
+		  
+		  }
+		 
+		
+		/*
+		 * if((login1.getNo() == "10") || (login2.getNo() == "10")) {
+		 * service.login1(svo); session.setAttribute("teach", null);
+		 * session.setAttribute("member", login1);
+		 * 
+		 * } else if((login1.getNo() == "20") || (login2.getNo() == "20")) {
+		 * service.login2(tvo); session.setAttribute("member", null);
+		 * session.setAttribute("teach", login1);
+		 * 
+		 * }
+		 */
+		 
+		  
+		  
+		
+		/*
+		 * if(login1.getNo() == "20") { // login 값이 null 일 때 member 값은 null 이고
+		 * session.setAttribute("member", null);
+		 * 
+		 * rttr.addFlashAttribute("msg", false); } else if{
+		 * session.setAttribute("member", login2); // login 값이 null 이 아니라면 member 값은
+		 * login 이다.(== vo 값을 불러와서 쓸 수 있게 한다) }
+		 * 
+		 * if(login2.getNo() == "10") { // login 값이 null 일 때 member 값은 null 이고
+		 * session.setAttribute("teach", null);
+		 * 
+		 * rttr.addFlashAttribute("msg", false); } else{ session.setAttribute("teach",
+		 * login2); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
+		 * }
+		 */
+		 
+		   
+		 
 		
 		return "redirect:/";
 	}

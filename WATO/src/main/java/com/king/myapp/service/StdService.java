@@ -1,6 +1,7 @@
 package com.king.myapp.service;
 
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.TeachVO;
 
 public interface StdService {
 	
@@ -13,7 +14,9 @@ public interface StdService {
 	// 아이디 중복 체크
 	public int idChk(StdVO vo) throws Exception;
 
-	// 로그인
-	public StdVO login(StdVO vo) throws Exception;
+	// 학생 로그인
+	public StdVO login1(StdVO svo) throws Exception;
 
+	// 강사 로그인
+	public TeachVO login2(TeachVO tvo) throws Exception;
 }

@@ -185,11 +185,11 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                    	<c:if test="${(member eq null) or (teach eq null)}">
+                    	<c:if test="${(member eq null) and (teach eq null)}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
                         <c:if test="${(member ne null) or (teach ne null)}">
-                        	<p class="list-inline-item">${member.std_Id}님 환영합니다!</p>
+                        	<p class="list-inline-item">${member.std_Id or teach.teach_Id}님 환영합니다!</p>
                         	<li class="list-inline-item"><p><a href="sign_up/logout" class="text-black-50 font-weight-bold">로그아웃</a></p></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/sign_up/std_info">

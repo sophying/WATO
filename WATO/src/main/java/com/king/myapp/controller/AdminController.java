@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,11 +21,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.king.myapp.domain.ApprovalVO;
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.service.AdminService;
 import com.king.myapp.service.MailService;
+import com.king.myapp.service.StdService;
 import com.king.myapp.service.TeachService;
 
 @Controller
@@ -37,12 +41,45 @@ public class AdminController {
 	@Inject
 	AdminService adminservice;
 	@Inject
+	StdService stdservice;
+	@Inject
 	TeachService teachservice;
 	@Inject
 	JavaMailSender mailSender;
 	@Inject
 	MailService mailservice;
 
+	
+	  // 로그인 get
+	  
+	  @RequestMapping(value = "/loginform", method = RequestMethod.GET) 
+	  public void getlogin() throws Exception { 
+		  logger.info("get login"); 
+		  }
+	  
+	  // 로그인 post
+	  
+	  @RequestMapping(value = "/loginform", method = RequestMethod.POST) public
+	  
+	  String postlogin(StdVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception { 
+		  logger.info("post login");
+	  
+	  HttpSession session = req.getSession();
+	  
+	  StdVO login = stdservice.login1(vo);
+	  
+	  if(login == null) { // login 값이 null 일 때 member 값은 null 이고
+		  
+	  session.setAttribute("member", null);
+	  
+	  rttr.addFlashAttribute("msg", false); 
+	  
+	  } else { 
+		  session.setAttribute("member", login); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
+	  }
+	  
+	  return "redirect:/"; }
+	 
 	
 	// 학생&강사 관리 페이지 GET
 	@RequestMapping(value = "/adminmanage", method = RequestMethod.GET)

@@ -2,6 +2,7 @@ package com.king.myapp.domain;
 
 public class TeachVO {
 	
+	private String No;
 	private String Teach_Profile;
 	private String Teach_Resume;
 	private String Teach_Id;
@@ -17,6 +18,12 @@ public class TeachVO {
 	private String Teach_Addr2;
 	private String Teach_Addr3;
 	
+	public String getNo() {
+		return No;
+	}
+	public void setNo(String no) {
+		No = no;
+	}
 	public String getTeach_Profile() {
 		return Teach_Profile;
 	}
@@ -101,4 +108,5 @@ public class TeachVO {
 	public void setTeach_Addr3(String teach_Addr3) {
 		Teach_Addr3 = teach_Addr3;
 	}
+	
 }
