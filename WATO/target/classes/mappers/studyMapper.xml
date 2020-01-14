@@ -102,6 +102,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from t_enroll
 		where t_no = #{t_no}
 	</delete>	
+
+<!-- 댓글 수정 -->
+	<update id="r_update">
+		update t_reply set R_CONTENT = #{r_content}, R_REGDATE = SYSDATE WHERE R_NO = #{r_no}
+	</update>
+<!-- 댓글 삭제 --> 
+	<delete id="r_delete">
+		delete from t_reply where r_no = #{r_no}
+	</delete>
 	
 </mapper>
 

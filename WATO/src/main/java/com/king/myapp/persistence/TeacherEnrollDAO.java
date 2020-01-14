@@ -36,5 +36,11 @@ public interface TeacherEnrollDAO {
 	public void classDelete(int t_no) throws Exception;
 
 
+	public void replyUpdate(TeacherReplyVO replyVO) throws Exception;
+
+
+	public void DeleteReply(int r_no) throws Exception;
+
+
 
 }

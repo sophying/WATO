@@ -557,6 +557,7 @@
 							<c:forEach var="reply" items="${reply}">
 								<c:choose>
 									<c:when test="${(listOne.t_userId).equals(reply.r_userid)}">
+										<form class="updateform" action="./modireply"> 
 										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: orange;">
 											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
@@ -564,30 +565,49 @@
 															<tr>
 																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
 																<td colspan="5" >
-																	<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
-																	</font></pre> --%>
-																	<textarea rows="10" cols="100" readonly="readonly">${reply.r_content}</textarea>
+																	<textarea name="r_content" class="r_content" rows="10" cols="100" readonly>${reply.r_content}</textarea>
 																<td> 
-															</tr>
-														</table>
-												</div>
+															</tr>  
+															<tr>
+																<td>
+																	<input type="button" value="수정하기" onclick="updatefun(this)" />
+																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
+																</td>
+																<td>
+																	<input type="hidden" name="t_no" value="${listOne.t_no}" />
+																	<input type="hidden" name="r_no" value="${reply.r_no}" /> 
+																</td>
+															</tr> 
+														</table> 
+												</div> 
 											</div>		
 										</div>
+										</form>
 									</c:when>
 									<c:otherwise>
 										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top "> 
 											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
+													<form class="updateform" action="./modireply"> 
 														<table class="justify-content-center d-inline-block w-100">
 															<tr>
 																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
-																<td colspan="5" >
-																	<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
-																	</font></pre> --%>
-																	<textarea rows="10" cols="100" readonly="readonly">${reply.r_content}</textarea>
+																<td colspan="5" > 
+																	<textarea name="r_content" class="r_content" rows="10" cols="100" readonly>${reply.r_content}</textarea>
 																<td> 
 															</tr>
+															<tr>
+																<td> 
+																	<input type="button" value="수정하기" onclick="updatefun(this)" />
+																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
+																</td>
+																<td>
+																	<input type="hidden" name="t_no" value="${listOne.t_no}" />
+																	<input type="hidden" name="r_no" value="${reply.r_no}" />  
+																</td>
+															</tr> 
 														</table>
+													</form>
 												</div>
 											</div>		
 										</div>
@@ -614,11 +634,11 @@
 												</tr>
 											</table>
 											<input type="hidden" name="t_no" value="${listOne.t_no}" />
-											<input type="hidden" name="r_userid" value="hello"/>
+											<input type="hidden" name="r_userid" value="minseok"/>
 										</form>
 									</div>
 								</div>		
-							</div>
+							</div> 
 							
 							<!-- <div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top">
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
@@ -775,20 +795,42 @@ _________________________________________________________
 <script src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="../resource/js/front.js"></script>
 <!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  
 <script type="text/javascript">
-
-$(document).reay(function(){
-	var listOne_URL = document.getElementById('listOne_URL').value;
+ 
+function updatefun(event) { 
+	if ($(event).val() == "수정하기") {
+		$(event).parent().parent().prev().children().next().children().attr('readonly',false);
+		$(event).val("수정완료");
+	}else if ($(event).val() == "수정완료") {
+		$(event).parent().parent().prev().children().next().children().attr('readonly',true);
+		$(event).val("수정하기");
+		$('.updateform').submit();
+	}
+	 
+	/* if ($(event).val() == "수정하기") {
+		$('.r_content').attr('readonly',false); 
+		$(event).val("수정완료"); 
+	}else if ($(event).val() == "수정완료") {
+		$('.r_content').attr('readonly',true);
+		updateform.submit(); 
+	} */
+	
+}
+ 
+$(function(){
+	/* var listOne_URL = document.getElementById('listOne_URL').value;
 	
 	if (listOne_URL != null) {
 		
 		document.getElementById("main-iframe").src = listOne_URL;
+	 
+	} */
 	
-	}
 	
-	$('#qnaButton')
 	
+	
+	 
 	
 });
 </script>

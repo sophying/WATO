@@ -63,6 +63,17 @@ public class TeacherEnrollServiceImpl implements TeacherEnrollService {
 	public void classDelete(int t_no) throws Exception {
 		teacherDAO.classDelete(t_no);
 	}
+	
+	//댓글 수정
+	@Override
+	public void replyUpdate(TeacherReplyVO replyVO) throws Exception {
+		teacherDAO.replyUpdate(replyVO);
+	}
+	//댓글 삭제
+	@Override
+	public void DeleteReply(int r_no) throws Exception {
+		teacherDAO.DeleteReply(r_no);
+	}
 
 
 
