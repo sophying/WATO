@@ -26,6 +26,7 @@
       <th scope="col">주제</th>
       <th scope="col">참여진행</th>
       <th scope="col">생성된 날짜</th>
+      <th scope="col">수정된 날짜</th>
       <th scope="col">조회수</th>
     </tr>
   </thead>
@@ -39,6 +40,7 @@
       <td>${classlist.t_title}</td>
       <td>${classlist.t_parti} / ${classlist.t_people }</td>
       <td><fmt:formatDate value="${classlist.t_creadate}" pattern="yyyy-MM-dd"/></td>
+      <td><fmt:formatDate value="${classlist.t_updatedate}" pattern="yyyy-MM-dd"/></td>
       <td>${classlist.t_viewcnt}</td>
     </tr>
   </c:forEach>  
