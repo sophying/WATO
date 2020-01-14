@@ -128,10 +128,10 @@
 	aside{
 		position:fixed;
 		top:80px;
-		left:60%;
+		right:80px;
 		margin-left: 15pc;
-		background-color: #fff;
-	}
+		background-color: #fff; 
+	} 
 	#main{
 		box-sizing: border-box;
 		float:left;
@@ -189,7 +189,7 @@
 		color: #fff;
 	}
 	
-	.q_aButton{
+	.qnaButton{
 		border:none;
 		background-color: #5a7fa2;
 		color: #fff;
@@ -199,6 +199,7 @@
 		line-height: 40px;
 		text-align: center;
 		font-size: 15pt;
+		margin-top:20px;
 	}
 	
 	.goButton{
@@ -474,7 +475,8 @@
 									<label for="name" class="pb-3 row m-0 text-justify w-100 border-top cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
 										<font size="8">${listOne.t_title }</font>
 									</label>
-<!--  내용 수정 -->				<a href="teacherModi?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-block justify-content-center mt-2 mb-2" value="수정"/></a>			
+<!--  내용 수정 -->				<a href="teacherModi?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>			
+<!--  내용 삭제 -->				<a href="teacherDelete?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/></a>			
 							</div>	
 							<div class="h-75 container d-inline-block border-top">
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center">
@@ -552,100 +554,88 @@
 							</div>
 							
 	<!-- @@@@@@@@ //// 댓글 ( Q & A ) 작성  /// @@@@@@@@ -->	
-							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block ">
-									<label id="QnA"for="name" class="pb-3 row m-0 text-justify w-100 border-top cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
-										<font size="6">현재 스터디에 궁금한 점을 남겨주세요!</font>
-									</label>
-								<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
-											<table class="justify-content-center d-inline-block w-100">
-												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">USERID</font><font size="4"> 님</font></td>
-													<td colspan="5" >
-														<pre style="width:700px; height: 200px;"><font size="4">물리학과 전공 후  머신러닝 관련 개발을 약 15년 진행해 오다, 우연히 강의를 하며 학생들의 고충을 듣게 되었습니다. 사실 기관을 빌려 저의 노하우를 전해드리고자하니, 
-비용적인 부분도 부담될터,,,그리하여 제가 이런 좋은 사이트를 통해 머신러닝을 쉽게 배우길 원하시는 소수의 분들을 위해 모임을 개설하고자 합니다. 
-일반 스터디 모임과는 다르게 제가 강의하여 여러분들이 함께 실습을 해 나가는 방식입니다.물리학과 전공 후  머신러닝 관련 개발을 약 15년 진행해 오다, 우연히 강의를 하며 학생들의 고충을 듣게 되었습니다. 사실 기관을 빌려 저의 노하우를 전해드리고자하니, 
-비용적인 부분도 부담될터,,,그리하여 제가 이런 좋은 사이트를 통해 머신러닝을 쉽게 배우길 원하시는 소수의 분들을 위해 모임을 개설하고자 합니다. 
-일반 스터디 모임과는 다르게 제가 강의하여 여러분들이 함께 실습을 해 나가는 방식입니다.물리학과 전공 후  머신러닝 관련 개발을 약 15년 진행해 오다, 우연히 강의를 하며 학생들의 고충을 듣게 되었습니다. 사실 기관을 빌려 저의 노하우를 전해드리고자하니, 
-비용적인 부분도 부담될터,,,그리하여 제가 이런 좋은 사이트를 통해 머신러닝을 쉽게 배우길 원하시는 소수의 분들을 위해 모임을 개설하고자 합니다. 
-일반 스터디 모임과는 다르게 제가 강의하여 여러분들이 함께 실습을 해 나가는 방식입니다.물리학과 전공 후  머신러닝 관련 개발을 약 15년 진행해 오다, 우연히 강의를 하며 학생들의 고충을 듣게 되었습니다. 사실 기관을 빌려 저의 노하우를 전해드리고자하니, 
-비용적인 부분도 부담될터,,,그리하여 제가 이런 좋은 사이트를 통해 머신러닝을 쉽게 배우길 원하시는 소수의 분들을 위해 모임을 개설하고자 합니다. 
-일반 스터디 모임과는 다르게 제가 강의하여 여러분들이 함께 실습을 해 나가는 방식입니다.
-														</font></pre>
-													<td>
-												</tr>
-												
-												
-											</table>
-											<div class="d-inline-block w-25">
-											</div>				
-									</div>
-								</div>		
-							</div>
-							
+							<c:forEach var="reply" items="${reply}">
+								<c:choose>
+									<c:when test="${(listOne.t_userId).equals(reply.r_userid)}">
+										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: orange;">
+											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
+												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
+														<table class="justify-content-center d-inline-block w-100">
+															<tr>
+																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
+																<td colspan="5" >
+																	<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
+																	</font></pre> --%>
+																	<textarea rows="10" cols="100" readonly="readonly">${reply.r_content}</textarea>
+																<td> 
+															</tr>
+														</table>
+												</div>
+											</div>		
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top "> 
+											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
+												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
+														<table class="justify-content-center d-inline-block w-100">
+															<tr>
+																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
+																<td colspan="5" >
+																	<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
+																	</font></pre> --%>
+																	<textarea rows="10" cols="100" readonly="readonly">${reply.r_content}</textarea>
+																<td> 
+															</tr>
+														</table>
+												</div>
+											</div>		
+										</div>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach> 
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
-									
 								<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
+										<form role="from" method="post" action="./detailReply.do"> 
 											<table class="justify-content-center d-inline-block w-100">
 												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">USERID</font><font size="4"> 님</font></td>
+													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">Q&A</font><font size="4"></font></td>
 													<td colspan="5" >
-														<pre style="width:700px; height: 200px;"><font size="4">자바 전공 학생인데 머신 러닝도 관심이 있습니다. 이론을 전혀모르는데 괜찮은가요??
-														</font></pre>
+														<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
+														</font></pre> --%>  
+														<textarea id="form7" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+													<td>    
+												</tr>   
+												<tr>
 													<td>
+														<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
+													</td> 
 												</tr>
-												
-												
 											</table>
+											<input type="hidden" name="t_no" value="${listOne.t_no}" />
+											<input type="hidden" name="r_userid" value="hello"/>
+										</form>
 									</div>
 								</div>		
 							</div>
 							
-							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block  border-top">
-								<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
-											<table class="justify-content-center d-inline-block w-100">
-												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">USERID</font><font size="4"> 님</font></td>
-													<td colspan="5" >
-														<pre style="width:700px; height: 200px;">물리학과 전공 후  머신러닝 관련 개발을 약 15년 진행해 오다, 우연히 강의를 하며 학생들의 고충을 듣게 되었습니다. 사실 기관을 빌려 저의 노하우를 전해드리고자하니, 
-비용적인 부분도 부담될터,,,그리하여 제가 이런 좋은 사이트를 통해 머신러닝을 쉽게 배우길 원하시는 소수의 분들을 위해 모임을 개설하고자 합니다. 
-일반 스터디 모임과는 다르게 제가 강의하여 여러분들이 함께 실습을 해 나가는 방식입니다.
-														</pre>
-													<td>
-												</tr>
-												
-												
-											</table>
-											<div class="d-inline-block w-25">
-											</div>				
-									</div>
-								</div>		
-							</div>
-							
-							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top">
+							<!-- <div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top">
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-3 justify-content-center" >
-										<form action="">
+										<form role="from" method="post" action="study/detailReply.do">
 											<table class="justify-content-center d-inline-block">
 												<tr>
 													<td rowspan="5" class="pr-5"><font size="5"> Q&A</font></td>
-												</tr>
+												</tr> 
 												<tr>
 													<td>
 														<textarea id="form7" name="t_content" style="width:500px; height:155px;" class="md-textarea form-control" rows="10" cols="30" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
 													</td>
 												</tr>
-												<tr class="d-flex justify-content-end mt-2 mb-2">
-													<td>비밀번호</td>
-													<td>
-														<input type="text" id="userPass" />
-													</td>
-												</tr>
 												<tr>
 													<td>
-														<input type="submit" id="q_aButton" class="q_aButton" value="질문하기"/>
+														<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
 													</td>
 												</tr>
 											</table>
@@ -654,20 +644,20 @@
 										</form>
 									</div>
 								</div>		
-							</div>
-					</div>   
-					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
+							</div> -->
+					</div>    
+					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->  
 						
-	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
-				<aside class="d-inline-block w-25 rounded-sm " >
-					<div  class="form-group container-fluid ">
-							<div class="cols-sm-1 d-inline-block d-flex justify-content-center">
+	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->	 
+				<aside class="d-inline-block rounded-sm" >     
+					<div  class="form-group container-fluid" style="height: auto;">
+							<div class="cols-sm-1 d-inline-block d-flex justify-content-center"> 
 								<div class="card-body">
 									<div class="input-group d-flex justify-content-center font-weight-bold ">
 										<font size="5">${listOne.t_title }</font>
 									</div>
-								</div>
-							</div>
+								</div> 
+							</div> 
 							<div class=" border-top border-bottom h-100 w-100 d-inline-block">
 									<div class="level-mark2 d-inline-block">
 										<div class="label2">LEVEL</div>
@@ -686,7 +676,7 @@
 									</div>
 								</div>		
 								<div id="t_day" class="form-group d-flex pt-2 d-block  justify-content-center">
-									<font size="4">${listOne.t_day }</font>
+									<font size="4">${listOne.t_day }</font> 
 								</div>	
 							</div>
 							<div class=" border-top border-bottom h-100 w-100 d-inline-block">
@@ -695,7 +685,7 @@
 								</label>
 							</div>
 						<input type="submit" id="goButton" class="goButton" value="참여신청"/>
-					</div>
+					</div>  
 				</aside>
 				<!-- @@@@@@@@ //// 참여신청 끝 /// @@@@@@@@ -->	
 			</div>
@@ -796,6 +786,8 @@ $(document).reay(function(){
 		document.getElementById("main-iframe").src = listOne_URL;
 	
 	}
+	
+	$('#qnaButton')
 	
 	
 });

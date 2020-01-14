@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherReplyVO;
 import com.king.myapp.service.TeacherEnrollService;
 
 @Controller
@@ -89,7 +90,9 @@ public class TeacherenrollController {
 		
 		teacherService.viewCount(t_no);
 		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
+		List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
 		
+		model.addAttribute("reply", reply);
 		model.addAttribute("listOne",listOne);
 	}
 	
@@ -118,34 +121,34 @@ public class TeacherenrollController {
 		listOne.setRoad(road);
 		listOne.setJibun(jibun);
 		
-		/*
-		 * String beforeDay = listOne.getT_day(); // DB 문자열
-		 * 
-		 * String[] day = beforeDay.split(" "); // DB 문자열 분할
-		 */		
 		
-		/*
-		 * for (int i = 0; i < day.length; i++) { System.out.println(i +"=" +day[i]);
-		 * 
-		 * if (day[i].equals("월")) { listOne.setMon(day[i]); }else if
-		 * (day[i].equals("화")) { listOne.setThu(day[i]);
-		 * 
-		 * }else if (day[i].equals("수")) { listOne.setThu(day[i]);
-		 * 
-		 * }else if (day[i].equals("목")) { listOne.setThu(day[i]);
-		 * 
-		 * }else if (day[i].equals("금")) { listOne.setThu(day[i]);
-		 * 
-		 * }else if (day[i].equals("토")) { listOne.setThu(day[i]);
-		 * 
-		 * }else if (day[i].equals("일")) { listOne.setThu(day[i]); }else if (day[i] ==
-		 * null) { day[i] ="";
-		 * 
-		 * }
-		 * 
-		 * }
-		 */
-		
+		  String beforeDay = listOne.getT_day(); // DB 문자열
+		  System.out.println(beforeDay); 
+		  
+		  if (beforeDay.contains("월")) {
+			model.addAttribute("mon","월");
+		}
+		  if (beforeDay.contains("화")) {
+			  model.addAttribute("tue","화");
+		  }
+		  if (beforeDay.contains("수")) {
+			  model.addAttribute("web","수");
+		  }
+		  if (beforeDay.contains("목")) {
+			  model.addAttribute("thu","목"); 
+			  System.out.println(beforeDay.contains("목"));
+		  }
+		  if (beforeDay.contains("금")) {
+			  model.addAttribute("fri","금");
+		  }
+		  if (beforeDay.contains("토")) {
+			  model.addAttribute("sat","토");
+			  System.out.println(beforeDay.contains("토"));
+		  }
+		  if (beforeDay.contains("일")) {
+			  model.addAttribute("sun","일");
+		  }
+		 		 
 		model.addAttribute("listOne",listOne);
 		
 	}	
@@ -159,7 +162,27 @@ public class TeacherenrollController {
 		teacherService.modify(teacherVO);
 		
 		return "redirect:/study/header_DetailRead?t_no="+t_no;
+		 
+	}
+	// 6.
+	@RequestMapping(value = "/detailReply.do", method = RequestMethod.POST)
+	public String postReply(@RequestParam("t_no") int t_no, TeacherReplyVO replyVO, TeacherEnrollVO teacherVO) throws Exception{
 		
+		logger.info("--------------[ 강의 댓글 내용 등록  POST ]-----------------");		
+		
+		teacherService.replyInsert(replyVO);  
+		  
+		return "redirect:/study/header_DetailRead?t_no="+t_no;
+		
+	}
+	
+	// 삭제 
+	@RequestMapping(value = "/teacherDelete", method = RequestMethod.GET)
+	public String postDelete(@RequestParam("t_no") int t_no) throws Exception{
+		logger.info("--------------[ 내용 삭제  POST ]-----------------");				
+		
+		teacherService.classDelete(t_no);
+		return "redirect:/";
 	}
 	
 	
