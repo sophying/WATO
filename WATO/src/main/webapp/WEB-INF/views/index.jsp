@@ -185,25 +185,37 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                    	<c:if test="${member == null}">
+                    	<c:if test="${(member eq null) or (teach eq null)}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
-                        <c:if test="${member != null}">
+                        <c:if test="${(member ne null) or (teach ne null)}">
                         	<p class="list-inline-item">${member.std_Id}님 환영합니다!</p>
                         	<li class="list-inline-item"><p><a href="sign_up/logout" class="text-black-50 font-weight-bold">로그아웃</a></p></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/sign_up/std_info">
-				                <input type="hidden" id="Std_Pwd_Qs" name="Std_Pwd_Qs" value="${member.std_Pwd_Qs}" readonly="readonly">
-				                <input type="hidden" id="Std_Pwd_As" name="Std_Pwd_As" value="${member.std_Pwd_As}" readonly="readonly">
-				                <input type="hidden" id="Std_Gender" name="Std_Gender" value="${member.std_Gender}" readonly="readonly">
-				                <input type="hidden" id="Std_Email" name="Std_Email" value="${member.std_Email}" readonly="readonly">
-								<input type="hidden" id="Std_Phone1" name="Std_Phone1" value="${member.std_Phone1}" readonly="readonly">
-								<input type="hidden" id="Std_Phone2" name="Std_Phone2" value="${member.std_Phone2}" readonly="readonly">
-								<input type="hidden" id="Std_Phone3" name="Std_Phone3" value="${member.std_Phone3}" readonly="readonly">
-								<input type="hidden" id="Std_Addr1" name="Std_Addr1" value="${member.std_Addr1}" readonly="readonly">
-								<input type="hidden" id="Std_Addr2" name="Std_Addr2" value="${member.std_Addr2}" readonly="readonly">
-								<input type="hidden" id="Std_Addr3" name="Std_Addr3" value="${member.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정(${member.std_Addr1})</a>
+				                <input type="hidden" value="${member.std_Profile}" readonly="readonly">
+				                <input type="hidden" value="${member.std_Pwd_Qs}" readonly="readonly">
+				                <input type="hidden" value="${member.std_Pwd_As}" readonly="readonly">
+				                <input type="hidden" value="${member.std_Gender}" readonly="readonly">
+				                <input type="hidden" value="${member.std_Email}" readonly="readonly">
+								<input type="hidden" value="${member.std_Phone1}" readonly="readonly">
+								<input type="hidden" value="${member.std_Phone2}" readonly="readonly">
+								<input type="hidden" value="${member.std_Phone3}" readonly="readonly">
+								<input type="hidden" value="${member.std_Addr1}" readonly="readonly">
+								<input type="hidden" value="${member.std_Addr2}" readonly="readonly">
+								<input type="hidden" value="${member.std_Addr3}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Pwd_Qs}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Pwd_As}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Email}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
+                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
                         	</form>
                         	</li>
                         </c:if>

@@ -316,8 +316,8 @@
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
 	            <span>or use your account</span>
-	            <input type="text" name="Std_Id" name="Teach_Id" placeholder="Email" />
-	            <input type="password" name="Std_Pwd" name="Teach_Pwd" placeholder="Password" />
+	            <input type="text" name="Std_Id" placeholder="Email" />
+	            <input type="password" name="Std_Pwd" placeholder="Password" />
 	            <a href="../admin/forgot_pwd">Forgot your password?</a>
 	            <button type="submit">SIGN IN</button>
 	        </form>

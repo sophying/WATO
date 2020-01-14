@@ -143,7 +143,7 @@
                 <li style="float: right"><a href="javascript:;">문의 02-3456-7899</a></li>
                 <li style="float: right"><a href="javascript:;">로그인</a>
                 	<ul>
-                		<li><a href="../sign_up/std_info">개인정보수정</a>
+                		<li><a href="../sign_up/teach_info">개인정보수정</a>
                 	</ul>
                 </li>
             </ul>
@@ -151,10 +151,10 @@
        <div>
         <form role="form" method="post" autocomplete="off">
 	        <div><img src="../resource/images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div>
-	        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">회원 정보 수정</div>
-	        <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
+	        <div class="teach_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">회원 정보 수정</div>
+	        <div class="teach_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
 	            <p style="float: left; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
-	            <div>저희 스터디어스를 이용해 주셔서 감사합니다. <span>${member.std_Id}</span>님은 학생이십니다.
+	            <div>저희 스터디어스를 이용해 주셔서 감사합니다. <span>${teach.teach_Id}</span>님은 학생이십니다.
 	                <p style="float: right; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
 	                <br>종료 예정 스터디는 0건이 있습니다.
 	            </div>
@@ -165,11 +165,11 @@
 	                <caption style="text-align: right;"><img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"> 필수입력사항</caption>
 	                <tr>
 	                    <th>아이디 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" name="Std_Id" value="${member.std_Id}" readonly="readonly"></td>
+	                    <td><input type="text" name="teach_Id" value="${teach.teach_Id}" readonly="readonly"></td>
 	                </tr>
 	                <tr>
 	                    <th>새 비밀번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="password" name="Std_Pwd" placeholder="새 비밀번호 입력"></td>
+	                    <td><input type="password" name="teach_Pwd" placeholder="새 비밀번호 입력"></td>
 	                </tr>
 	                <tr>
 	                    <th>새 비밀번호 확인 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -178,7 +178,7 @@
 	                <tr>
 	                    <th>비밀번호 확인 질문 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 	                    <td>
-	                        <select name="Std_Pwd_Qs" value="${member.std_Pwd_Qs}" style="">
+	                        <select name="teach_Pwd_Qs" value="${teach.teach_Pwd_Qs}" style="">
 	                            <option value="기억에 남는 추억의 장소는?" selected>기억에 남는 추억의 장소는?</option>
 	                            <option value="자신의 보물 1호는?">자신의 보물 1호는?</option>
 	                            <option value="가장 좋아하는 과일은?">가장 좋아하는 과일은?</option>
@@ -190,25 +190,25 @@
 	                </tr>
 	                <tr>
 	                    <th>비밀번호 확인 답변 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" name="Std_Pwd_As" value="${member.std_Pwd_As}"></td>
+	                    <td><input type="text" name="teach_Pwd_As" value="${teach.teach_Pwd_As}"></td>
 	                </tr>
 	                <tr>
 	                    <th>성별 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><span>${member.std_Gender}</span></td>
+	                    <td><span>${teach.teach_Gender}</span></td>
 	                </tr>
 	                <tr>
 	                    <th>휴대폰 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 	                    <td>
-	                    <input type="text" id="Std_Phone1" name="Std_Phone1" value="${member.std_Phone1}" />
+	                    <input type="text" id="teach_Phone1" name="teach_Phone1" value="${teach.teach_Phone1}" />
 	                    -
-	                    <input type="text" id="Std_Phone2" name="Std_Phone2" value="${member.std_Phone2}" />
+	                    <input type="text" id="teach_Phone2" name="teach_Phone2" value="${teach.teach_Phone2}" />
 	                    -
-	                    <input type="text" id="Std_Phone3" name="Std_Phone3" value="${member.std_Phone3}" />
+	                    <input type="text" id="teach_Phone3" name="teach_Phone3" value="${teach.teach_Phone3}" />
 	                    </td>
 	                </tr>
 	                <tr>
 		                <th>이메일 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-		                    <td><input type="text" id="Std_Email" name="Std_Email" value="${member.std_Email}" /></td>            
+		                    <td><input type="text" id="teach_Email" name="teach_Email" value="${teach.teach_Email}" /></td>            
 		            </tr>
 	                <!-- <tr>
 	                    <th>이메일 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -224,15 +224,15 @@
 	                </tr> -->
 	                <tr>
 	                    <th>우편번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" id="Std_Addr1" name="Std_Addr1" value="${member.std_Addr1}" placeholder="우편번호"><input type="button" id="" name="" value="우편번호 찾기"></td>
+	                    <td><input type="text" id="teach_Addr1" name="teach_Addr1" value="${teach.teach_Addr1}" placeholder="우편번호"><input type="button" id="" name="" value="우편번호 찾기"></td>
 	                </tr>
 	                <tr>
 	                    <th>주소 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" id="Std_Addr2" name="Std_Addr2" value="${member.std_Addr2}" placeholder="도로명주소"></td>
+	                    <td><input type="text" id="teach_Addr2" name="teach_Addr2" value="${teach.teach_Addr2}" placeholder="도로명주소"></td>
 	                </tr>
 	                <tr>
 	                    <th>상세주소 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" id="Std_Addr3" name="Std_Addr3" value="${member.std_Addr3}" placeholder="상세주소"></td>
+	                    <td><input type="text" id="teach_Addr3" name="teach_Addr3" value="${teach.teach_Addr3}" placeholder="상세주소"></td>
 	                </tr>
 	            </table>
 	        </div>

@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="/css/std_join.css"> 
+    <link rel="stylesheet" type="text/css" href="../resource/css/std_join.css"> 
 </head>
 <body>
 <div id="wrap0">
@@ -132,7 +132,7 @@
     	<%@ include file="../include/footer_jihye.jsp"%>
     </footer>
 
-<script type="text/javascript" src="/js/teach_join.js"></script>
+<script type="text/javascript" src="../resource/js/teach_join.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
 <script type="text/javascript"> 

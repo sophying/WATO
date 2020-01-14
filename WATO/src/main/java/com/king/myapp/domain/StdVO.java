@@ -2,6 +2,7 @@ package com.king.myapp.domain;
 
 public class StdVO {
 	
+	private String Std_No;
 	private String Std_Profile;
 	private String Std_Id;
 	private String Std_Pwd;
@@ -16,6 +17,12 @@ public class StdVO {
 	private String Std_Addr2;
 	private String Std_Addr3;
 	
+	public String getStd_No() {
+		return Std_No;
+	}
+	public void setStd_No(String std_No) {
+		Std_No = std_No;
+	}
 	public String getStd_Profile() {
 		return Std_Profile;
 	}
@@ -93,6 +100,5 @@ public class StdVO {
 	}
 	public void setStd_Addr3(String std_Addr3) {
 		Std_Addr3 = std_Addr3;
-	}
-	
+	}	
 }

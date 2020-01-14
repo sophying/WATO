@@ -59,7 +59,10 @@ public class StdController {
 		logger.info("post info Modify");
 		
 		service.info_modify(vo);
+		/* logout(session); */
+		
 		session.invalidate(); // 기존의 세션값을 없애고 새 것을 만들겠다는 뜻
+		 		
 		return "redirect:/";
 		
 	}
