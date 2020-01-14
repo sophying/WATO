@@ -124,43 +124,43 @@ background:#5a7fa2;
                 	<!-- 월요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
               
-                      <input type="checkbox" class="form-check-input" id="mon" value="월">
+                      <input type="checkbox" class="form-check-input" id="mon" name="mon" value="월">
                       <label class="form-check-label" for="mon">월</label>
                     </div>
 
                     <!-- 화요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="tue" value="화" >
+                        <input type="checkbox" class="form-check-input" id="tue" name="tue" value="화" >
                         <label class="form-check-label" for="tue">화</label>
                     </div>
 
                     <!-- 수요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="wed" value="수">
+                        <input type="checkbox" class="form-check-input" id="wed" name="wed"  value="수">
                         <label class="form-check-label" for="wed">수</label>
                     </div>
                     
                     <!-- 목요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="thu" value="목">
+                        <input type="checkbox" class="form-check-input" id="thu" name="thu" value="목">
                         <label class="form-check-label" for="thu">목</label>
                     </div>
                     
                     <!-- 금요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="fri" value="금">
+                        <input type="checkbox" class="form-check-input" id="fri"name="fri"  value="금">
                         <label class="form-check-label" for="fri">금</label>
                     </div>
                     
                     <!--  토요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sat" value="토">
+                        <input type="checkbox" class="form-check-input" id="sat"name="sat"  value="토">
                         <label class="form-check-label" for="sat">토</label>
                     </div>
                     
                     <!-- 일요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sun" value="일">
+                        <input type="checkbox" class="form-check-input" id="sun" name="sun" value="일">
                         <label class="form-check-label" for="sun">일</label>
                     </div>
                   </div>

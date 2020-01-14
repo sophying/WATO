@@ -4,43 +4,68 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="study">
-<!--  모집글 등록 -->
+<!-- +++++++++++++++++++++++++++[ ↓↓↓↓↓↓↓↓↓  학생 테이블  쿼리   ↓↓↓↓↓↓↓↓ ]++++++++++++++++++++++++++++++++++ -->	
+
+<!-- 1. 모집글 등록 -->
 	<insert id="s_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
 	insert into S_ENROLL (S_NO, S_USERID, S_CATEGORY , S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT, S_PHOTO, S_LEVEL, S_PEOPLE, S_CREADATE, S_INTRO)
 	values( S_ENROLL_SEQ.nextval , #{s_userId}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_photo},#{s_level}, #{s_people} , SYSDATE, #{s_intro} )
 <!-- 		insert into studytest_1 (bno, userid, category, title, regdate, place, content, photo)
 		values((select nvl(max(bno)+1, 1) from studytest_1), #{userId}, #{category}, #{title}, #{regDate}, #{place}, #{content}, #{photo}) -->
 	</insert>
-	
-<!-- 모집글 수정 불러오기 -->	
-	<select id="s_modify" resultType="com.king.myapp.domain.StudyEnrollVO">
 
-
+<!-- 2. list  -->	
+	<select id="s_list" resultType="com.king.myapp.domain.StudyEnrollVO">
+		select * from s_enroll
+		order by s_no desc
 	</select>
 	
-<!-- 수정글 등록 -->	
-	<update id="s_modfyUpdate">
+	
+<!-- 3. 상세보기  -->
+	<select id="s_detail" resultType="com.king.myapp.domain.StudyEnrollVO">
+		select * from s_enroll
+		where s_no =#{s_no}
+	</select>
+	
 
+
+<!-- 4. 조회수   -->
+	<update id="s_viewCnt">
+		update s_enroll
+		set s_viewcnt = (s_viewcnt + 1)
+		where s_no = #{s_no}
+	</update>
+
+<!--  5. 수정글 등록  -->	
+	<update id="s_modify">
+		update s_enroll
+		set   gel}, S_PEOPLE=#{s_people} , S_INTRO=#{s_intro}, S_UPDATEDATE= sysdate
+		where S_NO = #{s_no}	
 	</update>
 	
 	
+<!-- +++++++++++++++++++++++++++[ ↓↓↓↓↓↓↓↓↓  강사  테이블  쿼리   ↓↓↓↓↓↓↓↓ ]++++++++++++++++++++++++++++++++++ -->	
 	
-
+	
+<!-- 1. 강의 글 등록  -->
 	<insert id="t_enroll" parameterType="com.king.myapp.domain.TeacherEnrollVO">
 		insert into T_ENROLL (T_NO, T_USERID, T_CATEGORY, T_TITLE, T_STARTDATE, T_ENDDATE, T_DAY, T_POSTNUM, T_PLACE, T_CONTENT,T_PRICE, T_URL, T_PHOTO, T_LICENSE, T_LEVEL, T_PEOPLE ,T_CREADATE, T_INTRO)
 		values (T_ENROLL_SEQ.nextval, #{t_userId}, #{t_category}, #{t_title}, #{t_startDate}, #{t_endDate}, #{t_day}, #{t_postnum}, #{t_place}, #{t_content}, #{t_price}, #{t_URL}, #{t_photo}, #{t_license},#{t_level},#{t_people}, sysdate, #{t_intro}) 
 	</insert>
 	
+<!-- 2. 강의 글 list 목록 -->	
 	<select id="t_class_list" resultType="com.king.myapp.domain.TeacherEnrollVO">
 		select * from t_enroll
 		order by t_no desc
 	</select>
-	
+
+<!-- 3. 강의 상세내용 보기  -->	
 	<select id="t_class_detail" resultType="com.king.myapp.domain.TeacherEnrollVO">
 		select * from t_enroll
 		where t_no =#{t_no}
 	</select>
 
+<!-- 4. 조회수   -->
 	<update id="viewCnt">
 		update t_enroll
 		set t_viewcnt = (t_viewcnt + 1)

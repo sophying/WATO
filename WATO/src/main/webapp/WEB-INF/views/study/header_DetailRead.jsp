@@ -213,13 +213,12 @@
 		font-size: 15pt;
 	}
 	.infoModi{
-	box-sizing:border-box;
-	position:absolute;
-	top:900px;
-	left:864px;
+		box-sizing:border-box;
+		position:relative;
+		top:0px;
+		left:500px;
 		border:none;
 		background-color: #5a7fa2;
-		border-radius:20px;
 		color: #fff;
 		display: block;
 		width: 80px;
@@ -253,6 +252,9 @@
 	  text-align: center;
 	  font-size: 12px;
 	  line-height: 1.42857;
+	}
+	textarea{
+	 resize: none;
 	}
 </style>
 <body>
@@ -472,6 +474,7 @@
 									<label for="name" class="pb-3 row m-0 text-justify w-100 border-top cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
 										<font size="8">${listOne.t_title }</font>
 									</label>
+<!--  내용 수정 -->				<a href="teacherModi?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-block justify-content-center mt-2 mb-2" value="수정"/></a>			
 							</div>	
 							<div class="h-75 container d-inline-block border-top">
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center">
@@ -492,14 +495,12 @@
            						    </div>
 								</div>
 							
-								<div class="d-block">
-	<!--  내용 수정 -->				<a href="teacherModi?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-block justify-content-center mt-2 mb-2" value="수정"/></a>
-								</div>
+	
 								
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-2  pl-5 pr-5 justify-content-center container-fluid ">
-									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-2 " >
+									<div  style=" word-break:break-all; height:100%;"class="row h-50 d-block d-flex pt-2 "  scroll="no" >
 										
-										<pre><font size="4"><c:out value="${listOne.t_intro }" /></font></pre>
+										<pre style="height:250px;" ><font size="4"><c:out value="${listOne.t_intro }" /></font></pre>
 									</div>
 								</div>
 							</div>

@@ -33,13 +33,52 @@ public class StudyEnrollVO {
 	private int s_postnum;
 	private String s_place;
 	private String s_content;
+	private String s_intro;
 	private String s_photo;
 	private String s_level;
 	private int s_people;
+	private int s_parti;
+	private int s_viewcnt;
 	private Timestamp s_creadate;
 	private Timestamp s_updatedate ;
 	
 	
+	private String road;
+	private String jibun;
+	
+	
+	
+	
+	public final int getS_viewcnt() {
+		return s_viewcnt;
+	}
+	public final void setS_viewcnt(int s_viewcnt) {
+		this.s_viewcnt = s_viewcnt;
+	}
+	public final String getS_intro() {
+		return s_intro;
+	}
+	public final void setS_intro(String s_intro) {
+		this.s_intro = s_intro;
+	}
+	public final int getS_parti() {
+		return s_parti;
+	}
+	public final void setS_parti(int s_parti) {
+		this.s_parti = s_parti;
+	}
+	public final String getRoad() {
+		return road;
+	}
+	public final void setRoad(String road) {
+		this.road = road;
+	}
+	public final String getJibun() {
+		return jibun;
+	}
+	public final void setJibun(String jibun) {
+		this.jibun = jibun;
+	}
 	public Timestamp getS_updatedate() {
 		return s_updatedate;
 	}

@@ -36,9 +36,17 @@ public class TeacherEnrollVO {
 	private String road;
 	private String jibun;
 	
+	// 요일 
+	/*
+	 * private String mon =""; private String tue =""; private String wed ="";
+	 * private String thu =""; private String fri =""; private String sat ="";
+	 * private String sun ="";
+	 */
+	
 	
 	
 
+	
 	public String getRoad() {
 		return road;
 	}
