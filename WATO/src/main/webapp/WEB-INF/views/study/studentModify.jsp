@@ -264,9 +264,9 @@
                     </div>
                      <div class="form-group ">
   <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="sophy"/>
-  <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value="">
+  <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value=""> 
   <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >
-  <!-- s_day -->			<input type="hidden" name="s_day"  class="form-control" id="schedule" />
+  <!-- s_day -->			<input type="hidden" name="s_day"  class="form-control" id="schedule"  value="${listOne.s_day }" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
 
@@ -441,7 +441,7 @@ $('#enroll_btn').click(function(){
             this.checked = true; //checked 처리
 		 }
 	 }); 
-	$(".form-check-input").click(function(){ 
+	$(".form-check-input").click(function(){
 		var str = "";
 		$(".form-check-input").each(function(){
 			if($(this).is(":checked"))

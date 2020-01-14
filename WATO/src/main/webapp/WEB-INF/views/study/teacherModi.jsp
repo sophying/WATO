@@ -243,7 +243,7 @@ background:#5a7fa2;
                              </div>
                       </div>
 
- <!-- day -->     <input type="hidden" class="form-control" name="t_day" id="schedule" />
+ <!-- day -->     <input type="hidden" class="form-control" name="t_day" id="schedule" value="${listOne.t_day }"/>
 
                    <!-- 우편번호 찾기 API -->
                    <div class="form-group">
