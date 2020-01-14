@@ -7,8 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
-import com.king.myapp.domain.TeacherEnrollVO;
 
 @Repository
 public class StudyEnrollDAOImpl implements StudyEnrollDAO {
@@ -44,6 +44,36 @@ public class StudyEnrollDAOImpl implements StudyEnrollDAO {
 	@Override
 	public void update(StudyEnrollVO studyVO) throws Exception {
 		sql.update("study.s_modify", studyVO);
+	}
+
+	// 댓글 등록
+	@Override
+	public void replyInsert(StudentReplyVO replyVO) throws Exception {
+		sql.insert("study.s_replyInsert",replyVO);
+	}
+
+	// 댓글 불러오기 
+	@Override
+	public List<StudentReplyVO> replyRead(int s_no) throws Exception {
+		return sql.selectList("study.s_replyRead",s_no);
+	}
+
+	//상세보기 삭제 
+	@Override
+	public void studyDelete(int s_no) throws Exception {
+		sql.delete("study.s_delete", s_no);
+	}
+
+	// 상세보기 댓글 수정
+	@Override
+	public void replyUpdate(StudentReplyVO replyVO) throws Exception {
+		sql.update("study.s_replyUpdate", replyVO);
+	}
+
+	// 상세보기 댓글 삭제 
+	@Override
+	public void replyDelete(int r_no) throws Exception {
+		sql.delete("study.s_replyDelete", r_no);
 	}
 
 

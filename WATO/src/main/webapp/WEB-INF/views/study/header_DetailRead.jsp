@@ -597,7 +597,7 @@
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
 								<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
-										<form role="from" method="post" action="./detailReply.do"> 
+										<form role="from" method="post" action="./t_detailReply.do"> 
 											<table class="justify-content-center d-inline-block w-100">
 												<tr>
 													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">Q&A</font><font size="4"></font></td>
@@ -619,32 +619,6 @@
 									</div>
 								</div>		
 							</div>
-							
-							<!-- <div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top">
-								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-3 justify-content-center" >
-										<form role="from" method="post" action="study/detailReply.do">
-											<table class="justify-content-center d-inline-block">
-												<tr>
-													<td rowspan="5" class="pr-5"><font size="5"> Q&A</font></td>
-												</tr> 
-												<tr>
-													<td>
-														<textarea id="form7" name="t_content" style="width:500px; height:155px;" class="md-textarea form-control" rows="10" cols="30" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
-													</td>
-												</tr>
-											</table>
-											<div class="d-inline-block w-25">
-											</div>				
-										</form>
-									</div>
-								</div>		
-							</div> -->
 					</div>    
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->  
 						

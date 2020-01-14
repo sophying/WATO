@@ -153,7 +153,7 @@ public class TeacherenrollController {
 		
 	}	
 	
-	// 6.
+	// 6. 강의 내용 수정 글 등록
 	@RequestMapping(value = "/teacherModi.do", method = RequestMethod.POST)
 	public String postModify(@RequestParam("t_no") int t_no, TeacherEnrollVO teacherVO) throws Exception{
 		
@@ -164,8 +164,8 @@ public class TeacherenrollController {
 		return "redirect:/study/header_DetailRead?t_no="+t_no;
 		 
 	}
-	// 6.
-	@RequestMapping(value = "/detailReply.do", method = RequestMethod.POST)
+	// 7. 상세페이지 댓글등록
+	@RequestMapping(value = "/t_detailReply.do", method = RequestMethod.POST)
 	public String postReply(@RequestParam("t_no") int t_no, TeacherReplyVO replyVO, TeacherEnrollVO teacherVO) throws Exception{
 		
 		logger.info("--------------[ 강의 댓글 내용 등록  POST ]-----------------");		
@@ -176,7 +176,7 @@ public class TeacherenrollController {
 		
 	}
 	
-	// 삭제 
+	// 상세페이지 삭제 
 	@RequestMapping(value = "/teacherDelete", method = RequestMethod.GET)
 	public String postDelete(@RequestParam("t_no") int t_no) throws Exception{
 		logger.info("--------------[ 내용 삭제  POST ]-----------------");				

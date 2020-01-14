@@ -121,43 +121,43 @@ background:#5a7fa2;
                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                 	<!-- 월요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                      <input type="checkbox" class="form-check-input" id="mon" name="mon" value="월">
+                      <input type="checkbox" class="form-check-input" id="mon" value="월">
                       <label class="form-check-label" for="mon">월</label>
                     </div>
 
                     <!-- 화요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="tue"name="tue" value="화" >
+                        <input type="checkbox" class="form-check-input" id="tue" value="화" >
                         <label class="form-check-label" for="tue">화</label>
                     </div>
 
                     <!-- 수요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="wed"name="wed" value="수">
+                        <input type="checkbox" class="form-check-input" id="wed" value="수">
                         <label class="form-check-label" for="wed">수</label>
                     </div>
                     
                     <!-- 목요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="thu" name="thu"value="목">
+                        <input type="checkbox" class="form-check-input" id="thu" value="목">
                         <label class="form-check-label" for="thu">목</label>
                     </div>
                     
                     <!-- 금요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="fri" name="fri"value="금">
+                        <input type="checkbox" class="form-check-input" id="fri" value="금">
                         <label class="form-check-label" for="fri">금</label>
                     </div>
                     
                     <!--  토요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sat"name="sat" value="토">
+                        <input type="checkbox" class="form-check-input" id="sat" value="토">
                         <label class="form-check-label" for="sat">토</label>
                     </div>
                     
                     <!-- 일요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sun" name="sun"value="일">
+                        <input type="checkbox" class="form-check-input" id="sun" value="일">
                         <label class="form-check-label" for="sun">일</label>
                     </div>
                   </div>
@@ -321,7 +321,7 @@ background:#5a7fa2;
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="sophy">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
- <!-- day -->               <input type="hidden" class="form-control" name="t_day" id="schedule" />
+ <!-- day -->               <input type="hidden" class="form-control" name="t_day" id="schedule" value="" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
           </div> 
@@ -411,7 +411,7 @@ function isNumber(checkValue) {
 /* null 확인  */
 	 var t_category = document.getElementById('category');
 	 var t_title = document.getElementById('stitle');
-	 var t_day = document.getElementById('nullText');
+	 var t_day = document.getElementById('schedule');
 	 var t_price = document.getElementById('t_price');
 	 
 	 
@@ -568,54 +568,57 @@ function isNumber(checkValue) {
 		 
 // 이미지 버튼___________________________________________________________
 
-	  var photo = document.getElementById("input_img");
-	  var photoSrc = photo.getAttribute('src');  
-	  document.getElementById('photoval').value = photoSrc;
-	 
-	
-	  var img0 = $('#img_btn_0').attr('src');
-	  var img1 = $('#img_btn_1').attr('src');
-	  var img2 = $('#img_btn_2').attr('src');
-	  var img3 = $('#img_btn_3').attr('src');
-	  var img4 = $('#img_btn_4').attr('src');
-	  var img5 = $('#img_btn_5').attr('src');
-	
-	  $('#img_btn_0').on({'click': function(){
-	        $('#input_img').attr('src',img0);
-	        document.getElementById("category").value = "직접입력";
-	        $('input #category').text("기타");
-	     }
-	 });
-	  $('#img_btn_1').on({'click': function(){
-	        $('#input_img').attr('src',img1);
-	        document.getElementById("category").value = "자바";
-	     }
-	 });
-	
-	 $('#img_btn_2').on({'click': function(){
-	        $('#input_img').attr('src',img2);
-	        document.getElementById("category").value = "자바스크립트";
-	        alert(document.getElementById("category").value);
-	    }
-	});
-	
-	$('#img_btn_3').on({'click': function(){
-	       $('#input_img').attr('src',img3);
-	       document.getElementById("category").value = "C언어";
-	   }
-	});
-	
-	$('#img_btn_4').on({'click': function(){
-	       $('#input_img').attr('src',img4);
-	       document.getElementById("category").value = "파이썬";
-	   }
-	 });
-	
-	$('#img_btn_5').on({'click': function(){
-	       $('#input_img').attr('src',img5);
-	       document.getElementById("category").value = "안드로이드";
-	   }
-	});
+		/*   var photo = document.getElementById("input_img");
+		  var photoSrc = photo.getAttribute('src');
+		  document.getElementById('photoval').value = photoSrc; */
+
+
+		  var img0 = $('#img_btn_0').attr('src');
+		  var img1 = $('#img_btn_1').attr('src');
+		  var img2 = $('#img_btn_2').attr('src');
+		  var img3 = $('#img_btn_3').attr('src');
+		  var img4 = $('#img_btn_4').attr('src');
+		  var img5 = $('#img_btn_5').attr('src');
+
+		  $('#img_btn_0').on({'click': function(){
+		        $('#input_img').attr('src',img0);
+		        document.getElementById("category").value = "직접입력";
+		     }
+		 });
+		  $('#img_btn_1').on({'click': function(){
+		        $('#input_img').attr('src',img1);
+		        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		        document.getElementById("category").value = "자바";
+		     }
+		 });
+
+		 $('#img_btn_2').on({'click': function(){
+		        $('#input_img').attr('src',img2);
+		        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		        document.getElementById("category").value = "자바스크립트";
+		    } 
+		});
+
+		$('#img_btn_3').on({'click': function(){
+		       $('#input_img').attr('src',img3);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "C언어";
+		   }
+		});
+
+		$('#img_btn_4').on({'click': function(){
+		       $('#input_img').attr('src',img4);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "파이썬";
+		   }
+		 });
+
+		$('#img_btn_5').on({'click': function(){
+		       $('#input_img').attr('src',img5);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "안드로이드";
+		   }
+		});
 
 });
 </script>

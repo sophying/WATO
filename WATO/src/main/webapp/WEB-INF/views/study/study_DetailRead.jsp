@@ -187,7 +187,7 @@
 		color: #fff;
 	}
 	
-	.q_aButton{
+	.qnaButton{
 		border:none;
 		background-color: #5a7fa2;
 		color: #fff;
@@ -197,6 +197,7 @@
 		line-height: 40px;
 		text-align: center;
 		font-size: 15pt;
+		margin-top:20px;
 	}
 	
 	.goButton{
@@ -251,6 +252,11 @@
 	  font-size: 12px;
 	  line-height: 1.42857;
 	}
+	#r_content{
+		height: auto;
+		widows: 75%;
+	}
+
 </style>
 <body>
 <!-- @@@@@@@@ 헤더 시작 @@@@@@@@ -->
@@ -465,7 +471,9 @@
 									<label for="name" class="pb-3 row m-0 text-justify w-100  cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
 										<font size="8">${listOne.s_title }</font>
 									</label>
-<!--  내용 수정 -->				<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-block justify-content-center mt-2 mb-2" value="수정"/></a>
+									
+<!--  내용 수정 -->				<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>
+<!--  내용 삭제 -->				<a href="studentDelete?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/></a>	
 							</div>	
 							<div class="h-75 container d-inline-block border-top"> 
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center">
@@ -537,110 +545,86 @@
 							</div>
 							
 	<!-- @@@@@@@@ //// 댓글 ( Q & A ) 작성  /// @@@@@@@@ -->	
-							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block ">
-									<label id="QnA"for="name" class="pb-3 row m-0 text-justify w-100 border-top cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
-										<font size="6">현재 스터디에 궁금한 점을 남겨주세요!</font>
-									</label>
-								<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
-											<table class="justify-content-center d-inline-block w-100">
-												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">USERID</font><font size="4"> 님</font></td>
-													<td colspan="5" >
-														<pre style="width:700px; height: 200px;"><font size="4">물리학과 전공 후  머신러닝 관련 개발을 약 15년 진행해 오다, 우연히 강의를 하며 학생들의 고충을 듣게 되었습니다. 사실 기관을 빌려 저의 노하우를 전해드리고자하니, 
-비용적인 부분도 부담될터,,,그리하여 제가 이런 좋은 사이트를 통해 머신러닝을 쉽게 배우길 원하시는 소수의 분들을 위해 모임을 개설하고자 합니다. 
-일반 스터디 모임과는 다르게 제가 강의하여 여러분들이 함께 실습을 해 나가는 방식입니다.물리학과 전공 후  머신러닝 관련 개발을 약 15년 진행해 오다, 우연히 강의를 하며 학생들의 고충을 듣게 되었습니다. 사실 기관을 빌려 저의 노하우를 전해드리고자하니, 
-비용적인 부분도 부담될터,,,그리하여 제가 이런 좋은 사이트를 통해 머신러닝을 쉽게 배우길 원하시는 소수의 분들을 위해 모임을 개설하고자 합니다. 
-일반 스터디 모임과는 다르게 제가 강의하여 여러분들이 함께 실습을 해 나가는 방식입니다.물리학과 전공 후  머신러닝 관련 개발을 약 15년 진행해 오다, 우연히 강의를 하며 학생들의 고충을 듣게 되었습니다. 사실 기관을 빌려 저의 노하우를 전해드리고자하니, 
-비용적인 부분도 부담될터,,,그리하여 제가 이런 좋은 사이트를 통해 머신러닝을 쉽게 배우길 원하시는 소수의 분들을 위해 모임을 개설하고자 합니다. 
-일반 스터디 모임과는 다르게 제가 강의하여 여러분들이 함께 실습을 해 나가는 방식입니다.물리학과 전공 후  머신러닝 관련 개발을 약 15년 진행해 오다, 우연히 강의를 하며 학생들의 고충을 듣게 되었습니다. 사실 기관을 빌려 저의 노하우를 전해드리고자하니, 
-비용적인 부분도 부담될터,,,그리하여 제가 이런 좋은 사이트를 통해 머신러닝을 쉽게 배우길 원하시는 소수의 분들을 위해 모임을 개설하고자 합니다. 
-일반 스터디 모임과는 다르게 제가 강의하여 여러분들이 함께 실습을 해 나가는 방식입니다.
-														</font></pre>
-													<td>
-												</tr>
-												
-												
-											</table>
-											<div class="d-inline-block w-25">
-											</div>				
-									</div>
-								</div>		
-							</div>
-							
+							<c:forEach var="reply" items="${reply}">
+								<c:choose>
+									<c:when test="${(listOne.s_userId).equals(reply.r_userid)}">
+										<form  id="replyForm"action="./replyModify" method="post">
+											<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: orange;">
+												<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
+													<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
+															<table class="justify-content-center d-inline-block w-100">
+																<tr>
+																	<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
+																	<td colspan="5" >
+																		<textarea rows="10" cols="100" id="r_content" name="r_content" readonly="readonly">${reply.r_content}</textarea>
+			<input type="button" id="modiReButton" onclick="clickEvnet(this)" class="modiReButton d-inline-block" value="수정하기"/>
+			<a href="./replyDelete">삭제하기</a>
+			<input type="hidden" name="s_no" value="${reply.s_no }"/>
+			<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																	<td> 
+																	<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>
+																</tr>
+															</table>
+													</div>
+												</div>		
+											</div>
+										</form>
+									</c:when>
+									<c:otherwise>
+									<form id="replyForm"  action="./replyModify" method="post">
+										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top "> 
+												<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
+													<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
+															<table class="justify-content-center d-inline-block w-100">
+																<tr>
+																	<td rowspan="5" class="pr-5 w-25 h-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
+																	<td colspan="5" >
+																		<textarea rows="10" cols="100" id="r_content" name="r_content" readonly="readonly">${reply.r_content}</textarea>
+																	<td> 
+																</tr>
+																<tr>
+																	<td>
+	
+	<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
+	<a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a>
+	<input type="hidden" name="s_no" value="${reply.s_no }"/>
+	<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																	</td>
+																</tr>
+															</table>
+													</div>
+												</div>		
+											</div>
+										</form>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach> 
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
-									
 								<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
+										<form role="from" method="post" action="./s_detailReply.do"> 
 											<table class="justify-content-center d-inline-block w-100">
 												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">USERID</font><font size="4"> 님</font></td>
+													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">Q&A</font><font size="4"></font></td>
 													<td colspan="5" >
-														<pre style="width:700px; height: 200px;"><font size="4">자바 전공 학생인데 머신 러닝도 관심이 있습니다. 이론을 전혀모르는데 괜찮은가요??
-														</font></pre>
-													<td>
-												</tr>
-												
-												
-											</table>
-									</div>
-								</div>		
-							</div>
-							
-							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block  border-top">
-								<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
-											<table class="justify-content-center d-inline-block w-100">
-												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">USERID</font><font size="4"> 님</font></td>
-													<td colspan="5" >
-														<pre style="width:700px; height: 200px;">물리학과 전공 후  머신러닝 관련 개발을 약 15년 진행해 오다, 우연히 강의를 하며 학생들의 고충을 듣게 되었습니다. 사실 기관을 빌려 저의 노하우를 전해드리고자하니, 
-비용적인 부분도 부담될터,,,그리하여 제가 이런 좋은 사이트를 통해 머신러닝을 쉽게 배우길 원하시는 소수의 분들을 위해 모임을 개설하고자 합니다. 
-일반 스터디 모임과는 다르게 제가 강의하여 여러분들이 함께 실습을 해 나가는 방식입니다.
-														</pre>
-													<td>
-												</tr>
-												
-												
-											</table>
-											<div class="d-inline-block w-25">
-											</div>				
-									</div>
-								</div>		
-							</div>
-							
-							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top">
-								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-3 justify-content-center" >
-										<form action="">
-											<table class="justify-content-center d-inline-block">
-												<tr>
-													<td rowspan="5" class="pr-5"><font size="5"> Q&A</font></td>
-												</tr>
+														<textarea id="form7" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+													<td>    
+												</tr>   
 												<tr>
 													<td>
-														<textarea id="form7" name="t_content" style="width:500px; height:155px;" class="md-textarea form-control" rows="10" cols="30" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
-													</td>
-												</tr>
-												<tr class="d-flex justify-content-end mt-2 mb-2">
-													<td>비밀번호</td>
-													<td>
-														<input type="text" id="userPass" />
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<input type="submit" id="q_aButton" class="q_aButton" value="질문하기"/>
-													</td>
+														<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
+													</td> 
 												</tr>
 											</table>
-											<div class="d-inline-block w-25">
-											</div>				
+											<input type="hidden" name="s_no" value="${listOne.s_no}" />
+											<input type="hidden" name="r_userid" value="hello"/>
 										</form>
 									</div>
 								</div>		
 							</div>
-							<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
+					</div>    
+					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
+	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
 				<aside class="d-inline-block w-25 rounded-sm " >
 					<div  class="form-group container-fluid ">
 							<div class="cols-sm-1 d-inline-block d-flex justify-content-center">
@@ -771,7 +755,47 @@ _________________________________________________________
 <script src="../resource/js/front.js"></script>
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
-<script type="text/javascript">
+<script>
+
+		function clickEvnet(obj){
+		
+			if ($(obj).val()== "수정하기") {
+				$(obj).val("수정등록");
+				$(obj).parent().parent().prev().children().next().children().attr('readonly', false);
+				$(obj).parent().parent().prev().children().next().children().css("background-color", "#ddddee33");
+				
+			}else if ($(obj).val()== "수정등록") {
+				$(obj).val("수정하기");
+				$(obj).parent().parent().prev().children().next().children().attr('readonly', true);
+				$(obj).parent().parent().prev().children().next().children().css("background-color", "#fff");
+				$('#replyForm').submit();
+			}
+			
+		}
+		
+		
+	$(document).ready(function () {
+	
+		/* $('#modiReButton').click(function () {
+			
+			document.getElementById('modiReButton').value="수정완료";
+			
+			$('#r_content').attr('readonly', false);
+				$('#r_content').css("background-color", "#ddddee33");
+				
+				if (document.getElementById('modiReButton').value == "수정완료") {
+					
+					$('#modiReButton').click(function () {
+						
+						document.getElementById('modiReButton').value="수정하기";
+						$('#r_content').attr('readonly', true);
+						$('#r_content').css("background-color", "#fff");
+					});
+			
+				};
+		
+		});  */
+	});
 
 </script>
 </body>

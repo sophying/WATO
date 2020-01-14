@@ -50,7 +50,7 @@
 </style>
 </head>
 <body>
-<form name="studyForm"class="form-horizontal" role="form" method="post" action="/study/studentEnroll">
+<form name="studyForm"class="form-horizontal" role="form" method="post" action="/study/studentModify">
 <div class="container  mx-auto">
 <!-- <1> image Enroll -->
   <div class="row mt-3 justify-content-md-center">
@@ -266,7 +266,9 @@
   <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="sophy"/>
   <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value=""> 
   <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >
+  <!-- s_no -->          <input type="hidden" name="s_no" id="s_no" value="${listOne.s_no }" >
   <!-- s_day -->			<input type="hidden" name="s_day"  class="form-control" id="schedule"  value="${listOne.s_day }" />
+  
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
 
@@ -293,88 +295,56 @@ $(document).ready(function($){
 
 
 
-$('#enroll_btn').click(function(){
+	// 등록 버튼  					
+	 $('#enroll_btn').click(function(){
+		  var road =  document.getElementById('roadAddress').value; 
+		  var jibun =  document.getElementById('jibunAddress').value;
+		  
+		  var Place = road+"/"+jibun;
+		  document.getElementById('Place').value = Place; 
+	 
 
+	/* null 확인  */
+		 var s_category = document.getElementById('category');
+		 var s_title = document.getElementById('stitle');
+		 var s_day = document.getElementById('schedule');
+		 
+		 
+		 if ((s_category.value == null || s_category.value == "")) {
+			
+			 $('#s_category').css('color','red');
+			 $('#s_category').text("카테고리를 작성하십시오.");
+			 
+			 
+	
+			 
+			 
+		}
+		 if ( s_title.value == null || s_title.value =="") {
+				$('#s_title').css('color','red');
+				$('#s_title').text("주제를 작성하십시오.");
+				
+				
+	
+		}
+		 
+		 if (s_day.value == null || s_day.value == "") {
+			 $('#nullText').css('color','red');
+			$('#nullText').text("구체적인 날짜를 정해주십시오.");
+			
+		}
+		 
 
-   var road =  document.getElementById('roadAddress').value;
-   var jibun =  document.getElementById('jibunAddress').value;
-
-   var s_place = road+"( "+jibun+" )";
-   document.getElementById('Place').value = s_place;
-
-
-/* null 확인  */
-  var s_category = document.getElementById('category');
-  var s_title = document.getElementById('stitle');
-  var s_day = document.getElementById('schedule');
-
-
-  if ((s_category.value == null || s_category.value == "")) {
-
-		 $('#s_category').css('color','red');
-		 $('#s_category').text("카테고리를 작성하십시오.");
-	  
-  /*   $('#category').css('color','red');
-    t_category.value ="카테고리를 작성하십시오.";
-
-    $('#category').focus(function(){
-
-      if ( s_category.value=="카테고리를 작성하십시오.") {
-        s_category.value="";
-     }
-       $('#s_category').css('color','black');
-
-      });
-
-    $('#category').blur(function(){
-
-      if (t_category.value == null || t_category.value == "") {
-       t_category.value = "카테고리를 작성하십시오";
-       $('#category').css('color','red');
-
-     }
-
-      }); */
-
-
- }
-  if ( s_title.value == null || s_title.value =="") {
-     $('#s_title').css('color','red');
-     $('#s_title').text("강의주제를 작성하십시오.");
-
-     /*  $('#s_title').focus(function(){
-
-        if ( s_title.value=="강의주제를 작성하십시오.") {
-          s_title.value="";
-       }
-         $('#s_title').css('color','black');
-
-        });
-
-      $('#s_title').blur(function(){
-
-        if (s_title.value == null || s_title.value == "") {
-          s_title.value = "강의주제를 작성하십시오";
-         $('#s_title').css('color','red');
-
-       }
-
-        }); */
- }
-
-  if (s_day.value == null || s_day.value == "") {
-    $('#nullText').css('color','red');
-   $('#nullText').text("구체적인 날짜를 정해주십시오.");
-
- }
-  if ($('#start').val() > $('#end').val()) {
-		alert('날짜를 다시 입력해주세요');
-	}
-  if (s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "강의주제를 작성하십시오."&& s_title.value != null && s_title.value !=""&&$('#start').val() > $('#end').val() ) {
-   document.studyForm.submit();
- }
-
-});
+		
+		 if ($('#start').val() > $('#end').val()) {
+				alert('날짜를 다시 입력해주세요');
+			}
+		 
+		 if (s_day.value != null || s_day.value != ""&& s_day.value !="구체적인 날짜를 정해주십시오." && s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "주제를 작성하십시오."&& s_title.value != null && s_title.value !="" && !($('#start').val() > $('#end').val()) ) {
+			document.studyForm.submit();
+		}
+	 
+	 });
 
 
 
@@ -456,9 +426,9 @@ $('#enroll_btn').click(function(){
 
 // 이미지 버튼___________________________________________________________
 
-  var photo = document.getElementById("input_img");
+/*   var photo = document.getElementById("input_img");
   var photoSrc = photo.getAttribute('src');
-  document.getElementById('photoval').value = photoSrc;
+  document.getElementById('photoval').value = photoSrc; */
 
 
   var img0 = $('#img_btn_0').attr('src');
@@ -475,30 +445,35 @@ $('#enroll_btn').click(function(){
  });
   $('#img_btn_1').on({'click': function(){
         $('#input_img').attr('src',img1);
+        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
         document.getElementById("category").value = "자바";
      }
  });
 
  $('#img_btn_2').on({'click': function(){
         $('#input_img').attr('src',img2);
+        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
         document.getElementById("category").value = "자바스크립트";
     } 
 });
 
 $('#img_btn_3').on({'click': function(){
        $('#input_img').attr('src',img3);
+       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
        document.getElementById("category").value = "C언어";
    }
 });
 
 $('#img_btn_4').on({'click': function(){
        $('#input_img').attr('src',img4);
+       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
        document.getElementById("category").value = "파이썬";
    }
  });
 
 $('#img_btn_5').on({'click': function(){
        $('#input_img').attr('src',img5);
+       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
        document.getElementById("category").value = "안드로이드";
    }
 });

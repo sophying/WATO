@@ -560,54 +560,57 @@ function AddComma(dataValue) {
 
 // 이미지 버튼___________________________________________________________
 
-	  var photo = document.getElementById("input_img");
-	  var photoSrc = photo.getAttribute('src');  
-	  document.getElementById('photoval').value = photoSrc;
-	 
-	
-	  var img0 = $('#img_btn_0').attr('src');
-	  var img1 = $('#img_btn_1').attr('src');
-	  var img2 = $('#img_btn_2').attr('src');
-	  var img3 = $('#img_btn_3').attr('src');
-	  var img4 = $('#img_btn_4').attr('src');
-	  var img5 = $('#img_btn_5').attr('src');
-	
-	  $('#img_btn_0').on({'click': function(){
-	        $('#input_img').attr('src',img0);
-	        document.getElementById("category").value = "직접입력";
-	        $('input #category').text("기타");
-	     }
-	 });
-	  $('#img_btn_1').on({'click': function(){
-	        $('#input_img').attr('src',img1);
-	        document.getElementById("category").value = "자바";
-	     }
-	 });
-	
-	 $('#img_btn_2').on({'click': function(){
-	        $('#input_img').attr('src',img2);
-	        document.getElementById("category").value = "자바스크립트";
-	        alert(document.getElementById("category").value);
-	    }
-	});
-	
-	$('#img_btn_3').on({'click': function(){
-	       $('#input_img').attr('src',img3);
-	       document.getElementById("category").value = "C언어";
-	   }
-	});
-	
-	$('#img_btn_4').on({'click': function(){
-	       $('#input_img').attr('src',img4);
-	       document.getElementById("category").value = "파이썬";
-	   }
-	 });
-	
-	$('#img_btn_5').on({'click': function(){
-	       $('#input_img').attr('src',img5);
-	       document.getElementById("category").value = "안드로이드";
-	   }
-	});
+		/*   var photo = document.getElementById("input_img");
+		  var photoSrc = photo.getAttribute('src');
+		  document.getElementById('photoval').value = photoSrc; */
+
+
+		  var img0 = $('#img_btn_0').attr('src');
+		  var img1 = $('#img_btn_1').attr('src');
+		  var img2 = $('#img_btn_2').attr('src');
+		  var img3 = $('#img_btn_3').attr('src');
+		  var img4 = $('#img_btn_4').attr('src');
+		  var img5 = $('#img_btn_5').attr('src');
+
+		  $('#img_btn_0').on({'click': function(){
+		        $('#input_img').attr('src',img0);
+		        document.getElementById("category").value = "직접입력";
+		     }
+		 });
+		  $('#img_btn_1').on({'click': function(){
+		        $('#input_img').attr('src',img1);
+		        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		        document.getElementById("category").value = "자바";
+		     }
+		 });
+
+		 $('#img_btn_2').on({'click': function(){
+		        $('#input_img').attr('src',img2);
+		        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		        document.getElementById("category").value = "자바스크립트";
+		    } 
+		});
+
+		$('#img_btn_3').on({'click': function(){
+		       $('#input_img').attr('src',img3);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "C언어";
+		   }
+		});
+
+		$('#img_btn_4').on({'click': function(){
+		       $('#input_img').attr('src',img4);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "파이썬";
+		   }
+		 });
+
+		$('#img_btn_5').on({'click': function(){
+		       $('#input_img').attr('src',img5);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "안드로이드";
+		   }
+		});
 
 });
 </script>
