@@ -14,6 +14,12 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
+<!-- kakao map api key (최성웅 appkey)-->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
+
+
+
+
 <style media="screen">
 	body{
 	 background-color: #e0e0e0;
@@ -257,29 +263,76 @@ background:#5a7fa2;
                        <div class="d-inline row mx-md-n6">
                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                                <!--  <input type="text" class="form-control" name="schedule" id="schedule" placeholder="함께 모일 장소를 알려주세요!" /> -->
-                                <input type="button" class="btn btn-primary box " id="execDaumPostcode" value="우편번호 찾기">
+                              
+                                <input type="button" class="btn btn-primary box " value="주소 검색" onclick="sample3_execDaumPostcode()">
                          </div>
                           
+                          
+                          <!--  post 우편번호 --> 
                           <div class="cols-sm-10">
                             <div class="input-group mt-1 mb-1">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-<!-- post 우편번호 -->            <input type="text" class="form-control" id="postcode" name="t_postnum" placeholder="우편번호" required>
+					            <input type="text" class="form-control" id="sample3_postcode" name="t_postnum" placeholder="우편번호" required>
                             </div>
                           </div>
+                          
+                          <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text"  class="form-control" id="roadAddress" placeholder="도로명주소" required>
+                                <input type="text"  class="form-control" id="sample3_address" placeholder="도로명/지번주소" required>
                             </div>
                           </div>
+                          
+                          <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" id="jibunAddress" placeholder="지번주소" required>
+                                <input type="text" class="form-control" id="sample3_detailAddress" placeholder="상세주소" required>
                            </div>
                           </div>
-                    </div>
+                          
+                          <div class="cols-sm-10 mb-1">
+                            <div class="input-group">
+                              <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" id="sample3_extraAddress" placeholder="참고항목" required>
+                           </div>
+                          </div>
+                        
+                        <%--주소 검색 iframe wrap 공간--%>
+                          <div class="cols-sm-10 mb-1">
+                       	 	<div class="input-group">
+								<div id="wrap" style="display:none;
+											border:1px solid;
+											width:500px;
+											height:300px;
+											margin:5px 0;
+											position:relative">
+    						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
+    					style="cursor:pointer;
+    					position:absolute;
+    					right:0px;
+    					top:-1px;
+    					z-index:1" 
+    					onclick="foldDaumPostcode()" alt="접기 버튼">
+    							</div>
+							</div>
+                          </div>
+                        
                     <!-- 우편번호 찾기 API -->
+                    
+                    <%--kakao map API (카카오 지도)--%>
+                    	<div class="cols-sm-10 mb-1">
+                    		<div class="input-group">
+								<div id="map" style="width:500px;height:400px;"></div>
+							</div>
+						</div>  
+                          
+                    </div>
+                    
+             
+					
+					
                     <div class="form-group">
                         <label for="info" class="cols-sm-2 control-label font-weight-bold">강사님을 소개해주세요!</label>
                            <div class="cols-sm-10 " >
@@ -333,9 +386,136 @@ background:#5a7fa2;
 
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>   
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<!-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 기존 혜련씨 다음우편번호 api script -->
+
+<!-- kakao 우편번호 검색 api -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 
+/* kakao map + 우편번호 검색 (작성자 : 최성웅) 시작 
+혜련씨 우편번호 검색은 아래의 혜련씨 코드로 주석처리함.*/
+
+//kakao map컨테이너 생성 : 위의 div태그 (id='map')
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            level: 5 // 지도의 확대 레벨
+        };
+
+    //지도를 미리 생성
+    var map = new daum.maps.Map(mapContainer, mapOption);
+    
+    //주소-좌표 변환 객체를 생성
+    var geocoder = new daum.maps.services.Geocoder();
+    
+    //마커를 미리 생성
+    var marker = new daum.maps.Marker({
+        position: new daum.maps.LatLng(37.537187, 127.005476),
+        map: map
+    });
+    
+    // 우편번호 찾기 찾기 화면을 넣을 element
+    var element_wrap = document.getElementById('wrap');
+
+    function foldDaumPostcode() {
+        // iframe을 넣은 element를 안보이게 한다.
+        element_wrap.style.display = 'none';
+    }
+
+    
+    /* 주소 검색 버튼 클릭 시 실행할 메소드 */
+    function sample3_execDaumPostcode() {
+        // 현재 scroll 위치를 저장해놓는다.
+        var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = data.address; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                // 주소로 상세 정보를 검색
+                geocoder.addressSearch(data.address, function(results, status) {
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === daum.maps.services.Status.OK) {
+
+                        var result = results[0]; //첫번째 결과의 값을 활용
+
+                        // 해당 주소에 대한 좌표를 받아서
+                        var coords = new daum.maps.LatLng(result.y, result.x);
+                        // 지도를 보여준다.
+                        mapContainer.style.display = "block";
+                        map.relayout();
+                        // 지도 중심을 변경한다.
+                        map.setCenter(coords);
+                        // 마커를 결과값으로 받은 위치로 옮긴다.
+                        marker.setPosition(coords)
+                    }
+                });
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample3_extraAddress").value = extraAddr;
+
+                } else {
+                    document.getElementById("sample3_extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample3_postcode').value = data.zonecode;
+                document.getElementById("sample3_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample3_detailAddress").focus();
+
+                // iframe을 넣은 element를 안보이게 한다.
+                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+                element_wrap.style.display = 'none';
+
+                // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
+                document.body.scrollTop = currentScroll;
+            },
+            // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
+            onresize : function(size) {
+                element_wrap.style.height ='300px';
+                //element_wrap.style.height = size.height+'px';
+            },
+            width : '100%',
+            height : '100%'
+        }).embed(element_wrap);
+        // iframe을 넣은 element를 보이게 한다.
+        element_wrap.style.display = 'block';
+    }
+
+    /* kakao map + 우편번호 검색 (작성자 : 최성웅) 끝~~~~~~~~~~~~*/
+
+    
+    
+    
+    
+    
 $(document).ready(function($){
 
 // 조건_____________  
@@ -496,6 +676,7 @@ function isNumber(checkValue) {
   
 // 우편번호 검색 ___________________________________________________________
 
+/*혜련씨 코드 
 	  $("#execDaumPostcode").click(function sample4_execDaumPostcode() {
 	      new daum.Postcode(
 	              {
@@ -549,8 +730,34 @@ function isNumber(checkValue) {
 	                      }
 	                  }
 	              }).open();
-	  });
+	  }); */
 
+	  
+	  
+	  
+	  
+	  
+/*   우편번호 검색 콜백함수.. 추후 쓸모가 있을것 같아 추석처리하였음
+우편번호 찾기 화면을 팝업으로 띄운 후, 검색 결과를 선택하거나, 브라우저의 닫기버튼을 통해 닫았을 때 발생하는 콜백 함수를 정의하는 부분입니다. 이 중 검색결과를 선택한 경우에는 onComplete콜백함수가 완료된 후에 실행되게 됩니다.
+이 함수를 정의할때 넣는 인자에는 우편번호 찾기 화면이 어떻게 닫혔는지에 대한 상태 변수가 들어가게 됩니다.
+(embed() 함수를 이용한 레이어모드에서는 "검색결과를 선택하여 닫힌 경우"에만 실행됩니다.)	  
+
+	  new daum.Postcode({
+		    onclose: function(state) {
+		        //state는 우편번호 찾기 화면이 어떻게 닫혔는지에 대한 상태 변수 이며, 상세 설명은 아래 목록에서 확인하실 수 있습니다.
+		        if(state === 'FORCE_CLOSE'){
+		            //사용자가 브라우저 닫기 버튼을 통해 팝업창을 닫았을 경우, 실행될 코드를 작성하는 부분입니다.
+			System.out.print("hello11");
+
+		        } else if(state === 'COMPLETE_CLOSE'){
+		        	
+			System.out.print("hello22");
+		        	//사용자가 검색결과를 선택하여 팝업창이 닫혔을 경우, 실행될 코드를 작성하는 부분입니다.
+		            //oncomplete 콜백 함수가 실행 완료된 후에 실행됩니다.
+		        }
+		    }
+		});  
+	   */
 
 // 요일 선택___________________________________________________________
 
