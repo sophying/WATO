@@ -123,47 +123,48 @@ background:#5a7fa2;
                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                 	<!-- 월요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-              
-                      <input type="checkbox" class="form-check-input" id="mon" name="mon" value="월">
+              		
+                      <input type="checkbox" class="form-check-input" id="mon"   value="${mon}">
                       <label class="form-check-label" for="mon">월</label>
+                      
                     </div>
 
                     <!-- 화요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="tue" name="tue" value="화" >
+                        <input type="checkbox" class="form-check-input" id="tue"  value="${tue}" >
                         <label class="form-check-label" for="tue">화</label>
                     </div>
 
                     <!-- 수요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="wed" name="wed"  value="수">
+                        <input type="checkbox" class="form-check-input" id="wed"  value="${web}">
                         <label class="form-check-label" for="wed">수</label>
                     </div>
                     
                     <!-- 목요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="thu" name="thu" value="목">
+                        <input type="checkbox" class="form-check-input" id="thu" value="${thu}">
                         <label class="form-check-label" for="thu">목</label>
                     </div>
                     
                     <!-- 금요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="fri"name="fri"  value="금">
+                        <input type="checkbox" class="form-check-input" id="fri"value="${fri}">
                         <label class="form-check-label" for="fri">금</label>
                     </div>
                     
                     <!--  토요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sat"name="sat"  value="토">
+                        <input type="checkbox" class="form-check-input" id="sat" value="${sat}">
                         <label class="form-check-label" for="sat">토</label>
                     </div>
                     
                     <!-- 일요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sun" name="sun" value="일">
+                        <input type="checkbox" class="form-check-input" id="sun"  value="${sun}">
                         <label class="form-check-label" for="sun">일</label>
                     </div>
-                  </div>
+                  </div> 
              
                   <label id="nullText" class="cols-sm-2 pt-2 control-label d-flex justify-content-center font-weight-bold">${listOne.t_day}</label> 
               </div>
@@ -207,18 +208,17 @@ background:#5a7fa2;
                         <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
                           		<label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
 	                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-	 <!-- t_level -->               	<select name="t_level" class="selectpicker form-control w-50" >
-										  <option value="입문"selected="selected">입문</option>
+	 									<select name="t_level" id="select-box" class="selectpicker form-control w-50" >
+										  <option value="입문">입문</option>
 										  <option value="초급">초급</option>
-										  <option value="중급">중급</option>
-										  <option value="고급">고급</option>
-										</select>
-										
+										  <option value="중급">중급</option> 
+										  <option value="고급">고급</option> 
+										</select> 
                           		<label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
 	                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 <!-- t_people --> 	       			<input type="text" class="form-control" name="t_people" id="t_people" value="${listOne.t_people }" placeholder="인원을 정해주세요!" />
 	               	
-                      	 </div>
+                      	 </div> 
                       </div>
                       <div class="form-group">
                           <label for="category" class="cols-sm-2 control-label font-weight-bold">카테고리</label>
@@ -243,7 +243,7 @@ background:#5a7fa2;
                              </div>
                       </div>
 
- <!-- day -->                      <input type="hidden" class="form-control" name="t_day" id="schedule" />
+ <!-- day -->     <input type="hidden" class="form-control" name="t_day" id="schedule" value="${listOne.t_day }"/>
 
                    <!-- 우편번호 찾기 API -->
                    <div class="form-group">
@@ -340,10 +340,14 @@ background:#5a7fa2;
 <script type="text/javascript">
 
 $(document).ready(function($){
-
+ 
 // 조건_____________  
-
-
+ 
+	$('#select-box option').each(function() {
+		if (this.value == "${listOne.t_level}") {
+			this.selected = true;
+		}
+	});
 
 // 금액 천단위 
 $(function() {
@@ -463,8 +467,12 @@ function AddComma(dataValue) {
 		$('#price-Text').text('합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])');
 		
 	}
-
-	 if (t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
+	
+	 if ($('#start').val() > $('#end').val()) {
+			alert('날짜를 다시 입력해주세요');
+		}
+	 
+	 if (t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" && !($('#start').val() > $('#end').val()) ) {
 		document.classForm.submit();
 	}
  
@@ -528,10 +536,15 @@ function AddComma(dataValue) {
 	                  }
 	              }).open();
 	  });
-
+ 
 
 // 요일 선택___________________________________________________________
-
+		$('.form-check-input').each(function() {
+		     if(this.value != null && this.value !=""){ //값 비교
+		            this.checked = true; //checked 처리
+		      }
+		 });
+	
 		$(".form-check-input").click(function(){
 			var str = "";  
 			$(".form-check-input").each(function(){ 

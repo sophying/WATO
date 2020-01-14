@@ -3,6 +3,7 @@ package com.king.myapp.service;
 import java.util.List;
 
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherReplyVO;
 
 public interface TeacherEnrollService {
 
@@ -20,6 +21,15 @@ public interface TeacherEnrollService {
 
 	//4. 수정글 등록 
 	public void modify(TeacherEnrollVO teacherVO) throws Exception;
+	// 댓글 목록 
+	public List<TeacherReplyVO> replyRead(int t_no)throws Exception;
+
+	// 댓글 등록 
+	public void replyInsert(TeacherReplyVO replyVO) throws Exception;
+
+	// 삭제
+	public void classDelete(int t_no) throws Exception;
+	
 
 
 }

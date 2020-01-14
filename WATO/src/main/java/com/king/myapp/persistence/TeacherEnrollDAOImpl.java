@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherReplyVO;
 
 @Repository
 public class TeacherEnrollDAOImpl implements TeacherEnrollDAO {
@@ -46,6 +47,23 @@ public class TeacherEnrollDAOImpl implements TeacherEnrollDAO {
 		sql.update("study.t_modify",teacherVO);
 	}
 
+	// 댓글 목록
+	@Override
+	public List<TeacherReplyVO> replyRead(int t_no) throws Exception {
+		return sql.selectList("study.t_replyRead", t_no);
+	}
+
+	// 댓글 등록
+	@Override
+	public void replyInsert(TeacherReplyVO replyVO) throws Exception {
+		sql.insert("study.t_replyInsert", replyVO);
+	}
+
+	// 삭제
+	@Override
+	public void classDelete(int t_no) throws Exception {
+		sql.delete("study.t_delete", t_no);
+	}
 
 
 

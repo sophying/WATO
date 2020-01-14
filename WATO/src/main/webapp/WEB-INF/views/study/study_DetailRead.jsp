@@ -467,7 +467,7 @@
 									</label>
 <!--  내용 수정 -->				<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-block justify-content-center mt-2 mb-2" value="수정"/></a>
 							</div>	
-							<div class="h-75 container d-inline-block border-top">
+							<div class="h-75 container d-inline-block border-top"> 
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center">
 								</div>		
 							</div>

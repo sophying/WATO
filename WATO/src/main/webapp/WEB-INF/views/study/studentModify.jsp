@@ -105,57 +105,57 @@
            <div class="cols-sm-10">
               <div class="input-group d-flex justify-content-center ">
                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                	<!-- 월요일 -->
-                    <div class="form-check form-check-inline cols-sm-2">
-                      <input type="checkbox" class="form-check-input" id="mon" value="월">
-                      <label class="form-check-label" for="mon">월</label>
-                    </div>
-
-                    <!-- 화요일 -->
-                    <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="tue" value="화" >
-                        <label class="form-check-label" for="tue">화</label>
-                    </div>
-
-                    <!-- 수요일 -->
-                    <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="wed" value="수">
-                        <label class="form-check-label" for="wed">수</label>
-                    </div>
-
-                    <!-- 목요일 -->
-                    <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="thu" value="목">
-                        <label class="form-check-label" for="thu">목</label>
-                    </div>
-
-                    <!-- 금요일 -->
-                    <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="fri" value="금">
-                        <label class="form-check-label" for="fri">금</label>
-                    </div>
-
-                    <!--  토요일 -->
-                    <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sat" value="토">
-                        <label class="form-check-label" for="sat">토</label>
-                    </div>
-
-                    <!-- 일요일 -->
-                    <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sun" value="일">
-                        <label class="form-check-label" for="sun">일</label>
-                    </div>
+	                	<!-- 월요일 -->
+	                    <div class="form-check form-check-inline cols-sm-2">
+	                      <input type="checkbox" class="form-check-input" id="mon"   value="${mon}">
+	                      <label class="form-check-label" for="mon">월</label>
+	                    </div>
+	
+	                    <!-- 화요일 -->
+	                    <div class="form-check form-check-inline cols-sm-2">
+	                        <input type="checkbox" class="form-check-input" id="tue"  value="${tue}" >
+	                        <label class="form-check-label" for="tue">화</label>
+	                    </div>
+	
+	                    <!-- 수요일 -->
+	                    <div class="form-check form-check-inline cols-sm-2">
+	                        <input type="checkbox" class="form-check-input" id="wed"  value="${web}">
+	                        <label class="form-check-label" for="wed">수</label>
+	                    </div>
+	                    
+	                    <!-- 목요일 -->
+	                    <div class="form-check form-check-inline cols-sm-2">
+	                        <input type="checkbox" class="form-check-input" id="thu" value="${thu}">
+	                        <label class="form-check-label" for="thu">목</label>
+	                    </div>
+	                    
+	                    <!-- 금요일 -->
+	                    <div class="form-check form-check-inline cols-sm-2">
+	                        <input type="checkbox" class="form-check-input" id="fri"value="${fri}">
+	                        <label class="form-check-label" for="fri">금</label>
+	                    </div>
+	                    
+	                    <!--  토요일 -->
+	                    <div class="form-check form-check-inline cols-sm-2">
+	                        <input type="checkbox" class="form-check-input" id="sat" value="${sat}">
+	                        <label class="form-check-label" for="sat">토</label>
+	                    </div>
+	                    
+	                    <!-- 일요일 -->
+	                    <div class="form-check form-check-inline cols-sm-2">
+	                        <input type="checkbox" class="form-check-input" id="sun"  value="${sun}">
+	                        <label class="form-check-label" for="sun">일</label>
+	                    </div> 
 
                     <!-- 추후결정 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="other" value="추후결정">
+                        <input type="checkbox" class="form-check-input" id="other" value="${chu}">
                         <label class="form-check-label" for="other">추후결정</label>
                     </div>
                   </div>
-                  <div id="nullText" class=" d-flex pt-2 d-flex justify-content-center"></div>
+                  <div id="nullText" class=" d-flex pt-2 d-flex justify-content-center">${listOne.s_day}</div>
               </div>
-           </div>
+           </div> 
         </div>
       </div>
     </div>
@@ -175,8 +175,8 @@
                 <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
                     <label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
 	                      <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-<!-- s_level -->	      <select name="s_level" class="selectpicker form-control w-50" >
-    										  <option value="입문"selected="selected">입문</option>
+<!-- s_level -->	      <select name="s_level" class="selectpicker form-control w-50" id="select-box">
+    										  <option value="입문">입문</option> 
     										  <option value="초급">초급</option>
     										  <option value="중급">중급</option>
     										  <option value="고급">고급</option>
@@ -264,9 +264,9 @@
                     </div>
                      <div class="form-group ">
   <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="sophy"/>
-  <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value="">
+  <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value=""> 
   <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >
-  <!-- s_day -->			<input type="hidden" name="s_day"  class="form-control" id="schedule" />
+  <!-- s_day -->			<input type="hidden" name="s_day"  class="form-control" id="schedule"  value="${listOne.s_day }" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
 
@@ -284,6 +284,14 @@
 $(document).ready(function($){
 
 // 조건_____________
+ 
+	$('#select-box option').each(function() {
+		if (this.value == "${listOne.s_level}") {
+			this.selected = true;
+		}
+	});
+
+
 
 $('#enroll_btn').click(function(){
 
@@ -359,8 +367,10 @@ $('#enroll_btn').click(function(){
    $('#nullText').text("구체적인 날짜를 정해주십시오.");
 
  }
-
-  if (s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "강의주제를 작성하십시오."&& s_title.value != null && s_title.value !="" ) {
+  if ($('#start').val() > $('#end').val()) {
+		alert('날짜를 다시 입력해주세요');
+	}
+  if (s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "강의주제를 작성하십시오."&& s_title.value != null && s_title.value !=""&&$('#start').val() > $('#end').val() ) {
    document.studyForm.submit();
  }
 
@@ -426,14 +436,19 @@ $('#enroll_btn').click(function(){
 	  });
 
 // 요일 선택___________________________________________________________
-
+	$('.form-check-input').each(function() {
+	     if(this.value != null && this.value !=""){ //값 비교
+            this.checked = true; //checked 처리
+		 }
+	 }); 
 	$(".form-check-input").click(function(){
 		var str = "";
 		$(".form-check-input").each(function(){
 			if($(this).is(":checked"))
 				str += $(this).next().text() + " ";
 		});
-				document.getElementById("schedule").value= str;
+	
+		document.getElementById("schedule").value= str;
         $('#nullText').css("color","green");
         $("#nullText").text(str);
 	});
@@ -467,7 +482,7 @@ $('#enroll_btn').click(function(){
  $('#img_btn_2').on({'click': function(){
         $('#input_img').attr('src',img2);
         document.getElementById("category").value = "자바스크립트";
-    }
+    } 
 });
 
 $('#img_btn_3').on({'click': function(){

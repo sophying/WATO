@@ -63,7 +63,7 @@ background:#5a7fa2;
 <body>
 
 <div class="container  mx-auto">
-<form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherEnroll.do">
+<form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherEnroll">
 <!-- <1> image Enroll -->
   <div class="row mt-3 justify-content-md-center">
     <div class="col-sm-5 d-inline-block"> <!-- 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
@@ -321,7 +321,7 @@ background:#5a7fa2;
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="sophy">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
- <!-- day -->               <!-- <input type="hidden" class="form-control" name="t_day" id="schedule" /> -->
+ <!-- day -->               <input type="hidden" class="form-control" name="t_day" id="schedule" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
           </div> 
@@ -476,7 +476,7 @@ function isNumber(checkValue) {
 	 
 	 if (t_day.value == null || t_day.value == "") {
 		 $('#nullText').css('color','red');
-		$('#nullText').text("구체적인 날짜를 정해주십시오.");
+	   	 $('#nullText').text("구체적인 날짜를 정해주십시오."); 
 		
 	}
 	 
@@ -485,8 +485,8 @@ function isNumber(checkValue) {
 		$('#price-Text').text('합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])');
 		
 	}
-
-	 if (t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
+ 
+	 if (t_day.value != null && t_day.value !="" && t_day.value !="구체적인 날짜를 정해주십시오." && t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
 		document.classForm.submit();
 	}
  
@@ -561,7 +561,7 @@ function isNumber(checkValue) {
 					str += $(this).next().text() + " "; 
 			});
 			
-		/* 			document.getElementById("schedule").value= str;   */
+					document.getElementById("schedule").value= str;  
 					$('#nullText').css("color","green");
 					$('#nullText').text(str);
 		});

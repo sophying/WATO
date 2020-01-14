@@ -286,6 +286,9 @@ $(document).ready(function($){
 
 // 조건_____________
 
+
+
+
 $('#enroll_btn').click(function(){
 
 
@@ -361,7 +364,10 @@ $('#enroll_btn').click(function(){
 
  }
 
-  if (s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "강의주제를 작성하십시오."&& s_title.value != null && s_title.value !="" ) {
+ if ($('#start').val() > $('#end').val()) {
+		alert('날짜를 다시 입력해주세요');
+	}
+  if (s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "강의주제를 작성하십시오."&& s_title.value != null && s_title.value !="" && !($('#start').val() > $('#end').val())) {
    document.studyForm.submit();
  }
 

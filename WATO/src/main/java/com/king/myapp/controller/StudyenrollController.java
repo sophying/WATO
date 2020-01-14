@@ -96,14 +96,44 @@ public class StudyenrollController {
 		for (int i = 0; i < arry.length; i++) {
 			
 			System.out.println(arry[i]);
-			
-			
 		}
 		road = arry[0];
 		jibun = arry[1];
 		
 		listOne.setRoad(road);
 		listOne.setJibun(jibun);
+		
+		
+		  String beforeDay = listOne.getS_day(); // DB 문자열
+		  System.out.println(beforeDay); 
+		  
+		  if (beforeDay.contains("월")) {
+			model.addAttribute("mon","월");
+		}
+		  if (beforeDay.contains("화")) {
+			  model.addAttribute("tue","화");
+		  }
+		  if (beforeDay.contains("수")) {
+			  model.addAttribute("web","수");
+		  }
+		  if (beforeDay.contains("목")) {
+			  model.addAttribute("thu","목"); 
+			  System.out.println(beforeDay.contains("목"));
+		  }
+		  if (beforeDay.contains("금")) {
+			  model.addAttribute("fri","금");
+		  }
+		  if (beforeDay.contains("토")) {
+			  model.addAttribute("sat","토");
+			  System.out.println(beforeDay.contains("토"));
+		  }
+		  if (beforeDay.contains("일")) {
+			  model.addAttribute("sun","일");
+		  }
+		  if (beforeDay.contains("추후결정")) {
+			  model.addAttribute("chu","추후결정");
+		  }
+		 		 
 		
 		model.addAttribute("listOne",listOne);
 		
