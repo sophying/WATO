@@ -256,7 +256,9 @@
 		height: auto;
 		widows: 75%;
 	}
-
+	#modalBox{
+	background-color:#fff;
+}
 </style>
 <body>
 <!-- @@@@@@@@ 헤더 시작 @@@@@@@@ -->
@@ -659,16 +661,27 @@
 								<label for="t_price" class="font-weight-bold text-center row p-2 d-inline-block m-0 mt-2 text-justify w-100  control-label justify-content-center">
 								</label>
 							</div>
-						<input type="submit" id="goButton" class="goButton" value="참여신청"/>
+							<c:choose>
+								<c:when test="${(listOne.s_parti) == (listOne.s_people) }">
+									<input type="button" class="goButton" value="마감되었습니다"/>
+								</c:when>
+								<c:otherwise>
+									<input type="button" class="goButton"id="partiBnt"  data-toggle="modal"  value="참여신청"/>
+								</c:otherwise>
+							</c:choose>
 					</div>
 				</aside>
+
+		           		 <%@include file="../include/participation.jsp" %>
+				
+				
+				
 				<!-- @@@@@@@@ //// 참여신청 끝 /// @@@@@@@@ -->	
 					</div>   
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
 						
 	
 			</div>
-		</div>
 <!-- @@@@@@@@ //// 본론 진입 /// @@@@@@@@ -->
 		
 <!-- /.container-->
@@ -773,29 +786,35 @@ _________________________________________________________
 			
 		}
 		
-		
-	$(document).ready(function () {
-	
-		/* $('#modiReButton').click(function () {
+
+		 $('#partiBnt').click(function () {
+			$('#Form-modal').modal();
+		});
 			
-			document.getElementById('modiReButton').value="수정완료";
-			
-			$('#r_content').attr('readonly', false);
-				$('#r_content').css("background-color", "#ddddee33");
-				
-				if (document.getElementById('modiReButton').value == "수정완료") {
-					
-					$('#modiReButton').click(function () {
+			// 참여완료하기 버튼 클릭
+			$('#modalSubmit').click(function(){
+				var data = {
+						"s_no" : s_no,
+						"p_intro" : $('#p_intro').val(),
+						"p_tell" : $('#p_tell').val()
 						
-						document.getElementById('modiReButton').value="수정하기";
-						$('#r_content').attr('readonly', true);
-						$('#r_content').css("background-color", "#fff");
-					});
-			
 				};
+				
+				$.ajax({
+					url : url,
+					type : 'post',
+					data : data,
+					success : function(data){
+						
+						$('#Form-modal').modal('toggle');
+						
+					}
+				})
+				
+			});
+			
 		
-		});  */
-	});
+		
 
 </script>
 </body>

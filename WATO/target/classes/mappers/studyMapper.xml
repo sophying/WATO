@@ -42,25 +42,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set   S_CATEGORY=#{s_category} , S_TITLE=#{s_title} , S_STARTDATE=#{s_startDate}, S_ENDDATE=#{s_endDate}, S_DAY=#{s_day}, S_POSTNUM=#{s_postnum}, S_PLACE=#{s_place}, S_CONTENT=#{s_content}, S_PHOTO=#{s_photo}, S_LEVEL=#{s_level}, S_PEOPLE=#{s_people} , S_INTRO=#{s_intro}, S_UPDATEDATE= sysdate
 		where S_NO = #{s_no}
 	</update>
+	
+<!-- 스터디 모집 글 삭제   -->
+	<delete id="s_delete">
+		delete from s_enroll
+		where s_no = #{s_no}
+	</delete>	
 
 <!--  6. 댓글 등록 -->	
 	<insert id="s_replyInsert" parameterType="com.king.myapp.domain.StudentReplyVO">
 		insert into S_REPLY (R_NO, S_NO, R_USERID, R_CONTENT, R_REGDATE) 
 		values (S_REPLY_SEQ.nextval, #{s_no}, #{r_userid}, #{r_content}, SYSDATE) 
 	</insert>
-
+	
+<!-- 댓글 보여주기  -->
 	<select id="s_replyRead" resultType="com.king.myapp.domain.StudentReplyVO">
 		select * from s_reply 
 		where s_no = #{s_no}
 		order by r_no desc
 	</select>	
-	
-<!-- 삭제   -->
-	<delete id="s_delete">
-		delete from s_enroll
-		where s_no = #{s_no}
-	</delete>	
-	
+		
 <!-- 댓글 수정 -->		
 	<update id="s_replyUpdate">
 		update s_reply
@@ -73,6 +74,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from s_reply
 		where r_no =#{r_no}
 	</delete>
+	
+	
+
+	
+	
+	
+	
+	
 	
 	
 	

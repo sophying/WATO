@@ -26,6 +26,7 @@ public class StudyenrollController {
 	
 	@Inject
 	StudyEnrollService studyService;
+
 	
 	
 	// 1. 일반인 Study 모집 등록하러 가기
@@ -62,7 +63,7 @@ public class StudyenrollController {
 	//2. 강의 등록 리스트 출력 
 		@RequestMapping(value = "/studyBoard", method = RequestMethod.GET)
 		public void getClassBoard(Model model) throws Exception{
-			logger.info("--------------[ 강의 리스트 출력  GET ]-----------------");
+			logger.info("--------------[ 스터디 리스트 출력  GET ]-----------------");
 			
 			List<StudyEnrollVO> studylist = studyService.list(); 
 			
@@ -72,7 +73,7 @@ public class StudyenrollController {
 	// 4. 상세보기 + 댓글불러오기 + 수정하기 
 	@RequestMapping(value = "/study_DetailRead", method = RequestMethod.GET)
 	public void getDetailRead(@RequestParam("s_no") int s_no, Model model) throws Exception{
-		logger.info("--------------[ 강의 상세보기  GET ]-----------------");
+		logger.info("--------------[ 스터디 상세보기  GET ]-----------------");
 			
 		studyService.viewCount(s_no);
 		StudyEnrollVO listOne = studyService.detailRead(s_no);
@@ -201,5 +202,7 @@ public class StudyenrollController {
 		}
 		
 		
+		
+
 		
 }

@@ -655,7 +655,7 @@
 							</div>
 							<div class=" border-top border-bottom h-100 w-100 d-inline-block">
 								<label for="t_price" class="font-weight-bold text-center row p-2 d-inline-block m-0 mt-2 text-justify w-100  control-label justify-content-center">
-								<font size="6">${listOne.t_price }</font>
+								 참가비 &nbsp;&nbsp;&nbsp;<font size="6">${listOne.t_price }</font>
 								</label>
 							</div>
 						<input type="submit" id="goButton" class="goButton" value="참여신청"/>

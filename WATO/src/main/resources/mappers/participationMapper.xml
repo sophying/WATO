@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="parti">
+<!--  참여자 정보등록  -->
+	<insert id="s_participation">
+		insert into s_parti (P_NO, S_NO, S_USERID, P_INTRO, P_TELL, P_REGDATE)
+		values (S_PARTI_SEQ.nextval, s_no, 'sophy', p_intro, p_tell , SYSDATE )
+	</insert>
+</mapper>
