@@ -221,18 +221,18 @@
 						</select>  
 					</div>      
 					<div class="form-group col-sm-2 col-xs-6">
-						<div class="button-group"> 
+						<div class="button-group ">  
 					        <button onfocus="this.style.backgroundColor='white';" type="button" class="form-control dropdown-toggle" data-toggle="dropdown"><span class="pull-left">시간 </span><div class="pull-right"><span class="caret"></span></div></button>
-							<ul class="dropdown-menu" id="timevalue">
-							  <li><a href="#" class="small" data-value="월" tabIndex="-1"><input type="checkbox" value="월"/>&nbsp;월</a></li>
-							  <li><a href="#" class="small" data-value="화" tabIndex="-1"><input type="checkbox" value="화"/>&nbsp;화</a></li> 
-							  <li><a href="#" class="small" data-value="수" tabIndex="-1"><input type="checkbox" value="수"/>&nbsp;수</a></li> 
-							  <li><a href="#" class="small" data-value="목" tabIndex="-1"><input type="checkbox" value="목"/>&nbsp;목</a></li>
-							  <li><a href="#" class="small" data-value="금" tabIndex="-1"><input type="checkbox" value="금"/>&nbsp;금</a></li> 
-							  <li><a href="#" class="small" data-value="토" tabIndex="-1"><input type="checkbox" value="토"/>&nbsp;토</a></li>
-							  <li><a href="#" class="small" data-value="일" tabIndex="-1"><input type="checkbox" value="일"/>&nbsp;일</a></li>
+							<ul class="dropdown-menu" id="timevalue"> 
+							  <li><a href="#" class="small" data-value="월" ><input type="checkbox" value="월"/>&nbsp;월</a></li>
+							  <li><a href="#" class="small" data-value="화" ><input type="checkbox" value="화"/>&nbsp;화</a></li> 
+							  <li><a href="#" class="small" data-value="수" ><input type="checkbox" value="수"/>&nbsp;수</a></li> 
+							  <li><a href="#" class="small" data-value="목" ><input type="checkbox" value="목"/>&nbsp;목</a></li>
+							  <li><a href="#" class="small" data-value="금" ><input type="checkbox" value="금"/>&nbsp;금</a></li> 
+							  <li><a href="#" class="small" data-value="토" ><input type="checkbox" value="토"/>&nbsp;토</a></li>
+							  <li><a href="#" class="small" data-value="일" ><input type="checkbox" value="일"/>&nbsp;일</a></li>
 							</ul>
-							<input type="hidden" name="time" id="timevalue">      
+							<input type="hidden" name="time" id="timevalue">       
 					  	</div> 
 					</div> 
 					<div class="form-group col-sm-2 col-xs-6">
@@ -243,7 +243,7 @@
 					<script type="text/javascript"> 
 					$(function() {
 						var options = [];
-						 
+						  
 						$( '.dropdown-menu a' ).on( 'click', function( event ) {
 						    
 						   var $target = $( event.currentTarget ),
@@ -277,27 +277,26 @@
 							
 							document.getElementsByName('time')[0].value = str;  
 							/* document.getElementById('timevalue').value = str;  */
-							alert(document.getElementsByName('time')[0].value);
 							filterform.submit();
 						});
 					});
 					</script> 
 	<br>
-	<div class="studylistviewbody"> 
+	<div class="studylistviewbody">  
 	  <div class="valign-wrapper">
-	  	<div class="row"> 
-		  <% int cnt = 0; %> 
-	  <c:forEach items="${studylistAll}" var="studylistAll">
+	  	<div class="row">  
+		  <% int cnt = 0; %>  
+	  		<c:forEach items="${studylistAll}" var="studylistAll">
 		    <div class="col s12 m4">
 		      <div class="card" id="about"> 
 		        <div class="card-header">
 		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>
-		        <h5 class="card-title">
+		        <h5 class="card-title" id="listalltitle"> 
 		                ${studylistAll.title}
 		        </h5> 
-		        <h6 class="description">  
+		        <h6 class="description">   
 		                ${studylistAll.writer} 
 		              </h6>
 		        <div class="social">
@@ -311,19 +310,19 @@
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
 		          </div> 
 		        </div>
-		      </div>
+		      </div> 
 		    </div>
-			<% cnt++; %>
+			<% cnt++; %> 
 		  </c:forEach>
-		  <% int cnt1 = 0; %> 
-	  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
-		    <div class="col s12 m4">
+		  <% int cnt1 = 0; %>
+		  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
+		    <div class="col s12 m4"> 
 		      <div class="card" id="about">  
 		        <div class="card-header">
 		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>
-		        <h5 class="card-title" style="  overflow: hidden;
+		        <h5 class="card-title" style="  overflow: hidden;  
 												  text-overflow: ellipsis;
 												  white-space: nowrap;
 												  width: 200px;
@@ -344,15 +343,22 @@
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
 		          </div> 
 		        </div>
-		      </div>
+		      </div> 
 		    </div>
 			<% cnt1++; %>
 		  </c:forEach>
+		  <br> <br> <br> <br> <br> <br> <br> <br> <br>   
 		  </div>  
 		</div>
 	</div>  
   
 <script type="text/javascript">
+	$(function() {
+		if($('#listalltitle').text().length >=5){
+    		$('#listalltitle').text($('#listalltitle').text().substr(0,5)+"..."); 
+    	}  
+	})
+	
 	
 	function togglefunction (event) { 
 		$(event).toggleClass('active'); 
