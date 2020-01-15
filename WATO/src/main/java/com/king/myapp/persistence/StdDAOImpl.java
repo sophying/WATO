@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TestVO;
 
 @Service
 public class StdDAOImpl implements StdDAO {
@@ -38,8 +39,8 @@ public class StdDAOImpl implements StdDAO {
 	}
 
 	// 학생 로그인
-	@Override
-	public StdVO login1(StdVO svo) throws Exception {
+	@Override 
+	public StdVO login1(StdVO svo) throws Exception { 
 		return sql.selectOne(namespace + ".login1", svo);
 	}
 

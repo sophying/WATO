@@ -151,7 +151,7 @@
         </div>
 
                 <div><img src="../resource/images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div>
-                <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">비밀번호 찾기</div>
+                <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">아이디 찾기</div>
                 <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
                     <p style="float: left; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
                     <div>저희 스터디어스를 이용해 주셔서 감사합니다. 최지혜님은 학생이십니다.
@@ -161,16 +161,16 @@
                 </div>
                 <c:if test="${member == null}">
             <form role="form" method="post" autocomplete="off">
-                <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 아이디와 이메일을 정확히 입력해주세요.</div><br>
+                <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 이메일을 정확히 입력해주세요.</div><br>
                 <div>
                     <table class="table_main" style="text-align: left;">
-                        <tr>
-	                        <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td><input type="text" id="Teach_Id" name="Teach_Id" size="45" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
-							</td>
-	                        <!-- <td><button type="button" class="idCheck" onclick="fn_idChk();"></button></td> -->
-                    	</tr>
                         <!-- <tr>
+	                        <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+	                        <td><input type="text" id="Teach_Id" name="Teach_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
+							</td>
+	                        <td><button type="button" class="idCheck" onclick="fn_idChk();">아이디 중복확인</button></td>
+                    	</tr>
+                        <tr>
 	                        <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 	                        <td colspan="2"><input type="password" id="userPw" id="Teach_Pwd" name="Teach_Pwd" size="55" maxlength="12" placeholder="비밀번호" ></td>
 	                    </tr>
@@ -186,7 +186,7 @@
                 </div>
             
             <div style="margin: 40px;">
-                <button type="submit" style="margin-right: 30px; width: 150px; height: 50px;">임시비밀번호발급</button> <!-- 아이디와 이메일이 회원정보와 일치하지 않을시 '일치하지 않습니다' 뜨게 하기 -->
+                <button type="submit" style="margin-right: 30px; width: 150px; height: 50px;">아이디 찾기</button>
                 <button type="reset" style="width: 150px; height: 50px;">취소</button>
             </div>
             </form>

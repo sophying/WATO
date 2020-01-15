@@ -111,6 +111,18 @@ public class AdminController {
 		return "/teach/teach_join_2";
 	}
 	
+	// 아이디 찾기 GET
+	@RequestMapping(value = "/forgot_id", method = RequestMethod.GET)
+	public void postFgid() throws Exception {
+		logger.info("get Forgot id");
+	}
+	
+	// 비밀번호 찾기 GET
+	@RequestMapping(value = "/forgot_pwd", method = RequestMethod.GET)
+	public void postFgpwd() throws Exception {
+		logger.info("get Forgot Password");
+	}
+	
 	// 인증센터 GET
 	@RequestMapping(value = "/email", method = RequestMethod.GET)
 	public void getInjeung(Model model) throws Exception {
@@ -174,7 +186,7 @@ public class AdminController {
         }
 		
 		 ModelAndView mv = new ModelAndView();    //ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-         mv.setViewName("/admin/adminmanage");     //뷰의이름
+         mv.setViewName("/admin/adminmanage");    //뷰의이름
          mv.addObject("dice", dice);
          
          System.out.println("mv : "+mv);

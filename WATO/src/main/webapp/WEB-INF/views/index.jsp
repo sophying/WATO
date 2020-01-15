@@ -29,6 +29,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
     <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
     #top{
@@ -185,26 +187,26 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                    	<c:if test="${(member eq null) and (teach eq null)}">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
+                    	<c:if test="${std == null && teach == null}">
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
-                        <c:if test="${(member ne null) or (teach ne null)}">
-                        	<p class="list-inline-item">${member.std_Id or teach.teach_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><p><a href="sign_up/logout" class="text-black-50 font-weight-bold">로그아웃</a></p></li>
+                        <c:if test="${std != null || teach != null}">
+                        	<p class="list-inline-item">${std.user_Id}${teach.user_Id}님 환영합니다!</p>
+                        	<li class="list-inline-item"><a href="sign_up/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/sign_up/std_info">
-				                <input type="hidden" value="${member.std_Profile}" readonly="readonly">
-				                <input type="hidden" value="${member.std_Pwd_Qs}" readonly="readonly">
-				                <input type="hidden" value="${member.std_Pwd_As}" readonly="readonly">
-				                <input type="hidden" value="${member.std_Gender}" readonly="readonly">
-				                <input type="hidden" value="${member.std_Email}" readonly="readonly">
-								<input type="hidden" value="${member.std_Phone1}" readonly="readonly">
-								<input type="hidden" value="${member.std_Phone2}" readonly="readonly">
-								<input type="hidden" value="${member.std_Phone3}" readonly="readonly">
-								<input type="hidden" value="${member.std_Addr1}" readonly="readonly">
-								<input type="hidden" value="${member.std_Addr2}" readonly="readonly">
-								<input type="hidden" value="${member.std_Addr3}" readonly="readonly">
-				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
+				                <input type="hidden" value="${login.std_Profile}" readonly="readonly">
+				                <input type="hidden" value="${login.std_Pwd_Qs}" readonly="readonly">
+				                <input type="hidden" value="${login.std_Pwd_As}" readonly="readonly">
+				                <input type="hidden" value="${login.std_Gender}" readonly="readonly">
+				                <input type="hidden" value="${login.std_Email}" readonly="readonly">
+								<input type="hidden" value="${login.std_Phone1}" readonly="readonly">
+								<input type="hidden" value="${login.std_Phone2}" readonly="readonly">
+								<input type="hidden" value="${login.std_Phone3}" readonly="readonly">
+								<input type="hidden" value="${login.std_Addr1}" readonly="readonly">
+								<input type="hidden" value="${login.std_Addr2}" readonly="readonly">
+								<input type="hidden" value="${login.std_Addr3}" readonly="readonly">
+				                <%-- <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Pwd_Qs}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Pwd_As}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
@@ -214,16 +216,16 @@
 								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly"> --%>
                         	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
                         	</form>
                         	</li>
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
-                        <c:if test="${!member.std_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
-                        <c:if test="${member.std_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
                         <li class="list-inline-item"><a href="/admin/adminmanage" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
@@ -231,7 +233,23 @@
                 </div>
             </div>
         </div> 
-        <div class="row"> 
+        <div class="row">
+	        <div id="myModal" class="modal fade" tabindex="-1">
+	        	<div class="modal-dialog modal-lg">
+	            	<div class="modal-content" style="background: none; border: 0px">
+	            		<div class="modal-body"> 
+							<div class="limiter">
+								<button class="close-button" data-dismiss="myModal">&times;</button> 
+								<div class="container-login100">   
+									<%@ include  file="sign_up/loginform.jsp"%> 
+								</div>
+							</div>  
+						</div> 	                		
+	            	</div>
+	        	</div>
+	    	</div>
+    	</div>
+        <%-- <div class="row"> 
 			<div class="modal fade" id="modal" tabindex="-1"> 
 				<div class="modal-dialog modal-lg">  
 					<div class="modal-content" style="background: none; border: 0px">   
@@ -246,7 +264,7 @@
 					</div>
 				</div>
 			</div> 
-		</div>
+		</div> --%>
         <!-- *** TOP BAR END ***-->
 
  

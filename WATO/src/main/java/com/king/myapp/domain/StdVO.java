@@ -4,8 +4,8 @@ public class StdVO {
 	
 	private String No;
 	private String Std_Profile;
-	private String Std_Id;
-	private String Std_Pwd;
+	private String User_Id;
+	private String User_Pwd;
 	private String Std_Pwd_Qs;
 	private String Std_Pwd_As;
 	private String Std_Gender;
@@ -29,17 +29,17 @@ public class StdVO {
 	public void setStd_Profile(String std_Profile) {
 		Std_Profile = std_Profile;
 	}
-	public String getStd_Id() {
-		return Std_Id;
+	public String getUser_Id() {
+		return User_Id;
 	}
-	public void setStd_Id(String std_Id) {
-		Std_Id = std_Id;
+	public void setUser_Id(String user_Id) {
+		User_Id = user_Id;
 	}
-	public String getStd_Pwd() {
-		return Std_Pwd;
+	public String getUser_Pwd() {
+		return User_Pwd;
 	}
-	public void setStd_Pwd(String std_Pwd) {
-		Std_Pwd = std_Pwd;
+	public void setUser_Pwd(String user_Pwd) {
+		User_Pwd = user_Pwd;
 	}
 	public String getStd_Pwd_Qs() {
 		return Std_Pwd_Qs;
