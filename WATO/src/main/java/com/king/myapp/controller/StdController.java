@@ -75,74 +75,58 @@ public class StdController {
 		return result;
 	}
 	
-	// 로그인 get
-	@RequestMapping(value = "/loginform", method = RequestMethod.GET)
-	public void getlogin() throws Exception {
-		logger.info("get login");
-	}
 	
-	// 로그인 post
-	@RequestMapping(value = "/loginform", method = RequestMethod.POST)
-	public String postlogin(StdVO svo, TeachVO tvo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-		logger.info("post login");
+	// 로그인 get
+	@RequestMapping(value = "/loginform", method = RequestMethod.GET) 
+	public void getlogin() throws Exception { 
+		logger.info("get login"); 
+	 }
+	 
+	
+	// 학생 로그인 post
+	@RequestMapping(value = "/loginstd", method = RequestMethod.POST)
+	public String postStd(StdVO svo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+		logger.info("post Stdlogin");
 		
 		HttpSession session = req.getSession();
 		
-		StdVO login1 = service.login1(svo);
-		
-		TeachVO login2 = service.login2(tvo);	
+		StdVO login1 = service.login1(svo);		
 		
 		
-		  if(login1.getNo() == "10") { 
-			  session.setAttribute("teach", null);
-			  session.setAttribute("member", login1);
-		  
-		  } else if(login1.getNo() == "20") { 
-			  rttr.addFlashAttribute("msg", false);
-		  
-		  } else if(login2.getNo() == "20") { 
-			  session.setAttribute("member", null);
-			  session.setAttribute("teach", login2);
-		  
-		  } else if(login2.getNo() == "10") { 
-			  rttr.addFlashAttribute("msg", false);
-		  
-		  }
-		 
+		if(login1 == null) { // login 값이 null 일 때 member 값은 null 이고
+			  
+			session.setAttribute("std", null);
+			  
+			rttr.addFlashAttribute("msg", false);  
+			  
+		} else { 
+			session.setAttribute("std", login1); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
+			System.out.println(login1.getNo());
+			System.err.println(login1.getUser_Id());
+		}
 		
-		/*
-		 * if((login1.getNo() == "10") || (login2.getNo() == "10")) {
-		 * service.login1(svo); session.setAttribute("teach", null);
-		 * session.setAttribute("member", login1);
-		 * 
-		 * } else if((login1.getNo() == "20") || (login2.getNo() == "20")) {
-		 * service.login2(tvo); session.setAttribute("member", null);
-		 * session.setAttribute("teach", login1);
-		 * 
-		 * }
-		 */
-		 
-		  
-		  
+		return "redirect:/";
+	}
+	
+	// 강사 로그인 post
+	@RequestMapping(value = "/logintch", method = RequestMethod.POST)
+	public String postTch(TeachVO tvo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+		logger.info("post Tchlogin");
 		
-		/*
-		 * if(login1.getNo() == "20") { // login 값이 null 일 때 member 값은 null 이고
-		 * session.setAttribute("member", null);
-		 * 
-		 * rttr.addFlashAttribute("msg", false); } else if{
-		 * session.setAttribute("member", login2); // login 값이 null 이 아니라면 member 값은
-		 * login 이다.(== vo 값을 불러와서 쓸 수 있게 한다) }
-		 * 
-		 * if(login2.getNo() == "10") { // login 값이 null 일 때 member 값은 null 이고
-		 * session.setAttribute("teach", null);
-		 * 
-		 * rttr.addFlashAttribute("msg", false); } else{ session.setAttribute("teach",
-		 * login2); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
-		 * }
-		 */
-		 
-		   
-		 
+		HttpSession session = req.getSession();
+		
+		TeachVO login2 = service.login2(tvo);
+		
+		if(login2 == null) { // login 값이 null 일 때 member 값은 null 이고
+			  
+			 session.setAttribute("teach", null);
+			  
+			 rttr.addFlashAttribute("msg", false); 
+			  
+		} else { 
+			 session.setAttribute("teach", login2); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
+			 System.out.println(login2.getNo());
+		}
 		
 		return "redirect:/";
 	}

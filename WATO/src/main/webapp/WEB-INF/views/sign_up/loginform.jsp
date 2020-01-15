@@ -306,7 +306,7 @@
 	
 	    </div>
 	    <div class="form-container sign-in-container">
-	        <form role="form" method="post" autocomplete="off" action="/sign_up/loginform">
+	        <form name="loginform" role="form" method="post" autocomplete="off">
 	            <h1>Sign in</h1> 
 	            <div class="social-container">
 	               <a href="#" class="social-icon-button twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a>
@@ -316,10 +316,13 @@
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
 	            <span>or use your account</span>
-	            <input type="text" name="Std_Id" name="Teach_Id" placeholder="Email" />
-	            <input type="password" name="Std_Pwd" name="Teach_Id" placeholder="Password" />
-	            <a href="../admin/forgot_pwd">Forgot your password?</a>
-	            <button type="submit">SIGN IN</button>
+	            <div><label><input type="radio" name="radio" class="radio" id="radio" value="10" checked="checked">학생</label>
+	            	 <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
+	            </div>
+	            <input type="text" name="User_Id" placeholder="Email" />
+	            <input type="password" name="User_Pwd" placeholder="Password" /><br>
+	            <div><a href="../admin/forgot_id">아이디 찾기</a>&nbsp;&nbsp;&nbsp;<a href="../admin/forgot_pwd">비밀번호 찾기</a></div><br>
+	            <button type="submit" id="login" class="login">SIGN IN</button>
 	        </form>
 	    </div>
 	    <div class="overlay-container">
@@ -359,6 +362,20 @@
 
     // If user clicks anywhere outside of the modal, Modal will close
 
+</script>
+
+<script type="text/javascript">
+	$('#login').click(function() {
+		
+		var radioval = $('input[name="radio"]:checked').val();
+		
+		if(null != radioval && radioval == 10) {
+			$('form[name="loginform"]').attr('action',"/sign_up/loginstd");
+		
+		} else if(null != radioval && radioval == 20) {
+			$('form[name="loginform"]').attr('action',"/sign_up/logintch");
+		} 
+	});
 </script>
 </body>
 </html>

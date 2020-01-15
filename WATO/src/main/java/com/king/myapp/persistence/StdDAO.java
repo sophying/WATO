@@ -2,6 +2,7 @@ package com.king.myapp.persistence;
 
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TestVO;
 
 public interface StdDAO {
 	
