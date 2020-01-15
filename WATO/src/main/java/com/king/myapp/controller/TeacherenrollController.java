@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -175,8 +176,12 @@ public class TeacherenrollController {
 		return "redirect:/study/header_DetailRead?t_no="+t_no;
 		
 	}
+<<<<<<< HEAD
 	
 	// 상세페이지 삭제 
+=======
+	// 삭제 
+>>>>>>> refs/remotes/origin/HR
 	@RequestMapping(value = "/teacherDelete", method = RequestMethod.GET)
 	public String postDelete(@RequestParam("t_no") int t_no) throws Exception{
 		logger.info("--------------[ 내용 삭제  POST ]-----------------");				
@@ -184,6 +189,28 @@ public class TeacherenrollController {
 		teacherService.classDelete(t_no);
 		return "redirect:/";
 	}
+	//  댓글 수정
+		@RequestMapping(value = "/modireply", method = RequestMethod.GET)
+		public String getmodiReply(@RequestParam("t_no") int t_no, TeacherReplyVO replyVO, TeacherEnrollVO teacherVO) throws Exception{
+			
+			logger.info("--------------[ 강의 댓글 내용 수정  GET ]-----------------");		
+			
+			teacherService.replyUpdate(replyVO);   
+			  
+			return "redirect:/study/header_DetailRead?t_no="+t_no;
+			
+		}
+		//  댓글 삭제
+		@RequestMapping(value = "/DeleteReply/{t_no}/{r_no}", method = RequestMethod.GET)
+		public String DeleteReply(@PathVariable int t_no,@PathVariable int r_no, TeacherReplyVO replyVO) throws Exception{
+			
+			logger.info("--------------[ 강의 댓글 내용 삭제]-----------------");		
+			
+			teacherService.DeleteReply(r_no);
+			
+			return "redirect:/study/header_DetailRead?t_no="+t_no;
+			
+		}
 	
 	
 	

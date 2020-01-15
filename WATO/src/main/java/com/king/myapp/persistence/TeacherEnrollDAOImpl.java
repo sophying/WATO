@@ -64,6 +64,16 @@ public class TeacherEnrollDAOImpl implements TeacherEnrollDAO {
 	public void classDelete(int t_no) throws Exception {
 		sql.delete("study.t_delete", t_no);
 	}
+	//댓글 수정
+	@Override
+	public void replyUpdate(TeacherReplyVO replyVO) throws Exception {
+		sql.update("study.r_update",replyVO);
+	}
+	//댓글 삭제
+	@Override
+	public void DeleteReply(int r_no) throws Exception {
+		sql.delete("study.r_delete",r_no);
+	}
 
 
 
