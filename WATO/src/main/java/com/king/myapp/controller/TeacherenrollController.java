@@ -176,12 +176,9 @@ public class TeacherenrollController {
 		return "redirect:/study/header_DetailRead?t_no="+t_no;
 		
 	}
-<<<<<<< HEAD
-	
+
 	// 상세페이지 삭제 
-=======
-	// 삭제 
->>>>>>> refs/remotes/origin/HR
+
 	@RequestMapping(value = "/teacherDelete", method = RequestMethod.GET)
 	public String postDelete(@RequestParam("t_no") int t_no) throws Exception{
 		logger.info("--------------[ 내용 삭제  POST ]-----------------");				
