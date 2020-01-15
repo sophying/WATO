@@ -42,6 +42,7 @@ set
 	std_pwd = '1111'
 where std_id = 'jihye1';
 
+
 insert into std_info(user_id, std_profile, user_pwd, std_pwd_qs, std_pwd_as, std_gender, std_phone1, std_phone2, std_phone3, std_email, std_addr1, std_addr2, std_addr3)
 values ('jihye1', '1111', '1111', '1111', '어쩌구저쩌구입니다.', '1111', '1111', '1111', '1111', 'cgh634@hanmail.net', 1111, 1111, 1111);
 

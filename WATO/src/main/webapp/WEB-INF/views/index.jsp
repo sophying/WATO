@@ -195,17 +195,17 @@
                         	<li class="list-inline-item"><a href="sign_up/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/sign_up/std_info">
-				                <input type="hidden" value="${login.std_Profile}" readonly="readonly">
-				                <input type="hidden" value="${login.std_Pwd_Qs}" readonly="readonly">
-				                <input type="hidden" value="${login.std_Pwd_As}" readonly="readonly">
-				                <input type="hidden" value="${login.std_Gender}" readonly="readonly">
-				                <input type="hidden" value="${login.std_Email}" readonly="readonly">
-								<input type="hidden" value="${login.std_Phone1}" readonly="readonly">
-								<input type="hidden" value="${login.std_Phone2}" readonly="readonly">
-								<input type="hidden" value="${login.std_Phone3}" readonly="readonly">
-								<input type="hidden" value="${login.std_Addr1}" readonly="readonly">
-								<input type="hidden" value="${login.std_Addr2}" readonly="readonly">
-								<input type="hidden" value="${login.std_Addr3}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Pwd_Qs}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Pwd_As}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Email}" readonly="readonly">
+								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
+								<input type="hidden" value="${std.std_Phone2}" readonly="readonly">
+								<input type="hidden" value="${std.std_Phone3}" readonly="readonly">
+								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
+								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
+								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
 				                <%-- <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Pwd_Qs}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Pwd_As}" readonly="readonly">

@@ -101,7 +101,6 @@ public class StdController {
 			  
 		} else { 
 			session.setAttribute("std", login1); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
-			/* session.setAttribute("std1", login1); */
 		}
 		
 		return "redirect:/";
@@ -114,8 +113,6 @@ public class StdController {
 		
 		HttpSession session = req.getSession();
 		
-		System.out.println("sdfasdfdsfdfasdfsadfsadf");
-		
 		TeachVO login2 = service.login2(tvo);
 		
 		if(login2 == null) { // login 값이 null 일 때 member 값은 null 이고
@@ -126,7 +123,8 @@ public class StdController {
 			  
 		} else { 
 			 session.setAttribute("teach", login2); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
-			/* session.setAttribute("teach1", login2); */
+			 System.out.println(login2.getNo());
+
 		}
 		
 		return "redirect:/";
