@@ -264,7 +264,7 @@ background:#5a7fa2;
                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                                <!--  <input type="text" class="form-control" name="schedule" id="schedule" placeholder="함께 모일 장소를 알려주세요!" /> -->
                               
-                                <input type="button" class="btn btn-primary box " value="주소 검색" onclick="sample3_execDaumPostcode()">
+                                <input type="button" class="btn btn-primary box " value="주소 검색" onclick="지도검색()">
                          </div>
                           
                           
@@ -392,13 +392,15 @@ background:#5a7fa2;
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 
+
+
 /* kakao map + 우편번호 검색 (작성자 : 최성웅) 시작 
 혜련씨 우편번호 검색은 아래의 혜련씨 코드로 주석처리함.*/
 
 //kakao map컨테이너 생성 : 위의 div태그 (id='map')
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
-            center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
+            center: new daum.maps.LatLng(37.49262960007701, 126.56350901860824), // 지도의 중심좌표
             level: 5 // 지도의 확대 레벨
         };
 
@@ -410,7 +412,7 @@ background:#5a7fa2;
     
     //마커를 미리 생성
     var marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(37.537187, 127.005476),
+        position: new daum.maps.LatLng(37.49262960007701, 126.56350901860824),
         map: map
     });
     
@@ -422,9 +424,11 @@ background:#5a7fa2;
         element_wrap.style.display = 'none';
     }
 
+
     
     /* 주소 검색 버튼 클릭 시 실행할 메소드 */
-    function sample3_execDaumPostcode() {
+    function 지도검색() {
+    	
         // 현재 scroll 위치를 저장해놓는다.
         var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
         new daum.Postcode({
@@ -436,6 +440,8 @@ background:#5a7fa2;
                 var addr = data.address; // 주소 변수
                 var extraAddr = ''; // 참고항목 변수
 
+   
+                
                 // 주소로 상세 정보를 검색
                 geocoder.addressSearch(data.address, function(results, status) {
                     // 정상적으로 검색이 완료됐으면
@@ -445,6 +451,11 @@ background:#5a7fa2;
 
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
+                        
+                        console.log(result.y);
+                        console.log(result.x);
+                        
+                        
                         // 지도를 보여준다.
                         mapContainer.style.display = "block";
                         map.relayout();
