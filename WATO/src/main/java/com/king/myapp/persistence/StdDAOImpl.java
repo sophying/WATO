@@ -37,15 +37,4 @@ public class StdDAOImpl implements StdDAO {
 		return result;
 	}
 
-	// 학생 로그인
-	@Override 
-	public StdVO login1(StdVO svo) throws Exception { 
-		return sql.selectOne(namespace + ".login1", svo);
-	}
-
-	// 강사 로그인
-	@Override
-	public TeachVO login2(TeachVO tvo) throws Exception {
-		return sql.selectOne(namespace + ".login2", tvo);
-	}
 }

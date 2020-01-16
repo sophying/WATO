@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.StdVO;
-import com.king.myapp.domain.TeachVO;
 import com.king.myapp.persistence.StdDAO;
 
 @Service
@@ -31,18 +30,6 @@ public class StdServiceImpl implements StdService {
 	public int idChk(StdVO vo) throws Exception {
 		int result = dao.idChk(vo);
 		return result;
-	}
-
-	// 학생 로그인
-	@Override
-	public StdVO login1(StdVO svo) throws Exception {
-		return dao.login1(svo);
-	}
-
-	// 강사 로그인
-	@Override
-	public TeachVO login2(TeachVO tvo) throws Exception {
-		return dao.login2(tvo);
 	}
 
 }

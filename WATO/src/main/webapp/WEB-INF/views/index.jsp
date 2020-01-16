@@ -250,7 +250,7 @@
 							<div class="limiter">
 								<button class="close-button" data-dismiss="myModal">&times;</button> 
 								<div class="container-login100">   
-									<%@ include  file="sign_up/loginform.jsp"%> 
+									<%@ include  file="admin/loginform.jsp"%> 
 								</div>
 							</div>  
 						</div> 	                		

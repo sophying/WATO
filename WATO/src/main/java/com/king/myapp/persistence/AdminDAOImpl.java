@@ -17,11 +17,23 @@ public class AdminDAOImpl implements AdminDAO {
 	@Autowired
 	private SqlSession sql;	
 	
-	/* private static String namespace = "com.king.myapp.mappers.adminMapper"; namespace 를 id 앞에 써줄 거면 안 써도 됨*/
+	private static String namespace = "com.king.myapp.mappers.adminMapper"; // namespace 를 id 앞에 써줄 거면 안 써도 됨
 	
 	@Override
 	public List<ApprovalVO> teachlist() throws Exception {
 		return sql.selectList("admin.adminmanage");
+	}	
+
+	// 학생 로그인
+	@Override 
+	public StdVO login1(StdVO svo) throws Exception { 
+		return sql.selectOne(namespace + ".login1", svo);
+	}
+
+	// 강사 로그인
+	@Override
+	public TeachVO login2(TeachVO tvo) throws Exception {
+		return sql.selectOne(namespace + ".login2", tvo);
 	}
 	 
 	// 강사 비밀번호 찾기

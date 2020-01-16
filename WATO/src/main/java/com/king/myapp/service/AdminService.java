@@ -11,6 +11,12 @@ public interface AdminService {
 	// 강사 이력서 승인페이지
 	public List<ApprovalVO> teachlist() throws Exception;
 
+	// 학생 로그인
+	public StdVO login1(StdVO svo) throws Exception;
+
+	// 강사 로그인
+	public TeachVO login2(TeachVO tvo) throws Exception;
+
 	// 비밀번호 찾기(강사)
 	public TeachVO findT_pwd(TeachVO tvo) throws Exception;
 

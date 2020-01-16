@@ -14,10 +14,4 @@ public interface StdDAO {
 	// 아이디 중복체크
 	public int idChk(StdVO vo) throws Exception;
 
-	// 학생 로그인
-	public StdVO login1(StdVO svo) throws Exception;
-	
-	// 강사 로그인
-	public TeachVO login2(TeachVO tvo) throws Exception;
-
 }

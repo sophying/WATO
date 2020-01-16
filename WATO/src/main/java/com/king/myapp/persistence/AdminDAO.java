@@ -7,9 +7,15 @@ import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 
 public interface AdminDAO {
-	
+
 	// 학생 목록
 	public List<ApprovalVO> teachlist() throws Exception;
+
+	// 학생 로그인
+	public StdVO login1(StdVO svo) throws Exception;
+
+	// 강사 로그인
+	public TeachVO login2(TeachVO tvo) throws Exception;
 
 	// 강사 비밀번호 찾기
 	public TeachVO findT_pwd(TeachVO tvo) throws Exception;

@@ -370,10 +370,10 @@
 		var radioval = $('input[name="radio"]:checked').val();
 		
 		if(null != radioval && radioval == 10) {
-			$('form[name="loginform"]').attr('action',"/sign_up/loginstd");
+			$('form[name="loginform"]').attr('action',"/admin/loginstd");
 		
 		} else if(null != radioval && radioval == 20) {
-			$('form[name="loginform"]').attr('action',"/sign_up/logintch");
+			$('form[name="loginform"]').attr('action',"/admin/logintch");
 		} 
 	});
 </script>

@@ -15,20 +15,32 @@ import com.king.myapp.persistence.AdminDAO;
 public class AdminServiceImpl implements AdminService {
 
 	@Inject
-	private AdminDAO dao; 
-	
+	private AdminDAO dao;
+
 	// 관리자의 강사 승인 페이지
 	@Override
 	public List<ApprovalVO> teachlist() throws Exception {
 		return dao.teachlist();
 	}
-	
+
+	// 학생 로그인
+	@Override
+	public StdVO login1(StdVO svo) throws Exception {
+		return dao.login1(svo);
+	}
+
+	// 강사 로그인
+	@Override
+	public TeachVO login2(TeachVO tvo) throws Exception {
+		return dao.login2(tvo);
+	}
+
 	// 강사 비밀번호 찬기
 	@Override
 	public TeachVO findT_pwd(TeachVO tvo) throws Exception {
 		return dao.findT_pwd(tvo);
 	}
-	
+
 	// 강사 비밀번호 변경
 	@Override
 	public int changeT_pwd(TeachVO tvo) throws Exception {
@@ -46,5 +58,5 @@ public class AdminServiceImpl implements AdminService {
 	public int changeS_pwd(StdVO svo) throws Exception {
 		return dao.changeS_pwd(svo);
 	}
- 
+
 }
