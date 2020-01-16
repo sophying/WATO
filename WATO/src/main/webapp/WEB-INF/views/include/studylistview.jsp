@@ -7,14 +7,15 @@
 <meta charset="UTF-8"> 
 <title>Insert title here</title>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8"> 
 <title>CodePen - Material Design About  Card</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script> 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head> 
 <style> 
@@ -183,16 +184,24 @@
 <body style="overflow-x:hidden; overflow-y:hidden;">   
 <br>
 <br>
+<!-- 필터 -->
 		<form method="post" name="filterform"> 
 			<div style="	  
 			  display: -webkit-box;
-			  display: -ms-flexbox; 
+			  display: -ms-flexbox;  
 			  display: flex;
 			  -ms-flex-wrap: wrap;
 			  flex-wrap: wrap;  
 			  margin-right: -15px;   
 			  margin-left: 24px;"  
 			  id="filter"> 
+					<div class="form-group col-sm-2 col-xs-6"> 
+						<select class="form-control" name="filetertype"> 
+							<option value="">스터디/강사</option> 
+							<option value="10">스터디</option>    
+							<option value="20">강사</option>    
+						</select>  
+					</div>
 					<div class="form-group col-sm-2 col-xs-6"> 
 						<select class="form-control" name="place"> 
 							<option value="">지역</option> 
@@ -257,7 +266,7 @@
 						   } else {
 						      options.push( val ); 
 						      setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
-						   }
+						   } 
 						   $( event.target ).blur(); 
 						    
 						   console.log( options );   
@@ -283,22 +292,30 @@
 					</script> 
 	<br>
 	<div class="studylistviewbody">  
-	  <div class="valign-wrapper">
+	  <div class="valign-wrapper"> 
 	  	<div class="row">  
 		  <% int cnt = 0; %>  
-	  		<c:forEach items="${studylistAll}" var="studylistAll">
+	  		<c:forEach items="${TearchlistAll}" var="TearchlistAll">
 		    <div class="col s12 m4">
-		      <div class="card" id="about"> 
+		      <div class="card" id="about">  
 		        <div class="card-header">
 		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
-		        </div>
-		        <h5 class="card-title" id="listalltitle"> 
-		                ${studylistAll.title}
-		        </h5> 
-		        <h6 class="description">   
-		                ${studylistAll.writer} 
-		              </h6>
+		        </div>  
+		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
+		        	<c:choose>
+		        		<c:when test="${TearchlistAll.t_title.length() >= 10}"> 
+		        			${TearchlistAll.t_title.substring(0,10)}... 
+		        		</c:when> 
+		        		<c:otherwise>
+		        			${TearchlistAll.t_title} 
+		        		</c:otherwise>
+		        	</c:choose>  
+		        	</span>
+		        </h6>  
+		        <h6 class="description">    
+		                ${TearchlistAll.t_userId} <i class="fa fa-id-badge" aria-hidden="true"></i> 
+		              </h6>  
 		        <div class="social">
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
@@ -314,7 +331,44 @@
 		    </div>
 			<% cnt++; %> 
 		  </c:forEach>
-		  <% int cnt1 = 0; %>
+		  <% int cnt1 = 0; %>   
+	  		<c:forEach items="${studylistAll}" var="studylistAll">
+		    <div class="col s12 m4">
+		      <div class="card" id="about"> 
+		        <div class="card-header">
+		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
+		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		        </div>
+		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >    
+		        	<c:choose>
+		        		<c:when test="${studylistAll.s_title.length() >= 10}"> 
+		        			${studylistAll.s_title.substring(0,10)}...
+		        		</c:when> 
+		        		<c:otherwise>
+		        			${studylistAll.s_title}  
+		        		</c:otherwise>
+		        	</c:choose> 
+		        	</span>
+		        </h6> 
+		        <h6 class="description">   
+		                ${studylistAll.s_userId}   
+		        </h6>
+		        <div class="social">
+		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
+		        </div>
+		        <div class='wrap'>
+		          <div class='content'>
+		            <span>Follow me:</span>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          </div> 
+		        </div>
+		      </div>  
+		    </div>
+			<% cnt1++; %> 
+		  </c:forEach>
+		  <% int cnt2 = 0; %>
 		  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
 		    <div class="col s12 m4"> 
 		      <div class="card" id="about">  
@@ -322,15 +376,19 @@
 		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>
-		        <h5 class="card-title" style="  overflow: hidden;  
-												  text-overflow: ellipsis;
-												  white-space: nowrap;
-												  width: 200px;
-												  height: 30px;"> 
-		                ${StudyListFilterdata.t_title} 
-		        </h5>  
+		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
+						<c:choose>
+		        		<c:when test="${StudyListFilterdata.s_title.length() >= 10}"> 
+		        			${StudyListFilterdata.s_title.substring(0,10)}...
+		        		</c:when>  
+		        		<c:otherwise> 
+		        			${StudyListFilterdata.s_title}  
+		        		</c:otherwise> 
+		        	</c:choose>
+		        	</span> 											 	  
+		        </h6>  
 		        <h6 class="description">  
-		                ${StudyListFilterdata.t_userId} 
+		                ${StudyListFilterdata.s_userId} 
 		              </h6>
 		        <div class="social">
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
@@ -345,7 +403,44 @@
 		        </div>
 		      </div> 
 		    </div>
-			<% cnt1++; %>
+			<% cnt2++; %>
+		  </c:forEach>
+		  <% int cnt3 = 0; %>
+		  <c:forEach items="${TeacherListFilter}" var="TeacherListFilter">
+		    <div class="col s12 m4"> 
+		      <div class="card" id="about">  
+		        <div class="card-header">
+		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
+		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		        </div> 
+		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
+						<c:choose>
+		        		<c:when test="${TeacherListFilter.t_title.length() >= 10}"> 
+		        			${TeacherListFilter.t_title.substring(0,10)}... 
+		        		</c:when> 
+		        		<c:otherwise> 
+		        			${TeacherListFilter.t_title}  
+		        		</c:otherwise>
+		        	</c:choose> 	
+		        	</span>										 	  
+		        </h6>  
+		        <h6 class="description">  
+		                ${TeacherListFilter.t_userId}  
+		              </h6> 
+		        <div class="social">
+		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
+		        </div>
+		        <div class='wrap'>  
+		          <div class='content'>
+		            <span>Follow me:</span>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          </div> 
+		        </div>
+		      </div> 
+		    </div>
+			<% cnt3++; %>
 		  </c:forEach>
 		  <br> <br> <br> <br> <br> <br> <br> <br> <br>   
 		  </div>  
@@ -353,12 +448,7 @@
 	</div>  
   
 <script type="text/javascript">
-	$(function() {
-		if($('#listalltitle').text().length >=5){
-    		$('#listalltitle').text($('#listalltitle').text().substr(0,5)+"..."); 
-    	}  
-	})
-	
+ 	
 	
 	function togglefunction (event) { 
 		$(event).toggleClass('active'); 
@@ -370,7 +460,7 @@
 	    //alert($( this ).css( "transform" ));
 	    if (  $( this ).css( "transform" ) == 'none' ){
 	        $(this).css("transform","rotate(45deg)");
-	    } else {
+	    } else { 
 	        $(this).css("transform","" );
 	    }
 	});

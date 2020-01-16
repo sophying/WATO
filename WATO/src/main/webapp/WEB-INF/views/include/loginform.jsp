@@ -308,7 +308,7 @@
 	                <button class="ghost" id="signUp1">회원가입</button>
 	            </div>
 	        </div>
-	    </div>
+	    </div> 
 	</div>
 </div>
 <script>

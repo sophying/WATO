@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.king.myapp.domain.BoardVO;
+import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.service.BoardService;
@@ -44,7 +45,7 @@ public class BoardController {
 			model.addAttribute("listQna",listQna);  
 			return "board/searchResult";   
 		}
-		
+		 
 		@RequestMapping(value="/studylist" , method=RequestMethod.GET) 
 		public String studylist(Model model) throws Exception { 
 			logger.info("get studylist"); 
@@ -54,7 +55,7 @@ public class BoardController {
 		@RequestMapping(value="/index" , method=RequestMethod.GET)
 		public String index(Model model) throws Exception {
 			logger.info("get list search");
-			service.listRank();  
+			service.listRank();   
 			model.addAttribute("listRank",service.listRank());
 			
 			return "/index";
@@ -62,15 +63,21 @@ public class BoardController {
 		@RequestMapping(value="/studylistview" , method=RequestMethod.GET)
 		public String getstudylistview(Model model) throws Exception {
 			logger.info("get studylistview");
-			
+			 
 				List<BoardVO> studylistAll = service.studylistAll(); 
+				List<BoardVO> TearchlistAll = service.TearchlistAll(); 
+			
 				model.addAttribute("studylistAll",studylistAll);
+				model.addAttribute("TearchlistAll",TearchlistAll);
 			
 			return "/include/studylistview";   
 		}  
 		@RequestMapping(value="/studylistview" , method=RequestMethod.POST)
 		public String poststudylistview(Model model, StudyListFilter SLF) throws Exception {
 			logger.info("post studylistview"); 
+			if (SLF.getFiletertype() == null) {
+				SLF.setFiletertype(""); 
+			}
 			if (SLF.getCategory() == null) {
 				SLF.setCategory(""); 
 			}
@@ -83,9 +90,26 @@ public class BoardController {
 			if (SLF.getPlace()== null) {
 				SLF.setPlace("");
 			}
-			List<TeacherEnrollVO> StudyListFilter = service.studylistfilter(SLF);
+			if (SLF.getFiletertype().equals("10")) { 
+				
+				List<StudyEnrollVO> StudyListFilter = service.studylistfilter(SLF);
+				model.addAttribute("StudyListFilterdata",StudyListFilter);
+				
+			}else if (SLF.getFiletertype().equals("20")) {
+				
+				List<TeacherEnrollVO> TeacherListFilter = service.TeacherListFilter(SLF);
+				model.addAttribute("TeacherListFilter",TeacherListFilter);  
+			}
+			else {
+//				스터디 강사 둘다 조회
+				List<BoardVO> studylistAll = service.studylistAll(); 
+				List<BoardVO> TearchlistAll = service.TearchlistAll(); 
 			
-			model.addAttribute("StudyListFilterdata",StudyListFilter);
+				model.addAttribute("studylistAll",studylistAll);
+				model.addAttribute("TearchlistAll",TearchlistAll);
+				
+			}
+			
 			
 			System.out.println("SLF.getPlace() : "+SLF.getPlace());
 			System.out.println("SLF.getCategory() : "+SLF.getCategory());

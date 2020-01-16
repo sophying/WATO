@@ -2,11 +2,20 @@ package com.king.myapp.domain;
 
 public class StudyListFilter {
 	
+	private String filetertype;
 	private String category;
 	private String level;
 	private String time;
 	private String place;
+	
 	 
+	 
+	public String getFiletertype() {
+		return filetertype;
+	}
+	public void setFiletertype(String filetertype) {
+		this.filetertype = filetertype;
+	}
 	public String getPlace() {
 		return place;
 	}
