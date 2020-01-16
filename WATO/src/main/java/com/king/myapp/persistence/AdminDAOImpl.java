@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.ApprovalVO;
+import com.king.myapp.domain.TeachVO;
 
 @Service
 public class AdminDAOImpl implements AdminDAO {
@@ -21,6 +22,17 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<ApprovalVO> teachlist() throws Exception {
 		return sql.selectList("admin.adminmanage");
 	}
-	// 매퍼
+	 
+	// 비밀번호 찾기
+	@Override
+	public TeachVO findidpwd(TeachVO tvo) throws Exception {
+		return sql.selectOne("admin.findidpwd", tvo); 
+	}
+
+	// 임시비밀번호 발급
+	@Override
+	public int changepwd(TeachVO tvo) throws Exception {
+		return sql.update("admin.changepwd", tvo);
+	}
 
 }

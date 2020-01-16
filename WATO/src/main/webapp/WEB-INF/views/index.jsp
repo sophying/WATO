@@ -190,8 +190,8 @@
                     	<c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
-                        <c:if test="${std != null || teach != null}">
-                        	<p class="list-inline-item">${std.user_Id}${teach.user_Id}님 환영합니다!</p>
+                        <c:if test="${std != null}">
+                        	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
                         	<li class="list-inline-item"><a href="sign_up/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/sign_up/std_info">
@@ -206,6 +206,15 @@
 								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
+                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	</form>
+                        	</li>
+                        </c:if>
+                        <c:if test="${teach != null}">
+                        	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
+                        	<li class="list-inline-item"><a href="sign_up/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item">
+                        	<form name="myForm2" method="get" action="/teach/teach_info">
 				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Pwd_Qs}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Pwd_As}" readonly="readonly">
@@ -217,7 +226,7 @@
 								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
                         	</form>
                         	</li>
                         </c:if>

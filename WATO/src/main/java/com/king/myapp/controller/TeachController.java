@@ -92,7 +92,7 @@ public class TeachController {
 	// 강사 회원정보 수정 get
 	@RequestMapping(value = "/teach_info", method = RequestMethod.GET)
 	public void getInfo() throws Exception {
-		logger.info("get info Modify");
+		logger.info("get 강사 회원정보수정");
 	}
 	
 	// 강사 회원정보 수정 post
@@ -101,7 +101,9 @@ public class TeachController {
 		logger.info("post info Modify");
 		
 		service.info_modify(vo);
+		
 		session.invalidate(); // 기존의 세션값을 없애고 새 것을 만들겠다는 뜻
+		
 		return "redirect:/";
 		
 	}

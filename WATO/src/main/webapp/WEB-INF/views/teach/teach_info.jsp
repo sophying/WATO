@@ -165,11 +165,11 @@
 	                <caption style="text-align: right;"><img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"> 필수입력사항</caption>
 	                <tr>
 	                    <th>아이디 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" name="teach_Id" value="${teach.user_Id}" readonly="readonly"></td>
+	                    <td><input type="text" name="User_Id" value="${teach.user_Id}" readonly="readonly"></td>
 	                </tr>
 	                <tr>
 	                    <th>새 비밀번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="password" name="teach_Pwd" placeholder="새 비밀번호 입력"></td>
+	                    <td><input type="password" name="User_Pwd" placeholder="새 비밀번호 입력"></td>
 	                </tr>
 	                <tr>
 	                    <th>새 비밀번호 확인 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -178,7 +178,7 @@
 	                <tr>
 	                    <th>비밀번호 확인 질문 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 	                    <td>
-	                        <select name="teach_Pwd_Qs" value="${teach1.teach_Pwd_Qs}" style="">
+	                        <select name="teach_Pwd_Qs" value="${teach.teach_Pwd_Qs}" style="">
 	                            <option value="기억에 남는 추억의 장소는?" selected>기억에 남는 추억의 장소는?</option>
 	                            <option value="자신의 보물 1호는?">자신의 보물 1호는?</option>
 	                            <option value="가장 좋아하는 과일은?">가장 좋아하는 과일은?</option>
@@ -190,74 +190,40 @@
 	                </tr>
 	                <tr>
 	                    <th>비밀번호 확인 답변 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" name="teach_Pwd_As" value="${teach1.teach_Pwd_As}"></td>
+	                    <td><input type="text" name="teach_Pwd_As" value="${teach.teach_Pwd_As}"></td>
 	                </tr>
 	                <tr>
 	                    <th>성별 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><span>${teach1.teach_Gender}</span></td>
+	                    <td><span>${teach.teach_Gender}</span></td>
 	                </tr>
 	                <tr>
 	                    <th>휴대폰 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 	                    <td>
-	                    <input type="text" id="teach_Phone1" name="teach_Phone1" value="${teach1.teach_Phone1}" />
+	                    <input type="text" id="teach_Phone1" name="teach_Phone1" value="${teach.teach_Phone1}" />
 	                    -
-	                    <input type="text" id="teach_Phone2" name="teach_Phone2" value="${teach1.teach_Phone2}" />
+	                    <input type="text" id="teach_Phone2" name="teach_Phone2" value="${teach.teach_Phone2}" />
 	                    -
-	                    <input type="text" id="teach_Phone3" name="teach_Phone3" value="${teach1.teach_Phone3}" />
+	                    <input type="text" id="teach_Phone3" name="teach_Phone3" value="${teach.teach_Phone3}" />
 	                    </td>
 	                </tr>
 	                <tr>
 		                <th>이메일 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-		                    <td><input type="text" id="teach_Email" name="teach_Email" value="${teach1.teach_Email}" /></td>            
+		                    <td><input type="text" id="teach_Email" name="teach_Email" value="${teach.teach_Email}" /></td>            
 		            </tr>
-	                <!-- <tr>
-	                    <th>이메일 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td>
-	                        <input type="text" id="" name="" placeholder="이메일"> @ <input type="text" id="" name="">
-	                        <select id="" name="">
-	                            <option value="gmail.com">gmail.com</option>
-	                            <option value="naver.com">naver.com</option>
-	                            <option value="hanmail.net">hanmail.net</option>
-	                            <option value="daum.com">daum.com</option>
-	                        </select>
-	                    </td>
-	                </tr> -->
 	                <tr>
 	                    <th>우편번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" id="teach_Addr1" name="teach_Addr1" value="${teach1.teach_Addr1}" placeholder="우편번호"><input type="button" id="" name="" value="우편번호 찾기"></td>
+	                    <td><input type="text" id="teach_Addr1" name="teach_Addr1" value="${teach.teach_Addr1}" placeholder="우편번호"><input type="button" id="" name="" value="우편번호 찾기"></td>
 	                </tr>
 	                <tr>
 	                    <th>주소 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" id="teach_Addr2" name="teach_Addr2" value="${teach1.teach_Addr2}" placeholder="도로명주소"></td>
+	                    <td><input type="text" id="teach_Addr2" name="teach_Addr2" value="${teach.teach_Addr2}" placeholder="도로명주소"></td>
 	                </tr>
 	                <tr>
 	                    <th>상세주소 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" id="teach_Addr3" name="teach_Addr3" value="${teach1.teach_Addr3}" placeholder="상세주소"></td>
+	                    <td><input type="text" id="teach_Addr3" name="teach_Addr3" value="${teach.teach_Addr3}" placeholder="상세주소"></td>
 	                </tr>
 	            </table>
 	        </div>
-	
-	        <!-- <div style="margin-top: 50px; padding-bottom: 10px; font-size: 17px;">추가정보</div>
-	        <div>
-	            <table class="table_sub">
-	                <tr>
-	                    <th>생년월일</th>
-	                    <td><input type="text" id="" name=""> 년 <input type="text" id="" name=""> 월 <input type="text" id="" name=""> 일 </td>
-	                </tr>
-	                <tr>
-	                    <th>지역</th>
-	                    <td>
-	                        <select>
-	                            <option value="서울">서울</option>
-	                            <option value="경기">경기</option>
-	                            <option value="광주">광주</option>
-	                            <option value="부산">부산</option>
-	                            <option value="제주">제주</option>
-	                        </select>
-	                    </td>
-	                </tr>
-	            </table>
-	        </div> -->
             <div style="margin: 40px;">
                 <button type="submit" style="margin-right: 30px; width: 150px; height: 50px;">회원정보수정</button>
                 <button type="reset" style="width: 150px; height: 50px;">취소</button>

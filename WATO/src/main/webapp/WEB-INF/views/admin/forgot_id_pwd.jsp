@@ -173,9 +173,9 @@
             <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 아이디와 이메일을 정확히 입력해주세요.</div><br>
             <div>
                 <table class="table_main" style="text-align: left;">
-                    <tr>
+                    <tr> 
                         <th>아이디</th>
-                        <td><input type="text" id="Teach_Email" name="Teach_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+                        <td><input type="text" id="Teach_Email" name="User_Id" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
                     </tr>
                     <tr>
                         <th>이메일</th>

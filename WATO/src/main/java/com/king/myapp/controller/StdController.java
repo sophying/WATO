@@ -59,7 +59,7 @@ public class StdController {
 	// 회원정보 수정 get
 	@RequestMapping(value = "/std_info", method = RequestMethod.GET)
 	public void getInfo() throws Exception {
-		logger.info("get info Modify");
+		logger.info("get 학생 회원정보수정");
 	}
 
 	// 회원정보 수정 post
@@ -107,6 +107,7 @@ public class StdController {
 
 		} else {
 			session.setAttribute("std", login1); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
+			logger.info("학생 로그인 완료");
 		}
 
 		return "redirect:/";
@@ -129,8 +130,7 @@ public class StdController {
 
 		} else {
 			session.setAttribute("teach", login2); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
-			System.out.println(login2.getNo());
-
+			logger.info("강사 로그인 완료");
 		}
 
 		return "redirect:/";

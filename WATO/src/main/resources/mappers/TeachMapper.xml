@@ -54,8 +54,7 @@
 			Teach_Phone1 = #{Teach_Phone1},
 			Teach_Phone2 = #{Teach_Phone2},
 			Teach_Phone3 = #{Teach_Phone3},
-			Teach_Email1 = #{Teach_Email1},
-			Teach_Email2 = #{Teach_Email2},
+			Teach_Email = #{Teach_Email},
 			Teach_Addr1 = #{Teach_Addr1},
 			Teach_Addr2 = #{Teach_Addr2},
 			Teach_Addr3 = #{Teach_Addr3}
