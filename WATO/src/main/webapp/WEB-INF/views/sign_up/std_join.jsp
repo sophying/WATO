@@ -35,7 +35,7 @@
                     
                     <tr>
                         <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td><input type="text" id="Std_Id" name="Std_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
+                        <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
 						</td>
                         <td><button type="button" class="idCheck" onclick="fn_idChk();">아이디 중복확인</button></td>
 <!--                         <p class="result">
@@ -44,7 +44,7 @@
                     </tr>
                     <tr>
                         <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="password" id="userPw" id="Std_Pwd" name="Std_Pwd" size="55" maxlength="12" placeholder="비밀번호" ></td>
+                        <td colspan="2"><input type="password" id="userPw" id="User_Pwd" name="User_Pwd" size="55" maxlength="12" placeholder="비밀번호" ></td>
                     </tr>
                     <tr>
                         <th>비밀번호 확인<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>

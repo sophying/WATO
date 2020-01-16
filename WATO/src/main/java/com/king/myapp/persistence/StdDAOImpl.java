@@ -28,7 +28,7 @@ public class StdDAOImpl implements StdDAO {
 	// 회원정보수정
 	@Override
 	public void info_modify(StdVO vo) {
-		sql.update(namespace + ".info_madofy", vo);
+		sql.update(namespace + ".info_modify", vo);
 	}
 	
 	// 아이디 중복 체크

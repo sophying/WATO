@@ -34,21 +34,21 @@
 	<!-- 강사 회원 가입3 -->
 	<update id="teach_join3">
 		update teach_info
-		set Teach_Id = #{Teach_Id}, Teach_Pwd = #{Teach_Pwd}
+		set User_Id = #{User_Id}, User_Pwd = #{User_Pwd}, Teach_Pwd_Qs = #{Teach_Pwd_Qs}, Teach_Pwd_As = #{Teach_Pwd_As}
 		where Teach_Email = #{Teach_Email}
 	</update>
 	
 	<!-- 아이디 중복확인 -->
 	<select id="idChk" resultType="int">
 		select count(*) from teach_info
-		where Teach_Id = #{Teach_Id}
+		where User_Id = #{User_Id}
 	</select>
 	
 	<!-- 회원정보 수정 -->
 	<update id="info_madofy">
 		update teach_info
 		set
-			Teach_Pwd = #{Teach_Pwd},
+			User_Pwd = #{User_Pwd},
 			Teach_Pwd_Qs = #{Teach_Pwd_Qs},
 			Teach_Pwd_As = #{Teach_Pwd_As},
 			Teach_Phone1 = #{Teach_Phone1},
@@ -60,14 +60,14 @@
 			Teach_Addr2 = #{Teach_Addr2},
 			Teach_Addr3 = #{Teach_Addr3}
 		where
-			Teach_Id = #{Teach_Id}			
+			User_Id = #{User_Id}			
 	</update>
 	
 	<!-- 로그인 -->
-	<select id="login" resultType="com.king.myapp.domain.TeachVO">
-		select Teach_Id, Teach_Pwd
+	<!-- <select id="login" resultType="com.king.myapp.domain.TeachVO">
+		select User_Id, User_Pwd
 		from teach_info
-		where Teach_Id = #{Teach_Id} and Teach_Pwd = #{Teach_Pwd}
-	</select>
+		where User_Id = #{User_Id} and User_Pwd = #{User_Pwd}
+	</select> -->
 	
   </mapper>	

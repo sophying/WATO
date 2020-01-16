@@ -169,7 +169,7 @@
 	                </tr>
 	                <tr>
 	                    <th>새 비밀번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="password" name="Std_Pwd" placeholder="새 비밀번호 입력"></td>
+	                    <td><input type="password" name="User_Pwd" placeholder="새 비밀번호 입력"></td>
 	                </tr>
 	                <tr>
 	                    <th>새 비밀번호 확인 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -194,7 +194,7 @@
 	                </tr>
 	                <tr>
 	                    <th>성별 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><span>${std.std_Gender}</span></td>
+	                    <td><span>${std.std_Gender}${teach.teach_Gender}</span></td>
 	                </tr>
 	                <tr>
 	                    <th>휴대폰 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>

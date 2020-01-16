@@ -3,6 +3,7 @@ package com.king.myapp.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -111,30 +112,18 @@ public class AdminController {
 		return "/teach/teach_join_2";
 	}
 	
-	// 아이디 찾기 GET
-	@RequestMapping(value = "/forgot_id", method = RequestMethod.GET)
-	public void postFgid() throws Exception {
-		logger.info("get Forgot id");
-	}
-	
-	// 비밀번호 찾기 GET
-	@RequestMapping(value = "/forgot_pwd", method = RequestMethod.GET)
-	public void postFgpwd() throws Exception {
-		logger.info("get Forgot Password");
-	}
-	
 	// 인증센터 GET
 	@RequestMapping(value = "/email", method = RequestMethod.GET)
 	public void getInjeung(Model model) throws Exception {
 		logger.info("get email_injeung");
 	}
 	
-	 // 승인버튼 클릭 (인증센터 POST), mailSending 코드
+	// 승인버튼 클릭 (인증센터 POST), mailSending 코드
     @RequestMapping(value = "/admin/auth.do" , method = RequestMethod.POST )
     public ModelAndView mailSending(TeachVO vo, HttpServletRequest request, String e_mail, HttpServletResponse response_email) throws Exception {
     	logger.info("POST APP");
     	
-    	teachservice.teach_join2(vo);
+		/* teachservice.teach_join2(vo); */
     	
 
         Random r = new Random();
@@ -164,7 +153,6 @@ public class AdminController {
                 "http://localhost:8080/teach/teach_join_2?terms1=on&terms2=on&terms3=on" +  
 						 " 인증번호는 " +dice+ " 입니다. "+
                 "http://localhost:8080/teach/teach_join_2?terms1=on&terms2=on&terms3=on"+
-						/* " 인증번호는 " +dice+ " 입니다. " */
                 
                 System.getProperty("line.separator")+
                 
@@ -199,14 +187,6 @@ public class AdminController {
          
          return mv;
 	}
-    
-	/*
-	 * // 비밀번호 찾기
-	 * 
-	 * @RequestMapping(value = "/forgot_pwd", method = RequestMethod.GET) public
-	 * void getForgotpwd(Model model) throws Exception {
-	 * logger.info("get forgot_password"); }
-	 */
 	
 	
 	  //이메일 인증 페이지 맵핑 메소드
@@ -266,23 +246,9 @@ public class AdminController {
 	  
 	  }
 	 
-	
-	/*
-	 * // 강사 회원 가입 get
-	 * 
-	 * @RequestMapping(value = "/teach_join", method = RequestMethod.GET) public
-	 * void getRegister() throws Exception { logger.info("get teach_join"); }
-	 * 
-	 * // 강사 회원 가입 POST
-	 * 
-	 * @RequestMapping(value = "/teach_join", method = RequestMethod.POST) public
-	 * String postRegister(TeachVO vo) throws Exception {
-	 * logger.info("post teach_join");
-	 * 
-	 * service.teach_join(vo);
-	 * 
-	 * return "redirect:/"; }
-	 */
+	  
+	  
+	  
 	 
 	
 }

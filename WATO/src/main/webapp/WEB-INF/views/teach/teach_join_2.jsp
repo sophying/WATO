@@ -132,7 +132,7 @@
     <div class="wrap2">
 
         <div id="header">
-            <div style="float: left"><a href="javascript:;"><img src="../images/book_main_icon.png" width="80" height="50"></a></div>
+            <div style="float: left"><a href="javascript:;"><img src="../resource/images/book_main_icon.png" width="80" height="50"></a></div>
             <ul>
                 <li style="float: left;"><a href="javascript:;">처음 오신 분들께</a></li>
                 <li style="float: left;"><a href="javascript:;">스터디</a>
@@ -150,33 +150,48 @@
             </ul>
         </div>
 
-                <div><img src="../images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div>
+                <div><img src="../resource/images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div>
                 <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">회원 정보 수정</div>
                 <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
-                    <p style="float: left; margin: 0px;"><img src="../images/book_main_icon.png" width="70px;"></p>
+                    <p style="float: left; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
                     <div>저희 스터디어스를 이용해 주셔서 감사합니다. 최지혜님은 학생이십니다.
-                        <p style="float: right; margin: 0px;"><img src="../images/book_main_icon.png" width="70px;"></p>
+                        <p style="float: right; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
                         <br>종료 예정 스터디는 0건이 있습니다.
                     </div>
                 </div>
-                <c:if test="${member == null}">
+                <c:if test="${teach == null}">
             <form role="form" method="post" autocomplete="off">
                 <div style="font-size: 17px;">로그인</div>
                 <div>
                     <table class="table_main" style="text-align: left;">
                         <tr>
 	                        <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td><input type="text" id="Teach_Id" name="Teach_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
+	                        <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
 							</td>
 	                        <td><button type="button" class="idCheck" onclick="fn_idChk();">아이디 중복확인</button></td>
                     	</tr>
                         <tr>
 	                        <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td colspan="2"><input type="password" id="userPw" id="Teach_Pwd" name="Teach_Pwd" size="55" maxlength="12" placeholder="비밀번호" ></td>
+	                        <td colspan="2"><input type="password" id="userPw" id="User_Pwd" name="User_Pwd" size="55" maxlength="12" placeholder="비밀번호" ></td>
 	                    </tr>
 	                    <tr>
 	                        <th>비밀번호 확인<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 	                        <td colspan="2"><input type="password" id="userPwChk" size="55" maxlength="12" placeholder="비밀번호 확인"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+	                    </tr>
+	                    <tr>
+	                        <th>비밀번호 확인 질문<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+	                        <td colspan="2"><select id="Teach_Pwd_Qs" name="Teach_Pwd_Qs" style="width: 290px; text-align: center;">
+	                            <option value="기억에 남는 추억의 장소는?" selected>기억에 남는 추억의 장소는?</option>
+	                            <option value="자신의 보물 1호는?">자신의 보물 1호는?</option>
+	                            <option value="가장 좋아하는 과일은?">가장 좋아하는 과일은?</option>
+	                            <option value="가장 좋아했던 초등학교 선생님 성함은?">가장 좋아했던 초등학교 선생님 성함은?</option>
+	                            <option value="인상 깊게 읽은 책 제목은?">인상 깊게 읽은 책 제목은?</option>
+	                            <option value="추억하고 싶은 날짜가 있다면?">추억하고 싶은 날짜가 있다면?</option>
+	                        </select></td>
+	                    </tr>
+	                    <tr>
+	                        <th>비밀번호 확인 답변<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+	                        <td colspan="2"><input type="text" id="Teach_Pwd_As" name="Teach_Pwd_As" size="55" maxlength="40"></td>
 	                    </tr>
 	                    <tr>
 	                        <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -191,16 +206,6 @@
             </div>
             </form>
             </c:if>
-<c:if test="${msg == false}">
-	<p style="color:#foo;">로그인에 실패했습니다. 아이디 또는 패스워드를 다시 입력해주십시오.</p>
-</c:if>
-
-<c:if test="${member != null }">
-	<p>${members.Teach_Id}님 환영합니다.</p>
-	
-	<a href="member/modify">회원정보 수정</a>&nbsp;<a href="member/withdrawal">회원탈퇴</a><br> <!-- 컨트롤을 찾아서 -->
-	<a href="member/logout">로그아웃</a>
-</c:if>
     </div>
 </div>
 <div class="footer" style="text-align: center; background-color: #222222;">

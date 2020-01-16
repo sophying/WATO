@@ -321,7 +321,7 @@
 	            </div>
 	            <input type="text" name="User_Id" placeholder="Email" />
 	            <input type="password" name="User_Pwd" placeholder="Password" /><br>
-	            <div><a href="../admin/forgot_id">아이디 찾기</a>&nbsp;&nbsp;&nbsp;<a href="../admin/forgot_pwd">비밀번호 찾기</a></div><br>
+	            <div><a href="../admin/forgot_id_pwd">아이디 또는 비밀번호 찾기</a></div><br>
 	            <button type="submit" id="login" class="login">SIGN IN</button>
 	        </form>
 	    </div>

@@ -150,43 +150,45 @@
             </ul>
         </div>
 
-                <div><img src="../resource/images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div>
-                <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">아이디 찾기</div>
-                <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
-                    <p style="float: left; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
-                    <div>저희 스터디어스를 이용해 주셔서 감사합니다. 최지혜님은 학생이십니다.
-                        <p style="float: right; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
-                        <br>종료 예정 스터디는 0건이 있습니다.
-                    </div>
-                </div>
-                <c:if test="${member == null}">
+        <div><img src="../resource/images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div><br>
+        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">아이디 찾기</div>
             <form role="form" method="post" autocomplete="off">
                 <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 이메일을 정확히 입력해주세요.</div><br>
                 <div>
                     <table class="table_main" style="text-align: left;">
-	                    <tr>
-	                        <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td><input type="text" id="Teach_Email" name="Teach_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
-	                    </tr>
+                        <tr>
+                            <th>이메일</th>
+                            <td><input type="text" id="Teach_Email" name="Teach_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+                        </tr>
                     </table>
                 </div>
-            
+
+                <div style="margin: 40px;">
+                    <button type="submit" style="margin-right: 30px; width: 150px; height: 50px;">아이디 찾기</button>
+                    <button type="reset" style="width: 150px; height: 50px;">취소</button>
+                </div><br><br>
+            </form>
+        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">비밀번호 찾기</div>
+        <form role="form" method="post" autocomplete="off">
+            <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 아이디와 이메일을 정확히 입력해주세요.</div><br>
+            <div>
+                <table class="table_main" style="text-align: left;">
+                    <tr>
+                        <th>아이디</th>
+                        <td><input type="text" id="Teach_Email" name="Teach_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+                    </tr>
+                    <tr>
+                        <th>이메일</th>
+                        <td><input type="text" id="Teach_Email" name="Teach_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+                    </tr>
+                </table>
+            </div>
+
             <div style="margin: 40px;">
-                <button type="submit" style="margin-right: 30px; width: 150px; height: 50px;">아이디 찾기</button>
+                <button type="submit" style="margin-right: 30px; width: 150px; height: 50px;">비밀번호 찾기</button>
                 <button type="reset" style="width: 150px; height: 50px;">취소</button>
             </div>
-            </form>
-            </c:if>
-<c:if test="${msg == false}">
-	<p style="color:#foo;">로그인에 실패했습니다. 아이디 또는 패스워드를 다시 입력해주십시오.</p>
-</c:if>
-
-<c:if test="${member != null }">
-	<p>${members.Teach_Id}님 환영합니다.</p>
-	
-	<a href="member/modify">회원정보 수정</a>&nbsp;<a href="member/withdrawal">회원탈퇴</a><br> <!-- 컨트롤을 찾아서 -->
-	<a href="member/logout">로그아웃</a>
-</c:if>
+        </form>
     </div>
 </div>
 <div class="footer" style="text-align: center; background-color: #222222;">
@@ -225,69 +227,69 @@
 <script type="text/javascript" src="../resource/js/teach_join.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
-<script type="text/javascript"> 
-        // 비밀번호 확인 소스
-        $('#userPw').blur(function() {
-            var userPw = $('#userPw').val();
-            var userPwChk = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
+<script type="text/javascript">
+    // 비밀번호 확인 소스
+    $('#userPw').blur(function() {
+        var userPw = $('#userPw').val();
+        var userPwChk = $('#userPwChk').val();
+        var pwdcheck = $('#pwdcheck');
 
-            if (userPw !="" && userPwChk !="" && userPw==userPwChk) {
-                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-            }else if(userPw != "" && userPwChk==""){
-                pwdcheck.text('비밀번호 확인를 입력해주세요').css('color', 'blue');
-            }else if (userPw != userPwChk) {
-                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-            }else if(userPw =="" && userPwChk==""){
-                pwdcheck.text('');
-            }
+        if (userPw !="" && userPwChk !="" && userPw==userPwChk) {
+            pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
+        }else if(userPw != "" && userPwChk==""){
+            pwdcheck.text('비밀번호 확인를 입력해주세요').css('color', 'blue');
+        }else if (userPw != userPwChk) {
+            pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
+        }else if(userPw =="" && userPwChk==""){
+            pwdcheck.text('');
+        }
 
-        });
+    });
 
-        $('#userPwChk').blur(function() {
-            var userPw = $('#userPw').val();
-            var userPwChk = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
+    $('#userPwChk').blur(function() {
+        var userPw = $('#userPw').val();
+        var userPwChk = $('#userPwChk').val();
+        var pwdcheck = $('#pwdcheck');
 
-            if (userPw !="" && userPw !="" && userPw==userPwChk) {
-                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-            } else if(userPwChk != "" && userPw==""){
-                pwdcheck.text('비밀번호를 입력해주세요').css('color', 'blue');
-            }else if(userPw != userPwChk){
-                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-            }else if(userPw =="" && userPwChk==""){
-                pwdcheck.text('');
-            }
-        });
+        if (userPw !="" && userPw !="" && userPw==userPwChk) {
+            pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
+        } else if(userPwChk != "" && userPw==""){
+            pwdcheck.text('비밀번호를 입력해주세요').css('color', 'blue');
+        }else if(userPw != userPwChk){
+            pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
+        }else if(userPw =="" && userPwChk==""){
+            pwdcheck.text('');
+        }
+    });
 
 
-        function checkPw() {
-            var userPw = $('#userPw').val();
-            var userPw = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
-            if (userPw == userPwChk) {
-                joinform.submit();
-            } else {
-                /* pwdcheck.text('비밀번호가 다릅니다').css('color', 'red'); *!/ /!* 위에서 출력하고 있는데 한번더 출력할 필요 없음 */
-                alert('입력하신 비밀번호가 다릅니다 확인해주세요.')
-            }
-        }   
-
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-       var reader = new FileReader();
-
-       reader.onload = function (e) {
-       $('#image_section').attr('src', e.target.result);
+    function checkPw() {
+        var userPw = $('#userPw').val();
+        var userPw = $('#userPwChk').val();
+        var pwdcheck = $('#pwdcheck');
+        if (userPw == userPwChk) {
+            joinform.submit();
+        } else {
+            /* pwdcheck.text('비밀번호가 다릅니다').css('color', 'red'); *!/ /!* 위에서 출력하고 있는데 한번더 출력할 필요 없음 */
+            alert('입력하신 비밀번호가 다릅니다 확인해주세요.')
+        }
     }
 
-       reader.readAsDataURL(input.files[0]);
-       }
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_section').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
     }
 
-      $("#imgInput").change(function(){
+    $("#imgInput").change(function(){
         readURL(this);
-  });
-</script>        
+    });
+</script>
 </body>
 </html>

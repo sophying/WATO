@@ -206,7 +206,7 @@
 								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-				                <%-- <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Pwd_Qs}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Pwd_As}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
@@ -216,7 +216,7 @@
 								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly"> --%>
+								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
                         	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
                         	</form>
                         	</li>

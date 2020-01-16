@@ -56,24 +56,4 @@ document.write("<script src='http://dmaps.daum.net/map_js_init/postcode.v2.js'><
             document.getElementById("email2").value = "";
             document.getElementById("email2").focus();
         }
-    }    
-    
-
-
-document.write("<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>");
-function fn_idChk(){
-	$.ajax({
-		url : "/sign_up/idChk",
-		type : "post",
-		dataType : "json",
-		data : {"Std_Id" : $("#Std_Id").val()},
-		success : function(data){
-			if(data == 1){
-				alert("중복된 아이디입니다.");
-			}else if(data == 0){
-				$("#idChk").attr("value", "Y");
-				alert("사용가능한 아이디입니다.");
-			}
-		}
-	})
-}
+    }

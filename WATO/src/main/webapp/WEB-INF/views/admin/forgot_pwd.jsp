@@ -168,16 +168,6 @@
 	                        <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 	                        <td><input type="text" id="Teach_Id" name="Teach_Id" size="45" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
 							</td>
-	                        <!-- <td><button type="button" class="idCheck" onclick="fn_idChk();"></button></td> -->
-                    	</tr>
-                        <!-- <tr>
-	                        <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td colspan="2"><input type="password" id="userPw" id="Teach_Pwd" name="Teach_Pwd" size="55" maxlength="12" placeholder="비밀번호" ></td>
-	                    </tr>
-	                    <tr>
-	                        <th>비밀번호 확인<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td colspan="2"><input type="password" id="userPwChk" size="55" maxlength="12" placeholder="비밀번호 확인"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
-	                    </tr> -->
 	                    <tr>
 	                        <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 	                        <td><input type="text" id="Teach_Email" name="Teach_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>

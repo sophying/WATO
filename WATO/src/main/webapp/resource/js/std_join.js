@@ -66,7 +66,7 @@ function fn_idChk(){
 		url : "/sign_up/idChk",
 		type : "post",
 		dataType : "json",
-		data : {"Std_Id" : $("#Std_Id").val()},
+		data : {"User_Id" : $("#User_Id").val()},
 		success : function(data){
 			if(data == 1){
 				alert("중복된 아이디입니다.");
