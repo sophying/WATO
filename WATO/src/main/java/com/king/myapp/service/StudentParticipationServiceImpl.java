@@ -1,5 +1,7 @@
 package com.king.myapp.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -17,5 +19,11 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 	@Override
 	public void partiInsert(StudentParticipationVO partiVO) throws Exception {
 		participationDAO.partiInsert(partiVO);
+	}
+
+	// userid Check 
+	@Override
+	public List<StudentParticipationVO> partiCheck(int s_no) throws Exception {
+		return participationDAO.userCheck(s_no);
 	}
 }

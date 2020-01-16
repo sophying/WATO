@@ -32,7 +32,7 @@
 						        </div>
 						        <div class="modal-footer"style="background: #5a7fa2;">
 						          <input type="hidden" name="s_no" id="s_no" value="${listOne.s_no }"/>
-						          <input type="hidden" name="p_userid" id="p_userid" value="hello"/>
+						          <input type="hidden" name="p_userid" id="p_userid" value="hi"/>
 						          <font size="4"><input type="button" id="modalSubmit" class="btn btn-default" style="color:#fff;" value="참여완료하기"></font>
 						        </div>
 						      </div>

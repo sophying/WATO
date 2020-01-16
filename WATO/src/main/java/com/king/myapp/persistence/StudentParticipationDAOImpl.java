@@ -1,5 +1,7 @@
 package com.king.myapp.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -17,5 +19,11 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 	@Override
 	public void partiInsert(StudentParticipationVO partiVO) throws Exception {
 		sql.insert("parti.s_participation",partiVO);
+	}
+
+	// userid Check
+	@Override
+	public List<StudentParticipationVO> userCheck(int s_no) throws Exception {
+		return sql.selectList("parti.s_userCheck",s_no);
 	}
 }

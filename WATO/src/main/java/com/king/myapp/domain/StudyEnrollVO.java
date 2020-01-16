@@ -24,7 +24,7 @@ public class StudyEnrollVO {
 
 */
 	private int s_no;
-	private String s_userId;
+	private String s_userId ="hello";
 	private String s_category;
 	private String s_title;
 	private Date s_startDate;

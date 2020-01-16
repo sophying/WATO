@@ -9,7 +9,7 @@ public class StudentParticipationVO {
 	  p_no number,
 	  s_no number,
 	  userid varchar2(30),
-	  p_intro varchar2(30),
+	  p_intro varchar2(100),
 	  p_tell number,
 	  primary key(p_no));
 

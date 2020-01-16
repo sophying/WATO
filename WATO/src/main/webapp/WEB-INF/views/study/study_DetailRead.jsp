@@ -211,6 +211,17 @@
 		text-align: center;
 		font-size: 15pt;
 	}
+	#successBtn{
+		border:none;
+		background-color: #e0e0e0;
+		color: #fff;
+		display: block;
+		width: 100%;
+		height: 56px;
+		line-height: 56px;
+		text-align: center;
+		font-size: 15pt;
+	}
 	.infoModi{
 		box-sizing:border-box;
 		position:relative;
@@ -666,7 +677,14 @@
 									<input type="button" class="goButton" value="마감되었습니다"/>
 								</c:when>
 								<c:otherwise>
-									<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/>
+									<c:choose>  
+										<c:when test="${(parti_s_no) == (listOne.s_no) }">
+											<input type="button" class="successBtn"id="success"  data-toggle="modal" data-target="#Form-modal"  value="참여신청완료"/>
+										</c:when>
+										<c:otherwise>
+											<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/>
+										</c:otherwise>
+									</c:choose>  
 								</c:otherwise>
 							</c:choose>
 					</div>
@@ -785,47 +803,12 @@ _________________________________________________________
 			}
 			
 		}
-<<<<<<< HEAD
-		
 
-		 $('#partiBnt').click(function () {
-			 url : 'parti/participation';
-			 type : 'post';
-			 $('#Form-modal').modal();
-=======
 		$('#modalSubmit').click(function () {
 			$('#participationForm').submit();
->>>>>>> branch 'HR' of https://github.com/sophying/WATO.git
 		});
 			
-			// 참여완료하기 버튼 클릭
-			/* $('#modalSubmit').click(function(){
-				var data = {
-						"s_no" : s_no,
-						"p_intro" : $('#p_intro').val(),
-						"p_tell" : $('#p_tell').val()
-						
-				};
-				
-				$.ajax({
-<<<<<<< HEAD
-					url : url,
-					type : type,
-=======
-					url : '/parti/participation',
-					type : 'post',
->>>>>>> branch 'HR' of https://github.com/sophying/WATO.git
-					data : data,
-					success : function(data){
-						
-						$('#Form-modal').modal('toggle');
-						
-					}
-				})
-				
-			}); */
-			
-		
+					
 		
 
 </script>
