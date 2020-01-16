@@ -50,7 +50,7 @@ public class AdminController {
 	// 로그인 get
 	@RequestMapping(value = "/loginform", method = RequestMethod.GET)
 	public void getlogin() throws Exception {
-		logger.info("get login");
+		logger.info("get 학생 또는 강사가 로그인");
 	}
 
 	// 학생 로그인 post
@@ -99,16 +99,16 @@ public class AdminController {
 		return "redirect:/";
 	}
 
-	// 인증(강사2)
+	// 인증 후 강사 아이디 생성 거치는 곳(숨겨진 경로).GET
 	@RequestMapping(value = "/terms2", method = RequestMethod.GET)
 	public void getTerms2(Model model) throws Exception {
-		logger.info("get terms222222");
+		logger.info("get 강사의 아이디를 생성하러 갑니다.");
 	}
 
-	// 인증(강사2)
+	// 인증 후 강사 아이디 생성 거치는 곳(숨겨진 경로).POST
 	@RequestMapping(value = "/terms2", method = RequestMethod.POST)
 	public String postTerms2(Model model) throws Exception {
-		logger.info("get terms222222");
+		logger.info("get 강사의 아이디를 생성하러 갑니다.");
 
 		return "/teach/teach_join_2";
 	}
@@ -192,7 +192,7 @@ public class AdminController {
 	// 아이디&비밀번호 찾기 GET
 	@RequestMapping(value = "/forgot_id_pwd", method = RequestMethod.GET)
 	public void getFgid() throws Exception {
-		logger.info("get Forgot id");
+		logger.info("get 아이디&비밀번호를 잊어버려서 왔습니다.");
 	}
 
 	// 아이디&비밀번호 찾기 POST(이메일 전송 - 학생)
@@ -258,8 +258,8 @@ public class AdminController {
 		}
 
 		ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-		mv.setViewName("/admin/adminmanage"); // 뷰의이름
-		mv.addObject("pw", pw);
+		mv.setViewName("redirect:index.jsp"); // 뷰의이름
+		/* mv.addObject("pw", pw); */
 
 		System.out.println("mv : " + mv);
 
