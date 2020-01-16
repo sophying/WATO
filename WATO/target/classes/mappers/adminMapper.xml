@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+	<select id="adminmanage" resultType="com.king.myapp.domain.ApprovalVO">
+		SELECT
+			app_Profile, app_Resume, app_Gender, 
+			app_Phone1, app_Phone2, app_Phone3, 
+			app_Email,
+			app_Addr1, app_Addr2, app_Addr3
+		FROM Approval
+	</select>
+</mapper>

@@ -78,6 +78,33 @@
             border-color: #FFFFFF;
         }
 
+		/* button 대신 쓰는 input 버튼. 학생&강사 회원가입에서 쓰임 */
+        #loginform input.angel {
+            border-radius: 20px;
+            border: 1px solid #7B90D5;
+            background-color: #7B90D5;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 12px 45px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+
+        #loginform input.angel:active {
+            transform: scale(0.95);
+        } 
+
+        #loginform input.angel:focus {
+            outline: none;
+        }
+
+        #loginform input.angel.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+        }
+
         #loginform form {
             background-color: #FFFFFF;
             display: flex;
@@ -273,13 +300,13 @@
 										
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
-	            <a href="#"><button class="angel">학생 회원가입</button></a>
-	            <a href="#"><button class="angel">강사 회원가입</button></a>
+	            <a href="../sign_up/terms"><input type="button" class="angel" value="학생 회원가입"></a>
+	            <a href="../teach/terms"><input type="button" class="angel" value="강사 회원가입"></a>
 	        </form>
 	
 	    </div>
 	    <div class="form-container sign-in-container">
-	        <form action="#">
+	        <form role="form" method="post" autocomplete="off" action="">
 	            <h1>Sign in</h1> 
 	            <div class="social-container">
 	               <a href="#" class="social-icon-button twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a>
@@ -289,10 +316,10 @@
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
 	            <span>or use your account</span>
-	            <input type="email" placeholder="Email" />
-	            <input type="password" placeholder="Password" />
-	            <a href="#">Forgot your password?</a>
-	            <button>Sign In</button>
+	            <input type="text" id="Std_Id" placeholder="Email" />
+	            <input type="password" td="Std_Pwd" placeholder="Password" />
+	            <a href="../sign_up/login">Forgot your password?</a>
+	            <button type="submit">SIGN IN</button>
 	        </form>
 	    </div>
 	    <div class="overlay-container">
