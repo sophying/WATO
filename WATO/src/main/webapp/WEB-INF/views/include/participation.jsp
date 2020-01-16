@@ -20,7 +20,7 @@
 						        </div>
 						        <div class="modal-body">
 						         <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
-						        	<label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-50" >자기소개</label>
+						        	<label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-50" >자기소개</label> 
 	<!-- p_intro --> 	      		<input type="text" class="form-control" name="p_intro" id="p_intro" style="height: 40px;" placeholder="1줄 자기소개" />
 						        </div>
 						         <div class="form-group d-inline-block m-0 mt-3 p-0 d-flex justify-content-between ">
@@ -29,10 +29,10 @@
 						        </div>
 						          <p class="text-center text-muted pt-4">본인의 <strong>아이디</strong> 및 <strong>이메일</strong> 정보가 리더에게 제공됩니다.</p>
 						          <p class="text-center text-muted">스터디 상황에 따른  <strong>참여 비용</strong>이 발생될 수 있습니다.</p>
-						        </div>
-						        <div class="modal-footer"style="background: #5a7fa2;">
-						          <input type="hidden" name="s_no" id="s_no" value="${listOne.s_no }"/>
-						          <input type="hidden" name="p_userid" id="p_userid" value="hi"/>
+						        </div>  
+						        <div class="modal-footer"style="background: #5a7fa2;">     
+						          <input type="hidden" name="s_no" id="s_no" value="${listOne.s_no }"/>    
+						          <input type="hidden" name="p_userid" id="p_userid" value="posd"/>  
 						          <font size="4"><input type="button" id="modalSubmit" class="btn btn-default" style="color:#fff;" value="참여완료하기"></font>
 						        </div>
 						      </div>

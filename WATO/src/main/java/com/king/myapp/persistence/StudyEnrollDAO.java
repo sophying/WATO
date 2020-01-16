@@ -2,6 +2,7 @@ package com.king.myapp.persistence;
 
 import java.util.List;
 
+import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
 
@@ -37,6 +38,8 @@ public interface StudyEnrollDAO {
 
 	// 상세보기 댓글 삭제 
 	public void replyDelete(int r_no) throws Exception;
+
+	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO)throws Exception;
 
 
 

@@ -30,11 +30,12 @@
       <th scope="col">조회수</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody> 
   <c:forEach items="${studylist}" var="studylist">
     <tr>
       <th scope="row">${studylist.s_no}</th>
       <td><a href="study_DetailRead?s_no=${studylist.s_no}">${studylist.s_category}</a></td>
+ <%--      <td><a href="study_DetailRead?s_no=${studylist.s_no}&p_userid=HR">${studylist.s_category}</a></td> --%>
       <td>${studylist.s_level}</td>
       <td>${studylist.s_people}</td>
       <td>${studylist.s_title}</td>

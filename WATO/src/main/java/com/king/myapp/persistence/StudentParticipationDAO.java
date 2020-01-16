@@ -1,6 +1,5 @@
 package com.king.myapp.persistence;
 
-import java.util.List;
 
 import com.king.myapp.domain.StudentParticipationVO;
 
@@ -10,6 +9,6 @@ public interface StudentParticipationDAO {
 	void partiInsert(StudentParticipationVO partiVO) throws Exception;
 
 	// userid Check
-	List<StudentParticipationVO> userCheck(int s_no) throws Exception;
+	public StudentParticipationVO userCheck(StudentParticipationVO partiVO) throws Exception; 
 
 }

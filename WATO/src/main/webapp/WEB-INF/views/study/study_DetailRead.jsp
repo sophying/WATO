@@ -677,12 +677,12 @@
 									<input type="button" class="goButton" value="마감되었습니다"/>
 								</c:when>
 								<c:otherwise>
-									<c:choose>  
-										<c:when test="${(parti_s_no) == (listOne.s_no) }">
-											<input type="button" class="successBtn"id="success"  data-toggle="modal" data-target="#Form-modal"  value="참여신청완료"/>
-										</c:when>
+									<c:choose>     
+										<c:when test="${complatmsg == null }">    
+											<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/> 
+										</c:when> 
 										<c:otherwise>
-											<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/>
+											<input type="button" class="successBtn"id="success"  data-toggle="modal" data-target="#Form-modal"  value="${complatmsg}"/>
 										</c:otherwise>
 									</c:choose>  
 								</c:otherwise>

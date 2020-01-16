@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.service.StudentParticipationService;
 import com.king.myapp.service.StudyEnrollService;
 
 
@@ -26,6 +28,7 @@ public class StudyenrollController {
 	
 	@Inject
 	StudyEnrollService studyService;
+	
 
 	
 	
@@ -72,15 +75,43 @@ public class StudyenrollController {
 	
 	// 4. 상세보기 + 댓글불러오기 + 수정하기 
 	@RequestMapping(value = "/study_DetailRead", method = RequestMethod.GET)
-	public void getDetailRead(@RequestParam("s_no") int s_no, Model model) throws Exception{
+	public void getDetailRead(@RequestParam("s_no") int s_no, Model model, StudentParticipationVO partiVO) throws Exception{
 		logger.info("--------------[ 스터디 상세보기  GET ]-----------------");
 			
 		studyService.viewCount(s_no);
 		StudyEnrollVO listOne = studyService.detailRead(s_no);
-		List<StudentReplyVO> reply = studyService.replyRead(s_no); 
+		List<StudentReplyVO> reply = studyService.replyRead(s_no);
 		
+//		System.out.println("췍"+partiVO.getP_userid());
+//		System.out.println("췍"+partiVO.getS_no());  
+//		
+//		
+//		
+//		/* StudentParticipationVO list = studyService.usercheck(partiVO); */
+//		
+//		
+//		StudentParticipationVO list = studyService.partiCheck(partiVO);
+//		  
+//		System.out.println("list S_no()"+list.getS_no());
+//		System.out.println("list 아이디"+list.getP_userid());     
+//		 
+//		/*
+//		 * String p_userid = partiVO.getP_userid(); int p_userSno = partiVO.getS_no();
+//		 * String DBuserid = list.getP_userid(); int DBuserSno = list.getS_no(); String
+//		 * msg = "";
+//		 * 
+//		 *  
+//		 * if (p_userid.equals(DBuserid)) { msg = "참여신청 완료"; System.out.println(msg);
+//		 * model.addAttribute("complatmsg",msg); } else {
+//		 * model.addAttribute("complatmsg",null); }
+//		 */
+//			
+//		
 		model.addAttribute("reply",reply);
 		model.addAttribute("listOne",listOne);
+		  
+
+		
 	}	
 		
 		

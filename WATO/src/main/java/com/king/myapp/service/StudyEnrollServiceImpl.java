@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.persistence.StudyEnrollDAO;
@@ -78,6 +79,10 @@ public class StudyEnrollServiceImpl implements StudyEnrollService{
 	@Override
 	public void replyDelete(int r_no) throws Exception {
 		studyEnrollDAO.replyDelete(r_no);
+	}
+	@Override
+	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO) throws Exception {
+		return studyEnrollDAO.partiCheck(partiVO);
 	}
 
 

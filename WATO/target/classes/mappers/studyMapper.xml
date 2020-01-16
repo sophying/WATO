@@ -146,5 +146,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from t_reply where r_no = #{r_no}
 	</delete>
 	
+	<select id="partiCheck" resultType="com.king.myapp.domain.StudentParticipationVO">
+		select * from s_parti where p_userid = #{p_userid} and s_no = #{s_no}  
+	</select>
+	
 </mapper>
 

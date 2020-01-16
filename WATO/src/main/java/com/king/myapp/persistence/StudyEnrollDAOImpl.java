@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
 
@@ -74,6 +75,11 @@ public class StudyEnrollDAOImpl implements StudyEnrollDAO {
 	@Override
 	public void replyDelete(int r_no) throws Exception {
 		sql.delete("study.s_replyDelete", r_no);
+	}
+	
+	@Override
+	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO) throws Exception {
+		return sql.selectOne("study.partiCheck",partiVO);
 	}
 
 
