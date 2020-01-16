@@ -32,7 +32,7 @@ public class ParticipationController {
 		
 		System.err.println(partiVO.getP_intro());
 		System.err.println(partiVO.getP_tell());
-		System.err.println(partiVO.getUserid());
+		System.err.println(partiVO.getP_userid());
 		System.err.println(partiVO.getP_regdate());
 		return "redirect:/study/study_DetailRead?s_no="+s_no;
 	}

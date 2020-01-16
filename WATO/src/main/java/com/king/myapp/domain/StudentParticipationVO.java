@@ -18,7 +18,7 @@ public class StudentParticipationVO {
 	
 	private int p_no;
 	private int s_no;
-	private String userid;
+	private String p_userid;
 	private String p_intro;
 	private int p_tell;
 	private Timestamp p_regdate;
@@ -43,11 +43,12 @@ public class StudentParticipationVO {
 	public void setS_no(int s_no) {
 		this.s_no = s_no;
 	}
-	public String getUserid() {
-		return userid;
+
+	public String getP_userid() {
+		return p_userid;
 	}
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setP_userid(String p_userid) {
+		this.p_userid = p_userid;
 	}
 	public String getP_intro() {
 		return p_intro;

@@ -666,7 +666,7 @@
 									<input type="button" class="goButton" value="마감되었습니다"/>
 								</c:when>
 								<c:otherwise>
-									<input type="button" class="goButton"id="partiBnt"  data-toggle="modal"  value="참여신청"/>
+									<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/>
 								</c:otherwise>
 							</c:choose>
 					</div>
@@ -785,14 +785,12 @@ _________________________________________________________
 			}
 			
 		}
-		
-
-		 $('#partiBnt').click(function () {
-			$('#Form-modal').modal();
+		$('#modalSubmit').click(function () {
+			$('#participationForm').submit();
 		});
 			
 			// 참여완료하기 버튼 클릭
-			$('#modalSubmit').click(function(){
+			/* $('#modalSubmit').click(function(){
 				var data = {
 						"s_no" : s_no,
 						"p_intro" : $('#p_intro').val(),
@@ -801,7 +799,7 @@ _________________________________________________________
 				};
 				
 				$.ajax({
-					url : url,
+					url : '/parti/participation',
 					type : 'post',
 					data : data,
 					success : function(data){
@@ -811,7 +809,7 @@ _________________________________________________________
 					}
 				})
 				
-			});
+			}); */
 			
 		
 		

@@ -11,7 +11,7 @@
 					<div  class="modal fade" id="Form-modal" role="dialog">
 					  <div class="modal-dialog  mt-5">
 					    
-	<!--  form -->	 	<!-- <form name="participationForm "action="/parti/participation" method="post" role="form"> -->
+	<!--  form -->	 	 <form id="participationForm"action="/parti/participation" method="post" role="form"> 
 						      <!-- Modal content-->
 						      <div id="container" class="modal-content">
 						        <div class="modal-header">
@@ -32,12 +32,14 @@
 						        </div>
 						        <div class="modal-footer"style="background: #5a7fa2;">
 						          <input type="hidden" name="s_no" id="s_no" value="${listOne.s_no }"/>
+						          <input type="hidden" name="p_userid" id="p_userid" value="hello"/>
 						          <font size="4"><input type="button" id="modalSubmit" class="btn btn-default" style="color:#fff;" value="참여완료하기"></font>
 						        </div>
 						      </div>
-					    <!--   </form> -->
+					      </form>
 						</div>
-					</div>						      
+					</div>	
+										      
 
 </body>
 </html>
