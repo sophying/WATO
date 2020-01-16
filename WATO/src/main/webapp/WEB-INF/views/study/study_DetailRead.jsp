@@ -788,7 +788,9 @@ _________________________________________________________
 		
 
 		 $('#partiBnt').click(function () {
-			$('#Form-modal').modal();
+			 url : 'parti/participation';
+			 type : 'post';
+			 $('#Form-modal').modal();
 		});
 			
 			// 참여완료하기 버튼 클릭
@@ -802,7 +804,7 @@ _________________________________________________________
 				
 				$.ajax({
 					url : url,
-					type : 'post',
+					type : type,
 					data : data,
 					success : function(data){
 						
