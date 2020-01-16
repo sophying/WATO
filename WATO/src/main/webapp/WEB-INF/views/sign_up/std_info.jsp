@@ -165,7 +165,7 @@
 	                <caption style="text-align: right;"><img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"> 필수입력사항</caption>
 	                <tr>
 	                    <th>아이디 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                    <td><input type="text" name="Std_Id" value="${std.user_Id}" readonly="readonly"></td>
+	                    <td><input type="text" name="User_Id" value="${std.user_Id}" readonly="readonly"></td>
 	                </tr>
 	                <tr>
 	                    <th>새 비밀번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -208,7 +208,7 @@
 	                </tr>
 	                <tr>
 		                <th>이메일 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-		                    <td><input type="text" id="Std_Email" name="Std_Email" value="${std.std_Email}" /></td>            
+		                    <td><input type="text" id="User_Email" name="User_Email" value="${std.user_Email}" /></td>            
 		            </tr>
 	                <tr>
 	                    <th>우편번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>

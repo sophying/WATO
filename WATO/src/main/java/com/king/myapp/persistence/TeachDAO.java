@@ -9,7 +9,7 @@ public interface TeachDAO {
 	public void teach_join(ApprovalVO vo) throws Exception;
 
 	// 회원 가입2
-	public void teach_join2(TeachVO vo);	
+	public void teach_join2(TeachVO vo) throws Exception;	
 	
 	// 개인정보 수정
 	public void info_modify(TeachVO vo) throws Exception;	 

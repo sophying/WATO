@@ -38,9 +38,6 @@
                         <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
 						</td>
                         <td><button type="button" class="idCheck" onclick="fn_idChk();">아이디 중복확인</button></td>
-<!--                         <p class="result">
-                        	<span class="msg">아이디를 확인해주십시오.</span>
-                        </p> -->
                     </tr>
                     <tr>
                         <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -89,20 +86,8 @@
                     </tr>
                     <tr>
                     	<th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                    	<td colspan="2"><input type="email" id="email" id="Std_Email" name="Std_Email" size="55" maxlength="80" onfocus="focus()"></td>
+                    	<td colspan="2"><input type="email" id="email" id="User_Email" name="User_Email" size="55" maxlength="80" onfocus="focus()"></td>
                     </tr>
-                    <!-- <tr>
-                        <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="text" id="email" id="Std_Email1" name="Std_Email1" size="10" maxlength="12" onfocus="focus()"> @ <input type="txet" id="email2" id="Std_Email2" name="Std_Email2" size="10" maxlength="12" onfocus="focus()">&nbsp;
-                            <select onChange="selEmail(this.value)" style="width: 100px;">
-                                <option onselect="focus">직접입력</option>
-                                <option value="gmail.com">gmail.com</option>
-                                <option value="naver.com">naver.com</option>
-                                <option value="naver.com">hanmail.net</option>
-                                <option value="daum.com">daum.com</option>
-                            </select>
-                        </td>
-                    </tr> -->
                     <tr>
                         <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td><input type="text" id="sample4_postcode" id="Std_Addr1" name="Std_Addr1" placeholder="우편번호"></td>

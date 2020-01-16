@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
-import com.king.myapp.domain.TestVO;
 
 @Service
 public class StdDAOImpl implements StdDAO {

@@ -11,12 +11,12 @@
 		std_info(Std_Profile, User_Id, 
 				 User_Pwd, Std_Pwd_Qs, Std_Pwd_As, Std_Gender, 
 				 Std_Phone1, Std_Phone2, Std_Phone3, 
-				 Std_Email,
+				 User_Email,
 				 Std_Addr1, Std_Addr2, Std_Addr3)
 		values (#{Std_Profile}, #{User_Id}, 
 				#{User_Pwd}, #{Std_Pwd_Qs}, #{Std_Pwd_As}, #{Std_Gender}, 
 				#{Std_Phone1}, #{Std_Phone2}, #{Std_Phone3}, 
-				#{Std_Email}, 
+				#{User_Email}, 
 				#{Std_Addr1}, #{Std_Addr2}, #{Std_Addr3})
 	</insert>
 	
@@ -36,7 +36,7 @@
 			Std_Phone1 = #{Std_Phone1},
 			Std_Phone2 = #{Std_Phone2},
 			Std_Phone3 = #{Std_Phone3},
-			Std_Email = #{Std_Email},
+			User_Email = #{User_Email},
 			Std_Addr1 = #{Std_Addr1},
 			Std_Addr2 = #{Std_Addr2},
 			Std_Addr3 = #{Std_Addr3}
@@ -48,7 +48,7 @@
 	<select id="login1" resultType="com.king.myapp.domain.StdVO"> 
 		select No, User_Id, User_Pwd, Std_Pwd_Qs, Std_Pwd_As, Std_Gender, 
 				 Std_Phone1, Std_Phone2, Std_Phone3, 
-				 Std_Email,
+				 User_Email,
 				 Std_Addr1, Std_Addr2, Std_Addr3  
 		from std_info
 		where User_Id = #{User_Id} and User_Pwd = #{User_Pwd}
@@ -58,7 +58,7 @@
 	<select id="login2" resultType="com.king.myapp.domain.TeachVO">
 		select No, User_Id, User_Pwd, Teach_Pwd_Qs, Teach_Pwd_As, Teach_Gender, 
 				 Teach_Phone1, Teach_Phone2, Teach_Phone3, 
-				 Teach_Email,
+				 User_Email,
 				 Teach_Addr1, Teach_Addr2, Teach_Addr3 
 		from teach_info
 		where User_Id = #{User_Id} and User_Pwd = #{User_Pwd}

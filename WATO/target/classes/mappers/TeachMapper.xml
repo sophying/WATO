@@ -23,11 +23,11 @@
 		insert into
 		teach_info(Teach_Profile, Teach_Resume, Teach_Gender, 
 				 Teach_Phone1, Teach_Phone2, Teach_Phone3, 
-				 Teach_Email,
+				 User_Email,
 				 Teach_Addr1, Teach_Addr2, Teach_Addr3)
 		values (#{Teach_Profile}, #{Teach_Resume}, #{Teach_Gender}, 
 				#{Teach_Phone1}, #{Teach_Phone2}, #{Teach_Phone3}, 
-				#{Teach_Email}, 
+				#{User_Email}, 
 				#{Teach_Addr1}, #{Teach_Addr2}, #{Teach_Addr3})
 	</insert>
 	
@@ -35,7 +35,7 @@
 	<update id="teach_join3">
 		update teach_info
 		set User_Id = #{User_Id}, User_Pwd = #{User_Pwd}, Teach_Pwd_Qs = #{Teach_Pwd_Qs}, Teach_Pwd_As = #{Teach_Pwd_As}
-		where Teach_Email = #{Teach_Email}
+		where User_Email = #{User_Email}
 	</update>
 	
 	<!-- 아이디 중복확인 -->
@@ -54,19 +54,12 @@
 			Teach_Phone1 = #{Teach_Phone1},
 			Teach_Phone2 = #{Teach_Phone2},
 			Teach_Phone3 = #{Teach_Phone3},
-			Teach_Email = #{Teach_Email},
+			User_Email = #{User_Email},
 			Teach_Addr1 = #{Teach_Addr1},
 			Teach_Addr2 = #{Teach_Addr2},
 			Teach_Addr3 = #{Teach_Addr3}
 		where
 			User_Id = #{User_Id}			
 	</update>
-	
-	<!-- 로그인 -->
-	<!-- <select id="login" resultType="com.king.myapp.domain.TeachVO">
-		select User_Id, User_Pwd
-		from teach_info
-		where User_Id = #{User_Id} and User_Pwd = #{User_Pwd}
-	</select> -->
 	
   </mapper>	

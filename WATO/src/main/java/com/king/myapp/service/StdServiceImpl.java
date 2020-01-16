@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
-import com.king.myapp.domain.TestVO;
 import com.king.myapp.persistence.StdDAO;
 
 @Service

@@ -65,7 +65,7 @@ public class StdController {
 	// 회원정보 수정 post
 	@RequestMapping(value = "/std_info", method = RequestMethod.POST)
 	public String postInfo(HttpSession session, StdVO vo) throws Exception {
-		logger.info("post info Modify");
+		logger.info("post 학생 회원정보수정 완료!");
 
 		service.info_modify(vo);
 		/* logout(session); */
@@ -93,7 +93,7 @@ public class StdController {
 	// 학생 로그인 post
 	@RequestMapping(value = "/loginstd", method = RequestMethod.POST)
 	public String postStd(StdVO svo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-		logger.info("post Stdlogin");
+		logger.info("post 학생 로그인 시도");
 
 		HttpSession session = req.getSession();
 
@@ -116,7 +116,7 @@ public class StdController {
 	// 강사 로그인 post
 	@RequestMapping(value = "/logintch", method = RequestMethod.POST)
 	public String postTch(TeachVO tvo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-		logger.info("post Tchlogin");
+		logger.info("post 강사 로그인 시도");
 
 		HttpSession session = req.getSession();
 

@@ -39,7 +39,7 @@
             <td><input type="text" id="Teach_Phone1" name="Teach_Phone1" value="${AppVO.app_Phone1}"></td>
             <td><input type="text" id="Teach_Phone2" name="Teach_Phone2" value="${AppVO.app_Phone2}"></td>
             <td><input type="text" id="Teach_Phone3" name="Teach_Phone3" value="${AppVO.app_Phone3}"></td>
-            <td><input type="text" id="Teach_Email" name="Teach_Email" value="${AppVO.app_Email}"></td>
+            <td><input type="text" id="User_Email" name="User_Email" value="${AppVO.app_Email}"></td>
             <td><input type="text" id="Teach_Addr1" name="Teach_Addr1" value="${AppVO.app_Addr1}"></td>
             <td><input type="text" id="Teach_Addr2" name="Teach_Addr2" value="${AppVO.app_Addr2}"></td>
             <td><input type="text" id="Teach_Addr3" name="Teach_Addr3" value="${AppVO.app_Addr3}"></td>

@@ -12,7 +12,7 @@ public class StdVO {
 	private String Std_Phone1;
 	private String Std_Phone2;
 	private String Std_Phone3;
-	private String Std_Email;
+	private String User_Email;
 	private String Std_Addr1;
 	private String Std_Addr2;
 	private String Std_Addr3;
@@ -77,11 +77,11 @@ public class StdVO {
 	public void setStd_Phone3(String std_Phone3) {
 		Std_Phone3 = std_Phone3;
 	}
-	public String getStd_Email() {
-		return Std_Email;
+	public String getUser_Email() {
+		return User_Email;
 	}
-	public void setStd_Email(String std_Email) {
-		Std_Email = std_Email;
+	public void setUser_Email(String user_Email) {
+		User_Email = user_Email;
 	}
 	public String getStd_Addr1() {
 		return Std_Addr1;

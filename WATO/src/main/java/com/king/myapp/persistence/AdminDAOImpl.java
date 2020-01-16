@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.ApprovalVO;
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 
 @Service
@@ -23,16 +24,28 @@ public class AdminDAOImpl implements AdminDAO {
 		return sql.selectList("admin.adminmanage");
 	}
 	 
-	// 비밀번호 찾기
+	// 강사 비밀번호 찾기
 	@Override
-	public TeachVO findidpwd(TeachVO tvo) throws Exception {
-		return sql.selectOne("admin.findidpwd", tvo); 
+	public TeachVO findT_pwd(TeachVO tvo) throws Exception {
+		return sql.selectOne("admin.findT_pwd", tvo); 
 	}
 
-	// 임시비밀번호 발급
+	// 강사 비밀번호 변경
 	@Override
-	public int changepwd(TeachVO tvo) throws Exception {
-		return sql.update("admin.changepwd", tvo);
+	public int changeT_pwd(TeachVO tvo) throws Exception {
+		return sql.update("admin.changeT_pwd", tvo);
+	}
+
+	// 학생 비밀번호 찾기
+	@Override
+	public StdVO findS_pwd(StdVO svo) throws Exception {
+		return sql.selectOne("admin.findS_pwd", svo);
+	}
+
+	// 학생 비밀번호 변경
+	@Override
+	public int changeS_pwd(StdVO svo) throws Exception {
+		return sql.update("admin.changeS_pwd", svo);
 	}
 
 }

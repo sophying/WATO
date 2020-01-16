@@ -208,7 +208,7 @@
 	                </tr>
 	                <tr>
 		                <th>이메일 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-		                    <td><input type="text" id="teach_Email" name="teach_Email" value="${teach.teach_Email}" /></td>            
+		                    <td><input type="text" id="User_Email" name="User_Email" value="${teach.user_Email}" /></td>            
 		            </tr>
 	                <tr>
 	                    <th>우편번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>

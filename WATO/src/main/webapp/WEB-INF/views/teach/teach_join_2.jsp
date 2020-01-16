@@ -195,7 +195,7 @@
 	                    </tr>
 	                    <tr>
 	                        <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td colspan="2"><input type="text" id="Teach_Email" name="Teach_Email" size="55" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+	                        <td colspan="2"><input type="text" id="User_Email" name="User_Email" size="55" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
 	                    </tr>
                     </table>
                 </div>

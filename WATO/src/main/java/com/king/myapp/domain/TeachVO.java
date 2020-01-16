@@ -13,7 +13,7 @@ public class TeachVO {
 	private String Teach_Phone1;
 	private String Teach_Phone2;
 	private String Teach_Phone3;
-	private String Teach_Email;
+	private String User_Email;
 	private String Teach_Addr1;
 	private String Teach_Addr2;
 	private String Teach_Addr3;
@@ -84,11 +84,11 @@ public class TeachVO {
 	public void setTeach_Phone3(String teach_Phone3) {
 		Teach_Phone3 = teach_Phone3;
 	}
-	public String getTeach_Email() {
-		return Teach_Email;
+	public String getUser_Email() {
+		return User_Email;
 	}
-	public void setTeach_Email(String teach_Email) {
-		Teach_Email = teach_Email;
+	public void setUser_Email(String user_Email) {
+		User_Email = user_Email;
 	}
 	public String getTeach_Addr1() {
 		return Teach_Addr1;
@@ -108,6 +108,5 @@ public class TeachVO {
 	public void setTeach_Addr3(String teach_Addr3) {
 		Teach_Addr3 = teach_Addr3;
 	}
-	
-	
+		
 }

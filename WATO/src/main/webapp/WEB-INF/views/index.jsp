@@ -199,7 +199,7 @@
 				                <input type="hidden" value="${std.std_Pwd_Qs}" readonly="readonly">
 				                <input type="hidden" value="${std.std_Pwd_As}" readonly="readonly">
 				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
-				                <input type="hidden" value="${std.std_Email}" readonly="readonly">
+				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
 								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
 								<input type="hidden" value="${std.std_Phone2}" readonly="readonly">
 								<input type="hidden" value="${std.std_Phone3}" readonly="readonly">
@@ -219,7 +219,7 @@
 				                <input type="hidden" value="${teach.teach_Pwd_Qs}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Pwd_As}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
-				                <input type="hidden" value="${teach.teach_Email}" readonly="readonly">
+				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
