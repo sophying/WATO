@@ -39,7 +39,7 @@ public class TeachServiceImpl implements TeachService {
 		return dao.login(vo);
 	}
 
-	// 회원가입2
+	// 회원가입2(관리자가 강사 승인버튼을 클릭했을 때)
 	@Override
 	public void teach_join2(TeachVO vo) throws Exception {
 		dao.teach_join2(vo);	
@@ -49,6 +49,12 @@ public class TeachServiceImpl implements TeachService {
 	@Override
 	public void teach_join3(TeachVO vo) throws Exception {
 		dao.teach_join3(vo);
+	}
+
+	// 강사 승인 후 정보 삭제
+	@Override
+	public void app_delete(ApprovalVO avo) throws Exception {
+		dao.app_delete(avo);
 	}
 
 }

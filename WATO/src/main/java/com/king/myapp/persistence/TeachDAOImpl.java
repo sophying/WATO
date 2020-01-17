@@ -43,7 +43,7 @@ public class TeachDAOImpl implements TeachDAO {
 		return sql.selectOne(namespace + ".login", vo);
 	}
 
-	// 회원 가입2
+	// 회원 가입2(관리자가 강사 승인버튼을 클릭했을 때)
 	@Override
 	public void teach_join2(TeachVO vo) {
 		sql.insert(namespace + ".teach_join2", vo);
@@ -53,5 +53,11 @@ public class TeachDAOImpl implements TeachDAO {
 	@Override
 	public void teach_join3(TeachVO vo) throws Exception {
 		sql.update(namespace + ".teach_join3", vo);
+	}
+
+	// 강사 승인 후 정보 삭제
+	@Override
+	public void app_delete(ApprovalVO avo) throws Exception {
+		sql.delete(namespace + ".app_delete", avo);
 	}
 }

@@ -124,14 +124,15 @@ public class AdminController {
 
 	// 승인버튼 클릭 (인증센터 POST), mailSending 코드
 	@RequestMapping(value = "/admin/auth.do", method = RequestMethod.POST)
-	public ModelAndView mailSending(TeachVO vo, HttpServletRequest request, String e_mail,
+	public ModelAndView mailSending(TeachVO tvo, ApprovalVO avo, HttpServletRequest request, String e_mail,
 			HttpServletResponse response_email) throws Exception {
-		logger.info("post 승인버튼 클릭했을 때");
+		logger.info("post 강사의 정보를 확인하고 승인버튼을 클릭했습니다.");
 
-		teachservice.teach_join2(vo);
+		teachservice.teach_join2(tvo);
 
 		Random r = new Random();
 		int dice = r.nextInt(4589362) + 49311; // 이메일로 받는 인증코드 부분 (난수)
+		
 
 		String setfrom = "choio95634@gamil.com";
 		String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
@@ -185,6 +186,9 @@ public class AdminController {
 		out_email.println("<script>alert('승인이 완료되었습니다.');</script>");
 		out_email.flush();
 
+		teachservice.app_delete(avo);
+		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");
+		
 		return mv;
 	}
 
@@ -229,11 +233,6 @@ public class AdminController {
 				mailSender.send(message);
 
 		}
-
-		ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-		/* mv.setViewName("admin/forgot_id_pwd"); */ // 뷰의이름
-
-		/* System.out.println("mv : " + mv); */
 
 		response_email.setContentType("text/html; charset=UTF-8");
 		PrintWriter out_email = response_email.getWriter();
@@ -284,17 +283,12 @@ public class AdminController {
 				}
 			}
 
-			ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-			mv.setViewName("admin/forgot_id_pwd"); // 뷰의이름
-
-			System.out.println("mv : " + mv);
-
 			response_email.setContentType("text/html; charset=UTF-8");
 			PrintWriter out_email = response_email.getWriter();
 			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
 			out_email.flush();
 
-			return mv;
+			return new ModelAndView("admin/forgot_id_pwd");
 		}
 	
 
