@@ -115,5 +115,16 @@ public class TeachController {
 		int result = service.idChk(vo);
 		return result;
 	}
+
+	
+	// 로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) throws Exception {
+		logger.info("get 강사 로그아웃");
+
+		session.invalidate();
+
+		return "redirect:/";
+	}	
 	 
 }

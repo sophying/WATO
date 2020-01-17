@@ -34,7 +34,6 @@ import com.king.myapp.service.TeachService;
 public class AdminController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
-	private static final String String = null;
 
 	@Inject
 	AdminService adminservice;
@@ -195,10 +194,113 @@ public class AdminController {
 		logger.info("get 아이디&비밀번호를 잊어버려서 왔습니다.");
 	}
 
-	// 아이디&비밀번호 찾기 POST(이메일 전송 - 학생)
-	@RequestMapping(value = "/stdFgPwd", method = RequestMethod.POST)
-	public ModelAndView postStdid(StdVO svo, Model model, HttpServletRequest request,
+	// 아이디 찾기 POST(학생)
+	@RequestMapping(value = "/stdFgId", method = RequestMethod.POST)
+	public ModelAndView postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email) throws Exception {
+		logger.info("post 학생에게 아이디를 전송합니다.");
+
+		StdVO list = adminservice.findS_id(svo);
+
+		if (list.getUser_Email().equals(svo.getUser_Email())) {
+
+			String setfrom = "choio95634@gamil.com";
+			String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
+			String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
+			String content =
+
+					System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
+
+							System.getProperty("line.separator") +
+
+							svo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
+
+							System.getProperty("line.separator") +
+
+							System.getProperty("line.separator");
+			
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+				messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+				messageHelper.setTo(tomail); // 받는사람 이메일
+				messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+				messageHelper.setText(content); // 메일 내용
+
+				mailSender.send(message);
+
+		}
+
+		ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
+		/* mv.setViewName("admin/forgot_id_pwd"); */ // 뷰의이름
+
+		/* System.out.println("mv : " + mv); */
+
+		response_email.setContentType("text/html; charset=UTF-8");
+		PrintWriter out_email = response_email.getWriter();
+		out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
+		out_email.flush();
+
+		return new ModelAndView("admin/forgot_id_pwd");
+	}
+
+	// 아이디 찾기 POST(강사)
+	@RequestMapping(value = "/teachFgId", method = RequestMethod.POST)
+	public ModelAndView postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
 			HttpServletResponse response_email) throws Exception {
+		logger.info("post 강사에게 아이디를 보낼겁니다.");
+
+		TeachVO list = adminservice.findT_id(tvo);
+		
+			if (list.getUser_Email().equals(tvo.getUser_Email())) {
+
+				String setfrom = "choio95634@gamil.com";
+				String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
+				String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
+				String content =
+
+						System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
+
+								System.getProperty("line.separator") +
+
+								tvo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
+
+								System.getProperty("line.separator") +
+
+								System.getProperty("line.separator");
+
+				try {
+					MimeMessage message = mailSender.createMimeMessage();
+					MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+					messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+					messageHelper.setTo(tomail); // 받는사람 이메일
+					messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+					messageHelper.setText(content); // 메일 내용
+
+					mailSender.send(message);
+
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+
+			ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
+			mv.setViewName("admin/forgot_id_pwd"); // 뷰의이름
+
+			System.out.println("mv : " + mv);
+
+			response_email.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_email = response_email.getWriter();
+			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
+			out_email.flush();
+
+			return mv;
+		}
+	
+
+	// 비밀번호 찾기 POST(학생)
+	@RequestMapping(value = "/stdFgPwd", method = RequestMethod.POST)
+	public ModelAndView postStdpwd(StdVO svo, Model model, HttpServletRequest request, HttpServletResponse response_email) throws Exception {
 		logger.info("post 학생에게 임시비밀번호 발급");
 
 		StdVO list = adminservice.findS_pwd(svo);
@@ -216,7 +318,7 @@ public class AdminController {
 
 			String setfrom = "choio95634@gamil.com";
 			String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
-			String title = svo.getUser_Id() + "님, 임시비밀번호입니다."; // 제목
+			String title = "[StudyUS] 비밀번호 찾기 메일입니다."; // 제목
 			String content =
 
 					System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
@@ -256,26 +358,25 @@ public class AdminController {
 				System.out.println(e);
 			}
 		}
-
 		ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-		mv.setViewName("redirect:index.jsp"); // 뷰의이름
-		/* mv.addObject("pw", pw); */
+		mv.setViewName("admin/forgot_id_pwd"); // 뷰의이름
+		mv.addObject("pw", pw);
 
 		System.out.println("mv : " + mv);
 
 		response_email.setContentType("text/html; charset=UTF-8");
 		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 메일이 발송되었습니다.');</script>");
+		out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.');</script>");
 		out_email.flush();
 
 		return mv;
 	}
 
-	// 아이디&비밀번호 찾기 POST(이메일 전송 - 강사)
+	// 비밀번호 찾기 POST(강사)
 	@RequestMapping(value = "/teachFgPwd", method = RequestMethod.POST)
-	public ModelAndView postFgid(TeachVO tvo, Model model, HttpServletRequest request,
+	public ModelAndView postTeachpwd(TeachVO tvo, Model model, HttpServletRequest request,
 			HttpServletResponse response_email) throws Exception {
-		logger.info("post Forgot id");
+		logger.info("post 강사에게 임시비밀번호 발급");
 
 		TeachVO list = adminservice.findT_pwd(tvo);
 
@@ -292,7 +393,7 @@ public class AdminController {
 
 			String setfrom = "choio95634@gamil.com";
 			String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
-			String title = tvo.getUser_Id() + "님, 임시비밀번호입니다."; // 제목
+			String title = "[StudyUS] 비밀번호 찾기 메일입니다."; // 제목
 			String content =
 
 					System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
@@ -334,14 +435,14 @@ public class AdminController {
 		}
 
 		ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-		mv.setViewName("/admin/adminmanage"); // 뷰의이름
+		mv.setViewName("admin/forgot_id_pwd"); // 뷰의이름
 		mv.addObject("pw", pw);
 
 		System.out.println("mv : " + mv);
 
 		response_email.setContentType("text/html; charset=UTF-8");
 		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 메일이 발송되었습니다.');</script>");
+		out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.');</script>");
 		out_email.flush();
 
 		return mv;

@@ -63,7 +63,7 @@ document.write("<script src='http://dmaps.daum.net/map_js_init/postcode.v2.js'><
 document.write("<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>");
 function fn_idChk(){
 	$.ajax({
-		url : "/sign_up/idChk",
+		url : "/student/idChk",
 		type : "post",
 		dataType : "json",
 		data : {"User_Id" : $("#User_Id").val()},

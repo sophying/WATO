@@ -16,6 +16,12 @@ public interface AdminService {
 
 	// 강사 로그인
 	public TeachVO login2(TeachVO tvo) throws Exception;
+	
+	// 아이디 찾기(학생)
+	public StdVO findS_id(StdVO svo) throws Exception;
+	
+	// 아이디 찾기(강사)
+	public TeachVO findT_id(TeachVO tvo) throws Exception;
 
 	// 비밀번호 찾기(강사)
 	public TeachVO findT_pwd(TeachVO tvo) throws Exception;

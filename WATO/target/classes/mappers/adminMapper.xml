@@ -36,15 +36,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	
-	<!-- 비밀번호 찾기에서 아이디와 이메일이 있는 지 확인 학생 -->
+	<!-- 비밀번호 찾기에서 아이디와 이메일이 있는 지 확인 강사 -->
 	<select id="findT_pwd" resultType="com.king.myapp.domain.TeachVO"> 
-		SELECT * FROM teach_info WHERE User_ID = #{User_Id} and User_email = #{User_Email}
+		SELECT * FROM teach_info WHERE User_Id = #{User_Id} and User_Email = #{User_Email}
 	</select>
 	
 	<!-- 강사 임시비밀번호발급(비밀번호 변경) -->
 	<update id="changeT_pwd" parameterType="com.king.myapp.domain.TeachVO"> 
 		UPDATE teach_info
-		set User_Pwd = #{User_Pwd} where User_Email = #{User_Email}
+		set User_Pwd = #{User_Pwd} where User_Id = #{User_Id} and User_Email = #{User_Email}
 	</update>
 	
 	<!-- 비밀번호 찾기에서 아이디와 이메일이 있는 지 확인 학생 -->
@@ -55,6 +55,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 학생 임시비밀번호발급(비밀번호 변경) -->
 	<update id="changeS_pwd" parameterType="com.king.myapp.domain.StdVO"> 
 		UPDATE std_info
-		set User_Pwd = #{User_Pwd} where User_Email = #{User_Email}
+		set User_Pwd = #{User_Pwd} where User_Id = #{User_Id} and User_Email = #{User_Email}
 	</update>
+	
+	<!-- 학생 아이디 찾기 -->
+	<select id="findS_id" resultType="com.king.myapp.domain.StdVO">
+		SELECT * FROM std_info WHERE User_Email = #{User_Email}
+	</select>
+	
+	<!-- 강사 아이디 찾기 -->
+	<select id="findT_id" resultType="com.king.myapp.domain.TeachVO">
+		SELECT * FROM teach_info WHERE User_Email = #{User_Email}
+	</select>
+	
 </mapper>

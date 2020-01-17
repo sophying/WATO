@@ -16,6 +16,12 @@ public interface AdminDAO {
 
 	// 강사 로그인
 	public TeachVO login2(TeachVO tvo) throws Exception;
+	
+	// 학생 비밀번호 찾기
+	public StdVO findS_pwd(StdVO svo) throws Exception;
+	
+	// 학생 비밀번호 변경
+	public int changeS_pwd(StdVO svo) throws Exception;
 
 	// 강사 비밀번호 찾기
 	public TeachVO findT_pwd(TeachVO tvo) throws Exception;
@@ -23,10 +29,10 @@ public interface AdminDAO {
 	// 강사 비밀번호 변경
 	public int changeT_pwd(TeachVO tvo) throws Exception;
 
-	// 학생 비밀번호 찾기
-	public StdVO findS_pwd(StdVO svo) throws Exception;
+	// 학생 아이디 찾기
+	public StdVO findS_id(StdVO svo) throws Exception;
 
-	// 학생 비밀번호 변경
-	public int changeS_pwd(StdVO svo) throws Exception;
+	// 강사 아이디 찾기
+	public TeachVO findT_id(TeachVO tvo) throws Exception;
 
 }

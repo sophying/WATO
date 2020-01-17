@@ -300,7 +300,7 @@
 										
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
-	            <a href="../sign_up/terms"><input type="button" class="angel" value="학생 회원가입"></a>
+	            <a href="../student/terms"><input type="button" class="angel" value="학생 회원가입"></a>
 	            <a href="../teach/terms"><input type="button" class="angel" value="강사 회원가입"></a>
 	        </form>
 	

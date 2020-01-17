@@ -144,7 +144,7 @@
                 <li style="float: right"><a href="javascript:;">문의 02-3456-7899</a></li>
                 <li style="float: right"><a href="javascript:;">로그인</a>
                     <ul>
-                        <li><a href="../sign_up/std_info">개인정보수정</a>
+                        <li><a href="../student/std_info">개인정보수정</a>
                     </ul>
                 </li>
             </ul>
@@ -164,7 +164,7 @@
             </div>
 
             <div>
-                <label><input type="radio" name="radio" class="radio" id="radio" value="10" checked="checked">학생</label>
+                <label><input type="radio" name="radio" class="radio" id="radio" value="10">학생</label>
                 <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
             </div>
 
@@ -190,7 +190,7 @@
             </div>
 
             <div>
-                <label><input type="radio" name="radio" class="radio" id="radio" value="10" checked="checked">학생</label>
+                <label><input type="radio" name="radio" class="radio" id="radio" value="10">학생</label>
                 <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
             </div>
 
@@ -308,10 +308,10 @@
         var radioval = $('input[name="radio"]:checked').val();
 
         if(null != radioval && radioval == 10) {
-            $('form[name="Fg_Id"]').attr('action',"/sign_up/stdFgId");
+            $('form[name="Fg_Id"]').attr('action',"/admin/stdFgId");
 
         } else if(null != radioval && radioval == 20) {
-            $('form[name="Fg_Id"]').attr('action',"/sign_up/teachFgId");
+            $('form[name="Fg_Id"]').attr('action',"/admin/teachFgId");
         }
     });
 

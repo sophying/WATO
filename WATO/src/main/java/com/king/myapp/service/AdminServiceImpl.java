@@ -34,8 +34,32 @@ public class AdminServiceImpl implements AdminService {
 	public TeachVO login2(TeachVO tvo) throws Exception {
 		return dao.login2(tvo);
 	}
+	
+	// 학생 아이디 찾기
+	@Override
+	public StdVO findS_id(StdVO svo) throws Exception {
+		return dao.findS_id(svo);
+	}
+	
+	// 강사 아이디 찾기
+	@Override
+	public TeachVO findT_id(TeachVO tvo) throws Exception {
+		return dao.findT_id(tvo);
+	}
+	
+	// 학생 비밀번호 찾기
+	@Override
+	public StdVO findS_pwd(StdVO svo) throws Exception {
+		return dao.findS_pwd(svo);
+	}
+	
+	// 학생 비밀번호 변경
+	@Override
+	public int changeS_pwd(StdVO svo) throws Exception {
+		return dao.changeS_pwd(svo);
+	}
 
-	// 강사 비밀번호 찬기
+	// 강사 비밀번호 찾기
 	@Override
 	public TeachVO findT_pwd(TeachVO tvo) throws Exception {
 		return dao.findT_pwd(tvo);
@@ -45,18 +69,6 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int changeT_pwd(TeachVO tvo) throws Exception {
 		return dao.changeT_pwd(tvo);
-	}
-
-	// 학생 비밀번호 찾기
-	@Override
-	public StdVO findS_pwd(StdVO svo) throws Exception {
-		return dao.findS_pwd(svo);
-	}
-
-	// 학생 비밀번호 변경
-	@Override
-	public int changeS_pwd(StdVO svo) throws Exception {
-		return dao.changeS_pwd(svo);
 	}
 
 }

@@ -21,7 +21,7 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	@Override
 	public List<ApprovalVO> teachlist() throws Exception {
-		return sql.selectList("admin.adminmanage");
+		return sql.selectList(namespace + ".adminmanage");
 	}	
 
 	// 학생 로그인
@@ -35,29 +35,41 @@ public class AdminDAOImpl implements AdminDAO {
 	public TeachVO login2(TeachVO tvo) throws Exception {
 		return sql.selectOne(namespace + ".login2", tvo);
 	}
+	
+	// 학생 비밀번호 찾기
+	@Override
+	public StdVO findS_pwd(StdVO svo) throws Exception {
+		return sql.selectOne(namespace + ".findS_pwd", svo);
+	}
+	
+	// 학생 비밀번호 변경
+	@Override
+	public int changeS_pwd(StdVO svo) throws Exception {
+		return sql.update(namespace + ".changeS_pwd", svo);
+	}
 	 
 	// 강사 비밀번호 찾기
 	@Override
 	public TeachVO findT_pwd(TeachVO tvo) throws Exception {
-		return sql.selectOne("admin.findT_pwd", tvo); 
+		return sql.selectOne(namespace + ".findT_pwd", tvo); 
 	}
 
 	// 강사 비밀번호 변경
 	@Override
 	public int changeT_pwd(TeachVO tvo) throws Exception {
-		return sql.update("admin.changeT_pwd", tvo);
+		return sql.update(namespace + ".changeT_pwd", tvo);
 	}
 
-	// 학생 비밀번호 찾기
+	// 학생 아이디 찾기
 	@Override
-	public StdVO findS_pwd(StdVO svo) throws Exception {
-		return sql.selectOne("admin.findS_pwd", svo);
+	public StdVO findS_id(StdVO svo) throws Exception {
+		return sql.selectOne(namespace + ".findS_id", svo);
 	}
 
-	// 학생 비밀번호 변경
+	// 강사 아이디 찾기
 	@Override
-	public int changeS_pwd(StdVO svo) throws Exception {
-		return sql.update("admin.changeS_pwd", svo);
+	public TeachVO findT_id(TeachVO tvo) throws Exception {
+		return sql.selectOne(namespace + ".findT_id", tvo);
 	}
 
 }

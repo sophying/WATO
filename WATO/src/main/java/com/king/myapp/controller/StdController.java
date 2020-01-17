@@ -14,7 +14,7 @@ import com.king.myapp.domain.StdVO;
 import com.king.myapp.service.StdService;
 
 @Controller
-@RequestMapping("/sign_up/*")
+@RequestMapping("/student/*")
 public class StdController {
 
 	private static final Logger logger = LoggerFactory.getLogger(StdController.class);

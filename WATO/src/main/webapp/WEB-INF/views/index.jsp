@@ -192,9 +192,9 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="sign_up/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
-                        	<form name="myForm" method="get" action="/sign_up/std_info">
+                        	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
 				                <input type="hidden" value="${std.std_Pwd_Qs}" readonly="readonly">
 				                <input type="hidden" value="${std.std_Pwd_As}" readonly="readonly">
@@ -212,7 +212,7 @@
                         </c:if>
                         <c:if test="${teach != null}">
                         	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="sign_up/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
 				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
@@ -258,23 +258,6 @@
 	        	</div>
 	    	</div>
     	</div>
-        <%-- <div class="row"> 
-			<div class="modal fade" id="modal" tabindex="-1"> 
-				<div class="modal-dialog modal-lg">  
-					<div class="modal-content" style="background: none; border: 0px">   
-						<div class="modal-body"> 
-							<div class="limiter">
-								<button class="close-button" data-dismiss="modal">&times;</button> 
-								<div class="container-login100">   
-										<%@ include  file="sign_up/loginform.jsp"%>
-								</div>
-							</div>  
-						</div> 
-					</div>
-				</div>
-			</div> 
-		</div> --%>
-        <!-- *** TOP BAR END ***-->
 
  
     </div> 
