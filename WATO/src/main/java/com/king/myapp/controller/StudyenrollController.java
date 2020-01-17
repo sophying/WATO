@@ -29,6 +29,9 @@ public class StudyenrollController {
 	@Inject
 	StudyEnrollService studyService;
 	
+	@Inject
+	StudentParticipationService partiService;
+	
 
 	
 	
@@ -81,6 +84,8 @@ public class StudyenrollController {
 		studyService.viewCount(s_no);
 		StudyEnrollVO listOne = studyService.detailRead(s_no);
 		List<StudentReplyVO> reply = studyService.replyRead(s_no);
+		
+		StudentParticipationVO partiOne = partiService.userCheck(partiVO);
 		
 //		System.out.println("췍"+partiVO.getP_userid());
 //		System.out.println("췍"+partiVO.getS_no());  
