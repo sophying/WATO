@@ -5,8 +5,8 @@
 <head> 
 <meta charset="UTF-8">
 <title>Insert title here</title> 
-<link rel="stylesheet" type="text/css" href="/css/nav-bar.css">
-<link rel="stylesheet" type="text/css" href="/css/searchpageform.css">
+<link rel="stylesheet" type="text/css" href="../resource/css/nav-bar.css">
+<link rel="stylesheet" type="text/css" href="../resource/css/searchpageform.css">
 </head> 
 <body>
 <div class="navigation">

@@ -1,3 +1,26 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@sophying 
+sophying
+/
+WATO
+2
+00
+ Code Issues 0 Pull requests 1 Actions Projects 0 Wiki Security Insights Settings
+WATO/WATO/src/main/webapp/WEB-INF/views/sign_up/login.jsp
+@soo-lake soo-lake 이메일 api 추가
+84a8d36 5 days ago
+We found potential security vulnerabilities in your dependencies.
+Only the owner of this repository can see this message.
+
+230 lines (207 sloc)  8.02 KB
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -13,7 +36,6 @@
             padding: 0px;
             background-color: #b6bed8; /* footer 좌우 배경 색 */
         }
-
         div.wrap0 {
             position: relative;
             background-color: #b6bed8;
@@ -21,9 +43,7 @@
             margin-left: auto;
             margin-right: auto;
             /*height: 950px;*/
-
         }
-
         div.wrap2 { /* 좌우 여백 공간 색 */
             min-height: 100%;
             max-width: 1050px; /* 좌우여백 주고 가운데로 */
@@ -34,7 +54,6 @@
             text-align: center;
             width: 80%;
         }
-
         div#header {
             background-color: #999999;
             display: block;
@@ -46,14 +65,12 @@
             border: none;
             font-family: times; /* 헤더 메뉴바 글씨체 */
         }
-
         .footer { /* footer 중앙 정렬 */
             width: 1050px;
             height: 100px;
             text-align: center;
             margin: auto;
         }
-
         #header ul{
             background-color: #222222; /* 상단바 색 */
             height:50px;
@@ -61,11 +78,8 @@
             margin:auto;
             padding:0;
         }
-
         #header ul li {
-
         }
-
         #header li ul{
             background-color: #919ec5;
             display:none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
@@ -79,11 +93,9 @@
             /*top:1em;
             /*left:0;*/
         }
-
         #header li:hover ul {
             display: block;
         }
-
         #header li a{
             background-color: #222222; /* 상단바 색 */
             color:#999999; /* 상단바 글씨 색 */
@@ -95,33 +107,26 @@
             text-align:center;
             text-decoration:none;
         }
-
         #header ul li a:hover{
             background-color: #999999; /* 마우스 올리면 배경색 바뀜 */
             color:#222222;
         }
-
         table.table_main {
             border-top: 1px solid;
             border-bottom: 1px solid;
             margin: auto;
         }
-
         th {
             padding-right: 20px;
             /*margin-right: 5px;*/
         }
-
         td {
-
         }
-
         table.table_sub {
             border-top: 1px solid;
             border-bottom: 1px solid;
             margin: auto;
         }
-
         input {
             padding: 15px;
         }
@@ -150,7 +155,6 @@
             </ul>
         </div>
 
-            <form role="form" method="post" autocomplete="off">
                 <div><img src="../images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div>
                 <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">회원 정보 수정</div>
                 <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
@@ -160,6 +164,8 @@
                         <br>종료 예정 스터디는 0건이 있습니다.
                     </div>
                 </div>
+                <c:if test="${member == null}">
+            <form role="form" method="post" autocomplete="off" action="/sign_up/login">
                 <div style="font-size: 17px;">로그인</div>
                 <div>
                     <table class="table_main" style="text-align: left;">
@@ -179,12 +185,13 @@
                 <button type="reset" style="width: 150px; height: 50px;">취소</button>
             </div>
             </form>
+            </c:if>
 <c:if test="${msg == false}">
 	<p style="color:#foo;">로그인에 실패했습니다. 아이디 또는 패스워드를 다시 입력해주십시오.</p>
 </c:if>
 
-<c:if test="${sign_up != null }">
-	<p>${sign_up.Std_Id}님 환영합니다.</p>
+<c:if test="${member != null }">
+	<p>${members.Std_Id}님 환영합니다.</p>
 	
 	<a href="member/modify">회원정보 수정</a>&nbsp;<a href="member/withdrawal">회원탈퇴</a><br> <!-- 컨트롤을 찾아서 -->
 	<a href="member/logout">로그아웃</a>
@@ -226,3 +233,15 @@
 </div>
 </body>
 </html>
+© 2020 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About

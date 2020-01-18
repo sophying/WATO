@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 	<title>king 게시판</title>
-	<link rel="stylesheet" type="text/css" href="../css/terms_jihye.css">
+	<link rel="stylesheet" type="text/css" href="../resource/css/terms_jihye.css">
 </head>
 <body>
 
