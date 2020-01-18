@@ -6,8 +6,6 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <link rel="stylesheet" type="text/css" href="../resource/css/social-icon.css"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style> 
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
  
@@ -302,11 +300,9 @@
 										
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
-	            <a href="#" data-toggle="modal" data-target="#myModal1" data-dismiss="modal1" class="text-black-50 font-weight-bold"><input type="button" class="angel" value="학생 회원가입"></a>
+	            <a href="../student/terms"><input type="button" class="angel" value="학생 회원가입"></a>
 	            <a href="../teach/terms"><input type="button" class="angel" value="강사 회원가입"></a>
 	        </form>
-	        
-	        
 	
 	    </div>
 	    <div class="form-container sign-in-container">
@@ -344,22 +340,6 @@
 	        </div>
 	    </div>
 	</div>
-	<div class="row">
-	        <div id="myModal1" class="modal fade" tabindex="-1">
-	        	<div class="modal-dialog modal-lg">
-	            	<div class="modal-content" style="background: none; border: 0px">
-	            		<div class="modal-body"> 
-							<div class="limiter">
-								<button class="close-button" data-dismiss="myModal1">&times;</button> 
-								<div class="container-login100">   
-									<%@ include  file="../student/terms.jsp"%> 
-								</div>
-							</div>  
-						</div> 	                		
-	            	</div>
-	        	</div>
-	    	</div>
-    	</div>
 </div>
 <script>
     var modal = document.getElementById('container');
@@ -396,22 +376,6 @@
 			$('form[name="loginform"]').attr('action',"/admin/logintch");
 		} 
 	});
-	
 </script>
-
-<!-- 닫기 -->
-<script>
-$('#modal').modal('hide');
-</script>
-
-
-<!-- JavaScript files--> 
-<script src="./resource/vendor/jquery/jquery.min.js"></script>
-<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="./resource/js/front.js"></script> 
-
 </body>
 </html>

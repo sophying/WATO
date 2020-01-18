@@ -243,7 +243,7 @@
             </div>
         </div> 
         <div class="row">
-	        <div id="myModal" class="modal fade" tabindex="-1">
+	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
 	        	<div class="modal-dialog modal-lg">
 	            	<div class="modal-content" style="background: none; border: 0px">
 	            		<div class="modal-body"> 

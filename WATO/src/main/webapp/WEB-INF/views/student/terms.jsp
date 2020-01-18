@@ -2,26 +2,18 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <head>
 	<title>king 게시판</title>
-	<link rel="stylesheet" type="text/css" href="../resource/css/terms_jihye.css">
+	<link rel="stylesheet" type="text/css" href="../resource/css/social-icon.css"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 <!-- 내용 추가 -->
 
-<div id="wrap0">
-	<div id="wrap1" class="main">
-	
-    	<nav>
-       		<%@ include file="../include/header_jihye.jsp" %>
-    	</nav>
-    	
-        <div id="wrap2">
-            <div style="padding: 20px;">
-                <div>
+
                     <form role="form" name="frmJoin" onsubmit="return CheckForm(this)" autocomplete="off" action="/student/std_join">
                         <h3 class="title">회원이용약관</h3>
                         <h4 class="title1">회원이용약관</h4>
-                        <!-- <iframe src="./join_std_terms_01" style="width: 680px;"></iframe> -->
                         <div class="terms1">
                         	[제1장 홈페이지 이용 총칙]<br><br>
 
@@ -53,7 +45,6 @@
                             <label><input type="checkbox" name="terms1" id="terms1">회원이용약관에 동의합니다.</label>
                         </p>
                         <h4 class="title1">개인정보 보호정책</h4>
-                        <!-- <iframe src="./join_std_terms_01" style="width: 680px;"></iframe> -->
                         <div class="terms2">
                         	[제1장 홈페이지 이용 총칙]<br><br>
 
@@ -82,17 +73,28 @@
                         <p class="dougi">
                             <label><input type="checkbox" style="margin: 0px;" name="terms2" id="terms2">개인정보보호정책에 동의합니다.</label>
                         </p>
-                        <!-- <p><a href="./std_join/register">회원가입</a></p> -->
-                        <input class="gaip" id="joinb" type="submit" style="" value="회원가입">
+                        <a href="#" data-toggle="modal" data-target="#myModal1" data-dismiss="modal1" class="text-black-50 font-weight-bold">
+                        <input class="gaip" id="joinb" type="submit" style="" value="회원가입"></a>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-	<footer>
-    	<%@ include file="../include/footer_jihye.jsp"%>
-    </footer>
+                    
+                    <div class="row">
+	        <div id="myModal1" class="modal fade" tabindex="-1">
+	        	<div class="modal-dialog modal-lg">
+	            	<div class="modal-content" style="background: none; border: 0px">
+	            		<div class="modal-body"> 
+							<div class="limiter">
+								<button class="close-button" data-dismiss="myModal1">&times;</button> 
+								<div class="container-login100">   
+									<%@ include  file="../student/terms.jsp"%> 
+								</div>
+							</div>  
+						</div> 	                		
+	            	</div>
+	        	</div>
+	    	</div>
+    	</div>
+ 
+
     
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
