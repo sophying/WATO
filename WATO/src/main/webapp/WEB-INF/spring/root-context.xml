@@ -14,10 +14,7 @@
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
-<<<<<<< HEAD
-=======
 		<!-- <property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"></property> -->
->>>>>>> branch 'testMaster' of https://github.com/sophying/WATO.git
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
 		<property name="username" value="scott"></property>
 		<property name="password" value="tiger"></property>
