@@ -2,7 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <head>
 	<title>king 게시판</title>
+<<<<<<< HEAD
 	<link rel="stylesheet" type="text/css" href="../resource/css/terms_jihye.css">
+=======
+	<link rel="stylesheet" type="text/css" href="../resources/css/terms_jihye.css">
+>>>>>>> branch 'testMaster' of https://github.com/sophying/WATO.git
 </head>
 <body>
 

@@ -6,7 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+<<<<<<< HEAD
     <link rel="stylesheet" type="text/css" href="../resource/css/std_join.css"> 
+=======
+    <link rel="stylesheet" type="text/css" href="../resources/css/std_join.css"> 
+>>>>>>> branch 'testMaster' of https://github.com/sophying/WATO.git
 </head>
 <body>
 <div id="wrap0">

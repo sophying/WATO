@@ -5,8 +5,13 @@
 <head> 
 <meta charset="UTF-8">
 <title>Insert title here</title> 
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="../resource/css/nav-bar.css">
 <link rel="stylesheet" type="text/css" href="../resource/css/searchpageform.css">
+=======
+<link rel="stylesheet" type="text/css" href="../resources/css/nav-bar.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/searchpageform.css">
+>>>>>>> branch 'testMaster' of https://github.com/sophying/WATO.git
 </head> 
 <body>
 <div class="navigation">

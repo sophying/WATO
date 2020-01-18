@@ -5,12 +5,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href=".../resource/css/header_nav_jihye.css">
+=======
+<link rel="stylesheet" type="text/css" href="../resources/css/header_nav_jihye.css">
+>>>>>>> branch 'testMaster' of https://github.com/sophying/WATO.git
 
 </head>
 <body>
 <div id="header">
-            <div style="float: left"><a href="javascript:;"><img src="../images/book_main_icon.png" width="80" height="50"></a></div>
+            <div style="float: left"><a href="javascript:;"><img src="../resources/images/book_main_icon.png" width="80" height="50"></a></div>
             <ul>
                 <li style="float: left;"><a href="javascript:;">처음 오신 분들께</a></li>
                 <li style="float: left;"><a href="javascript:;">스터디</a>

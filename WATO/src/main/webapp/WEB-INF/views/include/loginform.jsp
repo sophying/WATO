@@ -5,7 +5,7 @@
 <head> 
     <meta charset="UTF-8">
     <title>Insert title here</title>
-    <link rel="stylesheet" type="text/css" href="../resource/css/social-icon.css"> 
+    <link rel="stylesheet" type="text/css" href="../resources/css/social-icon.css"> 
     <style> 
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
  
