@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="../css/std_join.css"> 
+    <link rel="stylesheet" type="text/css" href="../resources/css/std_join.css"> 
 </head>
 <body>
 <div id="wrap0">

@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="css/text" href="../css/std_info.css">
+    <link rel="stylesheet" type="css/text" href="../resources/css/std_info.css">
 </head>
 <body>
 <div class="wrap0" style="text-align: center;">
