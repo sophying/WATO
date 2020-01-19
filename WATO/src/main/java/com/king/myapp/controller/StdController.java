@@ -22,10 +22,16 @@ public class StdController {
 	@Inject
 	StdService service;
 
-	// 학생 약관동의 get
+	// 학생 약관동의폼get
 	@RequestMapping(value = "/terms", method = RequestMethod.GET)
 	public void getTerms() throws Exception {
 		logger.info("get terms");
+	}
+	
+	// 학생 약관동의 post
+	@RequestMapping(value = "/terms", method = RequestMethod.POST)
+	public void postTerms() throws Exception {
+		logger.info("psot terms");
 	}
 
 	// 회원 가입 get
@@ -34,7 +40,7 @@ public class StdController {
 		logger.info("get std_join");
 	}
 
-	// 회원 가입 POST
+	// 학생 약관동의 및 회원가입 폼POST
 	@RequestMapping(value = "/std_join", method = RequestMethod.POST)
 	public String postRegister(StdVO vo) throws Exception {
 		logger.info("post std_join");

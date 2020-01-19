@@ -35,39 +35,7 @@
                     <tr>
                         <th>이력서첨부<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td colspan="2"><input type='file' id="app_Resume" name="app_Resume"/></td>
-                    </tr><!-- 
-                    <tr>
-                        <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td><input type="text" id="app_Id" name="app_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
-						</td>
-                        <td><button type="button" class="idCheck" onclick="fn_idChk();">아이디 중복확인</button></td>
-                        <p class="result">
-                        	<span class="msg">아이디를 확인해주십시오.</span>
-                        </p>
                     </tr>
-                    <tr>
-                        <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="password" id="userPw" id="app_Pwd" name="app_Pwd" size="55" maxlength="12" placeholder="비밀번호" ></td>
-                    </tr>
-                    <tr>
-                        <th>비밀번호 확인<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="password" id="userPwChk" size="55" maxlength="12" placeholder="비밀번호 확인"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
-                    </tr>
-                    <tr>
-                        <th>비밀번호 확인 질문<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><select id="app_Pwd_Qs" name="app_Pwd_Qs" style="width: 290px; text-align: center;">
-                            <option value="기억에 남는 추억의 장소는?" selected>기억에 남는 추억의 장소는?</option>
-                            <option value="자신의 보물 1호는?">자신의 보물 1호는?</option>
-                            <option value="가장 좋아하는 과일은?">가장 좋아하는 과일은?</option>
-                            <option value="가장 좋아했던 초등학교 선생님 성함은?">가장 좋아했던 초등학교 선생님 성함은?</option>
-                            <option value="인상 깊게 읽은 책 제목은?">인상 깊게 읽은 책 제목은?</option>
-                            <option value="추억하고 싶은 날짜가 있다면?">추억하고 싶은 날짜가 있다면?</option>
-                        </select></td>
-                    </tr>
-                    <tr>
-                        <th>비밀번호 확인 답변<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="text" id="app_Pwd_As" name="app_Pwd_As" size="55" maxlength="12"></td>
-                    </tr> -->
                     <tr>
                         <th>성별<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td colspan="2"><label><input type="radio" id="app_Gender" name="app_Gender" value="남자">남자</label>
@@ -94,18 +62,6 @@
                     	<th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                     	<td colspan="2"><input type="email" id="email" id="app_Email" name="app_Email" size="55" maxlength="80" onfocus="focus()"></td>
                     </tr>
-                    <!-- <tr>
-                        <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="text" id="email" id="app_Email1" name="app_Email1" size="10" maxlength="12" onfocus="focus()"> @ <input type="txet" id="email2" id="app_Email2" name="app_Email2" size="10" maxlength="12" onfocus="focus()">&nbsp;
-                            <select onChange="selEmail(this.value)" style="width: 100px;">
-                                <option onselect="focus">직접입력</option>
-                                <option value="gmail.com">gmail.com</option>
-                                <option value="naver.com">naver.com</option>
-                                <option value="naver.com">hanmail.net</option>
-                                <option value="daum.com">daum.com</option>
-                            </select>
-                        </td>
-                    </tr> -->
                     <tr>
                         <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td><input type="text" id="sample4_postcode" id="app_Addr1" name="app_Addr1" placeholder="우편번호"></td>

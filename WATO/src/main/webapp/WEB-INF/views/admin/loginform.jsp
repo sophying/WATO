@@ -1,3 +1,4 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -6,15 +7,12 @@
     <meta charset="UTF-8">
     <title>Insert title here</title>
     <link rel="stylesheet" type="text/css" href="../resource/css/social-icon.css"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style> 
         @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
  
         *  {
             box-sizing: border-box;
         }
-
         #loginform  {
             background: #f6f5f7;
             display: flex;
@@ -23,18 +21,16 @@
             flex-direction: column;
             font-family: 'Montserrat', sans-serif;
             height: 0; 
-            margin: -20px 0 50px;
+            /* margin: -20px 0 50px; */
+            margin-top: 300px;
         }
-
        #loginform h1 {
             font-weight: bold;
             margin: 0;
         }
-
         #loginform h2 {
             text-align: center;
         }
-
         #loginform p {
             font-size: 14px; 
             font-weight: 100;
@@ -42,18 +38,15 @@
             letter-spacing: 0.5px;
             margin: 20px 0 30px;
         }
-
         #loginform span {
             font-size: 12px;
         }
-
         #loginform a {
             color: #333;
             font-size: 14px;
             text-decoration: none;
             margin: 15px 0;
         }
-
         #loginform button {
             border-radius: 20px;
             border: 1px solid #7B90D5;
@@ -66,20 +59,16 @@
             text-transform: uppercase;
             transition: transform 80ms ease-in;
         }
-
         #loginform button:active {
             transform: scale(0.95);
         } 
-
         #loginform button:focus {
             outline: none;
         }
-
         #loginform button.ghost {
             background-color: transparent;
             border-color: #FFFFFF;
         }
-
 		/* button 대신 쓰는 input 버튼. 학생&강사 회원가입에서 쓰임 */
         #loginform input.angel {
             border-radius: 20px;
@@ -93,20 +82,16 @@
             text-transform: uppercase;
             transition: transform 80ms ease-in;
         }
-
         #loginform input.angel:active {
             transform: scale(0.95);
         } 
-
         #loginform input.angel:focus {
             outline: none;
         }
-
         #loginform input.angel.ghost {
             background-color: transparent;
             border-color: #FFFFFF;
         }
-
         #loginform form {
             background-color: #FFFFFF;
             display: flex;
@@ -117,7 +102,6 @@
             height: 100%;
             text-align: center;
         }
-
        #loginform input {
             background-color: #eee;
             border: none;
@@ -125,7 +109,6 @@
             margin: 8px 0;
             width: 100%;
         }
-
         #loginform .container {
             background-color: #fff;
             border-radius: 10px;
@@ -137,50 +120,42 @@
             max-width: 100%;
             min-height: 480px;
         }
-
         #loginform .form-container {
             position: absolute;
             top: 0;
             height: 100%;
             transition: all 0.6s ease-in-out;
         }
-
         #loginform .sign-in-container {
             left: 0;
             width: 50%;
             z-index: 2;
         }
-
         #loginform .container.right-panel-active .sign-in-container {
             transform: translateX(100%);
         }
-
         #loginform .sign-up-container {
             left: 0;
             width: 50%;
             opacity: 0;
             z-index: 1;
         }
-
        #loginform  .container.right-panel-active .sign-up-container {
             transform: translateX(100%);
             opacity: 1;
             z-index: 5;
             animation: show 0.6s;
         }
-
         @keyframes show {
             0%, 49.99% {
                 opacity: 0;
                 z-index: 1;
             }
-
             50%, 100% {
                 opacity: 1;
                 z-index: 5;
             }
         }
-
         #loginform .overlay-container {
             position: absolute;
             top: 0;
@@ -191,11 +166,9 @@
             transition: transform 0.6s ease-in-out;
             z-index: 100;
         }
-
         #loginform .container.right-panel-active .overlay-container{
             transform: translateX(-100%);
         }
-
         #loginform .overlay {
             background: #FF416C;
             background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
@@ -211,11 +184,9 @@
             transform: translateX(0);
             transition: transform 0.6s ease-in-out;
         }
-
         #loginform .container.right-panel-active .overlay {
             transform: translateX(50%);
         }
-
         #loginform .overlay-panel {
             position: absolute;
             display: flex;
@@ -230,28 +201,22 @@
             transform: translateX(0);
             transition: transform 0.6s ease-in-out;
         }
-
        #loginform  .overlay-left {
             transform: translateX(-20%);
         }
-
       #loginform  .container.right-panel-active .overlay-left {
             transform: translateX(0);
         }
-
        #loginform  .overlay-right {
             right: 0;
             transform: translateX(0);
         }
-
        #loginform  .container.right-panel-active .overlay-right {
             transform: translateX(20%);
         }
-
         #loginform .social-container {
             margin: 20px 0;
         }
-
         #loginform .social-container a {
             border: 1px solid #DDDDDD;
             border-radius: 50%;
@@ -262,7 +227,6 @@
             height: 40px;
             width: 40px;
         }
-
        #loginform  footer {
             background-color: #222;
             color: #fff;
@@ -274,15 +238,12 @@
             text-align: center;
             z-index: 999;
         }
-
        #loginform  footer p {
             margin: 10px 0;
         }
-
        #loginform  footer i {
             color: red; 
         }
-
        #loginform footer a {
             color: #3c97bf;
             text-decoration: none;
@@ -302,11 +263,9 @@
 										
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
-	            <a href="#" data-toggle="modal" data-target="#myModal1" data-dismiss="modal1" class="text-black-50 font-weight-bold"><input type="button" class="angel" value="학생 회원가입"></a>
+	            <a href="../student/terms"><input type="button" class="angel" value="학생 회원가입"></a>
 	            <a href="../teach/terms"><input type="button" class="angel" value="강사 회원가입"></a>
 	        </form>
-	        
-	        
 	
 	    </div>
 	    <div class="form-container sign-in-container">
@@ -344,22 +303,6 @@
 	        </div>
 	    </div>
 	</div>
-	<div class="row">
-	        <div id="myModal1" class="modal fade" tabindex="-1">
-	        	<div class="modal-dialog modal-lg">
-	            	<div class="modal-content" style="background: none; border: 0px">
-	            		<div class="modal-body"> 
-							<div class="limiter">
-								<button class="close-button" data-dismiss="myModal1">&times;</button> 
-								<div class="container-login100">   
-									<%@ include  file="../student/terms.jsp"%> 
-								</div>
-							</div>  
-						</div> 	                		
-	            	</div>
-	        	</div>
-	    	</div>
-    	</div>
 </div>
 <script>
     var modal = document.getElementById('container');
@@ -371,17 +314,13 @@
     var signUpButton1 = document.getElementById('signUp1');
     var signInButton = document.getElementById('signIn');
     var container = document.getElementById('container');
-
     signUpButton1.addEventListener('click', () => {
         container.classList.add("right-panel-active");
     });
-
     signInButton.addEventListener('click', () => {
         container.classList.remove("right-panel-active");
     });
-
     // If user clicks anywhere outside of the modal, Modal will close
-
 </script>
 
 <script type="text/javascript">
@@ -396,22 +335,6 @@
 			$('form[name="loginform"]').attr('action',"/admin/logintch");
 		} 
 	});
-	
 </script>
-
-<!-- 닫기 -->
-<script>
-$('#modal').modal('hide');
-</script>
-
-
-<!-- JavaScript files--> 
-<script src="./resource/vendor/jquery/jquery.min.js"></script>
-<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="./resource/js/front.js"></script> 
-
 </body>
 </html>

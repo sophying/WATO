@@ -11,7 +11,7 @@
             padding: 0px;
         }
 
-        div#wrap0 {
+       /* div#wrap0 {
             position: relative;
         }
 
@@ -30,8 +30,8 @@
             padding-top: 70px;
             padding-bottom: 20px;
             text-align: center;
-            width: 80%;
-        }
+            /*width: 80%;*/
+        }*/
         
         h3.title {
         	margin-bottom:30px;
@@ -50,10 +50,10 @@
         	margin-bottom:10px;
         }
         
-        div.terms1 {
+/*         div.terms1 {
         	overflow:scroll; 
         	border:1px solid; 
-        	width:680px; 
+        	width:80%; 
         	height:200px; 
         	text-align:left; 
         	background-color:#eeeeee;
@@ -62,11 +62,11 @@
         div.terms2 {
         	overflow:scroll; 
         	border:1px solid; 
-        	width:680px; 
+        	width:80%;
         	height:200px; 
         	text-align:left; 
         	background-color:#eeeeee;
-        }
+        } */
 
         button#joinb:hover {
             color: #3c97bf;
@@ -79,11 +79,6 @@
         	margin: 0px;
         }
         
-        input.gaip {
-        	width: 100px; 
-        	height: 30px; 
-        	margin-top: 70px;
-        }
 
         a {
             text-decoration: none;

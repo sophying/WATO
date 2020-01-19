@@ -50,12 +50,15 @@
         margin-right: auto;
         width: 53.8%;
     }
+
+
     #new{
         position: static;
         margin-left: auto;
         margin-right: auto;
         width: 53.8%;
     }
+
     #content{
         margin-left: auto;
         margin-right: auto;
@@ -75,6 +78,7 @@
         margin-right: auto;
         width: 100%;
     }
+
     .cate_list{
         padding-bottom: 10px;
     }
@@ -167,6 +171,8 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
+
+
 </style>
 <body>
 <!-- navbar-->
@@ -182,7 +188,7 @@
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
                     	<c:if test="${std == null && teach == null}">
-                        <li class="list-inline-item"><a href="admin/loginform" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
@@ -242,9 +248,9 @@
 	            	<div class="modal-content" style="background: none; border: 0px">
 	            		<div class="modal-body"> 
 							<div class="limiter">
-								<button class="close-button" data-dismiss="myModal">&times;</button> 
+								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
 								<div class="container-login100">   
-									<%-- <%@ include  file="admin/loginform.jsp"%>  --%>
+									<%@ include  file="admin/loginform.jsp"%> 
 								</div>
 							</div>  
 						</div> 	                		
