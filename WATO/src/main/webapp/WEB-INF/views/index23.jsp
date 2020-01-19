@@ -243,12 +243,12 @@
             </div>
         </div> 
         <div class="row">
-	        <div id="myModal" class="modal fade" tabindex="-1">
+	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
 	        	<div class="modal-dialog modal-lg">
 	            	<div class="modal-content" style="background: none; border: 0px">
 	            		<div class="modal-body"> 
 							<div class="limiter">
-								<button class="close-button" data-dismiss="myModal">&times;</button> 
+								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
 								<div class="container-login100">   
 									<%@ include  file="admin/loginform.jsp"%> 
 								</div>

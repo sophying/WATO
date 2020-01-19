@@ -14,27 +14,27 @@
             position: relative;
         }
 
-        div#wrap1.main {
+        div#wrap1.main {s
             background-color: #dadeeb; /* 좌우 여백 공간 색 */
             background-clip: border-box;
             margin-left: auto;
             margin-right: auto;
         }
 
-        div#header {
+        /* div#header {
             background-color: #999999;
             display: block;
             margin: 0px;
-            height: 50px; /* ul 과 같은 높이 설정(공간 생기는 것 방지) */
+            height: 50px; ul 과 같은 높이 설정(공간 생기는 것 방지)
             position: fixed;
             width: 100%;
             padding: 0px;
             border: none;
-            font-family: times; /* 헤더 메뉴바 글씨체 */
-        }
+            font-family: times; 헤더 메뉴바 글씨체
+        } */
 
-        #header ul{
-            background-color: #919ec5; /* 상단바 색 */
+        /* #header ul{
+            background-color: #919ec5; 상단바 색
             height:50px;
             list-style:none;
             margin:0;
@@ -47,7 +47,7 @@
 
         #header li ul{
             background-color: #919ec5;
-            display:none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
+            display:none; 평상시에는 드랍메뉴가 안보이게 하기
             height:auto;
             padding:0px;
             margin:0px;
@@ -55,8 +55,8 @@
             position:absolute;
             width:200px;
             z-index:200;
-            /*top:1em;
-            /*left:0;*/
+            top:1em;
+            /*left:0;
         }
 
         #header li:hover ul {
@@ -64,8 +64,8 @@
         }
 
         #header li a{
-            background-color: #919ec5; /* 상단바 색 */
-            color:#333333; /* 상단바 글씨 색 */
+            background-color: #919ec5; 상단바 색
+            color:#333333; 상단바 글씨 색
             display:block;
             font-weight:normal;
             line-height:50px;
@@ -73,7 +73,7 @@
             padding:0px 25px;
             text-align:center;
             text-decoration:none;
-        }
+        } */
 
         div#wrap2 {
             min-height: 100%;

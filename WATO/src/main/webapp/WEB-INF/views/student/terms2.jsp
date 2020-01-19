@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <head>
 	<title>king 게시판</title>
 	<link rel="stylesheet" type="text/css" href="../resource/css/terms_jihye.css">
@@ -18,7 +18,7 @@
         <div id="wrap2">
             <div style="padding: 20px;">
                 <div>
-                    <form role="form" name="frmJoin" onsubmit="return CheckForm(this)" autocomplete="off" action="/teach/teach_join">
+                    <form role="form" name="frmJoin" onsubmit="return CheckForm(this)" autocomplete="off" action="/student/std_join">
                         <h3 class="title">회원이용약관</h3>
                         <h4 class="title1">회원이용약관</h4>
                         <!-- <iframe src="./join_std_terms_01" style="width: 680px;"></iframe> -->

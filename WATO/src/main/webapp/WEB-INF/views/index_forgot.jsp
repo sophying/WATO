@@ -37,35 +37,39 @@
         position: static;
         margin-left: auto;
         margin-right: auto;
-        width: 53.8%;
+        width: 80%;
         background-color: #e0e0e0;
     }
     #studyusnav{
         margin-left: auto;
         margin-right: auto;
-        width: 53.8%;
+        width: 80%;
     }
     #search{
         margin-left: auto;
         margin-right: auto;
-        width: 53.8%;
+        width: 80%;
     }
+
+
     #new{
         position: static;
         margin-left: auto;
         margin-right: auto;
-        width: 53.8%;
+        width: 80%;
     }
+
     #content{
         margin-left: auto;
         margin-right: auto;
-        width: 53.8%;
+        width: 80%;
+        text-align: center;
     }
     #footer {
         position: static;
         margin-left: auto;
         margin-right: auto;
-        width: 53.8%;
+        width: 80%;
     }
     #navigation > ul > li > ul {
         width: 100.3%;
@@ -75,6 +79,7 @@
         margin-right: auto;
         width: 100%;
     }
+
     .cate_list{
         padding-bottom: 10px;
     }
@@ -119,7 +124,7 @@
         position: static; 
         margin-left: auto; 
         margin-right: auto;
-        width: 53.8%;
+        width: 80%;
     }
     .imgrank img{
 	    position:absolute;
@@ -167,6 +172,8 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
+
+
 </style>
 <body>
 <!-- navbar-->
@@ -178,11 +185,11 @@
     <div id="top">
         <div class="container"> 
             <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
+                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">모두를 위한 스터디카페</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
                     	<c:if test="${std == null && teach == null}">
-                        <li class="list-inline-item"><a href="admin/loginform" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
@@ -237,14 +244,14 @@
             </div>
         </div> 
         <div class="row">
-	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
+	        <div id="myModal" class="modal fade" tabindex="-1">
 	        	<div class="modal-dialog modal-lg">
 	            	<div class="modal-content" style="background: none; border: 0px">
 	            		<div class="modal-body"> 
 							<div class="limiter">
 								<button class="close-button" data-dismiss="myModal">&times;</button> 
 								<div class="container-login100">   
-									<%-- <%@ include  file="admin/loginform.jsp"%>  --%>
+									<%@ include  file="admin/loginform.jsp"%> 
 								</div>
 							</div>  
 						</div> 	                		
@@ -416,248 +423,135 @@
 </header>
 <div id="all">
     <div id="content">
-        <header>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">First Slide</h2>
-                            <p class="lead">This is a description for the first slide.</p>
-                        </div>
+<!-- 최지혜 추가 -->                
+                <div class="carousel-inner" role="listbox" style="background-color: #ffffff; text-align: center;">
+                	<div><img src="../resource/images/facebook_cover_photo_1.png" width="500px;"></div><br>
+			        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76; width: 50%; margin-left: 25%;">아이디 찾기</div>
+			        <form name="Fg_Id" role="form" method="post" autocomplete="off">
+			            <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 이메일을 정확히 입력해주세요.</div><br>
+			      <div>
+                    <div class="form-group">
+                        <label for="InputEmail">이메일 주소</label>
+                        <input style="width: 70%; margin-left: 15%;" type="email" class="form-control" id="InputEmail" placeholder="이메일 주소를 입력해주세요">
                     </div>
-                    <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">Second Slide</h2>
-                            <p class="lead">This is a description for the second slide.</p>
-                        </div>
+
+                    <!-- <div class="form-group">
+                    <label>약관 동의</label>
+                    <div data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                    <span class="fa fa-check"></span>
+                    <input id="agree" type="checkbox" autocomplete="off" checked>
+                    </label>
+                    <a href="#">이용약관</a>에 동의합니다.
                     </div>
-                    <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">Third Slide</h2>
-                            <p class="lead">This is a description for the third slide.</p>
-                        </div>
+                    </div> -->
+
+                    <div class="form-group text-center">
+                        <button type="submit" id="join-submit" class="btn btn-primary">아이디 찾기<i class="fa fa-check spaceLeft"></i></button>
+                        <!-- <button type="submit" class="btn btn-warning">취소<i class="fa fa-times spaceLeft"></i></button> -->
+                    </div><br><br><br><br>
                     </div>
+                </form>                
+                
+			        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76; width: 50%; margin-left: 25%;">비밀번호 찾기</div>
+			        <form name="Fg_Id" role="form" method="post" autocomplete="off">
+			            <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 이메일을 정확히 입력해주세요.</div><br>
+			      <div>
+                    <div class="form-group">
+                        <label for="inputName">아이디</label>
+                        <input style="width: 70%; margin-left: 15%;" type="text" class="form-control" id="inputName" placeholder="이름을 입력해 주세요">
+                    </div>
+                    <div class="form-group">
+                        <label for="InputEmail">이메일 주소</label>
+                        <input style="width: 70%; margin-left: 15%;" type="email" class="form-control" id="InputEmail" placeholder="이메일 주소를 입력해주세요">
+                    </div>
+
+                    <!-- <div class="form-group">
+                    <label>약관 동의</label>
+                    <div data-toggle="buttons">
+                    <label class="btn btn-primary active">
+                    <span class="fa fa-check"></span>
+                    <input id="agree" type="checkbox" autocomplete="off" checked>
+                    </label>
+                    <a href="#">이용약관</a>에 동의합니다.
+                    </div>
+                    </div> -->
+
+                    <div class="form-group text-center">
+                        <button type="submit" id="join-submit" class="btn btn-primary">임시비밀번호발급<i class="fa fa-check spaceLeft"></i></button>
+                        <!-- <button type="submit" class="btn btn-warning">가입취소<i class="fa fa-times spaceLeft"></i></button> -->
+                    </div>
+                    </div>
+                </form>
+			            	<!-- <label for="inputName">성명</label>
+                        		<input type="text" class="form-control" id="inputName" placeholder="이름을 입력해 주세요">
+			                <table class="table_main" style="text-align: center;">
+			                    <tr>
+			                        <th>이메일</th>
+			                        <td><input type="text" id="User_Email" name="User_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+			                    </tr>
+			                </table>
+			            </div>
+			
+			            <div>
+			                <label><input type="radio" name="radio" class="radio" id="radio" value="10">학생</label>
+			                <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
+			            </div>
+			
+			            <div style="margin: 40px;">
+			                <button type="submit" id="Fg_Id" class="Fg_Id" style="margin-right: 30px; width: 150px; height: 50px;">아이디 찾기</button>
+			                <button type="reset" style="width: 150px; height: 50px;">취소</button>
+			            </div><br><br>
+			        </form>
+			        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">비밀번호 찾기</div>
+			        <form name="Fg_Pwd" role="form" method="post" autocomplete="off">
+			            <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 아이디와 이메일을 정확히 입력해주세요.</div><br>
+			            <div>
+			                <table class="table_main" style="text-align: left;">
+			                    <tr>
+			                        <th>아이디</th>
+			                        <td><input type="text" id="User_Email" name="User_Id" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+			                    </tr>
+			                    <tr>
+			                        <th>이메일</th>
+			                        <td><input type="text" id="User_Email" name="User_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+			                    </tr>
+			                </table>
+			            </div>
+			
+			            <div>
+			                <label><input type="radio" name="radio" class="radio" id="radio" value="10">학생</label>
+			                <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
+			            </div>
+			
+			            <div style="margin: 40px;">
+			                <button type="submit" id="Fg_Pwd" class="Fg_Pwd" style="margin-right: 30px; width: 150px; height: 50px;">비밀번호 찾기</button>
+			                <button type="reset" style="width: 150px; height: 50px;">취소</button>
+			            </div>
+			        </form> -->
+<!-- 최지혜 추가 -->   			        
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </header>
         <!-- 아이콘 -->
-        <div id="icon" class="box text-center mt-0 mb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2"> 
-                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-            </div>
-        </div>
+
         <!--
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
         -->
-        <div  id="hot">
-            <div class="box py-4 mt-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2 class="mb-0">이주의 핫한 교실</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="product-slider owl-carousel owl-theme">
-                	<%int i = 1;%>
-                	<c:forEach items="${listRank}" var="listRank">
-                	<div style="position: relative;"> 
-                		<div class="imgrank">
-									<%if(i== 1){ %> 
-										<img alt="1등이미지" src="./resource/images/rank1st.png"> 
-									<%}else if( i ==2) {%>
-										<img alt="2등이미지" src="./resource/images/rank2st.png"> 
-									<%}else if( i ==3) {%>
-										<img alt="3등이미지" src="./resource/images/rank3st.png">
-									<%}else if( i ==4) { %>
-										<img alt="4등이미지" src="./resource/images/rank4st.png">
-									<%}else{ %>
-										<img alt="5등이미지" src="./resource/images/rank5st.png">
-									<%} %>
-						</div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="detail.jsp">${listRank.title}</a></h3>
-                                <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
-                                </p>
-                            </div> 
-                        </div>
-                    </div>
-                    </div>
-                    <% i++; %>
-                    </c:forEach>
-                          <!--     /.text
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            /.ribbon
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-                            <!-- /.ribbon-->
-                            <!-- <div class="ribbon gift"> GIFT 표시
-                                <div class="theribbon">GIFT</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-                    <!-- /.product-slider-->
-                </div>
-                <!-- /.container-->
-            </div>
-            <!-- /#hot-->
-            <!-- *** HOT END ***-->
-        </div>
-        <div  id="hot">
-            <div class="box py-4 mt-0">
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-md-12"> 
-                            <h2 class="mb-0">이번달 베스트 강사</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="product-slider owl-carousel owl-theme">
-                	<%int j = 1;%>
-                	<c:forEach items="${listRank}" var="listRank"> 
-                	<div style="position: relative;"> 
-                		<div class="imgrank">
-									<%if(j== 1){ %> 
-										<img alt="1등이미지" src="./resource/images/rank1st.png"> 
-									<%}else if( j ==2) {%>
-										<img alt="2등이미지" src="./resource/images/rank2st.png"> 
-									<%}else if( j ==3) {%>
-										<img alt="3등이미지" src="./resource/images/rank3st.png">
-									<%}else if( j ==4) { %>
-										<img alt="4등이미지" src="./resource/images/rank4st.png">
-									<%}else{ %>
-										<img alt="5등이미지" src="./resource/images/rank5st.png">
-									<%} %>
-						</div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="detail.jsp">${listRank.title}</a></h3>
-                                <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
-                                </p>
-                            </div> 
-                        </div>
-                    </div>
-                    </div>
-                    <% j++; %>
-                    </c:forEach>
-                          <!--     /.text
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            /.ribbon
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-                            <!-- /.ribbon-->
-                            <!-- <div class="ribbon gift"> GIFT 표시
-                                <div class="theribbon">GIFT</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-                    <!-- /.product-slider-->
-                </div>
-                <!-- /.container-->
-            </div>
-            <!-- /#hot-->
-            <!-- *** HOT END ***-->
-        </div>
 
-    </div>
-</div>
 <!--
    *** BLOG HOMEPAGE ***
    _________________________________________________________
    -->
-<div id="new" class="box text-center mb-0">
+<!-- <div id="new" class="box text-center mb-0">
     <div class="container">
         <div class="col-md-12">
             <h3 class="text-uppercase">From our blog</h3>
             <p class="lead mb-0">What's new in the world of fashion? <a href="blog.jsp">Check our blog!</a></p>
         </div>
     </div>
-</div>
+</div> -->
+    </div>
+</div><br><br><br><br>
 <div id="blog-homepage" class="box row mb-0">
     <div class="container">
         <div class="post">
