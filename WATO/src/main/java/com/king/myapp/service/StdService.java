@@ -2,7 +2,6 @@ package com.king.myapp.service;
 
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
-import com.king.myapp.domain.TestVO;
 
 public interface StdService {
 	

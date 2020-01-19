@@ -6,14 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.BoardVO;
-<<<<<<< HEAD
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeacherEnrollVO;
-=======
->>>>>>> branch 'jihye' of https://github.com/sophying/WATO.git
 import com.king.myapp.persistence.BoardDAO;
-
+ 
 
 
 @Service
