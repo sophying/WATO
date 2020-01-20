@@ -3,7 +3,7 @@
 
         * {
             box-sizing: border-box;
-        }
+       /*  }
 
         body {
             margin: 0px;
@@ -15,11 +15,11 @@
         }
 
         div#wrap1.main {s
-            background-color: #dadeeb; /* 좌우 여백 공간 색 */
+            background-color: #dadeeb; 좌우 여백 공간 색
             background-clip: border-box;
             margin-left: auto;
             margin-right: auto;
-        }
+        } */
 
         /* div#header {
             background-color: #999999;
@@ -75,16 +75,16 @@
             text-decoration:none;
         } */
 
-        div#wrap2 {
+        /* div#wrap2 {
             min-height: 100%;
-            max-width: 720px; /* 좌우여백 주고 가운데로 */
+            max-width: 720px; 좌우여백 주고 가운데로
             background-color: #fff;
             margin: 0 auto;
             padding-top: 70px;
             padding-bottom: 20px;
             text-align: center;
             width: 80%;
-        }
+        } */
 
         input {
             background-color: #eee;

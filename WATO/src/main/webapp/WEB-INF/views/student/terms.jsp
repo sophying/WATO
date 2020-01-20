@@ -381,8 +381,8 @@
                         </ul>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="banner"><a href="#"><img src="./resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
-                <div class="banner"><a href="#"><img src="./resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
             </div>
         </div>
                             </li>
@@ -670,11 +670,11 @@ _________________________________________________________
 
 </script>
 <!-- JavaScript files--> 
-<script src="./resource/vendor/jquery/jquery.min.js"></script>
-<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="./resource/js/front.js"></script> 
+<script src="../resource/vendor/jquery/jquery.min.js"></script>
+<script src="../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="../resource/js/front.js"></script> 
 </body>
 </html>

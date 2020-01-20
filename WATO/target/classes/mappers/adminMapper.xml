@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT
 			app_Profile, app_Resume, app_Gender, 
 			app_Phone1, app_Phone2, app_Phone3, 
-			app_Email,
+			User_Email,
 			app_Addr1, app_Addr2, app_Addr3
 		FROM Approval
 	</select>	

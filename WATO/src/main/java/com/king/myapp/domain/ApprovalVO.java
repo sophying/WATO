@@ -9,7 +9,7 @@ public class ApprovalVO {
 	private String app_Phone1;
 	private String app_Phone2;
 	private String app_Phone3;
-	private String app_Email;
+	private String User_Email;
 	private String app_Addr1;
 	private String app_Addr2;
 	private String app_Addr3;
@@ -56,11 +56,11 @@ public class ApprovalVO {
 	public void setApp_Phone3(String app_Phone3) {
 		this.app_Phone3 = app_Phone3;
 	}
-	public String getApp_Email() {
-		return app_Email;
+	public String getUser_Email() {
+		return User_Email;
 	}
-	public void setApp_Email(String app_Email) {
-		this.app_Email = app_Email;
+	public void setUser_Email(String user_Email) {
+		User_Email = user_Email;
 	}
 	public String getApp_Addr1() {
 		return app_Addr1;

@@ -180,8 +180,8 @@ public class AdminController {
 
 		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/adminmanage';</script>");
 		
-		teachservice.app_delete(avo); 
-		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");
+		/*teachservice.app_delete(avo); 
+		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");*/
 
 		out.flush();
 	}
