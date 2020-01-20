@@ -1,113 +1,153 @@
 package com.king.myapp.domain;
 
-public class StudyEnrollVO {
-/*
-    SNO  NUMBER  NOT NULL,
-      USERID VARCHAR2(20)  NOT NULL,
-      USERPASS VARCHAR2(100) NOT NULL,
-      EMAIL  VARCHAR2(30),
-      PHOTO VARCHAR2(20),
-      CATEGORY VARCHAR2(15)  NOT NULL,
-      STITLE VARCHAR2(50)  NOT NULL,
-      STARTDATE  DATE,
-      ENDDATE  DATE,
-      SDAY VARCHAR2(25)  NOT NULL,
-      SPLACE VARCHAR2(70),
-      SCONTENT VARCHAR2(1000)  NOT NULL,
-      PRIMARY KEY(SNO)
-      
-     type 을 맞춰주지 않을 경우 400번 에러 발생 
-	   값을 hidden 으로 전달할 경우 submit 버튼 이벤트 안에서 할 것
-*/
- 
+import java.sql.Date;
+import java.sql.Timestamp;
 
-	private int sno;
-	private String userId;
-	private String userPass;
-	private String email;
-	private String photo;
-	private String category;
-	private String stitle;
-	private String startDate;
-	private String endDate;
-	private String sDay;
-	private String sPlace;
-	private String sContent;
-	
-	
-	public int getSno() {
-		return sno;
+public class StudyEnrollVO {
+	   private int s_no;
+	   private String s_userId;
+	   private String s_category;
+	   private String s_title;
+	   private Date s_startDate;
+	   private Date s_endDate;
+	   private String s_day;
+	   private int s_postnum;
+	   private String s_place;
+	   private String s_content;
+	   private String s_intro;
+	   private String s_photo;
+	   private String s_level;
+	   private int s_people;
+	   private int s_parti;
+	   private int s_viewcnt;
+	   private Timestamp s_creadate;
+	   private Timestamp s_updatedate ;
+	   
+	   
+	   private String road;
+	   private String jibun;
+	   
+	   
+	public int getS_no() {
+		return s_no;
 	}
-	public void setSno(int sno) {
-		this.sno = sno;
+	public void setS_no(int s_no) {
+		this.s_no = s_no;
 	}
-	public String getUserId() {
-		return userId;
+	public String getS_userId() {
+		return s_userId;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setS_userId(String s_userId) {
+		this.s_userId = s_userId;
 	}
-	public String getUserPass() {
-		return userPass;
+	public String getS_category() {
+		return s_category;
 	}
-	public void setUserPass(String userPass) {
-		this.userPass = userPass;
+	public void setS_category(String s_category) {
+		this.s_category = s_category;
 	}
-	public String getEmail() {
-		return email;
+	public String getS_title() {
+		return s_title;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setS_title(String s_title) {
+		this.s_title = s_title;
 	}
-	public String getPhoto() {
-		return photo;
+	public Date getS_startDate() {
+		return s_startDate;
 	}
-	public void setPhoto(String photo) {
-		this.photo = photo;
+	public void setS_startDate(Date s_startDate) {
+		this.s_startDate = s_startDate;
 	}
-	public String getCategory() {
-		return category;
+	public Date getS_endDate() {
+		return s_endDate;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setS_endDate(Date s_endDate) {
+		this.s_endDate = s_endDate;
 	}
-	public String getStitle() {
-		return stitle;
+	public String getS_day() {
+		return s_day;
 	}
-	public void setStitle(String stitle) {
-		this.stitle = stitle;
+	public void setS_day(String s_day) {
+		this.s_day = s_day;
 	}
-	public String getStartDate() {
-		return startDate;
+	public int getS_postnum() {
+		return s_postnum;
 	}
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
+	public void setS_postnum(int s_postnum) {
+		this.s_postnum = s_postnum;
 	}
-	public String getEndDate() {
-		return endDate;
+	public String getS_place() {
+		return s_place;
 	}
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	} 
-	public String getsDay() {
-		return sDay;
+	public void setS_place(String s_place) {
+		this.s_place = s_place;
 	}
-	public void setsDay(String sDay) {
-		this.sDay = sDay;
+	public String getS_content() {
+		return s_content;
 	}
-	public String getsPlace() {
-		return sPlace;
+	public void setS_content(String s_content) {
+		this.s_content = s_content;
 	}
-	public void setsPlace(String sPlace) {
-		this.sPlace = sPlace;
+	public String getS_intro() {
+		return s_intro;
 	}
-	public String getsContent() {
-		return sContent;
+	public void setS_intro(String s_intro) {
+		this.s_intro = s_intro;
 	}
-	public void setsContent(String sContent) {
-		this.sContent = sContent;
+	public String getS_photo() {
+		return s_photo;
 	}
-		
-	
-	
+	public void setS_photo(String s_photo) {
+		this.s_photo = s_photo;
 	}
+	public String getS_level() {
+		return s_level;
+	}
+	public void setS_level(String s_level) {
+		this.s_level = s_level;
+	}
+	public int getS_people() {
+		return s_people;
+	}
+	public void setS_people(int s_people) {
+		this.s_people = s_people;
+	}
+	public int getS_parti() {
+		return s_parti;
+	}
+	public void setS_parti(int s_parti) {
+		this.s_parti = s_parti;
+	}
+	public int getS_viewcnt() {
+		return s_viewcnt;
+	}
+	public void setS_viewcnt(int s_viewcnt) {
+		this.s_viewcnt = s_viewcnt;
+	}
+	public Timestamp getS_creadate() {
+		return s_creadate;
+	}
+	public void setS_creadate(Timestamp s_creadate) {
+		this.s_creadate = s_creadate;
+	}
+	public Timestamp getS_updatedate() {
+		return s_updatedate;
+	}
+	public void setS_updatedate(Timestamp s_updatedate) {
+		this.s_updatedate = s_updatedate;
+	}
+	public String getRoad() {
+		return road;
+	}
+	public void setRoad(String road) {
+		this.road = road;
+	}
+	public String getJibun() {
+		return jibun;
+	}
+	public void setJibun(String jibun) {
+		this.jibun = jibun;
+	}
+	   
+	   
+}

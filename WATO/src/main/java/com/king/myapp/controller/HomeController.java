@@ -1,4 +1,3 @@
-
 package com.king.myapp.controller;
 
 import java.text.DateFormat;
@@ -48,5 +47,4 @@ public class HomeController {
 		return "index";
 	}
 	
-}	
-
+}
