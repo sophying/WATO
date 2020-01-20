@@ -36,14 +36,16 @@ public class ParticipationController {
 		System.err.println(partiVO.getP_tell());
 		System.err.println(partiVO.getP_userid());
 		 
-		String p_userid = partiVO.getP_userid();
-		
 		/*
-			1. 게시글 번호 s_no 을 가지고 같은 번호를 가지고 있는  userid 를 찾음
-			2. list 를 가지고 오면 해당 list 속 동일한 userid 를 찾음
-			3. 만일 있다면   '참여신청완료'  null 이라면 '참여신청'  
+		1. 게시글 번호 s_no 을 가지고 같은 번호를 가지고 있는  userid 를 찾음
+		2. list 를 가지고 오면 해당 list 속 동일한 userid 를 찾음
+		3. 만일 있다면   '참여신청완료'  null 이라면 '참여신청'  
 		*/  
 		
+		StudentParticipationVO partiOne = participationService.userCheck(partiVO);
+		
+		
+	
 //		StudentParticipationVO studentUserId = participationService.partiCheck(partiVO);   
 //		
 //		 

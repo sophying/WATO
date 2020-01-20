@@ -21,9 +21,15 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 	}
  
 	// userid Check 
+//	@Override
+//	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO) throws Exception {
+//		return participationDAO.userCheck(partiVO);  
+//	}
+	
+	// userid Check 
 	@Override
-	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO) throws Exception {
-		return participationDAO.userCheck(partiVO);  
+	public StudentParticipationVO userCheck(StudentParticipationVO partiVO) throws Exception {
+		return participationDAO.userCheck(partiVO);
 	}
 
 }

@@ -9,6 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into s_parti (P_NO, S_NO, P_USERID, P_INTRO, P_TELL, P_REGDATE)
 		values (S_PARTI_SEQ.nextval, #{s_no}, #{p_userid}, #{p_intro}, #{p_tell} , SYSDATE )
 	</insert>
+	
+	
 	<select id="s_userCheck" resultType="com.king.myapp.domain.StudentParticipationVO">
 		
 		<!-- select e.s_userid, p.s_no
