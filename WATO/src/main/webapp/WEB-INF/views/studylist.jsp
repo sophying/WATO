@@ -128,6 +128,40 @@
 	 	max-width: 40px; 
 	 	z-index: 10;
 	 }
+	 .container-login100 { 
+	  width: 100%;  
+	  min-height: 80vh; 
+	  display: -webkit-box; 
+	  display: -webkit-flex; 
+	  display: -moz-box; 
+	  display: -ms-flexbox;  
+	  display: flex;  
+	  flex-wrap: wrap;  
+	  justify-content: center;   
+	  align-items: center; 
+	  padding: 15px;
+	  background: none; 
+	}
+	.close-button {
+    transition: all 0.5s ease;
+    position: absolute;
+    background-color: #4FBFA8;
+    padding: 1.5px 7px; 
+    right: 0; 
+    margin-left: -10px;
+    margin-top: -9px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    color: white;
+    -webkit-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
+    box-shadow: -3px 1px 6px 0px rgba(0,0,0,0.1);
+	} 
+	
+	.close-button:hover {
+	    background-color: tomato;
+	    color: #fff;
+	} 
 </style>
 <body>
 <!-- navbar-->
@@ -142,7 +176,7 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal" class="text-black-50 font-weight-bold">로그인</a></li>
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
                         <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
@@ -150,31 +184,22 @@
                 </div>
             </div>
         </div>
-        <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Customer login</h5>
-                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="customer-orders.jsp" method="post">
-                            <div class="form-group">
-                                <input id="email-modal" type="text" placeholder="email" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input id="password-modal" type="password" placeholder="password" class="form-control">
-                            </div>
-                            <p class="text-center">
-                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i>로그인</button>
-                            </p>
-                        </form>
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.jsp"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="row"> 
+			<div class="modal fade" id="modal" tabindex="-1"> 
+				<div class="modal-dialog modal-lg">  
+					<div class="modal-content" style="background: none; border: 0px">   
+						<div class="modal-body"> 
+							<div class="limiter">
+								<button class="close-button" data-dismiss="modal">&times;</button> 
+								<div class="container-login100">   
+										<%@ include  file="include/loginform.jsp"%>
+								</div>
+							</div>   
+						</div> 
+					</div>
+				</div>
+			</div>  
+		</div>
         <!-- *** TOP BAR END ***-->
 
  

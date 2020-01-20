@@ -289,23 +289,24 @@
 							filterform.submit();
 						});
 						
-						$('#filtersubmit').click(function() {
+						/* $('#filtersubmit').click(function() {
 							$.ajax({
 								type:"get",
 								url:"/board/studylistview",
 								data{filetertype : }
 							})
-						});
-						
+						}); */
+						 
 						
 						
 						
 					});
 					</script> 
-	<br>
+	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size: 20px; font-weight: bold;">${TearchlistAll.size()+studylistAll.size()+StudyListFilterdata.size()+TeacherListFilter.size()}개의 스터디</font>
+	<br><br> 
 	<div class="studylistviewbody">  
-	  <div class="valign-wrapper"> 
-	  	<div class="row">  
+	  <div class="valign-wrapper">    
+	  	<div class="row">   
 		  <% int cnt = 0; %>  
 	  		<c:forEach items="${TearchlistAll}" var="TearchlistAll">
 		    <div class="col s12 m4">
@@ -453,7 +454,10 @@
 		      </div> 
 		    </div>
 			<% cnt3++; %>
-		  </c:forEach>
+		  </c:forEach>  
+		  <c:if test="${TeacherListFilter.size()+StudyListFilterdata.size()+TearchlistAll.size()+studylistAll.size() == 0}"> 
+		  	<h3>해당 조건에 대한 검색결과가 없습니다.</h3>
+		  </c:if>  
 		  <br> <br> <br> <br> <br> <br> <br> <br> <br>   
 		  </div>  
 		</div>
