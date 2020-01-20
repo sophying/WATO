@@ -123,8 +123,8 @@ public class AdminController {
 	}
 
 	// 승인버튼 클릭 (인증센터 POST), mailSending 코드
-	@RequestMapping(value = "/admin/auth.do", method = RequestMethod.POST)
-	public ModelAndView mailSending(TeachVO tvo, ApprovalVO avo, HttpServletRequest request, String e_mail,
+	@RequestMapping(value = "/adminmanage", method = RequestMethod.POST)
+	public void mailSending(TeachVO tvo, ApprovalVO avo, HttpServletRequest request, String e_mail,
 			HttpServletResponse response_email) throws Exception {
 		logger.info("post 강사의 정보를 확인하고 승인버튼을 클릭했습니다.");
 
@@ -132,7 +132,6 @@ public class AdminController {
 
 		Random r = new Random();
 		int dice = r.nextInt(4589362) + 49311; // 이메일로 받는 인증코드 부분 (난수)
-		
 
 		String setfrom = "choio95634@gamil.com";
 		String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
@@ -174,22 +173,17 @@ public class AdminController {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-
-		ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-		mv.setViewName("/admin/adminmanage"); // 뷰의이름
-		mv.addObject("dice", dice);
-
-		System.out.println("mv : " + mv);
-
+		 
 		response_email.setContentType("text/html; charset=UTF-8");
-		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('승인이 완료되었습니다.');</script>");
-		out_email.flush();
 
-		teachservice.app_delete(avo);
-		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");
+		PrintWriter out = response_email.getWriter();
+
+		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/adminmanage';</script>");
 		
-		return mv;
+		/*teachservice.app_delete(avo); 
+		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");*/
+
+		out.flush();
 	}
 
 	// 아이디&비밀번호 찾기 GET
@@ -200,7 +194,8 @@ public class AdminController {
 
 	// 아이디 찾기 POST(학생)
 	@RequestMapping(value = "/stdFgId", method = RequestMethod.POST)
-	public ModelAndView postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email) throws Exception {
+	public ModelAndView postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email)
+			throws Exception {
 		logger.info("post 학생에게 아이디를 전송합니다.");
 
 		StdVO list = adminservice.findS_id(svo);
@@ -221,16 +216,16 @@ public class AdminController {
 							System.getProperty("line.separator") +
 
 							System.getProperty("line.separator");
-			
-				MimeMessage message = mailSender.createMimeMessage();
-				MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
-				messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
-				messageHelper.setTo(tomail); // 받는사람 이메일
-				messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-				messageHelper.setText(content); // 메일 내용
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
-				mailSender.send(message);
+			messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+			messageHelper.setTo(tomail); // 받는사람 이메일
+			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+			messageHelper.setText(content); // 메일 내용
+
+			mailSender.send(message);
 
 		}
 
@@ -249,52 +244,52 @@ public class AdminController {
 		logger.info("post 강사에게 아이디를 보낼겁니다.");
 
 		TeachVO list = adminservice.findT_id(tvo);
-		
-			if (list.getUser_Email().equals(tvo.getUser_Email())) {
 
-				String setfrom = "choio95634@gamil.com";
-				String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
-				String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
-				String content =
+		if (list.getUser_Email().equals(tvo.getUser_Email())) {
 
-						System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
+			String setfrom = "choio95634@gamil.com";
+			String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
+			String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
+			String content =
 
-								System.getProperty("line.separator") +
+					System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
 
-								tvo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
+							System.getProperty("line.separator") +
 
-								System.getProperty("line.separator") +
+							tvo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
 
-								System.getProperty("line.separator");
+							System.getProperty("line.separator") +
 
-				try {
-					MimeMessage message = mailSender.createMimeMessage();
-					MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+							System.getProperty("line.separator");
 
-					messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
-					messageHelper.setTo(tomail); // 받는사람 이메일
-					messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-					messageHelper.setText(content); // 메일 내용
+			try {
+				MimeMessage message = mailSender.createMimeMessage();
+				MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
-					mailSender.send(message);
+				messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+				messageHelper.setTo(tomail); // 받는사람 이메일
+				messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+				messageHelper.setText(content); // 메일 내용
 
-				} catch (Exception e) {
-					System.out.println(e);
-				}
+				mailSender.send(message);
+
+			} catch (Exception e) {
+				System.out.println(e);
 			}
-
-			response_email.setContentType("text/html; charset=UTF-8");
-			PrintWriter out_email = response_email.getWriter();
-			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
-			out_email.flush();
-
-			return new ModelAndView("admin/forgot_id_pwd");
 		}
-	
+
+		response_email.setContentType("text/html; charset=UTF-8");
+		PrintWriter out_email = response_email.getWriter();
+		out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
+		out_email.flush();
+
+		return new ModelAndView("admin/forgot_id_pwd");
+	}
 
 	// 비밀번호 찾기 POST(학생)
 	@RequestMapping(value = "/stdFgPwd", method = RequestMethod.POST)
-	public ModelAndView postStdpwd(StdVO svo, Model model, HttpServletRequest request, HttpServletResponse response_email) throws Exception {
+	public ModelAndView postStdpwd(StdVO svo, Model model, HttpServletRequest request,
+			HttpServletResponse response_email) throws Exception {
 		logger.info("post 학생에게 임시비밀번호 발급");
 
 		StdVO list = adminservice.findS_pwd(svo);

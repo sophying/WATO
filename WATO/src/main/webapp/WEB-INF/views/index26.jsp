@@ -10,7 +10,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
-    <link rel="stylesheet" type="text/css" href="../resource/css/terms_jihye.css">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="./resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -179,7 +178,7 @@
         	overflow:scroll; 
         	width:80%; 
         	height:200px; 
-        	/* text-align:left; */ 
+        	text-align:left; 
         	background-color:#eeeeee;
         	display: inline-block;
         }
@@ -197,7 +196,12 @@
         	width: 100px; 
         	height: 30px; 
         	margin-top: 20px;
-        	margin-bottom: 30px;
+        	margin-bottom: 40px;
+        }
+        
+        p.dougi {
+        	text-align:right;
+        	margin: 0px;
         }
 
 

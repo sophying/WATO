@@ -10,11 +10,11 @@
 		insert into 
 		approval (app_Profile, app_Resume, app_Gender, 
 				 app_Phone1, app_Phone2, app_Phone3, 
-				 app_Email,
+				 User_Email,
 				 app_Addr1, app_Addr2, app_Addr3)
 		values (#{app_Profile}, #{app_Resume}, #{app_Gender}, 
 				#{app_Phone1}, #{app_Phone2}, #{app_Phone3}, 
-				#{app_Email}, 
+				#{User_Email}, 
 				#{app_Addr1}, #{app_Addr2}, #{app_Addr3})
 	</insert>
 	
@@ -64,6 +64,6 @@
 	
 	<!-- 강사 승인 후 삭제 -->
 	<delete id="app_delete">
-		DELETE FROM approval WHERE app_Email = #{app_Email}
+		DELETE FROM approval WHERE User_Email = #{User_Email}
 	</delete>
   </mapper>	

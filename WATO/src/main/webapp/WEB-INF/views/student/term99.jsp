@@ -286,7 +286,6 @@ label.agreecheck1 {
 					<td colspan="2"><input type="text" class="btn btn-primary"
 						id="sample4_roadAddress" id="Std_Addr2" name="Std_Addr2" size="55"
 						placeholder="도로명주소"></td>
-					<span id="guide" style="color: #999"></span>
 				</tr>
 				<tr>
 					<th>상세주소<img

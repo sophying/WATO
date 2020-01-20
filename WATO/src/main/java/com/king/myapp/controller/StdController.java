@@ -28,12 +28,6 @@ public class StdController {
 		logger.info("get terms");
 	}
 	
-	// 학생 약관동의 post
-	@RequestMapping(value = "/terms", method = RequestMethod.POST)
-	public void postTerms() throws Exception {
-		logger.info("psot terms");
-	}
-
 	// 회원 가입 get
 	@RequestMapping(value = "/std_join", method = RequestMethod.GET)
 	public void getRegister() throws Exception {
