@@ -74,7 +74,7 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 
 	// 현재 유저의 강의 참여 여부 확인 
 	@Override
-	public StudentParticipationVO t_partiCheck(Map<String, Object> map) throws Exception {
+	public TeacherParticipationVO t_partiCheck(Map<String, Object> map) throws Exception {
 		return participationDAO.t_partiCheck(map);
 	}
 

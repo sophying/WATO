@@ -41,7 +41,7 @@ public interface StudentParticipationService {
 	List<TeacherParticipationVO> t_userCheck(int t_no) throws Exception;
 
 	// 현재 유저의 강의 참여 여부 확인 
-	public StudentParticipationVO t_partiCheck(Map<String, Object> map) throws Exception;
+	public TeacherParticipationVO t_partiCheck(Map<String, Object> map) throws Exception;
 
 	// 학생 참여신청 취소 
 	void t_partidelete(Map<String, Object> map) throws Exception;
