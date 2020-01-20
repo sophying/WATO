@@ -5,8 +5,9 @@
 <html>  
 <head>
 <meta charset="UTF-8"> 
- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>스터디어스 - 세상을 뒤흔들어라</title> 
+  
 <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="./css/social-icon.css"> 
 <link rel="stylesheet" type="text/css" href="./css/search.css">
