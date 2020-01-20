@@ -213,6 +213,17 @@
 		text-align: center;
 		font-size: 15pt;
 	}
+	.successBtn{
+		border:none;
+		background-color: #e0e0e0;
+		color: #fff;
+		display: block;
+		width: 100%;
+		height: 56px;
+		line-height: 56px;
+		text-align: center;
+		font-size: 15pt;
+	}
 	.infoModi{
 		box-sizing:border-box;
 		position:relative;
@@ -271,7 +282,15 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#login-modal" class="text-black-50 font-weight-bold">로그인</a></li>
+                     <c:choose>
+                  		    <c:when test="${user != null}">
+                        <li class="list-inline-item">${user.m_user_id } 님 환영합니다.</li>
+                        <li class="list-inline-item"><a href="login/logout"class="text-black-50 font-weight-bold">로그아웃</a></li>
+                    		</c:when>
+                    		<c:otherwise>
+                        <li class="list-inline-item"><a href="login/login" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
+                    		</c:otherwise>
+                    </c:choose>
                         <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
@@ -403,8 +422,8 @@
                         </ul>
             </div>
             <div class="col-md-7 col-lg-3">
-                <div class="banner"><a href="#"><img src="./resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
-                <div class="banner"><a href="#"><img src="./resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
             </div>
         </div>
                             </li>
@@ -475,8 +494,10 @@
 									<label for="name" class="pb-3 row m-0 text-justify w-100 border-top cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
 										<font size="8">${listOne.t_title }</font>
 									</label>
-<!--  내용 수정 -->				<a href="teacherModi?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>			
-<!--  내용 삭제 -->				<a href="teacherDelete?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/></a>			
+								<c:if test="${(user.m_user_id).equals(listOne.t_userId) }">	
+	<!--  내용 수정 -->				<a href="teacherModi?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>			
+	<!--  내용 삭제 -->				<a href="teacherDelete?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/></a>			
+								</c:if>
 							</div>	
 							<div class="h-75 container d-inline-block border-top">
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center">
@@ -570,8 +591,10 @@
 															</tr>  
 															<tr>
 																<td>
-																	<input type="button" value="수정하기" onclick="updatefun(this)" />
+																<c:if test="${(listOne.t_userId).equals(user.m_user_id) }">
+																	<input type="button"id="modiReButton" value="수정하기" class="modiReButton d-inline-block" onclick="updatefun(this)" />
 																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
+																</c:if>	
 																</td>
 																<td>
 																	<input type="hidden" name="t_no" value="${listOne.t_no}" />
@@ -598,8 +621,10 @@
 															</tr>
 															<tr>
 																<td> 
-																	<input type="button" value="수정하기" onclick="updatefun(this)" />
+																<c:if test="${(reply.r_userid).equals(user.m_user_id) }">
+																	<input type="button"class="modiReButton d-inline-block"  value="수정하기" onclick="updatefun(this)" />
 																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
+																</c:if>	
 																</td>
 																<td>
 																	<input type="hidden" name="t_no" value="${listOne.t_no}" />
@@ -634,41 +659,13 @@
 												</tr>
 											</table>
 											<input type="hidden" name="t_no" value="${listOne.t_no}" />
-											<input type="hidden" name="r_userid" value="minseok"/>
+											<input type="hidden" name="r_userid" value="${user.m_user_id }"/>
 										</form>
 									</div>
 								</div>		
-<<<<<<< HEAD
 							</div>
-=======
 							</div> 
 							
-							<!-- <div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top">
-								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-3 justify-content-center" >
-										<form role="from" method="post" action="study/detailReply.do">
-											<table class="justify-content-center d-inline-block">
-												<tr>
-													<td rowspan="5" class="pr-5"><font size="5"> Q&A</font></td>
-												</tr> 
-												<tr>
-													<td>
-														<textarea id="form7" name="t_content" style="width:500px; height:155px;" class="md-textarea form-control" rows="10" cols="30" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
-													</td>
-												</tr>
-											</table>
-											<div class="d-inline-block w-25">
-											</div>				
-										</form>
-									</div>
-								</div>		
-							</div> -->
->>>>>>> refs/remotes/origin/HR
 					</div>    
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->  
 						
@@ -692,15 +689,15 @@
 									</label>
 								<div class="w-100 d-inline-block row d-flex m-0 justify-content-center ">
 									<div id="t_startdate" class="form-group d-flex pt-2  d-inline-block  justify-content-center">
-										<font size="4"><fmt:formatDate value="${listOne.t_startDate }"  pattern="yyyy-MM-dd"/></font>
+										<font size="5"><fmt:formatDate value="${listOne.t_startDate }"  pattern="yyyy-MM-dd"/></font>
 									</div>	
 									<div class="form-group d-flex pt-2 d-inline-block  justify-content-center"> &nbsp; ~ &nbsp;</div>
 									<div id="t_endDate" class="form-group d-flex pt-2  d-inline-block  justify-content-center">
-										<font size="4"><fmt:formatDate value="${listOne.t_endDate }"  pattern="yyyy-MM-dd"/></font>
+										<font size="5"><fmt:formatDate value="${listOne.t_endDate }"  pattern="yyyy-MM-dd"/></font>
 									</div>
 								</div>		
 								<div id="t_day" class="form-group d-flex pt-2 d-block  justify-content-center">
-									<font size="4">${listOne.t_day }</font> 
+									<font size="5">${listOne.t_day }</font> 
 								</div>	
 							</div>
 							<div class=" border-top border-bottom h-100 w-100 d-inline-block">
@@ -708,12 +705,27 @@
 								 참가비 &nbsp;&nbsp;&nbsp;<font size="6">${listOne.t_price }</font>
 								</label>
 							</div>
-						<input type="submit" id="goButton" class="goButton" value="참여신청"/>
+						<c:choose>
+								<c:when test="${(listOne.t_parti) == (listOne.t_people) }">
+									<div class="goButton">마감되었습니다</div>
+								</c:when>
+								<c:otherwise>
+									<c:choose>
+										<c:when test="${(partiOne.p_userid).equals(user.m_user_id)}">    
+											<input type="button" class="successBtn"id="success"    value="참여신청완료"/>
+											<input type="button" class="goButton mt-4"id="partiBnt"  data-toggle="modal" data-target="#t_cancle-modal"  value="참여신청취소하기"/> 
+										</c:when> 
+										<c:otherwise>
+											<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/> 
+										</c:otherwise>
+									</c:choose>
+								</c:otherwise>
+							</c:choose>
 					</div>  
 				</aside>
-				<!-- @@@@@@@@ //// 참여신청 끝 /// @@@@@@@@ -->	
+				<!-- @@@@@@@@ //// 참여신청 끝 /// @@@@@@@@ -->
+				 <%@include file="../include/teaher_participation.jsp" %>	
 			</div>
-		</div>
 <!-- @@@@@@@@ //// 본론 진입 /// @@@@@@@@ -->
 		
 <!-- /.container-->
@@ -811,32 +823,26 @@ function updatefun(event) {
 		$(event).val("수정하기");
 		$('.updateform').submit();
 	}
-	 
-	/* if ($(event).val() == "수정하기") {
-		$('.r_content').attr('readonly',false); 
-		$(event).val("수정완료"); 
-	}else if ($(event).val() == "수정완료") {
-		$('.r_content').attr('readonly',true);
-		updateform.submit(); 
-	} */
 	
 }
+
  
 $(function(){
-	/* var listOne_URL = document.getElementById('listOne_URL').value;
+	 var listOne_URL = document.getElementById('listOne_URL').value;
 	
 	if (listOne_URL != null) {
 		
 		document.getElementById("main-iframe").src = listOne_URL;
 	 
-	} */
-	
-	
-	
-	
-	 
+	} 
 	
 });
+
+
+$('#modalSubmit').click(function () {
+	$('#participationForm').submit();
+});
+	
 </script>
 </body>
 </html>		

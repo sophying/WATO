@@ -6,15 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.BoardVO;
-import com.king.myapp.domain.Criteria;
-import com.king.myapp.domain.SearchCriteria;
+import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.StudyListFilter;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.persistence.BoardDAO;
 
 
 
 @Service
 public class BoardServiceImpl implements BoardService{
-
+	
 	@Autowired
 	private BoardDAO dao;
 	
@@ -33,6 +34,22 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<BoardVO> searchResultQna(String searchKey) throws Exception {
 		return dao.searchResultQna(searchKey);
+	}
+	@Override
+	public List<BoardVO> studylistAll() throws Exception {
+		return dao.studylistAll();
+	}
+	@Override
+	public List<StudyEnrollVO> studylistfilter(StudyListFilter sLF) throws Exception {
+		return dao.studylistfilter(sLF);
+	}
+	@Override
+	public List<BoardVO> TearchlistAll() throws Exception {
+		return dao.TearchlistAll();
+	}
+	@Override
+	public List<TeacherEnrollVO> TeacherListFilter(StudyListFilter sLF) throws Exception{
+		return dao.TeacherListFilter(sLF);
 	}
 
 }

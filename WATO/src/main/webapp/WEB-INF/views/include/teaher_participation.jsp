@@ -11,7 +11,7 @@
 					<div  class="modal fade" id="Form-modal" role="dialog">
 					  <div class="modal-dialog  mt-5">
 					    
-	<!--  form -->	 	 <form id="participationForm"action="/study/study_DetailRead" method="post" role="form"> 
+	<!--  form -->	 	 <form id="participationForm"action="/study/header_DetailRead" method="post" role="form"> 
 						      <!-- Modal content-->
 						      <div id="container" class="modal-content">
 						        <div class="modal-header">
@@ -31,7 +31,7 @@
 						          <p class="text-center text-muted">스터디 상황에 따른  <strong>참여 비용</strong>이 발생될 수 있습니다.</p>
 						        </div>  
 						        <div class="modal-footer"style="background: #5a7fa2;">     
-						          <input type="hidden" name="s_no" id="s_no" value="${listOne.s_no }"/>    
+						          <input type="hidden" name="t_no" id="t_no" value="${listOne.t_no }"/>    
 						          <input type="hidden" name="p_userid" id="p_userid" value="${user.m_user_id }"/>  
 						          <font size="4"><input type="button" id="modalSubmit" class="btn btn-default" style="color:#fff;" value="참여완료하기"></font>
 						        </div>

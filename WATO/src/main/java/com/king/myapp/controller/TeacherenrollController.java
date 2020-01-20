@@ -1,24 +1,35 @@
 package com.king.myapp.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.king.myapp.domain.MemberVO;
+import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.domain.TeacherReplyVO;
+import com.king.myapp.service.StudentParticipationService;
 import com.king.myapp.service.TeacherEnrollService;
 
 @Controller
 @RequestMapping("/study/*")
+@SessionAttributes("user")
 public class TeacherenrollController { 
 
 	private static final Logger logger = LoggerFactory.getLogger(StudyenrollController.class);
@@ -26,17 +37,21 @@ public class TeacherenrollController {
 	@Inject
 	TeacherEnrollService teacherService;
 	
+	@Inject
+	StudentParticipationService participationService;
+	
 	// 1 강의 등록 페이지 이동   
 	@RequestMapping(value = "/teacherEnroll", method = RequestMethod.GET)
-	public void getEnroll() throws Exception{
+	public void getEnroll(HttpSession session , Model model) throws Exception{
 		
 		logger.info("--------------[ 강의 등록 페이지 GET ]-----------------");
-		
+		MemberVO user =  (MemberVO) session.getAttribute("user");
+		model.addAttribute("user",user);
 	}
 	
 	// 1. 강의 상세 내용 등록 
 	@RequestMapping(value = "/teacherEnroll",method = RequestMethod.POST)
-	public String postEnroll(TeacherEnrollVO teacherVO) throws Exception{
+	public String postEnroll(@ModelAttribute TeacherEnrollVO teacherVO, HttpSession session, Model model) throws Exception{
 		
 		logger.info("--------------[ 강의 등록 페이지 POST ]-----------------");
 		 
@@ -55,6 +70,9 @@ public class TeacherenrollController {
 		System.out.println("T_people--"+teacherVO.getT_people());
 		System.out.println("T_level--"+teacherVO.getT_level());
 
+		MemberVO user =  (MemberVO) session.getAttribute("user");
+		
+		model.addAttribute("user",user);
 		teacherService.addClass(teacherVO);
 		 
 		return"redirect:/";
@@ -63,39 +81,102 @@ public class TeacherenrollController {
 	
 	//2. 강의 등록 리스트 출력 
 	@RequestMapping(value = "/classBoard", method = RequestMethod.GET)
-	public void getClassBoard(Model model) throws Exception{
+	public void getClassBoard(Model model, HttpSession session) throws Exception{
 		logger.info("--------------[ 강의 리스트 출력  GET ]-----------------");
 		
 		List<TeacherEnrollVO> classlist = teacherService.list();
+		
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		
+		if (user == null) {
+			
+			model.addAttribute("user",null);
+		}else {
+			
+			model.addAttribute("user");
+		}
 		
 		model.addAttribute("classlist", classlist);
 	}
 
 	
-	//3. 강의 내용 수정 페이지 이동 
-/*	
-	@RequestMapping(value = "/detailRead", method = RequestMethod.GET)
-	public void getDetailRead(@RequestParam("t_no") int t_no, Model model) throws Exception{
-		
-		logger.info("--------------[ 강의 상세보기  GET ]-----------------");
-			
-		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
-		
-		model.addAttribute("listOne",listOne);
-	}	
-*/	
-	// 4.
+	
+	// 4. 상세보기 + 댓글불러오기 + 수정하기  
 	@RequestMapping(value = "/header_DetailRead", method = RequestMethod.GET)
-	public void getDetailRead(@RequestParam("t_no") int t_no, Model model) throws Exception{
+	public void getDetailRead(@RequestParam("t_no") int t_no, @ModelAttribute TeacherParticipationVO partiVO,HttpSession session, Model model) throws Exception{
 		logger.info("--------------[ 강의 상세보기  GET ]-----------------");
+		
+		
 		
 		teacherService.viewCount(t_no);
 		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
 		List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
 		
-		model.addAttribute("reply", reply);
+	//  현재 유저의 참여신청여부 파악  
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		String user_id = user.getM_user_id();
+	
+		Map<String, Object> map = new HashMap<String, Object>();
+			
+		map.put("p_userid", user_id);
+		map.put("t_no",t_no);
+		
+		StudentParticipationVO partiOne = participationService.t_partiCheck(map);
+	  // 	
+					
+		if (partiOne != null) {
+			model.addAttribute("partiOne",partiOne);
+		}
+			
+		model.addAttribute("user");
+		model.addAttribute("reply", reply); 
 		model.addAttribute("listOne",listOne);
 	}
+	
+	// 4. 상세보기 + 댓글불러오기 + 수정하기 
+	@RequestMapping(value = "/header_DetailRead", method = RequestMethod.POST)
+	public String postDetailRead(@RequestParam("t_no") int t_no, Model model,@ModelAttribute TeacherParticipationVO partiVO ,HttpSession session, RedirectAttributes rttr) throws Exception{
+		
+		logger.info("--------------[ 참여신청 정보 등록  POST ]-----------------");		
+	
+		participationService.t_partiInsert(partiVO); 
+		participationService.t_partiCnt(t_no);
+		
+		System.out.println(partiVO.getT_no());
+		System.err.println(partiVO.getP_intro());
+		System.err.println(partiVO.getP_tell()); 
+		System.err.println(partiVO.getP_userid());
+		
+		
+		
+		
+		return "redirect:/study/header_DetailRead?t_no="+t_no;
+		
+	}		
+	
+	// 4. 참여신청 취소  
+	@RequestMapping(value = "/t_partiCancle", method = RequestMethod.POST)
+	public String postPartiCancle(@RequestParam("t_no") int t_no, Model model ,HttpSession session) throws Exception{
+				
+		logger.info("--------------[ 참여신청 취소   POST ]-----------------");		
+				
+			//  현재 유저의 참여신청여부 파악  
+			MemberVO user = (MemberVO) session.getAttribute("user");
+			String user_id = user.getM_user_id();
+						
+			Map<String, Object> map = new HashMap<String, Object>();
+						
+			map.put("p_userid", user_id);
+			map.put("t_no", t_no);
+						
+			participationService.t_partidelete(map); 
+			participationService.t_partiCntMinus(t_no);
+		    // 	
+						
+						
+				return "redirect:/study/header_DetailRead?t_no="+t_no;
+				
+			}	
 	
 	// 5. 강사 수정페이지 이동 
 	@RequestMapping(value = "/teacherModi", method = RequestMethod.GET)

@@ -8,8 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 1. 모집글 등록 -->
 	<insert id="s_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
-	insert into S_ENROLL (S_NO, S_USERID, S_CATEGORY , S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT, S_PHOTO, S_LEVEL, S_PEOPLE, S_CREADATE, S_INTRO)
-	values( S_ENROLL_SEQ.nextval , #{s_userId}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_photo},#{s_level}, #{s_people} , SYSDATE, #{s_intro} )
+	insert into S_ENROLL (S_NO, S_USERID, S_CATEGORY , S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT, S_PHOTO, S_LEVEL, S_PEOPLE, S_PARTI, S_CREADATE, S_INTRO)
+	values( S_ENROLL_SEQ.nextval , #{s_userId}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_photo},#{s_level}, #{s_people} , #{s_parti}, SYSDATE, #{s_intro} )
 <!-- 		insert into studytest_1 (bno, userid, category, title, regdate, place, content, photo)
 		values((select nvl(max(bno)+1, 1) from studytest_1), #{userId}, #{category}, #{title}, #{regDate}, #{place}, #{content}, #{photo}) -->
 	</insert>
@@ -75,8 +75,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where r_no =#{r_no}
 	</delete>
 	
-	
 
+<!-- 참여자 카운트  -->	
+	<update id="s_partiCnt">
+		update s_enroll
+		set S_PARTI = (s_parti)+1
+		where s_no = #{s_no}
+			
+	</update>
+	
+<!-- 참여자 카운트 -  -->	
+	<update id="s_partiCntMinus">
+		update s_enroll
+		set S_PARTI = (s_parti)-1
+		where s_no = #{s_no}
+			
+	</update>
 	
 	
 	
@@ -147,8 +161,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<select id="partiCheck" resultType="com.king.myapp.domain.StudentParticipationVO">
-		select * from s_parti where p_userid = #{p_userid} and s_no = #{s_no}  
+		select * from s_parti where p_userid = #{p_userid} and t_no = #{t_no}  
 	</select>
 	
+<!--  참여자 카운트  -->	
+	<update id="t_partiCnt">
+		update t_enroll
+		set T_PARTI = (t_parti)+1
+		where t_no = #{t_no}
+	</update>
+	
+	<update id="t_partiCntMinus">
+		update t_enroll
+		set T_PARTI = (t_parti)-1
+		where t_no = #{t_no}
+	</update>
 </mapper>
 

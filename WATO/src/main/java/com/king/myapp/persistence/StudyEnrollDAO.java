@@ -41,9 +41,6 @@ public interface StudyEnrollDAO {
 
 	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO)throws Exception;
 
-
-
-
 	
 
 }

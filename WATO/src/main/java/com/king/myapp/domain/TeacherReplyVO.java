@@ -3,7 +3,25 @@ package com.king.myapp.domain;
 import java.sql.Date;
 
 public class TeacherReplyVO {
-
+/*
+	create table t_reply(
+	r_no number,
+	t_no number,
+	r_userid varchar2(30),
+	r_content varchar2(1000),
+	r_regdate date default sysdate,
+	primary key(r_no));
+	
+	Create sequence T_reply_SEQ
+	Start with 1
+	Increment by 1
+	minvalue 1
+	Nocycle;
+	
+	ALTER TABLE T_REPLY ADD CONSTRAINT FK_T_NO_T_ENROLL FOREIGN KEY(T_NO)
+   	REFERENCES T_ENROLL(T_NO) ON DELETE CASCADE;
+	
+*/	
 	private int r_no;
 	private int t_no;
 	private String r_userid;

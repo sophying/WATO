@@ -263,7 +263,7 @@
                            </div>
                     </div>
                      <div class="form-group ">
-  <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="sophy"/>
+  <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="${user.m_user_id }"/>
   <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value=""> 
   <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >
   <!-- s_no -->          <input type="hidden" name="s_no" id="s_no" value="${listOne.s_no }" >

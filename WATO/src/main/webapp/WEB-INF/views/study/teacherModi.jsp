@@ -321,7 +321,7 @@ background:#5a7fa2;
                     </div>
   
                       <div class="form-group ">
- <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="sophy">
+ <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${user.m_user_id }">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
  							<input type="hidden" name="t_no" value="${listOne.t_no }"/>

@@ -264,7 +264,7 @@
                            </div>
                     </div>
                      <div class="form-group ">
-  <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="sophy"/>
+  <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="${user.m_user_id }"/>
   <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value="">
   <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >
   <!-- s_day -->			<input type="hidden" name="s_day"  class="form-control" id="schedule" />
@@ -310,53 +310,13 @@ $('#enroll_btn').click(function(){
 		 $('#s_category').css('color','red');
 		 $('#s_category').text("카테고리를 작성하십시오.");
 	  
-  /*   $('#category').css('color','red');
-    t_category.value ="카테고리를 작성하십시오.";
-
-    $('#category').focus(function(){
-
-      if ( s_category.value=="카테고리를 작성하십시오.") {
-        s_category.value="";
-     }
-       $('#s_category').css('color','black');
-
-      });
-
-    $('#category').blur(function(){
-
-      if (t_category.value == null || t_category.value == "") {
-       t_category.value = "카테고리를 작성하십시오";
-       $('#category').css('color','red');
-
-     }
-
-      }); */
-
 
  }
   if ( s_title.value == null || s_title.value =="") {
      $('#s_title').css('color','red');
      $('#s_title').text("강의주제를 작성하십시오.");
 
-     /*  $('#s_title').focus(function(){
-
-        if ( s_title.value=="강의주제를 작성하십시오.") {
-          s_title.value="";
-       }
-         $('#s_title').css('color','black');
-
-        });
-
-      $('#s_title').blur(function(){
-
-        if (s_title.value == null || s_title.value == "") {
-          s_title.value = "강의주제를 작성하십시오";
-         $('#s_title').css('color','red');
-
-       }
-
-        }); */
- }
+    }
 
   if (s_day.value == null || s_day.value == "") {
     $('#nullText').css('color','red');

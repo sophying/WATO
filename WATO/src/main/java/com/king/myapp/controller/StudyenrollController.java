@@ -1,18 +1,25 @@
 package com.king.myapp.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.king.myapp.domain.MemberVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
@@ -22,6 +29,7 @@ import com.king.myapp.service.StudyEnrollService;
 
 @Controller
 @RequestMapping("/study/*")
+@SessionAttributes("user")
 public class StudyenrollController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(StudyenrollController.class);	
@@ -30,37 +38,41 @@ public class StudyenrollController {
 	StudyEnrollService studyService;
 	
 	@Inject
-	StudentParticipationService partiService;
+	StudentParticipationService participationService;
 	
 
 	
 	
 	// 1. 일반인 Study 모집 등록하러 가기
 	@RequestMapping(value = "/studentEnroll", method = RequestMethod.GET)
-	public void getEnroll() throws Exception{
+	public void getEnroll(HttpSession session , Model model) throws Exception{
 		logger.info(">--------------------[ 일반인 스터디 모집 등록 GET ]---------------------------<");
+		
+		MemberVO user =  (MemberVO) session.getAttribute("user");
+		model.addAttribute("user",user);
 		
 	}
 	
 	// 1. 일반인 Study 모집 글 작성 등록
 	@RequestMapping(value = "/studentEnroll", method = RequestMethod.POST)
-	public String postEnroll(StudyEnrollVO studyVO) throws Exception{
+	public String postEnroll(@ModelAttribute StudyEnrollVO studyVO, Model model) throws Exception{
 
 		logger.info(">--------------------[ 일반인 스터디 모집 등록 POST ]---------------------------<");		
-		System.out.println(studyVO.getS_category());
-		System.out.println(studyVO.getS_title());
-		System.out.println(studyVO.getS_level());
-		System.out.println(studyVO.getS_photo());
-		System.out.println(studyVO.getS_people());
-		System.out.println(studyVO.getS_content());
-		System.out.println(studyVO.getS_day());
-		System.out.println(studyVO.getS_place());
-		System.out.println(studyVO.getS_userId());
-		System.out.println(studyVO.getS_startDate());
-		System.out.println(studyVO.getS_endDate());
 		
-		studyService.enroll(studyVO);
-		
+			System.out.println(studyVO.getS_category());
+			System.out.println(studyVO.getS_title());
+			System.out.println(studyVO.getS_level());
+			System.out.println(studyVO.getS_photo());
+			System.out.println(studyVO.getS_people());
+			System.out.println(studyVO.getS_content());
+			System.out.println(studyVO.getS_day());
+			System.out.println(studyVO.getS_place());
+			System.out.println(studyVO.getS_userId());
+			System.out.println(studyVO.getS_startDate());
+			System.out.println(studyVO.getS_endDate());
+			
+			studyService.enroll(studyVO);
+			model.addAttribute("user");
 		
 		return "redirect:/";
 		
@@ -72,54 +84,86 @@ public class StudyenrollController {
 			logger.info("--------------[ 스터디 리스트 출력  GET ]-----------------");
 			
 			List<StudyEnrollVO> studylist = studyService.list(); 
-			
+			model.addAttribute("user");
 			model.addAttribute("studylist", studylist);
 		}
 	
 	// 4. 상세보기 + 댓글불러오기 + 수정하기 
 	@RequestMapping(value = "/study_DetailRead", method = RequestMethod.GET)
-	public void getDetailRead(@RequestParam("s_no") int s_no, Model model, StudentParticipationVO partiVO) throws Exception{
+	public void getDetailRead(@RequestParam("s_no") int s_no, Model model,@ModelAttribute StudentParticipationVO partiVO ,HttpSession session, RedirectAttributes rttr) throws Exception{
 		logger.info("--------------[ 스터디 상세보기  GET ]-----------------");
 			
-		studyService.viewCount(s_no);
-		StudyEnrollVO listOne = studyService.detailRead(s_no);
-		List<StudentReplyVO> reply = studyService.replyRead(s_no);
+			studyService.viewCount(s_no);
+			StudyEnrollVO listOne = studyService.detailRead(s_no);
+			List<StudentReplyVO> reply = studyService.replyRead(s_no);
+			
+			
+			//  현재 유저의 참여신청여부 파악  
+			MemberVO user = (MemberVO) session.getAttribute("user");
+			String user_id = user.getM_user_id();
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("p_userid", user_id);
+			map.put("s_no", s_no);
+			
+			StudentParticipationVO partiOne = participationService.partiCheck(map);
+		    // 	
+					
+			if (partiOne != null) {
+				model.addAttribute("partiOne",partiOne);
+			}
+			
+			model.addAttribute("user");
+			model.addAttribute("reply",reply);
+			model.addAttribute("listOne",listOne);
+			
+	}		
+	
+	// 4. 참여신청 정보 등록 클릭 -> 
+		@RequestMapping(value = "/study_DetailRead", method = RequestMethod.POST)
+		public String postDetailRead(@RequestParam("s_no") int s_no, Model model,@ModelAttribute StudentParticipationVO partiVO ,HttpSession session, RedirectAttributes rttr) throws Exception{
+			
+			logger.info("--------------[ 참여신청 정보 등록  POST ]-----------------");		
+			
+			participationService.partiInsert(partiVO); 
+			participationService.partiCnt(s_no);
+			
+			System.out.println(partiVO.getS_no());
+			System.err.println(partiVO.getP_intro());
+			System.err.println(partiVO.getP_tell());
+			System.err.println(partiVO.getP_userid());
+			 
+			
+			
+			return "redirect:/study/study_DetailRead?s_no="+s_no;
+			
+		}		
 		
-		StudentParticipationVO partiOne = partiService.userCheck(partiVO);
-		
-//		System.out.println("췍"+partiVO.getP_userid());
-//		System.out.println("췍"+partiVO.getS_no());  
-//		
-//		
-//		
-//		/* StudentParticipationVO list = studyService.usercheck(partiVO); */
-//		
-//		
-//		StudentParticipationVO list = studyService.partiCheck(partiVO);
-//		  
-//		System.out.println("list S_no()"+list.getS_no());
-//		System.out.println("list 아이디"+list.getP_userid());     
-//		 
-//		/*
-//		 * String p_userid = partiVO.getP_userid(); int p_userSno = partiVO.getS_no();
-//		 * String DBuserid = list.getP_userid(); int DBuserSno = list.getS_no(); String
-//		 * msg = "";
-//		 * 
-//		 *  
-//		 * if (p_userid.equals(DBuserid)) { msg = "참여신청 완료"; System.out.println(msg);
-//		 * model.addAttribute("complatmsg",msg); } else {
-//		 * model.addAttribute("complatmsg",null); }
-//		 */
-//			
-//		
-		model.addAttribute("reply",reply);
-		model.addAttribute("listOne",listOne);
-		  
-
-		
-	}	
-		
-		
+		// 4. 참여신청 취소  
+		@RequestMapping(value = "/s_partiCancle", method = RequestMethod.POST)
+		public String postPartiCancle(@RequestParam("s_no") int s_no, Model model ,HttpSession session) throws Exception{
+			
+			logger.info("--------------[ 참여신청 취소   POST ]-----------------");		
+			
+					//  현재 유저의 참여신청여부 파악  
+					MemberVO user = (MemberVO) session.getAttribute("user");
+					String user_id = user.getM_user_id();
+					
+					Map<String, Object> map = new HashMap<String, Object>();
+					
+					map.put("p_userid", user_id);
+					map.put("s_no", s_no);
+					
+					participationService.partidelete(map); 
+					participationService.partiCntMinus(s_no);
+				    // 	
+							
+				
+					
+					
+			return "redirect:/study/study_DetailRead?s_no="+s_no;
+			
+		}		
 	
 	// 5. 일반인 Study 등록 내용 수정하러 가기
 	@RequestMapping(value = "/studentModify", method = RequestMethod.GET)
@@ -198,12 +242,13 @@ public class StudyenrollController {
 		
 	// 7. 상세페이지 댓글 등록 
 		@RequestMapping(value = "/s_detailReply.do", method = RequestMethod.POST)
-		public String postReply(@RequestParam("s_no") int s_no, StudentReplyVO replyVO ,StudyEnrollVO studyVO ) throws Exception{
+		public String postReply(@RequestParam("s_no") int s_no, StudentReplyVO replyVO ,StudyEnrollVO studyVO, Model model ) throws Exception{
 			
 			logger.info("--------------[ 스터디 댓글 내용 등록  POST ]-----------------");		
 			
 			studyService.replyInsert(replyVO);   
 			  
+			model.addAttribute("user");
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
 			
 		}
@@ -236,6 +281,8 @@ public class StudyenrollController {
 			
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
 		}
+		
+		//참가 신청 취소 
 		
 		
 		

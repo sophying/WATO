@@ -9,18 +9,53 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into s_parti (P_NO, S_NO, P_USERID, P_INTRO, P_TELL, P_REGDATE)
 		values (S_PARTI_SEQ.nextval, #{s_no}, #{p_userid}, #{p_intro}, #{p_tell} , SYSDATE )
 	</insert>
+<!-- 	
+	<select id="s_numCheck" resultType="com.king.myapp.domain.StudentParticipationVO">
+		select * from s_parti
+		where s_no =#{s_no}
 	
+	</select> -->
 	
-	<select id="s_userCheck" resultType="com.king.myapp.domain.StudentParticipationVO">
-		
-		<!-- select e.s_userid, p.s_no
-		
-		from s_enroll e, s_parti p
-		
-		where e.s_userid = p.p_userid 
-		
-		and e.s_userid =#{p_userid} -->  
-		select * from s_parti where p_userid = #{p_userid} and s_no = #{s_no} 
-
+	<select id="s_partiCheck" resultType="com.king.myapp.domain.StudentParticipationVO" >
+		select * from s_parti
+		where s_no = #{s_no} 
+		and p_userid = #{p_userid}
 	</select>
+
+<!--  학생 참여신청 취소  -->
+	<delete id="s_partiCancle">
+		delete from s_parti
+		where s_no = #{s_no}
+		and p_userid = #{p_userid}
+	</delete>
+
+
+	
+	
+	
+	
+	
+	<insert id="t_participation" parameterType="com.king.myapp.domain.TeacherParticipationVO">
+		insert into t_parti (P_NO, T_NO, P_USERID, P_INTRO, P_TELL, P_REGDATE)
+		values (T_PARTI_SEQ.nextval, #{t_no}, #{p_userid}, #{p_intro}, #{p_tell} , SYSDATE )
+	
+	</insert>
+	<!-- 
+	<select id="t_numCheck" resultType="com.king.myapp.domain.TeacherParticipationVO">
+		select * from t_parti
+		where t_no =#{t_no}
+	</select>	 -->
+	
+	<select id="t_partiCheck" resultType="com.king.myapp.domain.TeacherParticipationVO">
+		select * from t_parti
+		where t_no = #{t_no} 
+		and p_userid = #{p_userid}
+	</select>
+	
+	<!--  학생 참여신청 취소  -->
+	<delete id="t_partiCancle">
+		delete from t_parti
+		where t_no = #{t_no}
+		and p_userid = #{p_userid}
+	</delete>
 </mapper>

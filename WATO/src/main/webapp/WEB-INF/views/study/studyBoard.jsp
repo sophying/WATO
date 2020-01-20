@@ -15,9 +15,13 @@
 <body class="m-0 p-0">
 
 
-<form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherEnroll.do">
 	<table class="table table-striped">
   <thead>
+  <tr>	
+  	<td>
+  		현재 로그인 사용자 : &nbsp;&nbsp;&nbsp;${user.m_user_id }
+  	</td>
+  </tr>
     <tr>
       <th scope="col">No</th>
       <th scope="col">카테고리</th>
@@ -47,6 +51,5 @@
   </c:forEach>  
   </tbody>
 </table>
-</form>
 </body>
 </html>

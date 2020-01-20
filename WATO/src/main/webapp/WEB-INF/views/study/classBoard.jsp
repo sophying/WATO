@@ -18,6 +18,18 @@
 <form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherEnroll.do">
 	<table class="table table-striped">
   <thead>
+  <tr>
+  	<td>
+  	<c:choose>
+	  	<c:when test="${user == null}">
+	  		로그인을 하십시오.
+	  	</c:when>
+	  	<c:otherwise>
+	  		현재 사용자 : ${user.m_user_id }
+	  	</c:otherwise>
+	  </c:choose>
+  	</td>
+  </tr>
     <tr>
       <th scope="col">No</th>
       <th scope="col">카테고리</th>
@@ -34,7 +46,7 @@
   <c:forEach items="${classlist}" var="classlist">
     <tr>
       <th scope="row">${classlist.t_no}</th>
-      <td><a href="header_DetailRead?t_no=${classlist.t_no}">${classlist.t_category}</a></td>
+      <td><a class="detailNop" onclick="userNop()" href="header_DetailRead?t_no=${classlist.t_no}">${classlist.t_category}</a></td>
       <td>${classlist.t_level}</td>
       <td>${classlist.t_people}</td>
       <td>${classlist.t_title}</td>
@@ -47,5 +59,18 @@
   </tbody>
 </table>
 </form>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+<script type="text/javascript">
+	
+	$('.detailNop').on('click', function () {
+		
+		if ('${user}' == null){
+			alert('로그인을 하십시오');
+			location.href="/";
+		}
+	});
+	
+
+</script>
 </body>
 </html>
