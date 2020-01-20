@@ -43,7 +43,7 @@ public class HomeController {
 		model.addAttribute("listRank",service.listRank()); 
 		
 		model.addAttribute("serverTime", formattedDate );
-		
+		 
 		return "index";
 	}
 	
