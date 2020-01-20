@@ -196,7 +196,7 @@
 			  margin-left: 24px;"  
 			  id="filter"> 
 					<div class="form-group col-sm-2 col-xs-6"> 
-						<select class="form-control" name="filetertype"> 
+						<select class="form-control" name="filetertype" data-filetertype =""> 
 							<option value="">스터디/강사</option> 
 							<option value="10">스터디</option>    
 							<option value="20">강사</option>    
@@ -288,6 +288,18 @@
 							/* document.getElementById('timevalue').value = str;  */
 							filterform.submit();
 						});
+						
+						$('#filtersubmit').click(function() {
+							$.ajax({
+								type:"get",
+								url:"/board/studylistview",
+								data{filetertype : }
+							})
+						});
+						
+						
+						
+						
 					});
 					</script> 
 	<br>
@@ -425,7 +437,7 @@
 		        	</span>										 	  
 		        </h6>  
 		        <h6 class="description">  
-		                ${TeacherListFilter.t_userId}  
+		                ${TeacherListFilter.t_userId}<i class="fa fa-id-badge" aria-hidden="true"></i>
 		              </h6> 
 		        <div class="social">
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
@@ -475,7 +487,7 @@
 	    if (  $( this ).css( "transform" ) == 'none' ){
 	        $(this).css("transform","rotate(45deg)");
 	    } else { 
-	        $(this).css("transform","" );
+	        $(this).css("transform","" ); 
 	    }
 	}); */
 	 

@@ -100,14 +100,13 @@ public class BoardController {
 				List<TeacherEnrollVO> TeacherListFilter = service.TeacherListFilter(SLF);
 				model.addAttribute("TeacherListFilter",TeacherListFilter);  
 			}
-			else {
-//				스터디 강사 둘다 조회
-				List<BoardVO> studylistAll = service.studylistAll(); 
-				List<BoardVO> TearchlistAll = service.TearchlistAll(); 
 			
-				model.addAttribute("studylistAll",studylistAll);
-				model.addAttribute("TearchlistAll",TearchlistAll);
-				
+			else{
+//				스터디 강사 둘다 조회
+				List<StudyEnrollVO> StudyListFilter = service.studylistfilter(SLF);
+				model.addAttribute("StudyListFilterdata",StudyListFilter);
+				List<TeacherEnrollVO> TeacherListFilter = service.TeacherListFilter(SLF);
+				model.addAttribute("TeacherListFilter",TeacherListFilter);   
 			}
 			
 			
