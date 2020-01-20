@@ -16,7 +16,7 @@
 <body>
 
 <div>회원관리 페이지</div>
-<form role="form" method="post" action="auth.do">
+<form role="form" method="post" action="">
     <table border="1px solid #999999">
         <tr>
             <th>프로필 사진</th>
@@ -43,12 +43,11 @@
             <td><input type="text" id="Teach_Addr1" name="Teach_Addr1" value="${AppVO.app_Addr1}"></td>
             <td><input type="text" id="Teach_Addr2" name="Teach_Addr2" value="${AppVO.app_Addr2}"></td>
             <td><input type="text" id="Teach_Addr3" name="Teach_Addr3" value="${AppVO.app_Addr3}"></td>
-            <td><button type="submit" name="submit">승인</button></td>
+            <td><button type="submit" name="submit" id="btn-remove" class="btn btn-danger">승인</button></td>
         </tr>
         </c:forEach>
     </table>
     <button type="reset">뒤로가기</button>
 </form>
-
 </body>
 </html>

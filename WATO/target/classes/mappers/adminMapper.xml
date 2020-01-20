@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.king.myapp.mappers.adminMapper">
 
-	<!-- admin 페이지에서 강사 승인 -->
+	<!-- admin 페이지에서 승인안 된 강사 목록 불러오기 -->
 	<select id="adminmanage" resultType="com.king.myapp.domain.ApprovalVO">
 		SELECT
 			app_Profile, app_Resume, app_Gender, 

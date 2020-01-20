@@ -11,7 +11,7 @@
             padding: 0px;
         }
 
-       /* div#wrap0 {
+       div#wrap0 {
             position: relative;
         }
 
@@ -50,7 +50,7 @@
         	margin-bottom:10px;
         }
         
-/*         div.terms1 {
+         div.terms1 {
         	overflow:scroll; 
         	border:1px solid; 
         	width:80%; 
@@ -66,12 +66,18 @@
         	height:200px; 
         	text-align:left; 
         	background-color:#eeeeee;
-        } */
+        } 
 
         button#joinb:hover {
             color: #3c97bf;
             cursor: pointer; /* mouse shape turn finger */
             background-color: #eeeeee;
+        }
+        input.gaip {
+        	width: 100px; 
+        	height: 30px; 
+        	margin-top: 20px;
+        	margin-bottom: 40px;
         }
         
         p.dougi {

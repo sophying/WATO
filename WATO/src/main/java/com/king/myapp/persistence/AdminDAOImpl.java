@@ -19,6 +19,7 @@ public class AdminDAOImpl implements AdminDAO {
 	
 	private static String namespace = "com.king.myapp.mappers.adminMapper"; // namespace 를 id 앞에 써줄 거면 안 써도 됨
 	
+	// admin 페이지에서 승인안 된 강사 목록 불러오기
 	@Override
 	public List<ApprovalVO> teachlist() throws Exception {
 		return sql.selectList(namespace + ".adminmanage");

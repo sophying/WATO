@@ -12,24 +12,24 @@
     <meta name="robots" content="all,follow">
     <link rel="stylesheet" type="text/css" href="../resource/css/terms_jihye.css">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="./resource/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="./resource/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../resource/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="./resource/vendor/owl.carousel/assets/owl.carousel.css"> 
-    <link rel="stylesheet" href="./resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="./resource/css/style.default.css" id="theme-stylesheet"> 
+    <link rel="stylesheet" href="../resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
-    <link rel="stylesheet" href="./resource/css/custom.css">
+    <link rel="stylesheet" href="../resource/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
-    <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="../resource/images/icons/favicon.ico"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -290,7 +290,7 @@
  
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
-        <div class="container"><a href="/" class="navbar-brand home"><img src="./resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container"><a href="/" class="navbar-brand home"><img src="../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -451,7 +451,7 @@
 <div id="all">
     <div id="content">
 <!-- 최지혜 추가 -->  <div style="width: 100%; text-align: center;">
-                    <form name="frmJoin" onsubmit="return CheckForm(this)" style="text-align: center;">
+                    <form name="frmJoin" onsubmit="return CheckForm(this)" style="text-align: center;" action="/student/std_join">
                         <h3 class="title"><br><br>
                         	<img src="http://image.bandinlunis.com/images/global/member/tit_h3_agree.gif">
                         </h3>

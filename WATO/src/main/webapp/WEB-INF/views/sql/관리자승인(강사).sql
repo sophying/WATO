@@ -1,4 +1,5 @@
 create table approval (
+   bno number,
    app_profile varchar2(200),
    app_resume varchar2(200),
    app_gender varchar2(20),

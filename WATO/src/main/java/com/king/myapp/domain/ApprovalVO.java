@@ -2,6 +2,7 @@ package com.king.myapp.domain;
 
 public class ApprovalVO {
 	
+	private int bno;
 	private String app_Profile;
 	private String app_Resume;
 	private String app_Gender;
@@ -13,6 +14,12 @@ public class ApprovalVO {
 	private String app_Addr2;
 	private String app_Addr3;
 	
+	public int getBno() {
+		return bno;
+	}
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
 	public String getApp_Profile() {
 		return app_Profile;
 	}
@@ -73,5 +80,4 @@ public class ApprovalVO {
 	public void setApp_Addr3(String app_Addr3) {
 		this.app_Addr3 = app_Addr3;
 	}	
-
 }
