@@ -250,10 +250,13 @@
          <scope>provided</scope>
       </dependency>
       <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>jstl</artifactId>
-         <version>1.2</version>
-      </dependency>
+	<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>jstl</artifactId>
+	    <version>1.2</version>
+	</dependency>
+
 
 <!-- 4.7  >> 4.12 수정 -->   
       <!-- Test -->
