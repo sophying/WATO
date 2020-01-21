@@ -10,6 +10,6 @@
 	</settings>
 	
 	<typeAliases> 
-		<package name="com.king.myweb" />
+		<package name="com.king.myapp" />
 	</typeAliases>
 </configuration>

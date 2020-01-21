@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board"> 
+   
+   <!-- 메인 페이지 강사, 스터디 리스트 VIEWCNT 순으로 나열 -->
+   <select id="listRank" resultType="com.king.myapp.domain.BoardVO">
+   	<![CDATA[  
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10
+   	 ]]>  
+   </select> 
+   <!-- NAV바에 있는 검색 창 에서 검색 후 스터디 VIEWCNT 순으로 10개 -->
+   <select id="searchResultStudy" resultType="com.king.myapp.domain.BoardVO">
+   	  <![CDATA[  
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	 ]]>
+   </select>
+   <!-- NAV바에 있는 검색 창 에서 검색 후 강사 VIEWCNT 순으로 10개 -->
+   <select id="searchResultTeacher" resultType="com.king.myapp.domain.BoardVO"> 
+   	  <![CDATA[ 
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	 ]]>
+   </select> 
+   <!-- NAV바에 있는 검색 창 에서 검색 후 Q&A VIEWCNT 순으로 10개 -->
+   <select id="searchResultQna" resultType="com.king.myapp.domain.BoardVO">
+   	  <![CDATA[ 
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	 ]]> 
+   </select>
+   <!-- 메뉴바 스터디 찾기 클릭 후 기본으로 보여지는 스터디 목록 -->
+   <select id="studylistAll" resultType="com.king.myapp.domain.StudyEnrollVO">   
+   	  SELECT * FROM S_ENROLL 
+   </select>
+   <!-- 메뉴바 스터디 찾기 클릭 후 기본으로 보여지는 강의 목록 -->
+   <select id="TearchlistAll" resultType="com.king.myapp.domain.TeacherEnrollVO"> 
+   	  SELECT * FROM T_ENROLL
+   </select>
+   <!-- 스터디 찾기에서 검색 필터로 조회 했을 때의 스터디,강사 조회 --> 
+   <select id="studylistfilter" resultType="com.king.myapp.domain.StudyEnrollVO">
+   	  SELECT * FROM S_ENROLL WHERE S_CATEGORY LIKE '%' || #{category} || '%' AND S_LEVEL LIKE '%' || #{level} || '%' AND S_DAY LIKE '%' || #{time} || '%' AND SUBSTR(S_PLACE,1,2) LIKE '%' || #{place} || '%' 
+   </select> 
+   <!-- 강사조회 -->
+   <select id="TeacherListFilter" resultType="com.king.myapp.domain.TeacherEnrollVO">
+      SELECT * FROM T_ENROLL WHERE T_CATEGORY LIKE '%' || #{category} || '%' AND T_LEVEL LIKE '%' || #{level} || '%' AND T_DAY LIKE '%' || #{time} || '%' AND SUBSTR(T_PLACE,1,2) LIKE '%' || #{place} || '%'
+   </select>
+   
+   
+    
+</mapper>
