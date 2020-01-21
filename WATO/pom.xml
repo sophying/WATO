@@ -249,7 +249,6 @@
          <version>2.1</version>
          <scope>provided</scope>
       </dependency>
-      <dependency>
 	<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
 	<dependency>
 	    <groupId>javax.servlet</groupId>
@@ -267,6 +266,7 @@
          <scope>test</scope>
       </dependency>        
    </dependencies>
+   
     <build>
     <defaultGoal>install</defaultGoal>  
         <plugins>
