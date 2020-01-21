@@ -1,5 +1,14 @@
 eclipse.preferences.version=1
 encoding//src/main/java=utf-8
 encoding//src/main/resources=utf-8
+encoding//src/main/webapp/WEB-INF/views/include_admin/admin_footer.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include_admin/main_info.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include_admin/main_member.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include_admin/main_pay.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include_admin/main_transaction_middle.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include_admin/main_transaction_row.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/include_admin/main_transaction_up.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/index.jsp=UTF-8
+encoding//src/test/java=utf-8
 encoding//src/test/resources=utf-8
 encoding/<project>=utf-8
