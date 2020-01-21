@@ -60,11 +60,5 @@ public class TeachDAOImpl implements TeachDAO {
 	public void app_delete(ApprovalVO avo) throws Exception {
 		sql.delete(namespace + ".app_delete", avo);
 	}
-
-	// app_num update
-	@Override
-	public void app_num(ApprovalVO avo) throws Exception {
-		sql.update(namespace + ".app_num", avo);
-	}
 	
 }

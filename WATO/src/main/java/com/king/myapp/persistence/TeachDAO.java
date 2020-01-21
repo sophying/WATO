@@ -26,7 +26,4 @@ public interface TeachDAO {
 	// 강사 승인 후 정보 삭제
 	public void app_delete(ApprovalVO avo) throws Exception;
 
-	// app_num update
-	public void app_num(ApprovalVO avo) throws Exception;
-
 }

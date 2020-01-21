@@ -31,12 +31,6 @@
 				#{Teach_Addr1}, #{Teach_Addr2}, #{Teach_Addr3})
 	</insert>
 	
-	<update id="app_num">
-		update teach_info
-			set app_Num = #{1}
-			where app_Num = #{0}
-	</update>
-	
 	<!-- 강사 회원 가입3 -->
 	<update id="teach_join3">
 		update teach_info
