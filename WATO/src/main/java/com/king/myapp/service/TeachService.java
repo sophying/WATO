@@ -26,4 +26,7 @@ public interface TeachService {
 	// 강사 승인 후 정보 삭제
 	public void app_delete(ApprovalVO avo) throws Exception;
 
+	// 강사 승인신청 누르면 app_num 값 바꿔주기
+	public void app_num(ApprovalVO avo) throws Exception;
+
 }

@@ -113,17 +113,17 @@ public class AdminController {
 	}
 
 	// 강사 승인페이지 GET
-	@RequestMapping(value = "/adminmanage", method = RequestMethod.GET)
+	@RequestMapping(value = "/app_before", method = RequestMethod.GET)
 	public String getManage(Model model) throws Exception {
 		logger.info("get 강사 승인 페이지");
 
 		List<ApprovalVO> teachlist = adminservice.teachlist();
 		model.addAttribute("list", teachlist);
-		return "/admin/adminmanage";
+		return "/admin/app_before";
 	}
 
-	// 승인버튼 클릭 (인증센터 POST), mailSending 코드
-	@RequestMapping(value = "/adminmanage", method = RequestMethod.POST)
+	// 승인버튼 클릭 (인증센터 POST), mailSending 코드, 승인완료 페이지로 넘어감
+	@RequestMapping(value = "/app_before", method = RequestMethod.POST)
 	public void mailSending(TeachVO tvo, ApprovalVO avo, HttpServletRequest request, String e_mail,
 			HttpServletResponse response_email) throws Exception {
 		logger.info("post 강사의 정보를 확인하고 승인버튼을 클릭했습니다.");
@@ -178,9 +178,12 @@ public class AdminController {
 
 		PrintWriter out = response_email.getWriter();
 
-		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/adminmanage';</script>");
+		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/app_before';</script>");
 		
-		/*teachservice.app_delete(avo); 
+		teachservice.app_num(avo);
+		logger.info("num 바꿔주기");
+		
+		/*teachservice.app_delete(avo);
 		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");*/
 
 		out.flush();

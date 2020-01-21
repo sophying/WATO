@@ -13,6 +13,7 @@ public class ApprovalVO {
 	private String app_Addr1;
 	private String app_Addr2;
 	private String app_Addr3;
+	private int app_Num;
 	
 	public int getBno() {
 		return bno;
@@ -79,5 +80,12 @@ public class ApprovalVO {
 	}
 	public void setApp_Addr3(String app_Addr3) {
 		this.app_Addr3 = app_Addr3;
-	}	
+	}
+	public int getApp_Num() {
+		return app_Num;
+	}
+	public void setApp_Num(int app_Num) {
+		this.app_Num = app_Num;
+	}
+	
 }

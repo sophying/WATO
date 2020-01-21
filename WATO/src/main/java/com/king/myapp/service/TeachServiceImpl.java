@@ -57,4 +57,10 @@ public class TeachServiceImpl implements TeachService {
 		dao.app_delete(avo);
 	}
 
+	// app_num udpate
+	@Override
+	public void app_num(ApprovalVO avo) throws Exception {
+		dao.app_num(avo);
+	}
+
 }
