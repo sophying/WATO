@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-         <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,25 +10,29 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
+    <!-- <link rel="stylesheet" type="text/css" href="../resource/css/terms_jihye.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../resource/css/std_join.css"> -->
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="./resource/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="./resource/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../resource/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="./resource/vendor/owl.carousel/assets/owl.carousel.css"> 
-    <link rel="stylesheet" href="./resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="./resource/css/style.default.css" id="theme-stylesheet"> 
+    <link rel="stylesheet" href="../resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
-    <link rel="stylesheet" href="./resource/css/custom.css">
+    <link rel="stylesheet" href="../resource/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
-    <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="../resource/images/icons/favicon.ico"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
     #top{
@@ -61,6 +65,8 @@
         margin-left: auto;
         margin-right: auto;
         width: 53.8%;
+        text-align: center;
+        background-color: #fff;
     }
     #footer {
         position: static;
@@ -133,14 +139,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 80vh; 
+	  min-height: 60vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;   
+	  justify-content: center;  
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -169,7 +175,51 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
+        
+       /* input {
+            background-color: #eee;
+            border: none; // 그림자 제거 
+            padding: 12px 15px;
+            margin: 8px 0; // 위아래 간격 
+        }
 
+        #header ul li a:hover{
+            background-color: #6c80b2; // 마우스 올리면 배경색 바뀜 
+            color:#dddddd;
+        }
+
+        th#student {
+
+        }
+
+        div#join {
+            padding-top: 30px;
+            padding-bottom: 20px;
+        }
+
+        button#joinb:hover {
+            color: #3c97bf;
+            cursor: pointer; // mouse shape turn finger
+            background-color: #eeeeee;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #3c97bf;
+        } */
+
+        th {
+            border: 1px solid #bbbbbb;
+            color: #888888;
+        }
+
+        td {
+            padding-left: 10px;
+            border: 1px solid #bbbbbb;
+        }
 
 </style>
 <body>
@@ -182,39 +232,85 @@
     <div id="top">
         <div class="container"> 
             <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
+                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">모두를 위한 스터디카페</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
-                        <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
+                    	<c:if test="${std == null && teach == null}">
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
+                        </c:if>
+                        <c:if test="${std != null}">
+                        	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
+                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item">
+                        	<form name="myForm" method="get" action="/student/std_info">
+				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Pwd_Qs}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Pwd_As}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
+				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
+								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
+								<input type="hidden" value="${std.std_Phone2}" readonly="readonly">
+								<input type="hidden" value="${std.std_Phone3}" readonly="readonly">
+								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
+								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
+								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
+                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	</form>
+                        	</li>
+                        </c:if>
+                        <c:if test="${teach != null}">
+                        	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
+                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item">
+                        	<form name="myForm2" method="get" action="/teach/teach_info">
+				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Pwd_Qs}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Pwd_As}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
+				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
+                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	</form>
+                        	</li>
+                        </c:if>
+                        <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
+                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
-                        <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
+                        </c:if>
+                        <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
+                        <li class="list-inline-item"><a href="/admin/adminmanage" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                        </c:if>
+                        <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
                     </ul>
                 </div>
             </div>
         </div> 
-        <div class="row"> 
-			<div class="modal fade" id="modal" tabindex="-1"> 
-				<div class="modal-dialog modal-lg">  
-					<div class="modal-content" style="background: none; border: 0px">   
-						<div class="modal-body"> 
+        <div class="row">
+	        <div id="myModal" class="modal fade" tabindex="-1">
+	        	<div class="modal-dialog modal-lg">
+	            	<div class="modal-content" style="background: none; border: 0px">
+	            		<div class="modal-body"> 
 							<div class="limiter">
-								<button class="close-button" data-dismiss="modal">&times;</button> 
+								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
 								<div class="container-login100">   
-										<%@ include  file="include/loginform.jsp"%>
+									<%@ include  file="../admin/loginform.jsp"%> 
 								</div>
 							</div>  
-						</div> 
-					</div>
-				</div>
-			</div>  
-		</div>
-        <!-- *** TOP BAR END ***-->
+						</div> 	                		
+	            	</div>
+	        	</div>
+	    	</div>
+    	</div>
 
  
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
-        <div class="container"><a href="/" class="navbar-brand home"><img src="./resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container"><a href="/" class="navbar-brand home"><img src="../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -283,7 +379,7 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
                                         </ul>
-                                    </div> 
+                                    </div>
                                     <div class="col-md-6 col-lg-3">
                                         <h5>동영상 강의</h5>
                                         <ul class="list-unstyled mb-3">
@@ -305,8 +401,8 @@
                         </ul>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="banner"><a href="#"><img src="./resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
-                <div class="banner"><a href="#"><img src="./resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
             </div>
         </div>
                             </li>
@@ -374,248 +470,105 @@
 </header>
 <div id="all">
     <div id="content">
-        <header>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">First Slide</h2>
-                            <p class="lead">This is a description for the first slide.</p>
-                        </div>
-                    </div>
-                    <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">Second Slide</h2>
-                            <p class="lead">This is a description for the second slide.</p>
-                        </div>
-                    </div>
-                    <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">Third Slide</h2>
-                            <p class="lead">This is a description for the third slide.</p>
-                        </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </header>
+<!-- 최지혜 추가 -->  
+		<div class="table-responsive">
+        	<form role="form" method="post" autocomplete="off"><br><br>
+            	<table class="table" style="margin: auto; width: 70%;" cellspacing="0"> <!-- 일반 회원가입 폼 -->
+                	<tr>
+                        <th id="student" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">학생 회원가입</th>
+                    </tr>
+                    
+                    <tr>
+                        <td id="avatar" style="height: 140px; width: 100px; padding: 0px;"><img id="image_section" style="height: 140px; display: block; margin: 0px auto;" src="//sb-cafetalk.s3.amazonaws.com/user-uploaded-files/cafetalk-optimized-559cca73cd84d-984180900-1436338803.png"></td>
+                        <td colspan="2">
+                            <form id="" runat="">
+                                <input type='file' id="imgInput" id="Std_Profile" name="Std_Profile"/>
+                                <div><em style="font-size: small;">※업로드 가능한 이미지 크기는 150x100 입니다.<br>이미지 크기가 초과할시 업로드 되지 않을 수 있음을 유의바랍니다.</em></div>
+                            </form>
+                        </td>
+                    </tr>                    
+                    
+                    <tr>
+                        <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                        <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
+						</td>
+                        <td><button type="button" class="idCheck" onclick="fn_idChk();" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;">아이디 중복확인</button></td>
+                    </tr>
+                    <tr>
+                        <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                        <td colspan="2"><input type="password" id="userPw" id="User_Pwd" name="User_Pwd" size="55" maxlength="12" placeholder="비밀번호" ></td>
+                    </tr>
+                    <tr>
+                        <th>비밀번호 확인<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                        <td colspan="2"><input type="password" id="userPwChk" size="55" maxlength="12" placeholder="비밀번호 확인"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+                    </tr>
+                    <tr>
+                        <th>성별<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                        <td colspan="2">
+                        <label><input type="radio" id="Std_Gender" name="Std_Gender" value="남자">남자</label>
+                        &nbsp;
+                        <label><input type="radio" id="Std_Gender" name="Std_Gender" value="여자" checked>여자</label></td>
+                    </tr>
+                    <tr>
+                        <th>휴대폰<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                        <td colspan="2">
+                            <select  id="Std_Phone1" name="Std_Phone1">
+                                <option value="010" selected>010</option>
+                                <option value="011">011</option>
+                                <option value="016">016</option>
+                                <option value="017">017</option>
+                                <option value="018">018</option>
+                                <option value="019">019</option>
+                            </select>
+                            -
+                            <input type="text" id="Std_Phone2" name="Std_Phone2" size="15" maxlength="4">
+                            -
+                            <input type="text" id="Std_Phone3" name="Std_Phone3" size="15" maxlength="4">
+                        </td>
+                    </tr>
+                    <tr>
+                    	<th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                    	<td colspan="2"><input type="email" id="email" id="User_Email" name="User_Email" size="55" maxlength="80" onfocus="focus()"></td>
+                    </tr>
+                    <tr>
+                        <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                        <td><input type="text" id="sample4_postcode" id="Std_Addr1" name="Std_Addr1" placeholder="우편번호"></td>
+                        <td><input type="button" onclick="sample4_execDaumPostcode()" value="우편번호찾기" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;"></td>
+                    </tr>
+                    <tr>
+                        <th>주소<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                        <td colspan="2"><input type="text"  id="sample4_roadAddress" id="Std_Addr2" name="Std_Addr2" size="55" placeholder="도로명주소"></td>
+                    </tr>
+                    <tr>
+                        <th>상세주소<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                        <td colspan="2"><input type="text" id="std_addr_sub" id="Std_Addr3" name="Std_Addr3" size="55" maxlength="12"  placeholder="상세주소"></td>
+                    </tr>
+                </table>
+                   <button type="submit" style="height: 40px; width:150; margin-top: 20px; margin-bottom: 30px; border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;">회원가입</button>
+            </form>
+		</div>
+	</div>
+</div>
+<!-- 최지혜 추가 -->   		
         <!-- 아이콘 -->
-        <div id="icon" class="box text-center mt-0 mb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2"> 
-                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-            </div>
-        </div>
+
         <!--
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
         -->
-        <div  id="hot">
-            <div class="box py-4 mt-0">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2 class="mb-0">이주의 핫한 교실</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="product-slider owl-carousel owl-theme">
-                	<%int i = 1;%>
-                	<c:forEach items="${listRank}" var="listRank">
-                	<div style="position: relative;"> 
-                		<div class="imgrank">
-									<%if(i== 1){ %> 
-										<img alt="1등이미지" src="./resource/images/rank1st.png"> 
-									<%}else if( i ==2) {%>
-										<img alt="2등이미지" src="./resource/images/rank2st.png"> 
-									<%}else if( i ==3) {%>
-										<img alt="3등이미지" src="./resource/images/rank3st.png">
-									<%}else if( i ==4) { %>
-										<img alt="4등이미지" src="./resource/images/rank4st.png">
-									<%}else{ %>
-										<img alt="5등이미지" src="./resource/images/rank5st.png">
-									<%} %>
-						</div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="detail.jsp">${listRank.title}</a></h3>
-                                <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
-                                </p>
-                            </div> 
-                        </div>
-                    </div>
-                    </div>
-                    <% i++; %>
-                    </c:forEach>
-                          <!--     /.text
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            /.ribbon
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-                            <!-- /.ribbon-->
-                            <!-- <div class="ribbon gift"> GIFT 표시
-                                <div class="theribbon">GIFT</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-                    <!-- /.product-slider-->
-                </div>
-                <!-- /.container-->
-            </div>
-            <!-- /#hot-->
-            <!-- *** HOT END ***-->
-        </div>
-        <div  id="hot">
-            <div class="box py-4 mt-0">
-                <div class="container"> 
-                    <div class="row"> 
-                        <div class="col-md-12"> 
-                            <h2 class="mb-0">이번달 베스트 강사</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="product-slider owl-carousel owl-theme">
-                	<%int j = 1;%>
-                	<c:forEach items="${listRank}" var="listRank"> 
-                	<div style="position: relative;"> 
-                		<div class="imgrank">
-									<%if(j== 1){ %> 
-										<img alt="1등이미지" src="./resource/images/rank1st.png"> 
-									<%}else if( j ==2) {%>
-										<img alt="2등이미지" src="./resource/images/rank2st.png"> 
-									<%}else if( j ==3) {%>
-										<img alt="3등이미지" src="./resource/images/rank3st.png">
-									<%}else if( j ==4) { %>
-										<img alt="4등이미지" src="./resource/images/rank4st.png">
-									<%}else{ %>
-										<img alt="5등이미지" src="./resource/images/rank5st.png">
-									<%} %>
-						</div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="detail.jsp">${listRank.title}</a></h3>
-                                <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
-                                </p>
-                            </div> 
-                        </div>
-                    </div>
-                    </div>
-                    <% j++; %>
-                    </c:forEach>
-                          <!--     /.text
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            /.ribbon
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-                            <!-- /.ribbon-->
-                            <!-- <div class="ribbon gift"> GIFT 표시
-                                <div class="theribbon">GIFT</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-                    <!-- /.product-slider-->
-                </div>
-                <!-- /.container-->
-            </div>
-            <!-- /#hot-->
-            <!-- *** HOT END ***-->
-        </div>
 
-    </div>
-</div>
 <!--
    *** BLOG HOMEPAGE ***
    _________________________________________________________
    -->
-<div id="new" class="box text-center mb-0">
+<!-- <div id="new" class="box text-center mb-0">
     <div class="container">
         <div class="col-md-12">
             <h3 class="text-uppercase">From our blog</h3>
             <p class="lead mb-0">What's new in the world of fashion? <a href="blog.jsp">Check our blog!</a></p>
         </div>
     </div>
-</div>
+</div> -->
 <div id="blog-homepage" class="box row mb-0">
     <div class="container">
         <div class="post">
@@ -706,12 +659,98 @@ _________________________________________________________
 </div>
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
+<script type="text/javascript" src="../resource/js/std_join.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
+<script type="text/javascript"> 
+        // 비밀번호 확인 소스
+        $('#userPw').blur(function() {
+            var userPw = $('#userPw').val();
+            var userPwChk = $('#userPwChk').val();
+            var pwdcheck = $('#pwdcheck');
+
+            if (userPw !="" && userPwChk !="" && userPw==userPwChk) {
+                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
+            }else if(userPw != "" && userPwChk==""){
+                pwdcheck.text('비밀번호 확인를 입력해주세요').css('color', 'blue');
+            }else if (userPw != userPwChk) {
+                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
+            }else if(userPw =="" && userPwChk==""){
+                pwdcheck.text('');
+            }
+
+        });
+
+        $('#userPwChk').blur(function() {
+            var userPw = $('#userPw').val();
+            var userPwChk = $('#userPwChk').val();
+            var pwdcheck = $('#pwdcheck');
+
+            if (userPw !="" && userPw !="" && userPw==userPwChk) {
+                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
+            } else if(userPwChk != "" && userPw==""){
+                pwdcheck.text('비밀번호를 입력해주세요').css('color', 'blue');
+            }else if(userPw != userPwChk){
+                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
+            }else if(userPw =="" && userPwChk==""){
+                pwdcheck.text('');
+            }
+        });
+
+
+        function checkPw() {
+            var userPw = $('#userPw').val();
+            var userPw = $('#userPwChk').val();
+            var pwdcheck = $('#pwdcheck');
+            if (userPw == userPwChk) {
+                joinform.submit();
+            } else {
+                /* pwdcheck.text('비밀번호가 다릅니다').css('color', 'red'); *!/ /!* 위에서 출력하고 있는데 한번더 출력할 필요 없음 */
+                alert('입력하신 비밀번호가 다릅니다 확인해주세요.')
+            }
+        }   
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+       var reader = new FileReader();
+
+       reader.onload = function (e) {
+       $('#image_section').attr('src', e.target.result);
+    }
+
+       reader.readAsDataURL(input.files[0]);
+       }
+    }
+
+      $("#imgInput").change(function(){
+        readURL(this);
+  });
+      
+
+      
+      function fn_idChk(){
+      	$.ajax({
+      		url : "/student/idChk",
+      		type : "post",
+      		dataType : "json",
+      		data : {"User_Id" : $("#User_Id").val()},
+      		success : function(data){
+      			if(data == 1){
+      				alert("중복된 아이디입니다.");
+      			}else if(data == 0){
+      				$("#idChk").attr("value", "Y");
+      				alert("사용가능한 아이디입니다.");
+      			}
+      		}
+      	})
+      }
+</script>
 <!-- JavaScript files--> 
-<script src="./resource/vendor/jquery/jquery.min.js"></script>
-<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="./resource/js/front.js"></script> 
+<script src="../resource/vendor/jquery/jquery.min.js"></script>
+<script src="../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="../resource/js/front.js"></script> 
 </body>
 </html>
