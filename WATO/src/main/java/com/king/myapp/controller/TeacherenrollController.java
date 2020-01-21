@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.king.myapp.domain.MemberVO;
-import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.domain.TeacherReplyVO;
@@ -117,11 +116,11 @@ public class TeacherenrollController {
 		String user_id = user.getM_user_id();
 	
 		Map<String, Object> map = new HashMap<String, Object>();
-			
+			 
 		map.put("p_userid", user_id);
 		map.put("t_no",t_no);
 		
-		StudentParticipationVO partiOne = participationService.t_partiCheck(map);
+		TeacherParticipationVO partiOne = participationService.t_partiCheck(map);
 	  // 	
 					
 		if (partiOne != null) {
@@ -180,7 +179,7 @@ public class TeacherenrollController {
 	
 	// 5. 강사 수정페이지 이동 
 	@RequestMapping(value = "/teacherModi", method = RequestMethod.GET)
-	public void getModify(@RequestParam("t_no") int t_no, Model model) throws Exception{
+	public void getModify(@RequestParam("t_no") int t_no, Model model,HttpSession session) throws Exception{
 		
 		logger.info("--------------[ 강의 수정페이지 이동  GET ]-----------------");
 			
@@ -230,7 +229,7 @@ public class TeacherenrollController {
 		  if (beforeDay.contains("일")) {
 			  model.addAttribute("sun","일");
 		  }
-		 		 
+		model.addAttribute("user"); 		 
 		model.addAttribute("listOne",listOne);
 		
 	}	

@@ -167,7 +167,7 @@ public class StudyenrollController {
 	
 	// 5. 일반인 Study 등록 내용 수정하러 가기
 	@RequestMapping(value = "/studentModify", method = RequestMethod.GET)
-	public void getModify(@RequestParam("s_no") int s_no, Model model) throws Exception{
+	public void getModify(@RequestParam("s_no") int s_no, Model model, HttpSession session) throws Exception{
 		logger.info(">--------------------[ 일반인 스터디 모집 수정 GET ]---------------------------<");
 		
 		StudyEnrollVO listOne = studyService.detailRead(s_no);
@@ -223,7 +223,7 @@ public class StudyenrollController {
 			  System.out.println(beforeDay.contains("추후결정"));
 		  }
 		 		 
-		
+		model.addAttribute("user");
 		model.addAttribute("listOne",listOne);
 		
 	}

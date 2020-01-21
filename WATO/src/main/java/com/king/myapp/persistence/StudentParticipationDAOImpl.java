@@ -88,7 +88,7 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 	
 	// 현재 유저의 강의 참여 여부 확인 
 	@Override
-	public StudentParticipationVO t_partiCheck(Map<String, Object> map) throws Exception {
+	public TeacherParticipationVO t_partiCheck(Map<String, Object> map) throws Exception {
 		return sql.selectOne("parti.t_partiCheck",map); 
 	}
 
