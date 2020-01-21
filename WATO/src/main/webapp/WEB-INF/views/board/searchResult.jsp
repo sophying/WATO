@@ -204,7 +204,7 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -255,7 +255,7 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -478,7 +478,7 @@
                                 </div>
                             </div><a href="detail.jsp" class="invisible"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listStudy.title}</a></h3>
+                                <h3><a href="detail.jsp">${listStudy.s_title}</a></h3>
                                 <p class="price"> 
                                     <del></del><a href="#" class="btn btn-primary" >상세보기</a>
                                 </p>
@@ -547,7 +547,7 @@
                                 </div>
                             </div><a href="detail.jsp" class="invisible"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listTeacher.title}</a></h3>
+                                <h3><a href="detail.jsp">${listTeacher.t_title}</a></h3>
                                 <p class="price"> 
                                     <del></del><a href="#" class="btn btn-primary" >상세보기</a>
                                 </p>
@@ -584,7 +584,7 @@
                 <div class="container"> 
                     <div class="row"> 
                         <div class="col-md-12"> 
-                            <h2 class="mb-0">Q&A</h2>
+                            <h2 class="mb-0">Q&amp;A</h2>
                         </div>
                     </div>
                 </div>

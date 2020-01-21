@@ -303,11 +303,11 @@
 	                <button class="ghost" id="signIn">로그인하기</button>
 	            </div>
 	            <div class="overlay-panel overlay-right">
-	                <h1>안녕하십니까!<br><h2>아직 회원이 아니신가요?</h2></h1>
+	                <h1>안녕하십니까!<br><font size="5">아직 회원이 아니신가요?</font></h1>
 	                <p>회원가입 하기를 원하시면 '회원가입' click</p>
 	                <button class="ghost" id="signUp1">회원가입</button>
 	            </div>
-	        </div>
+	        </div> 
 	    </div> 
 	</div>
 </div>

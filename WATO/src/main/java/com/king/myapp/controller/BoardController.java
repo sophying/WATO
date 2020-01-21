@@ -37,9 +37,9 @@ public class BoardController {
 		public String searchResult(@RequestParam("searchKey") String searchKey, Model model) throws Exception {
 			logger.info("get list search");
 			
-			List<BoardVO> listStudy = service.searchResultStudy(searchKey); 
+			List<StudyEnrollVO> listStudy = service.searchResultStudy(searchKey); 
 			List<BoardVO> listTeacher = service.searchResultTeacher(searchKey); 
-			List<BoardVO> listQna = service.searchResultQna(searchKey);
+			List<TeacherEnrollVO> listQna = service.searchResultQna(searchKey);
 			model.addAttribute("listStudy",listStudy);
 			model.addAttribute("listTeacher",listTeacher); 
 			model.addAttribute("listQna",listQna);  

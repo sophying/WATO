@@ -169,6 +169,29 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
+	.button2 {
+  display: inline-block; 
+  font-size: 20px;  
+  padding:0px .5em;  
+  border-radius: 5px;
+  transition: all .5s; 
+  filter: hue-rotate(0deg);
+  color: #FFF;
+  text-decoration: none;
+}
+  .b-orange, .b-orange:before {
+    background: rgba(255,193,7,1);
+    background: -moz-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,193,7,1)), color-stop(100%, rgba(255,87,34,1)));
+    background: -webkit-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc107', endColorstr='#ff5722', GradientType=1 );
+  }
+  .rot-135:hover {
+  filter: hue-rotate(135deg);
+}
 
 
 </style>
@@ -230,7 +253,7 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -281,7 +304,7 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div> 
                                     <div class="col-md-6 col-lg-3">
@@ -291,11 +314,11 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">비주얼베이직</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">자바</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li>
-                                        </ul>
+                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
                                         <h5>IT공부</h5>
-                                        <ul class="list-unstyled mb-3">
+                                        <ul class="list-unstyled mb-3"> 
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">프로그래밍 언어</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">서버, 시스템</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">네트워크</a></li>
@@ -360,6 +383,7 @@
                     </li>
                     <li class="nav-item menu-large"><a href="/board/studylist"  class="nav-link" >스터디찾기<b class="caret"></b></a> 
                 </ul>    
+                <!-- 메인 search 폼  -->
                 <form role="search" class="ml-auto" method="post" action="/board/searchResult">
                     <div class="input-group">     
                         <input type="text" placeholder="Search" class="form-control" name="searchKey" id="searchKey"> 
@@ -415,7 +439,7 @@
             </div>
         </header>
         <!-- 아이콘 -->
-        <div id="icon" class="box text-center mt-0 mb-0">
+        <!-- <div id="icon" class="box text-center mt-0 mb-0">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2">
@@ -458,7 +482,7 @@
                     </div>
                 </div> 
             </div>
-        </div>
+        </div> -->
         <!--
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
@@ -468,7 +492,73 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="mb-0">이주의 핫한 교실</h2>
+                            <h2 class="mb-0"><span style="font-weight: bold;">Best Programming Language</span></h2>
+                        </div> 
+                    </div>
+                </div> 
+            </div>
+            <div class="container"> 
+                <div class="product-slider owl-carousel owl-theme">
+                	<%int q = 1;%>
+                	<c:forEach items="${languagerank}" var="languagerank">
+                	<div style="position: relative;"> 
+                		<div class="imgrank">
+									<%if(q== 1){ %> 
+										<img alt="1등이미지" src="./resource/images/rank1st.png"> 
+									<%}else if( q ==2) {%>
+										<img alt="2등이미지" src="./resource/images/rank2st.png"> 
+									<%}else if( q ==3) {%>
+										<img alt="3등이미지" src="./resource/images/rank3st.png">
+									<%}else if( q ==4) { %>
+										<img alt="4등이미지" src="./resource/images/rank4st.png">
+									<%}else{ %>
+										<img alt="5등이미지" src="./resource/images/rank5st.png">
+									<%} %>
+						</div>
+                    <div class="item"> 
+                        <div class="product"> 
+                            <div class="flip-container"> 
+                                <div class="flipper">
+                                    <div class="front"><a href="detail.jsp"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="detail.jsp"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
+                                </div>
+                            </div><a href="detail.jsp" class="invisible"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a>
+                            <div class="text">  
+                                <h3><a href="detail.jsp">${languagerank.language_name}</a></h3> 
+                                <p class="price">  
+                                    <del></del><a href="#" class="button2 b-orange rot-135">Details</a> 
+                                </p>
+                            </div> 
+                        </div>
+                    </div> 
+                    </div>
+                    <% q++; %>
+                    </c:forEach> 
+                          <!--     /.text
+                            <div class="ribbon sale">
+                                <div class="theribbon">SALE</div>
+                                <div class="ribbon-background"></div>
+                            </div>
+                            /.ribbon
+                            <div class="ribbon new">
+                                <div class="theribbon">NEW</div>
+                                <div class="ribbon-background"></div>
+                            </div> -->
+                            <!-- /.ribbon-->
+                            <!-- <div class="ribbon gift"> GIFT 표시
+                                <div class="theribbon">GIFT</div>
+                                <div class="ribbon-background"></div>
+                            </div> -->
+                    <!-- /.product-slider-->
+                </div>
+            </div>
+        </div>
+        <div  id="hot">
+            <div class="box py-4 mt-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="mb-0"><span style="font-weight: bold;">This Week Popular Study TOP10</span></h2>
                         </div>
                     </div>
                 </div>
@@ -490,23 +580,23 @@
 									<%}else{ %>
 										<img alt="5등이미지" src="./resource/images/rank5st.png">
 									<%} %>
-						</div>
+						</div>  
                     <div class="item">
-                        <div class="product">
+                        <div class="product"> 
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="detail.jsp"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="detail.jsp"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
+                            </div><a href="detail.jsp" class="invisible"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listRank.title}</a></h3>
+                                <h3><a href="detail.jsp">${listRank.s_title}</a></h3> 
                                 <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
+                                    <del></del><a href="#" class="button2 b-orange rot-135">Details</a> 
                                 </p>
                             </div> 
-                        </div>
-                    </div>
+                        </div> 
+                    </div> 
                     </div>
                     <% i++; %>
                     </c:forEach>
@@ -532,15 +622,16 @@
             <!-- /#hot-->
             <!-- *** HOT END ***-->
         </div>
+        <!-- 인기있는 강사 순위 -->
         <div  id="hot">
             <div class="box py-4 mt-0">
                 <div class="container"> 
                     <div class="row"> 
                         <div class="col-md-12"> 
-                            <h2 class="mb-0">이번달 베스트 강사</h2>
+                            <h2 class="mb-0"><span style="font-weight: bold;">This Month Best Professor</span></h2>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
             <div class="container">
                 <div class="product-slider owl-carousel owl-theme">
@@ -569,9 +660,9 @@
                                 </div>
                             </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listRank.title}</a></h3>
+                                <h3><a href="detail.jsp">${listRank.s_title}</a></h3>
                                 <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
+                                    <del></del><a href="#" class="button2 b-orange rot-135">Details</a>
                                 </p>
                             </div> 
                         </div>

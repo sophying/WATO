@@ -201,8 +201,6 @@
 			</div>  
 		</div>
         <!-- *** TOP BAR END ***-->
-
- 
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
         <div class="container"><a href="/" class="navbar-brand home"><img src="/resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="/resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
@@ -221,7 +219,7 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -267,12 +265,12 @@
                             <li>
                                 <div class="row">
 
-                                    <div class="col-md-6 col-lg-3">
+                                    <div class="col-md-6 col-lg-3">  
                                         <h5>친목도모</h5>
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -281,7 +279,7 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">C언어</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">비주얼베이직</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">자바</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li> 
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
