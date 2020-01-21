@@ -140,34 +140,6 @@
 		background-color: #fff;
 	} 
 
-	/* div.level-mark{
-		position:fixed;
-		top: 17px;
-		left: 350px;
-		z-index: ;
-	}
-	.level-mark{
-		width: 90px;
-		height: 90px;
-		overflow: hidden;
-		text-align: center;
-		background: #5a7fa2;
-		line-height: normal;
-	}
-	.label{
-		margin-top: 26px;
-		font-weight: 700;
-		font-size: 1pc;
-		color: #ffeb3b;
-	}
-	.level{
-		margin-top: 3px;
-		font-size: 2pc;
-		color: #fff;
-	}
-	 */
-	
-	
 	.level-mark2{
 		width: 90px;
 		height: 90px;
@@ -271,6 +243,11 @@
 	#modalBox{
 	background-color:#fff;
 }
+	textarea{
+	 resize: none;
+	 background-color: transparent;
+	 border: none;
+	}
 </style>
 <body>
 <!-- @@@@@@@@ 헤더 시작 @@@@@@@@ -->
@@ -634,9 +611,10 @@
 								<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
 										<form role="from" method="post" action="./s_detailReply.do"> 
+											<font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font>
 											<table class="justify-content-center d-inline-block w-100">
 												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">Q&A</font><font size="4"></font></td>
+													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
 													<td colspan="5" >
 														<textarea id="form7" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
 													<td>    

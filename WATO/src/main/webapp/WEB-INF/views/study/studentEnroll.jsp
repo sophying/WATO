@@ -554,17 +554,17 @@
                            </div>
                           </div>
                     </div>
-                    <!-- 우편번호 찾기 API -->
+                    <!-- // 우편번호 찾기 API -->
                     <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label font-weight-bold">그룹장의 소개를 해주세요!!!</label>
+                        <label for="username" class="cols-sm-2 control-label font-weight-bold">그룹장의 소개를 해주세요!!!&nbsp;&nbsp;&nbsp;<span id="cnttxt1"></span></label>
                            <div class="cols-sm-10">
                              <div class="md-form">
- <!-- s_intro -->              <textarea id="s_intro" name="s_intro" class="md-textarea form-control" rows="6" placeholder="나를 어필해보세요!!!!"></textarea>
+ <!-- s_intro -->              <textarea id="s_intro" name="s_intro"  class="md-textarea form-control" rows="6" placeholder="나를 어필해보세요!!!!"></textarea>
                              </div>
                            </div>
                     </div>
                     <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 상세내용</label>
+                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 상세내용&nbsp;&nbsp;&nbsp;<span id="cnttxt2"></span></label>
                            <div class="cols-sm-10">
                              <div class="md-form">
  <!-- s_content -->              <textarea id="s_content" name="s_content" class="md-textarea form-control" rows="6" placeholder="그룹을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
@@ -594,6 +594,29 @@ $(document).ready(function($){
 
 // 조건_____________
 
+$("#s_intro").keyup(function (event) {
+	var content1 = $(this).val();
+	$('#cnttxt1').html("("+content1.length+" / 최대 3000 자)");
+	
+	if (content1.length > 3000) {
+		alert("최대 3000자까지 입력 가능합니다.");
+		
+		$(this).val(content1.substring(0, 3000));
+		$('#cnttxt1').html("(3000 / 최대  3000 자)");
+	}
+});
+
+$("#s_content").keyup(function (event) {
+	var content2 = $(this).val();
+	$('#cnttxt2').html("("+content2.length+" / 최대 3000 자)");
+	
+	if (content2.length > 3000) {
+		alert("최대 3000자까지 입력 가능합니다.");
+		
+		$(this).val(content2.substring(0, 3000));
+		$('#cnttxt2').html("(3000 / 최대  3000 자)");
+	}
+});
 
 
 
@@ -635,7 +658,7 @@ $('#enroll_btn').click(function(){
  if ($('#start').val() > $('#end').val()) {
 		alert('날짜를 다시 입력해주세요'); 
 	}
-  if (s_day.value != null || s_day.value != "" && s_day.value !="구체적인 날짜를 정해주십시오."&& s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "스터디주제를 작성하십시오."&& s_title.value != null && s_title.value !="" && !($('#start').val() > $('#end').val())) {
+  if (s_day.value != null &&s_day.value != "" && s_day.value !="구체적인 날짜를 정해주십시오."&& s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "스터디주제를 작성하십시오."&& s_title.value != null && s_title.value !="" && !($('#start').val() > $('#end').val())) {
    document.studyForm.submit();
  }
 

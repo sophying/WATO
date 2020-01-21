@@ -281,18 +281,18 @@ background:#5a7fa2;
                     </div>
                     <!-- 우편번호 찾기 API -->
                     <div class="form-group">
-                        <label for="info" class="cols-sm-2 control-label font-weight-bold">강사님을 소개해주세요!</label>
+                        <label for="info" class="cols-sm-2 control-label font-weight-bold">강사님을 소개해주세요!&nbsp;&nbsp;<span id="cnttxt1"></span></label>
                            <div class="cols-sm-10 " >
                              <div class="md-form" id="inputHtml">
-	 <!-- t_intro -->               <textarea name="t_intro" class="md-textarea form-control" rows="10" placeholder="편하게 나를 어필해주세요!"></textarea>
+	 <!-- t_intro -->               <textarea id="t_intro" name="t_intro" class="md-textarea form-control" rows="10" placeholder="편하게 나를 어필해주세요!"></textarea>
                              </div>
                            </div>
                     </div>
                     <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label font-weight-bold">상세내용</label>
+                        <label for="username" class="cols-sm-2 control-label font-weight-bold">강의 상세내용&nbsp;&nbsp;<span id="cnttxt2"></span></label>
                            <div class="cols-sm-10">
                              <div class="md-form">
-	 <!-- t_content -->               <textarea id="form7" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+	 <!-- t_content -->               <textarea id="t_content" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
                              </div>
                            </div>
                     </div>
@@ -340,28 +340,29 @@ $(document).ready(function($){
 
 // 조건_____________  
 
-/*
-  $('#toggle-info').click(function () {
+$("#t_intro").keyup(function (event) {
+	var content1 = $(this).val();
+	$('#cnttxt1').html("("+content1.length+" / 최대 3000 자)");
 	
-  var inputHtml = '<textarea id="form7" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>';	
-  $("#inputHtml").html(inputHtml);
-  
-  if (true) {
-	  $('#toggle-info').click(function () {
-		  $("#inputHtml").hide();
-	  });
-	  
-	  if ($("#inputHtml").hide()) {
-		  
-		  $('#toggle-info').click(function () {
-			  $("#inputHtml").show();
-		  });
+	if (content1.length > 3000) {
+		alert("최대 3000자까지 입력 가능합니다.");
+		
+		$(this).val(content1.substring(0, 3000));
+		$('#cnttxt1').html("(3000 / 최대  3000 자)");
 	}
-}
-	  
-  
 });
-*/
+
+$("#t_content").keyup(function (event) {
+	var content2 = $(this).val();
+	$('#cnttxt2').html("("+content2.length+" / 최대 3000 자)");
+	
+	if (content2.length > 3000) {
+		alert("최대 3000자까지 입력 가능합니다.");
+		
+		$(this).val(content2.substring(0, 3000));
+		$('#cnttxt2').html("(3000 / 최대  3000 자)");
+	}
+});
 
 // 금액 천단위 
 $(function() {

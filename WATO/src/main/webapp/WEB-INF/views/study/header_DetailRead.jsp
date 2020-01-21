@@ -141,32 +141,7 @@
 	iframe{
 		min-width: 1000px;
 	}
-	/* div.level-mark{
-		position:fixed;
-		top: 17px;
-		left: 350px;
-		z-index: ;
-	}
-	.level-mark{
-		width: 90px;
-		height: 90px;
-		overflow: hidden;
-		text-align: center;
-		background: #5a7fa2;
-		line-height: normal;
-	}
-	.label{
-		margin-top: 26px;
-		font-weight: 700;
-		font-size: 1pc;
-		color: #ffeb3b;
-	}
-	.level{
-		margin-top: 3px;
-		font-size: 2pc;
-		color: #fff;
-	}
-	 */
+
 	
 	
 	.level-mark2{
@@ -267,6 +242,8 @@
 	}
 	textarea{
 	 resize: none;
+	 background-color: transparent;
+	/*  border: none; */
 	}
 </style>
 <body>
@@ -276,210 +253,7 @@
     *** TOPBAR ***
     _________________________________________________________
     -->
-    <div id="top">
-        <div class="container ">
-            <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
-                <div class="col-lg-6 text-center text-lg-right"> 
-                    <ul class="menu list-inline mb-0">
-                     <c:choose>
-                  		    <c:when test="${user != null}">
-                        <li class="list-inline-item">${user.m_user_id } 님 환영합니다.</li>
-                        <li class="list-inline-item"><a href="login/logout"class="text-black-50 font-weight-bold">로그아웃</a></li>
-                    		</c:when>
-                    		<c:otherwise>
-                        <li class="list-inline-item"><a href="login/login" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
-                    		</c:otherwise>
-                    </c:choose>
-                        <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
-                        <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
-                        <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Customer login</h5>
-                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="customer-orders.jsp" method="post">
-                            <div class="form-group">
-                                <input id="email-modal" type="text" placeholder="email" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input id="password-modal" type="password" placeholder="password" class="form-control">
-                            </div>
-                            <p class="text-center">
-                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i>로그인</button>
-                            </p>
-                        </form>
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.jsp"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- *** TOP BAR END ***-->
-
- 
-    </div> 
-    <div class="container mx-auto"> <!--  *****  mx-auto 설정 -->
-    <nav id="studyusnav" class="navbar navbar-expand-lg  w-100">   <!-- *****   w-100 설정 -->
-        <div class="container mt-auto"><a href="/" class="navbar-brand home"><img src="../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
-            <div class="navbar-buttons">
-                <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
-                <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
-            </div>  
-            <div id="navigation" class="collapse navbar-collapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link" style=" pointer-events: none; ">학생<b class="caret"></b></a>
-                        <ul class="dropdown-menu megamenu">
-                            <li>
-                                <div class="row"> 
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>친목도모</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">스터디</a></li>
-                                            <li class="nav-item"><a href="/study/normalEnroll" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="/study/classBoard" class="nav-link">강의탐방</a></li>
-                                            <li class="nav-item"><a href="/study/header_DetailRead" class="nav-link">상세보기 test</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>동영상 강의</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">C언어</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">비주얼베이직</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">자바</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>IT공부</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">프로그래밍 언어</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">서버, 시스템</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">네트워크</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">데이터베이스</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">화이트 해커 / 해킹</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">자격증</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>IT정보</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">IT뉴스</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">IT취업</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">각종후기</a></li>
-                                        </ul>
-                                        <h5>개인강의</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">A의 강의</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">B의 강의</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">C의 강의</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link" style=" pointer-events: none; ">그룹장<b class="caret"></b></a>
-                        <ul class="dropdown-menu megamenu">
-                            <li>
-                                <div class="row">
-
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>친목도모</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>동영상 강의</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">C언어</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">비주얼베이직</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">자바</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>IT공부</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">프로그래밍 언어</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">서버, 시스템</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">네트워크</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">데이터베이스</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">화이트 해커 / 해킹</a></li>
-                            <li class="nav-item"><a href="category.jsp" class="nav-link">자격증</a></li>
-                        </ul>
-            </div>
-            <div class="col-md-7 col-lg-3">
-                <div class="banner"><a href="#"><img src="../resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
-                <div class="banner"><a href="#"><img src="../resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
-            </div>
-        </div>
-                            </li>
-                        </ul>  
-                    </li> 
-                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link" style=" pointer-events: none; ">더보기<b class="caret"></b></a>
-                        <ul class="dropdown-menu megamenu">
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>공지사항</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="index.jsp" class="nav-link">학생</a></li> 
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">그룹장</a></li>
-                                            <li class="nav-item"><a href="category-right.jsp" class="nav-link">업체</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>회원</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="register.jsp" class="nav-link">로그인 / 가입하기</a></li>
-                                            <li class="nav-item"><a href="customer-orders.jsp" class="nav-link">주문 내역</a></li>
-                                            <li class="nav-item"><a href="customer-order.jsp" class="nav-link">주문 내역 더보기</a></li>
-                                            <li class="nav-item"><a href="customer-wishlist.jsp" class="nav-link">장바구니</a></li>
-                                            <li class="nav-item"><a href="customer-account.jsp" class="nav-link">회원정보 수정</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>등록</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="basket.jsp" class="nav-link">그룹장 등록</a></li>
-                                            <li class="nav-item"><a href="checkout1.jsp" class="nav-link">업체 등록</a></li>
-                                            <li class="nav-item"><a href="checkout2.jsp" class="nav-link">광고 문의</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-7 col-lg-3"> <!--  *****  col-md-7 설정 -->
-                                        <h5>관련 사이트</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="blog.jsp" class="nav-link">블로그 리스트</a></li>
-                                            <li class="nav-item"><a href="post.jsp" class="nav-link">블로그 포스트</a></li>
-                                            <li class="nav-item"><a href="faq.jsp" class="nav-link">FAQ</a></li>
-                                            <li class="nav-item"><a href="text.html" class="nav-link">글페이지</a></li>
-                                            <li class="nav-item"><a href="text-right.jsp" class="nav-link">글 오른쪽</a></li>
-                                            <li class="nav-item"><a href="404.jsp" class="nav-link">404페이지</a></li>
-                                            <li class="nav-item"><a href="contact.jsp" class="nav-link">연락하기</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>  
-                    </li>
-                </ul>    
-            </div>
-        </div>
-    </nav>
-    </div>
+    <%@include file="../include/hr/teacher_detail_header.jsp" %>
 </header>
 <!-- @@@@@@@@ 헤더 끝 @@@@@@@@ -->
 <!-- @@@@@@@@ //// 본론 진입 /// @@@@@@@@ -->
@@ -487,10 +261,18 @@
 				<div class=" justify-content-md-center d-inline-block w-100">
 					<div id="main" class="rounded-sm d-inline-block w-100">  <!-- @@@@@@@@ 메인 시작 @@@@@@@@ -->
 						<div class="form-group container-fluid  w-100">
-							<div class="embed-responsive embed-responsive-16by9">
 								<%-- <input id="listOne_URL"type="hidden" value="#{listOne.t_URL }"/> --%>
-		 						<iframe id="main-iframe"class="embed-responsive-item mt-3 w-100 h-100" src="${listOne.t_URL }" ></iframe>
+								
+							<c:choose>	
+								<c:when test="${listOne.t_URL != null }">
+							<div class="embed-responsive embed-responsive-16by9">
+		 							<iframe id="main-iframe"class="embed-responsive-item mt-3 w-100 h-100" src="${listOne.t_URL }" ></iframe>
 							</div>
+								</c:when>
+								<c:otherwise>
+								</c:otherwise>
+							</c:choose>	
+															
 									<label for="name" class="pb-3 row m-0 text-justify w-100 border-top cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
 										<font size="8">${listOne.t_title }</font>
 									</label>
@@ -579,14 +361,15 @@
 								<c:choose>
 									<c:when test="${(listOne.t_userId).equals(reply.r_userid)}">
 										<form class="updateform" action="./modireply"> 
-										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: orange;">
+										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: #f1dfe955;">
 											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
-														<table class="justify-content-center d-inline-block w-100">
+							 <font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font> 
+														<table class="justify-content-center ml-2 d-inline-block w-100">
 															<tr>
 																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
 																<td colspan="5" >
-																	<textarea name="r_content" class="r_content" rows="10" cols="100" readonly>${reply.r_content}</textarea>
+																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly style="overflow-x:hidden; overflow-y:hidden;  ">${reply.r_content}</textarea>
 																<td> 
 															</tr>  
 															<tr>
@@ -612,11 +395,14 @@
 											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
 													<form class="updateform" action="./modireply"> 
+													
+			 			<font size="4"><span class="d-flex justify-content-end">     </span></font> 
+														
 														<table class="justify-content-center d-inline-block w-100">
 															<tr>
 																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
 																<td colspan="5" > 
-																	<textarea name="r_content" class="r_content" rows="10" cols="100" readonly>${reply.r_content}</textarea>
+																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly>${reply.r_content}</textarea>
 																<td> 
 															</tr>
 															<tr>
@@ -625,6 +411,12 @@
 																	<input type="button"class="modiReButton d-inline-block"  value="수정하기" onclick="updatefun(this)" />
 																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
 																</c:if>	
+																<c:if test="${(listOne.t_userId).equals(user.m_user_id) }">
+																	<div style="background:#e0e0e0; " class="d-flex d-block justify-content-end w-100">
+																		<textarea name="r_content" class="r_content d-flex justify-content-end"  onkeydown="resize(this)" style="border:1px;" onkeyup="resize(this)" cols="100" readonly>dgdgggd</textarea>
+																	</div>
+																	<input type="button"class="leaderBtn d-inline-block"  value="답변하기" onclick="leaderfun(this)" />
+																</c:if>
 																</td>
 																<td>
 																	<input type="hidden" name="t_no" value="${listOne.t_no}" />
@@ -643,13 +435,14 @@
 								<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
 										<form role="from" method="post" action="./t_detailReply.do"> 
-											<table class="justify-content-center d-inline-block w-100">
+										<font size="4"><span id="cnttxt2" class="d-flex justify-content-end"></span></font>
+											<table class="ml-2 justify-content-center d-inline-block w-100">
 												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">Q&A</font><font size="4"></font></td>
+													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
 													<td colspan="5" >
 														<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
 														</font></pre> --%>  
-														<textarea id="form7" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+														<textarea id="r_content2" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
 													<td>    
 												</tr>   
 												<tr>
@@ -789,12 +582,11 @@
 			        <!-- /.row-->  
 			    </div>
 			    <!-- /.container-->  
-			<!--*** FOOTER ***________________-->
+			<!--*** FOOTER ***-->
 			</div>
 			</div><!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
 <!-- @@@@@@@@ //// 본론 진입 /// @@@@@@@@ -->
 		
-<!-- /.container-->
 <!-- *** BLOG HOMEPAGE END ***-->
 
 
@@ -806,43 +598,11 @@
 <script src="../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
 <script src="../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="../resource/js/front.js"></script>
+<script src="../resource/js/front.js"></script> 
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  
-<script type="text/javascript">
- 
-function updatefun(event) { 
-	if ($(event).val() == "수정하기") {
-		$(event).parent().parent().prev().children().next().children().attr('readonly',false);
-		$(event).val("수정완료");
-	}else if ($(event).val() == "수정완료") {
-		$(event).parent().parent().prev().children().next().children().attr('readonly',true);
-		$(event).val("수정하기");
-		$('.updateform').submit();
-	}
-	
-}
+<!--////// ***** 혜련 js 활용 ****  //////-->
+<script src="../resource/js/hr/teacher_detailRead.js"></script> 
 
- 
-$(function(){
-	 var listOne_URL = document.getElementById('listOne_URL').value;
-	
-	if (listOne_URL != null) {
-		
-		document.getElementById("main-iframe").src = listOne_URL;
-	 
-	} 
-	
-});
-
-
-$('#modalSubmit').click(function () {
-	$('#participationForm').submit();
-});
-$('#cancleSubmit').click(function () {
-	$('#cancleForm').submit();
-});
-	
-</script>
 </body>
 </html>		
