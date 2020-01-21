@@ -1,5 +1,8 @@
 package com.king.myapp.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -9,7 +12,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.king.myapp.domain.ApprovalVO;
@@ -39,10 +44,27 @@ public class TeachController {
 
 	// 강사 회원 가입 POST
 	@RequestMapping(value = "/teach_join", method = RequestMethod.POST)
-	public String postRegister(ApprovalVO vo) throws Exception {
+	public String postRegister(ApprovalVO vo,  @RequestParam(value="file1", required = false) MultipartFile mf) throws Exception {
 		logger.info("post teach_join");
 
 		service.teach_join(vo);
+		
+		final String SAVE_PATH = "C:\\Users\\alfo3-5\\git\\WATO\\WATO\\src\\main\\webapp\\resource\\images";
+		
+		String originalFileName = mf.getOriginalFilename();
+        long fileSize = mf.getSize();
+        String safeFile = SAVE_PATH + System.currentTimeMillis() + originalFileName;
+        
+        try {
+            mf.transferTo(new File(safeFile));
+
+           } catch (IllegalStateException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
 		return "redirect:/";
 	}
