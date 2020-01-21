@@ -273,20 +273,7 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">자격증</a></li>
                                         </ul>
                                     </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <h5>IT정보</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">IT뉴스</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">IT취업</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">각종후기</a></li>
-                                        </ul>
-                                        <h5>개인강의</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">A의 강의</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">B의 강의</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">C의 강의</a></li>
-                                        </ul>
-                                    </div>
+                                    
                                 </div>
                             </li>
                         </ul>
@@ -313,17 +300,7 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li>
                                         </ul>
                                     </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <h5>IT공부</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">프로그래밍 언어</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">서버, 시스템</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">네트워크</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">데이터베이스</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">화이트 해커 / 해킹</a></li>
-                            <li class="nav-item"><a href="category.jsp" class="nav-link">자격증</a></li>
-                        </ul>
-            </div>
+                                    
             <div class="col-md-6 col-lg-3">
                 <div class="banner"><a href="#"><img src="./resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
                 <div class="banner"><a href="#"><img src="./resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
@@ -362,18 +339,7 @@
                                             <li class="nav-item"><a href="checkout2.jsp" class="nav-link">광고 문의</a></li>
                                         </ul>
                                     </div>
-                                    <div class="col-md-6 col-lg-3">
-                                        <h5>관련 사이트</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="blog.jsp" class="nav-link">블로그 리스트</a></li>
-                                            <li class="nav-item"><a href="post.jsp" class="nav-link">블로그 포스트</a></li>
-                                            <li class="nav-item"><a href="faq.jsp" class="nav-link">FAQ</a></li>
-                                            <li class="nav-item"><a href="text.html" class="nav-link">글페이지</a></li>
-                                            <li class="nav-item"><a href="text-right.jsp" class="nav-link">글 오른쪽</a></li>
-                                            <li class="nav-item"><a href="404.jsp" class="nav-link">404페이지</a></li>
-                                            <li class="nav-item"><a href="contact.jsp" class="nav-link">연락하기</a></li>
-                                        </ul> 
-                                    </div>    
+                                       
                                 </div>  
                             </li>
                         </ul>   
@@ -495,7 +461,7 @@
                         <label class="form-check-label" for="other">추후결정</label>
                     </div>
                   </div>
-                  <div id="nullText" class=" d-flex pt-2 d-flex justify-content-center"></div>
+<!-- 요일체크 -->    <div id="nullText" class=" d-flex pt-2 d-flex justify-content-center"></div>
               </div>
            </div>
         </div>
@@ -656,7 +622,7 @@ $('#enroll_btn').click(function(){
  }
   if ( s_title.value == null || s_title.value =="") {
      $('#s_title').css('color','red');
-     $('#s_title').text("강의주제를 작성하십시오.");
+     $('#s_title').text("스터디주제를 작성하십시오.");
 
     }
 
@@ -667,9 +633,9 @@ $('#enroll_btn').click(function(){
  }
 
  if ($('#start').val() > $('#end').val()) {
-		alert('날짜를 다시 입력해주세요');
+		alert('날짜를 다시 입력해주세요'); 
 	}
-  if (s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "강의주제를 작성하십시오."&& s_title.value != null && s_title.value !="" && !($('#start').val() > $('#end').val())) {
+  if (s_day.value != null || s_day.value != "" && s_day.value !="구체적인 날짜를 정해주십시오."&& s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "스터디주제를 작성하십시오."&& s_title.value != null && s_title.value !="" && !($('#start').val() > $('#end').val())) {
    document.studyForm.submit();
  }
 
