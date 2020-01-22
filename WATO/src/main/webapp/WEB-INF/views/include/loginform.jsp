@@ -307,11 +307,7 @@
 	                <p>회원가입 하기를 원하시면 '회원가입' click</p>
 	                <button class="ghost" id="signUp1">회원가입</button>
 	            </div>
-<<<<<<< HEAD
 	        </div> 
-=======
-	        </div>
->>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
 	    </div> 
 	</div>
 </div>

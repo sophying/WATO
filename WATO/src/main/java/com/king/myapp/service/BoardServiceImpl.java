@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.BoardVO;
-<<<<<<< HEAD
 import com.king.myapp.domain.MainLangugeRankVO;
-=======
->>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeacherEnrollVO;
@@ -55,12 +52,9 @@ public class BoardServiceImpl implements BoardService{
 	public List<TeacherEnrollVO> TeacherListFilter(StudyListFilter sLF) throws Exception{
 		return dao.TeacherListFilter(sLF);
 	}
-<<<<<<< HEAD
 	@Override
 	public List<MainLangugeRankVO> langugerank() throws Exception {
 		return dao.langugerank();
 	}
-=======
->>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
 
 }
