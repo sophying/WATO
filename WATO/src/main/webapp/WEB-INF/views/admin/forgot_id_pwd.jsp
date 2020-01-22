@@ -609,29 +609,32 @@ _________________________________________________________
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <script type="text/javascript">
-    function CheckForm(Join) {
+// ID 찾기 (학생 or 강사)
+$('#Fg_Id').click(function() {
 
-        // 체크박스 체크여부 확인[하나]
-        var chk1 = document.frmJoin.terms1.checked;
-        var chk2 = document.frmJoin.terms2.checked;
+    var radioval = $('input[name="radio"]:checked').val();
 
-        if(!chk1 && !chk2) {
-            alert('약관에 동의해주세요.');
-            return false;
-        }
-        if(!chk1){
-            alert('회원이용약관에 동의해주세요.');
-            return false;
-        }
-        if(!chk2) {
-            alert('개인정보보호정책에 동의해주세요');
-            return false;
-        }
-        if(chk1 && chk2) {
-        	alert('모든 약관에 동의하셨습니다.');
-        }
+    if(null != radioval && radioval == 10) {
+        $('form[name="Fg_Id"]').attr('action',"/admin/stdFgId");
 
+    } else if(null != radioval && radioval == 20) {
+        $('form[name="Fg_Id"]').attr('action',"/admin/teachFgId");
     }
+});
+
+
+// Password 찾기 (학생 or 강사)
+$('#Fg_Pwd').click(function() {
+
+    var radioval = $('input[name="radio"]:checked').val();
+
+    if(null != radioval && radioval == 10) {
+        $('form[name="Fg_Pwd"]').attr('action',"/admin/stdFgPwd");
+
+    } else if(null != radioval && radioval == 20) {
+        $('form[name="Fg_Pwd"]').attr('action',"/admin/teachFgPwd");
+    }
+});
 
 </script>
 <!-- JavaScript files--> 
