@@ -289,6 +289,7 @@
 							filterform.submit();
 						});
 						
+<<<<<<< HEAD
 						/* $('#filtersubmit').click(function() {
 							$.ajax({
 								type:"get",
@@ -426,6 +427,173 @@
 		  <c:if test="${TeacherListFilter.size()+StudyListFilterdata.size()+TearchlistAll.size()+studylistAll.size() == 0}"> 
 		  	<h3>해당 조건에 대한 검색결과가 없습니다.</h3>
 		  </c:if>  
+=======
+						$('#filtersubmit').click(function() {
+							$.ajax({
+								type:"get",
+								url:"/board/studylistview",
+								data{filetertype : }
+							})
+						});
+						
+						
+						
+						
+					});
+					</script> 
+	<br>
+	<div class="studylistviewbody">  
+	  <div class="valign-wrapper"> 
+	  	<div class="row">  
+		  <% int cnt = 0; %>  
+	  		<c:forEach items="${TearchlistAll}" var="TearchlistAll">
+		    <div class="col s12 m4">
+		      <div class="card" id="about">  
+		        <div class="card-header">
+		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
+		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		        </div>  
+		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
+		        	<c:choose>
+		        		<c:when test="${TearchlistAll.t_title.length() >= 10}"> 
+		        			${TearchlistAll.t_title.substring(0,10)}... 
+		        		</c:when> 
+		        		<c:otherwise>
+		        			${TearchlistAll.t_title} 
+		        		</c:otherwise>
+		        	</c:choose>  
+		        	</span>
+		        </h6>  
+		        <h6 class="description">    
+		                ${TearchlistAll.t_userId} <i class="fa fa-id-badge" aria-hidden="true"></i> 
+		              </h6>  
+		        <div class="social">
+		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
+		        </div>
+		        <div class='wrap'>
+		          <div class='content'>
+		            <span>Follow me:</span>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          </div> 
+		        </div>
+		      </div> 
+		    </div>
+			<% cnt++; %> 
+		  </c:forEach>
+		  <% int cnt1 = 0; %>   
+	  		<c:forEach items="${studylistAll}" var="studylistAll">
+		    <div class="col s12 m4">
+		      <div class="card" id="about"> 
+		        <div class="card-header">
+		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
+		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		        </div>
+		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >    
+		        	<c:choose>
+		        		<c:when test="${studylistAll.s_title.length() >= 10}"> 
+		        			${studylistAll.s_title.substring(0,10)}...
+		        		</c:when> 
+		        		<c:otherwise>
+		        			${studylistAll.s_title}  
+		        		</c:otherwise>
+		        	</c:choose> 
+		        	</span>
+		        </h6> 
+		        <h6 class="description">   
+		                ${studylistAll.s_userId}   
+		        </h6>
+		        <div class="social">
+		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
+		        </div>
+		        <div class='wrap'>
+		          <div class='content'>
+		            <span>Follow me:</span>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          </div> 
+		        </div>
+		      </div>  
+		    </div>
+			<% cnt1++; %> 
+		  </c:forEach>
+		  <% int cnt2 = 0; %>
+		  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
+		    <div class="col s12 m4"> 
+		      <div class="card" id="about">  
+		        <div class="card-header">
+		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
+		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		        </div>
+		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
+						<c:choose>
+		        		<c:when test="${StudyListFilterdata.s_title.length() >= 10}"> 
+		        			${StudyListFilterdata.s_title.substring(0,10)}...
+		        		</c:when>  
+		        		<c:otherwise> 
+		        			${StudyListFilterdata.s_title}  
+		        		</c:otherwise> 
+		        	</c:choose>
+		        	</span> 											 	  
+		        </h6>  
+		        <h6 class="description">  
+		                ${StudyListFilterdata.s_userId} 
+		              </h6>
+		        <div class="social">
+		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
+		        </div>
+		        <div class='wrap'>  
+		          <div class='content'>
+		            <span>Follow me:</span>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          </div> 
+		        </div>
+		      </div> 
+		    </div>
+			<% cnt2++; %>
+		  </c:forEach>
+		  <% int cnt3 = 0; %>
+		  <c:forEach items="${TeacherListFilter}" var="TeacherListFilter">
+		    <div class="col s12 m4"> 
+		      <div class="card" id="about">  
+		        <div class="card-header">
+		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
+		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		        </div> 
+		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
+						<c:choose>
+		        		<c:when test="${TeacherListFilter.t_title.length() >= 10}"> 
+		        			${TeacherListFilter.t_title.substring(0,10)}... 
+		        		</c:when> 
+		        		<c:otherwise> 
+		        			${TeacherListFilter.t_title}  
+		        		</c:otherwise>
+		        	</c:choose> 	
+		        	</span>										 	  
+		        </h6>  
+		        <h6 class="description">  
+		                ${TeacherListFilter.t_userId}<i class="fa fa-id-badge" aria-hidden="true"></i>
+		              </h6> 
+		        <div class="social">
+		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
+		        </div>
+		        <div class='wrap'>  
+		          <div class='content'>
+		            <span>Follow me:</span>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          </div> 
+		        </div>
+		      </div> 
+		    </div>
+			<% cnt3++; %>
+		  </c:forEach>
+>>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
 		  <br> <br> <br> <br> <br> <br> <br> <br> <br>   
 		  </div>  
 		</div>

@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.BoardVO;
+<<<<<<< HEAD
 import com.king.myapp.domain.MainLangugeRankVO;
+=======
+>>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeacherEnrollVO;
@@ -56,9 +59,12 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<TeacherEnrollVO> TeacherListFilter(StudyListFilter sLF) throws Exception {
 		return sql.selectList("board.TeacherListFilter",sLF);
 	}
+<<<<<<< HEAD
 	@Override
 	public List<MainLangugeRankVO> langugerank() throws Exception {
 		return sql.selectList("board.langugerank");
 	}
+=======
+>>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
 	
 }

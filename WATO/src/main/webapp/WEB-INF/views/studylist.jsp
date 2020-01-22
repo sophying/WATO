@@ -128,6 +128,7 @@
 	 	max-width: 40px; 
 	 	z-index: 10;
 	 }
+<<<<<<< HEAD
 	 .container-login100 { 
 	  width: 100%;  
 	  min-height: 80vh; 
@@ -162,6 +163,8 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
+=======
+>>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
 </style>
 <body>
 <!-- navbar-->
@@ -184,6 +187,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="row"> 
 			<div class="modal fade" id="modal" tabindex="-1"> 
 				<div class="modal-dialog modal-lg">  
@@ -200,6 +204,33 @@
 				</div>
 			</div>  
 		</div>
+=======
+        <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Customer login</h5>
+                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="customer-orders.jsp" method="post">
+                            <div class="form-group">
+                                <input id="email-modal" type="text" placeholder="email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input id="password-modal" type="password" placeholder="password" class="form-control">
+                            </div>
+                            <p class="text-center">
+                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i>로그인</button>
+                            </p>
+                        </form>
+                        <p class="text-center text-muted">Not registered yet?</p>
+                        <p class="text-center text-muted"><a href="register.jsp"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+>>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
         <!-- *** TOP BAR END ***-->
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  

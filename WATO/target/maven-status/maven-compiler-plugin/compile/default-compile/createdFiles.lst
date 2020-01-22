@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\king\myapp\domain\StudyListFilter.class
 com\king\myapp\persistence\StudyEnrollDAO.class
 com\king\myapp\service\StudyEnrollService.class
@@ -16,3 +17,5 @@ com\king\myapp\persistence\BoardDAOImpl.class
 com\king\myapp\domain\PageMaker.class
 com\king\myapp\persistence\StudyEnrollDAOImpl.class
 com\king\myapp\controller\HomeController.class
+=======
+>>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
