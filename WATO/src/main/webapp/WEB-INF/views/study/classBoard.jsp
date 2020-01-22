@@ -21,11 +21,11 @@
   <tr>
   	<td>
   	<c:choose>
-	  	<c:when test="${user == null}">
+	  	<c:when test="${teach == null}">
 	  		로그인을 하십시오.
 	  	</c:when>
 	  	<c:otherwise>
-	  		현재 사용자 : ${user.m_user_id }
+	  		현재 사용자 : ${teach.user_Id}
 	  	</c:otherwise>
 	  </c:choose>
   	</td>
