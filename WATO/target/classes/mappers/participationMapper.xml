@@ -17,9 +17,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select> -->
 	
 	<select id="s_partiCheck" resultType="com.king.myapp.domain.StudentParticipationVO" >
-		select * from s_parti
-		where s_no = #{s_no} 
-		and p_userid = #{p_userid}
+		select s.s_no, p.p_userid 
+		from s_enroll s, s_parti p
+		where  s.s_no = p.s_no
+		and s.s_no = #{s_no}
+		and p.p_userid = #{p_userid}
 	</select>
 
 <!--  학생 참여신청 취소  -->
@@ -47,9 +49,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>	 -->
 	
 	<select id="t_partiCheck" resultType="com.king.myapp.domain.TeacherParticipationVO">
-		select * from t_parti
+		select t.t_no, p.p_userid 
+		from t_enroll t, t_parti p
+		where  t.t_no = p.t_no
+		and t.t_no = #{t_no}
+		and p.p_userid = #{p_userid}
+		
+<!-- 		select * from t_parti
 		where t_no = #{t_no} 
-		and p_userid = #{p_userid}
+		and p_userid = #{p_userid} -->
 	</select>
 	
 	<!--  학생 참여신청 취소  -->
