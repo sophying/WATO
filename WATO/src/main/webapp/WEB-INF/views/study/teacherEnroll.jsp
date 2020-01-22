@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,9 @@
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 <style media="screen">
-
+	body{
+	 background-color: #e0e0e0;
+	 }
 .btn-circle.btn-xl {
   width: 60px;
   height: 60px; 
@@ -38,11 +41,13 @@
   height: 200px;
 
 }
-#img_btn_0:hover{
 
-}
 #text{
  display: none;
+}
+
+.card-header{
+background:#5a7fa2;
 }
 /* .content{
     outline: 2px dashed #92b0b3 ;
@@ -54,10 +59,11 @@
     background-color: gray;
 } */
 </style>
-</head>
+</head> 
 <body>
+
 <div class="container  mx-auto">
-<form  name="studyForm"class="form-horizontal" role="form" method="post" enctype="multipart/form-data" action="/study/teacherEnroll.do">
+<form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherEnroll">
 <!-- <1> image Enroll -->
   <div class="row mt-3 justify-content-md-center">
     <div class="col-sm-5 d-inline-block"> <!-- 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
@@ -102,12 +108,12 @@
 	    <div class="input-group d-flex justify-content-center">
 	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 	          <label for="start" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">시작</label>&nbsp;&nbsp;
-	          <input type="date" class="form-control col-sm-8" id="start" value="" />
+	          <input type="date" name="t_startDate" class="form-control col-sm-8" id="start" value="" />
 	    </div>
 	    <div class="input-group d-flex justify-content-center">
 	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
 	          <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">&nbsp;&nbsp;&nbsp;끝&nbsp;</label>&nbsp;&nbsp;
-	          <input type="date" class="form-control col-sm-8 " id="end" value="" />
+	          <input type="date" name="t_endDate"  class="form-control col-sm-8 " id="end" value="" />
 	    </div>
     <div class="form-group">
            <div class="cols-sm-10">
@@ -115,69 +121,79 @@
                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
                 	<!-- 월요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                      <input type="checkbox" class="form-check-input" id="mon">
+                      <input type="checkbox" class="form-check-input" id="mon" value="월">
                       <label class="form-check-label" for="mon">월</label>
                     </div>
 
                     <!-- 화요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="tue" >
+                        <input type="checkbox" class="form-check-input" id="tue" value="화" >
                         <label class="form-check-label" for="tue">화</label>
                     </div>
 
                     <!-- 수요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="wed" >
+                        <input type="checkbox" class="form-check-input" id="wed" value="수">
                         <label class="form-check-label" for="wed">수</label>
                     </div>
                     
                     <!-- 목요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="thu" >
+                        <input type="checkbox" class="form-check-input" id="thu" value="목">
                         <label class="form-check-label" for="thu">목</label>
                     </div>
                     
                     <!-- 금요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="fri">
+                        <input type="checkbox" class="form-check-input" id="fri" value="금">
                         <label class="form-check-label" for="fri">금</label>
                     </div>
                     
                     <!--  토요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sat">
+                        <input type="checkbox" class="form-check-input" id="sat" value="토">
                         <label class="form-check-label" for="sat">토</label>
                     </div>
                     
                     <!-- 일요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
-                        <input type="checkbox" class="form-check-input" id="sun">
+                        <input type="checkbox" class="form-check-input" id="sun" value="일">
                         <label class="form-check-label" for="sun">일</label>
                     </div>
                   </div>
+             
+                  <label id="nullText" class="cols-sm-2 pt-2 control-label d-flex justify-content-center font-weight-bold"></label>
+                  <!-- <div id="nullText" class=" d-flex pt-2 d-flex justify-content-center"></div> -->
+                  
+                  
               </div>
            </div>
         </div>
       </div>
     </div>
-    <div class="form-group container-fluid">
+        <div class="form-group container-fluid">
       <div class="card">
-        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><font size="5">이력서파일등록</font></label>
+        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
           <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
            <div class="card-body">
              <div class="input-group d-flex justify-content-center">
-             
-<!-- 이력서 파일 등록 버튼  --> 
-				<div class="custom-file" id="custom-file">
-<!-- resumeFile 파일업로드 -->	  <input name="resumeFile" type="file" class="custom-file-input" id="fileInput" >
-				  <label class="custom-file-label" for="customFileLangHTML" data-browse="파일등록"></label> 
-				</div>
+				<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	          	<label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">자격증 </label>&nbsp;&nbsp;
+					<select name="t_license" class="selectpicker form-control">
+					  <option value="ocjp" selected="selected">OCJP</option>
+					  <option value="리눅스마스터">리눅스마스터</option>
+					  <option value="네트워크관리사">네트워크 관리사</option>
+					  <option value="정보보안기사">정보 보안 기사</option>
+					  <option value="정보보안산업기사">정보 보안 산업기사</option>
+					  <option value="정보처리기사">정보처리기사</option>
+					  <option value="정보처리산업기사">정보처리 산업기사</option>
+					</select>
              </div> 
            </div>
          </div>
       </div>
   	</div>
-     </div>       
+  </div>       
 <!-- // 스터디 기간 설정  -->
 <!-- // 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
 
@@ -185,54 +201,49 @@
 <!-- <2> Study Info Enroll -->
     <div class="col-md-7 d-inline-block">
       <div class="card">
-        <div class="pb-1 row m-0 card-header font-weight-bold d-flex justify-content-center"><h4>스터디 모집 등록</h4></div>
+        <div class="pb-1 row m-0 card-header font-weight-bold d-flex justify-content-center"><h4>강의 등록</h4></div>
           <div class="card-body">
-                      <div class="form-group">
-                          <label for="userId" class="cols-sm-2 control-label font-weight-bold">아이디</label>
-                              <div class="cols-sm-10">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-  <!-- userId -->                     <input type="text" class="form-control" name="userId" id="userId" placeholder="Enter your Name" />
-                                  </div>
-                              </div>
+                    <div class="form-group">
+                        <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
+                          		<label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
+	                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	 <!-- t_level -->               	<select name="t_level" class="selectpicker form-control w-50" >
+										  <option value="입문"selected="selected">입문</option>
+										  <option value="초급">초급</option>
+										  <option value="중급">중급</option>
+										  <option value="고급">고급</option>
+										</select>
+										
+                          		<label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
+	                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+<!-- t_people --> 	       			<input type="text" class="form-control" name="t_people" id="t_people" placeholder="인원을 정해주세요!" />
+	               	
+                      	 </div>
                       </div>
                       <div class="form-group">
-                          <label for="email" class="cols-sm-2 control-label font-weight-bold">이메일</label>
-                              <div class="cols-sm-10">
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
- <!-- email 이메일 -->                   <input type="email" class="form-control" name="email" id="email" placeholder="이메일을 알려주세요!" />
-                                  </div>
-                              </div>
-                      </div>
-
-                      <div class="form-group">
-                          <label for="category" class="cols-sm-2 control-label font-weight-bold">카테고리</label>
+                          <label for="t_category" class="cols-sm-2 control-label font-weight-bold">카테고리</label>
+                          <label id="t_category" class="cols-sm-2 control-label font-weight-bold"></label>
                           <div class="cols-sm-10">
                             <div class="input-group">
 	                           <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
- <!-- category 주제 -->	       <input type="text" class="form-control" name="category" id="category" placeholder="과목 카테고리를 알려주세요!" />
+ <!-- category 주제 -->	       <input type="text" class="form-control" name="t_category" id="category" placeholder="과목 카테고리를 알려주세요!" />
                         </div>
                       </div>
                       </div>
+ 
                       <div class="form-group">
-                          <label for="stitle" class="cols-sm-2 control-label font-weight-bold">강의 주제</label>
+                          <label for="t_title" class="cols-sm-2 control-label font-weight-bold">강의 주제</label>
+                          <label id="t_title" class="cols-sm-2 control-label font-weight-bold"></label>
+                          
                              <div class="cols-sm-10">
                                 <div class="input-group">
                                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
- <!-- title 주제 -->               <input type="text" class="form-control" name="title" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
+ <!-- title 주제 -->               <input type="text" class="form-control" name="t_title" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
                                 </div>
                              </div>
                       </div>
-<!--                       <div class="form-group">
-                          <label for="sDay" class="cols-sm-2 control-label font-weight-bold">강의 요일</label>
-                             <div class="cols-sm-10">
-                                <div class="input-group">
-                                   <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span> -->
- <!-- day -->                      <input type="hidden" class="form-control" name="day" id="schedule" placeholder="그룹의 스터디 주제를 알려주세요!" />
-<!--                              </div>
-                          </div>
-                   </div> -->
+
+
                    <!-- 우편번호 찾기 API -->
                    <div class="form-group">
                        <label for="sPlace" class="cols-sm-2 control-label font-weight-bold">강의 장소
@@ -252,7 +263,7 @@
                           <div class="cols-sm-10">
                             <div class="input-group mt-1 mb-1">
                             <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-<!-- post 우편번호 -->            <input type="text" class="form-control" id="postcode" name="post" placeholder="우편번호" required>
+<!-- post 우편번호 -->            <input type="text" class="form-control" id="postcode" name="t_postnum" placeholder="우편번호" required>
                             </div>
                           </div>
                           <div class="cols-sm-10 mb-1 ">
@@ -270,43 +281,51 @@
                     </div>
                     <!-- 우편번호 찾기 API -->
                     <div class="form-group">
-                        <label for="username" class="cols-sm-2 control-label font-weight-bold">강의 상세내용</label>
+                        <label for="info" class="cols-sm-2 control-label font-weight-bold">강사님을 소개해주세요!&nbsp;&nbsp;<span id="cnttxt1"></span></label>
+                           <div class="cols-sm-10 " >
+                             <div class="md-form" id="inputHtml">
+	 <!-- t_intro -->               <textarea id="t_intro" name="t_intro" class="md-textarea form-control" rows="10" placeholder="편하게 나를 어필해주세요!"></textarea>
+                             </div>
+                           </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="username" class="cols-sm-2 control-label font-weight-bold">강의 상세내용&nbsp;&nbsp;<span id="cnttxt2"></span></label>
                            <div class="cols-sm-10">
                              <div class="md-form">
-	 <!-- content -->               <textarea id="form7" name="content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!">
-	 								</textarea>
+	 <!-- t_content -->               <textarea id="t_content" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
                              </div>
                            </div>
                     </div>
                     
                     <div class="form-group">
+ <!-- t_price -->      <label for="t_price" class="cols-sm-2 control-label font-weight-bold">수강 참여비</label>
+ 					   <label id="price-Text" class="cols-sm-2 control-label font-weight-bold"></label>
+                        <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
+	                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	                            <input type="text" class="form-control mr-3" name="t_price" id="t_price" placeholder="합리적인 참여비를 작성해주세요" />     
+                          		<label class="pt-1 mt-1 control-label font-weight-bold w-25">&nbsp;&nbsp;&nbsp;원</label>
+	                                 
+                      	 </div>
+                      </div>
+                    <div class="form-group">
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">영상  URL 등록 </label>
                            <div class="cols-sm-10">
                                 <div class="input-group">
                                  <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
- <!-- title 주제 -->               <input type="text" class="form-control" name="title" id="stitle" placeholder="강사님을 어필해주세요~!" />
+ <!-- t_url 주제 -->               <input type="text" class="form-control" name="t_URL" id="t_URL" placeholder="강사님을 어필해주세요~!" />
                                 </div>
                            </div>
                     </div>
-                    
-                      <div class="form-group">
-                         <label for="confirm" class="cols-sm-2 control-label">비밀번호 확인</label>
-                            <div class="cols-sm-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
- <!-- userPass -->                  <input type="password" class="form-control" name="userPass" id="userPass" placeholder="비밀번호 확인해주세요!" />
-                                </div>
-                            </div>
-                      </div>
+  
                       <div class="form-group ">
- <!-- startDate -->       <input type="hidden" name="startDate" id="startDate" value="">
- <!-- endDate -->         <input type="hidden" name="endDate" id="endDate" value="">
- <!-- photo -->           <input type="hidden" name="photo" id="photoval" value="">
- <!-- place -->           <input type="hidden" name="place" id="Place" value="" >
+ <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${user.m_user_id }">
+ <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
+ <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
+ <!-- day -->               <input type="hidden" class="form-control" name="t_day" id="schedule" value="" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
-          </div>
-        </div>
+          </div> 
+        </div> 
       </div>
     </div> <!-- 2-->
     </form>
@@ -320,42 +339,161 @@
 $(document).ready(function($){
 
 // 조건_____________  
-// Add the following code if you want the name of the file appear on select
+
+$("#t_intro").keyup(function (event) {
+	var content1 = $(this).val();
+	$('#cnttxt1').html("("+content1.length+" / 최대 3000 자)");
+	
+	if (content1.length > 3000) {
+		alert("최대 3000자까지 입력 가능합니다.");
+		
+		$(this).val(content1.substring(0, 3000));
+		$('#cnttxt1').html("(3000 / 최대  3000 자)");
+	}
+});
+
+$("#t_content").keyup(function (event) {
+	var content2 = $(this).val();
+	$('#cnttxt2').html("("+content2.length+" / 최대 3000 자)");
+	
+	if (content2.length > 3000) {
+		alert("최대 3000자까지 입력 가능합니다.");
+		
+		$(this).val(content2.substring(0, 3000));
+		$('#cnttxt2').html("(3000 / 최대  3000 자)");
+	}
+});
+
+// 금액 천단위 
+$(function() {
+  var $t_price = $("#t_price");
+  $t_price.on('blur', function() {
+    // 입력 값 알아내기
+    var _$self = $(this);
+    var value = _$self.val();
+
+    // 원단위로 변경하기
+    var result = AddComma(value);
+
+    _$self.val(result);
+  })
+
+});
+
+function AddComma(dataValue) {
+  isNumber(dataValue);
+  var separateValue = Number(dataValue).toLocaleString('en');
+  if (separateValue == 'NaN') {
+    return '';
+  }
+  return separateValue;
+}
+
+function isNumber(checkValue) {
+    checkValue = '' + checkValue;
+    if (isNaN(checkValue) || checkValue == "") {
+      alert('숫자만 입력해 주세요!!!');
+      return;
+    }}
 
 
- $(".custom-file-input").on("change", function() {
-     var fileName = $(this).val().split("\\").pop();
-	 $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-	 
- });
 
-					
+
+
+// 등록 버튼  					
  $('#enroll_btn').click(function(){
-	  var start = document.getElementById('start').value;
-
-	   document.getElementById('startDate').value = start;
-	  
-	  var end = document.getElementById('end').value;
-	  document.getElementById('endDate').value = end;
-	  
 	  var road =  document.getElementById('roadAddress').value; 
 	  var jibun =  document.getElementById('jibunAddress').value;
 	  
-	  var Place = road+"( "+jibun+" )";
-	  document.getElementById('Place').value = Place;
+	  var Place = road+"/"+jibun;
+	  document.getElementById('Place').value = Place; 
  
+
+/* null 확인  */
+	 var t_category = document.getElementById('category');
+	 var t_title = document.getElementById('stitle');
+	 var t_day = document.getElementById('schedule');
+	 var t_price = document.getElementById('t_price');
 	 
-	 var password = document.getElementById("userPass");
 	 
-	 if (password == null) {
+	 if ((t_category.value == null || t_category.value == "")) {
 		
+		 $('#t_category').css('color','red');
+		 $('#t_category').text("카테고리를 작성하십시오.");
+		 
+		 
+		 /* t_category.value ="카테고리를 작성하십시오.";
+		 
+		 $('#category').focus(function(){ 
+			 
+			 if ( t_category.value=="카테고리를 작성하십시오.") {
+				 t_category.value="";
+			}
+				$('#category').css('color','black');
+				
+			 });
+		 
+		 $('#category').blur(function(){ 
+			 
+			 if (t_category.value == null || t_category.value == "") {
+				t_category.value = "카테고리를 작성하십시오";
+				$('#category').css('color','red');
+				 
+			}
+				
+			 }); */
 		 
 		 
 	}
+
+	 if ( t_title.value == null || t_title.value =="") {
+			$('#t_title').css('color','red');
+			$('#t_title').text("강의주제를 작성하십시오.");
+			
+			
+			/*
+			
+			t_title.value ="강의주제를 작성하십시오.";
+			
+			  $('#stitle').focus(function(){ 
+				 
+				 if ( t_title.value=="강의주제를 작성하십시오.") {
+					 t_title.value="";
+				}
+					$('#stitle').css('color','black');
+					
+				 });
+			 
+			 $('#stitle').blur(function(){ 
+				 
+				 if (t_title.value == null || t_title.value == "") {
+					 t_title.value = "강의주제를 작성하십시오";
+					$('#stitle').css('color','red');
+					 
+				}
+					
+				 }); */
+	}
 	 
+	 if (t_day.value == null || t_day.value == "") {
+		 $('#nullText').css('color','red');
+	   	 $('#nullText').text("구체적인 날짜를 정해주십시오."); 
+		
+	}
 	 
+	 if ($('#start').val() > $('#end').val()) {
+			alert('날짜를 다시 입력해주세요');
+		}
 	 
-	 document.studyForm.submit();
+	 if (t_price.value == null || t_price.value =="") {
+		$('#price-Text').css('color','red');
+		$('#price-Text').text('합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])');
+		
+	}
+ 
+	 if (t_day.value != null && t_day.value !="" && !($('#start').val() > $('#end').val()) && t_day.value !="구체적인 날짜를 정해주십시오." && t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
+		document.classForm.submit();
+	}
  
  });
 
@@ -418,67 +556,74 @@ $(document).ready(function($){
 	              }).open();
 	  });
 
+
 // 요일 선택___________________________________________________________
 
-	$(".form-check-input").click(function(){
-		var str = "";  
-		$(".form-check-input").each(function(){ 
-			if($(this).is(":checked")) 
-				str += $(this).next().text() + " "; 
+		$(".form-check-input").click(function(){
+			var str = "";  
+			$(".form-check-input").each(function(){ 
+				if($(this).is(":checked")) 
+					str += $(this).next().text() + " "; 
+			});
+			
+					document.getElementById("schedule").value= str;  
+					$('#nullText').css("color","green");
+					$('#nullText').text(str);
 		});
-				document.getElementById("schedule").value= str;  
-	});
-
-
+		 
 // 이미지 버튼___________________________________________________________
 
-  var photo = document.getElementById("input_img");
-  var photoSrc = photo.getAttribute('src');  
-  document.getElementById('photoval').value = photoSrc;
- 
+		/*   var photo = document.getElementById("input_img");
+		  var photoSrc = photo.getAttribute('src');
+		  document.getElementById('photoval').value = photoSrc; */
 
-  var img0 = $('#img_btn_0').attr('src');
-  var img1 = $('#img_btn_1').attr('src');
-  var img2 = $('#img_btn_2').attr('src');
-  var img3 = $('#img_btn_3').attr('src');
-  var img4 = $('#img_btn_4').attr('src');
-  var img5 = $('#img_btn_5').attr('src');
 
-  $('#img_btn_0').on({'click': function(){
-        $('#input_img').attr('src',img0);
-        document.getElementById("category").value = "직접입력";
-        $('input #category').text("기타");
-     }
- });
-  $('#img_btn_1').on({'click': function(){
-        $('#input_img').attr('src',img1);
-        document.getElementById("category").value = "자바";
-     }
- });
+		  var img0 = $('#img_btn_0').attr('src');
+		  var img1 = $('#img_btn_1').attr('src');
+		  var img2 = $('#img_btn_2').attr('src');
+		  var img3 = $('#img_btn_3').attr('src');
+		  var img4 = $('#img_btn_4').attr('src');
+		  var img5 = $('#img_btn_5').attr('src');
 
- $('#img_btn_2').on({'click': function(){
-        $('#input_img').attr('src',img2);
-        document.getElementById("category").value = "자바스크립트";
-    }
-});
+		  $('#img_btn_0').on({'click': function(){
+		        $('#input_img').attr('src',img0);
+		        document.getElementById("category").value = "직접입력";
+		     }
+		 });
+		  $('#img_btn_1').on({'click': function(){
+		        $('#input_img').attr('src',img1);
+		        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		        document.getElementById("category").value = "자바";
+		     }
+		 });
 
-$('#img_btn_3').on({'click': function(){
-       $('#input_img').attr('src',img3);
-       document.getElementById("category").value = "C언어";
-   }
-});
+		 $('#img_btn_2').on({'click': function(){
+		        $('#input_img').attr('src',img2);
+		        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		        document.getElementById("category").value = "자바스크립트";
+		    } 
+		});
 
-$('#img_btn_4').on({'click': function(){
-       $('#input_img').attr('src',img4);
-       document.getElementById("category").value = "파이썬";
-   }
- });
+		$('#img_btn_3').on({'click': function(){
+		       $('#input_img').attr('src',img3);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "C언어";
+		   }
+		});
 
-$('#img_btn_5').on({'click': function(){
-       $('#input_img').attr('src',img5);
-       document.getElementById("category").value = "안드로이드";
-   }
-});
+		$('#img_btn_4').on({'click': function(){
+		       $('#input_img').attr('src',img4);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "파이썬";
+		   }
+		 });
+
+		$('#img_btn_5').on({'click': function(){
+		       $('#input_img').attr('src',img5);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "안드로이드";
+		   }
+		});
 
 });
 </script>

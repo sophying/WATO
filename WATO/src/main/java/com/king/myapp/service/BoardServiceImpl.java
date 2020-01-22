@@ -15,7 +15,7 @@ import com.king.myapp.persistence.BoardDAO;
 
 @Service
 public class BoardServiceImpl implements BoardService{
-
+	
 	@Autowired
 	private BoardDAO dao;
 	

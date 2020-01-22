@@ -132,6 +132,7 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
+<<<<<<< HEAD
 	  min-height: 60vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
@@ -140,6 +141,16 @@
 	  display: flex;  
 	  flex-wrap: wrap;  
 	  justify-content: center;  
+=======
+	  min-height: 80vh; 
+	  display: -webkit-box; 
+	  display: -webkit-flex; 
+	  display: -moz-box; 
+	  display: -ms-flexbox; 
+	  display: flex;  
+	  flex-wrap: wrap;  
+	  justify-content: center;   
+>>>>>>> branch 'copy_HR' of https://github.com/sophying/WATO.git
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -182,6 +193,7 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
+<<<<<<< HEAD
                     	<c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
@@ -223,6 +235,18 @@
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
                         <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
+=======
+                    <c:choose>
+                    <c:when test="${user != null}">
+                        <li class="list-inline-item">${user.m_user_id } 님 환영합니다.</li>
+                        <li class="list-inline-item"><a href="login/logout"class="text-black-50 font-weight-bold">로그아웃</a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="list-inline-item"><a href="login/login" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
+                    </c:otherwise>
+                    </c:choose>
+                        <li class="list-inline-item"><a href="login/join" class="text-black-50 font-weight-bold">회원가입</a></li>
+>>>>>>> branch 'copy_HR' of https://github.com/sophying/WATO.git
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
@@ -233,6 +257,7 @@
                 </div>
             </div>
         </div> 
+<<<<<<< HEAD
         <div class="row">
 	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
 	        	<div class="modal-dialog modal-lg">
@@ -249,6 +274,25 @@
 	        	</div>
 	    	</div>
     	</div>
+=======
+        <div class="row"> 
+			<div class="modal fade" id="modal" tabindex="-1"> 
+				<div class="modal-dialog modal-lg">  
+					<div class="modal-content" style="background: none; border: 0px">   
+						<div class="modal-body"> 
+							<div class="limiter">
+								<button class="close-button" data-dismiss="modal">&times;</button> 
+								<div class="container-login100">   
+										<%@ include  file="include/loginform.jsp"%>
+								</div>
+							</div>  
+						</div> 
+					</div>
+				</div>
+			</div>  
+		</div>
+        <!-- *** TOP BAR END ***-->
+>>>>>>> branch 'copy_HR' of https://github.com/sophying/WATO.git
 
  
     </div> 
@@ -260,16 +304,17 @@
             </div>  
             <div id="navigation" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link" style=" pointer-events: none; ">학생<b class="caret"></b></a>
+                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link" style=" pointer-events: none; ">스터디<b class="caret"></b></a>
                         <ul class="dropdown-menu megamenu">
                             <li>
                                 <div class="row"> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>친목도모</h5>
                                         <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
+                                            <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
+                                            <li class="nav-item"><a href="/study/studyBoard" class="nav-link">스터디탐방</a></li>
+                                            <li class="nav-item"><a href="/study/classBoard" class="nav-link">강의탐방</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -322,7 +367,7 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
                                         </ul>
-                                    </div>
+                                    </div> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>동영상 강의</h5>
                                         <ul class="list-unstyled mb-3">

@@ -12,4 +12,10 @@
 	<typeAliases> 
 		<package name="com.king.myapp" />
 	</typeAliases>
+<<<<<<< HEAD
 </configuration>
+=======
+
+</configuration>
+ 
+>>>>>>> branch 'copy_HR' of https://github.com/sophying/WATO.git

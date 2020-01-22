@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<<<<<<< HEAD
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd"> 
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.king</groupId>
@@ -22,6 +23,28 @@
          <id>codelds</id>
          <url>http://code.lds.org/nexus/content/groups/main-repo</url>
       </repository>
+=======
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.king</groupId>
+	<artifactId>myapp</artifactId>
+	<name>WATO</name>
+	<packaging>war</packaging>
+	<version>1.0.0-BUILD-SNAPSHOT</version> 
+	<properties>
+		<java-version>1.8</java-version>
+		<org.springframework-version>5.0.7.RELEASE</org.springframework-version>
+		<org.aspectj-version>1.8.10</org.aspectj-version>
+		<org.slf4j-version>1.7.25</org.slf4j-version>
+	</properties>
+	
+<!--  추가  -->	
+	<repositories>
+		<repository>
+			<id>codelds</id>
+			<url>http://code.lds.org/nexus/content/groups/main-repo</url>
+		</repository>
+>>>>>>> branch 'copy_HR' of https://github.com/sophying/WATO.git
 
 
 <!--  추가 ojdbc6  연결을 위함   Spring plugin 과 동일한 역할  -->         

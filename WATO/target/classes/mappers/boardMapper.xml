@@ -5,25 +5,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="board"> 
    
+<<<<<<< HEAD
    <!-- 메인 페이지 강사, 스터디 리스트 VIEWCNT 순으로 나열 -->
    <select id="listRank" resultType="com.king.myapp.domain.BoardVO">
    	<![CDATA[  
+=======
+   <select id="listRank" resultType="com.king.myapp.domain.BoardVO">
+   	<![CDATA[ 
+>>>>>>> branch 'copy_HR' of https://github.com/sophying/WATO.git
    	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10
+<<<<<<< HEAD
    	 ]]>  
    </select> 
    <!-- NAV바에 있는 검색 창 에서 검색 후 스터디 VIEWCNT 순으로 10개 -->
+=======
+   	 ]]> 
+   </select>
+>>>>>>> branch 'copy_HR' of https://github.com/sophying/WATO.git
    <select id="searchResultStudy" resultType="com.king.myapp.domain.BoardVO">
    	  <![CDATA[  
    	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
    	 ]]>
    </select>
+<<<<<<< HEAD
    <!-- NAV바에 있는 검색 창 에서 검색 후 강사 VIEWCNT 순으로 10개 -->
+=======
+>>>>>>> branch 'copy_HR' of https://github.com/sophying/WATO.git
    <select id="searchResultTeacher" resultType="com.king.myapp.domain.BoardVO"> 
    	  <![CDATA[ 
    	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
    	 ]]>
+<<<<<<< HEAD
    </select> 
    <!-- NAV바에 있는 검색 창 에서 검색 후 Q&A VIEWCNT 순으로 10개 -->
+=======
+   </select>
+>>>>>>> branch 'copy_HR' of https://github.com/sophying/WATO.git
    <select id="searchResultQna" resultType="com.king.myapp.domain.BoardVO">
    	  <![CDATA[ 
    	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
