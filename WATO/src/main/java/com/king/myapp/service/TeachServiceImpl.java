@@ -57,4 +57,10 @@ public class TeachServiceImpl implements TeachService {
 		dao.app_delete(avo);
 	}
 
+	// 강사 승인 후 Num 의 값 변경
+	@Override
+	public void teach_appUpdate(ApprovalVO avo) throws Exception {
+		dao.teach_appUpdate(avo);
+	}
+
 }
