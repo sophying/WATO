@@ -16,7 +16,6 @@ import com.king.myapp.domain.TeacherEnrollVO;
 public class BoardDAOImpl implements BoardDAO{ 
 	
 	//마이바티스
-<<<<<<< HEAD
 	@Autowired
 	private SqlSession sql;
 	
@@ -25,7 +24,7 @@ public class BoardDAOImpl implements BoardDAO{
 	
 	
 	@Override
-	public List<BoardVO> listRank() throws Exception {
+	public List<BoardVO> listRank() throws Exception { 
 		return sql.selectList("board.listRank");
 	}
 	@Override
@@ -56,46 +55,4 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<TeacherEnrollVO> TeacherListFilter(StudyListFilter sLF) throws Exception {
 		return sql.selectList("board.TeacherListFilter",sLF);
 	}
-	
-=======
-		@Autowired
-		private SqlSession sql;
-		
-		//매퍼
-		//private static String namespace = "com.king.myweb.mappers.boardMapper";
-		
-		
-		@Override
-		public List<BoardVO> listRank() throws Exception {
-			return sql.selectList("board.listRank");
-		}
-		@Override
-		public List<BoardVO> searchResultStudy(String searchKey) {
-			return sql.selectList("board.searchResultStudy",searchKey);
-		}
-		@Override
-		public List<BoardVO> searchResultTeacher(String searchKey) throws Exception {
-			return sql.selectList("board.searchResultTeacher",searchKey);
-		}
-		@Override
-		public List<BoardVO> searchResultQna(String searchKey) throws Exception {
-			return sql.selectList("board.searchResultQna",searchKey);
-		}
-		@Override
-		public List<BoardVO> studylistAll() throws Exception {
-			return sql.selectList("board.studylistAll");
-		} 
-		@Override
-		public List<BoardVO> TearchlistAll() throws Exception {
-			return sql.selectList("board.TearchlistAll");
-		}
-		@Override
-		public List<StudyEnrollVO> studylistfilter(StudyListFilter sLF) throws Exception {
-			return sql.selectList("board.studylistfilter",sLF);
-		}
-		@Override
-		public List<TeacherEnrollVO> TeacherListFilter(StudyListFilter sLF) throws Exception {
-			return sql.selectList("board.TeacherListFilter",sLF);
-		}
->>>>>>> branch 'copy_HR' of https://github.com/sophying/WATO.git
 }
