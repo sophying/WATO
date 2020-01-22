@@ -279,7 +279,7 @@
 	
 	    </div>
 	    <div class="form-container sign-in-container">
-	        <form action="#">
+	        <form role="form" method="post" autocomplete="off" action="">
 	            <h1>Sign in</h1> 
 	            <div class="social-container">
 	               <a href="#" class="social-icon-button twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a>
@@ -289,10 +289,10 @@
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
 	            <span>or use your account</span>
-	            <input type="email" placeholder="Email" />
-	            <input type="password" placeholder="Password" />
-	            <a href="#">Forgot your password?</a>
-	            <button>Sign In</button>
+	            <input type="text" id="Std_Id" placeholder="Email" />
+	            <input type="password" td="Std_Pwd" placeholder="Password" />
+	            <a href="../sign_up/login">Forgot your password?</a>
+	            <button type="submit">SIGN IN</button>
 	        </form>
 	    </div>
 	    <div class="overlay-container">

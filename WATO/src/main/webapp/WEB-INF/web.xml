@@ -33,8 +33,6 @@
 		<!-- url 패턴을  /  로 정하면서 DispatcherServlet 이 모든 요청을 가로채게 됨 -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
-
 
 	
 	<!-- 1. 한글 처리 위한 인코딩 filter -->
