@@ -1,6 +1,7 @@
 package com.king.myapp.controller;
 
 import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.king.myapp.domain.MemberVO;
+import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.domain.TeacherReplyVO;
@@ -28,7 +29,7 @@ import com.king.myapp.service.TeacherEnrollService;
 
 @Controller
 @RequestMapping("/study/*")
-@SessionAttributes("user")
+@SessionAttributes("teach")
 public class TeacherenrollController { 
 
 	private static final Logger logger = LoggerFactory.getLogger(StudyenrollController.class);
@@ -44,8 +45,8 @@ public class TeacherenrollController {
 	public void getEnroll(HttpSession session , Model model) throws Exception{
 		
 		logger.info("--------------[ 강의 등록 페이지 GET ]-----------------");
-		MemberVO user =  (MemberVO) session.getAttribute("user");
-		model.addAttribute("user",user);
+		TeachVO user =  (TeachVO) session.getAttribute("teach");
+		model.addAttribute("teach",user);
 	}
 	
 	// 1. 강의 상세 내용 등록 
@@ -69,9 +70,9 @@ public class TeacherenrollController {
 		System.out.println("T_people--"+teacherVO.getT_people());
 		System.out.println("T_level--"+teacherVO.getT_level());
 
-		MemberVO user =  (MemberVO) session.getAttribute("user");
+		TeachVO user =  (TeachVO) session.getAttribute("teach");
 		
-		model.addAttribute("user",user);
+		model.addAttribute("teach",user);
 		teacherService.addClass(teacherVO);
 		 
 		return"redirect:/";
@@ -85,14 +86,14 @@ public class TeacherenrollController {
 		
 		List<TeacherEnrollVO> classlist = teacherService.list();
 		
-		MemberVO user = (MemberVO) session.getAttribute("user");
+		TeachVO user = (TeachVO) session.getAttribute("teach");
 		
 		if (user == null) {
 			
-			model.addAttribute("user",null);
+			model.addAttribute("teach",null);
 		}else {
 			
-			model.addAttribute("user");
+			model.addAttribute("teach");
 		}
 		
 		model.addAttribute("classlist", classlist);
@@ -112,8 +113,8 @@ public class TeacherenrollController {
 		List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
 		
 	//  현재 유저의 참여신청여부 파악  
-		MemberVO user = (MemberVO) session.getAttribute("user");
-		String user_id = user.getM_user_id();
+		TeachVO user = (TeachVO) session.getAttribute("teach");
+		String user_id = user.getUser_Id();
 	
 		Map<String, Object> map = new HashMap<String, Object>();
 			 
@@ -127,7 +128,7 @@ public class TeacherenrollController {
 			model.addAttribute("partiOne",partiOne);
 		}
 			
-		model.addAttribute("user");
+		model.addAttribute("teach");
 		model.addAttribute("reply", reply); 
 		model.addAttribute("listOne",listOne);
 	}
@@ -160,8 +161,8 @@ public class TeacherenrollController {
 		logger.info("--------------[ 참여신청 취소   POST ]-----------------");		
 				
 			//  현재 유저의 참여신청여부 파악  
-			MemberVO user = (MemberVO) session.getAttribute("user");
-			String user_id = user.getM_user_id();
+			TeachVO user = (TeachVO) session.getAttribute("teach");
+			String user_id = user.getUser_Id();
 						
 			Map<String, Object> map = new HashMap<String, Object>();
 						
@@ -229,7 +230,7 @@ public class TeacherenrollController {
 		  if (beforeDay.contains("일")) {
 			  model.addAttribute("sun","일");
 		  }
-		model.addAttribute("user"); 		 
+		model.addAttribute("teach"); 		 
 		model.addAttribute("listOne",listOne);
 		
 	}	

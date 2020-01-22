@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.king.myapp.domain.MemberVO;
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
@@ -29,7 +29,7 @@ import com.king.myapp.service.StudyEnrollService;
 
 @Controller
 @RequestMapping("/study/*")
-@SessionAttributes("user")
+@SessionAttributes("std")
 public class StudyenrollController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(StudyenrollController.class);	
@@ -48,8 +48,8 @@ public class StudyenrollController {
 	public void getEnroll(HttpSession session , Model model) throws Exception{
 		logger.info(">--------------------[ 일반인 스터디 모집 등록 GET ]---------------------------<");
 		
-		MemberVO user =  (MemberVO) session.getAttribute("user");
-		model.addAttribute("user",user);
+		StdVO user =  (StdVO) session.getAttribute("std");
+		model.addAttribute("std",user);
 		
 	}
 	
@@ -72,7 +72,7 @@ public class StudyenrollController {
 			System.out.println(studyVO.getS_endDate());
 			
 			studyService.enroll(studyVO);
-			model.addAttribute("user");
+			model.addAttribute("std");
 		
 		return "redirect:/";
 		
@@ -84,7 +84,7 @@ public class StudyenrollController {
 			logger.info("--------------[ 스터디 리스트 출력  GET ]-----------------");
 			
 			List<StudyEnrollVO> studylist = studyService.list(); 
-			model.addAttribute("user");
+			model.addAttribute("std");
 			model.addAttribute("studylist", studylist);
 		}
 	
@@ -99,8 +99,8 @@ public class StudyenrollController {
 			
 			
 			//  현재 유저의 참여신청여부 파악  
-			MemberVO user = (MemberVO) session.getAttribute("user");
-			String user_id = user.getM_user_id();
+			StdVO user = (StdVO) session.getAttribute("std");
+			String user_id = user.getUser_Id();
 			Map<String, Object> map = new HashMap<String, Object>();
 			
 			map.put("p_userid", user_id);
@@ -113,7 +113,7 @@ public class StudyenrollController {
 				model.addAttribute("partiOne",partiOne);
 			}
 			
-			model.addAttribute("user");
+			model.addAttribute("std");
 			model.addAttribute("reply",reply);
 			model.addAttribute("listOne",listOne);
 			
@@ -146,8 +146,8 @@ public class StudyenrollController {
 			logger.info("--------------[ 참여신청 취소   POST ]-----------------");		
 			
 					//  현재 유저의 참여신청여부 파악  
-					MemberVO user = (MemberVO) session.getAttribute("user");
-					String user_id = user.getM_user_id();
+					StdVO user = (StdVO) session.getAttribute("std");
+					String user_id = user.getUser_Id();
 					
 					Map<String, Object> map = new HashMap<String, Object>();
 					
@@ -223,7 +223,7 @@ public class StudyenrollController {
 			  System.out.println(beforeDay.contains("추후결정"));
 		  }
 		 		 
-		model.addAttribute("user");
+		model.addAttribute("std");
 		model.addAttribute("listOne",listOne);
 		
 	}
@@ -248,7 +248,7 @@ public class StudyenrollController {
 			
 			studyService.replyInsert(replyVO);   
 			  
-			model.addAttribute("user");
+			model.addAttribute("std");
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
 			
 		}

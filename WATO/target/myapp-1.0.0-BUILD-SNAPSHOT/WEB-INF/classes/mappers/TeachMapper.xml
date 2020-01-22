@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.king.myapp.mappers.TeachMapper">
+	
+	<!-- 강사 회원 가입1 -->
+	<insert id="teach_join">
+		insert into 
+		approval (app_Profile, app_Resume, app_Gender, 
+				 app_Phone1, app_Phone2, app_Phone3, 
+				 User_Email,
+				 app_Addr1, app_Addr2, app_Addr3, app_Num)
+		values (#{app_Profile}, #{app_Resume}, #{app_Gender}, 
+				#{app_Phone1}, #{app_Phone2}, #{app_Phone3}, 
+				#{User_Email}, 
+				#{app_Addr1}, #{app_Addr2}, #{app_Addr3}, #{app_Num})
+	</insert>
+	
+	<!-- 강사 회원 가입2(강사 승인 클릭하면 Teach 로 들어감) -->
+	<insert id="teach_join2">
+		insert into
+		teach_info(Teach_Profile, Teach_Resume, Teach_Gender, 
+				 Teach_Phone1, Teach_Phone2, Teach_Phone3, 
+				 User_Email,
+				 Teach_Addr1, Teach_Addr2, Teach_Addr3)
+		values (#{Teach_Profile}, #{Teach_Resume}, #{Teach_Gender}, 
+				#{Teach_Phone1}, #{Teach_Phone2}, #{Teach_Phone3}, 
+				#{User_Email}, 
+				#{Teach_Addr1}, #{Teach_Addr2}, #{Teach_Addr3})
+	</insert>
+	
+	<!-- 강사 회원 가입3 -->
+	<update id="teach_join3">
+		update teach_info
+		set User_Id = #{User_Id}, User_Pwd = #{User_Pwd}, Teach_Pwd_Qs = #{Teach_Pwd_Qs}, Teach_Pwd_As = #{Teach_Pwd_As}
+		where User_Email = #{User_Email}
+	</update>
+	
+	<!-- 아이디 중복확인 -->
+	<select id="idChk" resultType="int">
+		select count(*) from teach_info
+		where User_Id = #{User_Id}
+	</select>
+	
+	<!-- 회원정보 수정 -->
+	<update id="info_madofy">
+		update teach_info
+		set
+			User_Pwd = #{User_Pwd},
+			Teach_Pwd_Qs = #{Teach_Pwd_Qs},
+			Teach_Pwd_As = #{Teach_Pwd_As},
+			Teach_Phone1 = #{Teach_Phone1},
+			Teach_Phone2 = #{Teach_Phone2},
+			Teach_Phone3 = #{Teach_Phone3},
+			User_Email = #{User_Email},
+			Teach_Addr1 = #{Teach_Addr1},
+			Teach_Addr2 = #{Teach_Addr2},
+			Teach_Addr3 = #{Teach_Addr3}
+		where
+			User_Id = #{User_Id}			
+	</update>
+	
+	<!-- 강사 승인 후 삭제 -->
+<!-- 	<delete id="app_delete">
+		DELETE FROM approval WHERE User_Email = #{User_Email}
+	</delete> -->
+  </mapper>	

@@ -263,8 +263,8 @@
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
                      <c:choose>
-                  		    <c:when test="${user != null}">
-                        <li class="list-inline-item">${user.m_user_id } 님 환영합니다.</li>
+                  		    <c:when test="${std != null}">
+                        <li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
                         <li class="list-inline-item"><a href="login/logout"class="text-black-50 font-weight-bold">로그아웃</a></li>
                     		</c:when>
                     		<c:otherwise>
@@ -470,7 +470,7 @@
 									<label for="name" class="pb-3 row m-0 text-justify w-100  cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
 										<font size="8">${listOne.s_title }</font>
 									</label>
-								<c:if test="${(user.m_user_id).equals(listOne.s_userId) }">
+								<c:if test="${(std.user_Id ).equals(listOne.s_userId) }">
 	<!--  내용 수정 -->				<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>
 	<!--  내용 삭제 -->				<a href="studentDelete?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/></a>	
 								</c:if>	
@@ -559,7 +559,7 @@
 																		
 																		<textarea rows="10" cols="100" id="r_content" name="r_content" readonly="readonly" style="border:none; height:auto;">${reply.r_content}</textarea>
 																	
-																	<c:if test="${(listOne.s_userId).equals(user.m_user_id) }">
+																	<c:if test="${(listOne.s_userId).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
 																		<a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a>
 																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
@@ -591,7 +591,7 @@
 																<tr>
 																	<td>
 																	
-																	<c:if test="${(reply.r_userid).equals(user.m_user_id) }">
+																	<c:if test="${(reply.r_userid).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
 																		<a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a>
 																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
@@ -626,7 +626,7 @@
 												</tr>
 											</table>
 											<input type="hidden" name="s_no" value="${listOne.s_no}" />
-											<input type="hidden" name="r_userid" value="${user.m_user_id }"/>
+											<input type="hidden" name="r_userid" value="${std.user_Id  }"/>
 										</form>
 									</div>
 								</div>		
@@ -674,7 +674,7 @@
 								</c:when>
 								<c:otherwise>
 								<c:choose>
-										<c:when test="${(partiOne.p_userid).equals(user.m_user_id)}">    
+										<c:when test="${(partiOne.p_userid).equals(std.user_Id )}">    
 											<div class="successBtn"id="success" >    참여신청완료</div>
 											<input type="button" class="goButton mt-4"id="cancle"  data-toggle="modal" data-target="#cancle-modal"  value="참여신청취소하기"/> 
 										</c:when> 

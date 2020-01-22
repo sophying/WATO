@@ -19,7 +19,7 @@
   <thead>
   <tr>	
   	<td>
-  		현재 로그인 사용자 : &nbsp;&nbsp;&nbsp;${user.m_user_id }
+  		현재 로그인 사용자 : &nbsp;&nbsp;&nbsp;${std.user_Id }
   	</td>
   </tr>
     <tr>
