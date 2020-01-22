@@ -39,11 +39,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    <!-- 스터디 찾기에서 검색 필터로 조회 했을 때의 스터디,강사 조회 --> 
    <select id="studylistfilter" resultType="com.king.myapp.domain.StudyEnrollVO">
-   	  SELECT * FROM S_ENROLL WHERE S_CATEGORY LIKE '%' || #{category} || '%' AND S_LEVEL LIKE '%' || #{level} || '%' AND S_DAY LIKE '%' || #{time} || '%' AND SUBSTR(S_PLACE,1,2) LIKE '%' || #{place} || '%' 
+   <![CDATA[
+   	  SELECT * FROM S_ENROLL WHERE S_CATEGORY LIKE '%' || #{category} || '%' AND S_LEVEL LIKE '%' || #{level} || '%' AND S_DAY LIKE '%' || #{time} || '%' AND SUBSTR(S_PLACE,1,2) LIKE '%' || #{place} || '%'
+   	  ]]> 
    </select> 
    <!-- 강사조회 -->
    <select id="TeacherListFilter" resultType="com.king.myapp.domain.TeacherEnrollVO">
+   <![CDATA[
       SELECT * FROM T_ENROLL WHERE T_CATEGORY LIKE '%' || #{category} || '%' AND T_LEVEL LIKE '%' || #{level} || '%' AND T_DAY LIKE '%' || #{time} || '%' AND SUBSTR(T_PLACE,1,2) LIKE '%' || #{place} || '%'
+      ]]>
    </select>
    
    
