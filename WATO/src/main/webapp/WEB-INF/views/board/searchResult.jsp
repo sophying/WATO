@@ -186,7 +186,7 @@
         <!-- *** TOP BAR END ***-->
 
  
-    </div> 
+    </div>  
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
         <div class="container"><a href="/" class="navbar-brand home"><img src="/resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="/resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
@@ -259,7 +259,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
-                                        <h5>동영상 강의</h5>
+                                        <h5>동영상 강의</h5> 
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">C언어</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">비주얼베이직</a></li>
@@ -403,43 +403,29 @@
                     </div>
                 </div>
             </div>
+            <c:set var="size" value="0"></c:set>
+            <div id="SearchStudylist">
                 	<%int i = 1;%>
    						<table class="table table-hover">
    							<thead>
    								<tr>
    									<th>No</th><th>Category</th><th>Title</th><th>Writer</th>
    								</tr>
-   							</thead>
+   							</thead> 
    							<tbody>
-   							<c:set var="size" value="1"></c:set>
-   							<c:choose>
-   								<c:when test="${listStudy.size() <= size }">
-   									<c:forEach items="${listStudy}" begin="${0}" step="1" end="${size}" var="listStudy">
+   									<c:forEach items="${listStudy}" var="listStudy"> 
 										<tr> 
-											<td>${listStudy.s_no}</td>
-											<td>${listStudy.s_category}</td>
-											<td>${listStudy.s_title}</td>
-											<td>${listStudy.s_userId}</td>
+											<td id="moremessge">${listStudy.s_no}</td>
+											<td>${listStudy.s_category}</td> 
+											<td><a href="#" style="color: black;">${listStudy.s_title}</a></td>
+											<td><a href="#" style="color: black;">${listStudy.s_userId}</a></td>
 										</tr>
 					                    <% i++; %>
 				                    </c:forEach>
-   								</c:when>
-   								<c:otherwise>
-	   								<c:forEach items="${listStudy}" var="listStudy" begin="${0}" step="1" end="${size}">
-											<tr> 
-												<td>${listStudy.s_no}</td>
-												<td>${listStudy.s_category}</td>
-												<td>${listStudy.s_title}</td>
-												<td>${listStudy.s_userId}</td>
-											</tr> 
-						                    <% i++; %>
-				                    </c:forEach>
-				                    <button>더보기</button>
-   								</c:otherwise>
-   							</c:choose>
-		                	
 		                    </tbody>
-   						</table>
+   						</table> 
+   			</div>
+   			<button class="btn btn-primary" id="morebutton">더보기</button>
             <!-- /#hot-->
             <!-- *** HOT END ***-->
         </div>
@@ -639,11 +625,30 @@ _________________________________________________________
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
-<script src="/resource/vendor/jquery/jquery.min.js"></script>
+<script src="/resource/vendor/jquery/jquery.min.js"></script> 
 <script src="/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
 <script src="/resource/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="/resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="/resource/js/front.js"></script>
+<script type="text/javascript">
+ 
+var size = 4; 
+var ajaxform = $("#ajaxform").serialize();  
+     
+$('#morebutton').click(function () {  
+	size = size+5; 
+	jQuery.ajaxSetup({cache:false});
+	$.ajax({
+		type:"get",   
+		url:"/board/SearchStudylist/${searchKey}/"+size, 
+		dataType:"html",
+		success: function (data) {
+			$('#SearchStudylist').html($(data));
+		}
+	}); 
+});
+
+</script>
 </body>
 </html>

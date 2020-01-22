@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,13 +38,60 @@ public class BoardController {
 		public String searchResult(@RequestParam("searchKey") String searchKey, Model model) throws Exception {
 			logger.info("get list search");
 			
-			List<StudyEnrollVO> listStudy = service.searchResultStudy(searchKey); 
+			if (searchKey == null || searchKey.equals("")) { 
+				searchKey = "_";
+			}
+			 
+			List<StudyEnrollVO> listStudy = service.searchResultStudy(searchKey);
+			
+			if (listStudy.size() != 0) {
+				List<StudyEnrollVO> Studylist = listStudy.subList(0, 4);
+				model.addAttribute("listStudy",Studylist);
+			}else {
+				model.addAttribute("listStudy",listStudy);  
+			}
+			
 			List<BoardVO> listTeacher = service.searchResultTeacher(searchKey); 
 			List<TeacherEnrollVO> listQna = service.searchResultQna(searchKey);
-			model.addAttribute("listStudy",listStudy);
+			
 			model.addAttribute("listTeacher",listTeacher); 
 			model.addAttribute("listQna",listQna);  
+			model.addAttribute("searchKey",searchKey);
 			return "board/searchResult";   
+		}
+		@RequestMapping(value="/SearchStudylist/{searchKey}/{size}" , method=RequestMethod.GET)   
+		public String ajaxStudyResult(@PathVariable("searchKey") String searchKey,@PathVariable("size") int size,Model model) throws Exception {
+			 
+			logger.info("get ajax Studylist"); 
+			System.out.println(searchKey);    
+			System.out.println("size : "+size); 
+			 
+			List<StudyEnrollVO> listStudy = service.searchResultStudy(searchKey);
+			 
+			if (listStudy.size() <= size) {
+				model.addAttribute("maxlist","더이상 검색 결과가 없습니다."); 
+				model.addAttribute("listStudy",listStudy); 
+			}else {
+				List<StudyEnrollVO> Studylist = listStudy.subList(0, size); 
+				model.addAttribute("listStudy",Studylist);  
+			}
+		
+			 
+			
+			
+		/*
+		 * List<BoardVO> listTeacher = service.searchResultTeacher(searchKey);
+		 * List<TeacherEnrollVO> listQna = service.searchResultQna(searchKey);
+		 * 
+		 * 
+		 * 
+		 * 
+		 * model.addAttribute("listStudy",listStudy);
+		 * model.addAttribute("listTeacher",listTeacher);
+		 * model.addAttribute("listQna",listQna);
+		 * model.addAttribute("searchKey",searchKey);
+		 */
+			return "/board/SearchStudylist";   
 		}
 		 
 		@RequestMapping(value="/studylist" , method=RequestMethod.GET) 
