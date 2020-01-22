@@ -113,17 +113,17 @@ public class AdminController {
 	}
 
 	// 강사 승인페이지 GET
-	@RequestMapping(value = "/app_before", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminmanage", method = RequestMethod.GET)
 	public String getManage(Model model) throws Exception {
 		logger.info("get 강사 승인 페이지");
 
 		List<ApprovalVO> teachlist = adminservice.teachlist();
 		model.addAttribute("list", teachlist);
-		return "/admin/app_before";
+		return "/admin/adminmanage";
 	}
 
-	// 승인버튼 클릭 (인증센터 POST), mailSending 코드, 승인완료 페이지로 넘어감
-	@RequestMapping(value = "/app_before", method = RequestMethod.POST)
+	// 승인버튼 클릭 (인증센터 POST), mailSending 코드
+	@RequestMapping(value = "/adminmanage", method = RequestMethod.POST)
 	public void mailSending(TeachVO tvo, ApprovalVO avo, HttpServletRequest request, String e_mail,
 			HttpServletResponse response_email) throws Exception {
 		logger.info("post 강사의 정보를 확인하고 승인버튼을 클릭했습니다.");
@@ -178,9 +178,9 @@ public class AdminController {
 
 		PrintWriter out = response_email.getWriter();
 
-		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/app_before';</script>");
+		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/adminmanage';</script>");
 		
-		/*teachservice.app_delete(avo);
+		/*teachservice.app_delete(avo); 
 		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");*/
 
 		out.flush();
@@ -194,7 +194,8 @@ public class AdminController {
 
 	// 아이디 찾기 POST(학생)
 	@RequestMapping(value = "/stdFgId", method = RequestMethod.POST)
-	public void postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email) throws Exception {
+	public ModelAndView postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email)
+			throws Exception {
 		logger.info("post 학생에게 아이디를 전송합니다.");
 
 		StdVO list = adminservice.findS_id(svo);
@@ -230,13 +231,16 @@ public class AdminController {
 
 		response_email.setContentType("text/html; charset=UTF-8");
 		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.') location.href='/admin/forgot_id_pwd';</script>");
+		out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
 		out_email.flush();
+
+		return new ModelAndView("admin/forgot_id_pwd");
 	}
 
 	// 아이디 찾기 POST(강사)
 	@RequestMapping(value = "/teachFgId", method = RequestMethod.POST)
-	public void postTeachid(TeachVO tvo, Model model, HttpServletRequest request, HttpServletResponse response_email) throws Exception {
+	public ModelAndView postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
+			HttpServletResponse response_email) throws Exception {
 		logger.info("post 강사에게 아이디를 보낼겁니다.");
 
 		TeachVO list = adminservice.findT_id(tvo);
@@ -276,8 +280,10 @@ public class AdminController {
 
 		response_email.setContentType("text/html; charset=UTF-8");
 		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.') location.href='/admin/forgot_id_pwd';</script>");
+		out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
 		out_email.flush();
+
+		return new ModelAndView("admin/forgot_id_pwd");
 	}
 
 	// 비밀번호 찾기 POST(학생)
