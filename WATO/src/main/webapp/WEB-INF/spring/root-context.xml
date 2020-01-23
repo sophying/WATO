@@ -13,7 +13,7 @@
 	<!-- 아파치 DBCP 설정 --> 
 	
 	<!-- Gmail -->
-	  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
 	    <property name="host" value="smtp.gmail.com" />
 	    <property name="port" value="587" />
 	    <property name="username" value="choio95634@gmail.com" />
@@ -31,7 +31,8 @@
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
-		<property name="url" value="jdbc:oracle:thin:@alfo3-15-pc:1521:orcl"></property>
+		<!-- <property name="url" value="jdbc:oracle:thin:@alfo3-15-pc:1521:orcl"></property> -->
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"></property> 
 		<property name="username" value="scott"></property>
 		<property name="password" value="tiger"></property>
 	</bean> 
