@@ -21,8 +21,6 @@ create table std_info(
    std_profile varchar2(200),
    user_id varchar2(20),   
    user_pwd varchar2(30),   
-   std_pwd_qs varchar2(50),   
-   std_pwd_as varchar2(30),
    std_gender varchar2(20),
    std_phone1 varchar2(20),
    std_phone2 varchar2(20),

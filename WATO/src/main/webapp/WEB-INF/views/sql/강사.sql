@@ -4,8 +4,6 @@ create table teach_info(
    teach_resume varchar2(200),
    user_id varchar2(20),   
    user_pwd varchar2(30),   
-   teach_pwd_qs varchar2(50),   
-   teach_pwd_as varchar2(30),
    teach_gender varchar2(20),
    teach_phone1 varchar2(20),
    teach_phone2 varchar2(20),
