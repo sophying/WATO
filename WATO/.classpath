@@ -57,7 +57,5 @@
 			<attribute name="m2e-apt" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="/Users/lovelysophy/Downloads/commons-fileupload-1.3.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="/Users/lovelysophy/Downloads/javax.servlet-api-3.1.0.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
