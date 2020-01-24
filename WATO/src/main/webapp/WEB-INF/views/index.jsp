@@ -209,7 +209,6 @@
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
-                        <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
                     </ul>

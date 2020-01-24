@@ -185,25 +185,28 @@
 <br>
 <br>
 <!-- 필터 -->
-		<form method="post" name="filterform"> 
+		<div style="position: absolute; top: 15px; right: 25px;"> 
+			<span id="resetform" style="cursor: pointer;" ><i class="glyphicon glyphicon-repeat"></i> 필터 초기화</span>
+		</div>
+		<form method="post" name="filterform" id="filterform"> 
 			<div style="	  
 			  display: -webkit-box;
 			  display: -ms-flexbox;  
 			  display: flex;
 			  -ms-flex-wrap: wrap;
 			  flex-wrap: wrap;  
-			  margin-right: -15px;   
-			  margin-left: 24px;"  
+			  margin-right: 0px;   
+			  margin-left: -11px;"  
 			  id="filter"> 
 					<div class="form-group col-sm-2 col-xs-6"> 
-						<select class="form-control" name="filetertype" data-filetertype =""> 
+						<select class="form-control" name="filetertype" id="filetertype"> 
 							<option value="">스터디/강사</option> 
 							<option value="10">스터디</option>    
 							<option value="20">강사</option>    
 						</select>  
 					</div>
 					<div class="form-group col-sm-2 col-xs-6"> 
-						<select class="form-control" name="place"> 
+						<select class="form-control" name="place" id="place"> 
 							<option value="">지역</option> 
 							<option value="">Show All</option>    
 							<option value="서울">서울</option>   
@@ -212,7 +215,7 @@
 						</select>  
 					</div>
 					<div class="form-group col-sm-2 col-xs-6">
-						<select class="form-control" name="category">
+						<select class="form-control" name="category" id="category">
 							<option value="">카테고리</option>
 							<option value="">Show All</option>  
 							<option value="자바">자바</option>  
@@ -221,7 +224,7 @@
 						</select> 
 					</div>
 					<div class="form-group col-sm-2 col-xs-6">
-						<select class="form-control" name="level"> 
+						<select class="form-control" name="level" id="level"> 
 							<option value="">레벨</option> 
 							<option value="">Show All</option> 
 							<option value="초급">초급</option> 
@@ -245,11 +248,70 @@
 					  	</div> 
 					</div> 
 					<div class="form-group col-sm-2 col-xs-6">
+					<input type="hidden" id="pageLoaded" name="pageLoaded" value="1">
 						<button type="button" id="filtersubmit" class="btn btn-block btn-primary">Search</button>
 					</div>   
 			</div>  
 		</form> 
 					<script type="text/javascript"> 
+						window.onload = function () {
+							/* 검색 했을때 필터에 그 값을 다시 입력시켜준다.  */
+							$("#filetertype").val("${getFiletertype}");
+							$("#level").val("${getRank}");
+							$("#place").val("${getPlace}");
+							$("#category").val("${getCategory}");
+							var time = "${getTime}";
+							if(time.indexOf("월") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "월"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("화") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "화"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("수") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "수"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("목") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "목"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("금") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "금"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("토") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "토"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("일") != -1){ 
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "일"){
+										$(this).attr("checked",true); 
+									}
+								}); 
+							}
+						}
+					
 					$(function() {
 						var options = [];
 						  
@@ -272,7 +334,7 @@
 						   console.log( options );   
 						   return false;  
 						});
-						   
+
 						$('#filtersubmit').click(function() { 
 							var str = "";  
 							$("input[type='checkbox']").each(function() {
@@ -288,6 +350,13 @@
 							/* document.getElementById('timevalue').value = str;  */
 							filterform.submit();
 						});
+
+						$("#resetform").click(function () {
+							filterform.reset();
+							$("input[type='checkbox']").each(function() {
+								$(this).attr("checked",false);
+							}); 
+						})
 						
 						/* $('#filtersubmit').click(function() {
 							$.ajax({

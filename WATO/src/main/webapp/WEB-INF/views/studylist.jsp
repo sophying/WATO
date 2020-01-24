@@ -409,15 +409,12 @@
         _________________________________________________________ 
         -->   
         <div  id="hot">
-            <div class="container">
             	<br><br>
                 	 <iframe id="studylistview" src="http://localhost:8080/board/studylistview" style="width:100%; border: none;"></iframe>
                 <!-- /.container-->
-            </div>      
             <!-- /#hot-->    
             <!-- *** HOT END ***-->    
         </div>    
- 
     </div>   
 </div>
 <!-- 
@@ -529,5 +526,22 @@ _________________________________________________________
 <script src="/resource/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="/resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="/resource/js/front.js"></script>
+<script type="text/javascript">
+var pageLoaded = 1; //현재 페이지 
+
+$(function() {
+	$(document).scroll(function() {
+		var maxHeight = $(document).height();
+		var currentScroll = $(window).scrollTop() + $(window).height();
+		 
+		if (maxHeight <= currentScroll + 100) {
+			pageLoaded = pageLoaded + 1; 
+			$('#studylistview').contents().find('#pageLoaded').val(pageLoaded);
+			$('#studylistview').contents().find('#filterform').submit();
+			
+		}
+	}) 
+})
+</script>
 </body>
 </html>

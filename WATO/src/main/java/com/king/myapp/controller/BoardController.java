@@ -111,17 +111,21 @@ public class BoardController {
 		@RequestMapping(value="/studylistview" , method=RequestMethod.GET)
 		public String getstudylistview(Model model) throws Exception {
 			logger.info("get studylistview");
-			 
-				List<BoardVO> studylistAll = service.studylistAll(); 
+				List<BoardVO> studylistAll = service.studylistAll(); //전체 목록을 가져온다
+				
+				if (studylistAll.size() < 20) {
+					model.addAttribute("studylistAll",studylistAll); 
+				}else {
+					List<BoardVO> studylist20 = studylistAll.subList(0,20);
+					model.addAttribute("studylistAll",studylist20);
+				}
 				List<BoardVO> TearchlistAll = service.TearchlistAll(); 
-			
-				model.addAttribute("studylistAll",studylistAll);
-				model.addAttribute("TearchlistAll",TearchlistAll);
+					model.addAttribute("TearchlistAll",TearchlistAll);
 			
 			return "/include/studylistview";   
 		}  
 		@RequestMapping(value="/studylistview" , method=RequestMethod.POST)
-		public String poststudylistview(Model model, StudyListFilter SLF) throws Exception {
+		public String poststudylistview(Model model, StudyListFilter SLF, @RequestParam("pageLoaded") int pageLoaded) throws Exception {
 			logger.info("post studylistview"); 
 			if (SLF.getFiletertype() == null) {
 				SLF.setFiletertype(""); 
@@ -141,22 +145,46 @@ public class BoardController {
 			if (SLF.getFiletertype().equals("10")) { 
 				
 				List<StudyEnrollVO> StudyListFilter = service.studylistfilter(SLF);
-				model.addAttribute("StudyListFilterdata",StudyListFilter);
+				if (StudyListFilter.size() < 20 || StudyListFilter.size() < pageLoaded*20 ) {
+					model.addAttribute("StudyListFilterdata",StudyListFilter);
+				}else {
+					List<StudyEnrollVO> StudyListFilterdata = StudyListFilter.subList(0, pageLoaded*20);
+					model.addAttribute("StudyListFilterdata",StudyListFilterdata);
+				}
 				
 			}else if (SLF.getFiletertype().equals("20")) {
 				
 				List<TeacherEnrollVO> TeacherListFilter = service.TeacherListFilter(SLF);
-				model.addAttribute("TeacherListFilter",TeacherListFilter);  
+				if (TeacherListFilter.size() < 20) {
+					model.addAttribute("TeacherListFilter",TeacherListFilter);  
+				}else {
+					List<TeacherEnrollVO> TeacherListFilterdata = TeacherListFilter.subList(0, pageLoaded*20);
+					model.addAttribute("TeacherListFilter",TeacherListFilterdata);  
+				}
 			}
-			
 			else{
 //				스터디 강사 둘다 조회
 				List<StudyEnrollVO> StudyListFilter = service.studylistfilter(SLF);
-				model.addAttribute("StudyListFilterdata",StudyListFilter);
+				if (StudyListFilter.size() < 20) {
+					model.addAttribute("StudyListFilterdata",StudyListFilter);
+				}else {
+					List<StudyEnrollVO> StudyListFilterdata = StudyListFilter.subList(0, pageLoaded*20);
+					model.addAttribute("StudyListFilterdata",StudyListFilterdata);
+				}
 				List<TeacherEnrollVO> TeacherListFilter = service.TeacherListFilter(SLF);
-				model.addAttribute("TeacherListFilter",TeacherListFilter);   
+				if (TeacherListFilter.size() < 20) {
+					model.addAttribute("TeacherListFilter",TeacherListFilter);  
+				}else {
+					List<TeacherEnrollVO> TeacherListFilterdata = TeacherListFilter.subList(0, pageLoaded*20);
+					model.addAttribute("TeacherListFilter",TeacherListFilterdata);  
+				}
 			}
 			
+			model.addAttribute("getFiletertype",SLF.getFiletertype());
+			model.addAttribute("getPlace",SLF.getPlace());
+			model.addAttribute("getCategory",SLF.getCategory());
+			model.addAttribute("getRank",SLF.getLevel());
+			model.addAttribute("getTime",SLF.getTime());
 			
 			System.out.println("SLF.getPlace() : "+SLF.getPlace());
 			System.out.println("SLF.getCategory() : "+SLF.getCategory());
