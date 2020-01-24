@@ -20,13 +20,8 @@ create table std_info(
    No varchar2(10) DEFAULT 10,
    std_profile varchar2(200),
    user_id varchar2(20),   
-<<<<<<< HEAD
    user_pwd varchar2(30),
-=======
    user_pwd varchar2(30),   
-   std_pwd_qs varchar2(50),   
-   std_pwd_as varchar2(30),
->>>>>>> refs/heads/jihyeNmaster
    std_gender varchar2(20),
    std_phone1 varchar2(20),
    std_phone2 varchar2(20),
