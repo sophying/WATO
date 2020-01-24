@@ -215,7 +215,8 @@
             transform: translateX(20%);
         }
         #loginform .social-container {
-            margin: 20px 0;
+        	margin-top: 20px;
+            margin-bottom: 0px;
         }
         #loginform .social-container a {
             border: 1px solid #DDDDDD;
@@ -279,7 +280,7 @@
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
 	            <span>or use your account</span>
-	            <div><label><input type="radio" name="radio" class="radio" id="radio" value="10" checked="checked">학생</label>
+	            <div><label><input type="radio" name="radio" class="radio" id="radio" value="10">학생</label>
 	            	 <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
 	            </div>
 	            <input type="text" name="User_Id" placeholder="Email" />

@@ -9,7 +9,7 @@ create table approval (
    app_addr1 varchar2(50),
    app_addr2 varchar2(100),
    app_addr3 varchar2(50),
-   app_num number DEFAULT 0
+   app_num number
 );
 
 select * from approval;

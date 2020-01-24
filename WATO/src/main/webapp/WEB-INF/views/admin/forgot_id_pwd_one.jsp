@@ -11,6 +11,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
+    <link rel="stylesheet" type="text/css" href="../resource/css/terms_jihye.css">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="../resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -30,7 +31,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
     <link rel="icon" type="image/png" href="../resource/images/icons/favicon.ico"/>
-	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
@@ -216,7 +217,7 @@
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
                     	<c:if test="${std == null && teach == null}">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
+                        <li class="list-inline-item"><a href="../admin/loginform" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
@@ -274,7 +275,7 @@
 							<div class="limiter">
 								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
 								<div class="container-login100">   
-									<%@ include  file="../admin/loginform.jsp"%> 
+									<%-- <%@ include  file="../admin/loginform.jsp"%>  --%>
 								</div>
 							</div>  
 						</div> 	                		
@@ -282,9 +283,8 @@
 	        	</div>
 	    	</div>
     	</div>
-
- 
     </div> 
+    
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
         <div class="container"><a href="/" class="navbar-brand home"><img src="../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
@@ -449,52 +449,49 @@
 <!-- 최지혜 추가 -->  <div><img src="../resource/images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div><br>
 			        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">아이디 찾기</div>
 			        <form name="Fg_Id" role="form" method="post" autocomplete="off">
-            <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 이메일을 정확히 입력해주세요.</div><br>
-            <div>
-                <table class="table_main" style="text-align: left;">
-                    <tr>
-                        <th>이메일</th>
-                        <td><input type="text" id="User_Email" name="User_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div>
-                <label><input type="radio" name="radio" class="radio" id="radio" value="10">학생</label>
-                <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
-            </div>
-
-            <div style="margin: 40px;">
-                <button type="submit" id="Fg_Id" class="Fg_Id" style="margin-right: 30px; width: 150px; height: 50px;">아이디 찾기</button>
-                <button type="reset" style="width: 150px; height: 50px;">취소</button>
-            </div><br><br>
-        </form>
-        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">비밀번호 찾기</div>
-        <form name="Fg_Pwd" role="form" method="post" autocomplete="off">
-            <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 아이디와 이메일을 정확히 입력해주세요.</div><br>
-            <div>
-                <table class="table_main" style="text-align: left;">
-                    <tr>
-                        <th>아이디</th>
-                        <td><input type="text" id="User_Email" name="User_Id" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
-                    </tr>
-                    <tr>
-                        <th>이메일</th>
-                        <td><input type="text" id="User_Email" name="User_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div>
-                <label><input type="radio" name="radio" class="radio" id="radio" value="10">학생</label>
-                <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
-            </div>
-
-            <div style="margin: 40px;">
-                <button type="submit" id="Fg_Pwd" class="Fg_Pwd" style="margin-right: 30px; width: 150px; height: 50px;">비밀번호 찾기</button>
-                <button type="reset" style="width: 150px; height: 50px;">취소</button>
-            </div>
-        </form>
+			            <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 이메일을 정확히 입력해주세요.</div><br>
+			            <div>
+			                <table class="table_main" style="text-align: left;">
+			                    <tr>
+			                        <th>이메일</th>
+			                        <td><input type="text" id="User_Email" name="User_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+			                    </tr>
+			                </table>
+			            </div>
+			
+			            <div>
+			                <label><input type="radio" name="radio" class="radio" id="radio" value="10">학생</label>
+			                <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
+			            </div>
+			
+			            <div style="margin: 40px;">
+			                <button type="submit" id="Fg_Id" class="Fg_Id" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 120px; height: 50px;">아이디 찾기</button>
+			                <button type="reset" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 120px; height: 50px;">취소</button>
+			            </div><br><br>
+			        </form>
+			        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">비밀번호 찾기</div>
+			        <form name="Fg_Pwd" role="form" method="post" autocomplete="off">
+			            <div style="font-size: 17px;">회원가입 하셨을 때 입력하셨던 아이디와 이메일을 정확히 입력해주세요.</div><br>
+			            <div>
+			                <table class="table_main" style="text-align: left;">
+			                    <tr>
+			                        <th>아이디</th>
+			                        <td><input type="text" id="User_Email" name="User_Id" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+			                    </tr>
+			                    <tr>
+			                        <th>이메일</th>
+			                        <td><input type="text" id="User_Email" name="User_Email" size="45" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+			                    </tr>
+			                </table>
+			            </div>
+			
+			            <div>
+			                <label><input type="radio" name="radio" class="radio" id="radio" value="10">학생</label>
+			                <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
+			            </div>
+			                <button type="submit" id="Fg_Pwd" class="Fg_Pwd" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; width: 120px; height: 50px;">비밀번호 찾기</button>
+			                <button type="reset" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin: 30px; width: 120px; height: 50px;">취소</button>
+			        </form>
                 </div>
             </div>
 <!-- 최지혜 추가 -->   		
@@ -607,77 +604,8 @@ _________________________________________________________
 </div>
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
-<script type="text/javascript" src="../resource/js/teach_join.js"></script>
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-    // 비밀번호 확인 소스
-    $('#userPw').blur(function() {
-        var userPw = $('#userPw').val();
-        var userPwChk = $('#userPwChk').val();
-        var pwdcheck = $('#pwdcheck');
-
-        if (userPw !="" && userPwChk !="" && userPw==userPwChk) {
-            pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-        }else if(userPw != "" && userPwChk==""){
-            pwdcheck.text('비밀번호 확인를 입력해주세요').css('color', 'blue');
-        }else if (userPw != userPwChk) {
-            pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-        }else if(userPw =="" && userPwChk==""){
-            pwdcheck.text('');
-        }
-
-    });
-
-    $('#userPwChk').blur(function() {
-        var userPw = $('#userPw').val();
-        var userPwChk = $('#userPwChk').val();
-        var pwdcheck = $('#pwdcheck');
-
-        if (userPw !="" && userPw !="" && userPw==userPwChk) {
-            pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-        } else if(userPwChk != "" && userPw==""){
-            pwdcheck.text('비밀번호를 입력해주세요').css('color', 'blue');
-        }else if(userPw != userPwChk){
-            pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-        }else if(userPw =="" && userPwChk==""){
-            pwdcheck.text('');
-        }
-    });
-
-
-    function checkPw() {
-        var userPw = $('#userPw').val();
-        var userPw = $('#userPwChk').val();
-        var pwdcheck = $('#pwdcheck');
-        if (userPw == userPwChk) {
-            joinform.submit();
-        } else {
-            /* pwdcheck.text('비밀번호가 다릅니다').css('color', 'red'); *!/ /!* 위에서 출력하고 있는데 한번더 출력할 필요 없음 */
-            alert('입력하신 비밀번호가 다릅니다 확인해주세요.')
-        }
-    }
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#image_section').attr('src', e.target.result);
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#imgInput").change(function(){
-        readURL(this);
-    });
-</script>
-
-<script type="text/javascript">
-    
-
 // ID 찾기 (학생 or 강사)
 $('#Fg_Id').click(function() {
 
@@ -704,6 +632,7 @@ $('#Fg_Pwd').click(function() {
         $('form[name="Fg_Pwd"]').attr('action',"/admin/teachFgPwd");
     }
 });
+
 </script>
 <!-- JavaScript files--> 
 <script src="../resource/vendor/jquery/jquery.min.js"></script>
@@ -714,5 +643,3 @@ $('#Fg_Pwd').click(function() {
 <script src="../resource/js/front.js"></script> 
 </body>
 </html>
-    if(null != radioval && radioval == 10) {
-        $('form[name="Fg_Pwd"]').attr('action',"/admin/stdFgPwd");
