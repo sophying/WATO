@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -30,8 +29,6 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
     <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
     #top{
@@ -51,12 +48,15 @@
         margin-right: auto;
         width: 53.8%;
     }
+
+
     #new{
         position: static;
         margin-left: auto;
         margin-right: auto;
         width: 53.8%;
     }
+
     #content{
         margin-left: auto;
         margin-right: auto;
@@ -76,6 +76,7 @@
         margin-right: auto;
         width: 100%;
     }
+
     .cate_list{
         padding-bottom: 10px;
     }
@@ -132,14 +133,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -168,6 +169,8 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
+
+
 </style>
 <body>
 <!-- navbar-->
@@ -182,73 +185,31 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                    	<c:if test="${std == null && teach == null}">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
-                        </c:if>
-                        <c:if test="${std != null}">
-                        	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">
-                        	<form name="myForm" method="get" action="/student/std_info">
-				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
-				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
-				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone2}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone3}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
-                        	</form>
-                        	</li>
-                        </c:if>
-                        <c:if test="${teach != null}">
-                        	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">
-                        	<form name="myForm2" method="get" action="/teach/teach_info">
-				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
-				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
-				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
-                        	</form>
-                        	</li>
-                        </c:if>
-                        <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
-                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
+                        <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
-                        </c:if>
-                        <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
-                        </c:if>
-                        <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
+                        <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
                     </ul>
                 </div>
             </div>
         </div> 
-        <div class="row">
-	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
-	        	<div class="modal-dialog modal-lg">
-	            	<div class="modal-content" style="background: none; border: 0px">
-	            		<div class="modal-body"> 
+        <div class="row"> 
+			<div class="modal fade" id="modal" tabindex="-1"> 
+				<div class="modal-dialog modal-lg">  
+					<div class="modal-content" style="background: none; border: 0px">   
+						<div class="modal-body"> 
 							<div class="limiter">
-								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
+								<button class="close-button" data-dismiss="modal">&times;</button> 
 								<div class="container-login100">   
-									<%@ include  file="admin/loginform.jsp"%> 
+										<%@ include  file="include/loginform.jsp"%>
 								</div>
 							</div>  
-						</div> 	                		
-	            	</div>
-	        	</div>
-	    	</div>
-    	</div>
+						</div> 
+					</div>
+				</div>
+			</div>  
+		</div>
+        <!-- *** TOP BAR END ***-->
 
  
     </div> 
@@ -322,7 +283,7 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
                                         </ul>
-                                    </div>
+                                    </div> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>동영상 강의</h5>
                                         <ul class="list-unstyled mb-3">
@@ -753,3 +714,4 @@ _________________________________________________________
 <script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="./resource/js/front.js"></script> 
 </body>
+</html>

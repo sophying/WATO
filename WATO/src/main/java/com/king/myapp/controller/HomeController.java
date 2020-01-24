@@ -2,6 +2,7 @@ package com.king.myapp.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -13,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.king.myapp.domain.MainLangugeRankVO;
+import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.service.BoardService;
 
 /**
@@ -39,9 +42,10 @@ public class HomeController {
 		 
 		String formattedDate = dateFormat.format(date);
 		
-		service.listRank();
-		model.addAttribute("listRank",service.listRank()); 
-		
+		List<MainLangugeRankVO> languagerank =  service.langugerank();
+		List<StudyEnrollVO> listRank = service.listRank();
+		model.addAttribute("languagerank",languagerank); 
+		model.addAttribute("listRank",listRank); //스터디 랭크
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "index";

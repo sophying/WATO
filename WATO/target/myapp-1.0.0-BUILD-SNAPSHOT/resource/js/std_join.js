@@ -63,10 +63,17 @@ document.write("<script src='http://dmaps.daum.net/map_js_init/postcode.v2.js'><
 document.write("<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>");
 function fn_idChk(){
 	$.ajax({
+<<<<<<< HEAD
 		url : "/student/idChk",
 		type : "post",
 		dataType : "json",
 		data : {"User_Id" : $("#User_Id").val()},
+=======
+		url : "/sign_up/idChk",
+		type : "post",
+		dataType : "json",
+		data : {"Std_Id" : $("#Std_Id").val()},
+>>>>>>> refs/heads/MS
 		success : function(data){
 			if(data == 1){
 				alert("중복된 아이디입니다.");

@@ -186,7 +186,7 @@
         <!-- *** TOP BAR END ***-->
 
  
-    </div> 
+    </div>  
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
         <div class="container"><a href="/" class="navbar-brand home"><img src="/resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="/resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
@@ -204,7 +204,7 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -255,11 +255,11 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
-                                        <h5>동영상 강의</h5>
+                                        <h5>동영상 강의</h5> 
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">C언어</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">비주얼베이직</a></li>
@@ -389,54 +389,6 @@
             </div>
         </header>
         <!-- 아이콘 -->
-        <div id="icon" class="box text-center mt-0 mb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-            </div>
-        </div>
-        <div id="icon" class="box text-center mt-0 mb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="/resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-            </div>
-        </div>
         <!--
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
@@ -446,67 +398,34 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="mb-0">인기 스터디</h2>
+                            <h2 class="mb-0">THIS WEEK POPULAR STUDY TOP10</h2>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="product-slider owl-carousel owl-theme">
+            <c:set var="size" value="0"></c:set>
+            <div id="SearchStudylist">
                 	<%int i = 1;%>
-                	<c:forEach items="${listStudy}" var="listStudy">
-                	<div style="position: relative;"> 
-                		<div class="imgrank">
-									<%if(i== 1){ %> 
-										<img alt="1등이미지" src="/resource/images/rank1st.png"> 
-									<%}else if( i ==2) {%>
-										<img alt="2등이미지" src="/resource/images/rank2st.png"> 
-									<%}else if( i ==3) {%>
-										<img alt="3등이미지" src="/resource/images/rank3st.png">
-									<%}else if( i ==4) { %>
-										<img alt="4등이미지" src="/resource/images/rank4st.png">
-									<%}else{ %>
-										<img alt="5등이미지" src="/resource/images/rank5st.png">
-									<%} %>
-						</div>
-                    <div class="item">
-                        <div class="product">
-                            <div class="flip-container">
-                                <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
-                            <div class="text">
-                                <h3><a href="detail.jsp">${listStudy.title}</a></h3>
-                                <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
-                                </p>
-                            </div> 
-                        </div>
-                    </div>
-                    </div>
-                    <% i++; %>
-                    </c:forEach>
-                          <!--     /.text
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                            /.ribbon
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-                            <!-- /.ribbon-->
-                            <!-- <div class="ribbon gift"> GIFT 표시
-                                <div class="theribbon">GIFT</div>
-                                <div class="ribbon-background"></div>
-                            </div> -->
-                    <!-- /.product-slider-->
-                </div>
-                <!-- /.container-->
-            </div>
+   						<table class="table table-hover">
+   							<thead>
+   								<tr>
+   									<th>No</th><th>Category</th><th>Title</th><th>Writer</th>
+   								</tr>
+   							</thead> 
+   							<tbody>
+   									<c:forEach items="${listStudy}" var="listStudy"> 
+										<tr> 
+											<td id="moremessge">${listStudy.s_no}</td>
+											<td>${listStudy.s_category}</td> 
+											<td><a href="#" style="color: black;">${listStudy.s_title}</a></td>
+											<td><a href="#" style="color: black;">${listStudy.s_userId}</a></td>
+										</tr>
+					                    <% i++; %>
+				                    </c:forEach>
+		                    </tbody>
+   						</table> 
+   			</div>
+   			<button class="btn btn-primary" id="morebutton">더보기</button>
             <!-- /#hot-->
             <!-- *** HOT END ***-->
         </div>
@@ -515,7 +434,7 @@
                 <div class="container"> 
                     <div class="row"> 
                         <div class="col-md-12"> 
-                            <h2 class="mb-0">베스트 강사</h2>
+                            <h2 class="mb-0">Professor</h2>
                         </div>
                     </div>
                 </div>
@@ -547,7 +466,7 @@
                                 </div>
                             </div><a href="detail.jsp" class="invisible"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listTeacher.title}</a></h3>
+                                <h3><a href="detail.jsp">${listTeacher.t_title}</a></h3>
                                 <p class="price"> 
                                     <del></del><a href="#" class="btn btn-primary" >상세보기</a>
                                 </p>
@@ -584,7 +503,7 @@
                 <div class="container"> 
                     <div class="row"> 
                         <div class="col-md-12"> 
-                            <h2 class="mb-0">Q&A</h2>
+                            <h2 class="mb-0">Q&amp;A</h2>
                         </div>
                     </div>
                 </div>
@@ -706,11 +625,30 @@ _________________________________________________________
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
-<script src="/resource/vendor/jquery/jquery.min.js"></script>
+<script src="/resource/vendor/jquery/jquery.min.js"></script> 
 <script src="/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
 <script src="/resource/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="/resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="/resource/js/front.js"></script>
+<script type="text/javascript">
+ 
+var size = 4; 
+var ajaxform = $("#ajaxform").serialize();  
+     
+$('#morebutton').click(function () {  
+	size = size+5; 
+	jQuery.ajaxSetup({cache:false});
+	$.ajax({
+		type:"get",   
+		url:"/board/SearchStudylist/${searchKey}/"+size, 
+		dataType:"html",
+		success: function (data) {
+			$('#SearchStudylist').html($(data));
+		}
+	}); 
+});
+
+</script>
 </body>
 </html>

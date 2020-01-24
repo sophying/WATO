@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,13 +38,60 @@ public class BoardController {
 		public String searchResult(@RequestParam("searchKey") String searchKey, Model model) throws Exception {
 			logger.info("get list search");
 			
-			List<BoardVO> listStudy = service.searchResultStudy(searchKey); 
+			if (searchKey == null || searchKey.equals("")) { 
+				searchKey = "_";
+			}
+			 
+			List<StudyEnrollVO> listStudy = service.searchResultStudy(searchKey);
+			
+			if (listStudy.size() != 0) {
+				List<StudyEnrollVO> Studylist = listStudy.subList(0, 4);
+				model.addAttribute("listStudy",Studylist);
+			}else {
+				model.addAttribute("listStudy",listStudy);  
+			}
+			
 			List<BoardVO> listTeacher = service.searchResultTeacher(searchKey); 
-			List<BoardVO> listQna = service.searchResultQna(searchKey);
-			model.addAttribute("listStudy",listStudy);
+			List<TeacherEnrollVO> listQna = service.searchResultQna(searchKey);
+			
 			model.addAttribute("listTeacher",listTeacher); 
 			model.addAttribute("listQna",listQna);  
+			model.addAttribute("searchKey",searchKey);
 			return "board/searchResult";   
+		}
+		@RequestMapping(value="/SearchStudylist/{searchKey}/{size}" , method=RequestMethod.GET)   
+		public String ajaxStudyResult(@PathVariable("searchKey") String searchKey,@PathVariable("size") int size,Model model) throws Exception {
+			 
+			logger.info("get ajax Studylist"); 
+			System.out.println(searchKey);    
+			System.out.println("size : "+size); 
+			 
+			List<StudyEnrollVO> listStudy = service.searchResultStudy(searchKey);
+			 
+			if (listStudy.size() <= size) {
+				model.addAttribute("maxlist","더이상 검색 결과가 없습니다."); 
+				model.addAttribute("listStudy",listStudy); 
+			}else {
+				List<StudyEnrollVO> Studylist = listStudy.subList(0, size); 
+				model.addAttribute("listStudy",Studylist);  
+			}
+		
+			 
+			
+			
+		/*
+		 * List<BoardVO> listTeacher = service.searchResultTeacher(searchKey);
+		 * List<TeacherEnrollVO> listQna = service.searchResultQna(searchKey);
+		 * 
+		 * 
+		 * 
+		 * 
+		 * model.addAttribute("listStudy",listStudy);
+		 * model.addAttribute("listTeacher",listTeacher);
+		 * model.addAttribute("listQna",listQna);
+		 * model.addAttribute("searchKey",searchKey);
+		 */
+			return "/board/SearchStudylist";   
 		}
 		 
 		@RequestMapping(value="/studylist" , method=RequestMethod.GET) 
@@ -63,17 +111,21 @@ public class BoardController {
 		@RequestMapping(value="/studylistview" , method=RequestMethod.GET)
 		public String getstudylistview(Model model) throws Exception {
 			logger.info("get studylistview");
-			 
-				List<BoardVO> studylistAll = service.studylistAll(); 
+//				if (studylistAll.size() < 20) {
+//					model.addAttribute("studylistAll",studylistAll); 
+//				}else {
+//					List<BoardVO> studylist20 = studylistAll.subList(0,20);
+//					model.addAttribute("studylistAll",studylist20);
+//				}
+				List<BoardVO> studylistAll = service.studylistAll(); //전체 목록을 가져온다
+				model.addAttribute("studylistAll",studylistAll); 
 				List<BoardVO> TearchlistAll = service.TearchlistAll(); 
-			
-				model.addAttribute("studylistAll",studylistAll);
 				model.addAttribute("TearchlistAll",TearchlistAll);
 			
 			return "/include/studylistview";   
 		}  
 		@RequestMapping(value="/studylistview" , method=RequestMethod.POST)
-		public String poststudylistview(Model model, StudyListFilter SLF) throws Exception {
+		public String poststudylistview(Model model, StudyListFilter SLF, @RequestParam("pageLoaded") int pageLoaded) throws Exception {
 			logger.info("post studylistview"); 
 			if (SLF.getFiletertype() == null) {
 				SLF.setFiletertype(""); 
@@ -94,21 +146,49 @@ public class BoardController {
 				
 				List<StudyEnrollVO> StudyListFilter = service.studylistfilter(SLF);
 				model.addAttribute("StudyListFilterdata",StudyListFilter);
+//				if (StudyListFilter.size() < 20 || StudyListFilter.size() < pageLoaded*20 ) {
+//					model.addAttribute("StudyListFilterdata",StudyListFilter);
+//				}else {
+//					List<StudyEnrollVO> StudyListFilterdata = StudyListFilter.subList(0, pageLoaded*20);
+//					model.addAttribute("StudyListFilterdata",StudyListFilterdata);
+//				}
 				
 			}else if (SLF.getFiletertype().equals("20")) {
 				
 				List<TeacherEnrollVO> TeacherListFilter = service.TeacherListFilter(SLF);
-				model.addAttribute("TeacherListFilter",TeacherListFilter);  
+				model.addAttribute("TeacherListFilter",TeacherListFilter); 
+//				if (TeacherListFilter.size() < 20) {
+//					model.addAttribute("TeacherListFilter",TeacherListFilter);  
+//				}else {
+//					List<TeacherEnrollVO> TeacherListFilterdata = TeacherListFilter.subList(0, pageLoaded*20);
+//					model.addAttribute("TeacherListFilter",TeacherListFilterdata);  
+//				}
 			}
-			
 			else{
 //				스터디 강사 둘다 조회
 				List<StudyEnrollVO> StudyListFilter = service.studylistfilter(SLF);
 				model.addAttribute("StudyListFilterdata",StudyListFilter);
+//				if (StudyListFilter.size() < 20) {
+//					model.addAttribute("StudyListFilterdata",StudyListFilter);
+//				}else {
+//					List<StudyEnrollVO> StudyListFilterdata = StudyListFilter.subList(0, pageLoaded*20);
+//					model.addAttribute("StudyListFilterdata",StudyListFilterdata);
+//				}
 				List<TeacherEnrollVO> TeacherListFilter = service.TeacherListFilter(SLF);
-				model.addAttribute("TeacherListFilter",TeacherListFilter);   
+				model.addAttribute("TeacherListFilter",TeacherListFilter);  
+//				if (TeacherListFilter.size() < 20) {
+//					model.addAttribute("TeacherListFilter",TeacherListFilter);  
+//				}else {
+//					List<TeacherEnrollVO> TeacherListFilterdata = TeacherListFilter.subList(0, pageLoaded*20);
+//					model.addAttribute("TeacherListFilter",TeacherListFilterdata);  
+//				}
 			}
 			
+			model.addAttribute("getFiletertype",SLF.getFiletertype()); //검색했을때 새로고침이 되는데 필터에 검색했던 값들을 기억시키기 위해 넣어둠
+			model.addAttribute("getPlace",SLF.getPlace());
+			model.addAttribute("getCategory",SLF.getCategory());
+			model.addAttribute("getRank",SLF.getLevel());
+			model.addAttribute("getTime",SLF.getTime());
 			
 			System.out.println("SLF.getPlace() : "+SLF.getPlace());
 			System.out.println("SLF.getCategory() : "+SLF.getCategory());

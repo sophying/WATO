@@ -5,11 +5,18 @@ create table approval (
    app_phone1 varchar2(20),
    app_phone2 varchar2(20),
    app_phone3 varchar2(20),
+<<<<<<< HEAD
    user_email varchar2(100),
    app_addr1 varchar2(50),
    app_addr2 varchar2(100),
    app_addr3 varchar2(50),
    app_num number DEFAULT 0
+=======
+   app_email varchar2(100),
+   app_addr1 varchar2(50),
+   app_addr2 varchar2(100),
+   app_addr3 varchar2(50)
+>>>>>>> refs/heads/MS
 );
 
 select * from approval;

@@ -1,7 +1,6 @@
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ㅛ<%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+         <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,8 +29,6 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
     <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
     #top{
@@ -51,12 +48,15 @@
         margin-right: auto;
         width: 53.8%;
     }
+
+
     #new{
         position: static;
         margin-left: auto;
         margin-right: auto;
         width: 53.8%;
     }
+
     #content{
         margin-left: auto;
         margin-right: auto;
@@ -76,6 +76,7 @@
         margin-right: auto;
         width: 100%;
     }
+
     .cate_list{
         padding-bottom: 10px;
     }
@@ -132,14 +133,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -168,6 +169,31 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
+	.button2 {
+  display: inline-block; 
+  font-size: 20px;  
+  padding:0px .5em;  
+  border-radius: 5px;
+  transition: all .5s; 
+  filter: hue-rotate(0deg);
+  color: #FFF;
+  text-decoration: none;
+}
+  .b-orange, .b-orange:before {
+    background: rgba(255,193,7,1);
+    background: -moz-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,193,7,1)), color-stop(100%, rgba(255,87,34,1)));
+    background: -webkit-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc107', endColorstr='#ff5722', GradientType=1 );
+  }
+  .rot-135:hover {
+  filter: hue-rotate(135deg);
+}
+
+
 </style>
 <body>
 <!-- navbar-->
@@ -182,73 +208,30 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                    	<c:if test="${std == null && teach == null}">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
-                        </c:if>
-                        <c:if test="${std != null}">
-                        	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">
-                        	<form name="myForm" method="get" action="/student/std_info">
-				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
-				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
-				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone2}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone3}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
-                        	</form>
-                        	</li>
-                        </c:if>
-                        <c:if test="${teach != null}">
-                        	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">
-                        	<form name="myForm2" method="get" action="/teach/teach_info">
-				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
-				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
-				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
-                        	</form>
-                        	</li>
-                        </c:if>
-                        <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
-                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
-                        </c:if>
-                        <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
-                        </c:if>
-                        <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
+                        <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
                     </ul>
                 </div>
             </div>
         </div> 
-        <div class="row">
-	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
-	        	<div class="modal-dialog modal-lg">
-	            	<div class="modal-content" style="background: none; border: 0px">
-	            		<div class="modal-body"> 
+        <div class="row"> 
+			<div class="modal fade" id="modal" tabindex="-1"> 
+				<div class="modal-dialog modal-lg">  
+					<div class="modal-content" style="background: none; border: 0px">   
+						<div class="modal-body"> 
 							<div class="limiter">
-								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
+								<button class="close-button" data-dismiss="modal">&times;</button> 
 								<div class="container-login100">   
-									<%@ include  file="admin/loginform.jsp"%> 
+										<%@ include  file="include/loginform.jsp"%>
 								</div>
 							</div>  
-						</div> 	                		
-	            	</div>
-	        	</div>
-	    	</div>
-    	</div>
+						</div> 
+					</div>
+				</div>
+			</div>  
+		</div>
+        <!-- *** TOP BAR END ***-->
 
  
     </div> 
@@ -269,7 +252,7 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -320,9 +303,9 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
-                                    </div>
+                                    </div> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>동영상 강의</h5>
                                         <ul class="list-unstyled mb-3">
@@ -330,11 +313,11 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">비주얼베이직</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">자바</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li>
-                                        </ul>
+                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
                                         <h5>IT공부</h5>
-                                        <ul class="list-unstyled mb-3">
+                                        <ul class="list-unstyled mb-3"> 
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">프로그래밍 언어</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">서버, 시스템</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">네트워크</a></li>
@@ -399,6 +382,7 @@
                     </li>
                     <li class="nav-item menu-large"><a href="/board/studylist"  class="nav-link" >스터디찾기<b class="caret"></b></a> 
                 </ul>    
+                <!-- 메인 search 폼  -->
                 <form role="search" class="ml-auto" method="post" action="/board/searchResult">
                     <div class="input-group">     
                         <input type="text" placeholder="Search" class="form-control" name="searchKey" id="searchKey"> 
@@ -454,7 +438,7 @@
             </div>
         </header>
         <!-- 아이콘 -->
-        <div id="icon" class="box text-center mt-0 mb-0">
+        <!-- <div id="icon" class="box text-center mt-0 mb-0">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-2">
@@ -497,7 +481,7 @@
                     </div>
                 </div> 
             </div>
-        </div>
+        </div> -->
         <!--
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
@@ -507,7 +491,73 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h2 class="mb-0">이주의 핫한 교실</h2>
+                            <h2 class="mb-0"><span style="font-weight: bold;">Best Programming Language</span></h2>
+                        </div> 
+                    </div>
+                </div> 
+            </div>
+            <div class="container"> 
+                <div class="product-slider owl-carousel owl-theme">
+                	<%int q = 1;%>
+                	<c:forEach items="${languagerank}" var="languagerank">
+                	<div style="position: relative;"> 
+                		<div class="imgrank">
+									<%if(q== 1){ %> 
+										<img alt="1등이미지" src="./resource/images/rank1st.png"> 
+									<%}else if( q ==2) {%>
+										<img alt="2등이미지" src="./resource/images/rank2st.png"> 
+									<%}else if( q ==3) {%>
+										<img alt="3등이미지" src="./resource/images/rank3st.png">
+									<%}else if( q ==4) { %>
+										<img alt="4등이미지" src="./resource/images/rank4st.png">
+									<%}else{ %>
+										<img alt="5등이미지" src="./resource/images/rank5st.png">
+									<%} %>
+						</div>
+                    <div class="item"> 
+                        <div class="product"> 
+                            <div class="flip-container"> 
+                                <div class="flipper">
+                                    <div class="front"><a href="detail.jsp"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="detail.jsp"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
+                                </div>
+                            </div><a href="detail.jsp" class="invisible"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a>
+                            <div class="text">  
+                                <h3><a href="detail.jsp">${languagerank.language_name}</a></h3> 
+                                <p class="price">  
+                                    <del></del><a href="#" class="button2 b-orange rot-135">Details</a> 
+                                </p>
+                            </div> 
+                        </div>
+                    </div> 
+                    </div>
+                    <% q++; %>
+                    </c:forEach> 
+                          <!--     /.text
+                            <div class="ribbon sale">
+                                <div class="theribbon">SALE</div>
+                                <div class="ribbon-background"></div>
+                            </div>
+                            /.ribbon
+                            <div class="ribbon new">
+                                <div class="theribbon">NEW</div>
+                                <div class="ribbon-background"></div>
+                            </div> -->
+                            <!-- /.ribbon-->
+                            <!-- <div class="ribbon gift"> GIFT 표시
+                                <div class="theribbon">GIFT</div>
+                                <div class="ribbon-background"></div>
+                            </div> -->
+                    <!-- /.product-slider-->
+                </div>
+            </div>
+        </div>
+        <div  id="hot">
+            <div class="box py-4 mt-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="mb-0"><span style="font-weight: bold;">This Week Popular Study TOP10</span></h2>
                         </div>
                     </div>
                 </div>
@@ -529,23 +579,23 @@
 									<%}else{ %>
 										<img alt="5등이미지" src="./resource/images/rank5st.png">
 									<%} %>
-						</div>
+						</div>  
                     <div class="item">
-                        <div class="product">
+                        <div class="product"> 
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="detail.jsp"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="detail.jsp"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
+                            </div><a href="detail.jsp" class="invisible"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listRank.title}</a></h3>
+                                <h3><a href="detail.jsp">${listRank.s_title}</a></h3> 
                                 <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
+                                    <del></del><a href="#" class="button2 b-orange rot-135">Details</a> 
                                 </p>
                             </div> 
-                        </div>
-                    </div>
+                        </div> 
+                    </div> 
                     </div>
                     <% i++; %>
                     </c:forEach>
@@ -571,15 +621,16 @@
             <!-- /#hot-->
             <!-- *** HOT END ***-->
         </div>
+        <!-- 인기있는 강사 순위 -->
         <div  id="hot">
             <div class="box py-4 mt-0">
                 <div class="container"> 
                     <div class="row"> 
                         <div class="col-md-12"> 
-                            <h2 class="mb-0">이번달 베스트 강사</h2>
+                            <h2 class="mb-0"><span style="font-weight: bold;">This Month Best Professor</span></h2>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
             <div class="container">
                 <div class="product-slider owl-carousel owl-theme">
@@ -608,9 +659,9 @@
                                 </div>
                             </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listRank.title}</a></h3>
+                                <h3><a href="detail.jsp">${listRank.s_title}</a></h3>
                                 <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
+                                    <del></del><a href="#" class="button2 b-orange rot-135">Details</a>
                                 </p>
                             </div> 
                         </div>
@@ -753,3 +804,4 @@ _________________________________________________________
 <script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="./resource/js/front.js"></script> 
 </body>
+</html>
