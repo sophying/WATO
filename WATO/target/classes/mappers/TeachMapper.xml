@@ -43,7 +43,7 @@
 	<!-- 강사 회원 가입3 -->
 	<update id="teach_join3">
 		update teach_info
-		set User_Id = #{User_Id}, User_Pwd = #{User_Pwd}, Teach_Pwd_Qs = #{Teach_Pwd_Qs}, Teach_Pwd_As = #{Teach_Pwd_As}
+		set User_Id = #{User_Id}, User_Pwd = #{User_Pwd}
 		where User_Email = #{User_Email}
 	</update>
 	
@@ -58,8 +58,6 @@
 		update teach_info
 		set
 			User_Pwd = #{User_Pwd},
-			Teach_Pwd_Qs = #{Teach_Pwd_Qs},
-			Teach_Pwd_As = #{Teach_Pwd_As},
 			Teach_Phone1 = #{Teach_Phone1},
 			Teach_Phone2 = #{Teach_Phone2},
 			Teach_Phone3 = #{Teach_Phone3},

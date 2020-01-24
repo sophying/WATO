@@ -196,76 +196,30 @@ public class AdminController {
 	}
 
 	// 아이디 찾기 POST(학생)
-	@RequestMapping(value = "/stdFgId", method = RequestMethod.POST)
-	public ModelAndView postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email)
-			throws Exception {
-		logger.info("post 학생에게 아이디를 전송합니다.");
+		@RequestMapping(value = "/stdFgId", method = RequestMethod.POST)
+		public ModelAndView postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email)
+				throws Exception {
+			logger.info("post 학생에게 아이디를 전송합니다.");
 
-		StdVO list = adminservice.findS_id(svo);
+			StdVO list = adminservice.findS_id(svo);
 
-		if (list.getUser_Email().equals(svo.getUser_Email())) {
+			if (list.getUser_Email().equals(svo.getUser_Email())) {
 
-			String setfrom = "choio95634@gamil.com";
-			String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
-			String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
-			String content =
+				String setfrom = "choio95634@gamil.com";
+				String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
+				String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
+				String content =
 
-					System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
+						System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
 
-							System.getProperty("line.separator") +
+								System.getProperty("line.separator") +
 
-							svo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
+								svo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
 
-							System.getProperty("line.separator") +
+								System.getProperty("line.separator") +
 
-							System.getProperty("line.separator");
+								System.getProperty("line.separator");
 
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-
-			messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
-			messageHelper.setTo(tomail); // 받는사람 이메일
-			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-			messageHelper.setText(content); // 메일 내용
-
-			mailSender.send(message);
-
-		}
-
-		response_email.setContentType("text/html; charset=UTF-8");
-		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
-		out_email.flush();
-
-		return new ModelAndView("admin/forgot_id_pwd");
-	}
-
-	// 아이디 찾기 POST(강사)
-	@RequestMapping(value = "/teachFgId", method = RequestMethod.POST)
-	public ModelAndView postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
-			HttpServletResponse response_email) throws Exception {
-		logger.info("post 강사에게 아이디를 보낼겁니다.");
-
-		TeachVO list = adminservice.findT_id(tvo);
-
-		if (list.getUser_Email().equals(tvo.getUser_Email())) {
-
-			String setfrom = "choio95634@gamil.com";
-			String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
-			String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
-			String content =
-
-					System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
-
-							System.getProperty("line.separator") +
-
-							tvo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
-
-							System.getProperty("line.separator") +
-
-							System.getProperty("line.separator");
-
-			try {
 				MimeMessage message = mailSender.createMimeMessage();
 				MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
@@ -276,18 +230,64 @@ public class AdminController {
 
 				mailSender.send(message);
 
-			} catch (Exception e) {
-				System.out.println(e);
 			}
+
+			response_email.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_email = response_email.getWriter();
+			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
+			out_email.flush();
+
+			return new ModelAndView("admin/forgot_id_pwd");
 		}
 
-		response_email.setContentType("text/html; charset=UTF-8");
-		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
-		out_email.flush();
+		// 아이디 찾기 POST(강사)
+		@RequestMapping(value = "/teachFgId", method = RequestMethod.POST)
+		public ModelAndView postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
+				HttpServletResponse response_email) throws Exception {
+			logger.info("post 강사에게 아이디를 보낼겁니다.");
 
-		return new ModelAndView("admin/forgot_id_pwd");
-	}
+			TeachVO list = adminservice.findT_id(tvo);
+
+			if (list.getUser_Email().equals(tvo.getUser_Email())) {
+
+				String setfrom = "choio95634@gamil.com";
+				String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
+				String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
+				String content =
+
+						System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
+
+								System.getProperty("line.separator") +
+
+								tvo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
+
+								System.getProperty("line.separator") +
+
+								System.getProperty("line.separator");
+
+				try {
+					MimeMessage message = mailSender.createMimeMessage();
+					MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+					messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+					messageHelper.setTo(tomail); // 받는사람 이메일
+					messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+					messageHelper.setText(content); // 메일 내용
+
+					mailSender.send(message);
+
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+
+			response_email.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_email = response_email.getWriter();
+			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
+			out_email.flush();
+
+			return new ModelAndView("admin/forgot_id_pwd");
+		}
 
 	// 비밀번호 찾기 POST(학생)
 	@RequestMapping(value = "/stdFgPwd", method = RequestMethod.POST)

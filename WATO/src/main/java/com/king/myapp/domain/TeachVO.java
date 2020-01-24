@@ -7,8 +7,6 @@ public class TeachVO {
 	private String Teach_Resume;
 	private String User_Id;
 	private String User_Pwd;
-	private String Teach_Pwd_Qs;
-	private String Teach_Pwd_As;
 	private String Teach_Gender;
 	private String Teach_Phone1;
 	private String Teach_Phone2;
@@ -47,18 +45,6 @@ public class TeachVO {
 	}
 	public void setUser_Pwd(String user_Pwd) {
 		User_Pwd = user_Pwd;
-	}
-	public String getTeach_Pwd_Qs() {
-		return Teach_Pwd_Qs;
-	}
-	public void setTeach_Pwd_Qs(String teach_Pwd_Qs) {
-		Teach_Pwd_Qs = teach_Pwd_Qs;
-	}
-	public String getTeach_Pwd_As() {
-		return Teach_Pwd_As;
-	}
-	public void setTeach_Pwd_As(String teach_Pwd_As) {
-		Teach_Pwd_As = teach_Pwd_As;
 	}
 	public String getTeach_Gender() {
 		return Teach_Gender;

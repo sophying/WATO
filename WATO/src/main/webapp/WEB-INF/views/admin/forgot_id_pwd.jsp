@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -224,8 +225,6 @@
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
-				                <input type="hidden" value="${std.std_Pwd_Qs}" readonly="readonly">
-				                <input type="hidden" value="${std.std_Pwd_As}" readonly="readonly">
 				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
 				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
 								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
@@ -244,8 +243,6 @@
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
 				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
-				                <input type="hidden" value="${teach.teach_Pwd_Qs}" readonly="readonly">
-				                <input type="hidden" value="${teach.teach_Pwd_As}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
 				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
@@ -286,9 +283,7 @@
 	        	</div>
 	    	</div>
     	</div>
-
- 
-    </div> 
+    </div>
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
         <div class="container"><a href="/" class="navbar-brand home"><img src="../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
@@ -498,7 +493,7 @@
 			        </form>
                 </div>
             </div>
-<!-- 최지혜 추가 -->   		
+            <!-- 최지혜 추가 -->   		
         <!-- 아이콘 -->
 
         <!--
@@ -606,8 +601,7 @@ _________________________________________________________
     </div>
     <!-- /.container-->  
 </div>
-<!-- /#footer-->
-<!-- *** FOOTER END ***-->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 // ID 찾기 (학생 or 강사)
 $('#Fg_Id').click(function() {
@@ -640,9 +634,5 @@ $('#Fg_Pwd').click(function() {
 <!-- JavaScript files--> 
 <script src="../resource/vendor/jquery/jquery.min.js"></script>
 <script src="../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="../resource/js/front.js"></script> 
 </body>
 </html>
