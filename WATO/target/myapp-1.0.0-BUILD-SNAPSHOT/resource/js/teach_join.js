@@ -66,11 +66,7 @@ function fn_idChk(){
 		url : "/teach/idChk",
 		type : "post",
 		dataType : "json",
-<<<<<<< HEAD
 		data : {"User_Id" : $("#User_Id").val()},
-=======
-		data : {"Teach_Id" : $("#Teach_Id").val()},
->>>>>>> refs/heads/MS
 		success : function(data){
 			if(data == 1){
 				alert("중복된 아이디입니다.");

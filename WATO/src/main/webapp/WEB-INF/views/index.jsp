@@ -1,4 +1,4 @@
-ㅛ<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
          <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
@@ -29,6 +29,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
     <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
+    <script src="./resource/vendor/jquery/jquery.min.js"></script> 
 </head>
 <style>
     #top{
@@ -208,23 +209,67 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
+                       <c:if test="${std == null && teach == null}">
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
+                        </c:if>
+                        <c:if test="${std != null}">
+                        	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
+                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item">
+                        	<form name="myForm" method="get" action="/student/std_info">
+				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
+				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
+								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
+								<input type="hidden" value="${std.std_Phone2}" readonly="readonly">
+								<input type="hidden" value="${std.std_Phone3}" readonly="readonly">
+								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
+								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
+								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
+                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	</form>
+                        	</li>
+                        </c:if>
+                        <c:if test="${teach != null}">
+                        	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
+                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item">
+                        	<form name="myForm2" method="get" action="/teach/teach_info">
+				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
+				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
+                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	</form>
+                        	</li>
+                        </c:if>
+                        <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
+                        <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
-                        <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
+                        </c:if>
+                        <c:if test="${std.user_Id.equals('admin')}">
+                        <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                        </c:if>
+                        <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
                     </ul>
                 </div>
             </div>
         </div> 
-        <div class="row"> 
-			<div class="modal fade" id="modal" tabindex="-1"> 
+        <div class="row">  
+			<div class="modal fade" id="myModal" tabindex="-1"> 
 				<div class="modal-dialog modal-lg">  
 					<div class="modal-content" style="background: none; border: 0px">   
 						<div class="modal-body"> 
 							<div class="limiter">
 								<button class="close-button" data-dismiss="modal">&times;</button> 
-								<div class="container-login100">   
-										<%@ include  file="include/loginform.jsp"%>
-								</div>
+								<div class="container-login100">    
+										<%@ include  file="admin/loginform.jsp"%>
+								</div> 
 							</div>  
 						</div> 
 					</div>
@@ -797,7 +842,6 @@ _________________________________________________________
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
-<script src="./resource/vendor/jquery/jquery.min.js"></script>
 <script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
 <script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>

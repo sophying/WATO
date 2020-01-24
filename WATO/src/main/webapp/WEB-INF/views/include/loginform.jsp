@@ -290,7 +290,7 @@
 	            </div>
 	            <span>or use your account</span>
 	            <input type="text" id="Std_Id" placeholder="Email" />
-	            <input type="password" td="Std_Pwd" placeholder="Password" />
+	            <input type="password" id="Std_Pwd" placeholder="Password" />
 	            <a href="../sign_up/login">Forgot your password?</a>
 	            <button type="submit">SIGN IN</button>
 	        </form>
