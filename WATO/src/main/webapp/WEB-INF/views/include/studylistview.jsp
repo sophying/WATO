@@ -218,7 +218,7 @@
 						<select class="form-control" name="category" id="category">
 							<option value="">카테고리</option>
 							<option value="">Show All</option>  
-							<option value="자바">자바</option>  
+							<option value="JAVA">자바</option>  
 							<option value="C">C</option>  
 							<option value="파이선">파이선</option>  
 						</select> 
