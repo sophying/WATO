@@ -46,6 +46,51 @@ public class AdminController {
 	@Inject
 	MailService mailservice;
 
+	//어드민 페이지로 이동
+	    @RequestMapping(value = "/index_admin")
+	    public String admin_main() throws Exception {
+	    	logger.info("admin main 페이지로 이동~~!!");
+			return "admin/index_admin";
+	    }
+	    
+	//  차트 페이지 이동
+	    @RequestMapping( value = "/charts")
+	    public String  charts() throws Exception {
+	        logger.info("charts 페이지로 이동~~!!");
+	        return "admin/charts";
+	    }
+	
+	// 테이블 페이지 이동
+	    @RequestMapping(value = "/tables")
+	    public String tables() throws Exception{
+	        logger.info("tables 페이지로 이동~~!!");
+	        return  "admin/tables";
+	    }
+	
+	// 폼 페이지 이동
+	    @RequestMapping(value = "/forms")
+	    public String forms() throws Exception{
+	        logger.info("forms 페이지로 이동~~!!");
+	        return  "admin/forms";
+	    }
+	
+	    
+	// 매니지먼트 페이지 이동
+	    @RequestMapping(value = "/management")
+	    public String management() throws Exception{
+	    	logger.info("management 페이지로 이동~~!!");
+	    	return  "admin/management";
+	    }
+	    
+	// 로그인 페이지 이동
+	/*
+	 * @RequestMapping(value = "/login") public String login() throws Exception{
+	 * logger.info("login 페이지로 이동~~!!"); return "admin/login"; }
+	 */
+	    
+	    
+	/*=================================================================================*/
+
 	// 로그인 get
 	@RequestMapping(value = "/loginform", method = RequestMethod.GET)
 	public void getlogin() throws Exception {
@@ -113,17 +158,17 @@ public class AdminController {
 	}
 
 	// 강사 승인페이지 GET
-	@RequestMapping(value = "/adminmanage", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/management", method = RequestMethod.GET)
 	public String getManage(Model model) throws Exception {
 		logger.info("get 강사 승인 페이지");
 
 		List<ApprovalVO> teachlist = adminservice.teachlist();
 		model.addAttribute("list", teachlist);
 		return "/admin/adminmanage";
-	}
+	}*/
 
 	// 승인버튼 클릭 (인증센터 POST), mailSending 코드
-	@RequestMapping(value = "/adminmanage", method = RequestMethod.POST)
+	@RequestMapping(value = "/management", method = RequestMethod.POST)
 	public void mailSending(TeachVO tvo, ApprovalVO avo, HttpServletRequest request, String e_mail,
 			HttpServletResponse response_email) throws Exception {
 		logger.info("post 강사의 정보를 확인하고 승인버튼을 클릭했습니다.");
@@ -181,7 +226,7 @@ public class AdminController {
 
 		PrintWriter out = response_email.getWriter();
 
-		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/adminmanage';</script>");
+		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/management';</script>");
 		
 		/*teachservice.app_delete(avo); 
 		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");*/
