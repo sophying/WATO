@@ -34,10 +34,35 @@ public class BoardController {
 	 */
 	
 	
+		@RequestMapping(value="/searchResult/{searchKey}" , method=RequestMethod.GET)
+		public String getsearchResult(@PathVariable("searchKey") String searchKey, Model model) throws Exception {
+			logger.info("get list search");
+			if (searchKey == null || searchKey.equals("")) { 
+				searchKey = "_";
+			}
+			
+			List<StudyEnrollVO> listStudy = service.searchResultStudy(searchKey);
+			
+			if (listStudy.size() != 0) {
+				List<StudyEnrollVO> Studylist = listStudy.subList(0, 4);
+				model.addAttribute("listStudy",Studylist);
+			}else {
+				model.addAttribute("listStudy",listStudy);  
+			}
+			
+			List<BoardVO> listTeacher = service.searchResultTeacher(searchKey); 
+			List<TeacherEnrollVO> listQna = service.searchResultQna(searchKey);
+			
+			model.addAttribute("listTeacher",listTeacher); 
+			model.addAttribute("listQna",listQna);  
+			model.addAttribute("searchKey",searchKey);
+			return "board/searchResult";   
+		}
 		@RequestMapping(value="/searchResult" , method=RequestMethod.POST)
 		public String searchResult(@RequestParam("searchKey") String searchKey, Model model) throws Exception {
-			logger.info("get list search");
+			logger.info("post list search");
 			
+			System.out.println("searchKey : "+searchKey);
 			if (searchKey == null || searchKey.equals("")) { 
 				searchKey = "_";
 			}

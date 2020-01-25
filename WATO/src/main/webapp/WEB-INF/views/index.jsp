@@ -451,25 +451,25 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item active" style="background-image: url('./resource/images/clogo.jpg">
+                        <!-- <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">First Slide</h2>
                             <p class="lead">This is a description for the first slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item" style="background-image: url('./resource/images/javalogo.png">
+                       <!--  <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">Second Slide</h2>
                             <p class="lead">This is a description for the second slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item" style="background-image: url('./resource/images/Golang_main.png')">
+                      <!--   <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">Third Slide</h2>
                             <p class="lead">This is a description for the third slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -482,51 +482,6 @@
                 </a>
             </div>
         </header>
-        <!-- 아이콘 -->
-        <!-- <div id="icon" class="box text-center mt-0 mb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2"> 
-                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-            </div>
-        </div> -->
         <!--
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
@@ -562,22 +517,30 @@
                     <div class="item"> 
                         <div class="product"> 
                             <div class="flip-container"> 
-                                <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
+                                <div class="flipper" onclick="javascript:imagesfunction(this)">
+                                    <div class="front"><a><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
                                 </div>
+                                <span style="display: none;">${languagerank.language_name}</span>
                             </div><a href="detail.jsp" class="invisible"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a>
                             <div class="text">  
-                                <h3><a href="detail.jsp">${languagerank.language_name}</a></h3> 
+                                <h3><span>${languagerank.language_name}</span></h3> 
                                 <p class="price">  
                                     <del></del><a href="#" class="button2 b-orange rot-135">Details</a> 
                                 </p>
                             </div> 
                         </div>
-                    </div> 
+                    </div>  
                     </div>
                     <% q++; %>
                     </c:forEach> 
+                    <script type="text/javascript"> 
+						function imagesfunction(event) {
+							var language = $(event).next().text();
+							alert(language) 
+							location.href = '/board/searchResult/'+language;
+						}
+                    </script>
                           <!--     /.text
                             <div class="ribbon sale">
                                 <div class="theribbon">SALE</div>
@@ -829,7 +792,7 @@ _________________________________________________________
                     </div>
                     <!-- /input-group--> 
                 </form>
-                <hr>
+                <hr> 
                 <h4 class="mb-3">더보기 사이트</h4>
                 <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a><a href="#" class="email external"><i class="fa fa-envelope"></i></a></p>
             </div>
