@@ -465,7 +465,7 @@
     <div id="content">
 <!-- 최지혜 추가 -->  
 		<div class="table-responsive">
-        	<form role="form" method="post" autocomplete="off"><br><br>
+        	<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
             	<table class="table" style="margin: auto; width: 70%;" cellspacing="0"> <!-- 강사 승인신청폼 -->
                 	<tr>
                         <th id="student" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">강사 승인신청폼</th>
@@ -474,7 +474,7 @@
                     <tr>
                         <td id="avatar" style="height: 140px; width: 100px; padding: 0px;"><img id="image_section" style="height: 140px; display: block; margin: 0px auto;" src="//sb-cafetalk.s3.amazonaws.com/user-uploaded-files/cafetalk-optimized-559cca73cd84d-984180900-1436338803.png"></td>
                         <td colspan="2">
-                                <input multiple="multiple" type="file" name="file1" id="imgInput" id="app_Profile" name="app_Profile"/>
+                                <input type="file" id="imgInput" id="app_Profile" name="app_Profile"/>
                                 <div><em style="font-size: small;">※업로드 가능한 이미지 크기는 150x100 입니다.<br>이미지 크기가 초과할시 업로드 되지 않을 수 있음을 유의바랍니다.</em></div>
                         </td>
                     </tr>

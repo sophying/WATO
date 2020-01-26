@@ -53,30 +53,30 @@
                   <form role="form" method="post" action="">
                     <table class="table card-text">
                         <tr>
-	                        <th>프로필 사진</th>
-				            <th>이력서</th>
-				            <th>성별</th>
-				            <th>휴대폰 번호1</th>
-				            <th>휴대폰 번호2</th>
-				            <th>휴대폰 번호3</th>
-				            <th>이메일</th>
-				            <th>주소1</th>
-				            <th>주소2</th>
-				            <th>주소3</th>
-				            <th>승인여부</th>
+	                        <th>Profile</th>
+				            <th>Resume</th>
+				            <th>Gender</th>
+				            <th>Phone1</th>
+				            <th>Phone2</th>
+				            <th>Phone3</th>
+				            <th>Email</th>
+				            <th>Addr1</th>
+				            <th>Addr2</th>
+				            <th>Addr3</th>
+				            <th>Approval</th>
                         </tr>
                         <c:forEach var="AppVO" items="${list}">
 				        <tr>
-				            <td><img id="Teach_Profile" name="Teach_Prifile" src="../resource/images/${AppVO.app_Profile}"></td>
-				            <td><input type="file" id="Teach_Resume" name="Teach_Resume" value="../resource/images/${AppVO.app_Resume}"></td>
-				            <td><input type="text" id="Teach_Gender" name="Teach_Gender" value="${AppVO.app_Gender}"></td>
-				            <td><input type="text" id="Teach_Phone1" name="Teach_Phone1" value="${AppVO.app_Phone1}"></td>
-				            <td><input type="text" id="Teach_Phone2" name="Teach_Phone2" value="${AppVO.app_Phone2}"></td>
-				            <td><input type="text" id="Teach_Phone3" name="Teach_Phone3" value="${AppVO.app_Phone3}"></td>
-				            <td><input type="text" id="User_Email" name="User_Email" value="${AppVO.user_Email}"></td>
-				            <td><input type="text" id="Teach_Addr1" name="Teach_Addr1" value="${AppVO.app_Addr1}"></td>
-				            <td><input type="text" id="Teach_Addr2" name="Teach_Addr2" value="${AppVO.app_Addr2}"></td>
-				            <td><input type="text" id="Teach_Addr3" name="Teach_Addr3" value="${AppVO.app_Addr3}"></td>
+				            <td><img style="width: 50px; height: 50px; padding: 0px; text-align: center;" id="Teach_Profile" name="Teach_Prifile" src="../resource/images/${AppVO.app_Profile}"></td>
+				            <td><img style="width: 40px; height: 50px; padding: 0px; text-align: center;" id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Resume}"></td>
+				            <td><input style="width: 40px; height: 50px; padding: 0px; text-align: center;" type="text" id="Teach_Gender" name="Teach_Gender" value="${AppVO.app_Gender}"></td>
+				            <td><input style="width: 40px; height: 50px; padding: 0px; text-align: center;" type="text" id="Teach_Phone1" name="Teach_Phone1" value="${AppVO.app_Phone1}"></td>
+				            <td><input style="width: 40px; height: 50px; padding: 0px; text-align: center;" type="text" id="Teach_Phone2" name="Teach_Phone2" value="${AppVO.app_Phone2}"></td>
+				            <td><input style="width: 40px; height: 50px; padding: 0px; text-align: center;" type="text" id="Teach_Phone3" name="Teach_Phone3" value="${AppVO.app_Phone3}"></td>
+				            <td><input style="width: 100px; height: 50px; padding: 0px; text-align: center;" type="text" id="User_Email" name="User_Email" value="${AppVO.user_Email}"></td>
+				            <td><input style="width: 50px; height: 50px; padding: 0px; text-align: center;" type="text" id="Teach_Addr1" name="Teach_Addr1" value="${AppVO.app_Addr1}"></td>
+				            <td><input style="width: 150px; height: 50px; padding: 0px; text-align: center;" type="text" id="Teach_Addr2" name="Teach_Addr2" value="${AppVO.app_Addr2}"></td>
+				            <td><input style="width: 70px; height: 50px; padding: 0px; text-align: center;" type="text" id="Teach_Addr3" name="Teach_Addr3" value="${AppVO.app_Addr3}"></td>
 				            <c:if test="${AppVO.app_Num == '0'}">
 				            	<td><button type="submit" name="submit" id="button1">승인</button></td>
 				            </c:if>

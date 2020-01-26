@@ -77,9 +77,12 @@ public class AdminController {
 	    
 	// 매니지먼트 페이지 이동
 	    @RequestMapping(value = "/management")
-	    public String management() throws Exception{
+	    public String management(Model model) throws Exception{
 	    	logger.info("management 페이지로 이동~~!!");
-	    	return  "admin/management";
+
+			List<ApprovalVO> teachlist = adminservice.teachlist();
+			model.addAttribute("list", teachlist);
+			return  "admin/management";
 	    }
 	    
 	// 로그인 페이지 이동
