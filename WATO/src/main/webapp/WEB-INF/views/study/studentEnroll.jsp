@@ -11,24 +11,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="./resource/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="./resource/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="./resource/vendor/owl.carousel/assets/owl.carousel.css"> 
-    <link rel="stylesheet" href="./resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="./resource/css/style.default.css" id="theme-stylesheet"> 
+    <link rel="stylesheet" href="../../resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
-    <link rel="stylesheet" href="./resource/css/custom.css">
+    <link rel="stylesheet" href="../../resource/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
-    <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="../../resource/images/icons/favicon.ico"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
@@ -176,7 +176,7 @@
 	    color: #fff;
 	} 
 	body{
-	 background-color: #e0e0e0;
+	 background-color: #e0e0e033;
 	 }
 .btn-circle.btn-xl {
   width: 60px;
@@ -294,7 +294,7 @@
  
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
-        <div class="container"><a href="/" class="navbar-brand home"><img src="./resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container"><a href="/" class="navbar-brand home"><img src="../../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -377,8 +377,8 @@
                         </ul>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="banner"><a href="#"><img src="./resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
-                <div class="banner"><a href="#"><img src="./resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../../resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../../resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
             </div>
         </div>
                             </li>
@@ -444,21 +444,20 @@
         </div>
     </nav>
 </header>
-<div id="all">
-    <div id="content">
-        <header>
+<header class="header mx-auto" >
+<nav id="studyusnav" class="navbar ">  
 <form name="studyForm"class="form-horizontal" role="form" method="post" action="/study/studentEnroll">
-<div class="container  mx-auto">
+<div class="container  mx-auto" >
 <!-- <1> image Enroll -->
-  <div class="row mt-3 justify-content-md-center">
-    <div class="col-sm-5 d-inline-block"> <!-- 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
+  <div class="row  mx-auto" style="background:#fff;"><!--  위치 재조정  -->
+    <div class="col-sm-5 d-inline-block mx-auto"> <!-- 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
         <div class="form-group container-fluid">
           <div class="card">
             <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><h4>사진등록</h4></label>
             <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
               <div class="card-body">
                 <div class="input-group d-flex justify-content-center">
-<!-- s_photo -->     <img id="input_img" src="../resources/imgs/studyUs.png" alt="이미지">
+<!-- s_photo -->     <img id="input_img" src="../resource/images/imgs/studyUs.png" alt="이미지">
                 </div>
               </div>
             </div>
@@ -473,6 +472,10 @@
                 <img id="img_btn_2" src="../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_5" src="../resource/images/imgs/android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div>
@@ -484,24 +487,24 @@
 <!-- 스터디 기간 설정  -->
 
 
-<div class="form-group container-fluid d-inline-block">
+<div class="form-group container-fluid d-inline-block mx-auto">
     <div class="card">
     <label for="name" class="pb-1 row m-0 card-header cols-sm-3 control-label d-flex justify-content-center"><h4>스터디 기간</h4></label>
     <div class="card-body">
 	    <div class="input-group d-flex justify-content-center">
-	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	       <span class="input-group-addon"></span>
 	          <label for="start" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">시작</label>&nbsp;&nbsp;
 <!-- s_startDate  -->	<input type="date" name="s_startDate"  class="form-control col-sm-8" id="start"  value=""/>
 	    </div>
 	    <div class="input-group d-flex justify-content-center">
-	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	       <span class="input-group-addon"></span>
 	          <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">&nbsp;&nbsp;&nbsp;끝&nbsp;</label>&nbsp;&nbsp;
 <!-- s_endtDate  -->	<input type="date" name="s_endDate" class="form-control col-sm-8 " id="end" value=""/>
 	    </div>
-    	<div class="form-group">
-           <div class="cols-sm-10">
+    	<div class="form-group ">
+           <div class="cols-sm-10 ">
               <div class="input-group d-flex justify-content-center ">
-                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                 <span class="input-group-addon"></span>
                 	<!-- 월요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
                       <input type="checkbox" class="form-check-input" id="mon" value="월">
@@ -571,7 +574,7 @@
             <div class="form-group">
                 <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
                     <label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
-	                      <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	                      <span class="input-group-addon"></span>
 <!-- s_level -->	      <select name="s_level" class="selectpicker form-control w-50" >
     										  <option value="입문"selected="selected">입문</option>
     										  <option value="초급">초급</option>
@@ -580,7 +583,7 @@
     										</select>
 
                      <label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
-	                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	                            <span class="input-group-addon"></span>
 <!-- s_people --> 	      		<input type="text" class="form-control" name="s_people" id="s_people" placeholder="인원을 정해주세요!" />
 	               	
                 </div>
@@ -591,7 +594,7 @@
                           <label id="s_category" class="cols-sm-2 control-label font-weight-bold"></label>
                           <div class="cols-sm-10">
                             <div class="input-group">
-	                           <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	                           <span class="input-group-addon"></span>
 <!-- s_category -->	             <input type="text" name="s_category" class="form-control"  id="category" placeholder="과목 카테고리를 알려주세요!" />
                            </div>
                          </div>
@@ -601,7 +604,7 @@
                           <label id="s_title" class="cols-sm-2 control-label font-weight-bold"></label>
                              <div class="cols-sm-10">
                                 <div class="input-group">
-                                   <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                   <span class="input-group-addon"></span>
   <!-- s_title -->                    <input type="text"  name="s_title" class="form-control" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
                                 </div>
                              </div>
@@ -619,26 +622,26 @@
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                        <div class="d-inline row mx-md-n6">
-                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <span class="input-group-addon"></span>
                                <!--  <input type="text" class="form-control" name="schedule" id="schedule" placeholder="함께 모일 장소를 알려주세요!" /> -->
                                 <input type="button" class="btn btn-primary box " id="execDaumPostcode" value="우편번호 찾기">
                          </div>
 
                           <div class="cols-sm-10">
                             <div class="input-group mt-1 mb-1">
-                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <span class="input-group-addon"></span>
   <!-- s_postnum -->            <input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" required>
                             </div>
                           </div>
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
-                              <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                              <span class="input-group-addon"></span>
                                 <input type="text"  class="form-control" id="roadAddress" placeholder="도로명주소" required>
                             </div>
                           </div>
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
-                              <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                              <span class="input-group-addon"></span>
                                 <input type="text" class="form-control" id="jibunAddress" placeholder="지번주소" required>
                            </div>
                           </div>
@@ -672,11 +675,13 @@
         </div>
       </div>
     </div> <!-- 2-->
+     
+    
 </div><!--  1 -->
  </form>
- </header>
- </div>
- </div>
+ </nav>
+</header> 
+ 
 <div id="blog-homepage" class="box row mb-0">
     <div class="container">
         <div class="post">

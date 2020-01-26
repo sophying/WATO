@@ -7,7 +7,9 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.king.myapp.domain.LeaderReVO;
 import com.king.myapp.domain.StudentParticipationVO;
+import com.king.myapp.domain.StudentReReplyVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
 
@@ -76,11 +78,42 @@ public class StudyEnrollDAOImpl implements StudyEnrollDAO {
 	public void replyDelete(int r_no) throws Exception {
 		sql.delete("study.s_replyDelete", r_no);
 	}
-	
+
 	@Override
 	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO) throws Exception {
 		return sql.selectOne("study.partiCheck",partiVO);
 	}
+
+	// 리더의 답변하기 
+	@Override
+	public void leaderReInsert(LeaderReVO leaderReVO) throws Exception {
+		sql.insert("study.s_leaderReInsert",leaderReVO);
+	}
+
+	// 댓글 불러오기 
+	@Override
+	public List<StudentReReplyVO> reReplyRead(int s_no) throws Exception {
+		return sql.selectList("study.s_leaderReplyRead",s_no);
+	}
+
+	// 댓글 등록 
+	@Override
+	public void reReplyInsert(StudentReReplyVO replyVO) throws Exception {
+		sql.insert("study.s_reReplyinsert", replyVO);
+	}
+
+	// 댓글 수정 
+	@Override
+	public void reReplyUpdate(StudentReReplyVO replyVO) throws Exception {
+		sql.update("study.s_reReplyUpdate", replyVO);
+	}
+
+	// 댓글 삭제 
+	@Override
+	public void reReplyDelete(int r_no) throws Exception {
+		sql.delete("study.s_reReplyDelete", r_no);
+	}
+
 
 
 

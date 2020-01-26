@@ -2,7 +2,9 @@ package com.king.myapp.persistence;
 
 import java.util.List;
 
+import com.king.myapp.domain.LeaderReVO;
 import com.king.myapp.domain.StudentParticipationVO;
+import com.king.myapp.domain.StudentReReplyVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
 
@@ -40,6 +42,21 @@ public interface StudyEnrollDAO {
 	public void replyDelete(int r_no) throws Exception;
 
 	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO)throws Exception;
+
+	// 리더의 답변하기 
+	public void leaderReInsert(LeaderReVO leaderReVO) throws Exception;
+
+	// 댓글 불러오기 
+	public List<StudentReReplyVO> reReplyRead(int s_no) throws Exception;
+
+	// 댓글 등록 
+	public void reReplyInsert(StudentReReplyVO replyVO) throws Exception;
+
+	// 댓글 수정 
+	public void reReplyUpdate(StudentReReplyVO replyVO) throws Exception;
+
+	// 댓글 삭제 
+	public void reReplyDelete(int r_no) throws Exception;
 
 	
 

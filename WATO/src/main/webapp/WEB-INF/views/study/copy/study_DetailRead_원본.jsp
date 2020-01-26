@@ -472,7 +472,7 @@
 								<c:if test="${(std.user_Id ).equals(listOne.s_userId) }">
 	<!--  내용 수정 -->				<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>
 	<!--  내용 삭제 -->				<input type="submit" id="delete_enroll"  data-toggle="modal" data-target="#delete-modal"class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/>	
-								<%@include file="../include/s_delete_enroll.jsp" %>
+								<%@include file="../../include/s_delete_enroll.jsp" %>
 								</c:if>	
 							</div>	
 							<div class="h-75 container d-inline-block border-top"> 
@@ -547,7 +547,7 @@
 	<!-- @@@@@@@@ //// 댓글 ( Q & A ) 작성  /// @@@@@@@@ -->	
 							<c:forEach var="reply" items="${reply}">
 								<c:choose>
- 								<c:when test="${(listOne.s_userId).equals(reply.r_userid)}">
+									<c:when test="${(listOne.s_userId).equals(reply.r_userid)}">
 										<form  id="replyForm"action="./replyModify" method="post">
 											<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: orange;">
 												<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
@@ -561,8 +561,7 @@
 																	
 																	<c:if test="${(listOne.s_userId).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
-																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
-																		<%-- <a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a> --%>
+																		<a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a>
 																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
 																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
 																	</c:if>
@@ -582,16 +581,21 @@
 													<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
 															<table class="justify-content-center d-inline-block w-100">
 																<tr>
-																	<td rowspan="1" colspan="2" class="pr-5 w-25 h-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
-																	<td colspan="7" >
-																		<textarea  name="r_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="90"  readonly="readonly">${reply.r_content}</textarea>
-																	</td> 
-																	<td >
+																	<td rowspan="5" class="pr-5 w-25 h-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
+																	<td colspan="5" >
+																		
+																		<textarea  name="r_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="100" style="border:none; height: auto; " readonly="readonly">${reply.r_content}</textarea>
+																	
+																	<td> 
+																</tr>
+																<tr>
+																	<td>
+																	
 																	<c:if test="${(reply.r_userid).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
-																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
-																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																		<a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a>
 																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
 																	</c:if>
 																	</td>
 																</tr>
@@ -601,7 +605,7 @@
 											</div>
 										</form>
 									</c:otherwise>
-								</c:choose> 
+								</c:choose>
 							</c:forEach> 
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
 								<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
@@ -626,7 +630,7 @@
 										</form>
 									</div>
 								</div>		
-							</div> 
+							</div>
 					</div>    
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
 	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
@@ -683,8 +687,8 @@
 					</div>
 				</aside>
 
-		           		 <%@include file="../include/participation.jsp" %>
-		           		 <%@include file="../include/cancleForm.jsp" %>
+		           		 <%@include file="../../include/participation.jsp" %>
+		           		 <%@include file="../../include/cancleForm.jsp" %>
 				<!-- @@@@@@@@ //// 참여신청 끝 /// @@@@@@@@ -->	
 					</div>   
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->

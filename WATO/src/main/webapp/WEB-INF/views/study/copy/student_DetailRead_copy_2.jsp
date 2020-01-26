@@ -246,6 +246,7 @@
 	textarea{
 	 resize: none;
 	 background-color: transparent;
+	 border: none;
 	}
 </style>
 <body>
@@ -471,8 +472,7 @@
 									</label>
 								<c:if test="${(std.user_Id ).equals(listOne.s_userId) }">
 	<!--  내용 수정 -->				<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>
-	<!--  내용 삭제 -->				<input type="submit" id="delete_enroll"  data-toggle="modal" data-target="#delete-modal"class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/>	
-								<%@include file="../include/s_delete_enroll.jsp" %>
+	<!--  내용 삭제 -->				<a href="studentDelete?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/></a>	
 								</c:if>	
 							</div>	
 							<div class="h-75 container d-inline-block border-top"> 
@@ -547,7 +547,7 @@
 	<!-- @@@@@@@@ //// 댓글 ( Q & A ) 작성  /// @@@@@@@@ -->	
 							<c:forEach var="reply" items="${reply}">
 								<c:choose>
- 								<c:when test="${(listOne.s_userId).equals(reply.r_userid)}">
+									<c:when test="${(listOne.s_userId).equals(reply.r_userid)}">
 										<form  id="replyForm"action="./replyModify" method="post">
 											<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: orange;">
 												<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
@@ -557,12 +557,11 @@
 																	<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
 																	<td colspan="5" >
 																		
-																		<textarea name="r_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="100"  readonly="readonly" style="border:none; ">${reply.r_content}</textarea>
+																		<textarea rows="10" cols="100" id="r_content" name="r_content" readonly="readonly" style="border:none; height:auto;">${reply.r_content}</textarea>
 																	
 																	<c:if test="${(listOne.s_userId).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
-																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
-																		<%-- <a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a> --%>
+																		<a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a>
 																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
 																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
 																	</c:if>
@@ -576,21 +575,42 @@
 										</form>
 									</c:when>
 									<c:otherwise>
-									<form id="replyForm"  action="./replyModify" method="post">
+									<form id="replyForm" method="post">
 										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top mt-1"style="background:#dddeee;"> 
 												<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 													<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
 															<table class="justify-content-center d-inline-block w-100">
 																<tr>
-																	<td rowspan="1" colspan="2" class="pr-5 w-25 h-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
-																	<td colspan="7" >
-																		<textarea  name="r_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="90"  readonly="readonly">${reply.r_content}</textarea>
-																	</td> 
-																	<td >
-																	<c:if test="${(reply.r_userid).equals(std.user_Id ) }">
+																	<td rowspan="5" class="pr-5 w-25 h-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
+																	<td colspan="5" >
+																		
+																		<textarea id="r_content" name="r_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly="readonly">${reply.r_content}</textarea>
+																	
+																	<td> 
+																</tr>
+																<tr>
+																	<td>
+									<c:forEach var="leaderReply" items="${leaderReply}"> 
+																	<c:if test="${reply.r_no == leaderReply.r_no_origin }">
+																		<font size="4pt;"><span class="d-flex d-inline-block"style="height: 30px; line-height: 30px; font-weight:bold;">리더의 답변 : </span></font>
+																		<textarea id="rr_content" name="rr_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly="readonly">${leaderReply.rr_content}</textarea>
+																	</c:if>
+										</c:forEach>
+																	<c:if test="${(reply.r_userid).equals(std.user_Id ) }"> 
 																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
-																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
+																		<a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a>
 																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
+																	</c:if>
+																	</td>
+																	
+																	<td>
+																	<c:if test="${(listOne.s_userId).equals(std.user_Id) }">
+																		<font size="4pt;"><span class="d-flex d-inline-block"style="height: 30px; line-height: 30px; font-weight:bold;">리더의 답변 : </span></font>
+																		<textarea id="rr_content" name="rr_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="100" style="background:#fff; height: 30px;"></textarea>
+																		<input id="rereplybuton" onclick="leaderRe(this)" type="button"class="leaderBtn d-inline-block" value="답변하기"  style="height: 30px; line-height: 30px;" />
+																		<input type="hidden" name="rr_userid" value="${std.user_Id }">
+																		<input type="hidden" name="r_no_origin" value="${reply.r_no }"/>
 																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
 																	</c:if>
 																	</td>
@@ -601,7 +621,7 @@
 											</div>
 										</form>
 									</c:otherwise>
-								</c:choose> 
+								</c:choose>
 							</c:forEach> 
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
 								<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
@@ -626,7 +646,7 @@
 										</form>
 									</div>
 								</div>		
-							</div> 
+							</div>
 					</div>    
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
 	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
@@ -672,7 +692,7 @@
 								<c:choose>
 										<c:when test="${(partiOne.p_userid).equals(std.user_Id )}">    
 											<div class="successBtn"id="success" >    참여신청완료</div>
-											<input type="button" class="goButton mt-4" id="cancle"  data-toggle="modal" data-target="#cancle-modal"  value="참여신청취소하기"/> 
+											<input type="button" class="goButton mt-4"id="cancle"  data-toggle="modal" data-target="#cancle-modal"  value="참여신청취소하기"/> 
 										</c:when> 
 										<c:otherwise>
 											<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/> 
@@ -683,8 +703,8 @@
 					</div>
 				</aside>
 
-		           		 <%@include file="../include/participation.jsp" %>
-		           		 <%@include file="../include/cancleForm.jsp" %>
+		           		 <%@include file="../../include/participation.jsp" %>
+		           		 <%@include file="../../include/cancleForm.jsp" %>
 				<!-- @@@@@@@@ //// 참여신청 끝 /// @@@@@@@@ -->	
 					</div>   
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->

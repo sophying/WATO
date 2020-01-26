@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -95,9 +94,10 @@ public class StudyenrollController {
 			
 			studyService.viewCount(s_no);
 			StudyEnrollVO listOne = studyService.detailRead(s_no);
-			List<StudentReplyVO> reply = studyService.replyRead(s_no);
+			List<StudentReplyVO> reply = studyService.replyRead(s_no); // 댓글 불러오기 
+			//List<StudentReReplyVO> reReply = studyService.reReplyRead(s_no);
 			
-			
+					
 			//  현재 유저의 참여신청여부 파악  
 			StdVO user = (StdVO) session.getAttribute("std");
 			String user_id = user.getUser_Id();
@@ -113,8 +113,11 @@ public class StudyenrollController {
 				model.addAttribute("partiOne",partiOne);
 			}
 			
+			//List<LeaderReVO> reReply = studyService.reReplyRead(s_no);
+			
 			model.addAttribute("std");
 			model.addAttribute("reply",reply);
+			//model.addAttribute("reReply",reReply);
 			model.addAttribute("listOne",listOne);
 			
 	}		
@@ -133,7 +136,7 @@ public class StudyenrollController {
 			System.err.println(partiVO.getP_tell());
 			System.err.println(partiVO.getP_userid());
 			 
-			
+			model.addAttribute("std");
 			
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
 			
@@ -158,7 +161,7 @@ public class StudyenrollController {
 					participationService.partiCntMinus(s_no);
 				    // 	
 							
-				
+					model.addAttribute("std");
 					
 					
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
@@ -229,17 +232,79 @@ public class StudyenrollController {
 	}
 
 	// 6. 일반인 Study 등록 내용 수정 글 등록
-		@RequestMapping(value = "/studentModify", method = RequestMethod.POST)
-		public String postModify(@RequestParam("s_no") int s_no, StudyEnrollVO studyVO) throws Exception{
+			@RequestMapping(value = "/studentModify", method = RequestMethod.POST)
+			public String postModify(@RequestParam("s_no") int s_no, StudyEnrollVO studyVO) throws Exception{
+				
+				logger.info("--------------[ 스터디 수정 내용 등록  POST ]-----------------");		
+				
+				studyService.modify(studyVO);
+				
+				return "redirect:/study/study_DetailRead?s_no="+s_no;
+				
+			}
+	
+	// 상세페이지 삭제 
+	@RequestMapping(value = "/studentDelete", method = RequestMethod.GET)
+	public String postDelete(@RequestParam("s_no") int s_no, Model model ) throws Exception{
+		logger.info("--------------[ 내용 삭제  POST ]-----------------");				
+				
+		studyService.studyDelete(s_no);
+				
+		model.addAttribute("std");
+		return "redirect:/";
+	}		
 			
-			logger.info("--------------[ 스터디 수정 내용 등록  POST ]-----------------");		
 			
-			studyService.modify(studyVO);
+	
+	// 7. 상세페이지 댓글 등록 
+		@RequestMapping(value = "/s_detailReply.do", method = RequestMethod.POST)
+		public String postReply(@RequestParam("s_no") int s_no, StudentReplyVO replyVO ,StudyEnrollVO studyVO, Model model ) throws Exception{
 			
+			logger.info("--------------[ 스터디 댓글 내용 등록  POST ]-----------------");		
+				
+			studyService.replyInsert(replyVO);    
+			  
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
 			
-		}
-		
+		}	
+	
+	
+	//
+	@RequestMapping(value = "/replyModify", method = RequestMethod.POST)
+	public String postReplyModify(@RequestParam("s_no") int s_no,@RequestParam("r_no") int r_no, Model model , StudentReplyVO replyVO ,StudyEnrollVO studyVO ) throws Exception{
+			
+		logger.info("--------------[ 스터디 댓글 내용 수정  POST ]-----------------");		
+			
+		studyService.replyUpdate(replyVO);   
+			
+			  
+		return "redirect:/study/study_DetailRead?s_no="+s_no;
+			
+		}	
+	
+	// 댓글삭제
+	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
+	public String getReplyDelete(@RequestParam("r_no") int r_no, @RequestParam("s_no") int s_no) throws Exception{
+		studyService.replyDelete(r_no);
+			
+		return "redirect:/study/study_DetailRead?s_no="+s_no;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+/*	
+	
 	// 7. 상세페이지 댓글 등록 
 		@RequestMapping(value = "/s_detailReply.do", method = RequestMethod.POST)
 		public String postReply(@RequestParam("s_no") int s_no, StudentReplyVO replyVO ,StudyEnrollVO studyVO, Model model ) throws Exception{
@@ -255,35 +320,38 @@ public class StudyenrollController {
 		
 		// 상세페이지 삭제 
 		@RequestMapping(value = "/studentDelete", method = RequestMethod.GET)
-		public String postDelete(@RequestParam("s_no") int s_no) throws Exception{
+		public String postDelete(@RequestParam("s_no") int s_no, Model model ) throws Exception{
 			logger.info("--------------[ 내용 삭제  POST ]-----------------");				
 			
 			studyService.studyDelete(s_no);
+			
+			model.addAttribute("std");
 			return "redirect:/";
 		}
 		
 		//
 		@RequestMapping(value = "/replyModify", method = RequestMethod.POST)
-		public String postReplyModify(@RequestParam("s_no") int s_no,@RequestParam("r_no") int r_no, StudentReplyVO replyVO ,StudyEnrollVO studyVO ) throws Exception{
+		public String postReplyModify(@RequestParam("s_no") int s_no,@RequestParam("r_no") int r_no, Model model , StudentReplyVO replyVO ,StudyEnrollVO studyVO ) throws Exception{
 			
 			logger.info("--------------[ 스터디 댓글 내용 등록  POST ]-----------------");		
 			
 			studyService.replyUpdate(replyVO);   
+			
+			model.addAttribute("std");
 			  
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
 			
 		}
 		
 		// 댓글삭제
-		@RequestMapping(value = "/replyDelete/{s_no}/{r_no}", method = RequestMethod.GET)
-		public String getReplyDelete(@PathVariable("r_no") int r_no, @PathVariable("s_no") int s_no) throws Exception{
+		@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
+		public String getReplyDelete(@RequestParam("r_no") int r_no, @RequestParam("s_no") int s_no) throws Exception{
 			studyService.replyDelete(r_no);
 			
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
 		}
 		
-		//참가 신청 취소 
-		
+*/		
 		
 		
 

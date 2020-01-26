@@ -85,6 +85,40 @@ public class StudyEnrollServiceImpl implements StudyEnrollService{
 		return studyEnrollDAO.partiCheck(partiVO);
 	}
 
+	/*
+	//  리더의 답변하기 
+	@Override
+	public void leaderReply(LeaderReVO leaderReVO) throws Exception {
+		studyEnrollDAO.leaderReInsert(leaderReVO);
+	}
+
+	// 댓글  불러오기 
+	@Override
+	public List<StudentReReplyVO> reReplyRead(int s_no) throws Exception {
+		return studyEnrollDAO.reReplyRead(s_no);
+	}
+
+	// 댓글 달기 
+	@Override
+	public void reReplyInsert(StudentReReplyVO replyVO) throws Exception {
+		studyEnrollDAO.reReplyInsert(replyVO);
+	}
+
+	// 댓글 수정 
+	@Override
+	public void reReplyUpdate(StudentReReplyVO replyVO) throws Exception {
+		studyEnrollDAO.reReplyUpdate(replyVO);
+	}
+
+	// 댓글 삭제 
+	@Override
+	public void reReplyDelete(int r_no) throws Exception {
+		studyEnrollDAO.reReplyDelete(r_no);
+	}
+*/
+	
+
+
 
 
 

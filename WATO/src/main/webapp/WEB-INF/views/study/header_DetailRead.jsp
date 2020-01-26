@@ -442,7 +442,7 @@
 													<td colspan="5" >
 														<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
 														</font></pre> --%>  
-														<textarea id="r_content2" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
+														<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
 													<td>    
 												</tr>   
 												<tr>
