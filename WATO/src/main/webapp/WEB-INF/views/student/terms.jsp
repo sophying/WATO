@@ -302,7 +302,7 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -353,7 +353,7 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">

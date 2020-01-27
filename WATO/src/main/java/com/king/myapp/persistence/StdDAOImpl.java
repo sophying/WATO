@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.StdVO;
-import com.king.myapp.domain.TeachVO;
 
 @Service
 public class StdDAOImpl implements StdDAO {

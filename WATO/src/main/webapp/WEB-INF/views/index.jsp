@@ -495,7 +495,7 @@
             <div class="container"> 
                 <div class="product-slider owl-carousel owl-theme">
                 	<%int q = 1;%>
-                	<c:forEach items="${languagerank}" var="languagerank">
+                	<c:forEach items="${languagerank}" var="languagerank"> 
                 	<div style="position: relative;"> 
                 		<div class="imgrank">
 									<%if(q== 1){ %> 

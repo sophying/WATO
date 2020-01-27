@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 
-@Service
+@Repository
 public class AdminDAOImpl implements AdminDAO {
 
 	//마이바티스
