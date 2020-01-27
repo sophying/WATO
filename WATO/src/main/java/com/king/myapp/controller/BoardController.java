@@ -127,6 +127,7 @@ public class BoardController {
 //			
 //			return "/index";
 //		}  
+		
 		/* , 스터디및 강사 를 조회 하는 페이지 studylist안에 iframe 으로 요청됨*/
 		@RequestMapping(value="/studylistview" , method=RequestMethod.GET)
 		public String getstudylistview(Model model) throws Exception {
