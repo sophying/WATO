@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -453,3 +454,5 @@ $('#img_btn_5').on({'click': function(){
 
 
 
+=======
+>>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git

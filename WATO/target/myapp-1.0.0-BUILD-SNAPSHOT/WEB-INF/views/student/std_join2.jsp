@@ -48,6 +48,24 @@
                         <td colspan="2"><input type="password" id="userPwChk" size="55" maxlength="12" placeholder="비밀번호 확인"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
                     </tr>
                     <tr>
+<<<<<<< HEAD
+=======
+                        <th>비밀번호 확인 질문<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                        <td colspan="2"><select id="Std_Pwd_Qs" name="Std_Pwd_Qs" style="width: 290px; text-align: center;">
+                            <option value="기억에 남는 추억의 장소는?" selected>기억에 남는 추억의 장소는?</option>
+                            <option value="자신의 보물 1호는?">자신의 보물 1호는?</option>
+                            <option value="가장 좋아하는 과일은?">가장 좋아하는 과일은?</option>
+                            <option value="가장 좋아했던 초등학교 선생님 성함은?">가장 좋아했던 초등학교 선생님 성함은?</option>
+                            <option value="인상 깊게 읽은 책 제목은?">인상 깊게 읽은 책 제목은?</option>
+                            <option value="추억하고 싶은 날짜가 있다면?">추억하고 싶은 날짜가 있다면?</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <th>비밀번호 확인 답변<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                        <td colspan="2"><input type="text" id="Std_Pwd_As" name="Std_Pwd_As" size="55" maxlength="12"></td>
+                    </tr>
+                    <tr>
+>>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
                         <th>성별<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td colspan="2"><label><input type="radio" id="Std_Gender" name="Std_Gender" value="남자">남자</label>
                         &nbsp;<label><input type="radio" id="Std_Gender" name="Std_Gender" value="여자" checked>여자</td></label>

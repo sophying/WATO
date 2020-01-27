@@ -177,6 +177,7 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
+<<<<<<< HEAD
                        <c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if> 
@@ -218,6 +219,10 @@
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
                         <c:if test="${!std.user_Id.equals('admin')}">
+=======
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
+                        <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
+>>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.equals('admin')}">
@@ -228,6 +233,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="row">  
 			<div class="modal fade" id="myModal" tabindex="-1"> 
 				<div class="modal-dialog modal-lg">  
@@ -239,6 +245,19 @@
 										<%@ include  file="admin/loginform.jsp"%>
 								</div>
 							</div>    
+=======
+        <div class="row"> 
+			<div class="modal fade" id="modal" tabindex="-1"> 
+				<div class="modal-dialog modal-lg">  
+					<div class="modal-content" style="background: none; border: 0px">   
+						<div class="modal-body"> 
+							<div class="limiter">
+								<button class="close-button" data-dismiss="modal">&times;</button> 
+								<div class="container-login100">   
+										<%@ include  file="include/loginform.jsp"%>
+								</div>
+							</div>   
+>>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
 						</div> 
 					</div>
 				</div>
