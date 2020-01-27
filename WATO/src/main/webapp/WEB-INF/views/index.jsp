@@ -440,6 +440,7 @@
         </div>
     </nav>
 </header>
+<!-- 메인페이지 슬라이드쇼 -->
 <div id="all">
     <div id="content">
         <header>
@@ -486,6 +487,7 @@
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
         -->
+        <!-- 메인페이지 language rank  -->
         <div  id="hot">
             <div class="box py-4 mt-0">
                 <div class="container">
@@ -535,9 +537,12 @@
                     <% q++; %>
                     </c:forEach> 
                     <script type="text/javascript"> 
+                    //c#으로는 controller에 전달되지 않아 다른 이름으로 전달 한 후 c#으로 다시변경한 후 검색
 						function imagesfunction(event) {
 							var language = $(event).next().text();
-							alert(language) 
+							if(language == "C#"){
+								language ="Ccrosshatch"; 
+							}  
 							location.href = '/board/searchResult/'+language;
 						}
                     </script>
@@ -560,6 +565,7 @@
                 </div>
             </div>
         </div>
+        <!-- 메인페이지 스터디 랭킹 -->
         <div  id="hot">
             <div class="box py-4 mt-0">
                 <div class="container">
@@ -730,16 +736,7 @@
     </div>
     <!-- /#blog-homepage-->
 </div>
-<!-- /.container-->
-<!-- *** BLOG HOMEPAGE END ***-->
-<!--
-*** FOOTER ***
-_________________________________________________________
--->
-<!--
-*** FOOTER ***
-_________________________________________________________
--->
+
 <div class="box text-center mb-3" id="footer">
     <div class="container">
         <div class="row">

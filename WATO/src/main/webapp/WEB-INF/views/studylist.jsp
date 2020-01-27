@@ -454,6 +454,7 @@
         -->   
         <div  id="hot">
             	<br><br>
+            	<!-- 스터디 목록 조회 하는 iframe -->
                 	 <iframe id="studylistview" src="http://localhost:8080/board/studylistview" style="width:100%; border: none;"></iframe>
                 <!-- /.container-->
             <!-- /#hot-->    

@@ -54,7 +54,7 @@
        <groupId>org.springframework</groupId>
        <artifactId>spring-context-support</artifactId>
        <version>${org.springframework-version}</version>
-   </dependency>
+   </dependency> 
        
        
        <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->

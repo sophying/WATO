@@ -30,6 +30,7 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	@Override
 	public List<StudyEnrollVO> searchResultStudy(String searchKey) {
+		sql.update("board.languageviewcnt",searchKey); // viewcnt 가 하나씩 올라감
 		return sql.selectList("board.searchResultStudy",searchKey);
 	}
 	@Override
