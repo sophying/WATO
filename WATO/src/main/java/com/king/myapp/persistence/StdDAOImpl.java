@@ -37,4 +37,10 @@ public class StdDAOImpl implements StdDAO {
 		return result;
 	}
 
+	// 학생 정보 회원관리로
+	@Override
+	public void admin_mng(StdVO vo) throws Exception {
+		sql.insert(namespace + ".admin_mng", vo);
+	}
+
 }

@@ -2,6 +2,7 @@ package com.king.myapp.persistence;
 
 import java.util.List;
 
+import com.king.myapp.domain.AdminVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
@@ -34,5 +35,8 @@ public interface AdminDAO {
 
 	// 강사 아이디 찾기
 	public TeachVO findT_id(TeachVO tvo) throws Exception;
+
+	// 회원관리
+	public List<AdminVO> manageList() throws Exception;
 
 }

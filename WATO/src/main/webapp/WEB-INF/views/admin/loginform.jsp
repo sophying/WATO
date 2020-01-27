@@ -283,6 +283,7 @@
 	            <div><label><input type="radio" name="radio" class="radio" id="radio" value="10">학생</label>
 	            	 <label><input type="radio" name="radio" class="radio" id="radio" value="20">강사</label>
 	            </div>
+	                
 	            <input type="text" name="User_Id" placeholder="Email" />
 	            <input type="password" name="User_Pwd" placeholder="Password" /><br>
 	            <div><a href="../admin/forgot_id_pwd">아이디 또는 비밀번호 찾기</a></div><br>
@@ -325,6 +326,27 @@
 </script>
 
 <script type="text/javascript">
+//필수 입력정보인 아이디, 비밀번호가 입력되었는지 확인하는 함수
+	function checkValue()
+	{
+	    if(!document.userInfo.id.value){
+	        alert("아이디를 입력하세요.");
+	        return false;
+	    }
+	    
+	    if(!document.userInfo.password.value){
+	        alert("비밀번호를 입력하세요.");
+	        return false;
+	    }
+	    
+	    // 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
+	    if(document.userInfo.password.value != document.userInfo.passwordcheck.value ){
+	        alert("비밀번호를 동일하게 입력하세요.");
+	        return false;
+	    }
+	}
+
+    
 	$('#login').click(function() {
 		
 		var radioval = $('input[name="radio"]:checked').val();
@@ -334,8 +356,12 @@
 		
 		} else if(null != radioval && radioval == 20) {
 			$('form[name="loginform"]').attr('action',"/admin/logintch");
-		} 
-	});
+
+		} else {
+			alert('학생 혹은 강사 중 선택해주세요.');
+			return false;
+	}});
+
 </script>
 </body>
 </html>

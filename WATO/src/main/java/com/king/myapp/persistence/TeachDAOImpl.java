@@ -46,7 +46,7 @@ public class TeachDAOImpl implements TeachDAO {
 	// 회원 가입2(관리자가 강사 승인버튼을 클릭했을 때)
 	@Override
 	public void teach_join2(TeachVO vo) {
-		sql.insert(namespace + ".teach_join2", vo);
+		sql.insert(namespace + ".teach_join2", vo);		
 	}
 
 	// 강사 회원 가입3
@@ -65,6 +65,18 @@ public class TeachDAOImpl implements TeachDAO {
 	@Override
 	public void teach_appUpdate(ApprovalVO avo) throws Exception {
 		sql.update(namespace + ".teach_appUpdate", avo);
+	}
+	
+	// 강사 정보 회원관리에 추가1
+	@Override
+	public void admin_mng1(ApprovalVO vo) throws Exception {
+		sql.insert(namespace + ".admin_mng1", vo);
+	}
+
+	// 강사 정보 회원관리에 추가2
+	@Override
+	public void admin_mng2(TeachVO vo) throws Exception {
+		sql.update(namespace + ".admin_mng2", vo);
 	}
 	
 }

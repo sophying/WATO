@@ -172,41 +172,6 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
-        
-       /* input {
-            background-color: #eee;
-            border: none; // 그림자 제거 
-            padding: 12px 15px;
-            margin: 8px 0; // 위아래 간격 
-        }
-
-        #header ul li a:hover{
-            background-color: #6c80b2; // 마우스 올리면 배경색 바뀜 
-            color:#dddddd;
-        }
-
-        th#student {
-
-        }
-
-        div#join {
-            padding-top: 30px;
-            padding-bottom: 20px;
-        }
-
-        button#joinb:hover {
-            color: #3c97bf;
-            cursor: pointer; // mouse shape turn finger
-            background-color: #eeeeee;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #3c97bf;
-        } */
 
         th {
             border: 1px solid #bbbbbb;
@@ -237,7 +202,7 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
@@ -465,7 +430,7 @@
     <div id="content">
 <!-- 최지혜 추가 -->  
 		<div class="table-responsive">
-        	<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
+        	<form role="form" method="post" autocomplete="off"><br><br>
             	<table class="table" style="margin: auto; width: 70%;" cellspacing="0"> <!-- 강사 승인신청폼 -->
                 	<tr>
                         <th id="student" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">강사 승인신청폼</th>

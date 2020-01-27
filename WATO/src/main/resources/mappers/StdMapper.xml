@@ -20,6 +20,13 @@
 				#{Std_Addr1}, #{Std_Addr2}, #{Std_Addr3})
 	</insert>
 	
+	<!-- 학생 정보 회원관리로 -->
+	<insert id="admin_mng">
+		insert into
+		management(No, User_Id, User_Gender, User_Email)
+		values ('10', #{User_Id}, #{Std_Gender}, #{User_Email})
+	</insert>
+	
 	<!-- 아이디 중복확인 -->
 	<select id="idChk" resultType="int">
 		select count(*) from std_info

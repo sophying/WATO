@@ -29,6 +29,7 @@
                     </ul>
                 </div>
             </li>
+            <li class="sidebar-list-item"><a href="/admin/approval" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray"></i><span>Approval</span></a></li>
             <li class="sidebar-list-item"><a href="/admin/management" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray"></i><span>Manage</span></a></li>
             <li class="sidebar-list-item"><a href="/admin/login" class="sidebar-link text-muted"><i class="o-exit-1 mr-3 text-gray"></i><span>Login</span></a></li>
         </ul>

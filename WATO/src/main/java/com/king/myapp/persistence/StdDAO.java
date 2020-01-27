@@ -14,4 +14,7 @@ public interface StdDAO {
 	// 아이디 중복체크
 	public int idChk(StdVO vo) throws Exception;
 
+	// 학생 정보 회원관리로
+	public void admin_mng(StdVO vo) throws Exception;
+
 }

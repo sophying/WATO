@@ -62,5 +62,17 @@ public class TeachServiceImpl implements TeachService {
 	public void teach_appUpdate(ApprovalVO avo) throws Exception {
 		dao.teach_appUpdate(avo);
 	}
+	
+	// 강사 정보 회원관리에 추가1
+	@Override
+	public void admin_mng1(ApprovalVO vo) throws Exception {
+		dao.admin_mng1(vo);
+	}
+
+	// 강사 정보 회원관리에 추가2
+	@Override
+	public void admin_mng2(TeachVO vo) throws Exception {
+		dao.admin_mng2(vo);
+	}
 
 }

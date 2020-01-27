@@ -13,4 +13,7 @@ public interface StdService {
 	// 아이디 중복 체크
 	public int idChk(StdVO vo) throws Exception;
 
+	// 학생 정보 회원관리로
+	public void admin_mng(StdVO vo) throws Exception;
+
 }
