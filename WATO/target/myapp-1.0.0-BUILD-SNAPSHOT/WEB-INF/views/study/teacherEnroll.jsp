@@ -4,34 +4,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>스터디어스 - 세상을 뒤흔들어라</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="./resource/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="./resource/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="./resource/vendor/owl.carousel/assets/owl.carousel.css"> 
-    <link rel="stylesheet" href="./resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="./resource/css/style.default.css" id="theme-stylesheet"> 
+    <link rel="stylesheet" href="../../resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
-    <link rel="stylesheet" href="./resource/css/custom.css">
+    <link rel="stylesheet" href="../../resource/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
-    <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="../../resource/images/icons/favicon.ico"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>강사회원스터디 모집 등록</title>
+<title>Insert title here</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
@@ -41,12 +41,146 @@
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 <style media="screen">
+ #top{
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+        background-color: #e0e0e0;
+    }
+    #studyusnav{
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+    }
+    #search{
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+    }
+    #new{
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+    }
+    #content{
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+    }
+    #footer {
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+    }
+    #navigation > ul > li > ul {
+        width: 100.3%;
+    }
+    #hot{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .cate_list{
+        padding-bottom: 10px;
+    }
+    .cate_list a {
+        float: left;
+        display: block;
+        width: 33%;
+        text-align: center;
+        padding: 5px 0;
+        color: #27323c;
+    }
+    .cate_list a > * {
+        display: inline-block;
+        font-size: 13px;
+    }
+    .cate_list > a > span > img {
+        max-width: 100%;
+        vertical-align: middle;
+        border: 0;
+    }
+    #icon{
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    #all{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .carousel-item {
+        height: 50vh;
+        min-height: 350px;
+        background: no-repeat center center scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    #blog-homepage{
+        position: static; 
+        margin-left: auto; 
+        margin-right: auto;
+        width: 53.8%;
+    }
+    .imgrank img{
+	    position:absolute;
+	    background:none;
+	 	width:100%;
+	 	height: auto;
+	 	max-width: 40px; 
+	 	z-index: 10;
+	 }
+	 .container-login100 { 
+	  width: 100%;  
+	  min-height: 80vh; 
+	  display: -webkit-box; 
+	  display: -webkit-flex; 
+	  display: -moz-box; 
+	  display: -ms-flexbox; 
+	  display: flex;  
+	  flex-wrap: wrap;  
+	  justify-content: center;   
+	  align-items: center; 
+	  padding: 15px;
+	  background: none; 
+	}
+	.limiter {
+	  width: 100%;
+	  margin: 0 auto;
+	}
+	.close-button {
+    transition: all 0.5s ease;
+    position: absolute;
+    background-color: #4FBFA8;
+    padding: 1.5px 7px; 
+    right: 0;
+    margin-left: -10px;
+    margin-top: -9px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    color: white;
+    -webkit-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
+    box-shadow: -3px 1px 6px 0px rgba(0,0,0,0.1);
+	} 
+	
+	.close-button:hover {
+	    background-color: tomato;
+	    color: #fff;
+	} 
 	body{
-	 background-color: #e0e0e0;
+	 background-color: #e0e0e033;
 	 }
 .btn-circle.btn-xl {
   width: 60px;
-  height: 60px; 
+  height: 60px;
   padding: 5px 5px 5px 5px;
   border-radius: 35px;
   font-size: 24px;
@@ -67,14 +201,14 @@
   height: 200px;
 
 }
+#img_btn_0:hover{
 
+}
 #text{
  display: none;
 }
 
-.card-header{
-background:#5a7fa2;
-}
+
 /* .content{
     outline: 2px dashed #92b0b3 ;
     outline-offset:-10px;  
@@ -169,7 +303,7 @@ background:#5a7fa2;
  
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
-        <div class="container"><a href="/" class="navbar-brand home"><img src="./resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container"><a href="/" class="navbar-brand home"><img src="../../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -311,7 +445,7 @@ background:#5a7fa2;
                     <div class="input-group">     
                         <input type="text" placeholder="Search" class="form-control" name="searchKey" id="searchKey"> 
                         <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                            <button type="submit" class="btn btn-primary"></button>
                         </div>
                     </div>
                 </form>
@@ -319,10 +453,12 @@ background:#5a7fa2;
         </div>
     </nav>
 </header>
+    <div id="content">
+        <header>
 <div class="container  mx-auto">
 <form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherEnroll">
 <!-- <1> image Enroll -->
-  <div class="row mt-3 justify-content-md-center">
+  <div class="row  justify-content-md-center"  style="background:#fff;" >
     <div class="col-sm-5 d-inline-block"> <!-- 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
         <div class="form-group container-fluid">
           <div class="card">
@@ -330,7 +466,7 @@ background:#5a7fa2;
             <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
               <div class="card-body">
                 <div class="input-group d-flex justify-content-center">
-<!-- photo -->     <img id="input_img" src="../resources/imgs/studyUs.png" alt="이미지">
+<!-- photo -->     <img id="input_img" src="../resource/images/imgs/studyUs.png" alt="이미지">
                 </div>
               </div>
             </div>
@@ -340,14 +476,16 @@ background:#5a7fa2;
             <div class="form-group"> -->
             <div class="cols-sm-5 pb-5 pr-2 pl-2">
               <div class="input-group d-flex justify-content-center ">
-                <img id="img_btn_0" src="../resources/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
-                <img id="img_btn_1" src="../resources/imgs/java1.jpeg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_2" src="../resources/imgs/js1.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_3" src="../resources/imgs/cplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_4" src="../resources/imgs/php1.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_5" src="../resources/imgs/android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <!-- <button type="button" class="btn btn-primary btn-circle btn-xl"><i class="fa fa-list"></i></button>&nbsp;&nbsp;
-                <button type="button" class="btn btn-success btn-circle btn-xl"><i class="fa fa-link"></i></button> -->
+                <img id="img_btn_0" src="../resource/images/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+                <img id="img_btn_1" src="../resource/images/imgs/java.jpeg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_2" src="../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_5" src="../resource/images/imgs/android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div>
             <!-- </div>
@@ -363,19 +501,19 @@ background:#5a7fa2;
     <label for="name" class="pb-1 row m-0 card-header cols-sm-3 control-label d-flex justify-content-center"><font size="5">강의 기간</font></label>
     <div class="card-body">
 	    <div class="input-group d-flex justify-content-center">
-	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	       <span class="input-group-addon"></span>
 	          <label for="start" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">시작</label>&nbsp;&nbsp;
 	          <input type="date" name="t_startDate" class="form-control col-sm-8" id="start" value="" />
 	    </div>
 	    <div class="input-group d-flex justify-content-center">
-	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	       <span class="input-group-addon"></span>
 	          <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">&nbsp;&nbsp;&nbsp;끝&nbsp;</label>&nbsp;&nbsp;
 	          <input type="date" name="t_endDate"  class="form-control col-sm-8 " id="end" value="" />
 	    </div>
     <div class="form-group">
            <div class="cols-sm-10">
               <div class="input-group d-flex justify-content-center ">
-                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                 <span class="input-group-addon"></span>
                 	<!-- 월요일 -->
                     <div class="form-check form-check-inline cols-sm-2">
                       <input type="checkbox" class="form-check-input" id="mon" value="월">
@@ -434,7 +572,7 @@ background:#5a7fa2;
           <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
            <div class="card-body">
              <div class="input-group d-flex justify-content-center">
-				<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+				<span class="input-group-addon"></span>
 	          	<label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">자격증 </label>&nbsp;&nbsp;
 					<select name="t_license" class="selectpicker form-control">
 					  <option value="ocjp" selected="selected">OCJP</option>
@@ -463,7 +601,7 @@ background:#5a7fa2;
                     <div class="form-group">
                         <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
                           		<label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
-	                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	                                 <span class="input-group-addon"></span>
 	 <!-- t_level -->               	<select name="t_level" class="selectpicker form-control w-50" >
 										  <option value="입문"selected="selected">입문</option>
 										  <option value="초급">초급</option>
@@ -472,7 +610,7 @@ background:#5a7fa2;
 										</select>
 										
                           		<label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
-	                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	                                 <span class="input-group-addon"></span>
 <!-- t_people --> 	       			<input type="text" class="form-control" name="t_people" id="t_people" placeholder="인원을 정해주세요!" />
 	               	
                       	 </div>
@@ -482,7 +620,7 @@ background:#5a7fa2;
                           <label id="t_category" class="cols-sm-2 control-label font-weight-bold"></label>
                           <div class="cols-sm-10">
                             <div class="input-group">
-	                           <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	                           <span class="input-group-addon"></span>
  <!-- category 주제 -->	       <input type="text" class="form-control" name="t_category" id="category" placeholder="과목 카테고리를 알려주세요!" />
                         </div>
                       </div>
@@ -494,7 +632,7 @@ background:#5a7fa2;
                           
                              <div class="cols-sm-10">
                                 <div class="input-group">
-                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                 <span class="input-group-addon"></span>
  <!-- title 주제 -->               <input type="text" class="form-control" name="t_title" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
                                 </div>
                              </div>
@@ -512,26 +650,26 @@ background:#5a7fa2;
                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                        
                        <div class="d-inline row mx-md-n6">
-                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                <span class="input-group-addon"></span>
                                <!--  <input type="text" class="form-control" name="schedule" id="schedule" placeholder="함께 모일 장소를 알려주세요!" /> -->
                                 <input type="button" class="btn btn-primary box " id="execDaumPostcode" value="우편번호 찾기">
                          </div>
                           
                           <div class="cols-sm-10">
                             <div class="input-group mt-1 mb-1">
-                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <span class="input-group-addon"></span>
 <!-- post 우편번호 -->            <input type="text" class="form-control" id="postcode" name="t_postnum" placeholder="우편번호" required>
                             </div>
                           </div>
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
-                              <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                              <span class="input-group-addon"></span>
                                 <input type="text"  class="form-control" id="roadAddress" placeholder="도로명주소" required>
                             </div>
                           </div>
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
-                              <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                              <span class="input-group-addon"></span>
                                 <input type="text" class="form-control" id="jibunAddress" placeholder="지번주소" required>
                            </div>
                           </div>
@@ -558,7 +696,7 @@ background:#5a7fa2;
  <!-- t_price -->      <label for="t_price" class="cols-sm-2 control-label font-weight-bold">수강 참여비</label>
  					   <label id="price-Text" class="cols-sm-2 control-label font-weight-bold"></label>
                         <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
-	                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	                            <span class="input-group-addon"></span>
 	                            <input type="text" class="form-control mr-3" name="t_price" id="t_price" placeholder="합리적인 참여비를 작성해주세요" />     
                           		<label class="pt-1 mt-1 control-label font-weight-bold w-25">&nbsp;&nbsp;&nbsp;원</label>
 	                                 
@@ -568,14 +706,14 @@ background:#5a7fa2;
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">영상  URL 등록 </label>
                            <div class="cols-sm-10">
                                 <div class="input-group">
-                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                 <span class="input-group-addon"></span>
  <!-- t_url 주제 -->               <input type="text" class="form-control" name="t_URL" id="t_URL" placeholder="강사님을 어필해주세요~!" />
                                 </div>
                            </div>
                     </div>
   
                       <div class="form-group ">
- <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${teach.User_Id}">
+ <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${teach.user_Id}">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
  <!-- day -->               <input type="hidden" class="form-control" name="t_day" id="schedule" value="" />
@@ -587,7 +725,100 @@ background:#5a7fa2;
     </div> <!-- 2-->
     </form>
 </div><!--  1 -->
-
+</header>
+</div>
+<div id="blog-homepage" class="box row mb-0">
+    <div class="container">
+        <div class="post">
+            <h4><a href="post.jsp">"취업에 도움될까" 대학생 10명 중 7명은 '아웃캠퍼스족' (예시)</a></h4>
+            <p class="author-category"><a href="">파이낸셜뉴스 / 2017.06.02 / 네이버뉴스</a></p>
+            <hr>
+            <p class="intro">
+                많은 대학생들이 학기 중에도 학교 밖에서의 활동을 하는 것으로 나타난 가운데 아웃캠퍼스 활동자의 69.1%가 이로 인해 ‘학교 생활에 지장을 겪었다’고 답해 눈길을 끌었다.
+                대학생들이 느낀 지장을 살펴보면 ‘너무 많은 시간을 빼앗기거나 강의시간, 조모임이 겹치는 등의 시간 부족’을 꼽는 응답이 70.7%로 1위를 차지했다.
+                2위는 ‘체력소모에 따른 피로 누적(61.7%)’이, 3위는 ‘학업에만 온전히 집중할 수 없는 점(52.2%)’이 각각 차지했다.
+            </p>
+            <p class="read-more"><a href="post.jsp" class="btn btn-primary">Continue reading</a></p>
+        </div>
+    </div>
+    <!-- /#blog-homepage-->
+</div>
+<!--
+*** FOOTER ***
+_________________________________________________________
+-->
+<div class="box text-center mb-3" id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3">페이지 정보</h4>
+                <ul class="list-unstyled">
+                    <li><a href="text.html">회사소개</a></li>
+                    <li><a href="text.html">이용약관</a></li>
+                    <li><a href="faq.jsp">FAQ</a></li>
+                    <li><a href="contact.jsp">문의하기</a></li>
+                </ul>
+                <hr>
+                <h4 class="mb-3">회원</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#" data-toggle="modal" data-target="#modal">로그인</a></li>
+                    <li><a href="register.jsp">회원가입</a></li>
+                </ul>
+            </div>
+            <!-- /.col-lg-3-->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3">상위 카테고리</h4>
+                <h5>학생</h5>
+                <ul class="list-unstyled">
+                    <li><a href="category.jsp">스터디</a></li>
+                    <li><a href="category.jsp">과외</a></li>
+                    <li><a href="category.jsp">C언어</a></li>
+                </ul>
+                <h5>그룹장</h5>
+                <ul class="list-unstyled">
+                    <li><a href="category.jsp">스터디</a></li>
+                    <li><a href="category.jsp">그룹장 등록</a></li>
+                    <li><a href="category.jsp">광고 문의</a></li>
+                </ul>
+            </div>
+            <!-- /.col-lg-3-->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3">찾아오는길</h4>
+                <p><strong>강동센터</strong><br><a class="text-muted">서울특별시</a><br><a class="text-muted">강동구</a><br><a class="text-muted">천호대로 1095</a>
+                    <br><a class="text-muted">2층</a><br><strong>미래능력개발교육원</strong></p><a href="contact.jsp">Go to contact page</a>
+                <hr class="d-block d-md-none">
+            </div>
+            <!-- /.col-lg-3-->
+            <div class="col-lg-3 col-md-6">
+                <h4 class="mb-3">새로운 소식</h4>
+                <p class="text-muted">대학생들의 핫플레이스 '미래 스터디카페 강동역점'오픈 !</p>
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control"><span class="input-group-append">
+                  <button type="button" class="btn btn-outline-secondary">구독하기</button></span>
+                    </div>
+                    <!-- /input-group--> 
+                </form>
+                <hr>
+                <h4 class="mb-3">더보기 사이트</h4>
+                <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a><a href="#" class="email external"><i class="fa fa-envelope"></i></a></p>
+            </div>
+            <!-- /.col-lg-3-->
+        </div> 
+        <!-- /.row-->  
+    </div>
+    <!-- /.container-->  
+</div>
+<!-- /#footer-->
+<!-- *** FOOTER END ***-->
+<!-- JavaScript files--> 
+<script src="./resource/vendor/jquery/jquery.min.js"></script>
+<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="./resource/js/front.js"></script> 
+</body>
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>   
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

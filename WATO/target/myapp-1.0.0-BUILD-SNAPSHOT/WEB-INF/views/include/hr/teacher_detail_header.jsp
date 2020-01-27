@@ -2,25 +2,25 @@
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- <!--
+  <!--
     *** TOPBAR ***
     _________________________________________________________
     -->
     <div id="top">
         <div class="container ">
             <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
+                <div class="col-lg-6 offer mb-0 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                 <c:choose>
-                  	<c:when test="${user != null}"> 
-                        <li class="list-inline-item">${user.m_user_id } 님 환영합니다.</li>
+                     <c:choose>
+                  		    <c:when test="${teach != null}">
+                        <li class="list-inline-item">${teach.user_Id  } 님 환영합니다.</li>
                         <li class="list-inline-item"><a href="login/logout"class="text-black-50 font-weight-bold">로그아웃</a></li>
-                    </c:when>
-                    <c:otherwise>
+                    		</c:when>
+                    		<c:otherwise>
                         <li class="list-inline-item"><a href="login/login" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
-                    </c:otherwise>
-                  </c:choose>
+                    		</c:otherwise>
+                    </c:choose>
                         <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
@@ -58,7 +58,7 @@
  
     </div> 
     <div class="container mx-auto"> <!--  *****  mx-auto 설정 -->
-    <nav id="studyusnav" class="navbar navbar-expand-lg  w-100">   <!-- *****   w-100 설정 -->
+    <nav id="studyusnav" class="navbar navbar-expand-lg  w-100 ">   <!-- *****   w-100 설정 -->
         <div class="container mt-auto"><a href="/" class="navbar-brand home"><img src="../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>

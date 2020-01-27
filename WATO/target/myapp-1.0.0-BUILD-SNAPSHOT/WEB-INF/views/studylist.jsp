@@ -177,7 +177,6 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-<<<<<<< HEAD
                        <c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if> 
@@ -219,10 +218,6 @@
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
                         <c:if test="${!std.user_Id.equals('admin')}">
-=======
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
-                        <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.equals('admin')}">
@@ -233,7 +228,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
         <div class="row">  
 			<div class="modal fade" id="myModal" tabindex="-1"> 
 				<div class="modal-dialog modal-lg">  
@@ -245,19 +239,6 @@
 										<%@ include  file="admin/loginform.jsp"%>
 								</div>
 							</div>    
-=======
-        <div class="row"> 
-			<div class="modal fade" id="modal" tabindex="-1"> 
-				<div class="modal-dialog modal-lg">  
-					<div class="modal-content" style="background: none; border: 0px">   
-						<div class="modal-body"> 
-							<div class="limiter">
-								<button class="close-button" data-dismiss="modal">&times;</button> 
-								<div class="container-login100">   
-										<%@ include  file="include/loginform.jsp"%>
-								</div>
-							</div>   
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
 						</div> 
 					</div>
 				</div>
@@ -435,25 +416,25 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item active" style="background-image: url('/resource/images/clogo.jpg">
+                        <!-- <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">First Slide</h2>
                             <p class="lead">This is a description for the first slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item" style="background-image: url('/resource/images/javalogo.png">
+                       <!--  <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">Second Slide</h2>
                             <p class="lead">This is a description for the second slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item" style="background-image: url('/resource/images/Golang_main.png')">
+                      <!--   <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">Third Slide</h2>
                             <p class="lead">This is a description for the third slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -473,6 +454,7 @@
         -->   
         <div  id="hot">
             	<br><br>
+            	<!-- 스터디 목록 조회 하는 iframe -->
                 	 <iframe id="studylistview" src="http://localhost:8080/board/studylistview" style="width:100%; border: none;"></iframe>
                 <!-- /.container-->
             <!-- /#hot-->    

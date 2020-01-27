@@ -276,7 +276,7 @@
 									<label for="name" class="pb-3 row m-0 text-justify w-100 border-top cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
 										<font size="8">${listOne.t_title }</font>
 									</label>
-								<c:if test="${(teach.User_Id).equals(listOne.t_userId) }">	
+								<c:if test="${(teach.user_Id).equals(listOne.t_userId) }">	
 	<!--  내용 수정 -->				<a href="teacherModi?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>			
 	<!--  내용 삭제 -->				<a href="teacherDelete?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/></a>			
 								</c:if>
@@ -374,7 +374,7 @@
 															</tr>  
 															<tr>
 																<td>
-																<c:if test="${(listOne.t_userId).equals(teach.User_Id) }">
+																<c:if test="${(listOne.t_userId).equals(teach.user_Id) }">
 																	<input type="button"id="modiReButton" value="수정하기" class="modiReButton d-inline-block" onclick="updatefun(this)" />
 																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
 																</c:if>	
@@ -407,11 +407,11 @@
 															</tr>
 															<tr>
 																<td> 
-																<c:if test="${(reply.r_userid).equals(teach.User_Id) }">
+																<c:if test="${(reply.r_userid).equals(teach.user_Id) }">
 																	<input type="button"class="modiReButton d-inline-block"  value="수정하기" onclick="updatefun(this)" />
 																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
 																</c:if>	
-																<c:if test="${(listOne.t_userId).equals(teach.User_Id) }">
+																<c:if test="${(listOne.t_userId).equals(teach.user_Id) }">
 																	<div style="background:#e0e0e0; " class="d-flex d-block justify-content-end w-100">
 																		<textarea name="r_content" class="r_content d-flex justify-content-end"  onkeydown="resize(this)" style="border:1px;" onkeyup="resize(this)" cols="100" readonly>dgdgggd</textarea>
 																	</div>
@@ -442,7 +442,7 @@
 													<td colspan="5" >
 														<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
 														</font></pre> --%>  
-														<textarea id="r_content2" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
+														<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
 													<td>    
 												</tr>   
 												<tr>
@@ -452,7 +452,7 @@
 												</tr>
 											</table>
 											<input type="hidden" name="t_no" value="${listOne.t_no}" />
-											<input type="hidden" name="r_userid" value="${teach.User_Id }"/>
+											<input type="hidden" name="r_userid" value="${teach.user_Id }"/>
 										</form>
 									</div>
 								</div>		
@@ -504,7 +504,7 @@
 								</c:when>
 								<c:otherwise>
 									<c:choose>
-										<c:when test="${(partiOne.p_userid).equals(teach.User_Id)}">    
+										<c:when test="${(partiOne.p_userid).equals(teach.user_Id)}">    
 											<div class="successBtn"id="success" >참여신청완료</div> 
 											<input type="button" class="goButton mt-4"id="partiBnt"  data-toggle="modal" data-target="#t_cancle-modal"  value="참여신청취소하기"/> 
 										</c:when> 

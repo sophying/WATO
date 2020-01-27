@@ -25,11 +25,7 @@ public class BoardDAOImpl implements BoardDAO{
 	
 	
 	@Override
-<<<<<<< HEAD
 	public List<StudyEnrollVO> listRank() throws Exception {
-=======
-	public List<BoardVO> listRank() throws Exception { 
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
 		return sql.selectList("board.listRank");
 	}
 	@Override
@@ -61,12 +57,9 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<TeacherEnrollVO> TeacherListFilter(StudyListFilter sLF) throws Exception {
 		return sql.selectList("board.TeacherListFilter",sLF);
 	}
-<<<<<<< HEAD
 	@Override
 	public List<MainLangugeRankVO> langugerank() throws Exception {
 		return sql.selectList("board.langugerank");
 	}
 	
-=======
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
 }

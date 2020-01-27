@@ -22,7 +22,7 @@
 						          <font size="7"><input type="button" id="cancleSubmit" class="btn btn-default d-flex justify-content-center" style="background:#5a7fa2;width:250px; height:60px; color:#fff; font-size:10pt;" value="참여취소하기"></font>
 						        </div>
 						          <input type="hidden" name="s_no" id="s_no" value="${listOne.s_no }"/>    
-						          <input type="hidden" name="p_userid" id="p_userid" value="${user.m_user_id }"/>  
+						          <input type="hidden" name="p_userid" id="p_userid" value="${std.user_Id}"/>  
 						      </div>
 					      </form>
 						</div>

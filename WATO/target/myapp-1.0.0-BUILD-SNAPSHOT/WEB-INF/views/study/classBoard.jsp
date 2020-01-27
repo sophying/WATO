@@ -25,7 +25,7 @@
 	  		로그인을 하십시오.
 	  	</c:when>
 	  	<c:otherwise>
-	  		현재 사용자 : ${teach.User_Id }
+	  		현재 사용자 : ${teach.user_Id}
 	  	</c:otherwise>
 	  </c:choose>
   	</td>

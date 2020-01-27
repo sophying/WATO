@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,12 +29,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
     <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
-<<<<<<< HEAD
     <script src="./resource/vendor/jquery/jquery.min.js"></script> 
-=======
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
 </head>
 <style>
     #top{
@@ -135,14 +130,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -171,7 +166,6 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
-<<<<<<< HEAD
 	.button2 {
   display: inline-block; 
   font-size: 20px;  
@@ -195,10 +189,6 @@
   .rot-135:hover {
   filter: hue-rotate(135deg);
 }
-
-
-=======
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
 </style>
 <body>
 <!-- navbar-->
@@ -213,7 +203,6 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-<<<<<<< HEAD
                        <c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
@@ -255,56 +244,9 @@
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
                         <c:if test="${!std.user_Id.equals('admin')}">
-=======
-                    	<c:if test="${std == null && teach == null}">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
-                        </c:if>
-                        <c:if test="${std != null}">
-                        	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">
-                        	<form name="myForm" method="get" action="/student/std_info">
-				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
-				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
-				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone2}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone3}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
-                        	</form>
-                        	</li>
-                        </c:if>
-                        <c:if test="${teach != null}">
-                        	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">
-                        	<form name="myForm2" method="get" action="/teach/teach_info">
-				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
-				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
-				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
-                        	</form>
-                        	</li>
-                        </c:if>
-                        <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
-                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
-<<<<<<< HEAD
                         <c:if test="${std.user_Id.equals('admin')}">
-=======
-                        <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
                         <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
@@ -312,37 +254,23 @@
                 </div>
             </div>
         </div> 
-<<<<<<< HEAD
         <div class="row">  
 			<div class="modal fade" id="myModal" tabindex="-1"> 
 				<div class="modal-dialog modal-lg">  
 					<div class="modal-content" style="background: none; border: 0px">   
 						<div class="modal-body"> 
-=======
-        <div class="row">
-	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
-	        	<div class="modal-dialog modal-lg">
-	            	<div class="modal-content" style="background: none; border: 0px">
-	            		<div class="modal-body"> 
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
 							<div class="limiter">
-<<<<<<< HEAD
 								<button class="close-button" data-dismiss="modal">&times;</button> 
 								<div class="container-login100">    
 										<%@ include  file="admin/loginform.jsp"%>
 								</div> 
-=======
-								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
-								<div class="container-login100">   
-									<%@ include  file="admin/loginform.jsp"%> 
-								</div>
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
 							</div>  
-						</div> 	                		
-	            	</div>
-	        	</div>
-	    	</div>
-    	</div>
+						</div> 
+					</div>
+				</div>
+			</div>  
+		</div>
+        <!-- *** TOP BAR END ***-->
 
  
     </div> 
@@ -354,14 +282,13 @@
             </div>  
             <div id="navigation" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link" style=" pointer-events: none; ">스터디등록<b class="caret"></b></a>
+                    <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link" style=" pointer-events: none; ">학생<b class="caret"></b></a>
                         <ul class="dropdown-menu megamenu">
                             <li>
                                 <div class="row"> 
                                     <div class="col-md-6 col-lg-3">
-                                        <h5>스터디 등록</h5>
+                                        <h5>친목도모</h5>
                                         <ul class="list-unstyled mb-3">
-<<<<<<< HEAD
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
@@ -374,12 +301,6 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">비주얼베이직</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">자바</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li>
-=======
-                                            <li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
-                                            <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
-                                            <li class="nav-item"><a href="/study/studyBoard" class="nav-link">스터디탐방</a></li>
-                                            <li class="nav-item"><a href="/study/classBoard" class="nav-link">강의탐방</a></li>
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -423,7 +344,7 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
-                                    </div>
+                                    </div> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>동영상 강의</h5>
                                         <ul class="list-unstyled mb-3">
@@ -513,6 +434,7 @@
         </div>
     </nav>
 </header>
+<!-- 메인페이지 슬라이드쇼 -->
 <div id="all">
     <div id="content">
         <header>
@@ -524,25 +446,25 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item active" style="background-image: url('./resource/images/clogo.jpg">
+                        <!-- <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">First Slide</h2>
                             <p class="lead">This is a description for the first slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item" style="background-image: url('./resource/images/javalogo.png">
+                       <!--  <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">Second Slide</h2>
                             <p class="lead">This is a description for the second slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item" style="background-image: url('./resource/images/Golang_main.png')">
+                      <!--   <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">Third Slide</h2>
                             <p class="lead">This is a description for the third slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -555,55 +477,11 @@
                 </a>
             </div>
         </header>
-        <!-- 아이콘 -->
-        <!-- <div id="icon" class="box text-center mt-0 mb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2"> 
-                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-            </div>
-        </div> -->
         <!--
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
         -->
+        <!-- 메인페이지 language rank  -->
         <div  id="hot">
             <div class="box py-4 mt-0">
                 <div class="container">
@@ -635,22 +513,33 @@
                     <div class="item"> 
                         <div class="product"> 
                             <div class="flip-container"> 
-                                <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
+                                <div class="flipper" onclick="javascript:imagesfunction(this)">
+                                    <div class="front"><a><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
                                 </div>
+                                <span style="display: none;">${languagerank.language_name}</span>
                             </div><a href="detail.jsp" class="invisible"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a>
                             <div class="text">  
-                                <h3><a href="detail.jsp">${languagerank.language_name}</a></h3> 
+                                <h3><span>${languagerank.language_name}</span></h3> 
                                 <p class="price">  
                                     <del></del><a href="#" class="button2 b-orange rot-135">Details</a> 
                                 </p>
                             </div> 
                         </div>
-                    </div> 
+                    </div>  
                     </div>
                     <% q++; %>
                     </c:forEach> 
+                    <script type="text/javascript"> 
+                    //c#으로는 controller에 전달되지 않아 다른 이름으로 전달 한 후 c#으로 다시변경한 후 검색
+						function imagesfunction(event) {
+							var language = $(event).next().text();
+							if(language == "C#"){
+								language ="Ccrosshatch"; 
+							}  
+							location.href = '/board/searchResult/'+language;
+						}
+                    </script>
                           <!--     /.text
                             <div class="ribbon sale">
                                 <div class="theribbon">SALE</div>
@@ -670,6 +559,7 @@
                 </div>
             </div>
         </div>
+        <!-- 메인페이지 스터디 랭킹 -->
         <div  id="hot">
             <div class="box py-4 mt-0">
                 <div class="container">
@@ -840,16 +730,7 @@
     </div>
     <!-- /#blog-homepage-->
 </div>
-<!-- /.container-->
-<!-- *** BLOG HOMEPAGE END ***-->
-<!--
-*** FOOTER ***
-_________________________________________________________
--->
-<!--
-*** FOOTER ***
-_________________________________________________________
--->
+
 <div class="box text-center mb-3" id="footer">
     <div class="container">
         <div class="row">
@@ -902,7 +783,7 @@ _________________________________________________________
                     </div>
                     <!-- /input-group--> 
                 </form>
-                <hr>
+                <hr> 
                 <h4 class="mb-3">더보기 사이트</h4>
                 <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a><a href="#" class="email external"><i class="fa fa-envelope"></i></a></p>
             </div>
@@ -920,9 +801,5 @@ _________________________________________________________
 <script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="./resource/js/front.js"></script> 
-<<<<<<< HEAD
 </body>
 </html>
-=======
-</body>
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git

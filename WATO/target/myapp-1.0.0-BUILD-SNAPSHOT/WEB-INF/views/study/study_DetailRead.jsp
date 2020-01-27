@@ -246,7 +246,6 @@
 	textarea{
 	 resize: none;
 	 background-color: transparent;
-	 border: none;
 	}
 </style>
 <body>
@@ -264,7 +263,7 @@
                     <ul class="menu list-inline mb-0">
                      <c:choose>
                   		    <c:when test="${std != null}">
-                        <li class="list-inline-item">${std.User_Id  } 님 환영합니다.</li>
+                        <li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
                         <li class="list-inline-item"><a href="login/logout"class="text-black-50 font-weight-bold">로그아웃</a></li>
                     		</c:when>
                     		<c:otherwise>
@@ -470,9 +469,10 @@
 									<label for="name" class="pb-3 row m-0 text-justify w-100  cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
 										<font size="8">${listOne.s_title }</font>
 									</label>
-								<c:if test="${(std.User_Id ).equals(listOne.s_userId) }">
+								<c:if test="${(std.user_Id ).equals(listOne.s_userId) }">
 	<!--  내용 수정 -->				<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>
-	<!--  내용 삭제 -->				<a href="studentDelete?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/></a>	
+	<!--  내용 삭제 -->				<input type="submit" id="delete_enroll"  data-toggle="modal" data-target="#delete-modal"class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/>	
+								<%@include file="../include/s_delete_enroll.jsp" %>
 								</c:if>	
 							</div>	
 							<div class="h-75 container d-inline-block border-top"> 
@@ -489,7 +489,7 @@
 									</label>
 									<div class="cols-sm-5 pb-5 pr-2 pl-2">
 						              <div class="input-group d-flex justify-content-center ">
-						                <img id="img_btn_0" src="../resources/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+						                <img id="img_btn_0" src="../../resource/images/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
 						              </div>
            						    </div>
 								</div>
@@ -547,7 +547,7 @@
 	<!-- @@@@@@@@ //// 댓글 ( Q & A ) 작성  /// @@@@@@@@ -->	
 							<c:forEach var="reply" items="${reply}">
 								<c:choose>
-									<c:when test="${(listOne.s_userId).equals(reply.r_userid)}">
+ 								<c:when test="${(listOne.s_userId).equals(reply.r_userid)}">
 										<form  id="replyForm"action="./replyModify" method="post">
 											<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: orange;">
 												<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
@@ -557,11 +557,12 @@
 																	<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
 																	<td colspan="5" >
 																		
-																		<textarea rows="10" cols="100" id="r_content" name="r_content" readonly="readonly" style="border:none; height:auto;">${reply.r_content}</textarea>
+																		<textarea name="r_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="100"  readonly="readonly" style="border:none; ">${reply.r_content}</textarea>
 																	
-																	<c:if test="${(listOne.s_userId).equals(std.User_Id ) }">
+																	<c:if test="${(listOne.s_userId).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
-																		<a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
+																		<%-- <a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a> --%>
 																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
 																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
 																	</c:if>
@@ -581,21 +582,16 @@
 													<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
 															<table class="justify-content-center d-inline-block w-100">
 																<tr>
-																	<td rowspan="5" class="pr-5 w-25 h-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
-																	<td colspan="5" >
-																		
-																		<textarea rows="10" cols="100" id="r_content" name="r_content" readonly="readonly">${reply.r_content}</textarea>
-																	
-																	<td> 
-																</tr>
-																<tr>
-																	<td>
-																	
-																	<c:if test="${(reply.r_userid).equals(std.User_Id ) }">
+																	<td rowspan="1" colspan="2" class="pr-5 w-25 h-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
+																	<td colspan="7" >
+																		<textarea  name="r_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="90"  readonly="readonly">${reply.r_content}</textarea>
+																	</td> 
+																	<td >
+																	<c:if test="${(reply.r_userid).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
-																		<a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a>
-																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
 																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
 																	</c:if>
 																	</td>
 																</tr>
@@ -605,7 +601,7 @@
 											</div>
 										</form>
 									</c:otherwise>
-								</c:choose>
+								</c:choose> 
 							</c:forEach> 
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
 								<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
@@ -616,7 +612,7 @@
 												<tr>
 													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
 													<td colspan="5" >
-														<textarea id="form7" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+														<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
 													<td>    
 												</tr>   
 												<tr>
@@ -626,11 +622,11 @@
 												</tr>
 											</table>
 											<input type="hidden" name="s_no" value="${listOne.s_no}" />
-											<input type="hidden" name="r_userid" value="${std.User_Id  }"/>
+											<input type="hidden" name="r_userid" value="${std.user_Id  }"/>
 										</form>
 									</div>
 								</div>		
-							</div>
+							</div> 
 					</div>    
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
 	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
@@ -674,9 +670,9 @@
 								</c:when>
 								<c:otherwise>
 								<c:choose>
-										<c:when test="${(partiOne.p_userid).equals(std.User_Id )}">    
+										<c:when test="${(partiOne.p_userid).equals(std.user_Id )}">    
 											<div class="successBtn"id="success" >    참여신청완료</div>
-											<input type="button" class="goButton mt-4"id="cancle"  data-toggle="modal" data-target="#cancle-modal"  value="참여신청취소하기"/> 
+											<input type="button" class="goButton mt-4" id="cancle"  data-toggle="modal" data-target="#cancle-modal"  value="참여신청취소하기"/> 
 										</c:when> 
 										<c:otherwise>
 											<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/> 
@@ -768,56 +764,6 @@
 <script src="../resource/js/front.js"></script>
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
-<script>
-
-
-		function clickEvnet(obj){
-			
-			
-			if ($(obj).val()== "수정하기") {
-				$(obj).val("수정등록");
-				$(obj).parent().parent().prev().children().next().children().attr('readonly', false);
-				$(obj).parent().parent().prev().children().next().children().css("background-color", "#ddddee33");
-				
-			}else if ($(obj).val()== "수정등록") {
-				$(obj).val("수정하기");
-				$(obj).parent().parent().prev().children().next().children().attr('readonly', true);
-				$(obj).parent().parent().prev().children().next().children().css("background-color", "#fff");
-				$('#replyForm').submit();
-			}
-			
-		}
-		
-		function clickEvnet2(obj){
-			
-			
-			if ($(obj).val()== "수정하기") {
-				$(obj).val("수정등록");
-				$(obj).parent().children().attr('readonly', false);
-				$(obj).parent().children().css("background-color", "#ddddee33");
-				
-			}else if ($(obj).val()== "수정등록") {
-				$(obj).val("수정하기");
-				$(obj).parent().children().attr('readonly', true);
-				$(obj).parent().children().css("background-color", "#fff");
-				$('#replyForm').submit();
-			}
-			
-		}
-		
-		
-
-		$('#modalSubmit').click(function () {
-			$('#participationForm').submit();
-		});
-		
-		$('#cancleSubmit').click(function () {
-			$('#cancleForm').submit();
-		});
-			
-					
-		
-
-</script>
+<script src="../resource/js/hr/student_detailRead.js"></script> 
 </body>
 </html>		
