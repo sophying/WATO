@@ -51,7 +51,7 @@ public class AdminController {
 	public void getlogin() throws Exception {
 		logger.info("get 학생 또는 강사가 로그인");
 	}
-
+ 
 	// 학생 로그인 post
 	@RequestMapping(value = "/loginstd", method = RequestMethod.POST)
 	public String postStd(StdVO svo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {

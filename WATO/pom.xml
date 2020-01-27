@@ -4,7 +4,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>com.king</groupId>
    <artifactId>myapp</artifactId>
-   <name>WATO</name> 
+   <name>WATO</name>  
    <packaging>war</packaging>  
    <version>1.0.0-BUILD-SNAPSHOT</version>  
    <properties>
@@ -54,7 +54,7 @@
        <groupId>org.springframework</groupId>
        <artifactId>spring-context-support</artifactId>
        <version>${org.springframework-version}</version>
-   </dependency>
+   </dependency> 
        
        
        <!-- https://mvnrepository.com/artifact/com.sun.mail/javax.mail -->

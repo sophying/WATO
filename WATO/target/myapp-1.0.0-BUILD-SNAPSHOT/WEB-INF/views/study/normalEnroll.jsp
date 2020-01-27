@@ -54,7 +54,7 @@
     <div class="col-sm-5 d-inline-block"> <!-- 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
         <div class="form-group container-fluid">
           <div class="card">
-            <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><h4>사진등록</h4></label>
+            <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><span style="font-size: 12px;">사진등록</span></label>
             <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
               <div class="card-body">
                 <div class="input-group d-flex justify-content-center">
@@ -88,7 +88,7 @@
 
 <div class="form-group container-fluid d-inline-block">
     <div class="card">
-    <label for="name" class="pb-1 row m-0 card-header cols-sm-3 control-label d-flex justify-content-center"><h4>스터디 기간</h4></label>
+    <label for="name" class="pb-1 row m-0 card-header cols-sm-3 control-label d-flex justify-content-center"><span style="font-size: 12px;">스터디 기간</span></label>
     <div class="card-body">
 	    <div class="input-group d-flex justify-content-center">
 	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>

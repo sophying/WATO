@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.BoardVO;
+import com.king.myapp.domain.MainLangugeRankVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeacherEnrollVO;
@@ -20,11 +21,11 @@ public class BoardServiceImpl implements BoardService{
 	private BoardDAO dao;
 	
 	@Override
-	public List<BoardVO> listRank() throws Exception {
+	public List<StudyEnrollVO> listRank() throws Exception {
 		return dao.listRank();   
 	}
 	@Override
-	public List<BoardVO> searchResultStudy(String searchKey) throws Exception {
+	public List<StudyEnrollVO> searchResultStudy(String searchKey) throws Exception {
 		return dao.searchResultStudy(searchKey);
 	}
 	@Override
@@ -32,7 +33,7 @@ public class BoardServiceImpl implements BoardService{
 		return dao.searchResultTeacher(searchKey);
 	}
 	@Override
-	public List<BoardVO> searchResultQna(String searchKey) throws Exception {
+	public List<TeacherEnrollVO> searchResultQna(String searchKey) throws Exception {
 		return dao.searchResultQna(searchKey);
 	}
 	@Override
@@ -50,6 +51,10 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<TeacherEnrollVO> TeacherListFilter(StudyListFilter sLF) throws Exception{
 		return dao.TeacherListFilter(sLF);
+	}
+	@Override
+	public List<MainLangugeRankVO> langugerank() throws Exception {
+		return dao.langugerank();
 	}
 
 }
