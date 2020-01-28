@@ -948,35 +948,35 @@ $('#enroll_btn').click(function(){
 	  $('#img_btn_1').on({'click': function(){
 	        $('#input_img').attr('src',img1);
 	        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-	        document.getElementById("category").value = "자바";
+	        document.getElementById("category").value = "JAVA";
 	     }
 	 });
 
 	 $('#img_btn_2').on({'click': function(){
 	        $('#input_img').attr('src',img2);
 	        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-	        document.getElementById("category").value = "자바스크립트";
+	        document.getElementById("category").value = "JavaScript";
 	    } 
 	});
 
 	$('#img_btn_3').on({'click': function(){
 	       $('#input_img').attr('src',img3);
 	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-	       document.getElementById("category").value = "C언어";
+	       document.getElementById("category").value = "C";
 	   }
 	});
 
 	$('#img_btn_4').on({'click': function(){
 	       $('#input_img').attr('src',img4);
 	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-	       document.getElementById("category").value = "파이썬";
+	       document.getElementById("category").value = "Python";
 	   }
 	 });
 
 	$('#img_btn_5').on({'click': function(){
 	       $('#input_img').attr('src',img5);
 	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-	       document.getElementById("category").value = "안드로이드";
+	       document.getElementById("category").value = "Android";
 	   }
 	});
 

@@ -191,7 +191,7 @@
 }
 </style>
 <body>
-<!-- navbar-->
+<!-- navbar--> 
 <header class="header mb-0">
     <!--
     *** TOPBAR ***
@@ -200,14 +200,27 @@
     <div id="top">
         <div class="container"> 
             <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
-                <div class="col-lg-6 text-center text-lg-right"> 
-                    <ul class="menu list-inline mb-0">
-                       <c:if test="${std == null && teach == null}">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
+                <!-- <div class="col-lg-6 offer d-flex d-block"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div> --> 
+                <div class="row mx-auto w-100 text-right"> 
+                    <ul class="menu list-inline mb-0 w-100 ">
+	                    <c:choose>
+	                    <c:when test="${std == null && teach == null}">
+                    		<li class=" pl-2 list-inline-item pull-left"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a></li> 
+	                    </c:when>
+	                    <c:otherwise>
+	                    <c:if test="${std != null }">
+                   	 		<li class=" pl-2 list-inline-item pull-left"><a href="/study/s_myList" class="btn btn-success btn-sm">참여한 스터디 보러가기</a></li> 
+	                    </c:if>
+	                    <c:if test="${teach != null }">
+                   	 		<li class=" pl-2 list-inline-item pull-left"><a href="/study/t_myList" class="btn btn-success btn-sm">참여한 스터디 보러가기</a></li> 
+	                    </c:if>
+	                    </c:otherwise>
+	                    </c:choose>
+                    	<c:if test="${std == null && teach == null}">
+                        	<li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
                         <c:if test="${std != null}">
-                        	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
+                        	<li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
                         	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
@@ -225,7 +238,7 @@
                         	</li>
                         </c:if>
                         <c:if test="${teach != null}">
-                        	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
+                        	<li class="list-inline-item">${teach.user_Id}님 환영합니다!</li>
                         	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
@@ -243,34 +256,34 @@
                         	</li>
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
-                        <c:if test="${!std.user_Id.equals('admin')}">
-                        <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
+                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
+                        <li class="list-inline-item pr-2"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
-                        <c:if test="${std.user_Id.equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                        <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
+                       		 <li class="list-inline-item pr-2"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
+                    	
                     </ul>
                 </div>
             </div>
         </div> 
-        <div class="row">  
-			<div class="modal fade" id="myModal" tabindex="-1"> 
-				<div class="modal-dialog modal-lg">  
-					<div class="modal-content" style="background: none; border: 0px">   
-						<div class="modal-body"> 
+        <div class="row">
+	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
+	        	<div class="modal-dialog modal-lg">
+	            	<div class="modal-content" style="background: none; border: 0px">
+	            		<div class="modal-body"> 
 							<div class="limiter">
-								<button class="close-button" data-dismiss="modal">&times;</button> 
-								<div class="container-login100">    
-										<%@ include  file="admin/loginform.jsp"%>
-								</div> 
+								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
+								<div class="container-login100">   
+									<%@ include  file="admin/loginform.jsp"%> 
+								</div>
 							</div>  
-						</div> 
-					</div>
-				</div>
-			</div>  
-		</div>
-        <!-- *** TOP BAR END ***-->
+						</div> 	                		
+	            	</div>
+	        	</div>
+	    	</div>
+    	</div>
 
  
     </div> 

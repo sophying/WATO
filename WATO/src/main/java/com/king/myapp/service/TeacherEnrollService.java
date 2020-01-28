@@ -32,8 +32,8 @@ public interface TeacherEnrollService {
 
 	public void replyUpdate(TeacherReplyVO replyVO) throws Exception;
 
+	// 댓글 삭제 
 	public void DeleteReply(int r_no) throws Exception;
-	
 
 
 }

@@ -278,7 +278,8 @@
 									</label>
 								<c:if test="${(teach.user_Id).equals(listOne.t_userId) }">	
 	<!--  내용 수정 -->				<a href="teacherModi?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>			
-	<!--  내용 삭제 -->				<a href="teacherDelete?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/></a>			
+	<!--  내용 삭제 -->				<input type="submit" id="delete_enroll"  data-toggle="modal" data-target="#delete-modal"class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/>	
+										<%@include file="../include/t_delete_enroll.jsp" %>			
 								</c:if>
 							</div>	
 							<div class="h-75 container d-inline-block border-top">
@@ -295,7 +296,7 @@
 									</label>
 									<div class="cols-sm-5 pb-5 pr-2 pl-2">
 						              <div class="input-group d-flex justify-content-center ">
-						                <img id="img_btn_0" src="../resources/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+						                <img id="img_btn_0" src="../resource/images/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
 						              </div>
            						    </div>
 								</div>
@@ -364,25 +365,26 @@
 										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: #f1dfe955;">
 											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
-							 <font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font> 
+													 <font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font> 
 														<table class="justify-content-center ml-2 d-inline-block w-100">
 															<tr>
 																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
 																<td colspan="5" >
 																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly style="overflow-x:hidden; overflow-y:hidden;  ">${reply.r_content}</textarea>
-																<td> 
-															</tr>  
-															<tr>
-																<td>
-																<c:if test="${(listOne.t_userId).equals(teach.user_Id) }">
-																	<input type="button"id="modiReButton" value="수정하기" class="modiReButton d-inline-block" onclick="updatefun(this)" />
-																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
-																</c:if>	
-																</td>
-																<td>
-																	<input type="hidden" name="t_no" value="${listOne.t_no}" />
-																	<input type="hidden" name="r_no" value="${reply.r_no}" /> 
-																</td>
+																<c:choose>
+																	<c:when test="${(listOne.t_userId).equals(std.user_Id ) }">
+																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
+																		<input type="hidden" name="t_no" value="${reply.t_no }"/>
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																	</c:when>
+																	<c:when test="${(listOne.t_userId).equals(teach.user_Id ) }">
+																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
+																		<input type="hidden" name="t_no" value="${reply.t_no }"/>
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>																	
+																	</c:when>
+																</c:choose>
 															</tr> 
 														</table> 
 												</div> 
@@ -396,7 +398,7 @@
 												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
 													<form class="updateform" action="./modireply"> 
 													
-			 			<font size="4"><span class="d-flex justify-content-end">     </span></font> 
+			 											<font size="4"><span class="d-flex justify-content-end">     </span></font> 
 														
 														<table class="justify-content-center d-inline-block w-100">
 															<tr>
@@ -404,23 +406,21 @@
 																<td colspan="5" > 
 																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly>${reply.r_content}</textarea>
 																<td> 
-															</tr>
-															<tr>
-																<td> 
-																<c:if test="${(reply.r_userid).equals(teach.user_Id) }">
-																	<input type="button"class="modiReButton d-inline-block"  value="수정하기" onclick="updatefun(this)" />
-																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
-																</c:if>	
-																<c:if test="${(listOne.t_userId).equals(teach.user_Id) }">
-																	<div style="background:#e0e0e0; " class="d-flex d-block justify-content-end w-100">
-																		<textarea name="r_content" class="r_content d-flex justify-content-end"  onkeydown="resize(this)" style="border:1px;" onkeyup="resize(this)" cols="100" readonly>dgdgggd</textarea>
-																	</div>
-																	<input type="button"class="leaderBtn d-inline-block"  value="답변하기" onclick="leaderfun(this)" />
-																</c:if>
-																</td>
-																<td>
-																	<input type="hidden" name="t_no" value="${listOne.t_no}" />
-																	<input type="hidden" name="r_no" value="${reply.r_no}" />  
+																<td >
+																	<c:choose>
+																	<c:when test="${(reply.t_userid).equals(std.user_Id ) }">
+																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																		<input type="hidden" name="t_no" value="${reply.t_no }"/>
+																	</c:when>
+																	<c:when test="${(reply.t_userid).equals(teach.user_Id ) }">
+																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																		<input type="hidden" name="t_no" value="${reply.t_no }"/>																	
+																	</c:when>
+																	</c:choose>
 																</td>
 															</tr> 
 														</table>
@@ -431,32 +431,63 @@
 									</c:otherwise>
 								</c:choose>
 							</c:forEach> 
-							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
-								<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
-										<form role="from" method="post" action="./t_detailReply.do"> 
-										<font size="4"><span id="cnttxt2" class="d-flex justify-content-end"></span></font>
-											<table class="ml-2 justify-content-center d-inline-block w-100">
-												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
-													<td colspan="5" >
-														<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
-														</font></pre> --%>  
-														<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
-													<td>    
-												</tr>   
-												<tr>
-													<td>
-														<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
-													</td> 
-												</tr>
-											</table>
-											<input type="hidden" name="t_no" value="${listOne.t_no}" />
-											<input type="hidden" name="r_userid" value="${teach.user_Id }"/>
-										</form>
-									</div>
-								</div>		
-							</div>
+							<c:choose>
+							<c:when test="${std.user_Id == null && teach.user_Id != null }">
+								<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
+									<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
+										<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
+											<form role="from" method="post" action="./t_detailReply.do"> 
+											<font size="4"><span id="cnttxt2" class="d-flex justify-content-end"></span></font>
+												<table class="ml-2 justify-content-center d-inline-block w-100">
+													<tr>
+														<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
+														<td colspan="5" >
+															<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
+															</font></pre> --%>  
+															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
+														<td>    
+													</tr>   
+													<tr>
+														<td>
+															<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
+														</td> 
+													</tr>
+												</table>
+												<input type="hidden" name="t_no" value="${listOne.t_no}" />
+												<input type="hidden" name="r_userid" value="${teach.user_Id }"/>
+											</form>
+										</div>
+									</div>		
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
+									<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
+										<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
+											<form role="from" method="post" action="./t_detailReply.do"> 
+												<font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font>
+												<table class="justify-content-center d-inline-block w-100">
+													<tr>
+														<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
+														<td colspan="5" >
+															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+														<td>    
+													</tr>   
+													<tr>
+														<td>
+															<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
+														</td> 
+													</tr>
+												</table>
+												<input type="hidden" name="t_no" value="${listOne.t_no}" />
+												<input type="hidden" name="r_userid" value="${std.user_Id  }"/>
+											</form>
+										</div>
+									</div>		
+								</div>							
+							
+							</c:otherwise>
+							</c:choose>
 							</div> 
 							
 					</div>    
@@ -504,7 +535,7 @@
 								</c:when>
 								<c:otherwise>
 									<c:choose>
-										<c:when test="${(partiOne.p_userid).equals(teach.user_Id)}">    
+										<c:when test="${(partiOne.p_userid).equals(std.user_Id)}">    
 											<div class="successBtn"id="success" >참여신청완료</div> 
 											<input type="button" class="goButton mt-4"id="partiBnt"  data-toggle="modal" data-target="#t_cancle-modal"  value="참여신청취소하기"/> 
 										</c:when> 

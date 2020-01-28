@@ -38,16 +38,26 @@ function resize(obj) {
  
 function updatefun(event) { 
 	if ($(event).val() == "수정하기") {
-		$(event).parent().parent().prev().children().next().children().attr('readonly',false);
-		$(event).parent().parent().prev().children().next().children().css('background','#c995a2');
+		$(event).parent().prev().children().attr('readonly',false);
+		$(event).parent().prev().children().css('background','#c995a2');
 		$(event).val("수정완료");
 	}else if ($(event).val() == "수정완료") {
-		$(event).parent().parent().prev().children().next().children().attr('readonly',true);
+		$(event).parent().prev().children().attr('readonly',true);
 		$(event).val("수정하기");
 		$('.updateform').submit();
 	}
 	
 }
+
+function deleteRe(obj) {
+	$('.updateform').attr("action","./t_replyDelete");
+	$('.updateform').submit();
+}
+function deleteRe2(obj) {
+	$('.updateform').attr("action","./t_replyDelete");
+	$('.updateform').submit();
+}
+
 
  
 $(function(){
@@ -67,5 +77,10 @@ $('#modalSubmit').click(function () {
 });
 $('#cancleSubmit').click(function () {
 	$('#cancleForm').submit();
+});
+
+
+$('#deleteSubmit').click(function () {
+	$('#deleteForm').submit();
 });
 	

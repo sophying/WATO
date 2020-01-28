@@ -17,6 +17,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script> 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- 제이쿼리 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head> 
 <style> 
 .studylistviewbody #about {
@@ -376,7 +378,6 @@
 	<div class="studylistviewbody">  
 	  <div class="valign-wrapper">    
 	  	<div class="row">   
-		  <% int cnt = 0; %>  
 	  		<c:forEach items="${TearchlistAll}" var="TearchlistAll">
 		    <div class="col s12 m4">
 		      <div class="card" id="about">  
@@ -385,7 +386,7 @@
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>  
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		           ${TearchlistAll.t_title} 
+		            ${TearchlistAll.t_title} 
 		        </h6>  
 		        <h6 class="description">    
 		                ${TearchlistAll.t_userId} <i class="fa fa-id-badge" aria-hidden="true"></i> 
@@ -403,9 +404,7 @@
 		        </div>
 		      </div> 
 		    </div>
-			<% cnt++; %> 
 		  </c:forEach>
-		  <% int cnt1 = 0; %>   
 	  		<c:forEach items="${studylistAll}" var="studylistAll">
 		    <div class="col s12 m4">
 		      <div class="card" id="about"> 
@@ -414,7 +413,7 @@
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${studylistAll.s_title}  
+		        			${studylistAll.s_title}
 		        </h6> 
 		        <h6 class="description">   
 		                ${studylistAll.s_userId}   
@@ -432,9 +431,7 @@
 		        </div>
 		      </div>  
 		    </div>
-			<% cnt1++; %> 
 		  </c:forEach>
-		  <% int cnt2 = 0; %>
 		  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
 		    <div class="col s12 m4"> 
 		      <div class="card" id="about">  
@@ -442,8 +439,9 @@
 		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>
-		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${StudyListFilterdata.s_title}  
+<!-- ******* 혜련 작업 중  ********* -->		       
+		       <h6  id="s_detailGo" onclick="s_detailGo()" class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
+		        			${StudyListFilterdata.s_title}
 		        </h6>  
 		        <h6 class="description">  
 		                ${StudyListFilterdata.s_userId} 
@@ -461,9 +459,7 @@
 		        </div>
 		      </div> 
 		    </div>
-			<% cnt2++; %>
 		  </c:forEach>
-		  <% int cnt3 = 0; %>
 		  <c:forEach items="${TeacherListFilter}" var="TeacherListFilter">
 		    <div class="col s12 m4"> 
 		      <div class="card" id="about">  
@@ -472,7 +468,7 @@
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div> 
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${TeacherListFilter.t_title}  
+		        			${TeacherListFilter.t_title}
 		        </h6>  
 		        <h6 class="description">  
 		                ${TeacherListFilter.t_userId}<i class="fa fa-id-badge" aria-hidden="true"></i>
@@ -490,7 +486,6 @@
 		        </div>
 		      </div> 
 		    </div>
-			<% cnt3++; %>
 		  </c:forEach>  
 		  <c:if test="${TeacherListFilter.size()+StudyListFilterdata.size()+TearchlistAll.size()+studylistAll.size() == 0}"> 
 		  	<h3>해당 조건에 대한 검색결과가 없습니다.</h3>
@@ -502,7 +497,15 @@
   
 <script type="text/javascript">
  	
+// ************** 혜련 작업중 *********************__________________________________
+$('#s_detailGo').on("click", function s_detailGo() {
+	window.parent.location.href= "redirect:/study/study_DetailRead?s_no="+"${studylistAll.s_no}"; 
+});
 	
+	
+
+
+//__________________________________
 	function togglefunction (event) { 
 		$(event).toggleClass('active'); 
 		$(event).parent().next().toggleClass('active');  
