@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-         <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,15 +49,12 @@
         margin-right: auto;
         width: 53.8%;
     }
-
-
     #new{
         position: static;
         margin-left: auto;
         margin-right: auto;
         width: 53.8%;
     }
-
     #content{
         margin-left: auto;
         margin-right: auto;
@@ -77,7 +74,6 @@
         margin-right: auto;
         width: 100%;
     }
-
     .cate_list{
         padding-bottom: 10px;
     }
@@ -193,8 +189,6 @@
   .rot-135:hover {
   filter: hue-rotate(135deg);
 }
-
-
 </style>
 <body>
 <!-- navbar-->
@@ -294,10 +288,11 @@
                                 <div class="row"> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>친목도모</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
+                                         <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
+                                            <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
+                                            <li class="nav-item"><a href="/study/studyBoard" class="nav-link">스터디탐방</a></li>
+                                            <li class="nav-item"><a href="/study/classBoard" class="nav-link">강의탐방</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -440,6 +435,7 @@
         </div>
     </nav>
 </header>
+<!-- 메인페이지 슬라이드쇼 -->
 <div id="all">
     <div id="content">
         <header>
@@ -451,25 +447,25 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item active" style="background-image: url('./resource/images/clogo.jpg">
+                        <!-- <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">First Slide</h2>
                             <p class="lead">This is a description for the first slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item" style="background-image: url('./resource/images/javalogo.png">
+                       <!--  <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">Second Slide</h2>
                             <p class="lead">This is a description for the second slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')">
-                        <div class="carousel-caption d-none d-md-block">
+                    <div class="carousel-item" style="background-image: url('./resource/images/Golang_main.png')">
+                      <!--   <div class="carousel-caption d-none d-md-block">
                             <h2 class="display-4">Third Slide</h2>
                             <p class="lead">This is a description for the third slide.</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -482,55 +478,11 @@
                 </a>
             </div>
         </header>
-        <!-- 아이콘 -->
-        <!-- <div id="icon" class="box text-center mt-0 mb-0">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-                <div class="row">
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/c.png"><br/><span class="text">c언어</span></a>
-                    </div>
-                    <div class="col-lg-2"> 
-                        <a href="blog.jsp"><img src="./resource/images/cpp.png"><br/><span class="text">c++언어</span></a>  
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/java.png"><br/><span class="text">자바</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/javascript.png"><br/><span class="text">자바스크립트</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/python.png"><br/><span class="text">파이썬</span></a>
-                    </div>
-                    <div class="col-lg-2">
-                        <a href="blog.jsp"><img src="./resource/images/android.png"><br/><span class="text">안드로이드</span></a>
-                    </div>
-                </div> 
-            </div>
-        </div> -->
         <!--
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
         -->
+        <!-- 메인페이지 language rank  -->
         <div  id="hot">
             <div class="box py-4 mt-0">
                 <div class="container">
@@ -544,7 +496,7 @@
             <div class="container"> 
                 <div class="product-slider owl-carousel owl-theme">
                 	<%int q = 1;%>
-                	<c:forEach items="${languagerank}" var="languagerank">
+                	<c:forEach items="${languagerank}" var="languagerank"> 
                 	<div style="position: relative;"> 
                 		<div class="imgrank">
 									<%if(q== 1){ %> 
@@ -562,22 +514,33 @@
                     <div class="item"> 
                         <div class="product"> 
                             <div class="flip-container"> 
-                                <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
+                                <div class="flipper" onclick="javascript:imagesfunction(this)">
+                                    <div class="front"><a><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
                                 </div>
+                                <span style="display: none;">${languagerank.language_name}</span>
                             </div><a href="detail.jsp" class="invisible"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a>
                             <div class="text">  
-                                <h3><a href="detail.jsp">${languagerank.language_name}</a></h3> 
+                                <h3><span>${languagerank.language_name}</span></h3> 
                                 <p class="price">  
                                     <del></del><a href="#" class="button2 b-orange rot-135">Details</a> 
                                 </p>
                             </div> 
                         </div>
-                    </div> 
+                    </div>  
                     </div>
                     <% q++; %>
                     </c:forEach> 
+                    <script type="text/javascript"> 
+                    //c#으로는 controller에 전달되지 않아 다른 이름으로 전달 한 후 c#으로 다시변경한 후 검색
+						function imagesfunction(event) {
+							var language = $(event).next().text();
+							if(language == "C#"){
+								language ="Ccrosshatch"; 
+							}  
+							location.href = '/board/searchResult/'+language;
+						}
+                    </script>
                           <!--     /.text
                             <div class="ribbon sale">
                                 <div class="theribbon">SALE</div>
@@ -597,6 +560,7 @@
                 </div>
             </div>
         </div>
+        <!-- 메인페이지 스터디 랭킹 -->
         <div  id="hot">
             <div class="box py-4 mt-0">
                 <div class="container">
@@ -767,16 +731,7 @@
     </div>
     <!-- /#blog-homepage-->
 </div>
-<!-- /.container-->
-<!-- *** BLOG HOMEPAGE END ***-->
-<!--
-*** FOOTER ***
-_________________________________________________________
--->
-<!--
-*** FOOTER ***
-_________________________________________________________
--->
+
 <div class="box text-center mb-3" id="footer">
     <div class="container">
         <div class="row">
@@ -829,7 +784,7 @@ _________________________________________________________
                     </div>
                     <!-- /input-group--> 
                 </form>
-                <hr>
+                <hr> 
                 <h4 class="mb-3">더보기 사이트</h4>
                 <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a><a href="#" class="email external"><i class="fa fa-envelope"></i></a></p>
             </div>

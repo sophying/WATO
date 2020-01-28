@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-         <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,15 +49,12 @@
         margin-right: auto;
         width: 53.8%;
     }
-
-
     #new{
         position: static;
         margin-left: auto;
         margin-right: auto;
         width: 53.8%;
     }
-
     #content{
         margin-left: auto;
         margin-right: auto;
@@ -77,7 +74,6 @@
         margin-right: auto;
         width: 100%;
     }
-
     .cate_list{
         padding-bottom: 10px;
     }
@@ -193,8 +189,6 @@
   .rot-135:hover {
   filter: hue-rotate(135deg);
 }
-
-
 </style>
 <body>
 <!-- navbar-->
@@ -294,10 +288,11 @@
                                 <div class="row"> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>친목도모</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
+                                         <ul class="list-unstyled mb-3">
+                                            <li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
+                                            <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
+                                            <li class="nav-item"><a href="/study/studyBoard" class="nav-link">스터디탐방</a></li>
+                                            <li class="nav-item"><a href="/study/classBoard" class="nav-link">강의탐방</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -501,7 +496,7 @@
             <div class="container"> 
                 <div class="product-slider owl-carousel owl-theme">
                 	<%int q = 1;%>
-                	<c:forEach items="${languagerank}" var="languagerank">
+                	<c:forEach items="${languagerank}" var="languagerank"> 
                 	<div style="position: relative;"> 
                 		<div class="imgrank">
 									<%if(q== 1){ %> 
