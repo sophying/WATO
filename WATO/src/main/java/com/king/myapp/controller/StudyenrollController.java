@@ -291,6 +291,17 @@ public class StudyenrollController {
 	}
 	
 	
+	// 내가 참여한 스터디 리스트 보러가기 
+	@RequestMapping(value = "/s_myList", method = RequestMethod.GET)
+	public String getmyList() throws Exception{
+		
+		
+		
+		return "redirect:/study/student_myList";
+		
+	}
+	
+	
 	
 	
 	

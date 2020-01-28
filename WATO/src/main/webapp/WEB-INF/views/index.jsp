@@ -181,7 +181,14 @@
                 <!-- <div class="col-lg-6 offer d-flex d-block"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div> --> 
                 <div class="row mx-auto w-100 text-right"> 
                     <ul class=" list-inline mb-0 w-100 ">
-                    <li class=" pl-2 list-inline-item pull-left"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a></li> 
+                    <c:choose>
+                    <c:when test="${std == null && teach == null}">
+                    	<li class=" pl-2 list-inline-item pull-left"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a></li> 
+                    </c:when>
+                    <c:otherwise>
+                   	 	<li id="myList" class=" pl-2 list-inline-item pull-left"><a href="/study/myList" class="btn btn-success btn-sm">참여한 스터디 보러가기</a></li> 
+                    </c:otherwise>
+                    </c:choose>
                     	<c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
@@ -267,7 +274,7 @@
                                 <div class="row"> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>스터디 등록</h5>
-                                        <ul class="list-unstyled mb-3">
+                                        <ul id="menuClick"class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
                                             <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
                                             <li class="nav-item"><a href="/study/studyBoard" class="nav-link">스터디탐방</a></li>
@@ -745,4 +752,5 @@ _________________________________________________________
 <script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="./resource/js/front.js"></script> 
+<script src="./resource/js/hr/index_menuClick.js"></script>
 </body>
