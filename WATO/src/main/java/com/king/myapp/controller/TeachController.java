@@ -1,7 +1,6 @@
 package com.king.myapp.controller;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.TeachVO;
@@ -43,6 +41,9 @@ public class TeachController {
 		logger.info("post teach_join");
 
 		service.teach_join(vo);
+		
+		service.admin_mng1(vo);
+		logger.info("강사정보 회원관리에 추가");
 
 		return "redirect:/";
 	}
@@ -60,31 +61,8 @@ public class TeachController {
 		
 		service.teach_join3(vo);
 		
-		return "redirect:/";
-	}
-	
-	// 강사 로그인 get
-	@RequestMapping(value = "/sign_up/loginform", method = RequestMethod.GET)
-	public void getlogin() throws Exception {
-		logger.info("get login");
-	}
-	
-	// 강사 로그인 post
-	@RequestMapping(value = "/sign_up/loginform", method = RequestMethod.POST)
-	public String postlogin(TeachVO vo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-		logger.info("post login");
-		
-		HttpSession session = req.getSession();
-		
-		TeachVO login = service.login(vo);
-		
-		if(login == null) {
-			session.setAttribute("teach", null);
-			
-			rttr.addFlashAttribute("msg", false);
-		} else {
-			session.setAttribute("teach", login);
-		}
+		service.admin_mng2(vo);
+		logger.info("강사정보 회원관리에 추가");
 		
 		return "redirect:/";
 	}

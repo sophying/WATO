@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.king.myapp.domain.AdminVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
@@ -69,6 +70,12 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int changeT_pwd(TeachVO tvo) throws Exception {
 		return dao.changeT_pwd(tvo);
+	}
+
+	// 회원관리
+	@Override
+	public List<AdminVO> manageList() throws Exception {
+		return dao.manageList();
 	}
 
 }

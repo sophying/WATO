@@ -40,6 +40,7 @@
 <!--  외부라이브러리 추가  -->   
    <dependencies>
       
+	
    
    <dependency>
    <groupId>com.google.code.gson</groupId>
@@ -263,6 +264,11 @@
          <version>1.2</version>
       </dependency>
       
+      <dependency>
+      	<groupId>commons-io</groupId>
+      	<artifactId>commons-io</artifactId>
+      	<version>2.5</version>
+      </dependency>
       <dependency>
          <groupId>commons-fileupload</groupId>
          <artifactId>commons-fileupload</artifactId>

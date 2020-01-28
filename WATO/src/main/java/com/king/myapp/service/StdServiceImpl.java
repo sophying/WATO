@@ -32,4 +32,10 @@ public class StdServiceImpl implements StdService {
 		return result;
 	}
 
+	// 학생 정보 회원관리로
+	@Override
+	public void admin_mng(StdVO vo) throws Exception {
+		dao.admin_mng(vo);
+	}
+
 }

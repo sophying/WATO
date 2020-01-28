@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.king.myapp.domain.AdminVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
@@ -47,6 +48,64 @@ public class AdminController {
 	@Inject
 	MailService mailservice;
 
+	//어드민 페이지로 이동
+	    @RequestMapping(value = "/index_admin")
+	    public String admin_main() throws Exception {
+	    	logger.info("admin main 페이지로 이동~~!!");
+			return "admin/index_admin";
+	    }
+	    
+	//  차트 페이지 이동
+	    @RequestMapping( value = "/charts")
+	    public String  charts() throws Exception {
+	        logger.info("charts 페이지로 이동~~!!");
+	        return "admin/charts";
+	    }
+	
+	// 테이블 페이지 이동
+	    @RequestMapping(value = "/tables")
+	    public String tables() throws Exception{
+	        logger.info("tables 페이지로 이동~~!!");
+	        return  "admin/tables";
+	    }
+	
+	// 폼 페이지 이동
+	    @RequestMapping(value = "/forms")
+	    public String forms() throws Exception{
+	        logger.info("forms 페이지로 이동~~!!");
+	        return  "admin/forms";
+	    }
+	
+	    
+	// 매니지먼트 페이지 이동
+	    @RequestMapping(value = "/approval")
+	    public String approval(Model model) throws Exception{
+	    	logger.info("approval 페이지로 이동~~!!");
+	    	
+	    	List<ApprovalVO> teachlist = adminservice.teachlist();
+	    	model.addAttribute("list", teachlist);
+	    	return  "admin/approval";
+	    }
+	    
+	// 매니지먼트 페이지 이동
+	    @RequestMapping(value = "/management")
+	    public String management(Model model) throws Exception{
+	    	logger.info("management 페이지로 이동~~!!");
+
+			List<AdminVO> manageList = adminservice.manageList();
+			model.addAttribute("manageList", manageList);
+			return  "admin/management";
+	    }
+	    
+	// 로그인 페이지 이동
+	/*
+	 * @RequestMapping(value = "/login") public String login() throws Exception{
+	 * logger.info("login 페이지로 이동~~!!"); return "admin/login"; }
+	 */
+	    
+	    
+	/*=================================================================================*/
+
 	// 로그인 get
 	@RequestMapping(value = "/loginform", method = RequestMethod.GET)
 	public void getlogin() throws Exception {
@@ -55,7 +114,7 @@ public class AdminController {
  
 	// 학생 로그인 post
 	@RequestMapping(value = "/loginstd", method = RequestMethod.POST)
-	public String postStd(StdVO svo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+	public void postStd(StdVO svo, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse response)throws Exception {
 		logger.info("post 학생 로그인 시도");
 
 		HttpSession session = req.getSession();
@@ -65,20 +124,25 @@ public class AdminController {
 		if (login1 == null) { // login 값이 null 일 때 member 값은 null 이고
 
 			session.setAttribute("std", null);
-
 			rttr.addFlashAttribute("msg", false);
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('아이디 또는 비밀번호가 맞지 않습니다.'); location.href='http://localhost:8080/';</script>");
+			out.flush();
 
 		} else {
 			session.setAttribute("std", login1); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
 			logger.info("학생 로그인 완료");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인이 완료되었습니다.'); location.href='http://localhost:8080/';</script>");
+			out.flush();
 		}
-
-		return "redirect:/";
 	}
 
 	// 강사 로그인 post
 	@RequestMapping(value = "/logintch", method = RequestMethod.POST)
-	public String postTch(TeachVO tvo, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
+	public void postTch(TeachVO tvo, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
 		logger.info("post 강사 로그인 시도");
 
 		HttpSession session = req.getSession();
@@ -88,15 +152,20 @@ public class AdminController {
 		if (login2 == null) { // login 값이 null 일 때 member 값은 null 이고
 
 			session.setAttribute("teach", null);
-
 			rttr.addFlashAttribute("msg", false);
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('아이디 또는 비밀번호가 맞지 않습니다.'); location.href='http://localhost:8080/';</script>");
+			out.flush();
 
 		} else {
 			session.setAttribute("teach", login2); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
 			logger.info("강사 로그인 완료");
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('로그인이 완료되었습니다.'); location.href='http://localhost:8080/';</script>");
+			out.flush();
 		}
-
-		return "redirect:/";
 	}
 
 	// 인증 후 강사 아이디 생성 거치는 곳(숨겨진 경로).GET
@@ -113,23 +182,16 @@ public class AdminController {
 		return "/teach/teach_join_2";
 	}
 
-	// 강사 승인페이지 GET
-	@RequestMapping(value = "/adminmanage", method = RequestMethod.GET)
-	public String getManage(Model model) throws Exception {
-		logger.info("get 강사 승인 페이지");
-
-		List<ApprovalVO> teachlist = adminservice.teachlist();
-		model.addAttribute("list", teachlist);
-		return "/admin/adminmanage";
-	}
-
 	// 승인버튼 클릭 (인증센터 POST), mailSending 코드
-	@RequestMapping(value = "/adminmanage", method = RequestMethod.POST)
+	@RequestMapping(value = "/approval", method = RequestMethod.POST)
 	public void mailSending(TeachVO tvo, ApprovalVO avo, HttpServletRequest request, String e_mail,
 			HttpServletResponse response_email) throws Exception {
 		logger.info("post 강사의 정보를 확인하고 승인버튼을 클릭했습니다.");
 
-		teachservice.teach_join2(tvo);
+		teachservice.teach_join2(tvo); // 값이 teach_info 테이블로 삽입
+		
+		/*logger.info("승인완료를 위해 num 값을 바꾸어주었습니다.");
+		teachservice.teach_appUpdate(avo);*/
 
 		Random r = new Random();
 		int dice = r.nextInt(4589362) + 49311; // 이메일로 받는 인증코드 부분 (난수)
@@ -179,10 +241,10 @@ public class AdminController {
 
 		PrintWriter out = response_email.getWriter();
 
-		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/adminmanage';</script>");
+		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/approval';</script>");
 		
-		/*teachservice.app_delete(avo); 
-		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");*/
+		teachservice.app_delete(avo); 
+		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");
 
 		out.flush();
 	}
@@ -194,76 +256,30 @@ public class AdminController {
 	}
 
 	// 아이디 찾기 POST(학생)
-	@RequestMapping(value = "/stdFgId", method = RequestMethod.POST)
-	public ModelAndView postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email)
-			throws Exception {
-		logger.info("post 학생에게 아이디를 전송합니다.");
+		@RequestMapping(value = "/stdFgId", method = RequestMethod.POST)
+		public ModelAndView postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email)
+				throws Exception {
+			logger.info("post 학생에게 아이디를 전송합니다.");
 
-		StdVO list = adminservice.findS_id(svo);
+			StdVO list = adminservice.findS_id(svo);
 
-		if (list.getUser_Email().equals(svo.getUser_Email())) {
+			if (list.getUser_Email().equals(svo.getUser_Email())) {
 
-			String setfrom = "choio95634@gamil.com";
-			String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
-			String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
-			String content =
+				String setfrom = "choio95634@gamil.com";
+				String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
+				String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
+				String content =
 
-					System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
+						System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
 
-							System.getProperty("line.separator") +
+								System.getProperty("line.separator") +
 
-							svo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
+								svo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
 
-							System.getProperty("line.separator") +
+								System.getProperty("line.separator") +
 
-							System.getProperty("line.separator");
+								System.getProperty("line.separator");
 
-			MimeMessage message = mailSender.createMimeMessage();
-			MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
-
-			messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
-			messageHelper.setTo(tomail); // 받는사람 이메일
-			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-			messageHelper.setText(content); // 메일 내용
-
-			mailSender.send(message);
-
-		}
-
-		response_email.setContentType("text/html; charset=UTF-8");
-		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
-		out_email.flush();
-
-		return new ModelAndView("admin/forgot_id_pwd");
-	}
-
-	// 아이디 찾기 POST(강사)
-	@RequestMapping(value = "/teachFgId", method = RequestMethod.POST)
-	public ModelAndView postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
-			HttpServletResponse response_email) throws Exception {
-		logger.info("post 강사에게 아이디를 보낼겁니다.");
-
-		TeachVO list = adminservice.findT_id(tvo);
-
-		if (list.getUser_Email().equals(tvo.getUser_Email())) {
-
-			String setfrom = "choio95634@gamil.com";
-			String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
-			String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
-			String content =
-
-					System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
-
-							System.getProperty("line.separator") +
-
-							tvo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
-
-							System.getProperty("line.separator") +
-
-							System.getProperty("line.separator");
-
-			try {
 				MimeMessage message = mailSender.createMimeMessage();
 				MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
 
@@ -274,18 +290,64 @@ public class AdminController {
 
 				mailSender.send(message);
 
-			} catch (Exception e) {
-				System.out.println(e);
 			}
+
+			response_email.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_email = response_email.getWriter();
+			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
+			out_email.flush();
+
+			return new ModelAndView("admin/forgot_id_pwd");
 		}
 
-		response_email.setContentType("text/html; charset=UTF-8");
-		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
-		out_email.flush();
+		// 아이디 찾기 POST(강사)
+		@RequestMapping(value = "/teachFgId", method = RequestMethod.POST)
+		public ModelAndView postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
+				HttpServletResponse response_email) throws Exception {
+			logger.info("post 강사에게 아이디를 보낼겁니다.");
 
-		return new ModelAndView("admin/forgot_id_pwd");
-	}
+			TeachVO list = adminservice.findT_id(tvo);
+
+			if (list.getUser_Email().equals(tvo.getUser_Email())) {
+
+				String setfrom = "choio95634@gamil.com";
+				String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
+				String title = "[StudyUS] 아이디 찾기 메일입니다."; // 제목
+				String content =
+
+						System.getProperty("line.separator") + // 한줄씩 줄간격을 두기위해 작성
+
+								System.getProperty("line.separator") +
+
+								tvo.getUser_Email() + "님의 아이디는 " + list.getUser_Id() + "입니다." +
+
+								System.getProperty("line.separator") +
+
+								System.getProperty("line.separator");
+
+				try {
+					MimeMessage message = mailSender.createMimeMessage();
+					MimeMessageHelper messageHelper = new MimeMessageHelper(message, true, "UTF-8");
+
+					messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
+					messageHelper.setTo(tomail); // 받는사람 이메일
+					messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+					messageHelper.setText(content); // 메일 내용
+
+					mailSender.send(message);
+
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+
+			response_email.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_email = response_email.getWriter();
+			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
+			out_email.flush();
+
+			return new ModelAndView("admin/forgot_id_pwd");
+		}
 
 	// 비밀번호 찾기 POST(학생)
 	@RequestMapping(value = "/stdFgPwd", method = RequestMethod.POST)
