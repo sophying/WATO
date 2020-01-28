@@ -29,7 +29,55 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <style>
-  	th{
+  	img {
+		border:0px; 
+		width: 50px;
+		height: 30px; 
+		padding: 0px; 
+		text-align: center; 
+		font-size: 12px;
+	}
+	input.gh {
+		border:0px; 
+		width: 30px; 
+		height: 30px; 
+		padding: 0px; 
+		text-align: center; 
+		font-size: 12px;
+	}
+	input.email {
+		border:0px; 
+		width: 150px; 
+		height: 30px; 
+		padding: 0px; 
+		text-align: center; 
+		font-size: 12px;
+	}
+	input.addr1 {
+		border:0px; 
+		width: 50px; 
+		height: 30px; 
+		padding: 0px; 
+		text-align: center; 
+		font-size: 12px;
+	}
+	input.addr2 {
+		border:0px; 
+		width: 150px; 
+		height: 30px; 
+		padding: 0px; 
+		text-align: center; 
+		font-size: 12px;
+	}
+	input.addr3 {
+		border:0px; 
+		width: 70px; 
+		height: 30px; 
+		padding: 0px; 
+		text-align: center; 
+		font-size: 12px;
+	}
+  	th {
   		text-align: center;
   	}
   	
@@ -76,19 +124,17 @@
                         </tr>
                         <c:forEach var="AppVO" items="${list}">
 				        <tr>
-				            <td><img style="border:0px; width: 50px; height: 30px; padding: 0px; text-align: center; font-size: 12px;" id="Teach_Profile" name="Teach_Prifile" src="../resource/images/${AppVO.app_Profile}"></td>
-				            <td><img style="border:0px; width: 50px; height: 30px; padding: 0px; text-align: center; font-size: 12px;" id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Resume}"></td>
-				            <td><input style="border:0px; width: 30px; height: 30px; padding: 0px; text-align: center; font-size: 12px;" type="text" id="Teach_Gender" name="Teach_Gender" value="${AppVO.app_Gender}" readonly="readonly"></td>
-				            <td><input style="border:0px; width: 30px; height: 30px; padding: 0px; text-align: center; font-size: 12px;" type="text" id="Teach_Phone1" name="Teach_Phone1" value="${AppVO.app_Phone1}" readonly="readonly"></td>
-				            <td><input style="border:0px; width: 30px; height: 30px; padding: 0px; text-align: center; font-size: 12px;" type="text" id="Teach_Phone2" name="Teach_Phone2" value="${AppVO.app_Phone2}" readonly="readonly"></td>
-				            <td><input style="border:0px; width: 30px; height: 30px; padding: 0px; text-align: center; font-size: 12px;" type="text" id="Teach_Phone3" name="Teach_Phone3" value="${AppVO.app_Phone3}" readonly="readonly"></td>
-				            <td><input style="border:0px; width: 130px; height: 30px; padding: 0px; text-align: center; font-size: 12px;" type="text" id="User_Email" name="User_Email" value="${AppVO.user_Email}" readonly="readonly"></td>
-				            <td><input style="border:0px; width: 50px; height: 30px; padding: 0px; text-align: center; font-size: 12px;" type="text" id="Teach_Addr1" name="Teach_Addr1" value="${AppVO.app_Addr1}" readonly="readonly"></td>
-				            <td><input style="border:0px; width: 150px; height: 30px; padding: 0px; text-align: center; font-size: 12px;" type="text" id="Teach_Addr2" name="Teach_Addr2" value="${AppVO.app_Addr2}" readonly="readonly"></td>
-				            <td><input style="border:0px; width: 70px; height: 30px; padding: 0px; text-align: center; font-size: 12px;" type="text" id="Teach_Addr3" name="Teach_Addr3" value="${AppVO.app_Addr3}" readonly="readonly"></td>
-				            <c:if test="${AppVO.app_Num == '0'}">
-				            	<td><button type="submit" name="submit" id="button1">승인</button></td>
-				            </c:if>
+				            <td><img id="Teach_Profile" name="Teach_Prifile" src="../resource/images/${AppVO.app_Profile}"></td>
+				            <td><img id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Resume}"></td>
+				            <td><input type="text" class="gh" id="Teach_Gender" name="Teach_Gender" value="${AppVO.app_Gender}" readonly="readonly"></td>
+				            <td><input type="text" class="gh" id="Teach_Phone1" name="Teach_Phone1" value="${AppVO.app_Phone1}" readonly="readonly"></td>
+				            <td><input type="text" class="gh" id="Teach_Phone2" name="Teach_Phone2" value="${AppVO.app_Phone2}" readonly="readonly"></td>
+				            <td><input type="text" class="gh" id="Teach_Phone3" name="Teach_Phone3" value="${AppVO.app_Phone3}" readonly="readonly"></td>
+				            <td><input type="text" class="email" id="User_Email" name="User_Email" value="${AppVO.user_Email}" readonly="readonly"></td>
+				            <td><input type="text" class="addr1" id="Teach_Addr1" name="Teach_Addr1" value="${AppVO.app_Addr1}" readonly="readonly"></td>
+				            <td><input type="text" class="addr2" id="Teach_Addr2" name="Teach_Addr2" value="${AppVO.app_Addr2}" readonly="readonly"></td>
+				            <td><input type="text" class="addr3" id="Teach_Addr3" name="Teach_Addr3" value="${AppVO.app_Addr3}" readonly="readonly"></td>
+				            <td><button type="submit" name="submit" id="button1">승인</button></td>
 				        </tr>
 				        </c:forEach>
                     </table>

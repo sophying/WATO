@@ -32,11 +32,11 @@
 	</insert>
 	
 	<!-- 강사 회원 가입(승인 클릭했을 때 app테이블 Num update) -->
-	<update id="teach_appUpdate">
+	<!-- <update id="teach_appUpdate">
 		update approval
 		set app_num = '1'
 		where User_Email = #{User_Email}
-	</update>	
+	</update>  -->	
 	
 	<!-- 강사 회원 가입3 -->
 	<update id="teach_join3">

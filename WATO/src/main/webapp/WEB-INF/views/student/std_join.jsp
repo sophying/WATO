@@ -174,42 +174,7 @@
 	.close-button:hover {
 	    background-color: tomato;
 	    color: #fff;
-	} 
-        
-       /* input {
-            background-color: #eee;
-            border: none; // 그림자 제거 
-            padding: 12px 15px;
-            margin: 8px 0; // 위아래 간격 
-        }
-
-        #header ul li a:hover{
-            background-color: #6c80b2; // 마우스 올리면 배경색 바뀜 
-            color:#dddddd;
-        }
-
-        th#student {
-
-        }
-
-        div#join {
-            padding-top: 30px;
-            padding-bottom: 20px;
-        }
-
-        button#joinb:hover {
-            color: #3c97bf;
-            cursor: pointer; // mouse shape turn finger
-            background-color: #eeeeee;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #3c97bf;
-        } */
+	}
 
         th {
             border: 1px solid #bbbbbb;
