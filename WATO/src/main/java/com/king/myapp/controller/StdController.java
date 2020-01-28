@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.service.AdminService;
 import com.king.myapp.service.StdService;
 
 @Controller
@@ -40,6 +41,9 @@ public class StdController {
 		logger.info("post std_join");
 
 		service.std_join(vo);
+		
+		service.admin_mng(vo);
+		logger.info("학생정보 회원관리에 추가 됨");
 
 		return "redirect:/";
 	}

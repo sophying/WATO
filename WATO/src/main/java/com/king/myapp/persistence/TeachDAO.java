@@ -26,4 +26,13 @@ public interface TeachDAO {
 	// 강사 승인 후 정보 삭제
 	public void app_delete(ApprovalVO avo) throws Exception;
 
+	// 강사 승인 후 Num 의 값 변경
+	public void teach_appUpdate(ApprovalVO avo) throws Exception;
+	
+	// 강사 정보 회원관리에 추가1
+	public void admin_mng1(ApprovalVO vo) throws Exception;
+
+	// 강사 정보 회원관리에 추가2
+	public void admin_mng2(TeachVO vo) throws Exception;
+
 }
