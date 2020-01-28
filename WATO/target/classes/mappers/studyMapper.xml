@@ -4,45 +4,208 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="study">
-	<insert id="enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
-	insert into STUDYENROLL (SNO, USERID, USERPASS, EMAIL, PHOTO, CATEGORY, STITLE, STARTDATE, ENDDATE, SDAY, SPLACE, SCONTENT )
-	values( study_seq.nextval , #{userId}, #{userPass}, #{email}, #{photo}, #{category}, #{stitle}, #{startDate}, #{endDate}, #{sDay}, #{sPlace}, #{sContent})
+<!-- +++++++++++++++++++++++++++[ ↓↓↓↓↓↓↓↓↓  학생 테이블  쿼리   ↓↓↓↓↓↓↓↓ ]++++++++++++++++++++++++++++++++++ -->	
+
+<!-- 1. 모집글 등록 -->
+	<insert id="s_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
+	insert into S_ENROLL (S_NO, S_USERID, S_CATEGORY , S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT, S_PHOTO, S_LEVEL, S_PEOPLE, S_PARTI, S_CREADATE, S_INTRO)
+	values( S_ENROLL_SEQ.nextval , #{s_userId}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_photo},#{s_level}, #{s_people} , #{s_parti}, SYSDATE, #{s_intro} )
 <!-- 		insert into studytest_1 (bno, userid, category, title, regdate, place, content, photo)
 		values((select nvl(max(bno)+1, 1) from studytest_1), #{userId}, #{category}, #{title}, #{regDate}, #{place}, #{content}, #{photo}) -->
 	</insert>
+
+<!-- 2. list  -->	
+	<select id="s_list" resultType="com.king.myapp.domain.StudyEnrollVO">
+		select * from s_enroll
+		order by s_no desc
+	</select>
+	
+	
+<!-- 3. 상세보기  -->
+	<select id="s_detail" resultType="com.king.myapp.domain.StudyEnrollVO">
+		select * from s_enroll
+		where s_no =#{s_no}
+	</select>
+	
+
+
+<!-- 4. 조회수   -->
+	<update id="s_viewCnt">
+		update s_enroll
+		set s_viewcnt = (s_viewcnt + 1)
+		where s_no = #{s_no}
+	</update>
+
+<!--  5. 수정글 등록  -->	
+	<update id="s_modify">
+		update s_enroll
+		set   S_CATEGORY=#{s_category} , S_TITLE=#{s_title} , S_STARTDATE=#{s_startDate}, S_ENDDATE=#{s_endDate}, S_DAY=#{s_day}, S_POSTNUM=#{s_postnum}, S_PLACE=#{s_place}, S_CONTENT=#{s_content}, S_PHOTO=#{s_photo}, S_LEVEL=#{s_level}, S_PEOPLE=#{s_people} , S_INTRO=#{s_intro}, S_UPDATEDATE= sysdate
+		where S_NO = #{s_no}
+	</update>
+	
+<!-- 스터디 모집 글 삭제   -->
+	<delete id="s_delete">
+		delete from s_enroll
+		where s_no = #{s_no}
+	</delete>	
+
+<!--  6. 댓글 등록 -->	
+	<insert id="s_replyInsert" parameterType="com.king.myapp.domain.StudentReplyVO">
+		insert into S_REPLY (R_NO, S_NO, R_USERID, R_CONTENT, R_REGDATE) 
+		values (S_REPLY_SEQ.nextval, #{s_no}, #{r_userid}, #{r_content}, SYSDATE) 
+	</insert>
+	
+<!-- 댓글 보여주기  -->
+	<select id="s_replyRead" resultType="com.king.myapp.domain.StudentReplyVO">
+		select * from s_reply 
+		where s_no = #{s_no}
+		order by r_no desc
+	</select>	
+		
+<!-- 댓글 수정 -->		
+	<update id="s_replyUpdate">
+		update s_reply
+		set R_CONTENT=#{r_content}, R_REGDATE= SYSDATE
+		where R_NO =#{r_no}
+	</update>
+	
+<!-- 댓글 삭제 -->		
+	<delete id="s_replyDelete">
+		delete from s_reply
+		where r_no =#{r_no}
+	</delete>
+	
+
+<!-- 참여자 카운트  -->	
+	<update id="s_partiCnt">
+		update s_enroll
+		set S_PARTI = (s_parti)+1
+		where s_no = #{s_no}
+			
+	</update>
+	
+<!-- 참여자 카운트 -  -->	
+	<update id="s_partiCntMinus">
+		update s_enroll
+		set S_PARTI = (s_parti)-1
+		where s_no = #{s_no}
+			
+	</update>
+	
+<!--  댓글 등록 2 -->
+<!-- <insert id="s_reReplyinsert">
+	insert into S_REPLY_LAYER (s_no, r_no, r_no_origin, r_no_groupord, r_no_groupLayer,r_userid, r_content,  r_regdate)
+	values(#{s_no}, S_REPLY_LAYER_SEQ, 0, 0, 0, #{r_userid}, #{r_content}, SYSDATE  )
+</insert>
+	 -->
+<!--  댓글 불러오기 2 -->	
+<!-- <select id="s_leaderReplyRead" resultType="com.king.myapp.domain.StudentReReplyVO">
+	select * from S_REPLY_LAYER 
+	where s_no = #{s_no}
+	order by r_no_origin desc, r_no_groupord asc
+</select>	 -->
+	
+<!--  댓글 수정2  -->
+<!-- <update id="s_reReplyUpdate">
+		update S_REPLY_LAYER
+		set R_CONTENT=#{r_content},r_no_origin=(select r_no from S_REPLY_LAYER where r_no = #{r_no}), R_REGDATE= SYSDATE
+		where r_no = #{r_no}
+
+</update>	 -->
+
+
+<!--  댓글 삭제2  -->	
+<!-- <delete id="s_reReplyDelete">
+	delete from S_REPLY_LAYER
+	where r_no =#{r_no} and r_no_origin=(select r_no from S_REPLY_LAYER where r_no = #{r_no})
+</delete>	
+	 -->
+
 	
 	
 	
 	
+	
+	
+	
+	
+	
+<!-- +++++++++++++++++++++++++++[ ↓↓↓↓↓↓↓↓↓  강사  테이블  쿼리   ↓↓↓↓↓↓↓↓ ]++++++++++++++++++++++++++++++++++ -->	
+	
+	
+<!-- 1. 강의 글 등록  -->
+	<insert id="t_enroll" parameterType="com.king.myapp.domain.TeacherEnrollVO">
+		insert into T_ENROLL (T_NO, T_USERID, T_CATEGORY, T_TITLE, T_STARTDATE, T_ENDDATE, T_DAY, T_POSTNUM, T_PLACE, T_CONTENT,T_PRICE, T_URL, T_PHOTO, T_LICENSE, T_LEVEL, T_PEOPLE ,T_CREADATE, T_INTRO)
+		values (T_ENROLL_SEQ.nextval, #{t_userId}, #{t_category}, #{t_title}, #{t_startDate}, #{t_endDate}, #{t_day}, #{t_postnum}, #{t_place}, #{t_content}, #{t_price}, #{t_URL}, #{t_photo}, #{t_license},#{t_level},#{t_people}, sysdate, #{t_intro}) 
+	</insert>
+	
+<!-- 2. 강의 글 list 목록 -->	
+	<select id="t_class_list" resultType="com.king.myapp.domain.TeacherEnrollVO">
+		select * from t_enroll
+		order by t_no desc
+	</select>
+
+<!-- 3. 강의 상세내용 보기  -->	
+	<select id="t_class_detail" resultType="com.king.myapp.domain.TeacherEnrollVO">
+		select * from t_enroll
+		where t_no =#{t_no}
+	</select>
+
+<!-- 4. 조회수   --> 
+	<update id="viewCnt">
+		update t_enroll
+		set t_viewcnt = (t_viewcnt + 1)
+		where t_no = #{t_no}
+	</update> 
+
+<!-- 내용 수정  -->	
+	<update id="t_modify">
+		update t_enroll
+		set   T_CATEGORY=#{t_category} , T_TITLE=#{t_title} , T_STARTDATE=#{t_startDate}, T_ENDDATE=#{t_endDate}, T_DAY=#{t_day}, T_POSTNUM=#{t_postnum}, T_PLACE=#{t_place}, T_CONTENT=#{t_content},T_PRICE=#{t_price}, T_URL=#{t_URL}, T_PHOTO=#{t_photo}, T_LICENSE=#{t_license}, T_LEVEL=#{t_level}, T_PEOPLE=#{t_people} , T_INTRO=#{t_intro}, T_UPDATEDATE= sysdate
+		where T_NO = #{t_no}
+	</update>
+	
+	<select id="t_replyRead" resultType="com.king.myapp.domain.TeacherReplyVO">
+		select * from (select * from t_reply where t_no = #{t_no})
+		order by r_no desc
+	</select>
+	
+<!--  댓글 등록 -->
+	<insert id="t_replyInsert" parameterType="com.king.myapp.domain.TeacherReplyVO">
+		insert into T_REPLY (R_NO, T_NO, R_USERID, R_CONTENT, R_REGDATE) 
+		values (T_REPLY_SEQ.nextval, #{t_no}, #{r_userid}, #{r_content}, SYSDATE) 
+	</insert>
+	
+<!-- 삭제   -->
+	<delete id="t_delete">
+		delete from t_enroll
+		where t_no = #{t_no}
+	</delete>	
+
+<!-- 댓글 수정 -->
+	<update id="r_update">
+		update t_reply set R_CONTENT = #{r_content}, R_REGDATE = SYSDATE WHERE R_NO = #{r_no}
+	</update>
+<!-- 댓글 삭제 --> 
+	<delete id="r_delete">
+		delete from t_reply where r_no = #{r_no}
+	</delete>
+	
+	<select id="partiCheck" resultType="com.king.myapp.domain.StudentParticipationVO">
+		select * from s_parti where p_userid = #{p_userid} and t_no = #{t_no}  
+	</select>
+	
+<!--  참여자 카운트  -->	
+	<update id="t_partiCnt">
+		update t_enroll
+		set T_PARTI = (t_parti)+1
+		where t_no = #{t_no}
+	</update>
+	
+	<update id="t_partiCntMinus">
+		update t_enroll
+		set T_PARTI = (t_parti)-1
+		where t_no = #{t_no}
+	</update>
 </mapper>
 
-<!-- 
-SNO  		NUMBER
-USERID 		VARCHAR2(20) 
-USERPASS 	VARCHAR2(100) 
-EMAIL  		VARCHAR2(30),
-PHOTO 		VARCHAR2(20),
-CATEGORY	 VARCHAR2(15) 
-STITLE	 	VARCHAR2(50) 
-STARTDATE  	DATE,
-ENDDATE  	DATE,
-SDAY		VARCHAR2(25) 
-SPLACE 		VARCHAR2(70),
-SCONTENT 	VARCHAR2(1000)
-
-
-SNO 	 	NUMBER  NOT NULL,
-USERID 		VARCHAR2(20)  NOT NULL,
-USERPASS 	VARCHAR2(100) NOT NULL,
-EMAIL  		VARCHAR2(30),
-PHOTO 		VARCHAR2(20),
-CATEGORY 	VARCHAR2(15)  NOT NULL,
-STITLE 		VARCHAR2(50)  NOT NULL,
-STARTDATE  	VARCHAR2(20),
-ENDDATE  	VARCHAR2(20),
-SDAY 		VARCHAR2(25)  NOT NULL,
-SPLACE 		VARCHAR2(200),
-SCONTENT 	VARCHAR2(1000)  NOT NULL,
-PRIMARY KEY(SNO)
-
- -->

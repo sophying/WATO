@@ -365,10 +365,6 @@
 								data{filetertype : }
 							})
 						}); */
-						 
-						
-						
-						
 					});
 					</script> 
 	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size: 20px; font-weight: bold;">${TearchlistAll.size()+studylistAll.size()+StudyListFilterdata.size()+TeacherListFilter.size()}개의 스터디</font>
@@ -376,7 +372,6 @@
 	<div class="studylistviewbody">  
 	  <div class="valign-wrapper">    
 	  	<div class="row">   
-		  <% int cnt = 0; %>  
 	  		<c:forEach items="${TearchlistAll}" var="TearchlistAll">
 		    <div class="col s12 m4">
 		      <div class="card" id="about">  
@@ -395,17 +390,24 @@
 		        </div>
 		        <div class='wrap'>
 		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		            <p> 
+		            	<c:choose> 
+		            		<c:when test="${heartbutton != null }">
+		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttondelete/${TearchlistAll.t_no}"><i class="fa fa-heart" aria-hidden="true" style="color: white;"></i></a>
+		            		</c:when>
+		            		<c:otherwise>   
+		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${TearchlistAll.t_no}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+		            		</c:otherwise>
+						</c:choose>
+		            	
+					</p>
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
 		          </div> 
 		        </div>
 		      </div> 
 		    </div>
-			<% cnt++; %> 
 		  </c:forEach>
-		  <% int cnt1 = 0; %>   
 	  		<c:forEach items="${studylistAll}" var="studylistAll">
 		    <div class="col s12 m4">
 		      <div class="card" id="about"> 
@@ -417,24 +419,39 @@
 		        			${studylistAll.s_title}  
 		        </h6> 
 		        <h6 class="description">   
-		                ${studylistAll.s_userId}   
+		                ${studylistAll.s_userId}    
 		        </h6>
 		        <div class="social">
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
 		        <div class='wrap'>
-		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
+		          <div class='content'>  
+		            <p> 
+		              	<c:choose>  
+		            		<c:when test="${heartbutton != null }">
+		            			<c:forEach items="${heartbutton}" var="heartbutton">    
+		            			<c:choose> 
+			            			<c:when test="${heartbutton == studylistAll.s_no }">
+				            			<!-- 채워진하트 --><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttondelete/${studylistAll.s_no}"><i class="fa fa-heart" aria-hidden="true" style="color: white;"></i></a>
+			            			</c:when>
+			            			<c:otherwise>
+			            				<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${studylistAll.s_no}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+			            			</c:otherwise>
+		            			</c:choose>
+		            			</c:forEach>
+		            		</c:when>
+		            		<c:otherwise>   
+		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${studylistAll.s_no}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+		            		</c:otherwise>
+						</c:choose>
+					</p>
+		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p> 
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
 		          </div> 
 		        </div>
 		      </div>  
 		    </div>
-			<% cnt1++; %> 
 		  </c:forEach>
-		  <% int cnt2 = 0; %>
 		  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
 		    <div class="col s12 m4"> 
 		      <div class="card" id="about">  
@@ -453,17 +470,23 @@
 		        </div>
 		        <div class='wrap'>  
 		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		           	<p>
+		              	<c:choose> 
+		            		<c:when test="${heartbutton != null }">
+		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttondelete/${studylistAll.s_no}"><i class="fa fa-heart" aria-hidden="true" style="color: white;"></i></a>
+		            		</c:when>
+		            		<c:otherwise>   
+		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${studylistAll.s_no}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+		            		</c:otherwise>
+						</c:choose>
+					</p>
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
 		          </div> 
 		        </div>
 		      </div> 
 		    </div>
-			<% cnt2++; %>
 		  </c:forEach>
-		  <% int cnt3 = 0; %>
 		  <c:forEach items="${TeacherListFilter}" var="TeacherListFilter">
 		    <div class="col s12 m4"> 
 		      <div class="card" id="about">  
@@ -480,17 +503,24 @@
 		        <div class="social">
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
-		        <div class='wrap'>  
+		        <div class='wrap'>   
 		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
+		            <p>
+		              	<c:choose> 
+		            		<c:when test="${heartbutton != null }">
+		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttondelete/${TearchlistAll.t_no}"><i class="fa fa-heart" aria-hidden="true" style="color: white;"></i></a>
+		            		</c:when>
+		            		<c:otherwise>   
+		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${TearchlistAll.t_no}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
+		            		</c:otherwise>
+						</c:choose>
+					</p>
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
 		          </div> 
 		        </div>
 		      </div> 
-		    </div>
-			<% cnt3++; %>
+		    </div> 
 		  </c:forEach>  
 		  <c:if test="${TeacherListFilter.size()+StudyListFilterdata.size()+TearchlistAll.size()+studylistAll.size() == 0}"> 
 		  	<h3>해당 조건에 대한 검색결과가 없습니다.</h3>

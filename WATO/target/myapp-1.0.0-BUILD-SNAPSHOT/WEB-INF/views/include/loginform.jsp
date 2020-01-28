@@ -12,7 +12,6 @@
         *  {
             box-sizing: border-box;
         }
-
         #loginform  {
             background: #f6f5f7;
             display: flex;
@@ -23,16 +22,13 @@
             height: 0; 
             margin: -20px 0 50px;
         }
-
        #loginform h1 {
             font-weight: bold;
             margin: 0;
         }
-
         #loginform h2 {
             text-align: center;
         }
-
         #loginform p {
             font-size: 14px; 
             font-weight: 100;
@@ -40,18 +36,15 @@
             letter-spacing: 0.5px;
             margin: 20px 0 30px;
         }
-
         #loginform span {
             font-size: 12px;
         }
-
         #loginform a {
             color: #333;
             font-size: 14px;
             text-decoration: none;
             margin: 15px 0;
         }
-
         #loginform button {
             border-radius: 20px;
             border: 1px solid #7B90D5;
@@ -64,47 +57,16 @@
             text-transform: uppercase;
             transition: transform 80ms ease-in;
         }
-
         #loginform button:active {
             transform: scale(0.95);
         } 
-
         #loginform button:focus {
             outline: none;
         }
-
         #loginform button.ghost {
             background-color: transparent;
             border-color: #FFFFFF;
         }
-
-		/* button 대신 쓰는 input 버튼. 학생&강사 회원가입에서 쓰임 */
-        #loginform input.angel {
-            border-radius: 20px;
-            border: 1px solid #7B90D5;
-            background-color: #7B90D5;
-            color: #FFFFFF;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 12px 45px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: transform 80ms ease-in;
-        }
-
-        #loginform input.angel:active {
-            transform: scale(0.95);
-        } 
-
-        #loginform input.angel:focus {
-            outline: none;
-        }
-
-        #loginform input.angel.ghost {
-            background-color: transparent;
-            border-color: #FFFFFF;
-        }
-
         #loginform form {
             background-color: #FFFFFF;
             display: flex;
@@ -115,7 +77,6 @@
             height: 100%;
             text-align: center;
         }
-
        #loginform input {
             background-color: #eee;
             border: none;
@@ -123,7 +84,6 @@
             margin: 8px 0;
             width: 100%;
         }
-
         #loginform .container {
             background-color: #fff;
             border-radius: 10px;
@@ -135,50 +95,42 @@
             max-width: 100%;
             min-height: 480px;
         }
-
         #loginform .form-container {
             position: absolute;
             top: 0;
             height: 100%;
             transition: all 0.6s ease-in-out;
         }
-
         #loginform .sign-in-container {
             left: 0;
             width: 50%;
             z-index: 2;
         }
-
         #loginform .container.right-panel-active .sign-in-container {
             transform: translateX(100%);
         }
-
         #loginform .sign-up-container {
             left: 0;
             width: 50%;
             opacity: 0;
             z-index: 1;
         }
-
        #loginform  .container.right-panel-active .sign-up-container {
             transform: translateX(100%);
             opacity: 1;
             z-index: 5;
             animation: show 0.6s;
         }
-
         @keyframes show {
             0%, 49.99% {
                 opacity: 0;
                 z-index: 1;
             }
-
             50%, 100% {
                 opacity: 1;
                 z-index: 5;
             }
         }
-
         #loginform .overlay-container {
             position: absolute;
             top: 0;
@@ -189,11 +141,9 @@
             transition: transform 0.6s ease-in-out;
             z-index: 100;
         }
-
         #loginform .container.right-panel-active .overlay-container{
             transform: translateX(-100%);
         }
-
         #loginform .overlay {
             background: #FF416C;
             background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
@@ -209,11 +159,9 @@
             transform: translateX(0);
             transition: transform 0.6s ease-in-out;
         }
-
         #loginform .container.right-panel-active .overlay {
             transform: translateX(50%);
         }
-
         #loginform .overlay-panel {
             position: absolute;
             display: flex;
@@ -228,28 +176,22 @@
             transform: translateX(0);
             transition: transform 0.6s ease-in-out;
         }
-
        #loginform  .overlay-left {
             transform: translateX(-20%);
         }
-
       #loginform  .container.right-panel-active .overlay-left {
             transform: translateX(0);
         }
-
        #loginform  .overlay-right {
             right: 0;
             transform: translateX(0);
         }
-
        #loginform  .container.right-panel-active .overlay-right {
             transform: translateX(20%);
         }
-
         #loginform .social-container {
             margin: 20px 0;
         }
-
         #loginform .social-container a {
             border: 1px solid #DDDDDD;
             border-radius: 50%;
@@ -260,7 +202,6 @@
             height: 40px;
             width: 40px;
         }
-
        #loginform  footer {
             background-color: #222;
             color: #fff;
@@ -272,15 +213,12 @@
             text-align: center;
             z-index: 999;
         }
-
        #loginform  footer p {
             margin: 10px 0;
         }
-
        #loginform  footer i {
             color: red; 
         }
-
        #loginform footer a {
             color: #3c97bf;
             text-decoration: none;
@@ -300,17 +238,13 @@
 										
 					<a href="#" class="social-icon-button gplus"><i class="fa fa-google-plus" aria-hidden="true"></i><span></span></a>
 	            </div>
-	            <a href="../sign_up/terms"><input type="button" class="angel" value="학생 회원가입"></a>
-	            <a href="../teach/terms"><input type="button" class="angel" value="강사 회원가입"></a>
+	            <a href="#"><button class="angel">학생 회원가입</button></a>
+	            <a href="#"><button class="angel">강사 회원가입</button></a>
 	        </form>
 	
 	    </div>
 	    <div class="form-container sign-in-container">
-<<<<<<< HEAD
-	        <form action="#">
-=======
 	        <form role="form" method="post" autocomplete="off" action="">
->>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
 	            <h1>Sign in</h1> 
 	            <div class="social-container">
 	               <a href="#" class="social-icon-button twitter"><i class="fa fa-twitter" aria-hidden="true"></i><span></span></a>
@@ -352,17 +286,13 @@
     var signUpButton1 = document.getElementById('signUp1');
     var signInButton = document.getElementById('signIn');
     var container = document.getElementById('container');
-
     signUpButton1.addEventListener('click', () => {
         container.classList.add("right-panel-active");
     });
-
     signInButton.addEventListener('click', () => {
         container.classList.remove("right-panel-active");
     });
-
     // If user clicks anywhere outside of the modal, Modal will close
-
 </script>
 </body>
 </html>

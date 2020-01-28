@@ -30,6 +30,7 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	@Override
 	public List<StudyEnrollVO> searchResultStudy(String searchKey) {
+		sql.update("board.languageviewcnt",searchKey); // viewcnt 가 하나씩 올라감
 		return sql.selectList("board.searchResultStudy",searchKey);
 	}
 	@Override
@@ -41,11 +42,11 @@ public class BoardDAOImpl implements BoardDAO{
 		return sql.selectList("board.searchResultQna",searchKey);
 	}
 	@Override
-	public List<BoardVO> studylistAll() throws Exception {
+	public List<StudyEnrollVO> studylistAll() throws Exception {
 		return sql.selectList("board.studylistAll");
 	} 
 	@Override
-	public List<BoardVO> TearchlistAll() throws Exception {
+	public List<TeacherEnrollVO> TearchlistAll() throws Exception {
 		return sql.selectList("board.TearchlistAll");
 	}
 	@Override
@@ -59,6 +60,19 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public List<MainLangugeRankVO> langugerank() throws Exception {
 		return sql.selectList("board.langugerank");
+	}
+	@Override
+	public void heartbuttoninsert(StudyEnrollVO std) throws Exception {
+		sql.update("board.heartbuttonlikecnt",std.getS_no());
+		sql.insert("board.heartbuttoninsert",std);
+	}
+	@Override
+	public List<StudyEnrollVO> seleteheartbutton(StudyEnrollVO std) throws Exception {
+		return sql.selectList("board.seleteheartbutton",std);
+	}
+	@Override
+	public void heartbuttondelete(StudyEnrollVO std) throws Exception {
+		sql.delete("board.heartbuttondelete", std);
 	}
 	
 }

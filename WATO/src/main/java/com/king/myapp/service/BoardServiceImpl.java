@@ -16,7 +16,7 @@ import com.king.myapp.persistence.BoardDAO;
 
 @Service
 public class BoardServiceImpl implements BoardService{
-
+	
 	@Autowired
 	private BoardDAO dao;
 	
@@ -37,7 +37,7 @@ public class BoardServiceImpl implements BoardService{
 		return dao.searchResultQna(searchKey);
 	}
 	@Override
-	public List<BoardVO> studylistAll() throws Exception {
+	public List<StudyEnrollVO> studylistAll() throws Exception {
 		return dao.studylistAll();
 	}
 	@Override
@@ -45,7 +45,7 @@ public class BoardServiceImpl implements BoardService{
 		return dao.studylistfilter(sLF);
 	}
 	@Override
-	public List<BoardVO> TearchlistAll() throws Exception {
+	public List<TeacherEnrollVO> TearchlistAll() throws Exception {
 		return dao.TearchlistAll();
 	}
 	@Override
@@ -56,5 +56,16 @@ public class BoardServiceImpl implements BoardService{
 	public List<MainLangugeRankVO> langugerank() throws Exception {
 		return dao.langugerank();
 	}
-
+	@Override
+	public void heartbuttoninsert(StudyEnrollVO std) throws Exception {
+		dao.heartbuttoninsert(std);
+	}
+	@Override
+	public List<StudyEnrollVO> seleteheartbutton(StudyEnrollVO std) throws Exception {
+		return dao.seleteheartbutton(std);
+	}
+	@Override
+	public void heartbuttondelete(StudyEnrollVO std) throws Exception {
+		dao.heartbuttondelete(std);
+	}
 }

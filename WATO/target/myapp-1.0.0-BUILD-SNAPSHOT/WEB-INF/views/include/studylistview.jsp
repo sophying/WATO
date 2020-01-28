@@ -185,26 +185,28 @@
 <br>
 <br>
 <!-- 필터 -->
-		<form method="post" name="filterform"> 
+		<div style="position: absolute; top: 15px; right: 25px;"> 
+			<span id="resetform" style="cursor: pointer;" ><i class="glyphicon glyphicon-repeat"></i> 필터 초기화</span>
+		</div>
+		<form method="post" name="filterform" id="filterform"> 
 			<div style="	  
 			  display: -webkit-box;
 			  display: -ms-flexbox;  
 			  display: flex;
 			  -ms-flex-wrap: wrap;
 			  flex-wrap: wrap;  
-			  margin-right: -15px;   
-			  margin-left: 24px;"  
+			  margin-right: 0px;   
+			  margin-left: -11px;"  
 			  id="filter"> 
 					<div class="form-group col-sm-2 col-xs-6"> 
-<<<<<<< HEAD
-						<select class="form-control" name="filetertype" data-filetertype =""> 
+						<select class="form-control" name="filetertype" id="filetertype"> 
 							<option value="">스터디/강사</option> 
 							<option value="10">스터디</option>    
 							<option value="20">강사</option>    
 						</select>  
 					</div>
 					<div class="form-group col-sm-2 col-xs-6"> 
-						<select class="form-control" name="place"> 
+						<select class="form-control" name="place" id="place"> 
 							<option value="">지역</option> 
 							<option value="">Show All</option>    
 							<option value="서울">서울</option>   
@@ -213,16 +215,16 @@
 						</select>  
 					</div>
 					<div class="form-group col-sm-2 col-xs-6">
-						<select class="form-control" name="category">
+						<select class="form-control" name="category" id="category">
 							<option value="">카테고리</option>
 							<option value="">Show All</option>  
-							<option value="자바">자바</option>  
+							<option value="JAVA">자바</option>  
 							<option value="C">C</option>  
 							<option value="파이선">파이선</option>  
 						</select> 
 					</div>
 					<div class="form-group col-sm-2 col-xs-6">
-						<select class="form-control" name="level"> 
+						<select class="form-control" name="level" id="level"> 
 							<option value="">레벨</option> 
 							<option value="">Show All</option> 
 							<option value="초급">초급</option> 
@@ -246,11 +248,70 @@
 					  	</div> 
 					</div> 
 					<div class="form-group col-sm-2 col-xs-6">
+					<input type="hidden" id="pageLoaded" name="pageLoaded" value="1">
 						<button type="button" id="filtersubmit" class="btn btn-block btn-primary">Search</button>
 					</div>   
 			</div>  
 		</form> 
 					<script type="text/javascript"> 
+						window.onload = function () {
+							/* 검색 했을때 필터에 그 값을 다시 입력시켜준다.  */
+							$("#filetertype").val("${getFiletertype}");
+							$("#level").val("${getRank}");
+							$("#place").val("${getPlace}");
+							$("#category").val("${getCategory}");
+							var time = "${getTime}";
+							if(time.indexOf("월") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "월"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("화") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "화"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("수") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "수"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("목") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "목"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("금") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "금"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("토") != -1){
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "토"){
+										$(this).attr("checked",true);
+									}
+								}); 
+							}
+							if(time.indexOf("일") != -1){ 
+								$("input[type='checkbox']").each(function() {
+									if($(this).val() == "일"){
+										$(this).attr("checked",true); 
+									}
+								}); 
+							}
+						}
+					
 					$(function() {
 						var options = [];
 						  
@@ -273,7 +334,7 @@
 						   console.log( options );   
 						   return false;  
 						});
-						   
+
 						$('#filtersubmit').click(function() { 
 							var str = "";  
 							$("input[type='checkbox']").each(function() {
@@ -289,6 +350,13 @@
 							/* document.getElementById('timevalue').value = str;  */
 							filterform.submit();
 						});
+
+						$("#resetform").click(function () {
+							filterform.reset();
+							$("input[type='checkbox']").each(function() {
+								$(this).attr("checked",false);
+							}); 
+						})
 						
 						/* $('#filtersubmit').click(function() {
 							$.ajax({
@@ -316,16 +384,8 @@
 		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>  
-		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
-		        	<c:choose>
-		        		<c:when test="${TearchlistAll.t_title.length() >= 10}"> 
-		        			${TearchlistAll.t_title.substring(0,10)}... 
-		        		</c:when> 
-		        		<c:otherwise>
-		        			${TearchlistAll.t_title} 
-		        		</c:otherwise>
-		        	</c:choose>  
-		        	</span>
+		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
+		           ${TearchlistAll.t_title} 
 		        </h6>  
 		        <h6 class="description">    
 		                ${TearchlistAll.t_userId} <i class="fa fa-id-badge" aria-hidden="true"></i> 
@@ -353,16 +413,8 @@
 		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>
-		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >    
-		        	<c:choose>
-		        		<c:when test="${studylistAll.s_title.length() >= 10}"> 
-		        			${studylistAll.s_title.substring(0,10)}...
-		        		</c:when> 
-		        		<c:otherwise>
+		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
 		        			${studylistAll.s_title}  
-		        		</c:otherwise>
-		        	</c:choose> 
-		        	</span>
 		        </h6> 
 		        <h6 class="description">   
 		                ${studylistAll.s_userId}   
@@ -390,16 +442,8 @@
 		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>
-		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
-						<c:choose>
-		        		<c:when test="${StudyListFilterdata.s_title.length() >= 10}"> 
-		        			${StudyListFilterdata.s_title.substring(0,10)}...
-		        		</c:when>  
-		        		<c:otherwise> 
+		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
 		        			${StudyListFilterdata.s_title}  
-		        		</c:otherwise> 
-		        	</c:choose>
-		        	</span> 											 	  
 		        </h6>  
 		        <h6 class="description">  
 		                ${StudyListFilterdata.s_userId} 
@@ -427,16 +471,8 @@
 		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div> 
-		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
-						<c:choose>
-		        		<c:when test="${TeacherListFilter.t_title.length() >= 10}"> 
-		        			${TeacherListFilter.t_title.substring(0,10)}... 
-		        		</c:when> 
-		        		<c:otherwise> 
+		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
 		        			${TeacherListFilter.t_title}  
-		        		</c:otherwise>
-		        	</c:choose> 	
-		        	</span>										 	  
 		        </h6>  
 		        <h6 class="description">  
 		                ${TeacherListFilter.t_userId}<i class="fa fa-id-badge" aria-hidden="true"></i>
@@ -493,288 +529,6 @@
 	        $(this).css("transform","rotate(45deg)");
 	    } else { 
 	        $(this).css("transform","" ); 
-=======
-						<select class="form-control" name="filetertype"> 
-							<option value="">스터디/강사</option> 
-							<option value="10">스터디</option>    
-							<option value="20">강사</option>    
-						</select>  
-					</div>
-					<div class="form-group col-sm-2 col-xs-6"> 
-						<select class="form-control" name="place"> 
-							<option value="">지역</option> 
-							<option value="">Show All</option>    
-							<option value="서울">서울</option>   
-							<option value="인천">인천</option>   
-							<option value="세종">세종</option>  
-						</select>  
-					</div>
-					<div class="form-group col-sm-2 col-xs-6">
-						<select class="form-control" name="category">
-							<option value="">카테고리</option>
-							<option value="">Show All</option>  
-							<option value="자바">자바</option>  
-							<option value="C">C</option>  
-							<option value="파이선">파이선</option>  
-						</select> 
-					</div>
-					<div class="form-group col-sm-2 col-xs-6">
-						<select class="form-control" name="level"> 
-							<option value="">레벨</option> 
-							<option value="">Show All</option> 
-							<option value="초급">초급</option> 
-							<option value="중급">중급</option> 
-							<option value="고급">고급</option>  
-						</select>  
-					</div>      
-					<div class="form-group col-sm-2 col-xs-6">
-						<div class="button-group ">  
-					        <button onfocus="this.style.backgroundColor='white';" type="button" class="form-control dropdown-toggle" data-toggle="dropdown"><span class="pull-left">시간 </span><div class="pull-right"><span class="caret"></span></div></button>
-							<ul class="dropdown-menu" id="timevalue"> 
-							  <li><a href="#" class="small" data-value="월" ><input type="checkbox" value="월"/>&nbsp;월</a></li>
-							  <li><a href="#" class="small" data-value="화" ><input type="checkbox" value="화"/>&nbsp;화</a></li> 
-							  <li><a href="#" class="small" data-value="수" ><input type="checkbox" value="수"/>&nbsp;수</a></li> 
-							  <li><a href="#" class="small" data-value="목" ><input type="checkbox" value="목"/>&nbsp;목</a></li>
-							  <li><a href="#" class="small" data-value="금" ><input type="checkbox" value="금"/>&nbsp;금</a></li> 
-							  <li><a href="#" class="small" data-value="토" ><input type="checkbox" value="토"/>&nbsp;토</a></li>
-							  <li><a href="#" class="small" data-value="일" ><input type="checkbox" value="일"/>&nbsp;일</a></li>
-							</ul>
-							<input type="hidden" name="time" id="timevalue">       
-					  	</div> 
-					</div> 
-					<div class="form-group col-sm-2 col-xs-6">
-						<button type="button" id="filtersubmit" class="btn btn-block btn-primary">Search</button>
-					</div>   
-			</div>  
-		</form> 
-					<script type="text/javascript"> 
-					$(function() {
-						var options = [];
-						  
-						$( '.dropdown-menu a' ).on( 'click', function( event ) {
-						    
-						   var $target = $( event.currentTarget ),
-						       val = $target.attr( 'data-value' ),
-						       $inp = $target.find( 'input' ),
-						       idx; 
-						
-						   if ( ( idx = options.indexOf( val ) ) > -1 ) { 
-						      options.splice( idx, 1 );
-						      setTimeout( function() { $inp.prop( 'checked', false ) }, 0); 
-						   } else {
-						      options.push( val ); 
-						      setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
-						   } 
-						   $( event.target ).blur(); 
-						    
-						   console.log( options );   
-						   return false;  
-						});
-						   
-						$('#filtersubmit').click(function() { 
-							var str = "";  
-							$("input[type='checkbox']").each(function() {
-								if ($(this).is(':checked')) {  
-									str += $(this).val() + "_";
-								}
-							}); 
-							if (str.substr(-1,1) == '_') {
-								str = str.substring(0,str.length-1);
-							}
-							
-							document.getElementsByName('time')[0].value = str;  
-							/* document.getElementById('timevalue').value = str;  */
-							filterform.submit();
-						});
-					});
-					</script> 
-	<br>
-	<div class="studylistviewbody">  
-	  <div class="valign-wrapper"> 
-	  	<div class="row">  
-		  <% int cnt = 0; %>  
-	  		<c:forEach items="${TearchlistAll}" var="TearchlistAll">
-		    <div class="col s12 m4">
-		      <div class="card" id="about">  
-		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
-		        </div>  
-		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
-		        	<c:choose>
-		        		<c:when test="${TearchlistAll.t_title.length() >= 10}"> 
-		        			${TearchlistAll.t_title.substring(0,10)}... 
-		        		</c:when> 
-		        		<c:otherwise>
-		        			${TearchlistAll.t_title} 
-		        		</c:otherwise>
-		        	</c:choose>  
-		        	</span>
-		        </h6>  
-		        <h6 class="description">    
-		                ${TearchlistAll.t_userId} <i class="fa fa-id-badge" aria-hidden="true"></i> 
-		              </h6>  
-		        <div class="social">
-		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
-		        </div>
-		        <div class='wrap'>
-		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
-		          </div> 
-		        </div>
-		      </div> 
-		    </div>
-			<% cnt++; %> 
-		  </c:forEach>
-		  <% int cnt1 = 0; %>   
-	  		<c:forEach items="${studylistAll}" var="studylistAll">
-		    <div class="col s12 m4">
-		      <div class="card" id="about"> 
-		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
-		        </div>
-		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >    
-		        	<c:choose>
-		        		<c:when test="${studylistAll.s_title.length() >= 10}"> 
-		        			${studylistAll.s_title.substring(0,10)}...
-		        		</c:when> 
-		        		<c:otherwise>
-		        			${studylistAll.s_title}  
-		        		</c:otherwise>
-		        	</c:choose> 
-		        	</span>
-		        </h6> 
-		        <h6 class="description">   
-		                ${studylistAll.s_userId}   
-		        </h6>
-		        <div class="social">
-		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
-		        </div>
-		        <div class='wrap'>
-		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
-		          </div> 
-		        </div>
-		      </div>  
-		    </div>
-			<% cnt1++; %> 
-		  </c:forEach>
-		  <% int cnt2 = 0; %>
-		  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
-		    <div class="col s12 m4"> 
-		      <div class="card" id="about">  
-		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
-		        </div>
-		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
-						<c:choose>
-		        		<c:when test="${StudyListFilterdata.s_title.length() >= 10}"> 
-		        			${StudyListFilterdata.s_title.substring(0,10)}...
-		        		</c:when>  
-		        		<c:otherwise> 
-		        			${StudyListFilterdata.s_title}  
-		        		</c:otherwise> 
-		        	</c:choose>
-		        	</span> 											 	  
-		        </h6>  
-		        <h6 class="description">  
-		                ${StudyListFilterdata.s_userId} 
-		              </h6>
-		        <div class="social">
-		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
-		        </div>
-		        <div class='wrap'>  
-		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
-		          </div> 
-		        </div>
-		      </div> 
-		    </div>
-			<% cnt2++; %>
-		  </c:forEach>
-		  <% int cnt3 = 0; %>
-		  <c:forEach items="${TeacherListFilter}" var="TeacherListFilter">
-		    <div class="col s12 m4"> 
-		      <div class="card" id="about">  
-		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
-		        </div> 
-		        <h6 class="card-title" id="listalltitle"> <span style="font-size: 20px; font-weight: lighter;" >   
-						<c:choose>
-		        		<c:when test="${TeacherListFilter.t_title.length() >= 10}"> 
-		        			${TeacherListFilter.t_title.substring(0,10)}... 
-		        		</c:when> 
-		        		<c:otherwise> 
-		        			${TeacherListFilter.t_title}  
-		        		</c:otherwise>
-		        	</c:choose> 	
-		        	</span>										 	  
-		        </h6>  
-		        <h6 class="description">  
-		                ${TeacherListFilter.t_userId}  
-		              </h6> 
-		        <div class="social">
-		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
-		        </div>
-		        <div class='wrap'>  
-		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
-		          </div> 
-		        </div>
-		      </div> 
-		    </div>
-			<% cnt3++; %>
-		  </c:forEach>
-		  <br> <br> <br> <br> <br> <br> <br> <br> <br>   
-		  </div>  
-		</div>
-	</div>  
-  
-<script type="text/javascript">
- 	
-	
-	function togglefunction (event) { 
-		$(event).toggleClass('active'); 
-		$(event).parent().next().toggleClass('active');  
-		return false;
-	}
-
-	$( ".more" ).click(function() {
-	    //alert($( this ).css( "transform" ));
-	    if (  $( this ).css( "transform" ) == 'none' ){
-	        $(this).css("transform","rotate(45deg)");
-	    } else { 
-	        $(this).css("transform","" );
-	    }
-	});
-			
-/* 	$('.more').on('click', function() {
-	  $('.wrap, .more').toggleClass('active');
-	  
-	  return false;
-	}); */
- /* 	$( ".more" ).click(function() {
-	    //alert($( this ).css( "transform" ));
-	    if (  $( this ).css( "transform" ) == 'none' ){
-	        $(this).css("transform","rotate(45deg)");
-	    } else { 
-	        $(this).css("transform","" );
->>>>>>> branch 'MS' of https://github.com/sophying/WATO.git
 	    }
 	}); */
 	 
