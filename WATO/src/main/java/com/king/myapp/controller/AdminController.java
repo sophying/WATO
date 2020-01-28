@@ -1,7 +1,6 @@
 package com.king.myapp.controller;
 
 import java.io.PrintWriter;
-
 import java.util.List;
 import java.util.Random;
 
@@ -22,8 +21,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.king.myapp.domain.AdminVO;
 import com.king.myapp.domain.ApprovalVO;
+import com.king.myapp.domain.ManagementVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.service.AdminService;
@@ -77,7 +76,7 @@ public class AdminController {
 	    }
 	
 	    
-	// 매니지먼트 페이지 이동
+	// 강사승인 페이지 이동
 	    @RequestMapping(value = "/approval")
 	    public String approval(Model model) throws Exception{
 	    	logger.info("approval 페이지로 이동~~!!");
@@ -89,10 +88,10 @@ public class AdminController {
 	    
 	// 매니지먼트 페이지 이동
 	    @RequestMapping(value = "/management")
-	    public String management(Model model) throws Exception{
+	    public String getManagement(Model model) throws Exception{
 	    	logger.info("management 페이지로 이동~~!!");
 
-			List<AdminVO> manageList = adminservice.manageList();
+			List<ManagementVO> manageList = adminservice.manageList();
 			model.addAttribute("manageList", manageList);
 			return  "admin/management";
 	    }

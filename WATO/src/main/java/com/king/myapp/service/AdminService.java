@@ -2,7 +2,7 @@ package com.king.myapp.service;
 
 import java.util.List;
 
-import com.king.myapp.domain.AdminVO;
+import com.king.myapp.domain.ManagementVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
@@ -37,6 +37,6 @@ public interface AdminService {
 	public int changeS_pwd(StdVO svo) throws Exception;
 
 	// 회원관리 페이지
-	public List<AdminVO> manageList() throws Exception;
+	public List<ManagementVO> manageList() throws Exception;
  
 }

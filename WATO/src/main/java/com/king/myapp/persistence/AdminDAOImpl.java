@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.king.myapp.domain.AdminVO;
+import com.king.myapp.domain.ManagementVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
@@ -76,7 +76,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 	// 회원관리
 	@Override
-	public List<AdminVO> manageList() throws Exception {
+	public List<ManagementVO> manageList() throws Exception {
 		return sql.selectList(namespace + ".management");
 	}
 

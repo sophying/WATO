@@ -185,6 +185,17 @@
             padding-left: 10px;
             border: 1px solid #bbbbbb;
         }
+    button.button1 {
+    	height: 40px; 
+    	width:150; 
+    	margin-top: 20px; 
+    	margin-bottom: 30px; 
+    	border-radius: 10px; 
+    	background-color: #5fa29480; 
+    	border: 0; 
+    	outline: 0; 
+    	color: #fff;
+    }
 
 </style>
 <body>
@@ -442,10 +453,8 @@
                     <tr>
                         <td id="avatar" style="height: 140px; width: 100px; padding: 0px;"><img id="image_section" style="height: 140px; display: block; margin: 0px auto;" src="//sb-cafetalk.s3.amazonaws.com/user-uploaded-files/cafetalk-optimized-559cca73cd84d-984180900-1436338803.png"></td>
                         <td colspan="2">
-                            <form id="" runat="">
-                                <input type='file' id="imgInput" id="Std_Profile" name="Std_Profile"/>
+                                <input type="file" id="imgInput" id="Std_Profile" name="Std_Profile"/>
                                 <div><em style="font-size: small;">※업로드 가능한 이미지 크기는 150x100 입니다.<br>이미지 크기가 초과할시 업로드 되지 않을 수 있음을 유의바랍니다.</em></div>
-                            </form>
                         </td>
                     </tr>                    
                     
@@ -505,7 +514,7 @@
                         <td colspan="2"><input type="text" id="std_addr_sub" id="Std_Addr3" name="Std_Addr3" size="55" maxlength="12"  placeholder="상세주소"></td>
                     </tr>
                 </table>
-                   <button type="submit" style="height: 40px; width:150; margin-top: 20px; margin-bottom: 30px; border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;">회원가입</button>
+                   <button type="submit" class="button1">회원가입</button>
             </form>
 		</div>
 	</div>

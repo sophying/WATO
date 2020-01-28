@@ -1,6 +1,6 @@
 package com.king.myapp.domain;
 
-public class AdminVO {
+public class ManagementVO {
 	private String No;
 	private String User_Id;
 	private String User_Gender;

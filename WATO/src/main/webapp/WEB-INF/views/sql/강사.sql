@@ -3,11 +3,8 @@ create table teach_info(
    teach_profile varchar2(200),
    teach_resume varchar2(200),
    user_id varchar2(20),   
-<<<<<<< HEAD
    user_pwd varchar2(30),
-=======
    user_pwd varchar2(30),   
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
    teach_gender varchar2(20),
    teach_phone1 varchar2(20),
    teach_phone2 varchar2(20),

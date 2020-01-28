@@ -82,17 +82,24 @@
   <%--admin_sidebar.jsp--%>
 
 
-      <div class="page-holder w-100 d-flex flex-wrap">
-        <div class="container-fluid px-xl-5">
-          <section class="py-5">
-            <div class="row">
-              <div class="col-lg-12 mb-4">
-                <div class="card">
+     <div class="page-holder w-100 d-flex flex-wrap">
+       <div class="container-fluid px-xl-5">
+         <section class="py-5">
+           <div class="row">
+             <div class="col-lg-12 mb-4">
+               <div class="card">
+                <form method="post" name="filterform" id="filterform">
                   <div class="card-header">
                     <h6 class="text-uppercase mb-0">MANAGEMENT</h6>
+                    <div class="form-group col-sm-2 col-xs-6"> 
+						<select class="form-control" name="filetertype" id="filetertype"> 
+							<option value="">학생/강사</option> 
+							<option value="10">학생</option>    
+							<option value="20">강사</option>    
+						</select>  
+					</div>
                   </div>
                   <div class="card-body">
-                  <form role="form" method="post" action="">
                     <table class="table card-text">
                         <tr>
 	                        <th>No</th>
@@ -109,13 +116,13 @@
 				        </tr>
 				        </c:forEach>
                     </table>
-                    </form>
                   </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
+                 </form>
+               </div>
+             </div>
+           </div>
+         </section>
+       </div>
 
         <%--admin_footer.jsp--%>
         <%@ include file="../include_admin/admin_footer.jsp"%>

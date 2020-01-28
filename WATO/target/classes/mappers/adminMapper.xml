@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>	
 	
 		<!-- admin 페이지에서 승인 안 된 강사 목록 불러오기 -->
-	<select id="management" resultType="com.king.myapp.domain.AdminVO">
+	<select id="management" resultType="com.king.myapp.domain.ManagementVO">
 		SELECT
 			No, User_Id, User_Gender, User_Email
 		FROM management
