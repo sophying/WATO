@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!-- 메뉴바 스터디 찾기 클릭 후 기본으로 보여지는 스터디 목록 -->
    <select id="studylistAll" resultType="com.king.myapp.domain.StudyEnrollVO">   
    	  SELECT * FROM S_ENROLL 
-   </select>
+   </select> 
    
    <!-- 메뉴바 스터디 찾기 클릭 후 기본으로 보여지는 강의 목록 -->
    <select id="TearchlistAll" resultType="com.king.myapp.domain.TeacherEnrollVO"> 
@@ -62,6 +62,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <update id="languageviewcnt">
    	  UPDATE PROGRAMMING_LANGUAGE SET VIEWCNT = VIEWCNT+1 WHERE LANGUAGE_NAME = #{searchKey}
    </update>
+   <!-- 좋아요 버튼  -->
+   <insert id="heartbuttoninsert">
+   	  INSERT INTO STUDY_LIKE VALUES(#{s_no}, #{s_userId})  
+   </insert>
+   <update id="heartbuttonlikecnt">
+   	  UPDATE S_ENROLL SET S_BNO_LIKECNT = S_BNO_LIKECNT + 1 WHERE S_NO = #{s_no}
+   </update> 
+   <select id="seleteheartbutton" resultType="com.king.myapp.domain.StudyEnrollVO">  
+   	  SELECT * FROM STUDY_LIKE WHERE S_USERID = #{s_userId}
+   </select>
+   <delete id="heartbuttondelete">  
+   	  DELETE FROM STUDY_LIKE WHERE S_NO = #{s_no} AND S_USERID = #{s_userId}
+   </delete>
    
    
     

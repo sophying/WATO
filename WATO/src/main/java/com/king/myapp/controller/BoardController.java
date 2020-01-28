@@ -1,6 +1,9 @@
 package com.king.myapp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.king.myapp.domain.BoardVO;
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
+import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.service.BoardService;
 
@@ -113,14 +118,21 @@ public class BoardController {
 		 
 		/* 메뉴바에 있는 스터디 찾기*/
 		@RequestMapping(value="/studylist" , method=RequestMethod.GET) 
-		public String studylist(Model model) throws Exception { 
+		public String studylist(Model model, HttpSession session) throws Exception { 
 			logger.info("get studylist"); 
+//			if (session.getAttribute("std") != null) {
+//				StdVO stdvo = (StdVO) session.getAttribute("std"); 
+//			}
+//			if (session.getAttribute("teach") != null) {
+//				TeachVO teachvo = (TeachVO) session.getAttribute("teach"); 
+//			}
+			
 			
 			return "/studylist";  
 		} 
 		/**/
 //		@RequestMapping(value="/index" , method=RequestMethod.GET)
-//		public String index(Model model) throws Exception {
+//		public String index(Model model) throws Exception { 
 //			logger.info("get list search");
 //			service.listRank();   
 //			model.addAttribute("listRank",service.listRank());
@@ -130,13 +142,44 @@ public class BoardController {
 		
 		/* , 스터디및 강사 를 조회 하는 페이지 studylist안에 iframe 으로 요청됨*/
 		@RequestMapping(value="/studylistview" , method=RequestMethod.GET)
-		public String getstudylistview(Model model) throws Exception {
-			logger.info("get studylistview");
-				List<BoardVO> studylistAll = service.studylistAll(); //전체 목록을 가져온다
-				model.addAttribute("studylistAll",studylistAll); 
-				List<BoardVO> TearchlistAll = service.TearchlistAll(); 
-				model.addAttribute("TearchlistAll",TearchlistAll);
+		public String getstudylistview(Model model, HttpSession session) throws Exception {
+			logger.info("get studylistview"); 
 			
+			if (session.getAttribute("std") != null) {
+				StdVO stdvo = (StdVO) session.getAttribute("std");
+				String stdid = stdvo.getUser_Id();
+				System.out.println("stdid = "+stdid);
+				if (stdid != null) {
+					StudyEnrollVO std = new StudyEnrollVO(); 
+					std.setS_userId(stdid);
+					List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std);
+					List stdsno = null;
+					for (StudyEnrollVO studyEnrollVO : heartcheck) {
+						if (studyEnrollVO.getS_userId().equals(stdid)) {
+							stdsno.add(studyEnrollVO.getS_no()); 
+						}
+						else {
+							model.addAttribute("heartbutton",null);
+						}
+					} 
+					model.addAttribute("heartbutton",stdsno);
+				}
+			}
+			if (session.getAttribute("teach") != null) {
+				TeachVO teachvo = (TeachVO) session.getAttribute("teach");
+				String teachid = teachvo.getUser_Id(); 
+				System.out.println("teachid : " + teachid);
+				if (teachid != null) {
+					StudyEnrollVO std = new StudyEnrollVO();
+					std.setS_userId(teachid);
+					List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std);
+				}
+			}
+			
+			List<StudyEnrollVO> studylistAll = service.studylistAll(); //전체 목록을 가져온다
+			model.addAttribute("studylistAll",studylistAll); 
+			List<TeacherEnrollVO> TearchlistAll = service.TearchlistAll(); 
+			model.addAttribute("TearchlistAll",TearchlistAll);
 			return "/include/studylistview";   
 		}  
 		/*studylistview안에 filter 검색 기능 */
@@ -155,12 +198,12 @@ public class BoardController {
 			if (SLF.getTime() == null) { 
 				SLF.setTime("");   
 			}
-			if (SLF.getPlace()== null) {
+			if (SLF.getPlace()== null) { 
 				SLF.setPlace("");
 			}
 			if (SLF.getFiletertype().equals("10")) { //강사, 스터디, 스터디/강사 중 선택하여 검색 10=스터디, 20=강사
 				
-				List<StudyEnrollVO> StudyListFilter = service.studylistfilter(SLF);
+				List<StudyEnrollVO> StudyListFilter = service.studylistfilter(SLF); 
 				model.addAttribute("StudyListFilterdata",StudyListFilter);
 				
 			}else if (SLF.getFiletertype().equals("20")) {
@@ -184,5 +227,48 @@ public class BoardController {
 			
 			return "/include/studylistview"; 
 		}  
+		
+		@RequestMapping(value = "/heartbuttoninsert/{s_no}" , method = RequestMethod.GET)
+		public String heartbuttoninsert(@PathVariable("s_no") int s_no, HttpSession session) throws Exception {
+			logger.info("하트버튼을 누르면 이쪽으로");
+			StudyEnrollVO std = new StudyEnrollVO();
+			
+			if ( session.getAttribute("std") != null) {
+				StdVO stdvo = (StdVO) session.getAttribute("std");
+				String stdid = stdvo.getUser_Id();
+				std.setS_userId(stdid);
+				
+			}
+			if (session.getAttribute("teach") != null) {
+				TeachVO teachvo = (TeachVO) session.getAttribute("teach");
+				String teachid = teachvo.getUser_Id(); 
+				std.setS_userId(teachid); 
+			}
+			std.setS_no(s_no);   
+			service.heartbuttoninsert(std); 
+			  
+			return "redirect:/board/studylistview";
+		}
+		@RequestMapping(value = "/heartbuttondelete/{s_no}" , method = RequestMethod.GET)
+		public String heartbuttondelete(@PathVariable("s_no") int s_no, HttpSession session) throws Exception {
+			logger.info("하트버튼을 다시 누르면 이쪽으로 = 삭제");
+			StudyEnrollVO std = new StudyEnrollVO();
+			 
+			if ( session.getAttribute("std") != null) {
+				StdVO stdvo = (StdVO) session.getAttribute("std");
+				String stdid = stdvo.getUser_Id();
+				std.setS_userId(stdid);
+				
+			}
+			if (session.getAttribute("teach") != null) {
+				TeachVO teachvo = (TeachVO) session.getAttribute("teach");
+				String teachid = teachvo.getUser_Id(); 
+				std.setS_userId(teachid); 
+			}
+			std.setS_no(s_no);   
+			service.heartbuttondelete(std); 
+			
+			return "redirect:/board/studylistview";
+		}
 	
 }

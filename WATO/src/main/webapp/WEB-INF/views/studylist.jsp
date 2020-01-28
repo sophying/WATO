@@ -10,7 +10,7 @@
     <title>스터디어스 - 세상을 뒤흔들어라</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
+    <meta name="robots" content="all,follow"> 
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="/resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -451,7 +451,7 @@
         <!-- 
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________ 
-        -->   
+        -->    
         <div  id="hot">
             	<br><br>
             	<!-- 스터디 목록 조회 하는 iframe -->

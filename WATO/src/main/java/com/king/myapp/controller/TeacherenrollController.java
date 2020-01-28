@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
@@ -87,6 +88,7 @@ public class TeacherenrollController {
 		List<TeacherEnrollVO> classlist = teacherService.list();
 		
 		TeachVO user = (TeachVO) session.getAttribute("teach");
+		StdVO student = (StdVO) session.getAttribute("std");
 		
 		if (user == null) {
 			
@@ -95,6 +97,15 @@ public class TeacherenrollController {
 			
 			model.addAttribute("teach");
 		}
+		if (student == null) {
+			
+			model.addAttribute("std",null);
+		}else {
+			
+			model.addAttribute("std"); 
+		}
+		
+		
 		
 		model.addAttribute("classlist", classlist);
 	}
