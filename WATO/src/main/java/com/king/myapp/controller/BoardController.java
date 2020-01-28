@@ -149,26 +149,32 @@ public class BoardController {
 				StdVO stdvo = (StdVO) session.getAttribute("std");
 				String stdid = stdvo.getUser_Id();
 				System.out.println("stdid = "+stdid);
-				if (stdid != null) {
-					StudyEnrollVO std = new StudyEnrollVO(); 
-					std.setS_userId(stdid);
-					List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std);
-					List stdsno = null;
-					for (StudyEnrollVO studyEnrollVO : heartcheck) {
-						if (studyEnrollVO.getS_userId().equals(stdid)) {
-							stdsno.add(studyEnrollVO.getS_no()); 
-						}
-						else {
-							model.addAttribute("heartbutton",null);
-						}
-					} 
-					model.addAttribute("heartbutton",stdsno);
+				
+				StudyEnrollVO std = new StudyEnrollVO(); 
+				std.setS_userId(stdid); // 현재의 로그인된 아이디
+				//스터디 번호를 가져오며좋은데 
+				List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std); // 로그인된 아이디로 즐겨찾기를 한것이 있는지 검색하고 
+																				//있다면 그 스터디의 s_no와 s_userid를 가지고옴
+				
+				
+				if (heartcheck.size() != 0) { // 즐겨찾기를 한 스터디가 있는지 확인
+					ArrayList<Integer> stdsno = new ArrayList<Integer>();  // 현재 로그인된 아이디로 즐겨찾기를 한 스터디가 있다면 그 스터디들의 s_no을 담을 arryList
+					for (int i = 0; i < heartcheck.size(); i++) { //있다면 그것의 사이즈만큼 돌리고
+						stdsno.add(heartcheck.get(i).getS_no()); // 스터디들의 s_no을 arraylist에 담아둔다
+					}
+					model.addAttribute("heartbutton",stdsno); 
+				}
+				else {
+					model.addAttribute("heartbutton",null);// 즐겨찾기가 없다면 null
 				}
 			}
+			
+			
 			if (session.getAttribute("teach") != null) {
 				TeachVO teachvo = (TeachVO) session.getAttribute("teach");
 				String teachid = teachvo.getUser_Id(); 
 				System.out.println("teachid : " + teachid);
+				
 				if (teachid != null) {
 					StudyEnrollVO std = new StudyEnrollVO();
 					std.setS_userId(teachid);

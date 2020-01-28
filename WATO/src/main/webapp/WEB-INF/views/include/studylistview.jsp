@@ -427,30 +427,15 @@
 		        <div class='wrap'>
 		          <div class='content'>  
 		            <p> 
-		              	<c:choose>  
-		            		<c:when test="${heartbutton != null }">
-		            			<c:forEach items="${heartbutton}" var="heartbutton">    
-		            			<c:choose> 
-			            			<c:when test="${heartbutton == studylistAll.s_no }">
-				            			<!-- 채워진하트 --><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttondelete/${studylistAll.s_no}"><i class="fa fa-heart" aria-hidden="true" style="color: white;"></i></a>
-			            			</c:when>
-			            			<c:otherwise>
-			            				<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${studylistAll.s_no}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-			            			</c:otherwise>
-		            			</c:choose>
-		            			</c:forEach>
-		            		</c:when>
-		            		<c:otherwise>   
-		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${studylistAll.s_no}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-		            		</c:otherwise>
-						</c:choose>
+		            	<input type="hidden" value="${studylistAll.s_no}">
+		            	<a id="heartbutton" onload="heartbuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${studylistAll.s_no}"><i class="fa fa-heart-o" aria-hidden="true" style="color: white;"></i></a>
 					</p>
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p> 
 		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
 		          </div> 
 		        </div>
-		      </div>  
-		    </div>
+		      </div>   
+		    </div> 
 		  </c:forEach>
 		  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
 		    <div class="col s12 m4"> 
@@ -535,7 +520,15 @@
 	
 	function togglefunction (event) { 
 		$(event).toggleClass('active'); 
-		$(event).parent().next().toggleClass('active');  
+		$(event).parent().next().toggleClass('active');
+		 var heartbutton = ["${heartbutton}"];
+		 var s_no = $(event).parent().next().children().children().children().val(); 
+			for(var i=0; i < heartbutton.length; i++){
+				if(heartbutton[i].indexOf(s_no) != -1){
+					$(event).parent().next().children().children().children().next().attr("href", "/board/heartbuttondelete/"+s_no);
+					$(event).parent().next().children().children().children().next().children().attr("class","fa fa-heart");
+	    		}
+	    	}  
 		return false;
 	}
 
