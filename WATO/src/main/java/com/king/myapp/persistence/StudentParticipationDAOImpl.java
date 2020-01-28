@@ -8,7 +8,10 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
+import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 
 @Repository
@@ -52,22 +55,18 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 		sql.update("study.s_partiCntMinus",s_no);
 	}
 	
-	
-	/*
-	<!--  학생 참여신청 취소   --> -->	
-	<delete id="s_partiCancle">
-		delete from s_parti
-		where s_no = #{s_no}
-		and p_userid = #{p_userid}
-	</delete>
-
-	
-	*/
+	// 학생 스터디 참여 리스트 
+	@Override
+	public List<StudyEnrollVO> s_getStudyPartiList(StdVO std) throws Exception {
+		return sql.selectList("parti.s_getStudyPartiList",std);
+	}
 	
 	
 	
 	
 	
+	
+/* -----------  강의   ---------------------*/	
 	// 강의 참여등록시 참여자 카운트 
 	@Override
 	public void t_partiCnt(int t_no) throws Exception {
@@ -102,6 +101,13 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 	@Override
 	public void t_partiCntMinus(int t_no) throws Exception {
 		sql.update("study.t_partiCntMinus",t_no);
+	}
+
+
+	// 학생 강의 참여 리스트 
+	@Override
+	public List<TeacherEnrollVO> t_getTeachPartiList(String user) throws Exception {
+		return sql.selectList("parti.t_getTeachPartiList",user);
 	}
 	
 }

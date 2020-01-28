@@ -7,7 +7,10 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
+import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.persistence.StudentParticipationDAO;
 
@@ -51,6 +54,11 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 		participationDAO.partiCntMinus(s_no);
 	}
 
+	// 학생 스터디 참여 리스트 
+	@Override
+	public List<StudyEnrollVO> getStudyPartiList(StdVO std) throws Exception {
+		return participationDAO.s_getStudyPartiList(std);
+	}
 	
 	
 	
@@ -88,6 +96,12 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 	@Override
 	public void t_partiCntMinus(int t_no) throws Exception {
 		participationDAO.t_partiCntMinus(t_no);
+	}
+
+
+	@Override
+	public List<TeacherEnrollVO> getTeachPartiList(String user) throws Exception {
+		return participationDAO.t_getTeachPartiList(user);
 	}
 
 	

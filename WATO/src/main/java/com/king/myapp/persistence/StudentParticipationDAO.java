@@ -4,7 +4,10 @@ package com.king.myapp.persistence;
 import java.util.List;
 import java.util.Map;
 
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
+import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 
 public interface StudentParticipationDAO {
@@ -28,6 +31,8 @@ public interface StudentParticipationDAO {
 	// 학생 참여 신청 카운트 -
 	void partiCntMinus(int s_no) throws Exception;
 	
+	//학생 스터디 참여 리스트 
+	List<StudyEnrollVO> s_getStudyPartiList(StdVO std) throws Exception;
 	
 	
 /******************************/	
@@ -49,6 +54,9 @@ public interface StudentParticipationDAO {
 		
 	// 학생 참여 신청 카운트 -
 	void t_partiCntMinus(int t_no) throws Exception;
+
+	// 학생 강의 참여 리스트 
+	List<TeacherEnrollVO> t_getTeachPartiList(String user) throws Exception;
 
 	
 }

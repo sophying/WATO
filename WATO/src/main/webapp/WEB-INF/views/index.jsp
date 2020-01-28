@@ -209,10 +209,10 @@
 	                    </c:when>
 	                    <c:otherwise>
 	                    <c:if test="${std != null }">
-                   	 		<li class=" pl-2 list-inline-item pull-left"><a href="/study/s_myList" class="btn btn-success btn-sm">참여한 스터디 보러가기</a></li> 
+                   	 		<li class=" pl-2 list-inline-item pull-left"><a href="/study/user_myList" class="btn btn-success btn-sm">참여한 스터디 보러가기</a></li> 
 	                    </c:if>
 	                    <c:if test="${teach != null }">
-                   	 		<li class=" pl-2 list-inline-item pull-left"><a href="/study/t_myList" class="btn btn-success btn-sm">참여한 스터디 보러가기</a></li> 
+                   	 		<li class=" pl-2 list-inline-item pull-left"><a href="/study/user_myList" class="btn btn-success btn-sm">참여한 스터디 보러가기</a></li> 
 	                    </c:if>
 	                    </c:otherwise>
 	                    </c:choose>
