@@ -1,10 +1,16 @@
 package com.king.myapp.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ApprovalVO {
 	
 	private int bno;
-	private String app_Profile;
-	private String app_Resume;
+	private MultipartFile app_Profile;
+	private String app_Orgname;
+	private String app_Newname;
+	private MultipartFile app_Resume;
+	private String app_Orgname2;
+	private String app_Newname2;
 	private String app_Gender;
 	private String app_Phone1;
 	private String app_Phone2;
@@ -21,17 +27,41 @@ public class ApprovalVO {
 	public void setBno(int bno) {
 		this.bno = bno;
 	}
-	public String getApp_Profile() {
+	public MultipartFile getApp_Profile() {
 		return app_Profile;
 	}
-	public void setApp_Profile(String app_Profile) {
+	public void setApp_Profile(MultipartFile app_Profile) {
 		this.app_Profile = app_Profile;
 	}
-	public String getApp_Resume() {
+	public String getApp_Orgname() {
+		return app_Orgname;
+	}
+	public void setApp_Orgname(String app_Orgname) {
+		this.app_Orgname = app_Orgname;
+	}
+	public String getApp_Newname() {
+		return app_Newname;
+	}
+	public void setApp_Newname(String app_Newname) {
+		this.app_Newname = app_Newname;
+	}
+	public MultipartFile getApp_Resume() {
 		return app_Resume;
 	}
-	public void setApp_Resume(String app_Resume) {
+	public void setApp_Resume(MultipartFile app_Resume) {
 		this.app_Resume = app_Resume;
+	}
+	public String getApp_Orgname2() {
+		return app_Orgname2;
+	}
+	public void setApp_Orgname2(String app_Orgname2) {
+		this.app_Orgname2 = app_Orgname2;
+	}
+	public String getApp_Newname2() {
+		return app_Newname2;
+	}
+	public void setApp_Newname2(String app_Newname2) {
+		this.app_Newname2 = app_Newname2;
 	}
 	public String getApp_Gender() {
 		return app_Gender;
@@ -86,6 +116,5 @@ public class ApprovalVO {
 	}
 	public void setApp_Num(int app_Num) {
 		this.app_Num = app_Num;
-	}
-	
+	}	
 }

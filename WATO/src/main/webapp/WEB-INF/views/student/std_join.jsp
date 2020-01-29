@@ -444,7 +444,7 @@
     <div id="content">
 <!-- 최지혜 추가 -->  
 		<div class="table-responsive">
-        	<form role="form" method="post" autocomplete="off"><br><br>
+        	<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
             	<table class="table" style="margin: auto; width: 70%;" cellspacing="0"> <!-- 일반 회원가입 폼 -->
                 	<tr>
                         <th id="student" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">학생 회원가입</th>

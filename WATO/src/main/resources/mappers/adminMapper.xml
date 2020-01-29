@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- admin 페이지에서 승인 안 된 강사 목록 불러오기 -->
 	<select id="adminmanage" resultType="com.king.myapp.domain.ApprovalVO">
 		SELECT
-			app_Profile, app_Resume, app_Gender, 
+			app_orgname, app_newname, app_orgname2, app_newname2, app_Gender, 
 			app_Phone1, app_Phone2, app_Phone3, 
 			User_Email,
 			app_Addr1, app_Addr2, app_Addr3
