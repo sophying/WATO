@@ -23,6 +23,7 @@ import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.service.StudentParticipationService;
 import com.king.myapp.service.StudyEnrollService;
 
@@ -322,6 +323,9 @@ public class StudyenrollController {
 	// 댓글삭제
 	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
 	public String getReplyDelete(@RequestParam("r_no") int r_no, @RequestParam("s_no") int s_no,Model model) throws Exception{
+		
+		
+		logger.info("--------------[ 스터디 댓글 내용 삭제  POST ]-----------------");	
 		studyService.replyDelete(r_no);
 
 		
@@ -331,15 +335,36 @@ public class StudyenrollController {
 	}
 	
 	// 나의 참여 리스트 보러가기 
-	@RequestMapping(value = "/s_myList", method = RequestMethod.GET)
-	public String getMyList(HttpSession session, Model model) throws Exception{
+	@RequestMapping(value = "/user_myList", method = RequestMethod.GET)
+	public void getMyList(HttpSession session, Model model) throws Exception{
+		
+		logger.info("--------------[ 나의 참여 리스트 보러가기   GET ]-----------------");	
 
 		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
 		StdVO std =  (StdVO) session.getAttribute("std"); 	
 		
-		model.addAttribute("std", std);
-		model.addAttribute("teach", teach);		
-		return "redirect:/study/user_myList";
+		
+		if (std != null) {
+			
+			String user = std.getUser_Id();
+			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
+			System.out.println("여기는 std ");
+			
+			model.addAttribute("studyParti",studyParti);
+			model.addAttribute("std", std);
+			
+		}else if (teach != null) {
+			
+			String user = teach.getUser_Id();
+			List<TeacherEnrollVO> classParti = participationService.getTeachPartiList(user);
+			System.out.println("여기는 teach ");
+			
+			model.addAttribute(classParti);
+			model.addAttribute("teach", teach);	
+		}
+
+		System.out.println("여기는 return 전 !");
+		
 		
 	}
 

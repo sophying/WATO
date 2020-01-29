@@ -9,13 +9,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into s_parti (P_NO, S_NO, P_USERID, P_INTRO, P_TELL, P_REGDATE)
 		values (S_PARTI_SEQ.nextval, #{s_no}, #{p_userid}, #{p_intro}, #{p_tell} , SYSDATE )
 	</insert>
-<!-- 	
-	<select id="s_numCheck" resultType="com.king.myapp.domain.StudentParticipationVO">
-		select * from s_parti
-		where s_no =#{s_no}
 	
-	</select> -->
-	
+	<!--  학생 스터디 참여 유무  -->
 	<select id="s_partiCheck" resultType="com.king.myapp.domain.StudentParticipationVO" >
 		select s.s_no, p.p_userid 
 		from s_enroll s, s_parti p
@@ -31,33 +26,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		and p_userid = #{p_userid}
 	</delete>
 
+<!--  학생 스터디 참여 리스트  -->
+	<select id="s_getStudyPartiList" resultType="com.king.myapp.domain.StudyEnrollVO" parameterType="com.king.myapp.domain.StdVO">
+		select s_no, s_category,s_level, s_title, s_startdate ,s_enddate, s_userid 
+		from s_enroll 
+		where s_no in (select s_no from s_parti where p_userid=#{User_Id} group by s_no)
+	</select>
+
+
+
 
 	
-	
-	
-	
+<!-- *************** 강의 참여 ********************************** -->	
 	
 	<insert id="t_participation" parameterType="com.king.myapp.domain.TeacherParticipationVO">
 		insert into t_parti (P_NO, T_NO, P_USERID, P_INTRO, P_TELL, P_REGDATE)
 		values (T_PARTI_SEQ.nextval, #{t_no}, #{p_userid}, #{p_intro}, #{p_tell} , SYSDATE )
 	
 	</insert>
-	<!-- 
-	<select id="t_numCheck" resultType="com.king.myapp.domain.TeacherParticipationVO">
-		select * from t_parti
-		where t_no =#{t_no}
-	</select>	 -->
 	
+	<!--  학생 강의 참여 유무  -->
 	<select id="t_partiCheck" resultType="com.king.myapp.domain.TeacherParticipationVO">
 		select t.t_no, p.p_userid 
 		from t_enroll t, t_parti p
 		where  t.t_no = p.t_no
 		and t.t_no = #{t_no}
 		and p.p_userid = #{p_userid}
-		
-<!-- 		select * from t_parti
-		where t_no = #{t_no} 
-		and p_userid = #{p_userid} -->
 	</select>
 	
 	<!--  학생 참여신청 취소  -->
@@ -66,4 +60,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where t_no = #{t_no}
 		and p_userid = #{p_userid}
 	</delete>
+	
+<!-- 학생 강의 참여 리스트  -->	
+	<select id="t_getTeachPartiList">
+		select * from t_parti
+		where p_userid = #{user}
+	</select>
+
+
+<!--  학생 강의 참여 리스트  -->
+	<!-- <select id="t_getTeachPartiList" resultType="com.king.myapp.domain.TeacherEnrollVO" parameterType="com.king.myapp.domain.TeachVO">
+		select t_no, t_category, t_level, t_title, t_startdate ,t_enddate, t_userid 
+		from t_enroll 
+		where t_no in (select t_no from t_parti where p_userid=#{User_Id} group by t_no) 
+	</select> -->
+	
 </mapper>
