@@ -261,9 +261,10 @@
                                     <div class="col-md-6 col-lg-3">
                                         <h5>친목도모</h5>
                                         <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
+                                            <li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
+                                            <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
+                                            <li class="nav-item"><a href="/study/studyBoard" class="nav-link">스터디탐방</a></li>
+                                            <li class="nav-item"><a href="/study/classBoard" class="nav-link">강의탐방</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">

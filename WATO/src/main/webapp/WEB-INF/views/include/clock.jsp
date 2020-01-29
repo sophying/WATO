@@ -7,17 +7,14 @@
 <meta charset="UTF-8">
 <title>CodePen - Interactive splat like button</title>
 <style type="text/css">
-body {
-    background: black;
-}
-
 .clock {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    color: #17D4FE;
-    font-size: 60px;
+    color: #4fbfa8;
+    font-size: 20px;
+    font-weight:bold;
     font-family: Orbitron;
     letter-spacing: 7px;
 

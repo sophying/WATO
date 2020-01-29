@@ -369,5 +369,9 @@ public class BoardController {
 			
 			return "redirect:/board/studylistview";
 		}
+		@RequestMapping("clock")
+		public String clock() {
+			return "/include/clock";
+		}
 	
 }

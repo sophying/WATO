@@ -393,20 +393,20 @@
 		          <div class='content' style="top: 24%;">
 		             <p> 
 		            	<input type="hidden" value="${TearchlistAll.t_no}">
-		            	<a onclick="heartbuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            	<a onclick="heartbuttonfunct(this)" href="/board/heartbuttoninsert/${TearchlistAll.t_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
 		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
 		            		</i>
 		            	</a>
 					</p>
 		            <p>
-		            	<a onclick="likebuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${TearchlistAll.t_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
 		            		<i class="fa fa-thumbs-o-up">
 		            		</i>
 		            	</a>
 		            </p>
 		            <p>
 		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
-		            		<i class="fa fa-globe">
+		            		<i class="fa fa-user-o">
 		            		</i>
 		            	</a>
 		            </p>
@@ -435,23 +435,23 @@
 		          <div class='content' style="top: 24%;">  
 		            <p> 
 		            	<input type="hidden" value="${studylistAll.s_no}">
-		            	<a onclick="heartbuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            	<a onclick="heartbuttonfunct(this)" href='/board/heartbuttoninsert/${studylistAll.s_no}' class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
 		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
 		            		</i>
 		            	</a>
 					</p>
 		            <p>
-		            	<a onclick="likebuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${studylistAll.s_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
 		            		<i class="fa fa-thumbs-o-up">
 		            		</i>
 		            	</a>
 		            </p> 
-		          <!--   <p>
+		            <p>
 		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
-		            		<i class="fa fa-globe">
+		            		<i class="fa fa-user-o">
 		            		</i>
 		            	</a>
-		            </p> -->
+		            </p>
 		          </div> 
 		        </div>
 		      </div>   
@@ -477,20 +477,20 @@
 		          <div class='content' style="top: 24%;">
 		           	<p> 
 		            	<input type="hidden" value="${StudyListFilterdata.s_no}">
-		            	<a onclick="heartbuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            	<a onclick="heartbuttonfunct(this)" href="/board/heartbuttoninsert/${StudyListFilterdata.s_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
 		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
 		            		</i>
 		            	</a>
 					</p>
 		             <p>
-		            	<a onclick="likebuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${StudyListFilterdata.s_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
 		            		<i class="fa fa-thumbs-o-up">
 		            		</i>
 		            	</a>
 		            </p> 
 		            <p>
 		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
-		            		<i class="fa fa-globe">
+		            		<i class="fa fa-user-o">
 		            		</i>
 		            	</a>
 		            </p>
@@ -519,19 +519,17 @@
 		          <div class='content' style="top: 24%;"> 
 		            <p> 
 		            	<input type="hidden" value="${TeacherListFilter.t_no}">
-		            	<a onclick="heartbuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" ><i class="fa fa-heart-o" aria-hidden="true" style="color: white;"></i></a>
+		            	<a onclick="heartbuttonfunct(this)" href='/board/heartbuttoninsert/${TeacherListFilter.t_no}' class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" ><i class="fa fa-heart-o" aria-hidden="true" style="color: white;"></i></a>
 					</p>
 		             <p>
-		            	<a onclick="likebuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${TeacherListFilter.t_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
 		            		<i class="fa fa-thumbs-o-up"></i>
 		            	</a>
 		            </p> 
-		            <p>
 		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
-		            		<i class="fa fa-globe">
+		            		<i class="fa fa-user-o">
 		            		</i>
 		            	</a>
-		            </p>
 		          </div> 
 		        </div>
 		      </div> 
@@ -551,9 +549,6 @@
 		if (loginplase != null && loginplase != "") { 
 			alert(loginplase);
 			return false; 
-		}else { 
-			var s_no = $(event).prev().val();
-			location.href= "/board/heartbuttoninsert/"+s_no;
 		}
 	}
 	
@@ -562,35 +557,27 @@
 		if (loginplase != null && loginplase != "") { 
 			alert(loginplase);
 			return false;  
-		}else {  
-			var s_no = $(event).parent().prev().children().val();
-			alert(s_no)
-			location.href= "/board/likebuttoninsert/"+s_no; 
 		}
 	}
 	
 	function togglefunction (event) {  
 		$(event).toggleClass('active');  
 		$(event).parent().next().toggleClass('active');
-		 var heartbutton = ["${heartbutton}"];
-		 var likebutton = ["${likebutton}"];
+		 var heartbutton = "${heartbutton}";
+		 var likebutton = "${likebutton}";
 		 var s_no = $(event).parent().next().children().children().children().val();
-		  
+	  
 		 if (heartbutton != null && heartbutton !="" && heartbutton.length != 0) { 
-			for(var i=0; i < heartbutton.length; i++){
-				if(heartbutton[i].indexOf(s_no) != -1){
-					$(event).parent().next().children().children().children().next().attr("href", "/board/heartbuttondelete/"+s_no);
+				if(heartbutton.indexOf(s_no) != -1){
 					$(event).parent().next().children().children().children().next().children().attr("class","fa fa-heart");
+					$(event).parent().next().children().children().children().next().attr("href", "/board/heartbuttondelete/"+s_no);
 	    		}
-	    	}
 		}
 		 if (likebutton != null && likebutton !="" && likebutton.length != 0) {
-			for(var i=0; i < likebutton.length; i++){
-				if(likebutton[i].indexOf(s_no) != -1){
+				if(likebutton.indexOf(s_no) != -1){
+					  $(event).parent().next().children().children().next().children().children('.fa-thumbs-o-up').attr("class","fa fa-thumbs-up");
 				      $(event).parent().next().children().children().next().children().attr("href", "/board/likebuttondelete/"+s_no);
-					  $(event).parent().next().children().children().next().children().children().attr("class","fa fa-thumbs-up");
 	    		}
-	    	}
 		 }
 		
 		return false;

@@ -197,6 +197,7 @@
     *** TOPBAR ***
     _________________________________________________________
     -->
+    <iframe style="width:100%; max-width: 400px; height: 100px; position: absolute; left: -2%; top: 50px; border: none;" src="/board/clock"></iframe>
     <div id="top">
         <div class="container"> 
             <div class="row">
