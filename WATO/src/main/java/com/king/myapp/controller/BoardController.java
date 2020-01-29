@@ -144,6 +144,15 @@ public class BoardController {
 		@RequestMapping(value="/studylistview" , method=RequestMethod.GET)
 		public String getstudylistview(Model model, HttpSession session) throws Exception {
 			logger.info("get studylistview"); 
+			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+				List<StudyEnrollVO> studylistAll = service.studylistAll(); //전체 목록을 가져온다
+				
+				model.addAttribute("studylistAll",studylistAll); 
+				List<TeacherEnrollVO> TearchlistAll = service.TearchlistAll(); 
+				model.addAttribute("TearchlistAll",TearchlistAll); 
+				model.addAttribute("loginplase","로그인이 필요한 기능입니다.");
+				return "/include/studylistview";
+			}
 			
 			if (session.getAttribute("std") != null) {
 				StdVO stdvo = (StdVO) session.getAttribute("std");
@@ -152,9 +161,42 @@ public class BoardController {
 				
 				StudyEnrollVO std = new StudyEnrollVO(); 
 				std.setS_userId(stdid); // 현재의 로그인된 아이디
-				//스터디 번호를 가져오며좋은데 
 				List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std); // 로그인된 아이디로 즐겨찾기를 한것이 있는지 검색하고 
-																				//있다면 그 스터디의 s_no와 s_userid를 가지고옴
+				
+				if (heartcheck.size() != 0) { // 즐겨찾기를 한 스터디가 있는지 확인
+					ArrayList<Integer> stdsno = new ArrayList<Integer>();  // 현재 로그인된 아이디로 즐겨찾기를 한 스터디가 있다면 그 스터디들의 s_no을 담을 arryList
+					for (int i = 0; i < heartcheck.size(); i++) { //있다면 그것의 사이즈만큼 돌리고
+						stdsno.add(heartcheck.get(i).getS_no()); // 스터디들의 s_no을 arraylist에 담아둔다
+					}
+					model.addAttribute("heartbutton",stdsno); 
+				}
+				else {
+					model.addAttribute("heartbutton",null);// 즐겨찾기가 없다면 null
+				}
+				
+				List<StudyEnrollVO> likecheck = service.seletelikebutton(std); // 로그인된 아이디로 즐겨찾기를 한것이 있는지 검색하고 
+				
+				if (likecheck.size() != 0) { // 즐겨찾기를 한 스터디가 있는지 확인
+					ArrayList<Integer> like_sno = new ArrayList<Integer>();  // 현재 로그인된 아이디로 즐겨찾기를 한 스터디가 있다면 그 스터디들의 s_no을 담을 arryList
+					for (int i = 0; i < likecheck.size(); i++) { //있다면 그것의 사이즈만큼 돌리고
+						like_sno.add(likecheck.get(i).getS_no()); // 스터디들의 s_no을 arraylist에 담아둔다
+					}
+					model.addAttribute("likebutton",like_sno); 
+				}
+				else {
+					model.addAttribute("likebutton",null);// 즐겨찾기가 없다면 null
+				}
+			}
+			
+			
+			if (session.getAttribute("teach") != null) {
+				TeachVO teachvo = (TeachVO) session.getAttribute("teach");
+				String teachid = teachvo.getUser_Id(); 
+				System.out.println("teachid : " + teachid);
+		
+				StudyEnrollVO std = new StudyEnrollVO();
+				std.setS_userId(teachid);
+				List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std);
 				
 				
 				if (heartcheck.size() != 0) { // 즐겨찾기를 한 스터디가 있는지 확인
@@ -167,20 +209,10 @@ public class BoardController {
 				else {
 					model.addAttribute("heartbutton",null);// 즐겨찾기가 없다면 null
 				}
-			}
-			
-			
-			if (session.getAttribute("teach") != null) {
-				TeachVO teachvo = (TeachVO) session.getAttribute("teach");
-				String teachid = teachvo.getUser_Id(); 
-				System.out.println("teachid : " + teachid);
 				
-				if (teachid != null) {
-					StudyEnrollVO std = new StudyEnrollVO();
-					std.setS_userId(teachid);
-					List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std);
-				}
+				
 			}
+			model.addAttribute("loginplase",null);
 			
 			List<StudyEnrollVO> studylistAll = service.studylistAll(); //전체 목록을 가져온다
 			model.addAttribute("studylistAll",studylistAll); 
@@ -190,11 +222,11 @@ public class BoardController {
 		}  
 		/*studylistview안에 filter 검색 기능 */
 		@RequestMapping(value="/studylistview" , method=RequestMethod.POST)
-		public String poststudylistview(Model model, StudyListFilter SLF, @RequestParam("pageLoaded") int pageLoaded) throws Exception {
+		public String poststudylistview(Model model, StudyListFilter SLF) throws Exception {
 			logger.info("post studylistview"); 
 			if (SLF.getFiletertype() == null) { // 널이 들어올경우 검색이 안될 수 있어 ""로 바꿈
 				SLF.setFiletertype(""); 
-			}
+			} 
 			if (SLF.getCategory() == null) {
 				SLF.setCategory(""); 
 			}
@@ -237,7 +269,11 @@ public class BoardController {
 		@RequestMapping(value = "/heartbuttoninsert/{s_no}" , method = RequestMethod.GET)
 		public String heartbuttoninsert(@PathVariable("s_no") int s_no, HttpSession session) throws Exception {
 			logger.info("하트버튼을 누르면 이쪽으로");
-			StudyEnrollVO std = new StudyEnrollVO();
+			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+				return "redirect:/board/studylistview";
+			}
+			 
+			StudyEnrollVO std = new StudyEnrollVO(); 
 			
 			if ( session.getAttribute("std") != null) {
 				StdVO stdvo = (StdVO) session.getAttribute("std");
@@ -258,6 +294,11 @@ public class BoardController {
 		@RequestMapping(value = "/heartbuttondelete/{s_no}" , method = RequestMethod.GET)
 		public String heartbuttondelete(@PathVariable("s_no") int s_no, HttpSession session) throws Exception {
 			logger.info("하트버튼을 다시 누르면 이쪽으로 = 삭제");
+			
+			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+				return "redirect:/board/studylistview";
+			}
+			
 			StudyEnrollVO std = new StudyEnrollVO();
 			 
 			if ( session.getAttribute("std") != null) {
@@ -273,6 +314,58 @@ public class BoardController {
 			}
 			std.setS_no(s_no);   
 			service.heartbuttondelete(std); 
+			
+			return "redirect:/board/studylistview";
+		}
+		
+		@RequestMapping(value = "/likebuttoninsert/{s_no}" , method = RequestMethod.GET)
+		public String likebuttoninsert(@PathVariable("s_no") int s_no, HttpSession session) throws Exception {
+			logger.info("좋아요버튼을 누르면 이쪽으로");
+			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+				return "redirect:/board/studylistview";
+			}
+			 
+			StudyEnrollVO std = new StudyEnrollVO(); 
+			 
+			if ( session.getAttribute("std") != null) {
+				StdVO stdvo = (StdVO) session.getAttribute("std");
+				String stdid = stdvo.getUser_Id();
+				std.setS_userId(stdid);
+				
+			}
+			if (session.getAttribute("teach") != null) {
+				TeachVO teachvo = (TeachVO) session.getAttribute("teach");
+				String teachid = teachvo.getUser_Id(); 
+				std.setS_userId(teachid); 
+			}
+			std.setS_no(s_no);   
+			service.likebuttoninsert(std); 
+			  
+			return "redirect:/board/studylistview";
+		}
+		@RequestMapping(value = "/likebuttondelete/{s_no}" , method = RequestMethod.GET)
+		public String likebuttondelete(@PathVariable("s_no") int s_no, HttpSession session) throws Exception {
+			logger.info("좋아요버튼을 다시 누르면 이쪽으로 = 삭제");
+			
+			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+				return "redirect:/board/studylistview";
+			}
+			
+			StudyEnrollVO std = new StudyEnrollVO();
+			
+			if ( session.getAttribute("std") != null) {
+				StdVO stdvo = (StdVO) session.getAttribute("std");
+				String stdid = stdvo.getUser_Id();
+				std.setS_userId(stdid);
+				
+			}
+			if (session.getAttribute("teach") != null) {
+				TeachVO teachvo = (TeachVO) session.getAttribute("teach");
+				String teachid = teachvo.getUser_Id(); 
+				std.setS_userId(teachid); 
+			}
+			std.setS_no(s_no);   
+			service.likebuttondelete(std); 
 			
 			return "redirect:/board/studylistview";
 		}

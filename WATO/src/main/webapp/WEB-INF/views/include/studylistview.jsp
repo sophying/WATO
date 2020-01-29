@@ -37,9 +37,10 @@
   text-align: center;
 }
 
-.studylistviewbody #about .card-header img.background {
+.studylistviewbody #about .card-header img.background { 
   width: 100%;
-}
+  height: 250px;  
+}  
 
 .studylistviewbody #about .card-header img.user {
   width: 100%;
@@ -111,7 +112,7 @@
   height: 2000px;
   width: 2000px;
   border-radius: 50%;
-  top: 50%;
+  top: 50%; 
   left: 50%;
   margin-left: -1000px;
   margin-top: -1000px;
@@ -376,8 +377,8 @@
 		    <div class="col s12 m4">
 		      <div class="card" id="about">  
 		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		          <img class="background" src="${TearchlistAll.t_photo}">
+		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg" >
 		        </div>  
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
 		           ${TearchlistAll.t_title} 
@@ -389,31 +390,37 @@
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
 		        <div class='wrap'>
-		          <div class='content'>
-		            <p> 
-		            	<c:choose> 
-		            		<c:when test="${heartbutton != null }">
-		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttondelete/${TearchlistAll.t_no}"><i class="fa fa-heart" aria-hidden="true" style="color: white;"></i></a>
-		            		</c:when>
-		            		<c:otherwise>   
-		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${TearchlistAll.t_no}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-		            		</c:otherwise>
-						</c:choose>
-		            	
+		          <div class='content' style="top: 24%;">
+		             <p> 
+		            	<input type="hidden" value="${TearchlistAll.t_no}">
+		            	<a onclick="heartbuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
+		            		</i>
+		            	</a>
 					</p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		            <p>
+		            	<a onclick="likebuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-thumbs-o-up">
+		            		</i>
+		            	</a>
+		            </p>
+		            <p>
+		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-globe">
+		            		</i>
+		            	</a>
+		            </p>
 		          </div> 
 		        </div>
 		      </div> 
 		    </div>
 		  </c:forEach>
 	  		<c:forEach items="${studylistAll}" var="studylistAll">
-		    <div class="col s12 m4">
+		    <div class="col s12 m4"> 
 		      <div class="card" id="about"> 
 		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		          <img class="background" src="${studylistAll.s_photo}">
+		          <img class="user" src="${studylistAll.s_profile}">
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
 		        			${studylistAll.s_title}  
@@ -425,13 +432,26 @@
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
 		        <div class='wrap'>
-		          <div class='content'>  
+		          <div class='content' style="top: 24%;">  
 		            <p> 
 		            	<input type="hidden" value="${studylistAll.s_no}">
-		            	<a id="heartbutton" onload="heartbuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${studylistAll.s_no}"><i class="fa fa-heart-o" aria-hidden="true" style="color: white;"></i></a>
+		            	<a onclick="heartbuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
+		            		</i>
+		            	</a>
 					</p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p> 
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		            <p>
+		            	<a onclick="likebuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-thumbs-o-up">
+		            		</i>
+		            	</a>
+		            </p> 
+		          <!--   <p>
+		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-globe">
+		            		</i>
+		            	</a>
+		            </p> -->
 		          </div> 
 		        </div>
 		      </div>   
@@ -441,8 +461,8 @@
 		    <div class="col s12 m4"> 
 		      <div class="card" id="about">  
 		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		          <img class="background" src="${StudyListFilterdata.s_photo}">
+		          <img class="user" src="${StudyListFilterdata.s_profile}">
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
 		        			${StudyListFilterdata.s_title}  
@@ -454,19 +474,26 @@
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
 		        <div class='wrap'>  
-		          <div class='content'>
-		           	<p>
-		              	<c:choose> 
-		            		<c:when test="${heartbutton != null }">
-		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttondelete/${studylistAll.s_no}"><i class="fa fa-heart" aria-hidden="true" style="color: white;"></i></a>
-		            		</c:when>
-		            		<c:otherwise>   
-		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${studylistAll.s_no}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-		            		</c:otherwise>
-						</c:choose>
+		          <div class='content' style="top: 24%;">
+		           	<p> 
+		            	<input type="hidden" value="${StudyListFilterdata.s_no}">
+		            	<a onclick="heartbuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
+		            		</i>
+		            	</a>
 					</p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		             <p>
+		            	<a onclick="likebuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-thumbs-o-up">
+		            		</i>
+		            	</a>
+		            </p> 
+		            <p>
+		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-globe">
+		            		</i>
+		            	</a>
+		            </p>
 		          </div> 
 		        </div>
 		      </div> 
@@ -476,7 +503,7 @@
 		    <div class="col s12 m4"> 
 		      <div class="card" id="about">  
 		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
+		          <img class="background" src="${TeacherListFilter.t_photo}">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div> 
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
@@ -489,19 +516,22 @@
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
 		        <div class='wrap'>   
-		          <div class='content'>
-		            <p>
-		              	<c:choose> 
-		            		<c:when test="${heartbutton != null }">
-		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttondelete/${TearchlistAll.t_no}"><i class="fa fa-heart" aria-hidden="true" style="color: white;"></i></a>
-		            		</c:when>
-		            		<c:otherwise>   
-		            			<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="/board/heartbuttoninsert/${TearchlistAll.t_no}"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-		            		</c:otherwise>
-						</c:choose>
+		          <div class='content' style="top: 24%;"> 
+		            <p> 
+		            	<input type="hidden" value="${TeacherListFilter.t_no}">
+		            	<a onclick="heartbuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" ><i class="fa fa-heart-o" aria-hidden="true" style="color: white;"></i></a>
 					</p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		             <p>
+		            	<a onclick="likebuttonfunct(this)" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-thumbs-o-up"></i>
+		            	</a>
+		            </p> 
+		            <p>
+		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-globe">
+		            		</i>
+		            	</a>
+		            </p>
 		          </div> 
 		        </div>
 		      </div> 
@@ -511,24 +541,58 @@
 		  	<h3>해당 조건에 대한 검색결과가 없습니다.</h3>
 		  </c:if>  
 		  <br> <br> <br> <br> <br> <br> <br> <br> <br>   
-		  </div>  
+		  </div>   
 		</div>
 	</div>  
-  
 <script type="text/javascript">
- 	
+
+	function heartbuttonfunct(event) {
+		var loginplase = "${loginplase}"; 
+		if (loginplase != null && loginplase != "") { 
+			alert(loginplase);
+			return false; 
+		}else { 
+			var s_no = $(event).prev().val();
+			location.href= "/board/heartbuttoninsert/"+s_no;
+		}
+	}
 	
-	function togglefunction (event) { 
-		$(event).toggleClass('active'); 
+	function likebuttonfunct(event) {
+		var loginplase = "${loginplase}"; 
+		if (loginplase != null && loginplase != "") { 
+			alert(loginplase);
+			return false;  
+		}else {  
+			var s_no = $(event).parent().prev().children().val();
+			alert(s_no)
+			location.href= "/board/likebuttoninsert/"+s_no; 
+		}
+	}
+	
+	function togglefunction (event) {  
+		$(event).toggleClass('active');  
 		$(event).parent().next().toggleClass('active');
 		 var heartbutton = ["${heartbutton}"];
-		 var s_no = $(event).parent().next().children().children().children().val(); 
+		 var likebutton = ["${likebutton}"];
+		 var s_no = $(event).parent().next().children().children().children().val();
+		  
+		 if (heartbutton != null && heartbutton !="" && heartbutton.length != 0) { 
 			for(var i=0; i < heartbutton.length; i++){
 				if(heartbutton[i].indexOf(s_no) != -1){
 					$(event).parent().next().children().children().children().next().attr("href", "/board/heartbuttondelete/"+s_no);
 					$(event).parent().next().children().children().children().next().children().attr("class","fa fa-heart");
 	    		}
-	    	}  
+	    	}
+		}
+		 if (likebutton != null && likebutton !="" && likebutton.length != 0) {
+			for(var i=0; i < likebutton.length; i++){
+				if(likebutton[i].indexOf(s_no) != -1){
+				      $(event).parent().next().children().children().next().children().attr("href", "/board/likebuttondelete/"+s_no);
+					  $(event).parent().next().children().children().next().children().children().attr("class","fa fa-thumbs-up");
+	    		}
+	    	}
+		 }
+		
 		return false;
 	}
 

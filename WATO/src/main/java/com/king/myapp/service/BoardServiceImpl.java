@@ -68,4 +68,16 @@ public class BoardServiceImpl implements BoardService{
 	public void heartbuttondelete(StudyEnrollVO std) throws Exception {
 		dao.heartbuttondelete(std);
 	}
+	@Override
+	public void likebuttoninsert(StudyEnrollVO std) throws Exception {
+		dao.likebuttoninsert(std);
+	}
+	@Override
+	public List<StudyEnrollVO> seletelikebutton(StudyEnrollVO std) throws Exception {
+		return dao.seletelikebutton(std);
+	}
+	@Override
+	public void likebuttondelete(StudyEnrollVO std) throws Exception {
+		dao.likebuttondelete(std);
+	}
 }

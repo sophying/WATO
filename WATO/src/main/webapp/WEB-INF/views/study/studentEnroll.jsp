@@ -664,6 +664,7 @@
                            </div>
                     </div>
                      <div class="form-group ">
+                     		<input type="hidden" name="s_profile" value="${std.std_Profile}" readonly="readonly">
   <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="${std.user_Id  }"/>
   <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value="">
   <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >

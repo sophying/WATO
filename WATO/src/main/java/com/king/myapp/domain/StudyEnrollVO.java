@@ -41,6 +41,7 @@ public class StudyEnrollVO {
 	private int s_viewcnt;
 	private Timestamp s_creadate;
 	private Timestamp s_updatedate ;
+	private String s_profile;
 	
 	
 	private String road;
@@ -49,6 +50,14 @@ public class StudyEnrollVO {
 	
 	
 	
+	
+	
+	public String getS_profile() {
+		return s_profile;
+	}
+	public void setS_profile(String s_profile) {
+		this.s_profile = s_profile;
+	}
 	public final int getS_viewcnt() {
 		return s_viewcnt;
 	}

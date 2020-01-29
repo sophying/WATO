@@ -74,5 +74,17 @@ public class BoardDAOImpl implements BoardDAO{
 	public void heartbuttondelete(StudyEnrollVO std) throws Exception {
 		sql.delete("board.heartbuttondelete", std);
 	}
+	@Override
+	public void likebuttoninsert(StudyEnrollVO std) throws Exception {
+		sql.insert("board.likebuttoninsert", std);
+	}
+	@Override
+	public List<StudyEnrollVO> seletelikebutton(StudyEnrollVO std) throws Exception {
+		return sql.selectList("board.seletelikebutton",std);
+	}
+	@Override
+	public void likebuttondelete(StudyEnrollVO std) throws Exception {
+		sql.delete("board.likebuttondelete",std);
+	}
 	
 }

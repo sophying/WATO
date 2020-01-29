@@ -33,7 +33,13 @@ public interface BoardService {
 
 	public List<StudyEnrollVO> seleteheartbutton(StudyEnrollVO std) throws Exception;
 
-	public void heartbuttondelete(StudyEnrollVO std) throws Exception;  
+	public void heartbuttondelete(StudyEnrollVO std) throws Exception;
+
+	public void likebuttoninsert(StudyEnrollVO std) throws Exception;
+
+	public List<StudyEnrollVO> seletelikebutton(StudyEnrollVO std) throws Exception;
+
+	public void likebuttondelete(StudyEnrollVO std) throws Exception;  
 
 
 	
