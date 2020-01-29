@@ -5,14 +5,16 @@ import java.sql.Timestamp;
 public class StudentParticipationVO {
 	
 	/*
-	create table s_parti(
-	  p_no number,
-	  s_no number,
-	  userid varchar2(30),
-	  p_intro varchar2(100),
-	  p_tell number,
-	  primary key(p_no));
-	  
+P_NO            NOT NULL NUMBER        
+S_NO                     NUMBER        
+P_USERID                 VARCHAR2(30)  
+P_INTRO                  VARCHAR2(100) 
+P_TELL                   NUMBER(30)    
+P_REGDATE                DATE          
+STARSCORE_PARTI          NUMBER
+
+
+
 	  Create sequence S_PARTI_SEQ
 		Start with 1
 		Increment by 1

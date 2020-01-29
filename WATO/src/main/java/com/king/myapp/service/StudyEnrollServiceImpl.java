@@ -85,6 +85,12 @@ public class StudyEnrollServiceImpl implements StudyEnrollService{
 		return studyEnrollDAO.partiCheck(partiVO);
 	}
 
+	// 참여 스터디 별점 평가 
+	@Override
+	public void starPartiUpdate(StudyEnrollVO studyVO) throws Exception {
+		studyEnrollDAO.starPartiUpdate(studyVO);
+	}
+
 	/*
 	//  리더의 답변하기 
 	@Override

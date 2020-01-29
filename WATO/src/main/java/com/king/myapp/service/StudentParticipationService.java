@@ -6,6 +6,7 @@ import java.util.Map;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 
@@ -55,7 +56,7 @@ public interface StudentParticipationService {
 	void t_partiCntMinus(int t_no) throws Exception;
 
 	// 학생 강의 참여 리스트 
-	List<TeacherEnrollVO> getTeachPartiList(String user) throws Exception;
+	List<TeacherEnrollVO> getTeachPartiList(TeachVO teach) throws Exception;
 
 	
 		

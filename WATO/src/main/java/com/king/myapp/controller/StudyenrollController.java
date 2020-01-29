@@ -346,7 +346,6 @@ public class StudyenrollController {
 		
 		if (std != null) {
 			
-			String user = std.getUser_Id();
 			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
 			System.out.println("여기는 std ");
 			
@@ -355,8 +354,7 @@ public class StudyenrollController {
 			
 		}else if (teach != null) {
 			
-			String user = teach.getUser_Id();
-			List<TeacherEnrollVO> classParti = participationService.getTeachPartiList(user);
+			List<TeacherEnrollVO> classParti = participationService.getTeachPartiList(teach);
 			System.out.println("여기는 teach ");
 			
 			model.addAttribute(classParti);
@@ -364,6 +362,40 @@ public class StudyenrollController {
 		}
 
 		System.out.println("여기는 return 전 !");
+		
+		
+	}
+	
+	// 별점등록 버튼 눌렀을 때  액션 
+	@RequestMapping(value = "/user_myList", method = RequestMethod.POST)
+	public void postStarScore(@RequestParam("s_no")int s_no, Model model, StudyEnrollVO studyVO, HttpSession session) throws Exception{
+		
+		logger.info("--------------[ 나의 참여 스터디 별점 등록   GET ]-----------------");	
+		
+		studyService.starPartiUpdate(studyVO);
+		
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 	
+		
+		
+		if (std != null) {
+			
+			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
+			System.out.println("여기는 std ");
+			
+			model.addAttribute("studyParti",studyParti);
+			model.addAttribute("std", std);
+			
+		}else if (teach != null) {
+			
+			List<TeacherEnrollVO> classParti = participationService.getTeachPartiList(teach);
+			System.out.println("여기는 teach ");
+			
+			model.addAttribute(classParti);
+			model.addAttribute("teach", teach);	
+		}
+
 		
 		
 	}

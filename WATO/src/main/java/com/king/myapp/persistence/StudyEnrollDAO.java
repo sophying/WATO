@@ -58,6 +58,9 @@ public interface StudyEnrollDAO {
 	// 댓글 삭제 
 	public void reReplyDelete(int r_no) throws Exception;
 
+	// 참여 스터디 별점 평가 
+	public void starPartiUpdate(StudyEnrollVO studyVO) throws Exception;
+
 	
 
 }

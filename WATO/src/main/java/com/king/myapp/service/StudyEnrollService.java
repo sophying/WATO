@@ -42,6 +42,9 @@ public interface StudyEnrollService {
 	
 	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO) throws Exception;
 
+	// 스터디 별점평가 
+	public void starPartiUpdate(StudyEnrollVO studyVO) throws Exception;
+
 //	
 //	// 댓글에 대한 답글 (리더답변하기 )
 //	public void leaderReply(LeaderReVO leaderReVO) throws Exception;

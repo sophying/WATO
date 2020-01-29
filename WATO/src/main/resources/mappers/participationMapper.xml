@@ -31,9 +31,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select s_no, s_category,s_level, s_title, s_startdate ,s_enddate, s_userid 
 		from s_enroll 
 		where s_no in (select s_no from s_parti where p_userid=#{User_Id} group by s_no)
+		order by s_startDate desc
 	</select>
 
-
+<!-- 참여학생 평점등록 시 값부여  -->
+	
 
 
 	

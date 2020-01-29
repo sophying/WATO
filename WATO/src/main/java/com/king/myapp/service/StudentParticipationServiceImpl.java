@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.persistence.StudentParticipationDAO;
@@ -100,8 +101,8 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 
 
 	@Override
-	public List<TeacherEnrollVO> getTeachPartiList(String user) throws Exception {
-		return participationDAO.t_getTeachPartiList(user);
+	public List<TeacherEnrollVO> getTeachPartiList(TeachVO teach) throws Exception {
+		return participationDAO.t_getTeachPartiList(teach);
 	}
 
 	

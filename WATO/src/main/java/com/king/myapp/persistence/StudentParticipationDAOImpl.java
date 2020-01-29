@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 
@@ -106,8 +107,8 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 
 	// 학생 강의 참여 리스트 
 	@Override
-	public List<TeacherEnrollVO> t_getTeachPartiList(String user) throws Exception {
-		return sql.selectList("parti.t_getTeachPartiList",user);
+	public List<TeacherEnrollVO> t_getTeachPartiList(TeachVO teach) throws Exception {
+		return sql.selectList("parti.t_getTeachPartiList",teach);
 	}
 	
 }
