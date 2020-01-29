@@ -40,7 +40,6 @@ create table teach_info(
    teach_newname2 varchar2(2000),
    user_id varchar2(20),   
    user_pwd varchar2(30),
-   user_pwd varchar2(30),   
    teach_gender varchar2(20),
    teach_phone1 varchar2(20),
    teach_phone2 varchar2(20),

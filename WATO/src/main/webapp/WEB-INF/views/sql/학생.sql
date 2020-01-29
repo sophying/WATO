@@ -41,6 +41,8 @@ set
 	std_pwd = '1111'
 where std_id = 'jihye1';
 
+DROP TABLE std_info CASCADE CONSTRAINTS;
+
 
 insert into std_info(user_id, std_profile, user_pwd, std_gender, std_phone1, std_phone2, std_phone3, user_email, std_addr1, std_addr2, std_addr3)
 values ('jihye1', '1111', '1111', '1111', '1111', '1111', '1111', 'cgh634@hanmail.net', 1111, 1111, 1111);

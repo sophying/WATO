@@ -37,6 +37,18 @@ public interface AdminDAO {
 	public TeachVO findT_id(TeachVO tvo) throws Exception;
 
 	// 회원관리
-	public List<ManagementVO> manageList() throws Exception;
+	// public List<ManagementVO> manageList() throws Exception;
+
+	// 전체 리스트 조회(학생)
+	public List<ManagementVO> studentList() throws Exception;
+
+	// 전체 리스트 조회(강사)
+	public List<ManagementVO> teachList() throws Exception;
+
+	// 학생 리스트 조회
+	public List<StdVO> studentList2() throws Exception;
+
+	// 강사 리스트 조회
+	public List<TeachVO> teachList2() throws Exception;
 
 }
