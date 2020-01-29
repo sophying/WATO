@@ -21,7 +21,7 @@
             <i class="fas fa-align-left"></i></a>
 
         <%--navbar 이름 영역--%>
-        <a href="/admin/" class="navbar-brand font-weight-bold text-uppercase text-base">StudyUS Dashboard</a>
+        <a href="/admin/index_admin" class="navbar-brand font-weight-bold text-uppercase text-base">StudyUS Dashboard</a>
 
         <ul class="ml-auto d-flex align-items-center list-unstyled mb-0">
             <li class="nav-item">
