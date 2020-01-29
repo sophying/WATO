@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qna">
+   
+<!--   <select id="listRank" resultType="com.king.myapp.domain.BoardVO">
+   	<![CDATA[ 
+   	  SELECT * FROM (SELECT * FROM QNA_MYBOARD ORDER BY QNA_VIEWCNT DESC) WHERE ROWNUM<=10
+   	 ]]> 
+   </select>
+   <select id="searchResultStudy" resultType="com.king.myapp.domain.BoardVO">
+   	  <![CDATA[  
+   	  SELECT * FROM (SELECT * FROM QNA_MYBOARD ORDER BY QNA_VIEWCNT DESC) WHERE ROWNUM<=10 AND QNA_TITLE LIKE '%' || #{searchKey} || '%' OR QNA_CONTENT like '%' || #{keyword} || '%'
+   	 ]]>
+   </select>
+   <select id="searchResultTeacher" resultType="com.king.myapp.domain.BoardVO"> 
+   	  <![CDATA[ 
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	 ]]>
+   </select>
+   <select id="searchResultQna" resultType="com.king.myapp.domain.BoardVO">
+   	  <![CDATA[ 
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	 ]]>
+   </select>-->
+    <select id="getQnaList" resultType="com.king.myapp.domain.BoardVO">
+        select * from  QNA_MYBOARD order by QNA_REGDATE DESC
+    </select>
+    <select id="getQnaRead" resultType="com.king.myapp.domain.BoardVO">
+       	select * from QNA_MYBOARD where QNA_BNO = #{QNA_BNO}
+    </select>
+    <select id="getQnaModify" resultType="com.king.myapp.domain.BoardVO">
+        select QNA_BNO, QNA_TITLE, QNA_CONTENT, QNA_WRITER, regDate from QNA_MYBOARD where QNA_BNO = #{QNA_BNO}
+    </select>
+    <select id="selectFileList" resultType="com.king.myapp.domain.BoardVO">
+        select QNA_BNO, DBFILE from QNA_MYBOARD where QNA_BNO = #{  QNA_BNO}
+    </select>
+    <update id="postQnaModify">
+        update QNA_MYBOARD set QNA_TITLE = #{QNA_TITLE}, QNA_CONTENT = #{QNA_CONTENT} where QNA_BNO = #{QNA_BNO}
+    </update>
+    <insert id="postQnaWrite">
+		insert into QNA_MYBOARD(QNA_BNO, QNA_TITLE, QNA_CONTENT, QNA_WRITER, BOARDFILE, DBFILE) 
+		values (QNA_MYBOARD_SEQ.nextval, #{QNA_TITLE}, #{QNA_CONTENT}, #{QNA_WRITER}/*,
+		#{BOARDFILE, jdbcType=VARCHAR},
+		#{DBFILE, jdbcType=VARCHAR}*/
+		)
+    </insert>
+    <select id="selectFileInfo" parameterType="hashMap" resultType="hashMap">
+	SELECT
+		DBFILE
+	FROM QNA_MYBOARD
+	WHERE QNA_BNO = #{QNA_BNO}
+</select>
+    <delete id="QnaDelete">
+        delete from QNA_MYBOARD where QNA_BNO = #{QNA_BNO}
+    </delete>
+
+
+   
+</mapper>
