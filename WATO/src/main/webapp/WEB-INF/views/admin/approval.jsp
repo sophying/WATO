@@ -82,6 +82,10 @@
         text-align: center;
      }
      
+     th.ph1 {
+     	margin-left: 10px;
+     }
+     
      td {
         text-align: center;
      }
@@ -136,7 +140,7 @@
                             <th>Profile</th>
 	                        <th>Resume</th>
 	                        <th>Gender</th>
-	                        <th>P.H-1</th>
+	                        <th class="ph1">P.H-1</th>
 	                        <th>P.H-2</th>
 	                        <th>P.H-3</th>
 	                        <th>Email</th>
