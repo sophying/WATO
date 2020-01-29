@@ -815,7 +815,6 @@ _________________________________________________________
 
 <!-- kakao map api key (최성웅 appkey)-->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
-
  
 </body>
 <!-- 제이쿼리 -->
