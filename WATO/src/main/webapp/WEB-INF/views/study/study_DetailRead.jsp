@@ -667,7 +667,7 @@
 					</div>    
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
 	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
-				<aside class="d-inline-block rounded-sm " style="width: 350px;" >
+				<aside class="d-inline-block rounded-sm " style="width: 350px; z-index: 1000" >
 					<div  class="form-group container-fluid" style="height: auto;">
 							<div class="cols-sm-1 d-inline-block d-flex justify-content-center"> 
 								<div class="card-body">
