@@ -292,7 +292,7 @@ public class BoardController {
 			return "redirect:/board/studylistview";
 		}
 		@RequestMapping(value = "/heartbuttondelete/{s_no}" , method = RequestMethod.GET)
-		public String heartbuttondelete(@PathVariable("s_no") int s_no, HttpSession session) throws Exception {
+		public String heartbuttondelete(@PathVariable("s_no") int s_no,@RequestParam("myinfo") boolean  myinfo ,HttpSession session) throws Exception {
 			logger.info("하트버튼을 다시 누르면 이쪽으로 = 삭제");
 			
 			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
@@ -314,6 +314,10 @@ public class BoardController {
 			}
 			std.setS_no(s_no);   
 			service.heartbuttondelete(std); 
+			
+			if (myinfo == true) {
+				return "redirect:/board/myinformation";
+			}
 			
 			return "redirect:/board/studylistview";
 		}
@@ -344,7 +348,7 @@ public class BoardController {
 			return "redirect:/board/studylistview";
 		}
 		@RequestMapping(value = "/likebuttondelete/{s_no}" , method = RequestMethod.GET)
-		public String likebuttondelete(@PathVariable("s_no") int s_no, HttpSession session) throws Exception {
+		public String likebuttondelete(@PathVariable("s_no") int s_no,@RequestParam("myinfo") boolean  myinfo, HttpSession session) throws Exception {
 			logger.info("좋아요버튼을 다시 누르면 이쪽으로 = 삭제");
 			
 			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
@@ -367,6 +371,10 @@ public class BoardController {
 			std.setS_no(s_no);   
 			service.likebuttondelete(std); 
 			
+			if (myinfo == true) {
+				return "redirect:/board/myinformation";
+			}
+			
 			return "redirect:/board/studylistview";
 		}
 		
@@ -388,22 +396,23 @@ public class BoardController {
 				
 				List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std); // 로그인된 아이디로 즐겨찾기를 한것이 있는지 검색하고
 				List<StudyEnrollVO> likecheck = service.seletelikebutton(std); // 로그인된 아이디로 좋아요를 한것이 있는지 검색하고
-				List<StudyEnrollVO> s_heartlist = null;
-				List<TeacherEnrollVO> t_heartlist = null;
-				List<StudyEnrollVO> s_likelist = null;
-				List<StudyEnrollVO> t_likelist = null;
 				
+				List<StudyEnrollVO> s_heartlist = new ArrayList<StudyEnrollVO>();
+				List<TeacherEnrollVO> t_heartlist = new ArrayList<TeacherEnrollVO>();
+				List<StudyEnrollVO> s_likelist = new ArrayList<StudyEnrollVO>();
+				List<TeacherEnrollVO> t_likelist = new ArrayList<TeacherEnrollVO>();
+				 
 				if (heartcheck.size() != 0) { 
 					for (int i = 0; i < heartcheck.size(); i++) {
-						
+						 
 						int s_no = heartcheck.get(i).getS_no();
-						StudyEnrollVO study =service.searchS_no(s_no);
+						StudyEnrollVO s_study =service.searchS_no(s_no);
 						TeacherEnrollVO t_study =service.searchT_no(s_no);
-						if (study != null) {
-							s_heartlist.add(study);
+						if (s_study != null && !s_study.equals("")) {
+							s_heartlist.add(s_study);
 						}
-						if (t_study != null) {
-							t_heartlist.add(t_study);						
+						if (t_study != null && !t_study.equals("")) {
+							t_heartlist.add(t_study);						 
 						}
 					}
 					if (s_heartlist.size() != 0) {
@@ -428,10 +437,10 @@ public class BoardController {
 						StudyEnrollVO study =service.searchS_no(s_no);
 						TeacherEnrollVO t_study =service.searchT_no(s_no);
 						if (study != null) {
-							s_heartlist.add(study);
+							s_likelist.add(study);
 						}
 						if (t_study != null) { 
-							t_heartlist.add(t_study);						
+							t_likelist.add(t_study);			 			
 						} 
 					}	
 					if (s_heartlist.size() != 0) {
@@ -525,5 +534,7 @@ public class BoardController {
 		public String clock() {
 			return "/include/clock";
 		}
+		
+		
 	
 }

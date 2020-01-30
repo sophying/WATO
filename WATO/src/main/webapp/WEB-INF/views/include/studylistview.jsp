@@ -25,23 +25,19 @@
   padding: 0;
   margin-bottom: 128px; 
 }
-
 .studylistviewbody #about .card-title {
   margin-top: 85px;
   text-align: center;
 } 
-
 .studylistviewbody #about .description {
   color: #212121;
   padding-bottom: 10px;
   text-align: center;
 }
-
 .studylistviewbody #about .card-header img.background { 
   width: 100%;
   height: 250px;  
 }  
-
 .studylistviewbody #about .card-header img.user {
   width: 100%;
   max-width:130px; 
@@ -52,19 +48,16 @@
   bottom: 75px;
   margin-bottom: -150px;
 }
-
 .studylistviewbody .social {
   padding: 5px; 
   text-align: center;
   font-size: 1.5em;
 }
-
 .studylistviewbody .story {
   padding: 5px;
   text-align: center;
   font-size: 1.2em;
 }
-
 .studylistviewbody .wrap {
   position: absolute;
   overflow: hidden;
@@ -79,11 +72,9 @@
   transition: all 0.5s;
   visibility: hidden;
 }
-
 .studylistviewbody .wrap .content {
   opacity: 0;
 }
-
 .studylistviewbody .wrap:before {
   position: absolute;
   width: 1px;
@@ -98,7 +89,6 @@
   -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-
 .studylistviewbody .wrap.active {
   display: block;
   visibility: visible;
@@ -107,7 +97,6 @@
   transform: translateY(0px);
   transition: all 0.5s;
 }
-
 .studylistviewbody .wrap.active:before {
   height: 2000px;
   width: 2000px;
@@ -120,7 +109,6 @@
   -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-
 .studylistviewbody .wrap.active .content {
   position: relative;
   z-index: 1;
@@ -172,7 +160,6 @@
   padding: 0;
 }
 [type="checkbox"]:not(:checked),[type="checkbox"]:checked{position:static;left:0px;visibility:visible;}
-
   .col-sm-2 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 16.666667%;
@@ -335,7 +322,6 @@
 						   console.log( options );   
 						   return false;  
 						});
-
 						$('#filtersubmit').click(function() { 
 							var str = "";  
 							$("input[type='checkbox']").each(function() {
@@ -351,7 +337,6 @@
 							/* document.getElementById('timevalue').value = str;  */
 							filterform.submit();
 						});
-
 						$("#resetform").click(function () {
 							filterform.reset();
 							$("input[type='checkbox']").each(function() {
@@ -543,7 +528,6 @@
 		</div>
 	</div>  
 <script type="text/javascript">
-
 	function heartbuttonfunct(event) {
 		var loginplase = "${loginplase}"; 
 		if (loginplase != null && loginplase != "") { 
@@ -570,19 +554,18 @@
 		 if (heartbutton != null && heartbutton !="" && heartbutton.length != 0) { 
 				if(heartbutton.indexOf(s_no) != -1){
 					$(event).parent().next().children().children().children().next().children().attr("class","fa fa-heart");
-					$(event).parent().next().children().children().children().next().attr("href", "/board/heartbuttondelete/"+s_no);
+					$(event).parent().next().children().children().children().next().attr("href", "/board/heartbuttondelete/"+s_no+"?myinfo=false");
 	    		}
 		}
 		 if (likebutton != null && likebutton !="" && likebutton.length != 0) {
 				if(likebutton.indexOf(s_no) != -1){
 					  $(event).parent().next().children().children().next().children().children('.fa-thumbs-o-up').attr("class","fa fa-thumbs-up");
-				      $(event).parent().next().children().children().next().children().attr("href", "/board/likebuttondelete/"+s_no);
+				      $(event).parent().next().children().children().next().children().attr("href", "/board/likebuttondelete/"+s_no+"?myinfo=false");
 	    		}
 		 }
 		
 		return false;
 	}
-
 	$( ".more" ).click(function() {
 	    //alert($( this ).css( "transform" ));
 	    if (  $( this ).css( "transform" ) == 'none' ){
@@ -610,7 +593,6 @@
 <script type="text/javascript"> 
 document.body.scrollIntoView(true);
 parent.document.all.studylistview.height = document.body.scrollHeight;
-
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 

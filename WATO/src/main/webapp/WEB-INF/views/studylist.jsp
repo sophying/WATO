@@ -194,7 +194,13 @@
 								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
+                        	</a>
+                        		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
+                        			<a href="javascript:document.myForm.submit();" class="dropdown-item text-black-50 font-weight-bold">내정보 수정</a>
+								 </div>
                         	</form>
                         	</li> 
                         </c:if>
@@ -212,7 +218,13 @@
 								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly"> 
 								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
+                        	</a> 
+                        		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
+                        			<a href="javascript:document.myForm2.submit();" class="dropdown-item text-black-50 font-weight-bold">내정보 수정</a>
+								 </div>
                         	</form>
                         	</li>
                         </c:if>

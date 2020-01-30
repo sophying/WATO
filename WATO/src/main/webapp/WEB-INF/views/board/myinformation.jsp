@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="/resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
     <link rel="stylesheet" href="/resource/css/custom.css">
-    <!-- Favicon-->
+    <!-- Favicon--> 
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -189,6 +189,18 @@
   .rot-135:hover {
   filter: hue-rotate(135deg);
 }
+   #hearttable td a i {
+		color: #FF0000;
+	}
+   #liketable td a i{
+		color: #00B4DB;
+	}
+   #hearttable td a  {
+		color: black;
+	}
+   #liketable td a {
+		color: black;
+	}
 </style>
 <body>
 <!-- navbar-->
@@ -200,7 +212,7 @@
     <div id="top">
         <div class="container"> 
             <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a><a href="/board/myinformation">테스트</a></div>
+                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0"> 
                        <c:if test="${std == null && teach == null}">
@@ -220,8 +232,14 @@
 								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr2}" readonly="readonly"> 
 								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold" title="내 페이지"><i style="color:black; font-size: 20px;" class="fa fa-home" aria-hidden="true"></i></a>
-                        	</form> 
+                        	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
+                        	</a>
+                        		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
+                        			<a href="javascript:document.myForm.submit();" class="dropdown-item text-black-50 font-weight-bold">내정보 수정</a>
+								 </div>
+                        	</form>  
                         	</li>
                         </c:if>
                         <c:if test="${teach != null}">
@@ -238,7 +256,13 @@
 								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">  
 								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly"> 
-                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold" title="내 페이지"><i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i></a>
+                        	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
+                        	</a> 
+                        		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
+                        			<a href="javascript:document.myForm2.submit();" class="dropdown-item text-black-50 font-weight-bold">내정보 수정</a>
+								 </div>
                         	</form>
                         	</li>
                         </c:if>
@@ -448,11 +472,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 mt-4">
-							<iframe style="width: 100%; border: none;" src="/board/clock"></iframe> 
+							<iframe style="width: 100%;  border: none;" src="/board/clock"></iframe> 
                         </div> 
                     </div>
                 </div> 
-            </div>
+            </div> 
             <div class="container"> 
                 <div class="product-slider owl-carousel owl-theme">
                 </div>
@@ -472,46 +496,79 @@
             <div class="box py-4 mt-0">
             	<h2>내가 즐겨찾기한 스터디</h2>
 	            <div class="container">
-	               <table class="table table-hover">
+	               <table id="hearttable" class="table table-hover" style="text-align: center;">
 	               	<thead>
 	               		<tr>
 		               		<th>글 번호</th>
 		               		<th>글 제목</th>
 		               		<th>글 작성자</th>
 		               		<th>시작 날짜</th>
+		               		<th>즐겨찾기</th>
 	               		</tr> 
 	               	 </thead>
 	               	 <c:if test="${s_heartlist != null && s_heartlist != ''}">
 	               	 	<c:forEach items="${s_heartlist}" var="s_heartlist">
 	               	 		<tr>
 	               	 			<td>${s_heartlist.s_no }</td>
-	               	 			<td>${s_heartlist.s_title }</td>
+	               	 			<td><a href="/study/study_DetailRead?s_no=${s_heartlist.s_no}">${s_heartlist.s_title }</a></td>
 	               	 			<td>${s_heartlist.s_userId }</td>
 	               	 			<td>${s_heartlist.s_startDate }</td>
+	               	 			<td><a href="/board/heartbuttondelete/${s_heartlist.s_no}?myinfo=true"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
+	               	 		</tr>
+	               	 	</c:forEach> 
+	               	 </c:if>
+	               	 <c:if test="${t_heartlist != null && t_heartlist != '' }">
+	               	 	<c:forEach items="${t_heartlist}" var="t_heartlist">
+	               	 		<tr>
+	               	 			<td>${t_heartlist.t_no }</td>
+	               	 			<td><a href="/study/header_DetailRead?t_no=${t_heartlist.t_no}">${t_heartlist.t_title }</a></td>
+	               	 			<td>${t_heartlist.t_userId }</td>
+	               	 			<td>${t_heartlist.t_startDate }</td>
+	               	 			<td><a href="/board/heartbuttondelete/${t_heartlist.t_no}?myinfo=true"><i class="fa fa-heart" aria-hidden="true"></i></a></td>
 	               	 		</tr>
 	               	 	</c:forEach> 
 	               	 </c:if>
 	                 <tbody>
 	                 </tbody>
 	               </table>
-	            </div>
+	            </div> 
             </div> 
             <div class="box py-4 mt-0">
             	<h2>내가 좋아요 누른 스터디</h2>
 	            <div class="container">
-	               <table class="table table-hover">
+	               <table id="liketable" class="table table-hover" style="text-align: center;">
 	               	<thead>
 	               		<tr>
 		               		<th>글 번호</th>
 		               		<th>글 제목</th>
 		               		<th>글 작성자</th>
 		               		<th>시작 날짜</th>
+		               		<th>좋아요 </th>
 	               		</tr> 
 	               	 </thead>
-	               	 	<tr>
-	               	 	
-	               	 	</tr>
 	                 <tbody>
+		               	 <c:if test="${s_likelist != null && s_likelist != ''}">
+		               	 	<c:forEach items="${s_likelist}" var="s_likelist">
+		               	 		<tr>
+		               	 			<td>${s_likelist.s_no }</td>
+		               	 			<td><a href="/study/study_DetailRead?s_no=${s_likelist.s_no}">${s_likelist.s_title }</a></td>
+		               	 			<td>${s_likelist.s_userId }</td>
+		               	 			<td>${s_likelist.s_startDate }</td>
+		               	 			<td><a href="/board/likebuttondelete/${s_likelist.s_no}?myinfo=true"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></td>
+		               	 		</tr>
+		               	 	</c:forEach> 
+		               	 </c:if>
+		               	 <c:if test="${t_likelist != null && t_likelist != '' }"> 
+		               	 	<c:forEach items="${t_likelist}" var="t_likelist">
+		               	 		<tr>
+		               	 			<td>${t_likelist.t_no }</td>
+		               	 			<td><a href="/study/header_DetailRead?t_no=${t_likelist.t_no}">${t_likelist.t_title }</a></td> 
+		               	 			<td>${t_likelist.t_userId }</td>
+		               	 			<td>${t_likelist.t_startDate }</td>
+		               	 			<td><a href="/board/likebuttondelete/${t_likelist.t_no}?myinfo=true"><i class="fa fa-thumbs-up" aria-hidden="true"></i></a></td>
+		               	 		</tr>
+		               	 	</c:forEach> 
+		               	 </c:if>
 	                 </tbody>
 	               </table>
 	            </div>

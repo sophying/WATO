@@ -294,8 +294,8 @@ body.play ul section.active .down .shadow {
     }
 }
 </style>
-</head>
-<body> 
+</head> 
+<body style="overflow:hidden"> 
 
 <div id="mask">
     <div id="page">
@@ -421,7 +421,7 @@ body.play ul section.active .down .shadow {
 
                 t = methods.time(this.options);
                 full = true;
-
+ 
             }
 
             $(this.element)
@@ -436,7 +436,6 @@ body.play ul section.active .down .shadow {
                     + methods.ul('minute', t.m.d2, t.m.d1)
                     + methods.ul('second', t.s.d2, t.s.d1)
                     + '<audio id="flipclick">'
-                    + '<source src="https://github.com/gokercebeci/flipclock/blob/master/js/plugins/flipclock/click.mp3?raw=true" type="audio/mpeg"/>'
                     + '</audio>');
 
             setInterval($.proxy(this.refresh, this), 1000);
