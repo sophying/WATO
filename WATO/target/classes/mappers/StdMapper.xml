@@ -8,12 +8,12 @@
 	<!-- 회원 가입 -->
 	<insert id="std_join">
 		insert into 
-		std_info(Std_Profile, User_Id, 
+		std_info(User_Id, Std_Orgname, Std_Newname,
 				 User_Pwd, Std_Gender, 
 				 Std_Phone1, Std_Phone2, Std_Phone3, 
 				 User_Email,
 				 Std_Addr1, Std_Addr2, Std_Addr3)
-		values (#{Std_Profile}, #{User_Id}, 
+		values (#{User_Id}, #{Std_Orgname, jdbcType=VARCHAR}, #{Std_Newname, jdbcType=VARCHAR},
 				#{User_Pwd}, #{Std_Gender}, 
 				#{Std_Phone1}, #{Std_Phone2}, #{Std_Phone3}, 
 				#{User_Email}, 

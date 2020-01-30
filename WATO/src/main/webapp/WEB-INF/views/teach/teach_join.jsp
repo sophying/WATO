@@ -430,7 +430,7 @@
     <div id="content">
 <!-- 최지혜 추가 -->  
 		<div class="table-responsive">
-        	<form role="form" method="post" autocomplete="off"><br><br>
+        	<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
             	<table class="table" style="margin: auto; width: 70%;" cellspacing="0"> <!-- 강사 승인신청폼 -->
                 	<tr>
                         <th id="student" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">강사 승인신청폼</th>
@@ -445,7 +445,7 @@
                     </tr>
                     <tr>
                         <th>이력서첨부<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type='file' id="app_Resume" name="app_Resume"/></td>
+                        <td colspan="2"><input type="file" id="app_Resume" name="app_Resume"/></td>
                     </tr>
                     <tr>
                         <th>성별<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>

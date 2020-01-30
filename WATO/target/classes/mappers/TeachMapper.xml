@@ -8,11 +8,11 @@
 	<!-- 강사 회원 가입1(강사 관리 table 에 들어감) -->
 	<insert id="teach_join">
 		insert into 
-		approval (app_Profile, app_Resume, app_Gender, 
+		approval (app_orgname, app_newname, app_orgname2, app_newname2, app_Gender, 
 				 app_Phone1, app_Phone2, app_Phone3, 
 				 User_Email,
 				 app_Addr1, app_Addr2, app_Addr3, app_Num)
-		values (#{app_Profile}, #{app_Resume}, #{app_Gender}, 
+		values (#{app_Orgname, jdbcType=VARCHAR}, #{app_Newname, jdbcType=VARCHAR}, #{app_Orgname2, jdbcType=VARCHAR}, #{app_Newname2, jdbcType=VARCHAR}, #{app_Gender}, 
 				#{app_Phone1}, #{app_Phone2}, #{app_Phone3}, 
 				#{User_Email}, 
 				#{app_Addr1}, #{app_Addr2}, #{app_Addr3}, #{app_Num})
@@ -21,11 +21,11 @@
 	<!-- 강사 회원 가입2(강사 승인 클릭하면 Teach 로 들어감) -->
 	<insert id="teach_join2">
 		insert into
-		teach_info(Teach_Profile, Teach_Resume, Teach_Gender, 
+		teach_info(Teach_Gender, 
 				 Teach_Phone1, Teach_Phone2, Teach_Phone3, 
 				 User_Email,
 				 Teach_Addr1, Teach_Addr2, Teach_Addr3)
-		values (#{Teach_Profile}, #{Teach_Resume}, #{Teach_Gender}, 
+		values (#{Teach_Gender}, 
 				#{Teach_Phone1}, #{Teach_Phone2}, #{Teach_Phone3}, 
 				#{User_Email}, 
 				#{Teach_Addr1}, #{Teach_Addr2}, #{Teach_Addr3})

@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.king.myapp.domain.AdminVO;
+import com.king.myapp.domain.ManagementVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
@@ -74,10 +74,34 @@ public class AdminDAOImpl implements AdminDAO {
 		return sql.selectOne(namespace + ".findT_id", tvo);
 	}
 
-	// 회원관리
+	// 전체 리스트 조회(학생)
 	@Override
-	public List<AdminVO> manageList() throws Exception {
-		return sql.selectList(namespace + ".management");
+	public List<ManagementVO> studentList() throws Exception {
+		return sql.selectList(namespace + ".studentList");
 	}
+
+	// 전체 리스트 조회(강사)
+	@Override
+	public List<ManagementVO> teachList() throws Exception {
+		return sql.selectList(namespace + ".teachList");
+	}
+
+	// 학생 리스트 조회
+	@Override
+	public List<StdVO> studentList2() throws Exception {
+		return sql.selectList(namespace + ".studentList2");
+	}
+
+	// 강사 리스트 조회
+	@Override
+	public List<TeachVO> teachList2() throws Exception {
+		return sql.selectList(namespace + ".teachList2");
+	}
+
+	// 회원관리
+	/*@Override
+	public List<ManagementVO> manageList() throws Exception {
+		return sql.selectList(namespace + ".management");
+	}*/
 
 }

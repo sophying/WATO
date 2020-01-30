@@ -134,7 +134,7 @@ public class BoardController {
 			logger.info("get studylistview");
 				List<BoardVO> studylistAll = service.studylistAll(); //전체 목록을 가져온다
 				model.addAttribute("studylistAll",studylistAll); 
-				List<BoardVO> TearchlistAll = service.TearchlistAll(); 
+				List<BoardVO> TearchlistAll = service.TearchlistAll();
 				model.addAttribute("TearchlistAll",TearchlistAll);
 			
 			return "/include/studylistview";   
