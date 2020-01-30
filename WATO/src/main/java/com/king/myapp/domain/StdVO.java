@@ -1,9 +1,13 @@
 package com.king.myapp.domain;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class StdVO {
 	
 	private String No;
-	private String Std_Profile;
+	private MultipartFile Std_Profile;
+	private String Std_Orgname;
+	private String Std_Newname;
 	private String User_Id;
 	private String User_Pwd;
 	private String Std_Gender;
@@ -21,11 +25,23 @@ public class StdVO {
 	public void setNo(String no) {
 		No = no;
 	}
-	public String getStd_Profile() {
+	public MultipartFile getStd_Profile() {
 		return Std_Profile;
 	}
-	public void setStd_Profile(String std_Profile) {
+	public void setStd_Profile(MultipartFile std_Profile) {
 		Std_Profile = std_Profile;
+	}
+	public String getStd_Orgname() {
+		return Std_Orgname;
+	}
+	public void setStd_Orgname(String std_Orgname) {
+		Std_Orgname = std_Orgname;
+	}
+	public String getStd_Newname() {
+		return Std_Newname;
+	}
+	public void setStd_Newname(String std_Newname) {
+		Std_Newname = std_Newname;
 	}
 	public String getUser_Id() {
 		return User_Id;
@@ -86,6 +102,5 @@ public class StdVO {
 	}
 	public void setStd_Addr3(String std_Addr3) {
 		Std_Addr3 = std_Addr3;
-	}
-	
+	}	
 }
