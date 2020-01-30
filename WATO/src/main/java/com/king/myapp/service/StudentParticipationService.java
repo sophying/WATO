@@ -25,13 +25,27 @@ public interface StudentParticipationService {
 	public StudentParticipationVO partiCheck(Map<String, Object> map) throws Exception;
 	
 	// 학생 참여신청 취소 
-	void partidelete(Map<String, Object> map) throws Exception;
+	public void partidelete(Map<String, Object> map) throws Exception;
 	
 	// 참여신청 카운트 - 
-	void partiCntMinus(int s_no) throws Exception;
+	public void partiCntMinus(int s_no) throws Exception;
 	
-	// 학생 스터디 참여 리스트 
+	// 학생 스터디 참여 & 별점평가 유무 확인  리스트 
 	List<StudyEnrollVO> getStudyPartiList(StdVO std)throws Exception;
+	
+	// 별점  평가 유저 값 부여 
+	public void checkStarParti(Map<String, Object> map) throws Exception;
+
+	// 별점 평가 유저 체크 
+	StudentParticipationVO getCheckStarParti(Map<String, Object> checkUser) throws Exception;
+	
+	// 참여 리스트 & 별점 참여 유저 불러오기 
+	List<StudentParticipationVO> getStarPartiUser(StdVO std) throws Exception;
+
+	// 강의 참여 리스트 
+	List<TeacherEnrollVO> getClassPartiList(StdVO std) throws Exception;
+
+	
 	
 	
 	
@@ -57,6 +71,10 @@ public interface StudentParticipationService {
 
 	// 학생 강의 참여 리스트 
 	List<TeacherEnrollVO> getTeachPartiList(TeachVO teach) throws Exception;
+
+
+
+
 
 	
 		

@@ -1,5 +1,6 @@
 package com.king.myapp.controller;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,8 +91,17 @@ public class StudyenrollController {
 			
 			List<StudyEnrollVO> studylist = studyService.list(); 
 			TeachVO teach =  (TeachVO) session.getAttribute("teach");
-			model.addAttribute("std");
-			model.addAttribute("teach");
+			StdVO std =  (StdVO) session.getAttribute("std"); 
+			
+			if (std == null && teach== null ) {
+				
+				model.addAttribute("std",null);
+				model.addAttribute("teach",null);
+			}else {
+				
+				model.addAttribute("teach",teach);
+				model.addAttribute("std",std);
+			}
 			model.addAttribute("studylist", studylist);
 		}
 	
@@ -103,8 +113,12 @@ public class StudyenrollController {
 			studyService.viewCount(s_no);
 			StudyEnrollVO listOne = studyService.detailRead(s_no);
 			List<StudentReplyVO> reply = studyService.replyRead(s_no); // 댓글 불러오기 
-			//List<StudentReReplyVO> reReply = studyService.reReplyRead(s_no);
 			
+			DecimalFormat form = new DecimalFormat("#.##");
+			double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
+			form.format(star);
+
+			model.addAttribute("starScore",star);
 					
 			//  현재 유저의 참여신청여부 파악  
 			StdVO std = (StdVO) session.getAttribute("std");
@@ -126,12 +140,10 @@ public class StudyenrollController {
 				}
 			}
 			
-			//List<LeaderReVO> reReply = studyService.reReplyRead(s_no);
 			
 			model.addAttribute("teach",teach);
 			model.addAttribute("std", std);
 			model.addAttribute("reply",reply);
-			//model.addAttribute("reReply",reReply);
 			model.addAttribute("listOne",listOne);
 			
 	}		
@@ -347,17 +359,20 @@ public class StudyenrollController {
 		if (std != null) {
 			
 			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
+			List<TeacherEnrollVO> classParti = participationService.getClassPartiList(std);
+			
 			System.out.println("여기는 std ");
 			
+			model.addAttribute("classParti",classParti);
 			model.addAttribute("studyParti",studyParti);
 			model.addAttribute("std", std);
 			
 		}else if (teach != null) {
 			
-			List<TeacherEnrollVO> classParti = participationService.getTeachPartiList(teach);
+			//List<TeacherEnrollVO> classParti = participationService.getTeachPartiList(teach);
 			System.out.println("여기는 teach ");
 			
-			model.addAttribute(classParti);
+			//model.addAttribute(classParti);
 			model.addAttribute("teach", teach);	
 		}
 
@@ -368,35 +383,61 @@ public class StudyenrollController {
 	
 	// 별점등록 버튼 눌렀을 때  액션 
 	@RequestMapping(value = "/user_myList", method = RequestMethod.POST)
-	public void postStarScore(@RequestParam("s_no")int s_no, Model model, StudyEnrollVO studyVO, HttpSession session) throws Exception{
+	public void postStarScore(@RequestParam("s_no")int s_no,@RequestParam("starScore") int starScore ,@RequestParam("p_userid") String p_userid, Model model,
+								HttpSession session) throws Exception{
 		
-		logger.info("--------------[ 나의 참여 스터디 별점 등록   GET ]-----------------");	
+		logger.info("--------------[ 나의 참여 스터디 별점 등록   GET ]-----------------");	 
 		
-		studyService.starPartiUpdate(studyVO);
+		System.out.println(starScore);
+		Map<String, Object> starScoreUpdate = new HashMap<String, Object>(); 
 		
+		starScoreUpdate.put("s_no",s_no);
+		starScoreUpdate.put("starScore", starScore);
+		
+		studyService.starPartiUpdate(starScoreUpdate);
+		
+		System.out.println("#######  별점등록을 하고 왔습니다.");
 		
 		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
 		StdVO std =  (StdVO) session.getAttribute("std"); 	
 		
+	//***** 별점 평가한 유저 값 부여 *****
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("p_userid", p_userid);
+		map.put("s_no", s_no);
+		
+		// participation.mapper   <update id="s_checkStarParti">
+		participationService.checkStarParti(map);
 		
 		if (std != null) {
 			
+	//***** 유저가 가지고 있는 참여 리스트 가져오기 *****  
 			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
+			
+
+	//***** 현재 로그인한 유저가 별점평가를 하였는지 확인  *****
+			Map<String, Object> checkUser = new HashMap<String, Object>();
+			
+			checkUser.put("p_userid", std.getUser_Id());
+			checkUser.put("s_no", s_no);
+			
+			
 			System.out.println("여기는 std ");
 			
-			model.addAttribute("studyParti",studyParti);
-			model.addAttribute("std", std);
+			// participation.mapper   <select id="s_getCheckStarParti">
+			StudentParticipationVO checkStarScore = participationService.getCheckStarParti(checkUser);
 			
-		}else if (teach != null) {
+				if (checkStarScore != null) {
+					//model.addAttribute("checkStarScore",checkStarScore);
+					System.out.println("#######  별점 평가한 유저 입니다. ");
+				}
 			
-			List<TeacherEnrollVO> classParti = participationService.getTeachPartiList(teach);
-			System.out.println("여기는 teach ");
+			model.addAttribute("studyParti",studyParti); // 참여한 스터디 목록 
+			model.addAttribute("std", std); // 유저 
 			
-			model.addAttribute(classParti);
-			model.addAttribute("teach", teach);	
 		}
-
-		
+			model.addAttribute("teach", teach);	
 		
 	}
 

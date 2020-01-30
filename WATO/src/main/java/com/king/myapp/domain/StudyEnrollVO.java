@@ -53,13 +53,12 @@ PRIMARY KEY(S_NO)
 	private Timestamp s_updatedate;
 	private int s_bno_likecnt;
 	private String s_profile;
-	private int starscore;
+	private int starScore;
 	private int starscore_parti;
 	
 	
 	private String road;
 	private String jibun;
-	
 	
 	public final int getS_no() {
 		return s_no;
@@ -181,11 +180,11 @@ PRIMARY KEY(S_NO)
 	public final void setS_profile(String s_profile) {
 		this.s_profile = s_profile;
 	}
-	public final int getStarscore() {
-		return starscore;
+	public final int getStarScore() {
+		return starScore;
 	}
-	public final void setStarscore(int starscore) {
-		this.starscore = starscore;
+	public final void setStarScore(int starScore) {
+		this.starScore = starScore;
 	}
 	public final int getStarscore_parti() {
 		return starscore_parti;
@@ -205,6 +204,9 @@ PRIMARY KEY(S_NO)
 	public final void setJibun(String jibun) {
 		this.jibun = jibun;
 	}
+	
+	
+	
 	
 	
 	

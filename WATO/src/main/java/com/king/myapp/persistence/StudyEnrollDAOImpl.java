@@ -1,6 +1,7 @@
 package com.king.myapp.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -116,10 +117,17 @@ public class StudyEnrollDAOImpl implements StudyEnrollDAO {
 
 	// 참여 스터디 별점 평가 
 	@Override
-	public void starPartiUpdate(StudyEnrollVO studyVO) throws Exception {
-		sql.update("study.s_starScoreUpdate",studyVO);
+	//public void starPartiUpdate(StudyEnrollVO studyVO) throws Exception {
+	//	sql.update("study.s_starScoreUpdate",studyVO);
+	public void starPartiUpdate(Map<String, Object> starScoreUpdate) throws Exception {
+		sql.update("study.s_starScoreUpdate",starScoreUpdate);	
 	}
-
+	/*
+	@Override
+	public void starPartiUpdate(Map<String, Object> starScoreUpdate) throws Exception {
+		sql.update("study.s_starScoreUpdate",starScoreUpdate);
+	}
+	*/
 
 
 

@@ -30,9 +30,16 @@ STARSCORE_PARTI          NUMBER
 	private String p_intro;
 	private int p_tell;
 	private Timestamp p_regdate;
+	private int starscore_parti;
 	
 	
 	
+	public final int getStarscore_parti() {
+		return starscore_parti;
+	}
+	public final void setStarscore_parti(int starscore_parti) {
+		this.starscore_parti = starscore_parti;
+	}
 	public Timestamp getP_regdate() {
 		return p_regdate;
 	}

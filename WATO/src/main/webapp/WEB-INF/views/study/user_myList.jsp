@@ -17,7 +17,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <title>Insert title here</title>
 <style type="text/css">
-#top{
+ #top{
         position: static;
         margin-left: auto;
         margin-right: auto;
@@ -423,14 +423,6 @@ table caption {
                     </li>
                     <li class="nav-item menu-large"><a href="/board/studylist"  class="nav-link" >스터디찾기<b class="caret"></b></a> 
                 </ul>    
-                <form role="search" class="ml-auto" method="post" action="/board/searchResult">
-                    <div class="input-group">     
-                        <input type="text" placeholder="Search" class="form-control" name="searchKey" id="searchKey"> 
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </nav>
@@ -455,9 +447,9 @@ table caption {
               <th colspan="2">별점주기</th>
             </tr>
           </thead>
-          <c:choose>
-		  	<c:when test="${studyParti != null }">
+		  	<c:if test="${studyParti != null }">
 	           <c:forEach var="studyParti" items="${studyParti}">
+	          
 		          <tbody>
 		            <tr>
 		              <td class="text-center">${studyParti.s_no }</td>
@@ -468,50 +460,97 @@ table caption {
 		              <td>${studyParti.s_endDate }</td>
 		              <td>${studyParti.s_userId}</td>
 		              <td>
+		   <!--  form  -->           
 			              <form id="starForm"method="post" action="">
-			              	<input type="hidden" name="starscore" id="startScore" value="">
-			              	<div id="star_grade" >
-							        <span>★</span> 
-							        <span>★</span>
-							        <span>★</span> 
-							        <span>★</span>
-							        <span>★</span>
-							</div>
+			              	<c:choose>
+		              			<c:when test="${studyParti.starscore_parti == 1  }">
+					              	<div>
+									</div>
+								</c:when>
+								<c:when test="${studyParti.starscore_parti == 0}">
+					              	<div class="text-center"id="star_grade" >
+									        <span>★</span> 
+									        <span>★</span>
+									        <span>★</span>   
+									        <span>★</span>
+									        <span>★</span>   
+									</div>
+								</c:when>
+							</c:choose>		
+	<!-- 스터디 게시글 번호 를 전달하여  별점 & 참여자 카운트   업데이트   -->	              		
+			              	<input type="hidden" name="starScore" id="starScore" >
 							<input type="hidden" name="s_no" value="${studyParti.s_no }" />
+							
+	<!-- 유저에 따른 p_userid 값 전달 어떤 유저가 별점 평가를 하였는지 판단  -->
+							 
+							<c:if test="${std != null }">
+									<input type="hidden" name="p_userid" value="${std.user_Id}" />
+							</c:if>
+							
+	<!-- 현재 로그인 유저가 별점평가에 참여하였는지 판단  -->	              		
 		              		<c:choose>
-		              		<c:when test=""></c:when>
-		              		<input type="button" id="starBtn" onclick="starBtn11(this)" value="별점주기"/>
+		              			<c:when test="${studyParti.starscore_parti == 1 }">   
+		              				<input type="button" id="starBtn" value="별점전달완료!"/>
+						 		</c:when>
+						 		<c:otherwise>
+		              				<input type="button" id="starBtn" onclick="starBtn11(this)" value="별점전달하기!"/>
+						 		</c:otherwise>
 						 	</c:choose>
-						 </form>	
+						 </form>
+		 <!-- // form  --> 				 	
 		              </td>
 		            </tr>
-		          </tbody> 
-	          </c:forEach>
-	        </c:when>
-	        <c:when test="${classParti != null }">
-	        	<c:forEach var="classParti" items="${classParti}">
-		          <tbody>
-		            <tr>
-		              <td>Argentina</td>
-		              <td>${classParti.s_no }</td>
-		              <td>${classParti.s_level }</td>
-		              <td>${classParti.s_category }</td>
-		              <td>${classParti.s_title }</td>
-		              <td>${classParti.s_startDate }</td>
-		              <td>${classParti.s_endDate }</td>
-		              <td>${classParti.s_userId}</td>
-		              <td><input type="button" value="별점주기"/></td>
-		            </tr>
 		          </tbody>
-	        	</c:forEach>
-	        </c:when>
-          </c:choose>
+		      
+	          </c:forEach>
+	        </c:if>
           <tfoot>
             <tr>
               <td colspan="9" class="text-center h2">스터디는 만족스러우셨나요?</td>
             </tr>
           </tfoot>
         </table>
+        <h4 class="font-weight-bold">내가 참여한 강의</h4>
+        <table class="table table-bordered table-hover">
+          <thead class="text-center " style="width: 100px;">
+            <tr>
+              <th>번호</th>
+              <th>레벨</th>
+              <th>카테고리</th>
+              <th>주제</th>
+              <th>시작날짜</th>
+              <th>끝날짜</th>
+              <th>리더</th>
+              <th colspan="2">별점주기</th>
+            </tr>
+          </thead>
+	        <c:if test="${classParti != null }">
+	        	<c:forEach var="classParti" items="${classParti}">
+		          <tbody>
+		            <tr>
+		              <td>Argentina</td>
+		              <td>${classParti.t_no }</td>
+		              <td>${classParti.t_level }</td>
+		              <td>${classParti.t_category }</td>
+		              <td>${classParti.t_title }</td>
+		              <td>${classParti.t_startDate }</td>
+		              <td>${classParti.t_endDate }</td>
+		              <td>${classParti.t_userId}</td>
+		              <td><input type="button" value="별점주기"/></td>
+		            </tr>
+		          </tbody>
+	        	</c:forEach>
+	        </c:if>
+          <tfoot>
+            <tr>
+              <td colspan="9" class="text-center h2">강의는 만족스러우셨나요?</td>
+            </tr>
+          </tfoot>
+        </table>
+        
+        
+        
+        
       </div>
       <!--end of .table-responsive-->
     </div>
@@ -570,13 +609,13 @@ table caption {
                     <li><a href="category.jsp">광고 문의</a></li>
                 </ul>
             </div>
-            <!-- /.col-lg-3-->
+            <!-- /.col-lg-3-->  
             <div class="col-lg-3 col-md-6">
                 <h4 class="mb-3">찾아오는길</h4>
                 <p><strong>강동센터</strong><br><a class="text-muted">서울특별시</a><br><a class="text-muted">강동구</a><br><a class="text-muted">천호대로 1095</a>
                     <br><a class="text-muted">2층</a><br><strong>미래능력개발교육원</strong></p><a href="contact.jsp">Go to contact page</a>
                 <hr class="d-block d-md-none">
-            </div>
+            </div> 
             <!-- /.col-lg-3-->
             <div class="col-lg-3 col-md-6">
                 <h4 class="mb-3">새로운 소식</h4>

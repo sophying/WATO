@@ -6,7 +6,29 @@ import java.sql.Timestamp;
 public class TeacherEnrollVO {
 
 	/*
-	
+T_NO            NOT NULL NUMBER         
+T_USERID        NOT NULL VARCHAR2(30)   
+T_CATEGORY      NOT NULL VARCHAR2(30)   
+T_TITLE         NOT NULL VARCHAR2(100)  
+T_STARTDATE     NOT NULL DATE           
+T_ENDDATE                DATE           
+T_DAY           NOT NULL VARCHAR2(30)   
+T_POSTNUM                NUMBER         
+T_PLACE         NOT NULL VARCHAR2(100)  
+T_CONTENT       NOT NULL VARCHAR2(3000) 
+T_PHOTO                  VARCHAR2(50)   
+T_LEVEL         NOT NULL VARCHAR2(10)   
+T_PEOPLE        NOT NULL NUMBER         
+T_PARTI                  NUMBER         
+T_CREADATE               DATE           
+T_UPDATEDATE             DATE           
+T_URL                    VARCHAR2(500)  
+T_LICENSE                VARCHAR2(50)   
+T_VIEWCNT                NUMBER         
+T_INTRO                  VARCHAR2(3000) 
+T_PRICE         NOT NULL VARCHAR2(50)   
+STARSCORE                NUMBER         
+STARSCORE_PARTI          NUMBER     
 	
 	*/
 
@@ -31,11 +53,29 @@ public class TeacherEnrollVO {
 	private Timestamp t_updatedate;
 	private String t_price;
 	private String t_intro;
+	private int starScore;
+	private int starscore_parti;
+	
 
 	private String road;
 	private String jibun;
-
 	
+
+	public final int getStarScore() {
+		return starScore;
+	}
+
+	public final void setStarScore(int starScore) {
+		this.starScore = starScore;
+	}
+
+	public final int getStarscore_parti() {
+		return starscore_parti;
+	}
+
+	public final void setStarscore_parti(int starscore_parti) {
+		this.starscore_parti = starscore_parti;
+	}
 
 	public String getRoad() {
 		return road;

@@ -264,7 +264,7 @@
 								<%-- <input id="listOne_URL"type="hidden" value="#{listOne.t_URL }"/> --%>
 								
 							<c:choose>	
-								<c:when test="${listOne.t_URL != null }">
+								<c:when test="${listOne.t_URL != null || listOne != '' }">
 							<div class="embed-responsive embed-responsive-16by9">
 		 							<iframe id="main-iframe"class="embed-responsive-item mt-3 w-100 h-100" src="${listOne.t_URL }" ></iframe>
 							</div>

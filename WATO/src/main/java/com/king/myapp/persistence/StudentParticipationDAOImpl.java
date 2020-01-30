@@ -62,8 +62,33 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 		return sql.selectList("parti.s_getStudyPartiList",std);
 	}
 	
+	// 별점 평가 유저 값 부여 
+	@Override
+	public void checkStarParti(Map<String, Object> map) throws Exception {
+		sql.update("parti.s_checkStarParti",map);
+	}	
 	
+	// 별점 평가  유저 확인 
+	@Override
+	public StudentParticipationVO getCheckStarParti(Map<String, Object> checkUser) throws Exception {
+		return sql.selectOne("parti.s_getCheckStarParti",checkUser);
+	}
 	
+	// 참여 리스트 & 별점 참여 유저 불러오기
+	@Override
+	public List<StudentParticipationVO> getStarPartiUser(StdVO std) throws Exception {
+		return sql.selectList("parti.s_getStarPartiUser",std);
+	}
+
+	// 학생 강의 참여 리스트 
+	@Override
+	public List<TeacherEnrollVO> getClassPartiList(StdVO std) throws Exception {
+		return sql.selectList("parti.t_getStudyPartiList",std);
+	}
+
+
+
+
 	
 	
 	
@@ -110,5 +135,8 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 	public List<TeacherEnrollVO> t_getTeachPartiList(TeachVO teach) throws Exception {
 		return sql.selectList("parti.t_getTeachPartiList",teach);
 	}
+
+
+
 	
 }

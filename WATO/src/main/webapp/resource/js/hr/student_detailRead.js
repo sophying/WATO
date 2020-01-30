@@ -1,4 +1,6 @@
 //Q&A 작성시 글자 수 제한 
+
+
 $("#r_content").keyup(function (event) {
 	var content1 = $(this).val();
 	$('#cnttxt1').html("("+content1.length+" / 최대 200 자)");

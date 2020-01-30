@@ -1,6 +1,7 @@
 package com.king.myapp.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import com.king.myapp.domain.LeaderReVO;
 import com.king.myapp.domain.StudentParticipationVO;
@@ -59,7 +60,9 @@ public interface StudyEnrollDAO {
 	public void reReplyDelete(int r_no) throws Exception;
 
 	// 참여 스터디 별점 평가 
-	public void starPartiUpdate(StudyEnrollVO studyVO) throws Exception;
+	public void starPartiUpdate(Map<String, Object> starScoreUpdate) throws Exception;
+
+	//public void starPartiUpdate(StudyEnrollVO studyVO) throws Exception;
 
 	
 

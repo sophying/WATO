@@ -35,6 +35,20 @@ public interface StudentParticipationDAO {
 	//학생 스터디 참여 리스트 
 	List<StudyEnrollVO> s_getStudyPartiList(StdVO std) throws Exception;
 	
+	// 별점 평가한 유저 값 부여 
+	void checkStarParti(Map<String, Object> map) throws Exception;
+	
+	// 별점 평가 유저 확인 
+	StudentParticipationVO getCheckStarParti(Map<String, Object> checkUser) throws Exception;
+
+	// 참여 리스트 & 별점 참여 유저 불러오기
+	List<StudentParticipationVO> getStarPartiUser(StdVO std) throws Exception;
+	
+	// 학생 강의 참여 리스트 
+	List<TeacherEnrollVO> getClassPartiList(StdVO std) throws Exception;
+	
+	
+	
 	
 /******************************/	
 	
@@ -58,6 +72,10 @@ public interface StudentParticipationDAO {
 
 	// 학생 강의 참여 리스트 
 	List<TeacherEnrollVO> t_getTeachPartiList(TeachVO teach) throws Exception;
+
+
+
+
 
 	
 }
