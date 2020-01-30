@@ -9,7 +9,6 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
@@ -446,23 +445,24 @@
                       </div>
 
 
-                   <!-- 우편번호 찾기 API -->
+                   <!-- kakao map api(카카오 지도) -->
                    <div class="form-group">
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
                        	<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
       					</label>              
                    </div>
-                                          	<input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
+                   
+                        <input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
+                        
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
-<!--  post 우편번호 -->            
-<!-- <input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" required> -->
-            <input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" value="${listOne.s_postnum }" required>
+                            
+								<!--  post 우편번호 -->            
+            					<input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" value="${listOne.s_postnum }" required>
   							  </div>
                             </div>
-                          
-                          
-<!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
+                            
+						  <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -470,7 +470,7 @@
                             </div>
                           </div>
                           
-<!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
+						  <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -478,7 +478,7 @@
                            </div>
                           </div>
                           
- <!-- 참고항목 -->                         
+ 						  <!-- 참고항목 -->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -486,7 +486,7 @@
                            </div>
                           </div>
                           
-<%--주소 검색 iframe wrap 공간--%>
+					      <%--주소 검색 iframe wrap 공간--%>
                           <div class="cols-sm-10 mb-1">
                        	 	<div class="input-group">
 								<div id="wrap" style="display:none;
@@ -496,26 +496,25 @@
 											margin:5px 0;
 											position:relative">
     						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
-    					style="cursor:pointer;
-    					position:absolute;
-    					right:0px;
-    					top:-1px;
-    					z-index:1" 
-    					onclick="foldDaumPostcode()" alt="접기 버튼">
+    							 style="cursor:pointer;
+    							 position:absolute;
+    							 right:0px;
+    							 top:-1px;
+    							 z-index:1" 
+    							 onclick="foldDaumPostcode()" alt="접기 버튼">
     							</div>
 							</div>
                           </div>
     
     
-    <%--kakao map API (카카오 지도 담는 영역)--%>
+    					<%--kakao map API (카카오 지도 담는 영역)--%>
                     	<div class="cols-sm-10 mb-1">
                     		<div class="input-group">
 								<div id="map" style="width: 100%; height: 300px;"></div>
 							</div>
 						</div>  
-<%--kakao map API (카카오 지도)--%>
                     </div>
-<!-- // 우편번호 찾기 API -->
+<%--kakao map API (카카오 지도) 끝--%>
                     
                     <div class="form-group">
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">그룹장의 소개를 해주세요!!!</label>
@@ -643,15 +642,15 @@ _________________________________________________________
 <script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="./resource/js/front.js"></script>
- 
-<!-- kakao map api key (최성웅 appkey)-->
+<!-- kakao map api key (최성웅 key)-->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
 
 </body>
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<!-- kakao 우편번호 검색 api 시작-->
+
+<!-- kakao map api 시작-->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
 							

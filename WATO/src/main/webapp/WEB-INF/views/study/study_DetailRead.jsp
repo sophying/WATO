@@ -30,10 +30,6 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
     <link rel="icon" type="image/png" href="../resource/images/icons/favicon.ico"/>
-    
-    <!-- kakao map api key (최성웅 appkey)-->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
-    
 </head>
 <style>
     #top{
@@ -533,7 +529,7 @@
 										<div id="map" style="width: 100%; height: 300px;"></div>
 										<input type="text" value="" id="mapVal2" style="display: none;">
 										<button type="button" style="display: none;"  onclick="readAddress()" id="showMap">클릭!</button>
-										<!-- kakao map -->
+										<!-- kakao map 히든 버튼을 통한 메소드 실행.-->
 
 										<input type="text" value="${listOne.s_place}" id="mapVal" style="display: none;">
 										
@@ -778,8 +774,10 @@
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
 <script src="../resource/js/hr/student_detailRead.js"></script>
+<!-- kakao map api key (최성웅 appkey)-->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
 
-<!-- kakao 우편번호 검색 api -->
+<!-- kakao map api 시작 -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
  // 주소 분리하여 추출(db의 주소는 도로명+/+상세주소가 합쳐져 있음)										
@@ -860,5 +858,6 @@
 return false;
 };
 </script>
+<!-- kakao map api 시작 끝~~~~~~~~~~-->
 </body>
 </html>		

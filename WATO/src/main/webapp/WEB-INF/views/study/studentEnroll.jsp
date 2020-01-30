@@ -609,7 +609,7 @@
                       </div>
 
 
-                   <!-- 우편번호 찾기 API -->
+                   <%--kakao map API (카카오 지도)--%>
                    <div class="form-group">
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
                        	<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
@@ -617,35 +617,31 @@
                    </div>
                                           	<input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
                    
-                  
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
-<!--  post 우편번호 -->            
-<!-- <input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" required> -->
+                            
+							<!--  post 우편번호 -->            
   							<input type="text" class="form-control" id="postcode" name="s_postnum" placeholder="우편번호" required>
   							  </div>
                             </div>
                           
-                          
-<!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
+						  <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
-                                <!-- <input type="text"  class="form-control" id="roadAddress" placeholder="도로명주소" required> -->
                                 <input type="text"  class="form-control" id="roadAddress" placeholder="도로명/지번주소" required>
                             </div>
                           </div>
                           
-<!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
+						  <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
-                                <!-- <input type="text" class="form-control" id="jibunAddress" placeholder="지번주소" required> -->
                                  <input type="text" class="form-control" id="jibunAddress" placeholder="상세주소(건물명 등)를 입력해주세요" required>
                            </div>
                           </div>
                           
- <!-- 참고항목 -->                         
+						  <!-- 참고항목 -->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -653,7 +649,7 @@
                            </div>
                           </div>
                           
-<%--주소 검색 iframe wrap 공간--%>
+						  <%--주소 검색 iframe wrap 공간--%>
                           <div class="cols-sm-10 mb-1">
                        	 	<div class="input-group">
 								<div id="wrap" style="display:none;
@@ -663,28 +659,24 @@
 											margin:5px 0;
 											position:relative">
     						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
-    					style="cursor:pointer;
-    					position:absolute;
-    					right:0px;
-    					top:-1px;
-    					z-index:1" 
-    					onclick="foldDaumPostcode()" alt="접기 버튼">
+    							 style="cursor:pointer;
+    							 position:absolute;
+    							 right:0px;
+    							 top:-1px;
+    							 z-index:1" 
+    							 onclick="foldDaumPostcode()" alt="접기 버튼">
     							</div>
 							</div>
                           </div>
     
-    
-    <%--kakao map API (카카오 지도 담는 영역)--%>
+    					<%--kakao map API (카카오 지도 담는 영역)--%>
                     	<div class="cols-sm-10 mb-1">
                     		<div class="input-group">
 								<div id="map" style="width: 100%; height: 300px;"></div>
 							</div>
 						</div>  
-<%--kakao map API (카카오 지도)--%>
                     </div>
-<!-- // 우편번호 찾기 API -->
-
-
+<%--kakao map API (카카오 지도)--%>
 
                     <div class="form-group">
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">그룹장의 소개를 해주세요!!!&nbsp;&nbsp;&nbsp;<span id="cnttxt1"></span></label>
@@ -812,8 +804,7 @@ _________________________________________________________
 <script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 <script src="./resource/js/front.js"></script>
-
-<!-- kakao map api key (최성웅 appkey)-->
+<!-- kakao map api key (최성웅 key)-->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
  
 </body>
@@ -823,10 +814,9 @@ _________________________________________________________
 <!-- kakao 우편번호 검색 api -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-/* kakao map + 우편번호 검색 (작성자 : 최성웅) 시작 
-혜련씨 우편번호 검색은 아래의 혜련씨 코드로 주석처리함.*/
-//kakao map컨테이너 생성 : 위의 div태그 (id='map')
+//kakao map관련 script 시작
 
+//kakao map컨테이너 생성 : 위의 div태그 (id='map')
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.53591291785309, 127.1336680908981), // 지도의 중심좌표
@@ -869,9 +859,6 @@ _________________________________________________________
                         var result = results[0]; //첫번째 결과의 값을 활용
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
-                        
-                        /* 좌표 확인 테스트
-                        alert(coords); */
                         
                         // 지도를 보여준다.
                         mapContainer.style.display = "block";
@@ -931,8 +918,7 @@ _________________________________________________________
         element_wrap.style.display = 'block';
     }
 </script>
-<!-- kakao map + 우편번호 검색 끝~~~~~~~~~~~~ -->
-
+<!-- kakao map관련 script 끝~~~~~~~~~~ -->
 
 <script type="text/javascript"> 
 
