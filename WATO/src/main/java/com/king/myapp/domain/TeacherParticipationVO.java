@@ -5,13 +5,14 @@ import java.sql.Timestamp;
 public class TeacherParticipationVO {
 	
 	/*
-		create table t_parti(
-	  p_no number,
-	  t_no number,
-	  p_userid varchar2(30),
-	  p_intro varchar2(100),
-	  p_tell number,
-	  primary key(p_no));
+	 * 
+P_NO            NOT NULL NUMBER       
+T_NO            NOT NULL NUMBER       
+P_USERID        NOT NULL VARCHAR2(30) 
+P_INTRO                  VARCHAR2(50) 
+P_TELL                   NUMBER(11)   
+P_REGDATE                DATE         
+STARSCORE_PARTI          NUMBER    
 	  
 	  Create sequence T_PARTI_SEQ
 		Start with 1
@@ -25,8 +26,15 @@ public class TeacherParticipationVO {
 	private String p_intro;
 	private int p_tell;
 	private Timestamp p_regdate;
+	private int starscore_parti;
 	
 	
+	public final int getStarscore_parti() {
+		return starscore_parti;
+	}
+	public final void setStarscore_parti(int starscore_parti) {
+		this.starscore_parti = starscore_parti;
+	}
 	public int getP_no() {
 		return p_no;
 	}

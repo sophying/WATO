@@ -26,7 +26,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from s_enroll
 		where s_no =#{s_no}
 	</select>
-	
 
 
 <!-- 4. 조회수   -->
@@ -92,36 +91,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			
 	</update>
 	
-<!--  댓글 등록 2 -->
-<!-- <insert id="s_reReplyinsert">
-	insert into S_REPLY_LAYER (s_no, r_no, r_no_origin, r_no_groupord, r_no_groupLayer,r_userid, r_content,  r_regdate)
-	values(#{s_no}, S_REPLY_LAYER_SEQ, 0, 0, 0, #{r_userid}, #{r_content}, SYSDATE  )
-</insert>
-	 -->
-<!--  댓글 불러오기 2 -->	
-<!-- <select id="s_leaderReplyRead" resultType="com.king.myapp.domain.StudentReReplyVO">
-	select * from S_REPLY_LAYER 
-	where s_no = #{s_no}
-	order by r_no_origin desc, r_no_groupord asc
-</select>	 -->
-	
-<!--  댓글 수정2  -->
-<!-- <update id="s_reReplyUpdate">
-		update S_REPLY_LAYER
-		set R_CONTENT=#{r_content},r_no_origin=(select r_no from S_REPLY_LAYER where r_no = #{r_no}), R_REGDATE= SYSDATE
-		where r_no = #{r_no}
-
-</update>	 -->
-
-
-<!--  댓글 삭제2  -->	
-<!-- <delete id="s_reReplyDelete">
-	delete from S_REPLY_LAYER
-	where r_no =#{r_no} and r_no_origin=(select r_no from S_REPLY_LAYER where r_no = #{r_no})
-</delete>	
-	 -->
-
-	
+<!-- 참여 스터디 별점 평가 -->
+	<update id="s_starScoreUpdate" parameterType="com.king.myapp.domain.StudyEnrollVO">
+		update s_enroll 
+		set STARSCORE = (starScore) + #{starScore}, STARSCORE_PARTI = (STARSCORE_PARTI) +1 
+		where s_no = #{s_no} 
+	</update>
 	
 	
 	

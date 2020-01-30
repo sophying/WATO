@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.persistence.StudentParticipationDAO;
@@ -59,8 +60,36 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 	public List<StudyEnrollVO> getStudyPartiList(StdVO std) throws Exception {
 		return participationDAO.s_getStudyPartiList(std);
 	}
+	// 별점 평가 유저 값 부여 
+	@Override
+	public void checkStarParti(Map<String, Object> map) throws Exception {
+		participationDAO.checkStarParti(map);
+	}
+	
+	// 평가 유저 확인  
+	@Override
+	public StudentParticipationVO getCheckStarParti(Map<String, Object> checkUser) throws Exception {
+		return participationDAO.getCheckStarParti(checkUser);
+	}
+
+	// 참여 리스트 & 별점 참여 유저 불러오기
+	@Override
+	public List<StudentParticipationVO> getStarPartiUser(StdVO std) throws Exception {
+		return participationDAO.getStarPartiUser(std);
+	}
+
+	// 학생 강의 참여 리스트 
+	@Override
+	public List<TeacherEnrollVO> getClassPartiList(StdVO std) throws Exception {
+		return participationDAO.getClassPartiList(std);
+	}
 	
 	
+	
+	
+	
+	
+/******************************/		
 	
 	
 	// 강의 참여등록 시 참여자 카운트 
@@ -100,9 +129,13 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 
 
 	@Override
-	public List<TeacherEnrollVO> getTeachPartiList(String user) throws Exception {
-		return participationDAO.t_getTeachPartiList(user);
+	public List<TeacherEnrollVO> getTeachPartiList(TeachVO teach) throws Exception {
+		return participationDAO.t_getTeachPartiList(teach);
 	}
+
+
+
+
 
 	
 

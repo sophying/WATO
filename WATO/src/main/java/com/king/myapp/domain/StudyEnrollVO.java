@@ -6,21 +6,31 @@ import java.sql.Timestamp;
 
 public class StudyEnrollVO {
 /*
-	 S_NO NUMBER,
-	 S_USERID VARCHAR2(20) NOT NULL,
-	 S_CATEGORY VARCHAR2(15) NOT NULL,
-	 S_TITLE VARCHAR2(50) NOT NULL,
-	 S_STARTDATE DATE NOT NULL,
-	 S_ENDDATE DATE,
-	 S_DAY VARCHAR2(25),
-	 S_POSTNUM NUMBER,
-	 S_PLACE VARCHAR2(70),
-	 S_CONTENT VARCHAR2(1000),
-	 S_PHOTO VARCHAR2(40),
-	 S_LEVEL VARCHAR2(10) NOT NULL,
-	 S_PEOPLE NUMBER NOT NULL,
-	 S_CREATDATE DATE DEFAULT SYSDATE,
-	 PRIMARY KEY(S_NO) 
+S_NO            NOT NULL NUMBER         
+S_USERID        NOT NULL VARCHAR2(30)   
+S_CATEGORY      NOT NULL VARCHAR2(30)   
+S_TITLE         NOT NULL VARCHAR2(100)  
+S_STARTDATE     NOT NULL DATE           
+S_ENDDATE                DATE           
+S_DAY                    VARCHAR2(30)   
+S_POSTNUM                NUMBER         
+S_PLACE                  VARCHAR2(100)  
+S_CONTENT                VARCHAR2(3000) 
+S_PHOTO                  VARCHAR2(50)   
+S_LEVEL         NOT NULL VARCHAR2(10)   
+S_PEOPLE        NOT NULL NUMBER         
+S_CREADATE               DATE           
+S_UPDATEDATE             DATE           
+S_INTRO                  VARCHAR2(3000) 
+S_VIEWCNT                NUMBER         
+S_PARTI                  NUMBER         
+S_BNO_LIKECNT            NUMBER         
+S_PROFILE                VARCHAR2(300)  
+STARSCORE                NUMBER         
+STARSCORE_PARTI          NUMBER   
+
+ 
+PRIMARY KEY(S_NO) 
 
 */
 	private int s_no;
@@ -40,51 +50,16 @@ public class StudyEnrollVO {
 	private int s_parti;
 	private int s_viewcnt;
 	private Timestamp s_creadate;
-	private Timestamp s_updatedate ;
+	private Timestamp s_updatedate;
+	private int s_bno_likecnt;
+	private String s_profile;
+	private int starScore;
+	private int starscore_parti;
 	
 	
 	private String road;
 	private String jibun;
 	
-	
-	
-	
-	public final int getS_viewcnt() {
-		return s_viewcnt;
-	}
-	public final void setS_viewcnt(int s_viewcnt) {
-		this.s_viewcnt = s_viewcnt;
-	}
-	public final String getS_intro() {
-		return s_intro;
-	}
-	public final void setS_intro(String s_intro) {
-		this.s_intro = s_intro;
-	}
-	public final int getS_parti() {
-		return s_parti;
-	}
-	public final void setS_parti(int s_parti) {
-		this.s_parti = s_parti;
-	}
-	public final String getRoad() {
-		return road;
-	}
-	public final void setRoad(String road) {
-		this.road = road;
-	}
-	public final String getJibun() {
-		return jibun;
-	}
-	public final void setJibun(String jibun) {
-		this.jibun = jibun;
-	}
-	public Timestamp getS_updatedate() {
-		return s_updatedate;
-	}
-	public void setS_updatedate(Timestamp s_updatedate) {
-		this.s_updatedate = s_updatedate;
-	}
 	public final int getS_no() {
 		return s_no;
 	}
@@ -109,7 +84,6 @@ public class StudyEnrollVO {
 	public final void setS_title(String s_title) {
 		this.s_title = s_title;
 	}
-	
 	public final Date getS_startDate() {
 		return s_startDate;
 	}
@@ -146,6 +120,12 @@ public class StudyEnrollVO {
 	public final void setS_content(String s_content) {
 		this.s_content = s_content;
 	}
+	public final String getS_intro() {
+		return s_intro;
+	}
+	public final void setS_intro(String s_intro) {
+		this.s_intro = s_intro;
+	}
 	public final String getS_photo() {
 		return s_photo;
 	}
@@ -164,16 +144,74 @@ public class StudyEnrollVO {
 	public final void setS_people(int s_people) {
 		this.s_people = s_people;
 	}
-	public Timestamp getS_creadate() {
+	public final int getS_parti() {
+		return s_parti;
+	}
+	public final void setS_parti(int s_parti) {
+		this.s_parti = s_parti;
+	}
+	public final int getS_viewcnt() {
+		return s_viewcnt;
+	}
+	public final void setS_viewcnt(int s_viewcnt) {
+		this.s_viewcnt = s_viewcnt;
+	}
+	public final Timestamp getS_creadate() {
 		return s_creadate;
 	}
-	public void setS_creadate(Timestamp s_creadate) {
+	public final void setS_creadate(Timestamp s_creadate) {
 		this.s_creadate = s_creadate;
 	}
+	public final Timestamp getS_updatedate() {
+		return s_updatedate;
+	}
+	public final void setS_updatedate(Timestamp s_updatedate) {
+		this.s_updatedate = s_updatedate;
+	}
+	public final int getS_bno_likecnt() {
+		return s_bno_likecnt;
+	}
+	public final void setS_bno_likecnt(int s_bno_likecnt) {
+		this.s_bno_likecnt = s_bno_likecnt;
+	}
+	public final String getS_profile() {
+		return s_profile;
+	}
+	public final void setS_profile(String s_profile) {
+		this.s_profile = s_profile;
+	}
+	public final int getStarScore() {
+		return starScore;
+	}
+	public final void setStarScore(int starScore) {
+		this.starScore = starScore;
+	}
+	public final int getStarscore_parti() {
+		return starscore_parti;
+	}
+	public final void setStarscore_parti(int starscore_parti) {
+		this.starscore_parti = starscore_parti;
+	}
+	public final String getRoad() {
+		return road;
+	}
+	public final void setRoad(String road) {
+		this.road = road;
+	}
+	public final String getJibun() {
+		return jibun;
+	}
+	public final void setJibun(String jibun) {
+		this.jibun = jibun;
+	}
+	
+	
+	
+	
+	
 	
 	
 
-	
 	
 	
 	
