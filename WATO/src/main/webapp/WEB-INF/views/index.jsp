@@ -197,13 +197,12 @@
     *** TOPBAR ***
     _________________________________________________________
     -->
-    <iframe style="width:100%; max-width: 400px; height: 100px; position: absolute; left: -2%; top: 50px; border: none;" src="/board/clock"></iframe>
     <div id="top">
         <div class="container"> 
             <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
+                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a><a href="/board/myinformation">테스트</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
-                    <ul class="menu list-inline mb-0">
+                    <ul class="menu list-inline mb-0"> 
                        <c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
@@ -430,16 +429,17 @@
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                         </div>
-                    </div>
+                    </div> 
                 </form>
-            </div>
+            </div> 
         </div>
     </nav>
 </header>
-<!-- 메인페이지 슬라이드쇼 -->
-<div id="all">
-    <div id="content">
+<!-- 메인페이지 슬라이드쇼 --> 
+<div id="all">  
+    <div id="content"> 
         <header>
+
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -448,25 +448,13 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('./resource/images/clogo.jpg">
-                        <!-- <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">First Slide</h2>
-                            <p class="lead">This is a description for the first slide.</p>
-                        </div> -->
+                    <div class="carousel-item active" style="background-image: url('./resource/images/javascriptlogo.jpg">
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('./resource/images/javalogo.png">
-                       <!--  <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">Second Slide</h2>
-                            <p class="lead">This is a description for the second slide.</p>
-                        </div> -->
+                    <div class="carousel-item" style="background-image: url('./resource/images/pythonlogo.png">
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
                     <div class="carousel-item" style="background-image: url('./resource/images/Golang_main.png')">
-                      <!--   <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">Third Slide</h2>
-                            <p class="lead">This is a description for the third slide.</p>
-                        </div> -->
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -488,8 +476,13 @@
             <div class="box py-4 mt-0">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
-                            <h2 class="mb-0"><span style="font-weight: bold;">Best Programming Language</span></h2>
+                            <nav id="studyusnav" class="navbar w-100 pb-3 ">  
+								<div class="container w-100 my-auto" style="text-align: center;">
+									<iframe style="width: 100%; border: none;" src="/board/clock"></iframe> 
+								</div>
+							</nav> 
+                        <div class="col-md-12 mt-4">
+                            <h2 class="mb-0 text-center"><span style="font-weight: bold;">Best Programming Language</span></h2>
                         </div> 
                     </div>
                 </div> 

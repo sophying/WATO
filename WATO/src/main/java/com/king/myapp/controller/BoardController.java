@@ -369,6 +369,158 @@ public class BoardController {
 			
 			return "redirect:/board/studylistview";
 		}
+		
+		@RequestMapping("myinformation") 
+		public String myinformation (HttpSession session, Model model) throws Exception {
+			logger.info("여기는 내 정보 보는곳");
+			
+			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+				model.addAttribute("loginplase","로그인이 필요한 기능입니다.");
+				return "redirect:/";
+			}
+			
+			StudyEnrollVO std = new StudyEnrollVO();
+			
+			if ( session.getAttribute("std") != null) {
+				StdVO stdvo = (StdVO) session.getAttribute("std");
+				String stdid = stdvo.getUser_Id();
+				std.setS_userId(stdid);
+				
+				List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std); // 로그인된 아이디로 즐겨찾기를 한것이 있는지 검색하고
+				List<StudyEnrollVO> likecheck = service.seletelikebutton(std); // 로그인된 아이디로 좋아요를 한것이 있는지 검색하고
+				List<StudyEnrollVO> s_heartlist = null;
+				List<TeacherEnrollVO> t_heartlist = null;
+				List<StudyEnrollVO> s_likelist = null;
+				List<StudyEnrollVO> t_likelist = null;
+				
+				if (heartcheck.size() != 0) { 
+					for (int i = 0; i < heartcheck.size(); i++) {
+						
+						int s_no = heartcheck.get(i).getS_no();
+						StudyEnrollVO study =service.searchS_no(s_no);
+						TeacherEnrollVO t_study =service.searchT_no(s_no);
+						if (study != null) {
+							s_heartlist.add(study);
+						}
+						if (t_study != null) {
+							t_heartlist.add(t_study);						
+						}
+					}
+					if (s_heartlist.size() != 0) {
+						model.addAttribute("s_heartlist",s_heartlist);
+					}else {
+						model.addAttribute("s_heartlist",null);
+					}
+					
+					if (t_heartlist.size() != 0) {
+						model.addAttribute("t_heartlist",t_heartlist);
+					}else {
+						model.addAttribute("t_heartlist",null);
+					}
+					
+				}
+				
+				if (likecheck.size() != 0) {
+					
+					for (int i = 0; i < likecheck.size(); i++) {
+						
+						int s_no = likecheck.get(i).getS_no();
+						StudyEnrollVO study =service.searchS_no(s_no);
+						TeacherEnrollVO t_study =service.searchT_no(s_no);
+						if (study != null) {
+							s_heartlist.add(study);
+						}
+						if (t_study != null) { 
+							t_heartlist.add(t_study);						
+						} 
+					}	
+					if (s_heartlist.size() != 0) {
+						model.addAttribute("s_likelist",s_likelist);
+					}else {
+						model.addAttribute("s_likelist",null);
+					}
+					
+					if (t_heartlist.size() != 0) {
+						model.addAttribute("t_likelist",t_likelist);
+					}else {
+						model.addAttribute("t_likelist",null);
+					}
+					
+				}
+				
+			}
+			if (session.getAttribute("teach") != null) {
+				TeachVO teachvo = (TeachVO) session.getAttribute("teach");
+				String teachid = teachvo.getUser_Id(); 
+				std.setS_userId(teachid);
+				
+				List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std); // 로그인된 아이디로 즐겨찾기를 한것이 있는지 검색하고
+				List<StudyEnrollVO> likecheck = service.seletelikebutton(std); // 로그인된 아이디로 좋아요를 한것이 있는지 검색하고
+				List<StudyEnrollVO> s_heartlist = null;
+				List<TeacherEnrollVO> t_heartlist = null;
+				List<StudyEnrollVO> s_likelist = null;
+				List<StudyEnrollVO> t_likelist = null;
+				
+				if (heartcheck.size() != 0) { 
+					for (int i = 0; i < heartcheck.size(); i++) {
+						
+						int s_no = heartcheck.get(i).getS_no();
+						StudyEnrollVO study =service.searchS_no(s_no);
+						TeacherEnrollVO t_study =service.searchT_no(s_no);
+						if (study != null) {
+							s_heartlist.add(study);
+						}
+						if (t_study != null) {
+							t_heartlist.add(t_study);						
+						}
+					}
+					if (s_heartlist.size() != 0) {
+						model.addAttribute("s_heartlist",s_heartlist);
+					}else {
+						model.addAttribute("s_heartlist",null);
+					}
+					
+					if (t_heartlist.size() != 0) {
+						model.addAttribute("t_heartlist",t_heartlist);
+					}else {
+						model.addAttribute("t_heartlist",null);
+					}
+					
+				}
+				
+				if (likecheck.size() != 0) {
+					
+					for (int i = 0; i < likecheck.size(); i++) {
+						
+						int s_no = likecheck.get(i).getS_no();
+						StudyEnrollVO study =service.searchS_no(s_no);
+						TeacherEnrollVO t_study =service.searchT_no(s_no);
+						if (study != null) {
+							s_heartlist.add(study);
+						}
+						if (t_study != null) { 
+							t_heartlist.add(t_study);						
+						} 
+					}	
+					if (s_heartlist.size() != 0) {
+						model.addAttribute("s_likelist",s_likelist);
+					}else {
+						model.addAttribute("s_likelist",null);
+					}
+					
+					if (t_heartlist.size() != 0) {
+						model.addAttribute("t_likelist",t_likelist);
+					}else {
+						model.addAttribute("t_likelist",null);
+					}
+					
+				}
+			}
+			 
+			return "/board/myinformation";
+		}
+		
+		
 		@RequestMapping("clock")
 		public String clock() {
 			return "/include/clock";

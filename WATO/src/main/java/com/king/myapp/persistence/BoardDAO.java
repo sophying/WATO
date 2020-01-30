@@ -42,6 +42,10 @@ public interface BoardDAO {
 	public List<StudyEnrollVO> seletelikebutton(StudyEnrollVO std) throws Exception;
 
 	public void likebuttondelete(StudyEnrollVO std) throws Exception;
+
+	public StudyEnrollVO searchS_no(int s_no) throws Exception;
+
+	public TeacherEnrollVO searchT_no(int s_no) throws Exception;
 	
 	
 }

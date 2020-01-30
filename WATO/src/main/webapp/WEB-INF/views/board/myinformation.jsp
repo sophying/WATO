@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-         <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
-          <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +9,7 @@
     <title>스터디어스 - 세상을 뒤흔들어라</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow"> 
+    <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="/resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -30,7 +29,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
     <link rel="icon" type="image/png" href="/resource/images/icons/favicon.ico"/>
-    <script src="/resource/vendor/jquery/jquery.min.js"></script>
+    <script src="/resource/vendor/jquery/jquery.min.js"></script> 
 </head>
 <style>
     #top{
@@ -135,7 +134,7 @@
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
-	  display: -ms-flexbox;  
+	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
 	  justify-content: center;   
@@ -143,12 +142,16 @@
 	  padding: 15px;
 	  background: none; 
 	}
+	.limiter {
+	  width: 100%;
+	  margin: 0 auto;
+	}
 	.close-button {
     transition: all 0.5s ease;
     position: absolute;
     background-color: #4FBFA8;
     padding: 1.5px 7px; 
-    right: 0; 
+    right: 0;
     margin-left: -10px;
     margin-top: -9px;
     border-radius: 50%;
@@ -163,6 +166,29 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
+	.button2 {
+  display: inline-block; 
+  font-size: 20px;  
+  padding:0px .5em;  
+  border-radius: 5px;
+  transition: all .5s; 
+  filter: hue-rotate(0deg);
+  color: #FFF;
+  text-decoration: none;
+}
+  .b-orange, .b-orange:before {
+    background: rgba(255,193,7,1);
+    background: -moz-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,193,7,1)), color-stop(100%, rgba(255,87,34,1)));
+    background: -webkit-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc107', endColorstr='#ff5722', GradientType=1 );
+  }
+  .rot-135:hover {
+  filter: hue-rotate(135deg);
+}
 </style>
 <body>
 <!-- navbar-->
@@ -172,47 +198,47 @@
     _________________________________________________________
     -->
     <div id="top">
-        <div class="container">
+        <div class="container"> 
             <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
+                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a><a href="/board/myinformation">테스트</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
-                    <ul class="menu list-inline mb-0">
+                    <ul class="menu list-inline mb-0"> 
                        <c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
-                        </c:if> 
+                        </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="/student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">  
+                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
 				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
 				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
 								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone2}" readonly="readonly">
+								<input type="hidden" value="${std.std_Phone2}" readonly="readonly"> 
 								<input type="hidden" value="${std.std_Phone3}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
+								<input type="hidden" value="${std.std_Addr2}" readonly="readonly"> 
 								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
-                        	</form>
-                        	</li> 
+                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold" title="내 페이지"><i style="color:black; font-size: 20px;" class="fa fa-home" aria-hidden="true"></i></a>
+                        	</form> 
+                        	</li>
                         </c:if>
                         <c:if test="${teach != null}">
                         	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="/teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
 				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
 				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
+								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly"> 
 								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly"> 
+								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">  
+								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">  
 								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly"> 
+                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold" title="내 페이지"><i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i></a>
                         	</form>
                         	</li>
                         </c:if>
@@ -223,11 +249,11 @@
                         <c:if test="${std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
-                        <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->  
+                        <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
                     </ul>
                 </div>
             </div>
-        </div>
+        </div> 
         <div class="row">  
 			<div class="modal fade" id="myModal" tabindex="-1"> 
 				<div class="modal-dialog modal-lg">  
@@ -235,16 +261,18 @@
 						<div class="modal-body"> 
 							<div class="limiter">
 								<button class="close-button" data-dismiss="modal">&times;</button> 
-								<div class="container-login100">   
-										<%@ include  file="admin/loginform.jsp"%>
-								</div>
-							</div>    
+								<div class="container-login100">    
+										<%@ include  file="../admin/loginform.jsp"%>
+								</div> 
+							</div>  
 						</div> 
 					</div>
 				</div>
 			</div>  
 		</div>
         <!-- *** TOP BAR END ***-->
+
+ 
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
         <div class="container"><a href="/" class="navbar-brand home"><img src="/resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="/resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
@@ -260,7 +288,7 @@
                                 <div class="row"> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>친목도모</h5>
-                                        <ul class="list-unstyled mb-3">
+                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
                                             <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
                                             <li class="nav-item"><a href="/study/studyBoard" class="nav-link">스터디탐방</a></li>
@@ -310,26 +338,26 @@
                             <li>
                                 <div class="row">
 
-                                    <div class="col-md-6 col-lg-3">  
+                                    <div class="col-md-6 col-lg-3">
                                         <h5>친목도모</h5>
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
-                                    </div>
+                                    </div> 
                                     <div class="col-md-6 col-lg-3">
-                                        <h5>동영상 강의</h5> 
+                                        <h5>동영상 강의</h5>
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">C언어</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">비주얼베이직</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">자바</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li> 
-                                        </ul>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li>
+                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
                                         <h5>IT공부</h5>
-                                        <ul class="list-unstyled mb-3">
+                                        <ul class="list-unstyled mb-3"> 
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">프로그래밍 언어</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">서버, 시스템</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">네트워크</a></li>
@@ -343,8 +371,8 @@
                 <div class="banner"><a href="#"><img src="/resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
             </div>
         </div>
-                            </li>
-                        </ul>  
+                     </li>
+                   </ul>  
                     </li> 
                     <li class="nav-item dropdown menu-large"><a href="#" data-toggle="dropdown" data-hover="dropdown" data-delay="200" class="dropdown-toggle nav-link" style=" pointer-events: none; ">더보기<b class="caret"></b></a>
                         <ul class="dropdown-menu megamenu">
@@ -386,76 +414,116 @@
                                             <li class="nav-item"><a href="text-right.jsp" class="nav-link">글 오른쪽</a></li>
                                             <li class="nav-item"><a href="404.jsp" class="nav-link">404페이지</a></li>
                                             <li class="nav-item"><a href="contact.jsp" class="nav-link">연락하기</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                        </ul> 
+                                    </div>    
+                                </div>  
                             </li>
-                        </ul>  
+                        </ul>   
                     </li>
                     <li class="nav-item menu-large"><a href="/board/studylist"  class="nav-link" >스터디찾기<b class="caret"></b></a> 
                 </ul>    
+                <!-- 메인 search 폼  -->
                 <form role="search" class="ml-auto" method="post" action="/board/searchResult">
-                    <div class="input-group">   
-                        <input type="text" placeholder="Search" class="form-control" name="searchKey" id="searchKey">
+                    <div class="input-group">     
+                        <input type="text" placeholder="Search" class="form-control" name="searchKey" id="searchKey"> 
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
                         </div>
-                    </div>
+                    </div> 
                 </form>
-            </div>
+            </div> 
         </div>
     </nav>
 </header>
-<div id="all">
-    <div id="content">
-        <header>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner" role="listbox">
-                    <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('/resource/images/javascriptlogo.jpg">
+<!-- 메인페이지 슬라이드쇼 --> 
+<div id="all">  
+    <div id="content">  
+        <!--
+        *** HOT PRODUCT SLIDESHOW ***
+        _________________________________________________________
+        -->
+        <!-- 메인페이지 language rank  -->
+        <div  id="hot">
+            <div class="box py-4 mt-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 mt-4">
+							<iframe style="width: 100%; border: none;" src="/board/clock"></iframe> 
+                        </div> 
                     </div>
-                    <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('/resource/images/pythonlogo.png">
-                    </div>
-                    <!-- Slide Three - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('/resource/images/Golang_main.png')">
+                </div> 
+            </div>
+            <div class="container"> 
+                <div class="product-slider owl-carousel owl-theme">
+                </div>
+            </div>
+        </div>
+        <!-- 메인페이지 스터디 랭킹 -->
+        <div  id="hot">
+            <div class="box py-4 mt-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="mb-0"><span style="font-weight: bold;">My Information</span></h2>
+                        </div>
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
             </div>
-        </header>
-        <!-- 아이콘 --> 
-        <!-- 
-        *** HOT PRODUCT SLIDESHOW ***
-        _________________________________________________________ 
-        -->    
-        <div  id="hot">
-            	<br><br>
-            	<!-- 스터디 목록 조회 하는 iframe -->
-                	 <iframe id="studylistview" src="http://localhost:8080/board/studylistview" style="width:100%; border: none;"></iframe>
-                <!-- /.container-->
-            <!-- /#hot-->    
-            <!-- *** HOT END ***-->    
-        </div>    
-    </div>   
+            <div class="box py-4 mt-0">
+            	<h2>내가 즐겨찾기한 스터디</h2>
+	            <div class="container">
+	               <table class="table table-hover">
+	               	<thead>
+	               		<tr>
+		               		<th>글 번호</th>
+		               		<th>글 제목</th>
+		               		<th>글 작성자</th>
+		               		<th>시작 날짜</th>
+	               		</tr> 
+	               	 </thead>
+	               	 <c:if test="${s_heartlist != null && s_heartlist != ''}">
+	               	 	<c:forEach items="${s_heartlist}" var="s_heartlist">
+	               	 		<tr>
+	               	 			<td>${s_heartlist.s_no }</td>
+	               	 			<td>${s_heartlist.s_title }</td>
+	               	 			<td>${s_heartlist.s_userId }</td>
+	               	 			<td>${s_heartlist.s_startDate }</td>
+	               	 		</tr>
+	               	 	</c:forEach> 
+	               	 </c:if>
+	                 <tbody>
+	                 </tbody>
+	               </table>
+	            </div>
+            </div> 
+            <div class="box py-4 mt-0">
+            	<h2>내가 좋아요 누른 스터디</h2>
+	            <div class="container">
+	               <table class="table table-hover">
+	               	<thead>
+	               		<tr>
+		               		<th>글 번호</th>
+		               		<th>글 제목</th>
+		               		<th>글 작성자</th>
+		               		<th>시작 날짜</th>
+	               		</tr> 
+	               	 </thead>
+	               	 	<tr>
+	               	 	
+	               	 	</tr>
+	                 <tbody>
+	                 </tbody>
+	               </table>
+	            </div>
+            </div> 
+        </div>
+    </div>
 </div>
-<!-- 
-   *** BLOG HOMEPAGE *** 
+<!--
+   *** BLOG HOMEPAGE ***
    _________________________________________________________
    -->
-<div id="new" class="box text-center mb-0"> 
+<div id="new" class="box text-center mb-0">
     <div class="container">
         <div class="col-md-12">
             <h3 class="text-uppercase">From our blog</h3>
@@ -479,32 +547,23 @@
     </div>
     <!-- /#blog-homepage-->
 </div>
-<!-- /.container-->
-<!-- *** BLOG HOMEPAGE END ***-->
-<!--
-*** FOOTER ***
-_________________________________________________________
--->
-<!--
-*** FOOTER ***
-_________________________________________________________
--->
+
 <div class="box text-center mb-3" id="footer">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <h4 class="mb-3">페이지 정보</h4> 
+            <div class="col-lg-3 col-md-6"> 
+                <h4 class="mb-3">페이지 정보</h4>
                 <ul class="list-unstyled">
-                    <li><a href="text.html">회사소개</a></li> 
-                    <li><a href="text.html">이용약관</a></li> 
+                    <li><a href="text.html">회사소개</a></li>
+                    <li><a href="text.html">이용약관</a></li>
                     <li><a href="faq.jsp">FAQ</a></li>
-                    <li><a href="contact.jsp">문의하기</a></li> 
+                    <li><a href="contact.jsp">문의하기</a></li>
                 </ul>
                 <hr>
-                <h4 class="mb-3">회원</h4> 
-                <ul class="list-unstyled"> 
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">로그인</a></li>
-                    <li><a href="register.jsp">회원가입</a></li> 
+                <h4 class="mb-3">회원</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#" data-toggle="modal" data-target="#modal">로그인</a></li>
+                    <li><a href="register.jsp">회원가입</a></li>
                 </ul>
             </div>
             <!-- /.col-lg-3-->
@@ -541,13 +600,13 @@ _________________________________________________________
                     </div>
                     <!-- /input-group--> 
                 </form>
-                <hr>
+                <hr> 
                 <h4 class="mb-3">더보기 사이트</h4>
                 <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a><a href="#" class="email external"><i class="fa fa-envelope"></i></a></p>
             </div>
             <!-- /.col-lg-3-->
         </div> 
-        <!-- /.row--> 
+        <!-- /.row-->  
     </div>
     <!-- /.container-->  
 </div>
@@ -558,23 +617,6 @@ _________________________________________________________
 <script src="/resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
 <script src="/resource/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="/resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="/resource/js/front.js"></script>
-<script type="text/javascript">
-var pageLoaded = 1; //현재 페이지 
-
-$(function() {
-	$(document).scroll(function() {
-		var maxHeight = $(document).height();
-		var currentScroll = $(window).scrollTop() + $(window).height();
-		 
-		if (maxHeight <= currentScroll + 100) {
-			pageLoaded = pageLoaded + 1; 
-			$('#studylistview').contents().find('#pageLoaded').val(pageLoaded);
-			$('#studylistview').contents().find('#filterform').submit();
-			
-		}
-	}) 
-})
-</script>
+<script src="/resource/js/front.js"></script> 
 </body>
 </html>

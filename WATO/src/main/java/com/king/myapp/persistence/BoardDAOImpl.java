@@ -63,7 +63,6 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	@Override
 	public void heartbuttoninsert(StudyEnrollVO std) throws Exception {
-		sql.update("board.heartbuttonlikecnt",std.getS_no());
 		sql.insert("board.heartbuttoninsert",std);
 	}
 	@Override
@@ -76,6 +75,7 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	@Override
 	public void likebuttoninsert(StudyEnrollVO std) throws Exception {
+		sql.update("board.heartbuttonlikecnt",std.getS_no());
 		sql.insert("board.likebuttoninsert", std);
 	}
 	@Override
@@ -85,6 +85,14 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public void likebuttondelete(StudyEnrollVO std) throws Exception {
 		sql.delete("board.likebuttondelete",std);
+	}
+	@Override
+	public StudyEnrollVO searchS_no(int s_no) throws Exception {
+		return sql.selectOne("board.searchS_no",s_no);
+	}
+	@Override
+	public TeacherEnrollVO searchT_no(int s_no) throws Exception {
+		return sql.selectOne("board.searchT_no",s_no);
 	}
 	
 }

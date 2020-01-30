@@ -80,4 +80,12 @@ public class BoardServiceImpl implements BoardService{
 	public void likebuttondelete(StudyEnrollVO std) throws Exception {
 		dao.likebuttondelete(std);
 	}
+	@Override
+	public StudyEnrollVO searchS_no(int s_no) throws Exception {
+		return dao.searchS_no(s_no);
+	}
+	@Override
+	public TeacherEnrollVO searchT_no(int s_no) throws Exception {
+		return dao.searchT_no(s_no);
+	}
 }
