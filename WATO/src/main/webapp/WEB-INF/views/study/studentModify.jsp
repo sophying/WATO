@@ -453,8 +453,6 @@
       					</label>              
                    </div>
                                           	<input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
-                   
-                  
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
 <!--  post 우편번호 -->            
@@ -656,35 +654,117 @@ _________________________________________________________
 <!-- kakao 우편번호 검색 api -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-/* kakao map + 우편번호 검색 (작성자 : 최성웅) 시작 
-혜련씨 우편번호 검색은 아래의 혜련씨 코드로 주석처리함.*/
-//kakao map컨테이너 생성 : 위의 div태그 (id='map')
-    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new daum.maps.LatLng(37.53591291785309, 127.1336680908981), // 지도의 중심좌표
-            level: 3 // 지도의 확대 레벨
-        };
-    //지도를 미리 생성
-    var map = new daum.maps.Map(mapContainer, mapOption);
+/* kakao map 시작*/
+								
+
+								
+window.onload = function hello() {
+	
+readMap();
+		
+}
     
-    //주소-좌표 변환 객체를 생성
-    var geocoder = new daum.maps.services.Geocoder();
-    
-    //마커를 미리 생성
-    var marker = new daum.maps.Marker({
-        position: new daum.maps.LatLng(37.53591291785309, 127.1336680908981),
-        map: map
-    });
-    
-    // 우편번호 찾기 찾기 화면을 넣을 element
-    var element_wrap = document.getElementById('wrap');
-    function foldDaumPostcode() {
-        // iframe을 넣은 element를 안보이게 한다.
-        element_wrap.style.display = 'none';
+    function readMap() {
+    	
+    	var $coords ={};
+    	$coords.userAddress = $("#roadAddress");
+    	
+    	var address = $coords.userAddress.val();
+    	if (address == ""){
+    		alert('주소를 확인하여 주시기 바랍니다.');
+    		$coords.roadAddress.focus();
+    	}else {
+    	// 주소로 좌표를 검색합니다
+    	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+    			mapOption = {
+    				center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+    				level: 3 // 지도의 확대 레벨
+    			};
+    	// 지도를 생성합니다
+    	var map = new kakao.maps.Map(mapContainer, mapOption);
+
+    	// 주소-좌표 변환 객체를 생성합니다
+    	var geocoder = new kakao.maps.services.Geocoder();
+
+    	geocoder.addressSearch(address, function(result, status) {
+
+    		// 정상적으로 검색이 완료됐으면
+    		if (status === kakao.maps.services.Status.OK) {
+
+    			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+    				
+    			console.log('실행 확인');
+    			console.log(coords);
+    				
+    			// 결과값으로 받은 위치를 마커로 표시합니다
+    			var marker = new kakao.maps.Marker({
+    				map: map,
+    				position: coords
+    			});
+
+    			//마커에 이벤트 발생.
+    			kakao.maps.event.addListener(marker,'onclick',function (data) {
+    				/* alert(address); */
+    			});
+
+    			//마커 객체에 등록한 사용자 이벤트 발생
+    			kakao.maps.event.trigger(marker,'onclick','사용자 이벤트')
+
+    			// 인포윈도우로 장소에 대한 설명을 표시합니다
+    			var infowindow = new kakao.maps.InfoWindow({
+    				content: '<div style="width:150px;text-align:center;padding:6px 0;">김코알라 출몰장소</div>'
+    			});
+    			infowindow.open(map, marker);
+
+    			// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+    			map.setCenter(coords);
+    		} else {
+    			alert('검색 결과가 없어요~~.');
+    		}
+    	});
     }
+    return false;
+    };
+    
+    
     
     /* 주소 검색 버튼 클릭 시 실행할 메소드 */
     function execDaumPostcode() {
+	
+    	//kakao map컨테이너 생성 : 위의 div태그 (id='map')
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+            mapOption = {
+                center: new daum.maps.LatLng(37.53591291785309, 127.1336680908981), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+            
+        //지도를 미리 생성
+        var map = new daum.maps.Map(mapContainer, mapOption);
+        
+        //주소-좌표 변환 객체를 생성
+        var geocoder = new daum.maps.services.Geocoder();
+    	   
+    	var addr = $('#roadAddress').val();
+        
+        //마커를 미리 생성
+        var marker = new daum.maps.Marker({
+            position: new daum.maps.LatLng(37.53591291785309, 127.1336680908981),
+            map: map
+        });
+        
+        // 우편번호 찾기 찾기 화면을 넣을 element
+        var element_wrap = document.getElementById('wrap');
+        function foldDaumPostcode() {
+            // iframe을 넣은 element를 안보이게 한다.
+            element_wrap.style.display = 'none';
+        }
+    	
+    	
+        
+        
+        
+    	
+    	
         // 현재 scroll 위치를 저장해놓는다.
         var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
         new daum.Postcode({
@@ -693,10 +773,7 @@ _________________________________________________________
                 // 각 주소의 노출 규칙에 따라 주소를 조합한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                 
-                var addr = $('#roadAddress').val();
-                alert(addr);
-                
-                /* var addr = data.roadAddress; // 주소 변수 */
+                var addr = data.roadAddress; // 주소 변수
                 var extraAddr = ''; // 참고항목 변수
                 
                 // 주소로 상세 정보를 검색
@@ -842,8 +919,7 @@ $(document).ready(function($){
 
 
 // 우편번호 검색 ___________________________________________________________
-
-	  $("#execDaumPostcode").click(function sample4_execDaumPostcode() {
+	/*   $("#execDaumPostcode").click(function sample4_execDaumPostcode() {
 	      new daum.Postcode(
 	              {
 	                  oncomplete : function(data) {
@@ -896,7 +972,7 @@ $(document).ready(function($){
 	                      }
 	                  }
 	              }).open();
-	  });
+	  }); */
 
 // 요일 선택___________________________________________________________
 	$('.form-check-input').each(function() {

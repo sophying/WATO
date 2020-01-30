@@ -535,7 +535,7 @@
 
 
 
-										<!-- 주소 잘라내기(상세주소 제거) 테스트-->										
+										<!-- 주소 잘라내기(상세주소 제거) -->										
 										<script type="text/javascript">
 										window.onload = function s_placeMapValCut() {
 											var mapVal = $("#mapVal").val();
@@ -556,10 +556,6 @@
 										<input type="text" value="${listOne.s_place}" id="mapVal" style="display: none;">
 										
 										<input type="text" value="" id="mapVal2" style="display: none;">
-										<%--경도 longitude (x좌표 : 127.xxxxx)--%>
-										<!-- <input type="text" id="tmpField1" class="input_text input_w170" name="tmpField1" value="" placeholder="경도" title="경도"/>										ㅇ -->
-										<%--위도 latitude (y좌표 : 35.xxxxx)--%>
-										<!-- <input type="text" id="tmpField2" class="input_text input_w170" name="tmpField2" value="" placeholder="위도" title="위도"/> -->
 										<button type="button" style="display: none;"  onclick="readAddress()" id="showMap">클릭!</button>
 									</div>
 								</div>
@@ -816,7 +812,6 @@ var $coords ={};
 	$coords.tmpField2 = $("#tmpField2");
 	
 	function readAddress() {
-	
 	var address = $coords.userAddress.val();
 	if (address == ""){
 		alert('주소를 확인하여 주시기 바랍니다.');
@@ -840,7 +835,10 @@ var $coords ={};
 		if (status === kakao.maps.services.Status.OK) {
 
 			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
+				
+			console.log('실행 확인');
+			console.log(coords);
+				
 			// 결과값으로 받은 위치를 마커로 표시합니다
 			var marker = new kakao.maps.Marker({
 				map: map,
