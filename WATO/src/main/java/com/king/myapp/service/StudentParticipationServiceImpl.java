@@ -133,6 +133,12 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 		return participationDAO.t_getTeachPartiList(teach);
 	}
 
+	// 강의 별점평가 유무 
+	@Override
+	public void class_checkStarParti(Map<String, Object> t_map) throws Exception {
+		participationDAO.class_checkStarParti(t_map);
+	}
+
 
 
 

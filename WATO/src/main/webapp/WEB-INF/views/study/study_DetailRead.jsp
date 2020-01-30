@@ -550,7 +550,7 @@
 								</div>
 								<div  class="cols-sm-5 d-inline-block w-75 pt-2 pl-5 pr-5 justify-content-center container-fluid  border-top">
 									<div  style=" word-break:break-all;"class="row h-50 w-100 d-inline-block d-flex pt-2 " >
-										<c:if test="${starScore == 0 && starScore < 1 }">
+										<c:if test="${(starScore == 0 && starScore < 1)|| (starScore == 'NaN') }">
 											<div id="star_grade" class="h2" >
 										        <span>★</span> 
 										        <span>★</span>  
@@ -604,7 +604,14 @@
 										        <span style="color: #feba63;">★</span> 
 											</div>
 										</c:if>
-										<span class="h3 mt-2 ml-4">${starScore}</span>
+										<c:choose>
+											<c:when test="${starScore == 'NaN' }">
+												<span class="h3 mt-2 ml-4">00.00</span>
+											</c:when>
+											<c:otherwise>
+												<span class="h3 mt-2 ml-4">${starScore}</span>
+											</c:otherwise>
+										</c:choose>
 									</div> 
 								</div>
 							</div>

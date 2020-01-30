@@ -182,5 +182,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set T_PARTI = (t_parti)-1
 		where t_no = #{t_no}
 	</update>
+	
+	<!-- 참여 강의 별점 평가 -->
+	<update id="t_starPartiUpdate" parameterType="com.king.myapp.domain.TeacherEnrollVO">
+		update t_enroll 
+		set STARSCORE = (starScore) + #{starScore}, STARSCORE_PARTI = (STARSCORE_PARTI) +1 
+		where t_no = #{t_no} 
+	</update>
+	
+	
 </mapper>
 

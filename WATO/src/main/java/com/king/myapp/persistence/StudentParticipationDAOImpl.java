@@ -136,6 +136,12 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 		return sql.selectList("parti.t_getTeachPartiList",teach);
 	}
 
+	// 학생 강의 별점평가 유무
+	@Override
+	public void class_checkStarParti(Map<String, Object> t_map) throws Exception {
+		sql.update("parti.t_checkStarParti",t_map);
+	}
+
 
 
 	

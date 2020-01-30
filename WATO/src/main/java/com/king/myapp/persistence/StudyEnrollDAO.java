@@ -62,6 +62,9 @@ public interface StudyEnrollDAO {
 	// 참여 스터디 별점 평가 
 	public void starPartiUpdate(Map<String, Object> starScoreUpdate) throws Exception;
 
+	// 강의 별점 등록 
+	public void class_starPartiUpdate(Map<String, Object> class_starScoreUpdate) throws Exception;
+
 	//public void starPartiUpdate(StudyEnrollVO studyVO) throws Exception;
 
 	

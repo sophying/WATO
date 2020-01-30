@@ -99,5 +99,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by t_startdate desc
 	</select>
 
+<!-- 참여학생 강의 평점등록 시 값부여  -->
+	<update id="t_checkStarParti">
+		update t_parti
+		set starscore_parti = 1
+		where t_no = #{t_no}
+		and p_userid = #{p_userid}
+	</update>
 	
 </mapper>

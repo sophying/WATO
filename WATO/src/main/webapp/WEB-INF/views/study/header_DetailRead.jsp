@@ -311,6 +311,81 @@
 								</div>
 							</div>
 							
+							<!-- 별점 평가 통계  -->
+							<div class="h-75 row d-flex  p-2  m-0 container d-inline-block">
+								<div class=" h-100 w-25 d-inline-block">
+									<label for="name" class="row d-flex  pt-3 pb-2 m-0 text-justify   control-label justify-content-center">
+										<font size="4">스터디 별점</font>
+									</label> 
+								</div>
+								<div  class="cols-sm-5 d-inline-block w-75 pt-2 pl-5 pr-5 justify-content-center container-fluid  border-top">
+									<div  style=" word-break:break-all;"class="row h-50 w-100 d-inline-block d-flex pt-2 " >
+										<c:if test="${(starScore == 0 && starScore < 1)|| (starScore == 'NaN')}">
+											<div id="star_grade" class="h2" >
+										        <span>★</span> 
+										        <span>★</span>  
+										        <span>★</span>    
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 0 && starScore < 1 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>  
+										        <span>★</span>    
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 1  && starScore <= 2 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>    
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 2  && starScore <= 3 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 3  && starScore <= 4 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore> 4  && starScore <= 5 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+											</div>
+										</c:if>
+										<c:choose>
+											<c:when test="${starScore == 'NaN' }">
+												<span class="h3 mt-2 ml-4">00.00</span>
+											</c:when>
+											<c:otherwise>
+												<span class="h3 mt-2 ml-4">${starScore}</span>
+											</c:otherwise>
+										</c:choose>
+									</div> 
+								</div>
+							</div>
+							
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block ">
 								<div class=" h-100 w-25 d-inline-block">
 									<label for="name" class="row d-flex  pt-5 m-0 text-justify   control-label justify-content-center">

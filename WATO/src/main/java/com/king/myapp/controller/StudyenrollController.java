@@ -410,11 +410,12 @@ public class StudyenrollController {
 		// participation.mapper   <update id="s_checkStarParti">
 		participationService.checkStarParti(map);
 		
+		
 		if (std != null) {
 			
 	//***** 유저가 가지고 있는 참여 리스트 가져오기 *****  
 			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
-			
+			List<TeacherEnrollVO> classParti = participationService.getClassPartiList(std);
 
 	//***** 현재 로그인한 유저가 별점평가를 하였는지 확인  *****
 			Map<String, Object> checkUser = new HashMap<String, Object>();
@@ -433,72 +434,64 @@ public class StudyenrollController {
 					System.out.println("#######  별점 평가한 유저 입니다. ");
 				}
 			
+			model.addAttribute("classParti",classParti);	
 			model.addAttribute("studyParti",studyParti); // 참여한 스터디 목록 
+			
 			model.addAttribute("std", std); // 유저 
 			
 		}
 			model.addAttribute("teach", teach);	
 		
 	}
-
-	
-	
-	
-	
-	
-	
-	
-/*	
-	
-	// 7. 상세페이지 댓글 등록 
-		@RequestMapping(value = "/s_detailReply.do", method = RequestMethod.POST)
-		public String postReply(@RequestParam("s_no") int s_no, StudentReplyVO replyVO ,StudyEnrollVO studyVO, Model model ) throws Exception{
+	// 별점등록 버튼 눌렀을 때  액션 
+	@RequestMapping(value = "/t_user_myList", method = RequestMethod.POST)
+	public String postT_StarScore(@RequestParam("t_no")int t_no,@RequestParam("starScore") int starScore ,@RequestParam("p_userid") String p_userid, Model model,
+			HttpSession session) throws Exception{
+		
+		logger.info("--------------[ 나의 참여 스터디 별점 등록   GET ]-----------------");	 
+		
+		System.out.println(starScore);
+		Map<String, Object> class_starScoreUpdate = new HashMap<String, Object>(); 
+		
+		
+		class_starScoreUpdate.put("t_no", t_no);
+		class_starScoreUpdate.put("starScore", starScore);
+		
+		studyService.class_starPartiUpdate(class_starScoreUpdate);
+		
+		System.out.println("#######  별점등록을 하고 왔습니다.");
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 	
+		
+		//***** 별점 평가한 유저 값 부여 *****
+		Map<String, Object> t_map = new HashMap<String, Object>();
+		
+		t_map.put("p_userid", p_userid);
+		t_map.put("t_no", t_no);
+		
+		participationService.class_checkStarParti(t_map); 
+		
+		if (std != null) {
 			
-			logger.info("--------------[ 스터디 댓글 내용 등록  POST ]-----------------");		
+			//***** 유저가 가지고 있는 참여 리스트 가져오기 *****  
+			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
+			List<TeacherEnrollVO> classParti = participationService.getClassPartiList(std);
 			
-			studyService.replyInsert(replyVO);   
-			  
-			model.addAttribute("std");
-			return "redirect:/study/study_DetailRead?s_no="+s_no;
+			//***** 현재 로그인한 유저가 별점평가를 하였는지 확인  *****
+			
+			System.out.println("여기는 std ");
+			
+			model.addAttribute("classParti",classParti);	
+			model.addAttribute("studyParti",studyParti); // 참여한 스터디 목록 
+			
+			model.addAttribute("std", std); // 유저 
 			
 		}
+		model.addAttribute("teach", teach);	
 		
-		// 상세페이지 삭제 
-		@RequestMapping(value = "/studentDelete", method = RequestMethod.GET)
-		public String postDelete(@RequestParam("s_no") int s_no, Model model ) throws Exception{
-			logger.info("--------------[ 내용 삭제  POST ]-----------------");				
-			
-			studyService.studyDelete(s_no);
-			
-			model.addAttribute("std");
-			return "redirect:/";
-		}
-		
-		//
-		@RequestMapping(value = "/replyModify", method = RequestMethod.POST)
-		public String postReplyModify(@RequestParam("s_no") int s_no,@RequestParam("r_no") int r_no, Model model , StudentReplyVO replyVO ,StudyEnrollVO studyVO ) throws Exception{
-			
-			logger.info("--------------[ 스터디 댓글 내용 등록  POST ]-----------------");		
-			
-			studyService.replyUpdate(replyVO);   
-			
-			model.addAttribute("std");
-			  
-			return "redirect:/study/study_DetailRead?s_no="+s_no;
-			
-		}
-		
-		// 댓글삭제
-		@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
-		public String getReplyDelete(@RequestParam("r_no") int r_no, @RequestParam("s_no") int s_no) throws Exception{
-			studyService.replyDelete(r_no);
-			
-			return "redirect:/study/study_DetailRead?s_no="+s_no;
-		}
-		
-*/		
-		
-		
+		return "redirect:/study/user_myList";
+	}
 
 		
 }

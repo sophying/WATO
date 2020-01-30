@@ -56,6 +56,9 @@ $(function() {
 });
 
 function starBtn11(event) {
-	$(event).parent().submit();
-	$('#starBtn').val("별점전달완료!");
+	$(event).parent('form[name="starForm"]').submit();
+};
+
+function starBtn22(event) {
+	$(event).parent('form[name="class_starForm"]').submit();
 };

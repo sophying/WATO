@@ -88,10 +88,14 @@ public class StudyEnrollServiceImpl implements StudyEnrollService{
 
 	// 참여 스터디 별점 평가 
 	@Override
-	//public void starPartiUpdate(StudyEnrollVO studyVO) throws Exception {
 	public void starPartiUpdate(Map<String, Object> starScoreUpdate) throws Exception {
-		//studyEnrollDAO.starPartiUpdate(studyVO);
 		studyEnrollDAO.starPartiUpdate(starScoreUpdate);
+	}
+
+	// 강의 별점 등록 
+	@Override
+	public void class_starPartiUpdate(Map<String, Object> class_starScoreUpdate) throws Exception {
+		studyEnrollDAO.class_starPartiUpdate(class_starScoreUpdate);
 	}
 
 

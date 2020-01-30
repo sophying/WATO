@@ -128,6 +128,11 @@ public class StudyEnrollDAOImpl implements StudyEnrollDAO {
 		sql.update("study.s_starScoreUpdate",starScoreUpdate);
 	}
 	*/
+	// 강의 별점 등록
+	@Override
+	public void class_starPartiUpdate(Map<String, Object> class_starScoreUpdate) throws Exception {
+		sql.update("study.t_starPartiUpdate",class_starScoreUpdate);
+	}
 
 
 

@@ -73,6 +73,9 @@ public interface StudentParticipationDAO {
 	// 학생 강의 참여 리스트 
 	List<TeacherEnrollVO> t_getTeachPartiList(TeachVO teach) throws Exception;
 
+	// 학생 강의 별점 평가 유무 
+	void class_checkStarParti(Map<String, Object> t_map) throws Exception;
+
 
 
 

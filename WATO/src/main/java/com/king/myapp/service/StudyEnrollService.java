@@ -49,6 +49,9 @@ public interface StudyEnrollService {
 	// 별점 등록 
 	public void starPartiUpdate(Map<String, Object> starScoreUpdate) throws Exception;
 
+	// 강의 별점 등록
+	public void class_starPartiUpdate(Map<String, Object> class_starScoreUpdate) throws Exception;
+
 
 	
 
