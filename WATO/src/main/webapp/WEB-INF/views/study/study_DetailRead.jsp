@@ -529,34 +529,14 @@
 											</tr>
 										</table>
 										
-										
-										<!-- kakao map -->
+										<!-- kakao map 히든 버튼을 통한 메소드 실행.-->
 										<div id="map" style="width: 100%; height: 300px;"></div>
-
-
-
-										<!-- 주소 잘라내기(상세주소 제거) -->										
-										<script type="text/javascript">
-										window.onload = function s_placeMapValCut() {
-											var mapVal = $("#mapVal").val();
-											/* alert(mapVal); */
-											
-											if(mapVal != "") {
-												var keyWordAddress = mapVal.substring(0,mapVal.indexOf("/",0));
-												$("#mapVal2").val(keyWordAddress);
-												/* alert(keyWordAddress); */
-												$("#showMap").trigger("click");
-												
-											}else{
-												alert("주소를 다시 확인하여 주시기 바랍니다.");
-											}
-										}
-										</script>
-										
-										<input type="text" value="${listOne.s_place}" id="mapVal" style="display: none;">
-										
 										<input type="text" value="" id="mapVal2" style="display: none;">
 										<button type="button" style="display: none;"  onclick="readAddress()" id="showMap">클릭!</button>
+										<!-- kakao map -->
+
+										<input type="text" value="${listOne.s_place}" id="mapVal" style="display: none;">
+										
 									</div>
 								</div>
 							</div>
@@ -798,15 +778,26 @@
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
 <script src="../resource/js/hr/student_detailRead.js"></script>
+
 <!-- kakao 우편번호 검색 api -->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-
 <script type="text/javascript">
+ // 주소 분리하여 추출(db의 주소는 도로명+/+상세주소가 합쳐져 있음)										
+	window.onload = function s_placeMapValCut() {
+		var mapVal = $("#mapVal").val();
+	
+		if(mapVal != "") {
+			var keyWordAddress = mapVal.substring(0,mapVal.indexOf("/",0));
+			$("#mapVal2").val(keyWordAddress);
+			$("#showMap").trigger("click");
+			}else{
+				alert("주소를 다시 확인하여 주시기 바랍니다.");
+			}
+		}
 
-/*좌표검색*/
-var $coords ={};
-	/* $coords.searchBtn = $("#coords_btn"); */
+	//좌표검색
+	var $coords ={};
+	
 	$coords.userAddress = $("#mapVal2");
 	$coords.tmpField1 = $("#tmpField1");
 	$coords.tmpField2 = $("#tmpField2");
@@ -817,6 +808,7 @@ var $coords ={};
 		alert('주소를 확인하여 주시기 바랍니다.');
 		$coords.userAddress.focus();
 	}else {
+		
 	// 주소로 좌표를 검색합니다
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 			mapOption = {
@@ -847,7 +839,6 @@ var $coords ={};
 
 			//마커에 이벤트 발생.
 			kakao.maps.event.addListener(marker,'onclick',function (data) {
-				/* alert(address); */
 			});
 
 			//마커 객체에 등록한 사용자 이벤트 발생
@@ -861,16 +852,13 @@ var $coords ={};
 
 			// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
 			map.setCenter(coords);
-		} else {
-			alert('검색 결과가 없어요~~.');
-		}
-	});
-}
+			} else {
+				alert('검색 결과가 없어요~~.');
+			}
+		});
+	}
 return false;
 };
-
 </script>
-
-
 </body>
 </html>		

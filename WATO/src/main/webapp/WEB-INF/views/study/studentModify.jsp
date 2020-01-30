@@ -651,50 +651,47 @@ _________________________________________________________
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<!-- kakao 우편번호 검색 api -->
+<!-- kakao 우편번호 검색 api 시작-->
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript">
-/* kakao map 시작*/
-								
+							
+	//기존 지도 불러오는 readMap()메소드 호출
+	window.onload = function hello() {
+		readMap();
+	}
 
-								
-window.onload = function hello() {
-	
-readMap();
+	// 주소에 대한 좌표를 담을 변수 선언
+	var $coords ={};
+	$coords.userAddress = $("#roadAddress");
+	var address = $coords.userAddress.val();
+
+	// map컨테이너 선언
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+		mapOption = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			level: 3 // 지도의 확대 레벨
+		};
 		
-}
-    
+	// 지도를 생성합니다
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+
+	
+	//지도 불러오기
     function readMap() {
     	
-    	var $coords ={};
-    	$coords.userAddress = $("#roadAddress");
-    	
-    	var address = $coords.userAddress.val();
     	if (address == ""){
     		alert('주소를 확인하여 주시기 바랍니다.');
-    		$coords.roadAddress.focus();
     	}else {
     	// 주소로 좌표를 검색합니다
-    	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-    			mapOption = {
-    				center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-    				level: 3 // 지도의 확대 레벨
-    			};
-    	// 지도를 생성합니다
-    	var map = new kakao.maps.Map(mapContainer, mapOption);
-
-    	// 주소-좌표 변환 객체를 생성합니다
-    	var geocoder = new kakao.maps.services.Geocoder();
-
     	geocoder.addressSearch(address, function(result, status) {
 
     		// 정상적으로 검색이 완료됐으면
     		if (status === kakao.maps.services.Status.OK) {
-
+    			
     			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-    				
-    			console.log('실행 확인');
-    			console.log(coords);
     				
     			// 결과값으로 받은 위치를 마커로 표시합니다
     			var marker = new kakao.maps.Marker({
@@ -702,18 +699,11 @@ readMap();
     				position: coords
     			});
 
-    			//마커에 이벤트 발생.
-    			kakao.maps.event.addListener(marker,'onclick',function (data) {
-    				/* alert(address); */
-    			});
-
-    			//마커 객체에 등록한 사용자 이벤트 발생
-    			kakao.maps.event.trigger(marker,'onclick','사용자 이벤트')
-
     			// 인포윈도우로 장소에 대한 설명을 표시합니다
     			var infowindow = new kakao.maps.InfoWindow({
     				content: '<div style="width:150px;text-align:center;padding:6px 0;">김코알라 출몰장소</div>'
     			});
+    			
     			infowindow.open(map, marker);
 
     			// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
@@ -727,26 +717,10 @@ readMap();
     };
     
     
-    
     /* 주소 검색 버튼 클릭 시 실행할 메소드 */
     function execDaumPostcode() {
-	
-    	//kakao map컨테이너 생성 : 위의 div태그 (id='map')
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-            mapOption = {
-                center: new daum.maps.LatLng(37.53591291785309, 127.1336680908981), // 지도의 중심좌표
-                level: 3 // 지도의 확대 레벨
-            };
-            
-        //지도를 미리 생성
-        var map = new daum.maps.Map(mapContainer, mapOption);
         
-        //주소-좌표 변환 객체를 생성
-        var geocoder = new daum.maps.services.Geocoder();
-    	   
-    	var addr = $('#roadAddress').val();
-        
-        //마커를 미리 생성
+         //마커를 미리 생성
         var marker = new daum.maps.Marker({
             position: new daum.maps.LatLng(37.53591291785309, 127.1336680908981),
             map: map
@@ -754,16 +728,11 @@ readMap();
         
         // 우편번호 찾기 찾기 화면을 넣을 element
         var element_wrap = document.getElementById('wrap');
+        
         function foldDaumPostcode() {
             // iframe을 넣은 element를 안보이게 한다.
             element_wrap.style.display = 'none';
         }
-    	
-    	
-        
-        
-        
-    	
     	
         // 현재 scroll 위치를 저장해놓는다.
         var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
@@ -790,12 +759,14 @@ readMap();
                         // 지도를 보여준다.
                         mapContainer.style.display = "block";
                         map.relayout();
+                        
                         // 지도 중심을 변경한다.
                         map.setCenter(coords);
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
                     }
                 });
+                
                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
                     addr = data.roadAddress;
@@ -825,12 +796,12 @@ readMap();
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('postcode').value = data.zonecode;
                 document.getElementById("roadAddress").value = addr;
+                
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("jibunAddress").focus();
+                
                 //주소가 변경되면 jibunAddress input value 초기화
                 $("#jibunAddress").attr("value",'');
-                
-                
                 
                 // iframe을 넣은 element를 안보이게 한다.
                 // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -846,11 +817,13 @@ readMap();
             width : '100%',
             height : '100%'
         }).embed(element_wrap);
+        
         // iframe을 넣은 element를 보이게 한다.
         element_wrap.style.display = 'block';
     }
 </script>
 <!-- kakao map + 우편번호 검색 끝~~~~~~~~~~~~ -->
+
 <script type="text/javascript"> 
 
 $(document).ready(function($){
@@ -915,64 +888,6 @@ $(document).ready(function($){
 		}
 	 
 	 });
-
-
-
-// 우편번호 검색 ___________________________________________________________
-	/*   $("#execDaumPostcode").click(function sample4_execDaumPostcode() {
-	      new daum.Postcode(
-	              {
-	                  oncomplete : function(data) {
-
-	                	  // 도로명 주소 변수
-	                      var fullRoadAddr = data.roadAddress;
-	                      // 도로명 조합형 주소 변수
-	                      var extraRoadAddr = '';
-
-	                      // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-	                      // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-	                      if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-	                          extraRoadAddr += data.bname;
-	                      }
-	                      // 건물명이 있고, 공동주택일 경우 추가한다.
-	                      if (data.buildingName !== ''
-	                              && data.apartment === 'Y') {
-	                          extraRoadAddr += (extraRoadAddr !== '' ? ', '
-	                                  + data.buildingName : data.buildingName);
-	                      }
-	                      // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-	                      if (extraRoadAddr !== '') {
-	                          extraRoadAddr = ' (' + extraRoadAddr + ')';
-	                      }
-	                      // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
-	                      if (fullRoadAddr !== '') {
-	                          fullRoadAddr += extraRoadAddr;
-	                      }
-
-	                      // 우편번호와 주소 정보를 해당 필드에 넣는다.
-	                      document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
-	                      document.getElementById('roadAddress').value = fullRoadAddr;
-	                      document.getElementById('jibunAddress').value = data.jibunAddress;
-
-	                      // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-	                      if (data.autoRoadAddress) {
-	                          //예상되는 도로명 주소에 조합형 주소를 추가한다.
-	                          var expRoadAddr = data.autoRoadAddress
-	                                  + extraRoadAddr;
-	                          document.getElementById('guide').innerHTML = '(예상 도로명 주소 : '
-	                                  + expRoadAddr + ')';
-
-	                      } else if (data.autoJibunAddress) {
-	                          var expJibunAddr = data.autoJibunAddress;
-	                          document.getElementById('guide').innerHTML = '(예상 지번 주소 : '
-	                                  + expJibunAddr + ')';
-
-	                      } else {
-	                          document.getElementById('guide').innerHTML = '';
-	                      }
-	                  }
-	              }).open();
-	  }); */
 
 // 요일 선택___________________________________________________________
 	$('.form-check-input').each(function() {

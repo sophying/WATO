@@ -826,6 +826,7 @@ _________________________________________________________
 /* kakao map + 우편번호 검색 (작성자 : 최성웅) 시작 
 혜련씨 우편번호 검색은 아래의 혜련씨 코드로 주석처리함.*/
 //kakao map컨테이너 생성 : 위의 div태그 (id='map')
+
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.53591291785309, 127.1336680908981), // 지도의 중심좌표
