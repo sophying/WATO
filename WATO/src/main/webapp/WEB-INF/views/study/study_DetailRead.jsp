@@ -529,9 +529,8 @@
 										<div id="map" style="width: 100%; height: 300px;"></div>
 										<input type="text" value="" id="mapVal2" style="display: none;">
 										<button type="button" style="display: none;"  onclick="readAddress()" id="showMap">클릭!</button>
-										<!-- kakao map 히든 버튼을 통한 메소드 실행.-->
-
 										<input type="text" value="${listOne.s_place}" id="mapVal" style="display: none;">
+										<!-- kakao map 히든 버튼을 통한 메소드 실행.-->
 										
 									</div>
 								</div>
