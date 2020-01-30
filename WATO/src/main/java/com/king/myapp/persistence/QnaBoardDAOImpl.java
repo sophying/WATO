@@ -1,9 +1,12 @@
 package com.king.myapp.persistence;
 
+import com.king.myapp.domain.Criteria;
 import com.king.myapp.domain.QnaBoardVO;
+import com.king.myapp.domain.SearchCriteria;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.List;
 import java.util.Map;
@@ -34,8 +37,8 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 		return sql.selectList("board.searchResultQna",searchKey);
 	}*/
 	@Override
-	public List<QnaBoardVO> getQnaList() throws Exception {
-		return sql.selectList("qna.getQnaList");
+	public List<QnaBoardVO> getQnaList(SearchCriteria scri) throws Exception {
+		return sql.selectList("qna.getQnaList", scri);
 	}
 	@Override
 	public QnaBoardVO getQnaRead(int bno) throws Exception {
@@ -55,7 +58,7 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 	}
 
 	@Override
-	public void postQnaWrite(QnaBoardVO vo) throws Exception {
+	public void postQnaWrite(QnaBoardVO vo, MultipartHttpServletRequest mpRequest) throws Exception {
 		sql.insert("qna.postQnaWrite", vo);
 	}
 
@@ -72,6 +75,15 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 	@Override
 	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception {
 		return sql.selectOne("qna.selectFileInfo",map);
+	}
+	@Override
+	public void insertFile(Map<String, Object> map) throws Exception {
+		sql.insert("qna.insertFile", map);
+	}
+
+	@Override
+	public int listCount() throws Exception {
+		return sql.selectOne("qna.listCount");
 	}
 
 

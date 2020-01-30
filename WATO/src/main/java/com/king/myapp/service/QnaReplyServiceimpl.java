@@ -16,8 +16,8 @@ public class QnaReplyServiceimpl implements QnaReplyService {
 
     //댓글 조회
     @Override
-    public List<QnaReplyVO> readReply(int bno) throws Exception {
-        return dao.readReply(bno);
+    public List<QnaReplyVO> readReply(int QNA_BNO) throws Exception {
+        return dao.readReply(QNA_BNO);
     }
     //댓글 작성
     @Override
@@ -31,7 +31,7 @@ public class QnaReplyServiceimpl implements QnaReplyService {
     }
 
     @Override
-    public void replyDelete(int rno) throws Exception {
-        dao.replyDelete(rno);
+    public void replyDelete(int QNA_RNO) throws Exception {
+        dao.replyDelete(QNA_RNO);
     }
 }

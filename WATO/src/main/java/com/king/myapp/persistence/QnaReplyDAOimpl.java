@@ -14,22 +14,22 @@ public class QnaReplyDAOimpl implements QnaReplyDAO {
     private SqlSession sql;
     //댓글 조회
     @Override
-    public List<QnaReplyVO> readReply(int bno) throws Exception {
-        return sql.selectList("qnareply.readReply", bno);
+    public List<QnaReplyVO> readReply(int QNA_BNO) throws Exception {
+        return sql.selectList("reply.readReply", QNA_BNO);
     }
     //댓글 작성
     @Override
     public void replyWrite(QnaReplyVO vo) throws Exception {
-        sql.insert("qnareply.replyWrite", vo);
+        sql.insert("reply.replyWrite", vo);
     }
 
     @Override
     public void replyUpdate(QnaReplyVO vo) throws Exception {
-        sql.update("qnareply.replyUpdate", vo);
+        sql.update("reply.replyUpdate", vo);
     }
 
     @Override
-    public void replyDelete(int rno) throws Exception {
-        sql.delete("qnareply.replyDelete", rno);
+    public void replyDelete(int QNA_RNO) throws Exception {
+        sql.delete("reply.replyDelete", QNA_RNO);
     }
 }

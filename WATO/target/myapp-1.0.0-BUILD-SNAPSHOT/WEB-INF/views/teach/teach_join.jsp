@@ -172,41 +172,6 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
-        
-       /* input {
-            background-color: #eee;
-            border: none; // 그림자 제거 
-            padding: 12px 15px;
-            margin: 8px 0; // 위아래 간격 
-        }
-
-        #header ul li a:hover{
-            background-color: #6c80b2; // 마우스 올리면 배경색 바뀜 
-            color:#dddddd;
-        }
-
-        th#student {
-
-        }
-
-        div#join {
-            padding-top: 30px;
-            padding-bottom: 20px;
-        }
-
-        button#joinb:hover {
-            color: #3c97bf;
-            cursor: pointer; // mouse shape turn finger
-            background-color: #eeeeee;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #3c97bf;
-        } */
 
         th {
             border: 1px solid #bbbbbb;
@@ -237,7 +202,7 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
@@ -474,7 +439,7 @@
                     <tr>
                         <td id="avatar" style="height: 140px; width: 100px; padding: 0px;"><img id="image_section" style="height: 140px; display: block; margin: 0px auto;" src="//sb-cafetalk.s3.amazonaws.com/user-uploaded-files/cafetalk-optimized-559cca73cd84d-984180900-1436338803.png"></td>
                         <td colspan="2">
-                                <input multiple="multiple" type="file" name="file1" id="imgInput" id="app_Profile" name="app_Profile"/>
+                                <input type="file" id="imgInput" id="app_Profile" name="app_Profile"/>
                                 <div><em style="font-size: small;">※업로드 가능한 이미지 크기는 150x100 입니다.<br>이미지 크기가 초과할시 업로드 되지 않을 수 있음을 유의바랍니다.</em></div>
                         </td>
                     </tr>

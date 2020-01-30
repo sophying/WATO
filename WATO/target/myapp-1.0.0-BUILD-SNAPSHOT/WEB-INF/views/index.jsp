@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +29,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
     <link rel="icon" type="image/png" href="./resource/images/icons/favicon.ico"/>
-    <script src="./resource/vendor/jquery/jquery.min.js"></script> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
     #top{
@@ -130,14 +131,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 80vh; 
+	  min-height: 60vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;   
+	  justify-content: center;  
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -167,15 +168,15 @@
 	    color: #fff;
 	} 
 	.button2 {
-  display: inline-block; 
-  font-size: 20px;  
-  padding:0px .5em;  
-  border-radius: 5px;
-  transition: all .5s; 
-  filter: hue-rotate(0deg);
-  color: #FFF;
-  text-decoration: none;
-}
+	  display: inline-block; 
+	  font-size: 20px;  
+	  padding:0px .5em;  
+	  border-radius: 5px;
+	  transition: all .5s; 
+	  filter: hue-rotate(0deg);
+	  color: #FFF;
+	  text-decoration: none;
+	}
   .b-orange, .b-orange:before {
     background: rgba(255,193,7,1);
     background: -moz-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
@@ -203,7 +204,7 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                       <c:if test="${std == null && teach == null}">
+                    	<c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
                         <c:if test="${std != null}">
@@ -247,30 +248,29 @@
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                        <li class="list-inline-item"><a href="/admin/index_admin" class="text-black-50 font-weight-bold">관리자</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
                     </ul>
                 </div>
             </div>
         </div> 
-        <div class="row">  
-			<div class="modal fade" id="myModal" tabindex="-1"> 
-				<div class="modal-dialog modal-lg">  
-					<div class="modal-content" style="background: none; border: 0px">   
-						<div class="modal-body"> 
+        <div class="row">
+	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
+	        	<div class="modal-dialog modal-lg">
+	            	<div class="modal-content" style="background: none; border: 0px">
+	            		<div class="modal-body"> 
 							<div class="limiter">
-								<button class="close-button" data-dismiss="modal">&times;</button> 
-								<div class="container-login100">    
-										<%@ include  file="admin/loginform.jsp"%>
-								</div> 
+								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
+								<div class="container-login100">   
+									<%@ include  file="admin/loginform.jsp"%> 
+								</div>
 							</div>  
-						</div> 
-					</div>
-				</div>
-			</div>  
-		</div>
-        <!-- *** TOP BAR END ***-->
+						</div> 	                		
+	            	</div>
+	        	</div>
+	    	</div>
+    	</div>
 
  
     </div> 
@@ -741,7 +741,7 @@
                     <li><a href="text.html">회사소개</a></li>
                     <li><a href="text.html">이용약관</a></li>
                     <li><a href="faq.jsp">FAQ</a></li>
-                    <li><a href="contact.jsp">문의하기</a></li>
+                    <li><a href="/qna/getQnaList">문의하기</a></li>
                 </ul>
                 <hr>
                 <h4 class="mb-3">회원</h4>
@@ -797,6 +797,7 @@
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
+<script src="./resource/vendor/jquery/jquery.min.js"></script>
 <script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
 <script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>

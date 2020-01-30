@@ -1,14 +1,25 @@
 package com.king.myapp.domain;
 
+import java.util.Date;
+
 public class QnaBoardVO {
+	
     private int QNA_BNO;
     private String QNA_TITLE;
     private String QNA_CONTENT;
     private String QNA_WRITER;
-    private String QNA_REGDATE;
+    private Date QNA_REGDATE;
     private int QNA_VIEWCNT;
 
-    public int getQNA_BNO() {
+    public Date getQNA_REGDATE() {
+		return QNA_REGDATE;
+	}
+
+	public void setQNA_REGDATE(Date qNA_REGDATE) {
+		QNA_REGDATE = qNA_REGDATE;
+	}
+
+	public int getQNA_BNO() {
         return QNA_BNO;
     }
 
@@ -40,13 +51,7 @@ public class QnaBoardVO {
         this.QNA_WRITER = QNA_WRITER;
     }
 
-    public String getQNA_REGDATE() {
-        return QNA_REGDATE;
-    }
-
-    public void setQNA_REGDATE(String QNA_REGDATE) {
-        this.QNA_REGDATE = QNA_REGDATE;
-    }
+ 
 
     public int getQNA_VIEWCNT() {
         return QNA_VIEWCNT;
