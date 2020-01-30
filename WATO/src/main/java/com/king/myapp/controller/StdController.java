@@ -1,24 +1,33 @@
 package com.king.myapp.controller;
 
+import java.io.File;
+
 import javax.inject.Inject;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.ServletContextAware;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.service.StdService;
 
 @Controller
 @RequestMapping("/student/*")
-public class StdController {
+public class StdController implements  ServletContextAware {
 
 	private static final Logger logger = LoggerFactory.getLogger(StdController.class);
 
+	@Autowired
+	 private ServletContext servletContext;
+	
 	@Inject
 	StdService service;
 
@@ -38,8 +47,24 @@ public class StdController {
 	@RequestMapping(value = "/std_join", method = RequestMethod.POST)
 	public String postRegister(StdVO vo) throws Exception {
 		logger.info("post std_join");
+		
+		// 파일 업로드 체크
+		MultipartFile f = vo.getStd_Profile();
+		if (!f.isEmpty()) { // 파일 업로드가 됐다면
+			String std_Orgname = f.getOriginalFilename();
+			String std_Newname = std_Orgname + System.currentTimeMillis() + f.getSize();
+			String path = servletContext.getRealPath("/resource/images");
+			System.out.println("path : " + path);
+			File file = new File(path + File.separator + std_Newname);
+			vo.setStd_Orgname(std_Orgname);
+			vo.setStd_Newname(std_Newname);
+			f.transferTo(file);
+		}
 
 		service.std_join(vo);
+		
+		service.admin_mng(vo);
+		logger.info("학생정보 회원관리에 추가 됨");
 
 		return "redirect:/";
 	}
@@ -81,5 +106,11 @@ public class StdController {
 		session.invalidate();
 
 		return "redirect:/";
+	}
+
+
+	@Override
+	public void setServletContext(ServletContext arg0) {
+		this.servletContext = servletContext;
 	}	
 }

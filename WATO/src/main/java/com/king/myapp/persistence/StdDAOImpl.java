@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.StdVO;
-import com.king.myapp.domain.TeachVO;
 
 @Service
 public class StdDAOImpl implements StdDAO {
@@ -35,6 +34,12 @@ public class StdDAOImpl implements StdDAO {
 	public int idChk(StdVO vo) throws Exception {
 		int result = sql.selectOne(namespace + ".idChk", vo);
 		return result;
+	}
+
+	// 학생 정보 회원관리로
+	@Override
+	public void admin_mng(StdVO vo) throws Exception {
+		sql.insert(namespace + ".admin_mng", vo);
 	}
 
 }

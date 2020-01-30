@@ -127,13 +127,14 @@ public class BoardController {
 //			
 //			return "/index";
 //		}  
+		
 		/* , 스터디및 강사 를 조회 하는 페이지 studylist안에 iframe 으로 요청됨*/
 		@RequestMapping(value="/studylistview" , method=RequestMethod.GET)
 		public String getstudylistview(Model model) throws Exception {
 			logger.info("get studylistview");
 				List<BoardVO> studylistAll = service.studylistAll(); //전체 목록을 가져온다
 				model.addAttribute("studylistAll",studylistAll); 
-				List<BoardVO> TearchlistAll = service.TearchlistAll(); 
+				List<BoardVO> TearchlistAll = service.TearchlistAll();
 				model.addAttribute("TearchlistAll",TearchlistAll);
 			
 			return "/include/studylistview";   
