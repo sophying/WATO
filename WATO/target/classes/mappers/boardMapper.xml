@@ -35,25 +35,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <!-- 메뉴바 스터디 찾기 클릭 후 기본으로 보여지는 스터디 목록 -->
    <select id="studylistAll" resultType="com.king.myapp.domain.StudyEnrollVO">   
-   	  SELECT * FROM S_ENROLL 
-   </select>
+   	  SELECT * FROM (SELECT * FROM S_ENROLL ORDER BY S_VIEWCNT DESC)
+   </select> 
    
    <!-- 메뉴바 스터디 찾기 클릭 후 기본으로 보여지는 강의 목록 -->
    <select id="TearchlistAll" resultType="com.king.myapp.domain.TeacherEnrollVO"> 
-   	  SELECT * FROM T_ENROLL
+   	  SELECT * FROM (SELECT * FROM T_ENROLL ORDER BY T_VIEWCNT DESC)
    </select>
    
    <!-- 스터디 찾기에서 검색 필터로 조회 했을 때의 스터디,강사 조회 --> 
    <select id="studylistfilter" resultType="com.king.myapp.domain.StudyEnrollVO">
-   	  SELECT * FROM S_ENROLL WHERE S_CATEGORY LIKE '%' || #{category} || '%' AND S_LEVEL LIKE '%' || #{level} || '%' AND S_DAY LIKE '%' || #{time} || '%' AND SUBSTR(S_PLACE,1,2) LIKE '%' || #{place} || '%' 
+   	  SELECT * FROM (SELECT * FROM S_ENROLL WHERE S_CATEGORY LIKE '%' || #{category} || '%' AND S_LEVEL LIKE '%' || #{level} || '%' AND S_DAY LIKE '%' || #{time} || '%' AND SUBSTR(S_PLACE,1,2) LIKE '%' || #{place} || '%') SEN
+   	  ORDER BY SEN.S_BNO_LIKECNT DESC
    </select> 
    
    <!-- 강사조회 -->
    <select id="TeacherListFilter" resultType="com.king.myapp.domain.TeacherEnrollVO">
-      SELECT * FROM T_ENROLL WHERE T_CATEGORY LIKE '%' || #{category} || '%' AND T_LEVEL LIKE '%' || #{level} || '%' AND T_DAY LIKE '%' || #{time} || '%' AND SUBSTR(T_PLACE,1,2) LIKE '%' || #{place} || '%'
+      SELECT * FROM (SELECT * FROM T_ENROLL WHERE T_CATEGORY LIKE '%' || #{category} || '%' AND T_LEVEL LIKE '%' || #{level} || '%' AND T_DAY LIKE '%' || #{time} || '%' AND SUBSTR(T_PLACE,1,2) LIKE '%' || #{place} || '%')
    </select>
    
-   <!-- 메인페이지에 있는 랭귀지를 viewcnt순으로 조회함 -->
+   <!-- 메인페이지에 있는 랭귀지를 viewcnt순으로 조회함 --> 
    <select id="langugerank" resultType="com.king.myapp.domain.MainLangugeRankVO">
    	  SELECT * FROM (SELECT * FROM PROGRAMMING_LANGUAGE ORDER BY VIEWCNT DESC)
    </select>
@@ -62,6 +63,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <update id="languageviewcnt">
    	  UPDATE PROGRAMMING_LANGUAGE SET VIEWCNT = VIEWCNT+1 WHERE LANGUAGE_NAME = #{searchKey}
    </update>
+   <!-- 찜목록 버튼  -->
+   <insert id="heartbuttoninsert">
+   	  INSERT INTO STUDY_LIKE VALUES(#{s_no}, #{s_userId})  
+   </insert>
+   <update id="heartbuttonlikecnt">
+   	  UPDATE S_ENROLL SET S_BNO_LIKECNT = S_BNO_LIKECNT + 1 WHERE S_NO = #{s_no}
+   </update>  
+   <select id="seleteheartbutton" resultType="com.king.myapp.domain.StudyEnrollVO">  
+   	  SELECT * FROM STUDY_LIKE WHERE S_USERID = #{s_userId}
+   </select>
+   <delete id="heartbuttondelete">  
+   	  DELETE FROM STUDY_LIKE WHERE S_NO = #{s_no} AND S_USERID = #{s_userId}
+   </delete> 
+   <!-- 좋아요 버튼 --> 
+   <insert id="likebuttoninsert">
+   	  INSERT INTO STUDY_toomuchlike VALUES(#{s_no}, #{s_userId})
+   </insert>
+   <select id="seletelikebutton" resultType="com.king.myapp.domain.StudyEnrollVO">
+   	   SELECT * FROM STUDY_toomuchlike WHERE S_USERID = #{s_userId} 
+   </select>
+   <delete id="likebuttondelete"> 
+       DELETE FROM STUDY_toomuchlike WHERE S_NO = #{s_no} AND S_USERID = #{s_userId}
+   </delete>
+   <select id="searchS_no" resultType="com.king.myapp.domain.StudyEnrollVO">
+   	   SELECT * FROM S_ENROLL WHERE S_NO = #{s_no}
+   </select>
+   <select id="searchT_no" resultType="com.king.myapp.domain.TeacherEnrollVO">
+   	   SELECT * FROM T_ENROLL WHERE T_NO = #{s_no}
+   </select>
+   
+   
    
    
     

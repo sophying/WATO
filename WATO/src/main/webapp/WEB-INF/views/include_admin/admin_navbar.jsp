@@ -7,11 +7,6 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-<html>
-<head>
-    <title>navbar</title>
-</head>
-<body>
 <!-- navbar-->
 <header class="header">
     <nav class="navbar navbar-expand-lg px-4 py-2 bg-white shadow">
@@ -78,5 +73,4 @@
         </ul>
     </nav>
 </header>
-</body>
-</html>
+

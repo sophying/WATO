@@ -37,7 +37,7 @@ public class BoardServiceImpl implements BoardService{
 		return dao.searchResultQna(searchKey);
 	}
 	@Override
-	public List<BoardVO> studylistAll() throws Exception {
+	public List<StudyEnrollVO> studylistAll() throws Exception {
 		return dao.studylistAll();
 	}
 	@Override
@@ -45,7 +45,7 @@ public class BoardServiceImpl implements BoardService{
 		return dao.studylistfilter(sLF);
 	}
 	@Override
-	public List<BoardVO> TearchlistAll() throws Exception {
+	public List<TeacherEnrollVO> TearchlistAll() throws Exception {
 		return dao.TearchlistAll();
 	}
 	@Override
@@ -56,5 +56,36 @@ public class BoardServiceImpl implements BoardService{
 	public List<MainLangugeRankVO> langugerank() throws Exception {
 		return dao.langugerank();
 	}
-
+	@Override
+	public void heartbuttoninsert(StudyEnrollVO std) throws Exception {
+		dao.heartbuttoninsert(std);
+	}
+	@Override
+	public List<StudyEnrollVO> seleteheartbutton(StudyEnrollVO std) throws Exception {
+		return dao.seleteheartbutton(std);
+	}
+	@Override
+	public void heartbuttondelete(StudyEnrollVO std) throws Exception {
+		dao.heartbuttondelete(std);
+	}
+	@Override
+	public void likebuttoninsert(StudyEnrollVO std) throws Exception {
+		dao.likebuttoninsert(std);
+	}
+	@Override
+	public List<StudyEnrollVO> seletelikebutton(StudyEnrollVO std) throws Exception {
+		return dao.seletelikebutton(std);
+	}
+	@Override
+	public void likebuttondelete(StudyEnrollVO std) throws Exception {
+		dao.likebuttondelete(std);
+	}
+	@Override
+	public StudyEnrollVO searchS_no(int s_no) throws Exception {
+		return dao.searchS_no(s_no);
+	}
+	@Override
+	public TeacherEnrollVO searchT_no(int s_no) throws Exception {
+		return dao.searchT_no(s_no);
+	}
 }
