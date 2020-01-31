@@ -21,22 +21,15 @@
 	<!-- 강사 회원 가입2(강사 승인 클릭하면 Teach 로 들어감) -->
 	<insert id="teach_join2">
 		insert into
-		teach_info(Teach_Gender, 
+		teach_info(Teach_orgname, Teach_newname, Teach_orgname2, Teach_newname2, Teach_Gender, 
 				 Teach_Phone1, Teach_Phone2, Teach_Phone3, 
 				 User_Email,
 				 Teach_Addr1, Teach_Addr2, Teach_Addr3)
-		values (#{Teach_Gender}, 
+		values (#{Teach_Orgname, jdbcType=VARCHAR}, #{Teach_Newname, jdbcType=VARCHAR}, #{Teach_Orgname2, jdbcType=VARCHAR}, #{Teach_Newname2, jdbcType=VARCHAR}, #{Teach_Gender}, 
 				#{Teach_Phone1}, #{Teach_Phone2}, #{Teach_Phone3}, 
 				#{User_Email}, 
 				#{Teach_Addr1}, #{Teach_Addr2}, #{Teach_Addr3})
 	</insert>
-	
-	<!-- 강사 회원 가입(승인 클릭했을 때 app테이블 Num update) -->
-	<!-- <update id="teach_appUpdate">
-		update approval
-		set app_num = '1'
-		where User_Email = #{User_Email}
-	</update>  -->	
 	
 	<!-- 강사 회원 가입3 -->
 	<update id="teach_join3">
