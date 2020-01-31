@@ -92,9 +92,13 @@ public class AdminController {
 	    public String getManagement(Model model) throws Exception{
 	    	logger.info("management 페이지로 이동~~!!");
 
-			List<ManagementVO> studentList = adminservice.studentList();
+		/*	List<ManagementVO> studentList = adminservice.studentList();
 			model.addAttribute("studentList", studentList);
 			List<ManagementVO> teachList = adminservice.teachList();
+			model.addAttribute("teachList", teachList);*/
+	    	List<StdVO> studentList = adminservice.studentList2();
+			model.addAttribute("studentList", studentList);
+			List<TeachVO> teachList = adminservice.teachList2();
 			model.addAttribute("teachList", teachList);
 			return  "admin/management";
 	    }
@@ -111,9 +115,16 @@ public class AdminController {
 	    	} else if (filter.equals("20")) {
 	    		List<TeachVO> teachList = adminservice.teachList2();
 				model.addAttribute("teachList", teachList);
-	    	}	    	
+				
+	    	} else if (filter.equals("30")) {
+	    		List<StdVO> studentList = adminservice.studentList2();
+				model.addAttribute("studentList", studentList);
+				List<TeachVO> teachList = adminservice.teachList2();
+				model.addAttribute("teachList", teachList);
+	    	}
 	    	return "admin/management";
 	    }
+
 	    
 	// 로그인 페이지 이동
 	/*
@@ -210,9 +221,6 @@ public class AdminController {
 		
 		/*logger.info("승인완료를 위해 num 값을 바꾸어주었습니다.");
 		teachservice.teach_appUpdate(avo);*/
-
-		Random r = new Random();
-		int dice = r.nextInt(4589362) + 49311; // 이메일로 받는 인증코드 부분 (난수)
 
 		String setfrom = "choio95634@gamil.com";
 		String tomail = request.getParameter("User_Email"); // 받는 사람 이메일

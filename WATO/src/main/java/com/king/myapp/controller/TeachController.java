@@ -66,7 +66,7 @@ public class TeachController implements ServletContextAware {
 		MultipartFile f2 = vo.getApp_Resume();
 		if (!f2.isEmpty()) { // 파일 업로드가 됐다면
 			String app_Orgname2 = f2.getOriginalFilename();
-			String app_Newname2 = app_Orgname2 + System.currentTimeMillis() + f2.getSize();
+			String app_Newname2 = app_Orgname2;
 			String path = servletContext.getRealPath("/resource/images");
 			System.out.println("path : " + path);
 			File file2 = new File(path + File.separator + app_Newname2);
