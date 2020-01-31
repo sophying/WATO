@@ -97,6 +97,14 @@ public class StudyenrollController {
 			List<StudentReplyVO> reply = studyService.replyRead(s_no); // 댓글 불러오기 
 			//List<StudentReReplyVO> reReply = studyService.reReplyRead(s_no);
 			
+			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+				model.addAttribute("std");
+				model.addAttribute("reply",reply);
+				//model.addAttribute("reReply",reReply);
+				model.addAttribute("listOne",listOne);
+				model.addAttribute("usercheck",null);
+			}else {
+			
 					
 			//  현재 유저의 참여신청여부 파악  
 			StdVO user = (StdVO) session.getAttribute("std");
@@ -109,16 +117,17 @@ public class StudyenrollController {
 			StudentParticipationVO partiOne = participationService.partiCheck(map);
 		    // 	
 					
-			if (partiOne != null) {
+			if (partiOne != null) { 
 				model.addAttribute("partiOne",partiOne);
 			}
 			
 			//List<LeaderReVO> reReply = studyService.reReplyRead(s_no);
-			
+			model.addAttribute("usercheck","checked");
 			model.addAttribute("std");
 			model.addAttribute("reply",reply);
 			//model.addAttribute("reReply",reReply);
 			model.addAttribute("listOne",listOne);
+			}
 			
 	}		
 	

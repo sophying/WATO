@@ -220,7 +220,7 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="/student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
@@ -244,15 +244,15 @@
                         </c:if>
                         <c:if test="${teach != null}">
                         	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="/teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
 				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
 				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly"> 
+								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">  
 								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">  
+								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">   
 								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">  
 								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly"> 

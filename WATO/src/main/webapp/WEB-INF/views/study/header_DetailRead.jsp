@@ -507,9 +507,16 @@
 										<c:when test="${(partiOne.p_userid).equals(teach.user_Id)}">    
 											<div class="successBtn"id="success" >참여신청완료</div> 
 											<input type="button" class="goButton mt-4"id="partiBnt"  data-toggle="modal" data-target="#t_cancle-modal"  value="참여신청취소하기"/> 
-										</c:when> 
+										</c:when>  
 										<c:otherwise>
-											<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/> 
+											<c:choose>
+												<c:when test="${usercheck == null }">
+													<input type="button" class="goButton" onclick="alert('로그인 후 이용하실 수 있습니다.')" value="참여신청"/> 
+												</c:when>
+												<c:otherwise>
+													<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/> 
+												</c:otherwise>
+											</c:choose> 
 										</c:otherwise>
 									</c:choose>
 								</c:otherwise>

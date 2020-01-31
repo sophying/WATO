@@ -356,8 +356,8 @@
 	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size: 20px; font-weight: bold;">${TearchlistAll.size()+studylistAll.size()+StudyListFilterdata.size()+TeacherListFilter.size()}개의 스터디</font>
 	<br><br> 
 	<div class="studylistviewbody">  
-	  <div class="valign-wrapper">    
-	  	<div class="row">   
+	  <div class="valign-wrapper">     
+	  	<div class="row" style="width: 100%">   
 	  		<c:forEach items="${TearchlistAll}" var="TearchlistAll">
 		    <div class="col s12 m4">
 		      <div class="card" id="about">  
@@ -408,7 +408,9 @@
 		          <img class="user" src="${studylistAll.s_profile}">
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
+		       <a href="javascript:parent.location.href='/study/study_DetailRead?s_no=${studylistAll.s_no}'" style="color: black;">
 		        			${studylistAll.s_title}  
+		        </a>
 		        </h6> 
 		        <h6 class="description">   
 		                ${studylistAll.s_userId}    
@@ -462,12 +464,12 @@
 		          <div class='content' style="top: 24%;">
 		           	<p> 
 		            	<input type="hidden" value="${StudyListFilterdata.s_no}">
-		            	<a onclick="heartbuttonfunct(this)" href="/board/heartbuttoninsert/${StudyListFilterdata.s_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            	<a onclick="heartbuttonfunct(this)" href='/board/heartbuttoninsert/${StudyListFilterdata.s_no}' class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
 		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
 		            		</i>
 		            	</a>
 					</p>
-		             <p>
+		            <p>
 		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${StudyListFilterdata.s_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
 		            		<i class="fa fa-thumbs-o-up">
 		            		</i>
@@ -484,8 +486,8 @@
 		      </div> 
 		    </div>
 		  </c:forEach>
-		  <c:forEach items="${TeacherListFilter}" var="TeacherListFilter">
-		    <div class="col s12 m4"> 
+		  <c:forEach items="${TeacherListFilter}" var="TeacherListFilter" >
+			 <div class="col s12 m4"> 
 		      <div class="card" id="about">  
 		        <div class="card-header">
 		          <img class="background" src="${TeacherListFilter.t_photo}">
@@ -502,19 +504,25 @@
 		        </div>
 		        <div class='wrap'>   
 		          <div class='content' style="top: 24%;"> 
-		            <p> 
+		           <p> 
 		            	<input type="hidden" value="${TeacherListFilter.t_no}">
-		            	<a onclick="heartbuttonfunct(this)" href='/board/heartbuttoninsert/${TeacherListFilter.t_no}' class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" ><i class="fa fa-heart-o" aria-hidden="true" style="color: white;"></i></a>
-					</p>
-		             <p>
-		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${TeacherListFilter.t_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
-		            		<i class="fa fa-thumbs-o-up"></i>
+		            	<a onclick="heartbuttonfunct(this)" href="/board/heartbuttoninsert/${TeacherListFilter.t_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
+		            		</i>
 		            	</a>
-		            </p> 
+					</p>
+		            <p>
+		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${TeacherListFilter.t_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-thumbs-o-up"> 
+		            		</i>
+		            	</a>
+		            </p>
+		            <p>
 		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
 		            		<i class="fa fa-user-o">
 		            		</i>
 		            	</a>
+		            </p>
 		          </div> 
 		        </div>
 		      </div> 

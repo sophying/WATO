@@ -513,7 +513,7 @@
 										<img alt="3등이미지" src="./resource/images/rank3st.png">
 									<%}else if( q ==4) { %>
 										<img alt="4등이미지" src="./resource/images/rank4st.png">
-									<%}else{ %>
+									<%}else if( q ==5){ %>
 										<img alt="5등이미지" src="./resource/images/rank5st.png">
 									<%} %>
 						</div>
@@ -528,9 +528,7 @@
                             </div><a href="detail.jsp" class="invisible"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a>
                             <div class="text">  
                                 <h3><span>${languagerank.language_name}</span></h3> 
-                                <p class="price">  
-                                    <del></del><a href="#" class="button2 b-orange rot-135">Details</a> 
-                                </p>
+                                
                             </div> 
                         </div>
                     </div>  
@@ -591,7 +589,7 @@
 										<img alt="3등이미지" src="./resource/images/rank3st.png">
 									<%}else if( i ==4) { %>
 										<img alt="4등이미지" src="./resource/images/rank4st.png">
-									<%}else{ %>
+									<%}else if (i == 5){ %>
 										<img alt="5등이미지" src="./resource/images/rank5st.png">
 									<%} %>
 						</div>  
@@ -599,14 +597,14 @@
                         <div class="product"> 
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="/study/study_DetailRead?s_no=${listRank.s_no}"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="/study/study_DetailRead?s_no=${listRank.s_no}"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a>
+                            </div><a href="/study/study_DetailRead?s_no=${listRank.s_no}" class="invisible"><img src="${listRank.s_photo.substring(1)}" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listRank.s_title}</a></h3> 
+                                <h3>${listRank.s_title}</h3> 
                                 <p class="price"> 
-                                    <del></del><a href="#" class="button2 b-orange rot-135">Details</a> 
+                                    <del></del><a href="/study/study_DetailRead?s_no=${listRank.s_no}" class="button2 b-orange rot-135">Details</a> 
                                 </p>
                             </div> 
                         </div> 
@@ -631,7 +629,7 @@
                             </div> -->
                     <!-- /.product-slider-->
                 </div>
-                <!-- /.container-->
+                <!-- /.container--> 
             </div>
             <!-- /#hot-->
             <!-- *** HOT END ***-->
@@ -650,7 +648,7 @@
             <div class="container">
                 <div class="product-slider owl-carousel owl-theme">
                 	<%int j = 1;%>
-                	<c:forEach items="${listRank}" var="listRank"> 
+                	<c:forEach items="${tearstudy}" var="tearstudy"> 
                 	<div style="position: relative;"> 
                 		<div class="imgrank">
 									<%if(j== 1){ %> 
@@ -661,7 +659,7 @@
 										<img alt="3등이미지" src="./resource/images/rank3st.png">
 									<%}else if( j ==4) { %>
 										<img alt="4등이미지" src="./resource/images/rank4st.png">
-									<%}else{ %>
+									<%}else if ( j == 5){ %>
 										<img alt="5등이미지" src="./resource/images/rank5st.png">
 									<%} %>
 						</div>
@@ -669,14 +667,14 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="./resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
+                            </div><a href="detail.jsp" class="invisible"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listRank.s_title}</a></h3>
+                                <h3>${tearstudy.t_title}</h3>
                                 <p class="price"> 
-                                    <del></del><a href="#" class="button2 b-orange rot-135">Details</a>
+                                    <del></del><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}" class="button2 b-orange rot-135">Details</a>
                                 </p>
                             </div> 
                         </div>

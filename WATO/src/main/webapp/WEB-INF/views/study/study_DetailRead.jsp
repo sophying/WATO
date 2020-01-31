@@ -675,7 +675,14 @@
 											<input type="button" class="goButton mt-4" id="cancle"  data-toggle="modal" data-target="#cancle-modal"  value="참여신청취소하기"/> 
 										</c:when> 
 										<c:otherwise>
-											<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/> 
+											<c:choose>
+												<c:when test="${usercheck == null }">
+													<input type="button" class="goButton" onclick="alert('로그인 후 이용하실 수 있습니다.')" value="참여신청"/> 
+												</c:when>
+												<c:otherwise>
+													<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/> 
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 								</c:choose>
 								</c:otherwise>

@@ -117,31 +117,64 @@ public class TeacherenrollController {
 	public void getDetailRead(@RequestParam("t_no") int t_no, @ModelAttribute TeacherParticipationVO partiVO,HttpSession session, Model model) throws Exception{
 		logger.info("--------------[ 강의 상세보기  GET ]-----------------");
 		
-		
-		
-		teacherService.viewCount(t_no);
-		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
-		List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
-		
-	//  현재 유저의 참여신청여부 파악  
-		TeachVO user = (TeachVO) session.getAttribute("teach");
-		String user_id = user.getUser_Id();
-	
-		Map<String, Object> map = new HashMap<String, Object>();
-			 
-		map.put("p_userid", user_id);
-		map.put("t_no",t_no);
-		
-		TeacherParticipationVO partiOne = participationService.t_partiCheck(map);
-	  // 	
-					
-		if (partiOne != null) {
-			model.addAttribute("partiOne",partiOne);
-		}
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+			TeacherEnrollVO listOne = teacherService.detailRead(t_no);
+			List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
 			
-		model.addAttribute("teach");
-		model.addAttribute("reply", reply); 
-		model.addAttribute("listOne",listOne);
+			model.addAttribute("teach");
+			model.addAttribute("reply", reply); 
+			model.addAttribute("listOne",listOne);
+			model.addAttribute("usercheck",null);
+		}else {
+			teacherService.viewCount(t_no);
+			TeacherEnrollVO listOne = teacherService.detailRead(t_no);
+			List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
+			
+			//  현재 유저의 참여신청여부 파악  
+			if (session.getAttribute("teach") != null) {
+				TeachVO user = (TeachVO) session.getAttribute("teach");
+				String user_id = user.getUser_Id();
+				
+				Map<String, Object> map = new HashMap<String, Object>();
+				
+				map.put("p_userid", user_id);
+				map.put("t_no",t_no);
+				
+				TeacherParticipationVO partiOne = participationService.t_partiCheck(map);
+				// 	
+				
+				if (partiOne != null) {
+					model.addAttribute("partiOne",partiOne);
+				}
+				model.addAttribute("usercheck","checked");
+				model.addAttribute("teach");
+				model.addAttribute("reply", reply); 
+				model.addAttribute("listOne",listOne);
+				
+			}
+			if (session.getAttribute("std") != null) {
+				StdVO user = (StdVO) session.getAttribute("std"); 
+				String user_id = user.getUser_Id();
+				
+				Map<String, Object> map = new HashMap<String, Object>();
+				
+				map.put("p_userid", user_id);
+				map.put("t_no",t_no);
+				
+				TeacherParticipationVO partiOne = participationService.t_partiCheck(map);
+				// 	
+				
+				if (partiOne != null) {
+					model.addAttribute("partiOne",partiOne);
+				}
+				model.addAttribute("usercheck","checked");
+				model.addAttribute("teach");
+				model.addAttribute("reply", reply); 
+				model.addAttribute("listOne",listOne);
+			}
+			
+		}
+		
 	}
 	
 	// 4. 상세보기 + 댓글불러오기 + 수정하기 
