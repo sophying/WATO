@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: USER
 Build-Jdk: 1.8.0_231
-=======
-Built-By: klear
-Build-Jdk: 1.8.0_211
->>>>>>> branch 'master' of https://github.com/sophying/WATO.git
 Created-By: Maven Integration for Eclipse
 
