@@ -446,14 +446,13 @@
 <div id="all">
     <div id="content">
 <!-- 최지혜 추가 -->  <div style="width: 100%; text-align: center;">
-                    <form role="form" method="post" autocomplete="off">
+                    <form name="infoForm" onsubmit="return infoCheck()" role="form" method="post" autocomplete="off">
 			        <div><img src="../resource/images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div>
 			        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">회원 정보 수정</div>
 			        <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
 			            <p style="float: left; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
 			            <div>저희 스터디어스를 이용해 주셔서 감사합니다. <span>${std.user_Id}</span>님은 학생이십니다.
 			                <p style="float: right; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
-			                <br>종료 예정 스터디는 0건이 있습니다.
 			            </div>
 			        </div>
 			        <div style="font-size: 17px;">기본정보</div>
@@ -466,11 +465,11 @@
 			                </tr>
 			                <tr>
 			                    <th>새 비밀번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="password" name="User_Pwd" placeholder="새 비밀번호 입력"></td>
+			                    <td><input type="password" id="User_Pwd" name="User_Pwd" placeholder="새 비밀번호 입력"></td>
 			                </tr>
 			                <tr>
 			                    <th>새 비밀번호 확인 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="password" id="" name="" placeholder="새 비밀번호 확인"></td>
+			                    <td><input type="password" id="User_Pwd_ok" placeholder="새 비밀번호 확인"></td>
 			                </tr>
 			                <tr>
 			                    <th>성별 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -510,7 +509,7 @@
 			                </tr>
 			            </table>
 			        </div>
-		                <button type="submit" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">회원정보수정</button>
+		                <input type="submit" value="회원정보수정" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
 		                <button type="reset" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; width: 150px; height: 50px;">취소</button><br><br><br>
 		        </form>
                     </div>
@@ -630,29 +629,65 @@ _________________________________________________________
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
 <script type="text/javascript">
 
-    function CheckForm(Join) {
-
-        // 체크박스 체크여부 확인[하나]
-        var chk1 = document.frmJoin.terms1.checked;
-        var chk2 = document.frmJoin.terms2.checked;
-
-        if(!chk1 && !chk2) {
-            alert('약관에 동의해주세요.');
-            return false;
-        }
-        if(!chk1){
-            alert('회원이용약관에 동의해주세요.');
-            return false;
-        }
-        if(!chk2) {
-            alert('개인정보보호정책에 동의해주세요');
-            return false;
-        }
-        if(chk1 && chk2) {
-        	alert('모든 약관에 동의하셨습니다.');
-        }
-
-    }
+ // 회원정보 null 파악_____________________________________
+	
+	function infoCheck() {
+		if(!document.infoForm.User_Pwd.value) {
+			alert("새 비밀번호를 입력해주세요.");
+			document.infoForm.User_Pwd.focus();
+			return false;
+		}
+		
+		if(!document.infoForm.User_Pwd_ok.value) {
+			alert("새 비밀번호 확인을 입력해주세요.");
+			document.infoForm.User_Pwd_ok.focus();
+			return false;
+		}
+		
+		if(!document.infoForm.Std_Phone1.value) {
+			alert("휴대폰 번호를 입력해주세요.");
+			document.infoForm.Std_Phone1.focus();
+			return false;
+		}
+		
+		if(!document.infoForm.Std_Phone2.value) {
+			alert("휴대폰 번호를 입력해주세요.");
+			document.infoForm.Std_Phone2.focus();
+			return false;
+		}
+		
+		if(!document.infoForm.Std_Phone3.value) {
+			alert("휴대폰 번호를 입력해주세요.");
+			document.infoForm.Std_Phone3.focus();
+			return false;
+		}
+		
+		if(!document.infoForm.User_Email.value) {
+			alert("이메일을 입력해주세요.");
+			document.infoForm.User_Email.focus();
+			return false;
+		}
+		
+		if(!document.infoForm.Std_Addr1.value) {
+			alert("우편번호를 입력해주세요.");
+			document.infoForm.Std_Addr1.focus();
+			return false;
+		}
+		
+		if(!document.infoForm.Std_Addr2.value) {
+			alert("주소를 입력해주세요.");
+			document.infoForm.Std_Addr2.focus();
+			return false;
+		}
+		
+		if(!document.infoForm.Std_Addr3.value) {
+			alert("상세주소를 입력해주세요.");
+			document.infoForm.Std_Addr3.focus();
+			return false;
+		}
+		
+		alert("회원정보가 정상적으로 변경완료 되었습니다.")
+	}
     
  // 우편번호찾기_________________________________________________________________________________
     
