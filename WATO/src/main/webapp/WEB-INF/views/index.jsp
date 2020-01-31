@@ -191,9 +191,12 @@
   .rot-135:hover {
   filter: hue-rotate(135deg);
 }
+.img-fluid{
+	max-height: 140px;
+}
 </style>
 <body>
-<!-- navbar-->
+<!-- navbar--> 
 <header class="header mb-0">
     <!--
     *** TOPBAR ***
@@ -625,7 +628,7 @@
                             <div class="text">
                                 <h3>${listRank.s_title}</h3> 
                                 <p class="price"> 
-                                    <del></del><a href="/study/study_DetailRead?s_no=${listRank.s_no}" class="button2 b-orange rot-135">Details</a> 
+                                    <del></del><a href="/study/study_DetailRead?s_no=${listRank.s_no}">Details</a> 
                                 </p>
                             </div> 
                         </div> 
@@ -695,7 +698,7 @@
                             <div class="text">
                                 <h3>${tearstudy.t_title}</h3>
                                 <p class="price">  
-                                    <del></del><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}" class="button2 b-orange rot-135">Details</a>
+                                    <del></del><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}">Details</a>
                                 </p>
                             </div> 
                         </div>

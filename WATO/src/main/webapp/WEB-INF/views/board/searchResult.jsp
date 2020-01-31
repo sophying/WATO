@@ -513,7 +513,7 @@
 										<tr> 
 											<td id="moremessge">${listStudy.s_no}</td>
 											<td>${listStudy.s_category}</td> 
-											<td><a href="#" style="color: black;">${listStudy.s_title}</a></td>
+											<td><a href="/study/study_DetailRead?s_no=${listStudy.s_no}" style="color: black;">${listStudy.s_title}</a></td>
 											<td><a href="#" style="color: black;">${listStudy.s_userId}</a></td>
 										</tr>
 					                    <% i++; %>
@@ -549,7 +549,7 @@
 										<img alt="3등이미지" src="/resource/images/rank3st.png">
 									<%}else if( j ==4) { %>
 										<img alt="4등이미지" src="/resource/images/rank4st.png">
-									<%}else{ %>
+									<%}else if( j == 5){ %>
 										<img alt="5등이미지" src="/resource/images/rank5st.png">
 									<%} %>
 						</div>
@@ -557,14 +557,14 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="/study/header_DetailRead?t_no=${listTeacher.t_no}"><img src="${listTeacher.t_photo}" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="/study/header_DetailRead?t_no=${listTeacher.t_no}"><img src="${listTeacher.t_photo}" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
+                            </div><a href="/study/header_DetailRead?t_no=${listTeacher.t_no}" class="invisible"><img src="${listTeacher.t_photo}" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listTeacher.t_title}</a></h3>
+                                <h3><a href="/study/header_DetailRead?t_no=${listTeacher.t_no}">${listTeacher.t_title}</a></h3>
                                 <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
+                                    <del></del><a href="/study/header_DetailRead?t_no=${listTeacher.t_no}" class="button2 b-orange rot-135">Details</a>
                                 </p>
                             </div> 
                         </div>
