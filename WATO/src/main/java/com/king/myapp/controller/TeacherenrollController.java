@@ -118,23 +118,30 @@ public class TeacherenrollController {
 		logger.info("--------------[ 강의 상세보기  GET ]-----------------");
 		
 		
-
+		
 		
 		teacherService.viewCount(t_no);
 		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
 		List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
-
-		DecimalFormat form = new DecimalFormat("#.##");
-		double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
-		form.format(star);
-
-		model.addAttribute("starScore",star);
 		
-		
-		//  현재 유저의 참여신청여부 파악  
-		StdVO std = (StdVO) session.getAttribute("std");
-		TeachVO teach =  (TeachVO) session.getAttribute("teach");
-		
+		if (session.getAttribute("std") == null && session.getAttribute("teach") ==null) {
+			model.addAttribute("usercheck",null);
+			model.addAttribute("std",null);
+			model.addAttribute("teach",null);
+			model.addAttribute("reply", reply); 
+			model.addAttribute("listOne",listOne);
+		}else {
+			DecimalFormat form = new DecimalFormat("#.##");
+			double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
+			form.format(star);
+			
+			model.addAttribute("starScore",star);
+			
+			
+			//  현재 유저의 참여신청여부 파악  
+			StdVO std = (StdVO) session.getAttribute("std");
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");
+			
 			if (std != null) {
 				
 				String user_id = std.getUser_Id();
@@ -151,11 +158,13 @@ public class TeacherenrollController {
 					model.addAttribute("partiOne",partiOne);
 				}
 			}
-			
+			model.addAttribute("usercheck","usercheck");
 			model.addAttribute("std",std);
 			model.addAttribute("teach",teach);
 			model.addAttribute("reply", reply); 
 			model.addAttribute("listOne",listOne);
+			
+		}
 	}
 	
 	// 4. 참여신청 정보 등록 클릭 -> 

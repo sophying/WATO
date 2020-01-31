@@ -386,7 +386,7 @@
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg" >
 		        </div>  
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		              <a href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TearchlistAll.t_no}'" >${TearchlistAll.t_title}</a>
+		              <a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TearchlistAll.t_no}'" >${TearchlistAll.t_title}</a>
 		        </h6>  
 		        <h6 class="description">    
 		                ${TearchlistAll.t_userId} <i class="fa fa-id-badge" aria-hidden="true"></i> 
@@ -428,9 +428,7 @@
 		          <img class="user" src="${studylistAll.s_profile}">
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		       <a href="javascript:parent.location.href='/study/study_DetailRead?s_no=${studylistAll.s_no}'" style="color: black;">
-		        	 <a href="javascript:parent.location.href='../study/study_DetailRead?s_no=${studylistAll.s_no}'" >${studylistAll.s_title}</a>
-		        </a>
+		       		<a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${studylistAll.s_no}'" >${studylistAll.s_title}</a>
 		        </h6> 
 		        <h6 class="description">   
 		                ${studylistAll.s_userId}    
@@ -471,8 +469,8 @@
 		          <img class="background" src="${StudyListFilterdata.s_photo}">
 		          <img class="user" src="${StudyListFilterdata.s_profile}">
 		        </div>
-		       <h6  id="s_detailGo" onclick="s_detailGo()" class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			<a href="javascript:parent.location.href='../study/study_DetailRead?s_no=${StudyListFilterdata.s_no}'" >${StudyListFilterdata.s_title}</a>
+		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
+		        			<a style="color: black;" href="javascript:parent.location.href='../study/study_DetailRead?s_no=${StudyListFilterdata.s_no}'" >${StudyListFilterdata.s_title}</a>
 		        </h6>  
 		        <h6 class="description">  
 		                ${StudyListFilterdata.s_userId} 
@@ -514,7 +512,7 @@
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div> 
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			<a href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TeacherListFilter.t_no}'" >${TeacherListFilter.t_title}</a>
+		        			<a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TeacherListFilter.t_no}'" >${TeacherListFilter.t_title}</a>
 		        </h6>  
 		        <h6 class="description">  
 		                ${TeacherListFilter.t_userId}<i class="fa fa-id-badge" aria-hidden="true"></i>
@@ -572,10 +570,6 @@
 			return false;  
 		}
 	}
-// ************** 혜련 작업중 *********************__________________________________
-$('#s_detailGo').on("click", function s_detailGo() {
-	window.parent.location.href= "redirect:/study/study_DetailRead?s_no="+"${studylistAll.s_no}"; 
-});
 	
 	
 

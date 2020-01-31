@@ -6,15 +6,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<!-- theme stylesheet-->
-<link rel="stylesheet" href="../../resource/css/style.default.css" id="theme-stylesheet">
-<link rel="icon" type="image/png" href="../../resource/images/icons/favicon.ico"/>
-<!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+ <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="/resource/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="/resource/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="/resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="/resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="/resource/css/style.default.css" id="theme-stylesheet"> 
+    <!-- Custom stylesheet - for your changes--> 
+    <link rel="stylesheet" href="/resource/css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="favicon.png">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
+    <link rel="icon" type="image/png" href="/resource/images/icons/favicon.ico"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <script src="/resource/vendor/jquery/jquery.min.js"></script> 
 <title>Insert title here</title>
 <style type="text/css">
  #top{
@@ -191,35 +204,21 @@ table caption {
 <header class="header mb-0">
     <!--
     *** TOPBAR ***
-    _________________________________________________________
+    _________________________________________________________ 
     -->
- <div id="top">
+   <div id="top">
         <div class="container"> 
             <div class="row">
                 <!-- <div class="col-lg-6 offer d-flex d-block"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div> --> 
-                <div class="row mx-auto w-100 text-right "> 
-                    <ul class="menu list-inline mb-0 w-100  ">
-                    	<c:choose>
-	                    <c:when test="${std == null && teach == null}">
-                    		<li class=" pl-2 list-inline-item pull-left"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a></li> 
-	                    </c:when>
-	                    <c:otherwise>
-	                    <c:if test="${std != null }">
-                   	 		<li class=" pl-2 list-inline-item pull-left"><a href="/study/user_myList" class="btn btn-success btn-sm">참여한 스터디 보러가기</a></li> 
-	                    </c:if>
-	                    <c:if test="${teach != null }">
-                   	 		<li class=" pl-2 list-inline-item pull-left"><a href="/study/user_myList" class="btn btn-success btn-sm">참여한 스터디 보러가기</a></li> 
-	                    </c:if>
-	                    </c:otherwise>
-	                    </c:choose>
+                <div class="row mx-auto w-100 text-right"> 
+                    <ul class="menu list-inline mb-0 w-100 ">
+                    		<li class=" pl-2 list-inline-item pull-left"><a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-sm">회원가입 하러 가기</a></li> 
                     	<c:if test="${std == null && teach == null}">
-                        <li class="list-inline-item">
-                        	<a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a>
-                        </li>
+                        	<li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
                         <c:if test="${std != null}">
-                        	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
+                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
@@ -231,7 +230,19 @@ table caption {
 								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
+                        	</a>
+                        		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
+                        			<a href="javascript:document.myForm.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
+                        			 <c:if test="${std != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
+				                    </c:if>
+				                    <c:if test="${teach != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">나의 강좌보러가기</a>
+				                    </c:if>
+								 </div>
                         	</form>
                         	</li>
                         </c:if>
@@ -249,18 +260,30 @@ table caption {
 								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
+                        	</a> 
+                        		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
+                        			<a href="javascript:document.myForm2.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
+                        			 <c:if test="${std != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
+				                    </c:if>
+				                    <c:if test="${teach != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">나의 강좌보러가기</a>
+				                    </c:if>
+								 </div>
                         	</form>
                         	</li>
                         </c:if>
-                        <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
-                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
-                        <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
+                        <c:if test="${!std.user_Id.equals('admin')}">
+                        <li class="list-inline-item pr-2"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
-                        <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                        <c:if test="${std.user_Id.equals('admin')}">
+                        <li class="list-inline-item"><a href="/admin/index_admin" class="text-black-50 font-weight-bold">관리자</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
+                    	
                     </ul>
                 </div>
             </div>
@@ -273,7 +296,7 @@ table caption {
 							<div class="limiter">
 								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
 								<div class="container-login100">   
-									<%@ include  file="../admin/loginform.jsp"%> 
+									<%@ include  file="../admin/loginform.jsp"%>  
 								</div>
 							</div>  
 						</div> 	                		
@@ -281,8 +304,6 @@ table caption {
 	        	</div>
 	    	</div>
     	</div>
-
- 
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
         <div class="container"><a href="/" class="navbar-brand home"><img src="../../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
@@ -722,6 +743,11 @@ table caption {
 </div>
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
-<script src="../resource/js/hr/user_myList.js"></script> 
+<script src="/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="/resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="/resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="/resource/js/front.js"></script>   
+<script src="/resource/js/hr/user_myList.js"></script> 
 </body>
 </html>

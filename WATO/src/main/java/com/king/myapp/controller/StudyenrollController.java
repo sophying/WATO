@@ -110,41 +110,52 @@ public class StudyenrollController {
 	public void getDetailRead(@RequestParam("s_no") int s_no, Model model,@ModelAttribute StudentParticipationVO partiVO ,HttpSession session, RedirectAttributes rttr) throws Exception{
 		logger.info("--------------[ 스터디 상세보기  GET ]-----------------");
 			
+		
 			studyService.viewCount(s_no);
 			StudyEnrollVO listOne = studyService.detailRead(s_no);
-			List<StudentReplyVO> reply = studyService.replyRead(s_no); // 댓글 불러오기 
+			List<StudentReplyVO> reply = studyService.replyRead(s_no); // 댓글 불러오기
 			
-			DecimalFormat form = new DecimalFormat("#.##");
-			double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
-			form.format(star);
-
-			model.addAttribute("starScore",star);
+			if (session.getAttribute("std") == null && session.getAttribute("teach") ==null) {
+				model.addAttribute("teach",null);
+				model.addAttribute("std", null);
+				model.addAttribute("reply",reply);
+				model.addAttribute("listOne",listOne);
+				model.addAttribute("usercheck",null);
+			}else {
+				
+				DecimalFormat form = new DecimalFormat("#.##");
+				double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
+				form.format(star);
+				
+				model.addAttribute("starScore",star);
+				
+				//  현재 유저의 참여신청여부 파악  
+				StdVO std = (StdVO) session.getAttribute("std");
+				TeachVO teach =  (TeachVO) session.getAttribute("teach");
+				
+				if (std != null) {
 					
-			//  현재 유저의 참여신청여부 파악  
-			StdVO std = (StdVO) session.getAttribute("std");
-			TeachVO teach =  (TeachVO) session.getAttribute("teach");
-			
-			if (std != null) {
-				
-				String user_id = std.getUser_Id();
-				Map<String, Object> map = new HashMap<String, Object>();
-				
-				map.put("p_userid", user_id);
-				map.put("s_no", s_no);
-				
-				StudentParticipationVO partiOne = participationService.partiCheck(map);
-				// 	
-				
-				if (partiOne != null) {
-					model.addAttribute("partiOne",partiOne);
+					String user_id = std.getUser_Id();
+					Map<String, Object> map = new HashMap<String, Object>();
+					
+					map.put("p_userid", user_id);
+					map.put("s_no", s_no);
+					
+					StudentParticipationVO partiOne = participationService.partiCheck(map);
+					// 	
+					
+					if (partiOne != null) {
+						model.addAttribute("partiOne",partiOne);
+					}
 				}
+				
+				
+				model.addAttribute("usercheck","usercheck");
+				model.addAttribute("teach",teach);
+				model.addAttribute("std", std);
+				model.addAttribute("reply",reply);
+				model.addAttribute("listOne",listOne);
 			}
-			
-			
-			model.addAttribute("teach",teach);
-			model.addAttribute("std", std);
-			model.addAttribute("reply",reply);
-			model.addAttribute("listOne",listOne);
 			
 	}		
 	

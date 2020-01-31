@@ -205,19 +205,9 @@
                 <!-- <div class="col-lg-6 offer d-flex d-block"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div> --> 
                 <div class="row mx-auto w-100 text-right"> 
                     <ul class="menu list-inline mb-0 w-100 ">
-	                    <c:choose>
-	                    <c:when test="${std == null && teach == null}">
-                    		<li class=" pl-2 list-inline-item pull-left"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a></li> 
-	                    </c:when>
-	                    <c:otherwise>
-	                    <c:if test="${std != null }">
-                   	 		<li class=" pl-2 list-inline-item pull-left"><a href="/study/user_myList" class="btn btn-success btn-sm">참여한 스터디 보러가기</a></li> 
-	                    </c:if>
-	                    <c:if test="${teach != null }">
-                   	 		<li class=" pl-2 list-inline-item pull-left"><a href="/study/user_myList" class="btn btn-success btn-sm">나의 강좌보러가기</a></li> 
-	                    </c:if>
-	                    </c:otherwise>
-	                    </c:choose>
+                    	<c:if test="${std == null && teach == null}"> 
+                    		<li class=" pl-2 list-inline-item pull-left"><a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-sm">회원가입 하러 가기</a></li> 
+                    	</c:if>
                     	<c:if test="${std == null && teach == null}">
                         	<li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
@@ -238,9 +228,15 @@
                         	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
                         	</a>
-                        		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								    <a  class="dropdown-item text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
-                        			<a href="javascript:document.myForm.submit();" class="dropdown-item text-black-50 font-weight-bold">내정보 수정</a>
+                        		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
+                        			<a href="javascript:document.myForm.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
+                        			 <c:if test="${std != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
+				                    </c:if>
+				                    <c:if test="${teach != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">나의 강좌보러가기</a>
+				                    </c:if>
 								 </div>
                         	</form>
                         	</li>
@@ -265,11 +261,17 @@
                         		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
                         			<a href="javascript:document.myForm2.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
+                        			 <c:if test="${std != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
+				                    </c:if>
+				                    <c:if test="${teach != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">나의 강좌보러가기</a>
+				                    </c:if>
 								 </div>
                         	</form>
                         	</li>
                         </c:if>
-                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item pr-2"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.equals('admin')}">
@@ -689,10 +691,10 @@
                                     <div class="front"><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a></div>
                                     <div class="back"><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a>
+                            </div><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}" class="invisible"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a>
                             <div class="text">
                                 <h3>${tearstudy.t_title}</h3>
-                                <p class="price"> 
+                                <p class="price">  
                                     <del></del><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}" class="button2 b-orange rot-135">Details</a>
                                 </p>
                             </div> 
