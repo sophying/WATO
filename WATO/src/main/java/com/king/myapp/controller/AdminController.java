@@ -111,7 +111,13 @@ public class AdminController {
 	    	} else if (filter.equals("20")) {
 	    		List<TeachVO> teachList = adminservice.teachList2();
 				model.addAttribute("teachList", teachList);
-	    	}	    	
+				
+	    	} else if (filter.equals("30")) {
+	    		List<StdVO> studentList = adminservice.studentList2();
+				model.addAttribute("studentList", studentList);
+				List<TeachVO> teachList = adminservice.teachList2();
+				model.addAttribute("teachList", teachList);
+	    	}
 	    	return "admin/management";
 	    }
 	    

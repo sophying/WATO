@@ -111,7 +111,7 @@
                   <div style="float: right;">
                   	<div style="float: left" class="form-group col-sm-6 col-xs-6"> 
 						<select style="font-size: 14px;" class="form-control" name="filter" id="filter"> 
-							<option value="">학생/강사</option> 
+							<option value="30">학생/강사</option> 
 							<option value="10">학생</option>    
 							<option value="20">강사</option>    
 						</select>  
