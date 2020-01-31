@@ -545,7 +545,7 @@
 							<div class="h-75 row d-flex  p-2  m-0 container d-inline-block">
 								<div class=" h-100 w-25 d-inline-block">
 									<label for="name" class="row d-flex  pt-3 pb-2 m-0 text-justify   control-label justify-content-center">
-										<font size="4">스터디 별점</font>
+										<font class="font-weight-bold"size="5">스터디 별점</font>
 									</label> 
 								</div>
 								<div  class="cols-sm-5 d-inline-block w-75 pt-2 pl-5 pr-5 justify-content-center container-fluid  border-top">
@@ -618,24 +618,24 @@
 							
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block ">
 								<div class=" h-100 w-25 d-inline-block">
-									<label for="name" class="row d-flex  pt-5 m-0 text-justify   control-label justify-content-center">
-										<font color="#787878" size="4">상세 내용</font>
+									<label for="name" class="row d-flex  pt-5 m-0 text-justify  control-label justify-content-center">
+										<font class="font-weight-bold"color="#787878" size="5">상세 내용</font>
 									</label>
 								</div>
 								
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5  pl-5 pr-5 justify-content-center container-fluid border-top">
 									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-5" >
 										
-										<table style="width:400px;">
+										<table style="width:700px;">
 											<tr>
-												<th id="s_level"><font color="#a0a0a0" > <label class=" d-flex p-2 pr-0 control-label ">난이도 : </label></font></th>
-												<td>${listOne.s_level }</td>
-												<th id="s_people"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">인원수 : </label></font></th>
-												<td> ${listOne.s_people }</td>
+												<th id="s_level"  style="width:80px;"><font size="3"color="#a0a0a0" ><label class=" d-flex p-2 pr-0 control-label ">난이도 : </label></font></th>
+												<td  style="width:80px;">${listOne.s_level }</td>
+												<th id="s_people" style="width:80px;"><font  size="3" color="#a0a0a0" ><label class="d-flex  control-label">인원수 : </label></font></th>
+												<td  style="width:80px;"><span  class="pull-left">${listOne.s_people }</span></td>
 											</tr>	
 											<tr>
-												<th id="s_people"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">장소 : </label></font></th>
-												<td colspan="3">${listOne.s_place }</td>
+												<th id="s_people"><font size="3"color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">장소 : </label></font></th>
+												<td colspan="4" >${listOne.s_place }</td>
 											</tr>	
 										</table>
 									</div>

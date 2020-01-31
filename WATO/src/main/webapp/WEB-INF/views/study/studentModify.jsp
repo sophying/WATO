@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -419,7 +420,7 @@
     										</select>
                           <label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
 	                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-<!-- s_people --> 	      		<input type="text" class="form-control" name="s_people" id="s_people" value="${listOne.s_people }" placeholder="인원을 정해주세요!" />
+<!-- s_people --> 	      		<input type="text" class="form-control"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="s_people" id="s_people" value="${listOne.s_people }" placeholder="숫자를 사용해주세요!" />
 	               	
                 </div>
             </div>
@@ -435,7 +436,7 @@
                          </div>
                       </div>
                       <div class="form-group">
-                          <label for="s_title" class="cols-sm-2 control-label font-weight-bold">강의 주제</label>
+                          <label for="s_title" class="cols-sm-2 control-label font-weight-bold">스터디 주제</label>
                           <label id="s_title" class="cols-sm-2 control-label font-weight-bold"></label>
                              <div class="cols-sm-10">
                                 <div class="input-group">
@@ -451,14 +452,7 @@
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
                        		&nbsp;&nbsp;&nbsp;&nbsp;<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
                        </label>
-
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                       <div class="d-inline row mx-md-n6">
-                                <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                               <!--  <input type="text" class="form-control" name="schedule" id="schedule" placeholder="함께 모일 장소를 알려주세요!" /> -->
+                       <div class="d-inline row  mx-mb-n1 mr-2 pull-right">
                                 <input type="button" class="btn btn-primary box " id="execDaumPostcode" value="우편번호 찾기">
                          </div>
 

@@ -472,11 +472,7 @@
                 <img id="img_btn_2" src="../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_5" src="../resource/images/imgs/android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_5" src="../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div>
             <!-- </div>
@@ -584,7 +580,7 @@
 
                      <label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
 	                            <span class="input-group-addon"></span>
-<!-- s_people --> 	      		<input type="text" class="form-control" name="s_people" id="s_people" placeholder="인원을 정해주세요!" />
+<!-- s_people --> 	      		<input type="text" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"class="form-control p-0" name="s_people" id="s_people" placeholder="숫자를 사용해주세요!" />
 	               	
                 </div>
             </div>
@@ -614,21 +610,13 @@
                    <!-- 우편번호 찾기 API -->
                    <div class="form-group">
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
-                       		&nbsp;&nbsp;&nbsp;&nbsp;<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
+                       		&nbsp;&nbsp;&nbsp;&nbsp;<small>그룹원과 함께할 장소를 알려주세요!</small>
                        </label>
-
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                       <div class="d-inline row mx-md-n6">
-                                <span class="input-group-addon"></span>
-                               <!--  <input type="text" class="form-control" name="schedule" id="schedule" placeholder="함께 모일 장소를 알려주세요!" /> -->
+                       <div class="d-inline row mx-mb-n1 mr-2 pull-right">
                                 <input type="button" class="btn btn-primary box " id="execDaumPostcode" value="우편번호 찾기">
-                         </div>
-
+                          </div>
                           <div class="cols-sm-10">
-                            <div class="input-group mt-1 mb-1">
+                            <div class="input-group  mb-1">
                             <span class="input-group-addon"></span>
   <!-- s_postnum -->            <input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" required>
                             </div>

@@ -289,24 +289,23 @@
 							
 							
 
-							<div class="h-75 row d-flex  p-2  m-0 container d-inline-block">
-								<div class=" h-100 w-25 d-inline-block">
+							<div class="h-75 row d-flex  p-2  m-0 container d-inline-block" >
+								<div class=" h-100 w-25 d-inline-block"  style="height:auto;">
 									<label for="name" class="row d-flex  pt-3 pb-4 m-0 text-justify   control-label justify-content-center">
 										<font size="6">강사 소개</font>
 									</label>
-									<div class="cols-sm-5 pb-5 pr-2 pl-2">
+									<div class="cols-sm-5 pb-5 pr-2 pl-2"  style="height:auto;">
 						              <div class="input-group d-flex justify-content-center ">
-						                <img id="img_btn_0" src="../resource/images/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+						                <img id="img_btn_0" src="../resource/images/imgs/김혜련_증명.png"  class="img-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
 						              </div>
            						    </div>
 								</div>
 							
 	
 								
-								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-2  pl-5 pr-5 justify-content-center container-fluid ">
-									<div  style=" word-break:break-all; height:100%;"class="row h-50 d-block d-flex pt-2 "  scroll="no" >
-										
-										<pre style="height:250px;" ><font size="4"><c:out value="${listOne.t_intro }" /></font></pre>
+								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-2  pl-5 pr-5 justify-content-center container-fluid " >
+									<div  style="word-break:break-all;"class="row d-block d-flex pt-2 "  >
+										<pre style="padding: 50px; height: auto; width:auto;  overflow: auto; word-break: break-all; "><font size="4"><c:out value="${listOne.t_intro }" /></font></pre>
 									</div>
 								</div>
 							</div>
@@ -315,7 +314,7 @@
 							<div class="h-75 row d-flex  p-2  m-0 container d-inline-block">
 								<div class=" h-100 w-25 d-inline-block">
 									<label for="name" class="row d-flex  pt-3 pb-2 m-0 text-justify   control-label justify-content-center">
-										<font size="4">스터디 별점</font>
+										<font  class="font-weight-bold"  size="5">스터디 별점</font>
 									</label> 
 								</div>
 								<div  class="cols-sm-5 d-inline-block w-75 pt-2 pl-5 pr-5 justify-content-center container-fluid  border-top">
@@ -389,18 +388,18 @@
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block ">
 								<div class=" h-100 w-25 d-inline-block">
 									<label for="name" class="row d-flex  pt-5 m-0 text-justify   control-label justify-content-center">
-										<font color="#787878" size="4">상세 내용</font>
+										<font  class="font-weight-bold"  color="#787878" size="5">상세 내용</font>
 									</label>
 								</div>
 								
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5  pl-5 pr-5 justify-content-center container-fluid border-top">
 									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-5" >
 										
-										<table style="width:600px;">
+										<table style="width:700px;">
 											<tr>
-												<th id="t_level"><font color="#a0a0a0" > <label class=" d-flex p-2 pr-0 control-label ">난이도 : </label></font></th>
+												<th id="t_level" style="width:80px;"><font color="#a0a0a0" > <label class=" d-flex p-2 pr-0 control-label ">난이도 : </label></font></th>
 												<td>${listOne.t_level }</td>
-												<th id="t_people"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">인원수 : </label></font></th>
+												<th id="t_people" style="width:80px;"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">인원수 : </label></font></th>
 												<td> ${listOne.t_people }</td>
 											</tr>	
 											<tr>
@@ -409,7 +408,7 @@
 											</tr>	
 											<tr>
 												<th id="t_people"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">장소 : </label></font></th>
-												<td colspan="3">${listOne.t_place }</td>
+												<td colspan="4">${listOne.t_place }</td>
 											</tr>	
 										</table>
 									</div>
@@ -421,7 +420,7 @@
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block">
 								<div class=" h-100 w-25 d-inline-block">
 									<label for="name" class="row d-flex  pt-5 m-0 text-justify   control-label justify-content-center">
-										<font size="5">강의 내용</font>
+										<font class="font-weight-bold"  size="5">강의 내용</font>
 									</label>
 								</div>
 								

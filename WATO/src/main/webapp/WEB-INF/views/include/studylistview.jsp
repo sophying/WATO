@@ -386,7 +386,7 @@
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>  
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		            ${TearchlistAll.t_title} 
+		              <a href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TearchlistAll.t_no}'" >${TearchlistAll.t_title}</a>
 		        </h6>  
 		        <h6 class="description">    
 		                ${TearchlistAll.t_userId} <i class="fa fa-id-badge" aria-hidden="true"></i> 
@@ -413,7 +413,7 @@
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${studylistAll.s_title}
+		        	 <a href="javascript:parent.location.href='../study/study_DetailRead?s_no=${studylistAll.s_no}'" >${studylistAll.s_title}</a>
 		        </h6> 
 		        <h6 class="description">   
 		                ${studylistAll.s_userId}   
@@ -439,9 +439,8 @@
 		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div>
-<!-- ******* 혜련 작업 중  ********* -->		       
 		       <h6  id="s_detailGo" onclick="s_detailGo()" class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${StudyListFilterdata.s_title}
+		        			<a href="javascript:parent.location.href='../study/study_DetailRead?s_no=${StudyListFilterdata.s_no}'" >${StudyListFilterdata.s_title}</a>
 		        </h6>  
 		        <h6 class="description">  
 		                ${StudyListFilterdata.s_userId} 
@@ -468,7 +467,7 @@
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div> 
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${TeacherListFilter.t_title}
+		        			<a href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TeacherListFilter.t_no}'" >${TeacherListFilter.t_title}</a>
 		        </h6>  
 		        <h6 class="description">  
 		                ${TeacherListFilter.t_userId}<i class="fa fa-id-badge" aria-hidden="true"></i>

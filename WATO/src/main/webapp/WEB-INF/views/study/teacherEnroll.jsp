@@ -481,11 +481,7 @@
                 <img id="img_btn_2" src="../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_5" src="../resource/images/imgs/android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_5" src="../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div>
             <!-- </div>
@@ -611,7 +607,7 @@
 										
                           		<label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
 	                                 <span class="input-group-addon"></span>
-<!-- t_people --> 	       			<input type="text" class="form-control" name="t_people" id="t_people" placeholder="인원을 정해주세요!" />
+<!-- t_people --> 	       			<input type="text" class="form-control"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"name="t_people" id="t_people" placeholder="숫자를 사용해주세요!" />
 	               	
                       	 </div>
                       </div>
@@ -644,17 +640,9 @@
                        <label for="sPlace" class="cols-sm-2 control-label font-weight-bold">강의 장소
                        		&nbsp;&nbsp;&nbsp;&nbsp;<small>강의장소는 확실하게 정해주신 뒤 등록 바랍니다.</small>
                        </label>
-                       
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       
-                       <div class="d-inline row mx-md-n6">
-                                <span class="input-group-addon"></span>
-                               <!--  <input type="text" class="form-control" name="schedule" id="schedule" placeholder="함께 모일 장소를 알려주세요!" /> -->
+                       <div class="d-inline row  mx-mb-n1 mr-2 pull-right">
                                 <input type="button" class="btn btn-primary box " id="execDaumPostcode" value="우편번호 찾기">
                          </div>
-                          
                           <div class="cols-sm-10">
                             <div class="input-group mt-1 mb-1">
                             <span class="input-group-addon"></span>
@@ -697,7 +685,7 @@
  					   <label id="price-Text" class="cols-sm-2 control-label font-weight-bold"></label>
                         <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
 	                            <span class="input-group-addon"></span>
-	                            <input type="text" class="form-control mr-3" name="t_price" id="t_price" placeholder="합리적인 참여비를 작성해주세요" />     
+	                            <input type="text" class="form-control mr-3" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="t_price" id="t_price" placeholder="합리적인 참여비를 작성해주세요" />     
                           		<label class="pt-1 mt-1 control-label font-weight-bold w-25">&nbsp;&nbsp;&nbsp;원</label>
 	                                 
                       	 </div>

@@ -49,6 +49,8 @@ public class TeacherenrollController {
 		logger.info("--------------[ 강의 등록 페이지 GET ]-----------------");
 		StdVO std =  (StdVO) session.getAttribute("std");
 		TeachVO teach =  (TeachVO) session.getAttribute("teach");
+		
+		
 		model.addAttribute("std",std);
 		model.addAttribute("teach",teach);
 	}
