@@ -4,7 +4,11 @@ package com.king.myapp.persistence;
 import java.util.List;
 import java.util.Map;
 
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
+import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 
 public interface StudentParticipationDAO {
@@ -28,6 +32,22 @@ public interface StudentParticipationDAO {
 	// 학생 참여 신청 카운트 -
 	void partiCntMinus(int s_no) throws Exception;
 	
+	//학생 스터디 참여 리스트 
+	List<StudyEnrollVO> s_getStudyPartiList(StdVO std) throws Exception;
+	
+	// 별점 평가한 유저 값 부여 
+	void checkStarParti(Map<String, Object> map) throws Exception;
+	
+	// 별점 평가 유저 확인 
+	StudentParticipationVO getCheckStarParti(Map<String, Object> checkUser) throws Exception;
+
+	// 참여 리스트 & 별점 참여 유저 불러오기
+	List<StudentParticipationVO> getStarPartiUser(StdVO std) throws Exception;
+	
+	// 학생 강의 참여 리스트 
+	List<TeacherEnrollVO> getClassPartiList(StdVO std) throws Exception;
+	
+	
 	
 	
 /******************************/	
@@ -49,6 +69,19 @@ public interface StudentParticipationDAO {
 		
 	// 학생 참여 신청 카운트 -
 	void t_partiCntMinus(int t_no) throws Exception;
+
+	// 학생 강의 별점 평가 유무 
+	void class_checkStarParti(Map<String, Object> t_map) throws Exception;
+
+
+/*************** 강사를 위한 목차 ***************/		
+	
+	// 강사를 위한 강의 목록 
+	List<TeacherEnrollVO> t_getTeachClassList(TeachVO teach) throws Exception;
+
+
+
+
 
 	
 }

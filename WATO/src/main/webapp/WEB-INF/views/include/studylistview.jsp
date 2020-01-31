@@ -17,6 +17,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script> 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- 제이쿼리 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head> 
 <style> 
 .studylistviewbody #about {
@@ -25,16 +27,19 @@
   padding: 0;
   margin-bottom: 128px; 
 }
+
 .studylistviewbody #about .card-title {
   margin-top: 85px;
   text-align: center;
 } 
+
 .studylistviewbody #about .description {
   color: #212121;
   padding-bottom: 10px;
   text-align: center;
 }
-.studylistviewbody #about .card-header img.background { 
+
+.studylistviewbody #about .card-header img.background {
   width: 100%;
   height: 250px;  
 }  
@@ -48,16 +53,19 @@
   bottom: 75px;
   margin-bottom: -150px;
 }
+
 .studylistviewbody .social {
   padding: 5px; 
   text-align: center;
   font-size: 1.5em;
 }
+
 .studylistviewbody .story {
   padding: 5px;
   text-align: center;
   font-size: 1.2em;
 }
+
 .studylistviewbody .wrap {
   position: absolute;
   overflow: hidden;
@@ -72,9 +80,11 @@
   transition: all 0.5s;
   visibility: hidden;
 }
+
 .studylistviewbody .wrap .content {
   opacity: 0;
 }
+
 .studylistviewbody .wrap:before {
   position: absolute;
   width: 1px;
@@ -89,6 +99,7 @@
   -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+
 .studylistviewbody .wrap.active {
   display: block;
   visibility: visible;
@@ -97,11 +108,12 @@
   transform: translateY(0px);
   transition: all 0.5s;
 }
+
 .studylistviewbody .wrap.active:before {
   height: 2000px;
   width: 2000px;
   border-radius: 50%;
-  top: 50%; 
+  top: 50%;
   left: 50%;
   margin-left: -1000px;
   margin-top: -1000px;
@@ -109,6 +121,7 @@
   -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+
 .studylistviewbody .wrap.active .content {
   position: relative;
   z-index: 1;
@@ -160,6 +173,7 @@
   padding: 0;
 }
 [type="checkbox"]:not(:checked),[type="checkbox"]:checked{position:static;left:0px;visibility:visible;}
+
   .col-sm-2 {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 16.666667%;
@@ -322,6 +336,7 @@
 						   console.log( options );   
 						   return false;  
 						});
+
 						$('#filtersubmit').click(function() { 
 							var str = "";  
 							$("input[type='checkbox']").each(function() {
@@ -337,6 +352,7 @@
 							/* document.getElementById('timevalue').value = str;  */
 							filterform.submit();
 						});
+
 						$("#resetform").click(function () {
 							filterform.reset();
 							$("input[type='checkbox']").each(function() {
@@ -351,6 +367,10 @@
 								data{filetertype : }
 							})
 						}); */
+						 
+						
+						
+						
 					});
 					</script> 
 	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size: 20px; font-weight: bold;">${TearchlistAll.size()+studylistAll.size()+StudyListFilterdata.size()+TeacherListFilter.size()}개의 스터디</font>
@@ -366,7 +386,7 @@
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg" >
 		        </div>  
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		           ${TearchlistAll.t_title} 
+		              <a href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TearchlistAll.t_no}'" >${TearchlistAll.t_title}</a>
 		        </h6>  
 		        <h6 class="description">    
 		                ${TearchlistAll.t_userId} <i class="fa fa-id-badge" aria-hidden="true"></i> 
@@ -409,7 +429,7 @@
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
 		       <a href="javascript:parent.location.href='/study/study_DetailRead?s_no=${studylistAll.s_no}'" style="color: black;">
-		        			${studylistAll.s_title}  
+		        	 <a href="javascript:parent.location.href='../study/study_DetailRead?s_no=${studylistAll.s_no}'" >${studylistAll.s_title}</a>
 		        </a>
 		        </h6> 
 		        <h6 class="description">   
@@ -441,8 +461,8 @@
 		            </p>
 		          </div> 
 		        </div>
-		      </div>   
-		    </div> 
+		      </div>  
+		    </div>
 		  </c:forEach>
 		  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
 		    <div class="col s12 m4"> 
@@ -451,8 +471,8 @@
 		          <img class="background" src="${StudyListFilterdata.s_photo}">
 		          <img class="user" src="${StudyListFilterdata.s_profile}">
 		        </div>
-		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${StudyListFilterdata.s_title}  
+		       <h6  id="s_detailGo" onclick="s_detailGo()" class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
+		        			<a href="javascript:parent.location.href='../study/study_DetailRead?s_no=${StudyListFilterdata.s_no}'" >${StudyListFilterdata.s_title}</a>
 		        </h6>  
 		        <h6 class="description">  
 		                ${StudyListFilterdata.s_userId} 
@@ -486,7 +506,7 @@
 		      </div> 
 		    </div>
 		  </c:forEach>
-		  <c:forEach items="${TeacherListFilter}" var="TeacherListFilter" >
+		  <c:forEach items="${TeacherListFilter}" var="TeacherListFilter">
 			 <div class="col s12 m4"> 
 		      <div class="card" id="about">  
 		        <div class="card-header">
@@ -494,7 +514,7 @@
 		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
 		        </div> 
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${TeacherListFilter.t_title}  
+		        			<a href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TeacherListFilter.t_no}'" >${TeacherListFilter.t_title}</a>
 		        </h6>  
 		        <h6 class="description">  
 		                ${TeacherListFilter.t_userId}<i class="fa fa-id-badge" aria-hidden="true"></i>
@@ -535,6 +555,7 @@
 		  </div>   
 		</div>
 	</div>  
+  
 <script type="text/javascript">
 	function heartbuttonfunct(event) {
 		var loginplase = "${loginplase}"; 
@@ -551,7 +572,15 @@
 			return false;  
 		}
 	}
+// ************** 혜련 작업중 *********************__________________________________
+$('#s_detailGo').on("click", function s_detailGo() {
+	window.parent.location.href= "redirect:/study/study_DetailRead?s_no="+"${studylistAll.s_no}"; 
+});
 	
+	
+
+
+//__________________________________
 	function togglefunction (event) {  
 		$(event).toggleClass('active');  
 		$(event).parent().next().toggleClass('active');
@@ -574,6 +603,7 @@
 		
 		return false;
 	}
+
 	$( ".more" ).click(function() {
 	    //alert($( this ).css( "transform" ));
 	    if (  $( this ).css( "transform" ) == 'none' ){
@@ -601,6 +631,7 @@
 <script type="text/javascript"> 
 document.body.scrollIntoView(true);
 parent.document.all.studylistview.height = document.body.scrollHeight;
+
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
 

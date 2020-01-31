@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-				<!-- Modal -->
-					<div  class="modal fade" id="Form-modal" role="dialog">
+<!-- Modal -->
+					<div  class="modal fade" id="myStar" role="dialog">
 					  <div class="modal-dialog  mt-5">
 					    
 	<!--  form -->	 	 <form id="participationForm"action="/study/header_DetailRead" method="post" role="form"> 
@@ -39,7 +39,5 @@
 					      </form>
 						</div>
 					</div>	
-										      
-
 </body>
 </html>

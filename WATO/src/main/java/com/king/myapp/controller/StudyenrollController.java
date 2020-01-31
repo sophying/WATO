@@ -1,5 +1,6 @@
 package com.king.myapp.controller;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +23,8 @@ import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.service.StudentParticipationService;
 import com.king.myapp.service.StudyEnrollService;
 
@@ -47,14 +50,16 @@ public class StudyenrollController {
 	public void getEnroll(HttpSession session , Model model) throws Exception{
 		logger.info(">--------------------[ 일반인 스터디 모집 등록 GET ]---------------------------<");
 		
-		StdVO user =  (StdVO) session.getAttribute("std");
-		model.addAttribute("std",user);
+		StdVO std =  (StdVO) session.getAttribute("std");
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach);
 		
 	}
 	
 	// 1. 일반인 Study 모집 글 작성 등록
 	@RequestMapping(value = "/studentEnroll", method = RequestMethod.POST)
-	public String postEnroll(@ModelAttribute StudyEnrollVO studyVO, Model model) throws Exception{
+	public String postEnroll(@ModelAttribute StudyEnrollVO studyVO, Model model,HttpSession session ) throws Exception{
 
 		logger.info(">--------------------[ 일반인 스터디 모집 등록 POST ]---------------------------<");		
 		
@@ -70,8 +75,10 @@ public class StudyenrollController {
 			System.out.println(studyVO.getS_startDate());
 			System.out.println(studyVO.getS_endDate());
 			
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");
 			studyService.enroll(studyVO);
 			model.addAttribute("std");
+			model.addAttribute("teach");
 		
 		return "redirect:/";
 		
@@ -79,11 +86,22 @@ public class StudyenrollController {
 	
 	//2. 강의 등록 리스트 출력 
 		@RequestMapping(value = "/studyBoard", method = RequestMethod.GET)
-		public void getClassBoard(Model model) throws Exception{
+		public void getClassBoard(Model model,HttpSession session ) throws Exception{
 			logger.info("--------------[ 스터디 리스트 출력  GET ]-----------------");
 			
 			List<StudyEnrollVO> studylist = studyService.list(); 
-			model.addAttribute("std");
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");
+			StdVO std =  (StdVO) session.getAttribute("std"); 
+			
+			if (std == null && teach== null ) {
+				
+				model.addAttribute("std",null);
+				model.addAttribute("teach",null);
+			}else {
+				
+				model.addAttribute("teach",teach);
+				model.addAttribute("std",std);
+			}
 			model.addAttribute("studylist", studylist);
 		}
 	
@@ -95,39 +113,38 @@ public class StudyenrollController {
 			studyService.viewCount(s_no);
 			StudyEnrollVO listOne = studyService.detailRead(s_no);
 			List<StudentReplyVO> reply = studyService.replyRead(s_no); // 댓글 불러오기 
-			//List<StudentReReplyVO> reReply = studyService.reReplyRead(s_no);
 			
-			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
-				model.addAttribute("std");
-				model.addAttribute("reply",reply);
-				//model.addAttribute("reReply",reReply);
-				model.addAttribute("listOne",listOne);
-				model.addAttribute("usercheck",null);
-			}else {
-			
+			DecimalFormat form = new DecimalFormat("#.##");
+			double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
+			form.format(star);
+
+			model.addAttribute("starScore",star);
 					
 			//  현재 유저의 참여신청여부 파악  
-			StdVO user = (StdVO) session.getAttribute("std");
-			String user_id = user.getUser_Id();
-			Map<String, Object> map = new HashMap<String, Object>();
+			StdVO std = (StdVO) session.getAttribute("std");
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");
 			
-			map.put("p_userid", user_id);
-			map.put("s_no", s_no);
-			
-			StudentParticipationVO partiOne = participationService.partiCheck(map);
-		    // 	
-					
-			if (partiOne != null) { 
-				model.addAttribute("partiOne",partiOne);
+			if (std != null) {
+				
+				String user_id = std.getUser_Id();
+				Map<String, Object> map = new HashMap<String, Object>();
+				
+				map.put("p_userid", user_id);
+				map.put("s_no", s_no);
+				
+				StudentParticipationVO partiOne = participationService.partiCheck(map);
+				// 	
+				
+				if (partiOne != null) {
+					model.addAttribute("partiOne",partiOne);
+				}
 			}
 			
-			//List<LeaderReVO> reReply = studyService.reReplyRead(s_no);
-			model.addAttribute("usercheck","checked");
-			model.addAttribute("std");
+			
+			model.addAttribute("teach",teach);
+			model.addAttribute("std", std);
 			model.addAttribute("reply",reply);
-			//model.addAttribute("reReply",reReply);
 			model.addAttribute("listOne",listOne);
-			}
 			
 	}		
 	
@@ -145,7 +162,10 @@ public class StudyenrollController {
 			System.err.println(partiVO.getP_tell());
 			System.err.println(partiVO.getP_userid());
 			 
-			model.addAttribute("std");
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");
+			StdVO std =  (StdVO) session.getAttribute("std");	
+			model.addAttribute("std", std);
+			model.addAttribute("teach",teach);
 			
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
 			
@@ -169,8 +189,10 @@ public class StudyenrollController {
 					participationService.partidelete(map); 
 					participationService.partiCntMinus(s_no);
 				    // 	
-							
-					model.addAttribute("std");
+					TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+					StdVO std =  (StdVO) session.getAttribute("std");		
+					model.addAttribute("std",std);
+					model.addAttribute("teach",teach);
 					
 					
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
@@ -234,32 +256,42 @@ public class StudyenrollController {
 			  model.addAttribute("chu","추후결정");
 			  System.out.println(beforeDay.contains("추후결정"));
 		  }
-		 		 
-		model.addAttribute("std");
+		  
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach);
 		model.addAttribute("listOne",listOne);
 		
 	}
 
 	// 6. 일반인 Study 등록 내용 수정 글 등록
 			@RequestMapping(value = "/studentModify", method = RequestMethod.POST)
-			public String postModify(@RequestParam("s_no") int s_no, StudyEnrollVO studyVO) throws Exception{
+			public String postModify(@RequestParam("s_no") int s_no, StudyEnrollVO studyVO, Model model,HttpSession session) throws Exception{
 				
 				logger.info("--------------[ 스터디 수정 내용 등록  POST ]-----------------");		
 				
 				studyService.modify(studyVO);
 				
+				TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+				StdVO std =  (StdVO) session.getAttribute("std"); 		 
+				model.addAttribute("std",std);
+				model.addAttribute("teach",teach);
 				return "redirect:/study/study_DetailRead?s_no="+s_no;
 				
 			}
 	
 	// 상세페이지 삭제 
 	@RequestMapping(value = "/studentDelete", method = RequestMethod.GET)
-	public String postDelete(@RequestParam("s_no") int s_no, Model model ) throws Exception{
+	public String postDelete(@RequestParam("s_no") int s_no, Model model ,HttpSession session) throws Exception{
 		logger.info("--------------[ 내용 삭제  POST ]-----------------");				
 				
 		studyService.studyDelete(s_no);
 				
-		model.addAttribute("std");
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach);
 		return "redirect:/";
 	}		
 			
@@ -267,12 +299,16 @@ public class StudyenrollController {
 	
 	// 7. 상세페이지 댓글 등록 
 		@RequestMapping(value = "/s_detailReply.do", method = RequestMethod.POST)
-		public String postReply(@RequestParam("s_no") int s_no, StudentReplyVO replyVO ,StudyEnrollVO studyVO, Model model ) throws Exception{
+		public String postReply(@RequestParam("s_no") int s_no, StudentReplyVO replyVO ,StudyEnrollVO studyVO, Model model,HttpSession session ) throws Exception{
 			
 			logger.info("--------------[ 스터디 댓글 내용 등록  POST ]-----------------");		
 				
 			studyService.replyInsert(replyVO);    
-			  
+			
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+			StdVO std =  (StdVO) session.getAttribute("std"); 		 
+			model.addAttribute("std",std);
+			model.addAttribute("teach",teach);			  
 			return "redirect:/study/study_DetailRead?s_no="+s_no;
 			
 		}	
@@ -280,12 +316,17 @@ public class StudyenrollController {
 	
 	//
 	@RequestMapping(value = "/replyModify", method = RequestMethod.POST)
-	public String postReplyModify(@RequestParam("s_no") int s_no,@RequestParam("r_no") int r_no, Model model , StudentReplyVO replyVO ,StudyEnrollVO studyVO ) throws Exception{
+	public String postReplyModify(@RequestParam("s_no") int s_no,@RequestParam("r_no") int r_no, Model model , StudentReplyVO replyVO ,StudyEnrollVO studyVO,HttpSession session ) throws Exception{
 			
 		logger.info("--------------[ 스터디 댓글 내용 수정  POST ]-----------------");		
 			
 		studyService.replyUpdate(replyVO);   
-			
+		
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach);			
 			  
 		return "redirect:/study/study_DetailRead?s_no="+s_no;
 			
@@ -293,76 +334,165 @@ public class StudyenrollController {
 	
 	// 댓글삭제
 	@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
-	public String getReplyDelete(@RequestParam("r_no") int r_no, @RequestParam("s_no") int s_no) throws Exception{
+	public String getReplyDelete(@RequestParam("r_no") int r_no, @RequestParam("s_no") int s_no,Model model) throws Exception{
+		
+		
+		logger.info("--------------[ 스터디 댓글 내용 삭제  POST ]-----------------");	
 		studyService.replyDelete(r_no);
-			
+
+		
+		model.addAttribute("std");
+		model.addAttribute("teach");
 		return "redirect:/study/study_DetailRead?s_no="+s_no;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-/*	
-	
-	// 7. 상세페이지 댓글 등록 
-		@RequestMapping(value = "/s_detailReply.do", method = RequestMethod.POST)
-		public String postReply(@RequestParam("s_no") int s_no, StudentReplyVO replyVO ,StudyEnrollVO studyVO, Model model ) throws Exception{
+	// 나의 참여 리스트 보러가기 
+	@RequestMapping(value = "/user_myList", method = RequestMethod.GET)
+	public void getMyList(HttpSession session, Model model) throws Exception{
+		
+		logger.info("--------------[ 나의 참여 리스트 보러가기   GET ]-----------------");	
+
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 	
+		
+		
+		if (std != null) {
 			
-			logger.info("--------------[ 스터디 댓글 내용 등록  POST ]-----------------");		
+			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
+			List<TeacherEnrollVO> classParti = participationService.getClassPartiList(std);
 			
-			studyService.replyInsert(replyVO);   
-			  
-			model.addAttribute("std");
-			return "redirect:/study/study_DetailRead?s_no="+s_no;
+			System.out.println("여기는 std ");
 			
+			model.addAttribute("classParti",classParti);
+			model.addAttribute("studyParti",studyParti);
+			model.addAttribute("std", std);
+			model.addAttribute("teach", teach);	
+			
+		}else if (teach != null) {
+			
+			List<TeacherEnrollVO> classParti = participationService.getTeachClassList(teach);
+			
+			System.out.println("여기는 teach ");
+			
+			model.addAttribute("classParti",classParti);
+			model.addAttribute("teach", teach);	
+			model.addAttribute("std", std);
 		}
 		
-		// 상세페이지 삭제 
-		@RequestMapping(value = "/studentDelete", method = RequestMethod.GET)
-		public String postDelete(@RequestParam("s_no") int s_no, Model model ) throws Exception{
-			logger.info("--------------[ 내용 삭제  POST ]-----------------");				
+		System.out.println("여기는 return 전 !");
+	}
+	
+	// 별점등록 버튼 눌렀을 때  액션 
+	@RequestMapping(value = "/user_myList", method = RequestMethod.POST)
+	public void postStarScore(@RequestParam("s_no")int s_no,@RequestParam("starScore") int starScore ,@RequestParam("p_userid") String p_userid, Model model,
+								HttpSession session) throws Exception{
+		
+		logger.info("--------------[ 나의 참여 스터디 별점 등록   GET ]-----------------");	 
+		
+		System.out.println(starScore);
+		Map<String, Object> starScoreUpdate = new HashMap<String, Object>(); 
+		
+		starScoreUpdate.put("s_no",s_no);
+		starScoreUpdate.put("starScore", starScore);
+		
+		studyService.starPartiUpdate(starScoreUpdate);
+		
+		System.out.println("#######  별점등록을 하고 왔습니다.");
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 	
+		
+	//***** 별점 평가한 유저 값 부여 *****
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("p_userid", p_userid);
+		map.put("s_no", s_no);
+		
+		// participation.mapper   <update id="s_checkStarParti">
+		participationService.checkStarParti(map);
+		
+		
+		if (std != null) {
 			
-			studyService.studyDelete(s_no);
+	//***** 유저가 가지고 있는 참여 리스트 가져오기 *****  
+			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
+			List<TeacherEnrollVO> classParti = participationService.getClassPartiList(std);
+
+	//***** 현재 로그인한 유저가 별점평가를 하였는지 확인  *****
+			Map<String, Object> checkUser = new HashMap<String, Object>();
 			
-			model.addAttribute("std");
-			return "redirect:/";
+			checkUser.put("p_userid", std.getUser_Id());
+			checkUser.put("s_no", s_no);
+			
+			
+			System.out.println("여기는 std ");
+			
+			// participation.mapper   <select id="s_getCheckStarParti">
+			StudentParticipationVO checkStarScore = participationService.getCheckStarParti(checkUser);
+			
+				if (checkStarScore != null) {
+					//model.addAttribute("checkStarScore",checkStarScore);
+					System.out.println("#######  별점 평가한 유저 입니다. ");
+				}
+			
+			model.addAttribute("classParti",classParti);	
+			model.addAttribute("studyParti",studyParti); // 참여한 스터디 목록 
+			
+			model.addAttribute("std", std); // 유저 
+			
 		}
+			model.addAttribute("teach", teach);	
 		
-		//
-		@RequestMapping(value = "/replyModify", method = RequestMethod.POST)
-		public String postReplyModify(@RequestParam("s_no") int s_no,@RequestParam("r_no") int r_no, Model model , StudentReplyVO replyVO ,StudyEnrollVO studyVO ) throws Exception{
+	}
+	// 별점등록 버튼 눌렀을 때  액션 
+	@RequestMapping(value = "/t_user_myList", method = RequestMethod.POST)
+	public String postT_StarScore(@RequestParam("t_no")int t_no,@RequestParam("starScore") int starScore ,@RequestParam("p_userid") String p_userid, Model model,
+			HttpSession session) throws Exception{
+		
+		logger.info("--------------[ 나의 참여 스터디 별점 등록   GET ]-----------------");	 
+		
+		System.out.println(starScore);
+		Map<String, Object> class_starScoreUpdate = new HashMap<String, Object>(); 
+		
+		
+		class_starScoreUpdate.put("t_no", t_no);
+		class_starScoreUpdate.put("starScore", starScore);
+		
+		studyService.class_starPartiUpdate(class_starScoreUpdate);
+		
+		System.out.println("#######  별점등록을 하고 왔습니다.");
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 	
+		
+		//***** 별점 평가한 유저 값 부여 *****
+		Map<String, Object> t_map = new HashMap<String, Object>();
+		
+		t_map.put("p_userid", p_userid);
+		t_map.put("t_no", t_no);
+		
+		participationService.class_checkStarParti(t_map); 
+		
+		if (std != null) {
 			
-			logger.info("--------------[ 스터디 댓글 내용 등록  POST ]-----------------");		
+			//***** 유저가 가지고 있는 참여 리스트 가져오기 *****  
+			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
+			List<TeacherEnrollVO> classParti = participationService.getClassPartiList(std);
 			
-			studyService.replyUpdate(replyVO);   
+			//***** 현재 로그인한 유저가 별점평가를 하였는지 확인  *****
 			
-			model.addAttribute("std");
-			  
-			return "redirect:/study/study_DetailRead?s_no="+s_no;
+			System.out.println("여기는 std ");
+			
+			model.addAttribute("classParti",classParti);	
+			model.addAttribute("studyParti",studyParti); // 참여한 스터디 목록 
+			
+			model.addAttribute("std", std); // 유저 
 			
 		}
+		model.addAttribute("teach", teach);	
 		
-		// 댓글삭제
-		@RequestMapping(value = "/replyDelete", method = RequestMethod.POST)
-		public String getReplyDelete(@RequestParam("r_no") int r_no, @RequestParam("s_no") int s_no) throws Exception{
-			studyService.replyDelete(r_no);
-			
-			return "redirect:/study/study_DetailRead?s_no="+s_no;
-		}
-		
-*/		
-		
-		
+		return "redirect:/study/user_myList";
+	}
 
 		
 }

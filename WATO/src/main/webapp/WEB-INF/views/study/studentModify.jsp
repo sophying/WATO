@@ -1,18 +1,202 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<!-- 부가적인 테마 -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>스터디어스 - 세상을 뒤흔들어라</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="../../resource/vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="../../resource/vendor/font-awesome/css/font-awesome.min.css">
+    <!-- Google fonts - Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="../../resource/css/style.default.css" id="theme-stylesheet"> 
+    <!-- Custom stylesheet - for your changes--> 
+    <link rel="stylesheet" href="../../resource/css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="favicon.png">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
+    <link rel="icon" type="image/png" href="../../resource/images/icons/favicon.ico"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<title>Insert title here</title>
+	<!-- 합쳐지고 최소화된 최신 CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<!-- 부가적인 테마 -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+	<!-- 제이쿼리 -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <style media="screen">
+ #top{
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+        background-color: #e0e0e0;
+    }
+    #studyusnav{
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+    }
+    #search{
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+    }
+    #new{
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+    }
+    #content{
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+    }
+    #footer {
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        width: 53.8%;
+    }
+    #navigation > ul > li > ul {
+        width: 100.3%;
+    }
+    #hot{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .cate_list{
+        padding-bottom: 10px;
+    }
+    .cate_list a {
+        float: left;
+        display: block;
+        width: 33%;
+        text-align: center;
+        padding: 5px 0;
+        color: #27323c;
+    }
+    .cate_list a > * {
+        display: inline-block;
+        font-size: 13px;
+    }
+    .cate_list > a > span > img {
+        max-width: 100%;
+        vertical-align: middle;
+        border: 0;
+    }
+    #icon{
+        position: static;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    #all{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+    }
+    .carousel-item {
+        height: 50vh;
+        min-height: 350px;
+        background: no-repeat center center scroll;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    #blog-homepage{
+        position: static; 
+        margin-left: auto; 
+        margin-right: auto;
+        width: 53.8%;
+    }
+    .imgrank img{
+	    position:absolute;
+	    background:none;
+	 	width:100%;
+	 	height: auto;
+	 	max-width: 40px; 
+	 	z-index: 10;
+	 }
+	 .container-login100 { 
+	  width: 100%;  
+	  min-height: 80vh; 
+	  display: -webkit-box; 
+	  display: -webkit-flex; 
+	  display: -moz-box; 
+	  display: -ms-flexbox; 
+	  display: flex;  
+	  flex-wrap: wrap;  
+	  justify-content: center;   
+	  align-items: center; 
+	  padding: 15px;
+	  background: none; 
+	}
+	.limiter {
+	  width: 100%;
+	  margin: 0 auto;
+	}
+	.close-button {
+    transition: all 0.5s ease;
+    position: absolute;
+    background-color: #4FBFA8;
+    padding: 1.5px 7px; 
+    right: 0;
+    margin-left: -10px;
+    margin-top: -9px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    color: white;
+    -webkit-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
+    box-shadow: -3px 1px 6px 0px rgba(0,0,0,0.1);
+	} 
+	
+	.close-button:hover {
+	    background-color: tomato;
+	    color: #fff;
+	} 
+	.button2 {
+  display: inline-block; 
+  font-size: 20px;  
+  padding:0px .5em;  
+  border-radius: 5px;
+  transition: all .5s; 
+  filter: hue-rotate(0deg);
+  color: #FFF;
+  text-decoration: none;
+}
+  .b-orange, .b-orange:before {
+    background: rgba(255,193,7,1);
+    background: -moz-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,193,7,1)), color-stop(100%, rgba(255,87,34,1)));
+    background: -webkit-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc107', endColorstr='#ff5722', GradientType=1 );
+  }
+  .rot-135:hover {
+  filter: hue-rotate(135deg);
+}
 	body{
 	 background-color: #e0e0e0;
 	 }
@@ -50,6 +234,7 @@
 </head>
 
 <body>
+<!-- navbar-->
 <header class="header mb-0">
     <!--
     *** TOPBAR ***
@@ -66,7 +251,7 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
@@ -84,7 +269,7 @@
                         </c:if>
                         <c:if test="${teach != null}">
                         	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
 				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
@@ -100,12 +285,11 @@
                         	</form>
                         	</li>
                         </c:if>
-                        <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
                         <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                        <li class="list-inline-item"><a href="../admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
                     </ul>
@@ -128,11 +312,10 @@
 	        	</div>
 	    	</div>
     	</div>
-
- 
     </div> 
+    <!-- 메인 시작  -->
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
-        <div class="container"><a href="/" class="navbar-brand home"><img src="./resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container"><a href="/" class="navbar-brand home"><img src="../../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -215,8 +398,8 @@
                         </ul>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="banner"><a href="#"><img src="./resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
-                <div class="banner"><a href="#"><img src="./resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../../resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../../resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
             </div>
         </div>
                             </li>
@@ -282,13 +465,11 @@
         </div>
     </nav>
 </header>
-<div id="all">
-    <div id="content">
-        <header>
+<nav id="studyusnav" class="navbar navbar-expand-lg">  
 <form name="studyForm"class="form-horizontal" role="form" method="post" action="/study/studentModify">
-<div class="container  mx-auto">
+<div class="container  mx-auto"   style="background:#fff;">
 <!-- <1> image Enroll -->
-  <div class="row mt-3 justify-content-md-center">
+  <div class="row  justify-content-md-center">
     <div class="col-sm-5 d-inline-block"> <!-- 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
         <div class="form-group container-fluid">
           <div class="card">
@@ -306,12 +487,12 @@
             <div class="form-group"> -->
             <div class="cols-sm-5 pb-5 pr-2 pl-2">
               <div class="input-group d-flex justify-content-center ">
-                <img id="img_btn_0" src="../resource/images/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
-                <img id="img_btn_1" src="../resource/images/imgs/java.jpeg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_2" src="../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_5" src="../resource/images/imgs/android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_0" src="../../resource/images/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+                <img id="img_btn_1" src="../../resource/images/imgs/java.jpeg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_2" src="../../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_3" src="../../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_4" src="../../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_5" src="../../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div>
             <!-- </div>
@@ -327,19 +508,19 @@
     <label for="name" class="pb-1 row m-0 card-header cols-sm-3 control-label d-flex justify-content-center"><h4>스터디 기간</h4></label>
     <div class="card-body">
 	    <div class="input-group d-flex justify-content-center">
-	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	       <span class="input-group-addon"></span>
 	          <label for="start" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">시작</label>&nbsp;&nbsp;
 <!-- s_startDate  -->	<input type="date" name="s_startDate"  class="form-control col-sm-8" id="start"  value="${listOne.s_startDate }"/>
 	    </div>
 	    <div class="input-group d-flex justify-content-center">
-	       <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	       <span class="input-group-addon"></span>
 	          <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">&nbsp;&nbsp;&nbsp;끝&nbsp;</label>&nbsp;&nbsp;
 <!-- s_endtDate  -->	<input type="date" name="s_endDate" class="form-control col-sm-8 " id="end" value="${listOne.s_endDate }"/>
 	    </div>
     	<div class="form-group">
            <div class="cols-sm-10">
               <div class="input-group d-flex justify-content-center ">
-                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                 <span class="input-group-addon"></span>
 	                	<!-- 월요일 -->
 	                    <div class="form-check form-check-inline cols-sm-2">
 	                      <input type="checkbox" class="form-check-input" id="mon"   value="${mon}">
@@ -409,7 +590,7 @@
             <div class="form-group">
                 <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
                     <label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
-	                      <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	                      <span class="input-group-addon"></span>
 <!-- s_level -->	      <select name="s_level" class="selectpicker form-control w-50" id="select-box">
     										  <option value="입문">입문</option> 
     										  <option value="초급">초급</option>
@@ -417,8 +598,8 @@
     										  <option value="고급">고급</option>
     										</select>
                           <label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
-	                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-<!-- s_people --> 	      		<input type="text" class="form-control" name="s_people" id="s_people" value="${listOne.s_people }" placeholder="인원을 정해주세요!" />
+	                            <span class="input-group-addon"></span>
+<!-- s_people --> 	      		<input type="text" class="form-control"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="s_people" id="s_people" value="${listOne.s_people }" placeholder="숫자를 사용해주세요!" />
 	               	
                 </div>
             </div>
@@ -428,17 +609,17 @@
                           <label id="s_category" class="cols-sm-2 control-label font-weight-bold"></label>
                           <div class="cols-sm-10">
                             <div class="input-group">
-	                           <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+	                           <span class="input-group-addon"></span>
 <!-- s_category -->	             <input type="text" name="s_category" class="form-control"  id="category" value="${listOne.s_category}"placeholder="과목 카테고리를 알려주세요!" />
                            </div>
                          </div>
                       </div>
                       <div class="form-group">
-                          <label for="s_title" class="cols-sm-2 control-label font-weight-bold">강의 주제</label>
+                          <label for="s_title" class="cols-sm-2 control-label font-weight-bold">스터디 주제</label>
                           <label id="s_title" class="cols-sm-2 control-label font-weight-bold"></label>
                              <div class="cols-sm-10">
                                 <div class="input-group">
-                                   <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                                   <span class="input-group-addon"></span>
   <!-- s_title -->                    <input type="text"  name="s_title" class="form-control" id="stitle" value="${listOne.s_title }" placeholder="그룹의 스터디 주제를 알려주세요!" />
                                 </div>
                              </div>
@@ -548,9 +729,7 @@
     </div> <!-- 2-->
 </div><!--  1 -->
  </form>
- </header>
- </div>
- </div>
+</nav>
  <div id="blog-homepage" class="box row mb-0">
     <div class="container">
         <div class="post">
@@ -636,18 +815,14 @@ _________________________________________________________
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
-<script src="./resource/vendor/jquery/jquery.min.js"></script>
-<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="./resource/js/front.js"></script>
+<script src="../../resource/vendor/jquery/jquery.min.js"></script>
+<script src="../../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="../../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="../../resource/js/front.js"></script> 
 <!-- kakao map api key (최성웅 key)-->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
-
-</body>
-<!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <!-- kakao map api 시작-->

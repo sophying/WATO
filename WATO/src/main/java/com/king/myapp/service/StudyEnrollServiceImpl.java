@@ -1,6 +1,7 @@
 package com.king.myapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -85,6 +86,28 @@ public class StudyEnrollServiceImpl implements StudyEnrollService{
 		return studyEnrollDAO.partiCheck(partiVO);
 	}
 
+	// 참여 스터디 별점 평가 
+	@Override
+	public void starPartiUpdate(Map<String, Object> starScoreUpdate) throws Exception {
+		studyEnrollDAO.starPartiUpdate(starScoreUpdate);
+	}
+
+	// 강의 별점 등록 
+	@Override
+	public void class_starPartiUpdate(Map<String, Object> class_starScoreUpdate) throws Exception {
+		studyEnrollDAO.class_starPartiUpdate(class_starScoreUpdate);
+	}
+
+
+	
+	
+	
+	/*
+	@Override
+	public void starPartiUpdate(Map<String, Object> starScoreUpdate) throws Exception {
+		
+	}
+	*/
 	/*
 	//  리더의 답변하기 
 	@Override
