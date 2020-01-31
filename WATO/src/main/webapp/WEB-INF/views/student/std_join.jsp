@@ -31,8 +31,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
     <link rel="icon" type="image/png" href="../resource/images/icons/favicon.ico"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <style>
     #top{
@@ -130,32 +130,32 @@
         width: 53.8%;
     }
     .imgrank img{
-	    position:absolute;
-	    background:none;
-	 	width:100%;
-	 	height: auto;
-	 	max-width: 40px; 
-	 	z-index: 10;
-	 }
-	 .container-login100 { 
-	  width: 100%;  
-	  min-height: 60vh; 
-	  display: -webkit-box; 
-	  display: -webkit-flex; 
-	  display: -moz-box; 
-	  display: -ms-flexbox; 
-	  display: flex;  
-	  flex-wrap: wrap;  
-	  justify-content: center;  
-	  align-items: center; 
-	  padding: 15px;
-	  background: none; 
-	}
-	.limiter {
-	  width: 100%;
-	  margin: 0 auto;
-	}
-	.close-button {
+       position:absolute;
+       background:none;
+       width:100%;
+       height: auto;
+       max-width: 40px; 
+       z-index: 10;
+    }
+    .container-login100 { 
+     width: 100%;  
+     min-height: 60vh; 
+     display: -webkit-box; 
+     display: -webkit-flex; 
+     display: -moz-box; 
+     display: -ms-flexbox; 
+     display: flex;  
+     flex-wrap: wrap;  
+     justify-content: center;  
+     align-items: center; 
+     padding: 15px;
+     background: none; 
+   }
+   .limiter {
+     width: 100%;
+     margin: 0 auto;
+   }
+   .close-button {
     transition: all 0.5s ease;
     position: absolute;
     background-color: #4FBFA8;
@@ -169,12 +169,12 @@
     -webkit-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: -4px -2px 6px 0px rgba(0,0,0,0.1);
     box-shadow: -3px 1px 6px 0px rgba(0,0,0,0.1);
-	} 
-	
-	.close-button:hover {
-	    background-color: tomato;
-	    color: #fff;
-	}
+   } 
+   
+   .close-button:hover {
+       background-color: tomato;
+       color: #fff;
+   }
 
         th {
             border: 1px solid #bbbbbb;
@@ -186,15 +186,15 @@
             border: 1px solid #bbbbbb;
         }
     button.button1 {
-    	height: 40px; 
-    	width:150; 
-    	margin-top: 20px; 
-    	margin-bottom: 30px; 
-    	border-radius: 10px; 
-    	background-color: #5fa29480; 
-    	border: 0; 
-    	outline: 0; 
-    	color: #fff;
+       height: 40px; 
+       width:150; 
+       margin-top: 20px; 
+       margin-bottom: 30px; 
+       border-radius: 10px; 
+       background-color: #5fa29480; 
+       border: 0; 
+       outline: 0; 
+       color: #fff;
     }
 
 </style>
@@ -211,44 +211,44 @@
                 <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">모두를 위한 스터디카페</a></div>
                 <div class="col-lg-6 text-center text-lg-right"> 
                     <ul class="menu list-inline mb-0">
-                    	<c:if test="${std == null && teach == null}">
+                       <c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
                         <c:if test="${std != null}">
-                        	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">
-                        	<form name="myForm" method="get" action="/student/std_info">
-				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
-				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
-				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone2}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone3}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
-                        	</form>
-                        	</li>
+                           <p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
+                           <li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                           <li class="list-inline-item">
+                           <form name="myForm" method="get" action="/student/std_info">
+                            <input type="hidden" value="${std.std_Profile}" readonly="readonly">
+                            <input type="hidden" value="${std.std_Gender}" readonly="readonly">
+                            <input type="hidden" value="${std.user_Email}" readonly="readonly">
+                        <input type="hidden" value="${std.std_Phone1}" readonly="readonly">
+                        <input type="hidden" value="${std.std_Phone2}" readonly="readonly">
+                        <input type="hidden" value="${std.std_Phone3}" readonly="readonly">
+                        <input type="hidden" value="${std.std_Addr1}" readonly="readonly">
+                        <input type="hidden" value="${std.std_Addr2}" readonly="readonly">
+                        <input type="hidden" value="${std.std_Addr3}" readonly="readonly">
+                           <a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                           </form>
+                           </li>
                         </c:if>
                         <c:if test="${teach != null}">
-                        	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">
-                        	<form name="myForm2" method="get" action="/teach/teach_info">
-				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
-				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
-				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
-                        	</form>
-                        	</li>
+                           <p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
+                           <li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                           <li class="list-inline-item">
+                           <form name="myForm2" method="get" action="/teach/teach_info">
+                            <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
+                            <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
+                            <input type="hidden" value="${teach.user_Email}" readonly="readonly">
+                        <input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
+                        <input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
+                        <input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
+                        <input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
+                        <input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
+                        <input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
+                           <a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                           </form>
+                           </li>
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
                         <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
@@ -263,21 +263,21 @@
             </div>
         </div> 
         <div class="row">
-	        <div id="myModal" class="modal fade" tabindex="-1">
-	        	<div class="modal-dialog modal-lg">
-	            	<div class="modal-content" style="background: none; border: 0px">
-	            		<div class="modal-body"> 
-							<div class="limiter">
-								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
-								<div class="container-login100">   
-									<%@ include  file="../admin/loginform.jsp"%> 
-								</div>
-							</div>  
-						</div> 	                		
-	            	</div>
-	        	</div>
-	    	</div>
-    	</div>
+           <div id="myModal" class="modal fade" tabindex="-1">
+              <div class="modal-dialog modal-lg">
+                  <div class="modal-content" style="background: none; border: 0px">
+                     <div class="modal-body"> 
+                     <div class="limiter">
+                        <!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
+                        <div class="container-login100">   
+                           <%@ include  file="../admin/loginform.jsp"%> 
+                        </div>
+                     </div>  
+                  </div>                          
+                  </div>
+              </div>
+          </div>
+       </div>
 
  
     </div> 
@@ -443,10 +443,10 @@
 <div id="all">
     <div id="content">
 <!-- 최지혜 추가 -->  
-		<div class="table-responsive">
-        	<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
-            	<table class="table" style="margin: auto; width: 70%;" cellspacing="0"> <!-- 일반 회원가입 폼 -->
-                	<tr>
+      <div class="table-responsive">
+           <form name="joinform" role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
+               <table class="table" style="margin: auto; width: 70%;" cellspacing="0"> <!-- 일반 회원가입 폼 -->
+                   <tr>
                         <th id="student" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">학생 회원가입</th>
                     </tr>
                     
@@ -461,16 +461,18 @@
                     <tr>
                         <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
-						</td>
+                  <br><div style="display: inline-block;" id="id_check"></div></td>
                         <td><button type="button" class="idCheck" onclick="fn_idChk();" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;">아이디 중복확인</button></td>
                     </tr>
                     <tr>
                         <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="password" id="userPw" id="User_Pwd" name="User_Pwd" size="55" maxlength="12" placeholder="비밀번호" ></td>
+                        <td colspan="2"><input type="password" id="userPw" id="User_Pwd" name="User_Pwd" size="55" maxlength="12" placeholder="비밀번호" >
+                        <br><div style="display: inline-block;" id="pwdcheck1"></div></td>
                     </tr>
                     <tr>
                         <th>비밀번호 확인<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="password" id="userPwChk" size="55" maxlength="12" placeholder="비밀번호 확인"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+                        <td colspan="2"><input type="password" id="userPwChk" size="55" maxlength="12" placeholder="비밀번호 확인">
+                        <br><div style="display: inline-block;" id="pwdcheck2"></div></td>
                     </tr>
                     <tr>
                         <th>성별<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -497,8 +499,8 @@
                         </td>
                     </tr>
                     <tr>
-                    	<th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                    	<td colspan="2"><input type="email" id="email" id="User_Email" name="User_Email" size="55" maxlength="80" onfocus="focus()"></td>
+                       <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
+                       <td colspan="2"><input type="email" id="email" id="User_Email" name="User_Email" size="55" maxlength="80" onfocus="focus()"></td>
                     </tr>
                     <tr>
                         <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -516,10 +518,10 @@
                 </table>
                    <button type="submit" class="button1">회원가입</button>
             </form>
-		</div>
-	</div>
+      </div>
+   </div>
 </div>
-<!-- 최지혜 추가 -->   		
+<!-- 최지혜 추가 -->         
         <!-- 아이콘 -->
 
         <!--
@@ -633,87 +635,97 @@ _________________________________________________________
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
 <script type="text/javascript"> 
-        // 비밀번호 확인 소스
-        $('#userPw').blur(function() {
-            var userPw = $('#userPw').val();
-            var userPwChk = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
+      // 아이디 정규표현식 유효성 검사 소스
+      
+      //아이디 정규식
+      var idJ = /^[a-z0-9]{4,12}$/;
+      // 비밀번호 정규식
+      var pwJ = /^[A-Za-z0-9]{4,12}$/;
+      
+      $('#User_Id').blur(function() {
+         if (idJ.test($('#User_Id').val())) {
+            console.log('true');
+            $('#id_check').text('알맞은 형식입니다.');
+            $('#id_check').css('color', 'green');
+         } else {
+            console.log('false');
+            $('#id_check').text('소문자와 대문자로만 4~12자리를 입력해주십시오.');
+            $('#id_check').css('color', 'red');
+         }
+      });      
+      
 
-            if (userPw !="" && userPwChk !="" && userPw==userPwChk) {
-                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-            }else if(userPw != "" && userPwChk==""){
-                pwdcheck.text('비밀번호 확인를 입력해주세요').css('color', 'blue');
-            }else if (userPw != userPwChk) {
-                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-            }else if(userPw =="" && userPwChk==""){
-                pwdcheck.text('');
-            }
+      $('#userPw').blur(function() {
+         
+         if (pwJ.test($('#userPw').val())) {
+            console.log('true');
+            $('#pwdcheck1').text('사용하실 수 있는 비밀번호 입니다.');
+            $('#pwdcheck1').css('color', 'green');
+            } else if ($('#userPw').val() == $(this).val()){
+            console.log('false');
+            $('#pwdcheck1').text('숫자 또는 문자로만 4~12자리를 입력해주십시오.');
+            $('#pwdcheck1').css('color', 'red');
+         } else if($('#userPw').val() != "" && $('#userPwChk').val() == ""){
+            $('#pwdcheck2').text('비밀번호 확인를 입력해주세요.');
+            $('#pwdcheck2').css('color', 'blue');
+         }
+      });
+      
+      
+      // 패스워드 일치 확인
+      $('#userPwChk').blur(function() {
+               
+         if ($('#userPw').val() != $(this).val()) {
+            $('#pwdcheck2').text('비밀번호가 일치하지 않습니다.');
+            $('#pwdcheck2').css('color', 'red');
+         } else if($('#userPw').val() != "" && $('#userPwChk').val() == ""){
+            $('#pwdcheck2').text('비밀번호 확인를 입력해주세요.');
+            $('#pwdcheck2').css('color', 'blue');
+            } else if ($('#userPw').val() == $(this).val()) {
+            $('#pwdcheck2').text('비밀번호가 일치합니다');
+            $('#pwdcheck2').css('color', 'green');
+         }
+      });
 
-        });
-
-        $('#userPwChk').blur(function() {
-            var userPw = $('#userPw').val();
-            var userPwChk = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
-
-            if (userPw !="" && userPw !="" && userPw==userPwChk) {
-                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-            } else if(userPwChk != "" && userPw==""){
-                pwdcheck.text('비밀번호를 입력해주세요').css('color', 'blue');
-            }else if(userPw != userPwChk){
-                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-            }else if(userPw =="" && userPwChk==""){
-                pwdcheck.text('');
-            }
-        });
-
-
-        function checkPw() {
-            var userPw = $('#userPw').val();
-            var userPw = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
-            if (userPw == userPwChk) {
-                joinform.submit();
-            } else {
-                /* pwdcheck.text('비밀번호가 다릅니다').css('color', 'red'); *!/ /!* 위에서 출력하고 있는데 한번더 출력할 필요 없음 */
-                alert('입력하신 비밀번호가 다릅니다 확인해주세요.')
-            }
-        }   
-
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-       var reader = new FileReader();
-
-       reader.onload = function (e) {
-       $('#image_section').attr('src', e.target.result);
-    }
-
-       reader.readAsDataURL(input.files[0]);
+   // ========================= 정규표현식 유효성 검사 끝 =================================
+      
+     // 파일 업로드 전 이미지 미리보기
+     function readURL(input) {
+       if (input.files && input.files[0]) {
+          var reader = new FileReader();
+   
+          reader.onload = function (e) {
+          $('#image_section').attr('src', e.target.result);
        }
-    }
-
-      $("#imgInput").change(function(){
-        readURL(this);
-  });
+   
+          reader.readAsDataURL(input.files[0]);
+          }
+       }
+   
+         $("#imgInput").change(function(){
+           readURL(this);
+     });
       
 
-      
+      // 아이디 중복 체크
       function fn_idChk(){
-      	$.ajax({
-      		url : "/student/idChk",
-      		type : "post",
-      		dataType : "json",
-      		data : {"User_Id" : $("#User_Id").val()},
-      		success : function(data){
-      			if(data == 1){
-      				alert("중복된 아이디입니다.");
-      			}else if(data == 0){
-      				$("#idChk").attr("value", "Y");
-      				alert("사용가능한 아이디입니다.");
-      			}
-      		}
-      	})
+         $.ajax({
+            url : "/student/idChk",
+            type : "post",
+            dataType : "json",
+            data : {"User_Id" : $("#User_Id").val()},
+            success : function(data){
+               if(data == 1){
+                  alert("중복된 아이디입니다.");
+               }else if(data == 0){
+                  $("#idChk").attr("value", "Y");
+                  alert("사용가능한 아이디입니다.");
+               }
+            }
+         })
       }
+      
+      
 </script>
 <!-- JavaScript files--> 
 <script src="../resource/vendor/jquery/jquery.min.js"></script>
