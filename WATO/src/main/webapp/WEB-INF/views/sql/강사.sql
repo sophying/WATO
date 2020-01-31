@@ -3,8 +3,17 @@
    teach_profile varchar2(200),
    teach_resume varchar2(200),
    user_id varchar2(20),   
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> refs/heads/HC
    user_pwd varchar2(30),
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> refs/heads/HC
    user_pwd varchar2(30),   
+<<<<<<< HEAD
    teach_gender varchar2(20),
    teach_phone1 varchar2(20),
    teach_phone2 varchar2(20),
@@ -40,6 +49,9 @@ create table teach_info(
    teach_newname2 varchar2(2000),
    user_id varchar2(20),   
    user_pwd varchar2(30),
+=======
+>>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
+>>>>>>> refs/heads/HC
    teach_gender varchar2(20),
    teach_phone1 varchar2(20),
    teach_phone2 varchar2(20),

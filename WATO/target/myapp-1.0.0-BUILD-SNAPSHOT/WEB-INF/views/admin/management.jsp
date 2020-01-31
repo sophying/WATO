@@ -69,6 +69,23 @@
   	td {
   		text-align: center;
   	}
+  	.form-control {
+	  display: block; 
+	  width: 100%;
+	  padding: 0.375rem 0.75rem;
+	  font-size: 1rem;
+	  line-height: 1.5;
+	  color: #495057;
+	  background-color: #fff;
+	  background-clip: padding-box;
+	  border: 1px solid #ced4da;
+	  border-radius: 0.25rem;
+	  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	}
+	
+	.card-header {
+		padding: 3.0rem 2rem;
+	}
   </style>
   <body>
 
@@ -82,17 +99,29 @@
   <%--admin_sidebar.jsp--%>
 
 
-      <div class="page-holder w-100 d-flex flex-wrap">
-        <div class="container-fluid px-xl-5">
-          <section class="py-5">
-            <div class="row">
-              <div class="col-lg-12 mb-4">
-                <div class="card">
+     <div class="page-holder w-100 d-flex flex-wrap">
+       <div class="container-fluid px-xl-5">
+         <section class="py-5">
+           <div class="row">
+             <div class="col-lg-12 mb-4">
+               <div class="card">
+                <form method="post" name="filterform" id="filterform">
                   <div class="card-header">
-                    <h6 class="text-uppercase mb-0">MANAGEMENT</h6>
+                    <h6 style="float: left" class="text-uppercase mb-0">MANAGEMENT</h6>
+                  <div style="float: right;">
+                  	<div style="float: left" class="form-group col-sm-6 col-xs-6"> 
+						<select style="font-size: 14px;" class="form-control" name="filter" id="filter"> 
+							<option value="">학생/강사</option> 
+							<option value="10">학생</option>    
+							<option value="20">강사</option>    
+						</select>  
+					</div>
+					<div style="float: left" class="form-group col-sm-6 col-xs-6">
+						<button type="submit" class="btn btn-block btn-primary">Search</button>
+					</div> 
+				 </div>
                   </div>
                   <div class="card-body">
-                  <form role="form" method="post" action="">
                     <table class="table card-text">
                         <tr>
 	                        <th>No</th>
@@ -100,22 +129,30 @@
 				            <th>Gender</th>
 				            <th>Email</th>
                         </tr>
-                        <c:forEach var="AdVO" items="${manageList}">
+                        <c:forEach var="StdVO" items="${studentList}">
 				        <tr>
-				            <td><input type="text" class="no" id="Teach_Gender" name="Teach_Gender" value="${AdVO.no}" readonly="readonly"></td>
-				            <td><input type="text" class="id" id="Teach_Phone1" name="Teach_Phone1" value="${AdVO.user_Id}" readonly="readonly"></td>
-				            <td><input type="text" class="gender" id="Teach_Phone2" name="Teach_Phone2" value="${AdVO.user_Gender}" readonly="readonly"></td>
-				            <td><input type="text" class="email" id="Teach_Phone3" name="Teach_Phone3" value="${AdVO.user_Email}" readonly="readonly"></td>
+				            <td><input type="text" class="no" id="Std_Gender" name="Teach_Gender" value="${StdVO.no}" readonly="readonly"></td>
+				            <td><input type="text" class="id" id="Teach_Phone1" name="Teach_Phone1" value="${StdVO.user_Id}" readonly="readonly"></td>
+				            <td><input type="text" class="gender" id="Teach_Phone2" name="Teach_Phone2" value="${StdVO.std_Gender}" readonly="readonly"></td>
+				            <td><input type="text" class="email" id="Teach_Phone3" name="Teach_Phone3" value="${StdVO.user_Email}" readonly="readonly"></td>
+				        </tr>
+				        </c:forEach>
+                        <c:forEach var="TeachVO" items="${teachList}">
+				        <tr>
+				            <td><input type="text" class="no" id="Teach_Gender" name="Teach_Gender" value="${TeachVO.no}" readonly="readonly"></td>
+				            <td><input type="text" class="id" id="Teach_Phone1" name="Teach_Phone1" value="${TeachVO.user_Id}" readonly="readonly"></td>
+				            <td><input type="text" class="gender" id="Teach_Phone2" name="Teach_Phone2" value="${TeachVO.teach_Gender}" readonly="readonly"></td>
+				            <td><input type="text" class="email" id="Teach_Phone3" name="Teach_Phone3" value="${TeachVO.user_Email}" readonly="readonly"></td>
 				        </tr>
 				        </c:forEach>
                     </table>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
+                  </div>                    
+                 </form>
+               </div>
+             </div>
+           </div>
+         </section>
+       </div>
 
         <%--admin_footer.jsp--%>
         <%@ include file="../include_admin/admin_footer.jsp"%>

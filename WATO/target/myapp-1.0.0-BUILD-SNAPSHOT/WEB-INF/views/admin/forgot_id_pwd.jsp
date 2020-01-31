@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -713,3 +714,5 @@ $('#Fg_Pwd').click(function() {
 <script src="../resource/js/front.js"></script> 
 </body>
 </html>
+    if(null != radioval && radioval == 10) {
+        $('form[name="Fg_Pwd"]').attr('action',"/admin/stdFgPwd");

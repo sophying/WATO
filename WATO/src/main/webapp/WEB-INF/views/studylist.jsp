@@ -10,7 +10,7 @@
     <title>스터디어스 - 세상을 뒤흔들어라</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
+    <meta name="robots" content="all,follow"> 
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="/resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
@@ -194,7 +194,13 @@
 								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
 								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
+                        	</a>
+                        		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
+                        			<a href="javascript:document.myForm.submit();" class="dropdown-item text-black-50 font-weight-bold">내정보 수정</a>
+								 </div>
                         	</form>
                         	</li> 
                         </c:if>
@@ -212,7 +218,13 @@
 								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly"> 
 								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
-                        	<a href="javascript:document.myForm2.submit();" class="text-black-50 font-weight-bold">내정보수정</a>
+                        	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
+                        	</a> 
+                        		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
+                        			<a href="javascript:document.myForm2.submit();" class="dropdown-item text-black-50 font-weight-bold">내정보 수정</a>
+								 </div>
                         	</form>
                         	</li>
                         </c:if>
@@ -221,7 +233,7 @@
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                        <li class="list-inline-item"><a href="/admin/index_admin" class="text-black-50 font-weight-bold">관리자</a></li>                         
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->  
                     </ul>
@@ -261,9 +273,10 @@
                                     <div class="col-md-6 col-lg-3">
                                         <h5>친목도모</h5>
                                         <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
+                                            <li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
+                                            <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
+                                            <li class="nav-item"><a href="/study/studyBoard" class="nav-link">스터디탐방</a></li>
+                                            <li class="nav-item"><a href="/study/classBoard" class="nav-link">강의탐방</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -416,25 +429,13 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('/resource/images/clogo.jpg">
-                        <!-- <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">First Slide</h2>
-                            <p class="lead">This is a description for the first slide.</p>
-                        </div> -->
+                    <div class="carousel-item active" style="background-image: url('/resource/images/javascriptlogo.jpg">
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
-                    <div class="carousel-item" style="background-image: url('/resource/images/javalogo.png">
-                       <!--  <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">Second Slide</h2>
-                            <p class="lead">This is a description for the second slide.</p>
-                        </div> -->
+                    <div class="carousel-item" style="background-image: url('/resource/images/pythonlogo.png">
                     </div>
                     <!-- Slide Three - Set the background image for this slide in the line below -->
                     <div class="carousel-item" style="background-image: url('/resource/images/Golang_main.png')">
-                      <!--   <div class="carousel-caption d-none d-md-block">
-                            <h2 class="display-4">Third Slide</h2>
-                            <p class="lead">This is a description for the third slide.</p>
-                        </div> -->
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -451,7 +452,7 @@
         <!-- 
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________ 
-        -->   
+        -->    
         <div  id="hot">
             	<br><br>
             	<!-- 스터디 목록 조회 하는 iframe -->

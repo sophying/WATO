@@ -18,13 +18,10 @@
 
 create table std_info(
    No varchar2(10) DEFAULT 10,
-   std_profile varchar2(200),
+   std_orgname varchar2(2000),
+   std_newname varchar2(2000),
    user_id varchar2(20),   
-<<<<<<< HEAD
    user_pwd varchar2(30),
-=======
-   user_pwd varchar2(30),   
->>>>>>> branch 'HRnJIHYEnMSTER' of https://github.com/sophying/WATO.git
    std_gender varchar2(20),
    std_phone1 varchar2(20),
    std_phone2 varchar2(20),
@@ -44,9 +41,12 @@ set
 	std_pwd = '1111'
 where std_id = 'jihye1';
 
+DROP TABLE std_info CASCADE CONSTRAINTS;
 
-insert into std_info(user_id, std_profile, user_pwd, std_pwd_qs, std_pwd_as, std_gender, std_phone1, std_phone2, std_phone3, user_email, std_addr1, std_addr2, std_addr3)
-values ('jihye1', '1111', '1111', '1111', '어쩌구저쩌구입니다.', '1111', '1111', '1111', '1111', 'cgh634@hanmail.net', 1111, 1111, 1111);
+
+insert into std_info(user_id, std_profile, user_pwd, std_gender, std_phone1, std_phone2, std_phone3, user_email, std_addr1, std_addr2, std_addr3)
+values ('jihye1', '1111', '1111', '1111', '1111', '1111', '1111', 'cgh634@hanmail.net', 1111, 1111, 1111);
+
 
 drop table std_info purge;
 
