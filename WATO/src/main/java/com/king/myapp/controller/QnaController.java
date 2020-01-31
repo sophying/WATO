@@ -9,6 +9,7 @@ import com.king.myapp.service.QnaBoardService;
 import com.king.myapp.service.QnaReplyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +22,7 @@ import java.net.InetAddress;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("/qna/*")
@@ -145,9 +147,9 @@ public class QnaController {
 		Map<String, Object> resultMap = service.selectFileInfo(map);
 		String storedFileName = (String) resultMap.get("STORED_FILE_NAME");
 		String originalFileName = (String) resultMap.get("ORG_FILE_NAME");
-
+		
 		// 파일을 저장했던 위치에서 첨부파일을 읽어 byte[]형식으로 변환한다.
-		byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("C:\\upload_2020\\file\\"+storedFileName));
+		byte fileByte[] = org.apache.commons.io.FileUtils.readFileToByteArray(new File("../webapp/fileupload/"+storedFileName));
 
 		response.setContentType("application/octet-stream");
 		response.setContentLength(fileByte.length);
@@ -158,22 +160,24 @@ public class QnaController {
 
 	}
 
-	/*
-	 * private String saveFile(MultipartFile multipartFile) {
-	 * 
-	 * 
-	 * //파일 이름 변경 UUID uuid = UUID.randomUUID(); String saveName =
-	 * uuid+"_"+multipartFile.getOriginalFilename();
-	 * 
-	 * logger.info("saveName: {}", saveName);
-	 * 
-	 * //저장할 file객체 생성 //저장할 폴더 경로, 파일 이름 File saveFile = new File(UPLOAD_PATH,
-	 * saveName);
-	 * 
-	 * try { //multipartFile.transferTO(saveFile);
-	 * FileCopyUtils.copy(multipartFile.getBytes(),saveFile); } catch (IOException
-	 * e) { e.printStackTrace(); return null; } return saveName; }
-	 */
+	
+	 private String saveFile(MultipartFile multipartFile) {
+	 
+	 
+	 //파일 이름 변경 
+		 UUID uuid = UUID.randomUUID(); 
+		 String saveName =uuid+"_"+multipartFile.getOriginalFilename();
+	 
+	 logger.info("saveName: {}", saveName);
+	 
+	 //저장할 file객체 생성 //저장할 폴더 경로, 파일 이름 
+	 File saveFile = new File(UPLOAD_PATH,saveName);
+	 
+	 try { //
+		 multipartFile.transferTO(saveFile);
+	 FileCopyUtils.copy(multipartFile.getBytes(),saveFile);
+	 } catch (IOExceptione) { e.printStackTrace(); return null; } return saveName; }
+	 
 
 	// 삭제(보내기 및 받기)
 	@RequestMapping(value = "/QnaDelete/{QNA_BNO}", method = RequestMethod.GET)
@@ -244,7 +248,7 @@ public class QnaController {
 
 	}
 
-	@PostMapping(value = "/image", produces = "text/html; charset=UTF-8")
+	/*@PostMapping(value = "/image", produces = "text/html; charset=UTF-8")
 	@ResponseBody
 	public String 썸머노트_이미지_업로드(MultipartHttpServletRequest request) throws Exception {
 
@@ -258,7 +262,7 @@ public class QnaController {
 		// 일반경로는 위 경로에서 => ../../src/main/webapp/
 
 		// 03. 저장 폴더 설정
-		String boardImgDir = "../webapp/resource/file"; // 저장 폴더명
+		String boardImgDir = "../webapp/fileupload/file"; // 저장 폴더명
 		System.out.println("저장경로 : " + webappRoot + boardImgDir);
 
 		// 04. 파일명을 현재시간으로 저장
@@ -281,7 +285,7 @@ public class QnaController {
 
 		// 07. 웹 이미지 주소를 뿌려주어 파일이미지가 나올 수 있도록 해줌
 		return "http://" + localIp + ":" + request.getServerPort() + "/" + boardImgDir + fileName;
-	}
+	}*/
 	/*
 	 * @Override public void setServletContext(ServletContext servletContext) {
 	 * this.servletContext = servletContext; }
