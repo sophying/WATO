@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qna">
+   
+<!--   <select id="listRank" resultType="com.king.myapp.domain.BoardVO">
+   	<![CDATA[ 
+   	  SELECT * FROM (SELECT * FROM QNA_MYBOARD ORDER BY QNA_VIEWCNT DESC) WHERE ROWNUM<=10
+   	 ]]> 
+   </select>
+   <select id="searchResultStudy" resultType="com.king.myapp.domain.BoardVO">
+   	  <![CDATA[  
+   	  SELECT * FROM (SELECT * FROM QNA_MYBOARD ORDER BY QNA_VIEWCNT DESC) WHERE ROWNUM<=10 AND QNA_TITLE LIKE '%' || #{searchKey} || '%' OR QNA_CONTENT like '%' || #{keyword} || '%'
+   	 ]]>
+   </select>
+   <select id="searchResultTeacher" resultType="com.king.myapp.domain.BoardVO"> 
+   	  <![CDATA[ 
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	 ]]>
+   </select>
+   <select id="searchResultQna" resultType="com.king.myapp.domain.BoardVO">
+   	  <![CDATA[ 
+   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	 ]]>
+   </select>-->
+    <select id="getQnaList" resultType="com.king.myapp.domain.QnaBoardVO" parameterType="com.king.myapp.domain.Criteria">
+       SELECT  QNA_BNO, QNA_TITLE, QNA_CONTENT, QNA_WRITER, QNA_REGDATE
+		 FROM ( SELECT QNA_BNO, QNA_TITLE, QNA_CONTENT, QNA_WRITER, QNA_REGDATE, ROW_NUMBER() OVER(ORDER BY QNA_BNO DESC)
+		 AS RNUM FROM QNA_MYBOARD where 1=1 <include refid="search"></include>
+    ) MP WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd} ORDER BY QNA_BNO DESC
+    </select>
+    <select id="getQnaRead" resultType="com.king.myapp.domain.QnaBoardVO">
+       	select * from QNA_MYBOARD where QNA_BNO = #{QNA_BNO}
+    </select>
+    <select id="getQnaModify" resultType="com.king.myapp.domain.QnaBoardVO">
+        select QNA_BNO, QNA_TITLE, QNA_CONTENT, QNA_WRITER from QNA_MYBOARD where QNA_BNO = #{QNA_BNO}
+    </select>
+    <update id="postQnaModify">
+        update QNA_MYBOARD set QNA_TITLE = #{QNA_TITLE}, QNA_CONTENT = #{QNA_CONTENT} where QNA_BNO = #{QNA_BNO}
+    </update>
+    <insert id="postQnaWrite" parameterType="com.king.myapp.domain.QnaBoardVO" useGeneratedKeys="true" keyProperty="QNA_BNO">
+        <selectKey keyProperty="QNA_BNO" resultType="int" order="BEFORE">
+        select SEQ_QNA_MYBOARD.NEXTVAL from dual
+        </selectKey>
+		insert into QNA_MYBOARD(QNA_BNO, QNA_TITLE, QNA_CONTENT, QNA_WRITER)
+		values (#{QNA_BNO}, #{QNA_TITLE}, #{QNA_CONTENT}, #{QNA_WRITER})
+    </insert>
+    <select id="selectFileInfo" parameterType="hashMap" resultType="hashMap">
+	SELECT
+	        ORG_FILE_NAME,
+		STORED_FILE_NAME
+	FROM QNA_FILE
+	WHERE FILE_NO = #{FILE_NO}
+    </select>
+    <delete id="QnaDelete">
+        delete from QNA_MYBOARD where QNA_BNO = #{QNA_BNO}
+    </delete>
+    <insert id="insertFile" parameterType="hashMap">
+    	insert into QNA_FILE(FILE_NO, QNA_BNO, ORG_FILE_NAME, STORED_FILE_NAME, FILE_SIZE)
+    	VALUES(SEQ_QNA_FILE_NO.NEXTVAL,#{QNA_BNO},#{ORG_FILE_NAME},#{STORED_FILE_NAME},#{FILE_SIZE})
+    </insert>
+    <select id="selectFileList" parameterType="int" resultType="hashMap">
+	SELECT FILE_NO,
+		   ORG_FILE_NAME,
+		   ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+	  FROM QNA_FILE
+	 WHERE QNA_BNO = #{QNA_BNO}
+	   AND DEL_GB = 'N'
+    </select>
+    <select id="listCount" resultType="int">
+        SELECT COUNT(QNA_BNO) FROM QNA_MYBOARD WHERE 1=1 <include refid="search"></include> AND QNA_BNO > 0
+    </select>
+    <sql id="search">
+        <if test="searchType != null">
+            <if test="searchType == 't'.toString()">AND QNA_TITLE LIKE '%' || #{keyword} || '%'</if>
+            <if test="searchType == 'c'.toString()">AND QNA_CONTENT LIKE '%' || #{keyword} || '%'</if>
+            <if test="searchType == 'w'.toString()">AND QNA_WRITER LIKE '%' || #{keyword} || '%'</if>
+            <if test="searchType == 'tc'.toString()">AND (QNA_TITLE LIKE '%' || #{keyword} || '%') or (QNA_CONTENT LIKE '%' || #{keyword} || '%')</if>
+        </if>
+    </sql>
+
+   
+</mapper>
