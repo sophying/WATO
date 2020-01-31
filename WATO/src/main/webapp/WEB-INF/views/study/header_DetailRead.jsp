@@ -12,24 +12,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="../resource/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="../resource/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
-    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="../resource/css/style.default.css" id="theme-stylesheet"> 
+    <link rel="stylesheet" href="../../resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
-    <link rel="stylesheet" href="../resource/css/custom.css">
+    <link rel="stylesheet" href="../../resource/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
-    <link rel="icon" type="image/png" href="../resource/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="../../resource/images/icons/favicon.ico"/>
+    <!-- 제이쿼리 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <style>
     #top{
@@ -261,10 +263,8 @@
 				<div class=" justify-content-md-center d-inline-block w-100">
 					<div id="main" class="rounded-sm d-inline-block w-100">  <!-- @@@@@@@@ 메인 시작 @@@@@@@@ -->
 						<div class="form-group container-fluid  w-100">
-								<%-- <input id="listOne_URL"type="hidden" value="#{listOne.t_URL }"/> --%>
-								
 							<c:choose>	
-								<c:when test="${listOne.t_URL != null }">
+								<c:when test="${listOne.t_URL != null || listOne != '' }">
 							<div class="embed-responsive embed-responsive-16by9">
 		 							<iframe id="main-iframe"class="embed-responsive-item mt-3 w-100 h-100" src="${listOne.t_URL }" ></iframe>
 							</div>
@@ -278,7 +278,8 @@
 									</label>
 								<c:if test="${(teach.user_Id).equals(listOne.t_userId) }">	
 	<!--  내용 수정 -->				<a href="teacherModi?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>			
-	<!--  내용 삭제 -->				<a href="teacherDelete?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/></a>			
+	<!--  내용 삭제 -->				<input type="submit" id="delete_enroll"  data-toggle="modal" data-target="#delete-modal"class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/>	
+										<%@include file="../include/t_delete_enroll.jsp" %>			
 								</c:if>
 							</div>	
 							<div class="h-75 container d-inline-block border-top">
@@ -288,12 +289,12 @@
 							
 							
 
-							<div class="h-75 row d-flex  p-2  m-0 container d-inline-block">
-								<div class=" h-100 w-25 d-inline-block">
+							<div class="h-75 row d-flex  p-2  m-0 container d-inline-block" >
+								<div class=" h-100 w-25 d-inline-block"  style="height:auto;">
 									<label for="name" class="row d-flex  pt-3 pb-4 m-0 text-justify   control-label justify-content-center">
 										<font size="6">강사 소개</font>
 									</label>
-									<div class="cols-sm-5 pb-5 pr-2 pl-2">
+									<div class="cols-sm-5 pb-5 pr-2 pl-2"  style="height:auto;">
 						              <div class="input-group d-flex justify-content-center ">
 						                <img id="img_btn_0" src="../resources/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
 						              </div>
@@ -302,29 +303,103 @@
 							
 	
 								
-								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-2  pl-5 pr-5 justify-content-center container-fluid ">
-									<div  style=" word-break:break-all; height:100%;"class="row h-50 d-block d-flex pt-2 "  scroll="no" >
-										
-										<pre style="height:250px;" ><font size="4"><c:out value="${listOne.t_intro }" /></font></pre>
+								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-2  pl-5 pr-5 justify-content-center container-fluid " >
+									<div  style="word-break:break-all;"class="row d-block d-flex pt-2 "  >
+										<pre style="padding: 50px; height: auto; width:auto;  overflow: auto; word-break: break-all; "><font size="4"><c:out value="${listOne.t_intro }" /></font></pre>
 									</div>
+								</div>
+							</div>
+							
+							<!-- 별점 평가 통계  -->
+							<div class="h-75 row d-flex  p-2  m-0 container d-inline-block">
+								<div class=" h-100 w-25 d-inline-block">
+									<label for="name" class="row d-flex  pt-3 pb-2 m-0 text-justify   control-label justify-content-center">
+										<font  class="font-weight-bold"  size="5">스터디 별점</font>
+									</label> 
+								</div>
+								<div  class="cols-sm-5 d-inline-block w-75 pt-2 pl-5 pr-5 justify-content-center container-fluid  border-top">
+									<div  style=" word-break:break-all;"class="row h-50 w-100 d-inline-block d-flex pt-2 " >
+										<c:if test="${(starScore == 0 && starScore < 1)|| (starScore == 'NaN')}">
+											<div id="star_grade" class="h2" >
+										        <span>★</span> 
+										        <span>★</span>  
+										        <span>★</span>    
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 0 && starScore < 1 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>  
+										        <span>★</span>    
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 1  && starScore <= 2 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>    
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 2  && starScore <= 3 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 3  && starScore <= 4 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore> 4  && starScore <= 5 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+											</div>
+										</c:if>
+										<c:choose>
+											<c:when test="${starScore == 'NaN' }">
+												<span class="h3 mt-2 ml-4">00.00</span>
+											</c:when>
+											<c:otherwise>
+												<span class="h3 mt-2 ml-4">${starScore}</span>
+											</c:otherwise>
+										</c:choose>
+									</div> 
 								</div>
 							</div>
 							
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block ">
 								<div class=" h-100 w-25 d-inline-block">
 									<label for="name" class="row d-flex  pt-5 m-0 text-justify   control-label justify-content-center">
-										<font color="#787878" size="4">상세 내용</font>
+										<font  class="font-weight-bold"  color="#787878" size="5">상세 내용</font>
 									</label>
 								</div>
 								
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5  pl-5 pr-5 justify-content-center container-fluid border-top">
 									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-5" >
 										
-										<table style="width:600px;">
+										<table style="width:700px;">
 											<tr>
-												<th id="t_level"><font color="#a0a0a0" > <label class=" d-flex p-2 pr-0 control-label ">난이도 : </label></font></th>
+												<th id="t_level" style="width:80px;"><font color="#a0a0a0" > <label class=" d-flex p-2 pr-0 control-label ">난이도 : </label></font></th>
 												<td>${listOne.t_level }</td>
-												<th id="t_people"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">인원수 : </label></font></th>
+												<th id="t_people" style="width:80px;"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">인원수 : </label></font></th>
 												<td> ${listOne.t_people }</td>
 											</tr>	
 											<tr>
@@ -333,7 +408,7 @@
 											</tr>	
 											<tr>
 												<th id="t_people"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">장소 : </label></font></th>
-												<td colspan="3">${listOne.t_place }</td>
+												<td colspan="4">${listOne.t_place }</td>
 											</tr>	
 										</table>
 										
@@ -355,7 +430,7 @@
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block">
 								<div class=" h-100 w-25 d-inline-block">
 									<label for="name" class="row d-flex  pt-5 m-0 text-justify   control-label justify-content-center">
-										<font size="5">강의 내용</font>
+										<font class="font-weight-bold"  size="5">강의 내용</font>
 									</label>
 								</div>
 								
@@ -374,25 +449,26 @@
 										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: #f1dfe955;">
 											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
-							 <font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font> 
+													 <font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font> 
 														<table class="justify-content-center ml-2 d-inline-block w-100">
 															<tr>
 																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
 																<td colspan="5" >
 																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly style="overflow-x:hidden; overflow-y:hidden;  ">${reply.r_content}</textarea>
-																<td> 
-															</tr>  
-															<tr>
-																<td>
-																<c:if test="${(listOne.t_userId).equals(teach.user_Id) }">
-																	<input type="button"id="modiReButton" value="수정하기" class="modiReButton d-inline-block" onclick="updatefun(this)" />
-																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
-																</c:if>	
-																</td>
-																<td>
-																	<input type="hidden" name="t_no" value="${listOne.t_no}" />
-																	<input type="hidden" name="r_no" value="${reply.r_no}" /> 
-																</td>
+																<c:choose>
+																	<c:when test="${(listOne.t_userId).equals(std.user_Id ) }">
+																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
+																		<input type="hidden" name="t_no" value="${reply.t_no }"/>
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																	</c:when>
+																	<c:when test="${(listOne.t_userId).equals(teach.user_Id ) }">
+																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
+																		<input type="hidden" name="t_no" value="${reply.t_no }"/>
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>																	
+																	</c:when>
+																</c:choose>
 															</tr> 
 														</table> 
 												</div> 
@@ -405,32 +481,28 @@
 											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
 													<form class="updateform" action="./modireply"> 
-													
-			 			<font size="4"><span class="d-flex justify-content-end">     </span></font> 
-														
+			 											<font size="4"><span class="d-flex justify-content-end"></span></font> 
 														<table class="justify-content-center d-inline-block w-100">
 															<tr>
-																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
-																<td colspan="5" > 
-																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly>${reply.r_content}</textarea>
+																<td rowspan="5" class="pl-2 pr-4 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
+																<td class="text1" colspan="5" > 
+																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="90" readonly>${reply.r_content}</textarea>
 																<td> 
-															</tr>
-															<tr>
-																<td> 
-																<c:if test="${(reply.r_userid).equals(teach.user_Id) }">
-																	<input type="button"class="modiReButton d-inline-block"  value="수정하기" onclick="updatefun(this)" />
-																	<a href="./DeleteReply/${listOne.t_no}/${reply.r_no}">삭제하기</a>
-																</c:if>	
-																<c:if test="${(listOne.t_userId).equals(teach.user_Id) }">
-																	<div style="background:#e0e0e0; " class="d-flex d-block justify-content-end w-100">
-																		<textarea name="r_content" class="r_content d-flex justify-content-end"  onkeydown="resize(this)" style="border:1px;" onkeyup="resize(this)" cols="100" readonly>dgdgggd</textarea>
-																	</div>
-																	<input type="button"class="leaderBtn d-inline-block"  value="답변하기" onclick="leaderfun(this)" />
-																</c:if>
-																</td>
-																<td>
-																	<input type="hidden" name="t_no" value="${listOne.t_no}" />
-																	<input type="hidden" name="r_no" value="${reply.r_no}" />  
+																<td >
+																	<c:choose>
+																	<c:when test="${(reply.r_userid).equals(std.user_Id ) }">
+																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																		<input type="hidden" name="t_no" value="${reply.t_no }"/>
+																	</c:when>
+																	<c:when test="${(reply.r_userid).equals(teach.user_Id ) }">
+																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																		<input type="hidden" name="t_no" value="${reply.t_no }"/>																	
+																	</c:when>
+																	</c:choose>
 																</td>
 															</tr> 
 														</table>
@@ -441,32 +513,63 @@
 									</c:otherwise>
 								</c:choose>
 							</c:forEach> 
-							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
-								<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
-										<form role="from" method="post" action="./t_detailReply.do"> 
-										<font size="4"><span id="cnttxt2" class="d-flex justify-content-end"></span></font>
-											<table class="ml-2 justify-content-center d-inline-block w-100">
-												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
-													<td colspan="5" >
-														<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
-														</font></pre> --%>  
-														<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
-													<td>    
-												</tr>   
-												<tr>
-													<td>
-														<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
-													</td> 
-												</tr>
-											</table>
-											<input type="hidden" name="t_no" value="${listOne.t_no}" />
-											<input type="hidden" name="r_userid" value="${teach.user_Id }"/>
-										</form>
-									</div>
-								</div>		
-							</div>
+							<c:choose>
+							<c:when test="${std.user_Id == null && teach.user_Id != null }">
+								<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
+									<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
+										<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
+											<form role="from" method="post" action="./t_detailReply.do"> 
+											<font size="4"><span id="cnttxt2" class="d-flex justify-content-end"></span></font>
+												<table class="ml-2 justify-content-center d-inline-block w-100">
+													<tr>
+														<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
+														<td colspan="5" >
+															<%-- <pre style="width:700px; height: 200px;"><font size="4">${reply.r_content}
+															</font></pre> --%>  
+															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
+														<td>    
+													</tr>   
+													<tr>
+														<td>
+															<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
+														</td> 
+													</tr>
+												</table>
+												<input type="hidden" name="t_no" value="${listOne.t_no}" />
+												<input type="hidden" name="r_userid" value="${teach.user_Id }"/>
+											</form>
+										</div>
+									</div>		
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
+									<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
+										<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
+											<form role="from" method="post" action="./t_detailReply.do"> 
+												<font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font>
+												<table class="justify-content-center d-inline-block w-100">
+													<tr>
+														<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
+														<td colspan="5" >
+															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+														<td>    
+													</tr>   
+													<tr>
+														<td>
+															<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
+														</td> 
+													</tr>
+												</table>
+												<input type="hidden" name="t_no" value="${listOne.t_no}" />
+												<input type="hidden" name="r_userid" value="${std.user_Id  }"/>
+											</form>
+										</div>
+									</div>		
+								</div>							
+							
+							</c:otherwise>
+							</c:choose>
 							</div> 
 							
 					</div>    
@@ -610,16 +713,15 @@
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
-<script src="../resource/vendor/jquery/jquery.min.js"></script>
-<script src="../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="../resource/js/front.js"></script> 
-<!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  
+<script src="../../resource/vendor/jquery/jquery.min.js"></script>
+<script src="../../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="../../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="../../resource/js/front.js"></script> 
+  
 <!--////// ***** 혜련 js 활용 ****  //////-->
-<script src="../resource/js/hr/teacher_detailRead.js"></script>
+<script src="../../resource/js/hr/teacher_detailRead.js"></script>
 
 <!-- kakao map api key (최성웅 appkey)-->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>

@@ -8,7 +8,11 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
+import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
 
 @Repository
@@ -52,22 +56,43 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 		sql.update("study.s_partiCntMinus",s_no);
 	}
 	
+	// 학생 스터디 참여 리스트 
+	@Override
+	public List<StudyEnrollVO> s_getStudyPartiList(StdVO std) throws Exception {
+		return sql.selectList("parti.s_getStudyPartiList",std);
+	}
 	
-	/*
-	<!--  학생 참여신청 취소   --> -->	
-	<delete id="s_partiCancle">
-		delete from s_parti
-		where s_no = #{s_no}
-		and p_userid = #{p_userid}
-	</delete>
+	// 별점 평가 유저 값 부여 
+	@Override
+	public void checkStarParti(Map<String, Object> map) throws Exception {
+		sql.update("parti.s_checkStarParti",map);
+	}	
+	
+	// 별점 평가  유저 확인 
+	@Override
+	public StudentParticipationVO getCheckStarParti(Map<String, Object> checkUser) throws Exception {
+		return sql.selectOne("parti.s_getCheckStarParti",checkUser);
+	}
+	
+	// 참여 리스트 & 별점 참여 유저 불러오기
+	@Override
+	public List<StudentParticipationVO> getStarPartiUser(StdVO std) throws Exception {
+		return sql.selectList("parti.s_getStarPartiUser",std);
+	}
+
+	// 학생 강의 참여 리스트 
+	@Override
+	public List<TeacherEnrollVO> getClassPartiList(StdVO std) throws Exception {
+		return sql.selectList("parti.t_getStudyPartiList",std);
+	}
+
+
+
 
 	
-	*/
 	
 	
-	
-	
-	
+/* -----------  강의   ---------------------*/	
 	// 강의 참여등록시 참여자 카운트 
 	@Override
 	public void t_partiCnt(int t_no) throws Exception {
@@ -103,5 +128,20 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 	public void t_partiCntMinus(int t_no) throws Exception {
 		sql.update("study.t_partiCntMinus",t_no);
 	}
+
+	// 학생 강의 별점평가 유무
+	@Override
+	public void class_checkStarParti(Map<String, Object> t_map) throws Exception {
+		sql.update("parti.t_checkStarParti",t_map);
+	}
+
+
+/************************************/
+	// 강사를 위한 강의 목차 ( 수락 )  
+	@Override
+	public List<TeacherEnrollVO> t_getTeachClassList(TeachVO teach) throws Exception {
+		return sql.selectList("study.t_getTeachClassList",teach);
+	}
+
 	
 }

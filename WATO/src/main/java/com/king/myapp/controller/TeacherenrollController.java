@@ -1,5 +1,6 @@
 package com.king.myapp.controller;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 import java.util.List;
@@ -46,8 +47,12 @@ public class TeacherenrollController {
 	public void getEnroll(HttpSession session , Model model) throws Exception{
 		
 		logger.info("--------------[ 강의 등록 페이지 GET ]-----------------");
-		TeachVO user =  (TeachVO) session.getAttribute("teach");
-		model.addAttribute("teach",user);
+		StdVO std =  (StdVO) session.getAttribute("std");
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");
+		
+		
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach);
 	}
 	
 	// 1. 강의 상세 내용 등록 
@@ -73,6 +78,7 @@ public class TeacherenrollController {
 
 		TeachVO user =  (TeachVO) session.getAttribute("teach");
 		
+		model.addAttribute("std");
 		model.addAttribute("teach",user);
 		teacherService.addClass(teacherVO);
 		 
@@ -87,25 +93,19 @@ public class TeacherenrollController {
 		
 		List<TeacherEnrollVO> classlist = teacherService.list();
 		
-		TeachVO user = (TeachVO) session.getAttribute("teach");
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
+		TeachVO teach = (TeachVO) session.getAttribute("teach");
 		StdVO student = (StdVO) session.getAttribute("std");
 		
-		if (user == null) {
+		if (std == null && teach== null ) {
 			
+			model.addAttribute("std",null);
 			model.addAttribute("teach",null);
 		}else {
 			
-			model.addAttribute("teach");
+			model.addAttribute("teach",teach);
+			model.addAttribute("std",std);
 		}
-		if (student == null) {
-			
-			model.addAttribute("std",null);
-		}else {
-			
-			model.addAttribute("std"); 
-		}
-		
-		
 		
 		model.addAttribute("classlist", classlist);
 	}
@@ -117,23 +117,34 @@ public class TeacherenrollController {
 	public void getDetailRead(@RequestParam("t_no") int t_no, @ModelAttribute TeacherParticipationVO partiVO,HttpSession session, Model model) throws Exception{
 		logger.info("--------------[ 강의 상세보기  GET ]-----------------");
 		
-		if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
-			TeacherEnrollVO listOne = teacherService.detailRead(t_no);
-			List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
-			
-			model.addAttribute("teach");
+		
+		
+		
+		teacherService.viewCount(t_no);
+		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
+		List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
+		
+		if (session.getAttribute("std") == null && session.getAttribute("teach") ==null) {
+			model.addAttribute("usercheck",null);
+			model.addAttribute("std",null);
+			model.addAttribute("teach",null);
 			model.addAttribute("reply", reply); 
 			model.addAttribute("listOne",listOne);
-			model.addAttribute("usercheck",null);
 		}else {
-			teacherService.viewCount(t_no);
-			TeacherEnrollVO listOne = teacherService.detailRead(t_no);
-			List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
+			DecimalFormat form = new DecimalFormat("#.##");
+			double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
+			form.format(star);
+			
+			model.addAttribute("starScore",star);
+			
 			
 			//  현재 유저의 참여신청여부 파악  
-			if (session.getAttribute("teach") != null) {
-				TeachVO user = (TeachVO) session.getAttribute("teach");
-				String user_id = user.getUser_Id();
+			StdVO std = (StdVO) session.getAttribute("std");
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");
+			
+			if (std != null) {
+				
+				String user_id = std.getUser_Id();
 				
 				Map<String, Object> map = new HashMap<String, Object>();
 				
@@ -146,38 +157,17 @@ public class TeacherenrollController {
 				if (partiOne != null) {
 					model.addAttribute("partiOne",partiOne);
 				}
-				model.addAttribute("usercheck","checked");
-				model.addAttribute("teach");
-				model.addAttribute("reply", reply); 
-				model.addAttribute("listOne",listOne);
-				
 			}
-			if (session.getAttribute("std") != null) {
-				StdVO user = (StdVO) session.getAttribute("std"); 
-				String user_id = user.getUser_Id();
-				
-				Map<String, Object> map = new HashMap<String, Object>();
-				
-				map.put("p_userid", user_id);
-				map.put("t_no",t_no);
-				
-				TeacherParticipationVO partiOne = participationService.t_partiCheck(map);
-				// 	
-				
-				if (partiOne != null) {
-					model.addAttribute("partiOne",partiOne);
-				}
-				model.addAttribute("usercheck","checked");
-				model.addAttribute("teach");
-				model.addAttribute("reply", reply); 
-				model.addAttribute("listOne",listOne);
-			}
+			model.addAttribute("usercheck","usercheck");
+			model.addAttribute("std",std);
+			model.addAttribute("teach",teach);
+			model.addAttribute("reply", reply); 
+			model.addAttribute("listOne",listOne);
 			
 		}
-		
 	}
 	
-	// 4. 상세보기 + 댓글불러오기 + 수정하기 
+	// 4. 참여신청 정보 등록 클릭 -> 
 	@RequestMapping(value = "/header_DetailRead", method = RequestMethod.POST)
 	public String postDetailRead(@RequestParam("t_no") int t_no, Model model,@ModelAttribute TeacherParticipationVO partiVO ,HttpSession session, RedirectAttributes rttr) throws Exception{
 		
@@ -192,7 +182,11 @@ public class TeacherenrollController {
 		System.err.println(partiVO.getP_userid());
 		
 		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
 		
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach);			
 		
 		return "redirect:/study/header_DetailRead?t_no="+t_no;
 		
@@ -204,8 +198,10 @@ public class TeacherenrollController {
 				
 		logger.info("--------------[ 참여신청 취소   POST ]-----------------");		
 				
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");	
+		
 			//  현재 유저의 참여신청여부 파악  
-			TeachVO user = (TeachVO) session.getAttribute("teach");
+			StdVO user = (StdVO) session.getAttribute("std");
 			String user_id = user.getUser_Id();
 						
 			Map<String, Object> map = new HashMap<String, Object>();
@@ -217,8 +213,12 @@ public class TeacherenrollController {
 			participationService.t_partiCntMinus(t_no);
 		    // 	
 						
-						
-				return "redirect:/study/header_DetailRead?t_no="+t_no;
+	
+			StdVO std =  (StdVO) session.getAttribute("std");		
+			model.addAttribute("std",std);
+			model.addAttribute("teach",teach);
+			
+			return "redirect:/study/header_DetailRead?t_no="+t_no;
 				
 			}	
 	
@@ -274,30 +274,44 @@ public class TeacherenrollController {
 		  if (beforeDay.contains("일")) {
 			  model.addAttribute("sun","일");
 		  }
-		model.addAttribute("teach"); 		 
+		  
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");	
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
+		model.addAttribute("std",std);
+		model.addAttribute("teach", teach); 		 
 		model.addAttribute("listOne",listOne);
 		
 	}	
 	
 	// 6. 강의 내용 수정 글 등록
 	@RequestMapping(value = "/teacherModi.do", method = RequestMethod.POST)
-	public String postModify(@RequestParam("t_no") int t_no, TeacherEnrollVO teacherVO) throws Exception{
+	public String postModify(@RequestParam("t_no") int t_no, TeacherEnrollVO teacherVO,HttpSession session, Model model) throws Exception{
 		
 		logger.info("--------------[ 강의 수정 내용 등록  POST ]-----------------");		
 		
 		teacherService.modify(teacherVO);
 		
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach);	
 		return "redirect:/study/header_DetailRead?t_no="+t_no;
 		 
 	}
 	// 7. 상세페이지 댓글등록
 	@RequestMapping(value = "/t_detailReply.do", method = RequestMethod.POST)
-	public String postReply(@RequestParam("t_no") int t_no, TeacherReplyVO replyVO, TeacherEnrollVO teacherVO) throws Exception{
+	public String postReply(@RequestParam("t_no") int t_no, TeacherReplyVO replyVO, TeacherEnrollVO teacherVO,HttpSession session, Model model) throws Exception{
 		
 		logger.info("--------------[ 강의 댓글 내용 등록  POST ]-----------------");		
 		
-		teacherService.replyInsert(replyVO);  
-		  
+		teacherService.replyInsert(replyVO); 
+		
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach);	  
 		return "redirect:/study/header_DetailRead?t_no="+t_no;
 		
 	}
@@ -305,39 +319,54 @@ public class TeacherenrollController {
 	// 상세페이지 삭제 
 
 	@RequestMapping(value = "/teacherDelete", method = RequestMethod.GET)
-	public String postDelete(@RequestParam("t_no") int t_no) throws Exception{
+	public String postDelete(@RequestParam("t_no") int t_no , Model model ,HttpSession session) throws Exception{
 		logger.info("--------------[ 내용 삭제  POST ]-----------------");				
 		
 		teacherService.classDelete(t_no);
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach);
+		
 		return "redirect:/";
 	}
 	//  댓글 수정
 		@RequestMapping(value = "/modireply", method = RequestMethod.GET)
-		public String getmodiReply(@RequestParam("t_no") int t_no, TeacherReplyVO replyVO, TeacherEnrollVO teacherVO) throws Exception{
+		public String getmodiReply(@RequestParam("t_no") int t_no, TeacherReplyVO replyVO, TeacherEnrollVO teacherVO, HttpSession session, Model model) throws Exception{
 			
 			logger.info("--------------[ 강의 댓글 내용 수정  GET ]-----------------");		
 			
 			teacherService.replyUpdate(replyVO);   
 			  
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+			StdVO std =  (StdVO) session.getAttribute("std"); 		 
+			model.addAttribute("std",std);
+			model.addAttribute("teach",teach);	
+			
 			return "redirect:/study/header_DetailRead?t_no="+t_no;
 			
 		}
-		//  댓글 삭제
-		@RequestMapping(value = "/DeleteReply/{t_no}/{r_no}", method = RequestMethod.GET)
-		public String DeleteReply(@PathVariable int t_no,@PathVariable int r_no, TeacherReplyVO replyVO) throws Exception{
+	
+		// 댓글삭제
+		@RequestMapping(value = "/t_replyDelete", method = RequestMethod.GET)
+		public String getReplyDelete(@RequestParam("r_no") int r_no, @RequestParam("t_no") int t_no,Model model, HttpSession session) throws Exception{
 			
 			logger.info("--------------[ 강의 댓글 내용 삭제]-----------------");		
 			
 			teacherService.DeleteReply(r_no);
 			
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+			StdVO std =  (StdVO) session.getAttribute("std"); 		 
+			model.addAttribute("std",std);
+			model.addAttribute("teach",teach);	
 			return "redirect:/study/header_DetailRead?t_no="+t_no;
-			
 		}
 	
-	
-	
-	
+		
+			
 	
 	
 	
 }
+

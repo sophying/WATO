@@ -202,15 +202,18 @@
     <div id="top">
         <div class="container"> 
             <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
-                <div class="col-lg-6 text-center text-lg-right"> 
-                    <ul class="menu list-inline mb-0">
-                       <c:if test="${std == null && teach == null}">
-                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
+                <!-- <div class="col-lg-6 offer d-flex d-block"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div> --> 
+                <div class="row mx-auto w-100 text-right"> 
+                    <ul class="menu list-inline mb-0 w-100 ">
+                    	<c:if test="${std == null && teach == null}"> 
+                    		<li class=" pl-2 list-inline-item pull-left"><a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-sm">회원가입 하러 가기</a></li> 
+                    	</c:if>
+                    	<c:if test="${std == null && teach == null}">
+                        	<li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                         </c:if>
                         <c:if test="${std != null}">
-                        	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
+                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
@@ -225,9 +228,15 @@
                         	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
                         	</a>
-                        		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								    <a  class="dropdown-item text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
-                        			<a href="javascript:document.myForm.submit();" class="dropdown-item text-black-50 font-weight-bold">내정보 수정</a>
+                        		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
+                        			<a href="javascript:document.myForm.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
+                        			 <c:if test="${std != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
+				                    </c:if>
+				                    <c:if test="${teach != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">나의 강좌보러가기</a>
+				                    </c:if>
 								 </div>
                         	</form>
                         	</li>
@@ -252,18 +261,24 @@
                         		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
                         			<a href="javascript:document.myForm2.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
+                        			 <c:if test="${std != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
+				                    </c:if>
+				                    <c:if test="${teach != null }">
+			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">나의 강좌보러가기</a>
+				                    </c:if>
 								 </div>
                         	</form>
                         	</li>
                         </c:if>
-                        <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
                         <c:if test="${!std.user_Id.equals('admin')}">
-                        <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
+                        <li class="list-inline-item pr-2"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="/admin/index_admin" class="text-black-50 font-weight-bold">관리자</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
+                    	
                     </ul>
                 </div>
             </div>
@@ -302,8 +317,14 @@
                                     <div class="col-md-6 col-lg-3">
                                         <h5>친목도모</h5>
                                          <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
-                                            <li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
+                                            <c:choose>
+	                                            <c:when test="${std != null  }">
+	                                            	<li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
+	                                            </c:when>
+	                                            <c:when test="${teach != null  }">
+	                                            	<li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
+	                                            </c:when>
+                                            </c:choose>
                                             <li class="nav-item"><a href="/study/studyBoard" class="nav-link">스터디탐방</a></li>
                                             <li class="nav-item"><a href="/study/classBoard" class="nav-link">강의탐방</a></li>
                                         </ul>
@@ -452,7 +473,6 @@
 <div id="all">
     <div id="content">
         <header>
-
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -671,10 +691,10 @@
                                     <div class="front"><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a></div>
                                     <div class="back"><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a>
+                            </div><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}" class="invisible"><img src="${tearstudy.t_photo}" alt="" class="img-fluid"></a>
                             <div class="text">
                                 <h3>${tearstudy.t_title}</h3>
-                                <p class="price"> 
+                                <p class="price">  
                                     <del></del><a href="/study/header_DetailRead?t_no=${tearstudy.t_no}" class="button2 b-orange rot-135">Details</a>
                                 </p>
                             </div> 

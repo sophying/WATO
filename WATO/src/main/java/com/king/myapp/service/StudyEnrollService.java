@@ -1,6 +1,7 @@
 package com.king.myapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReplyVO;
@@ -42,23 +43,16 @@ public interface StudyEnrollService {
 	
 	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO) throws Exception;
 
-//	
-//	// 댓글에 대한 답글 (리더답변하기 )
-//	public void leaderReply(LeaderReVO leaderReVO) throws Exception;
-//
-//	// 댓글  불러오기 
-//	public List<StudentReReplyVO> reReplyRead(int s_no) throws Exception;
-//
-//	// 댓글 등록 
-//	public void reReplyInsert(StudentReReplyVO replyVO) throws Exception;
-//
-//	// 댓글 수정 
-//	public void reReplyUpdate(StudentReReplyVO replyVO) throws Exception;
-//
-//	// 댓글 삭제 
-//	public void reReplyDelete(int r_no) throws Exception;
-//
-//	
+	// 스터디 별점평가 
+	//public void starPartiUpdate(StudyEnrollVO studyVO) throws Exception;
+
+	// 별점 등록 
+	public void starPartiUpdate(Map<String, Object> starScoreUpdate) throws Exception;
+
+	// 강의 별점 등록
+	public void class_starPartiUpdate(Map<String, Object> class_starScoreUpdate) throws Exception;
+
+
 	
 
 }
