@@ -33,8 +33,8 @@ z    <script src="../../resource/vendor/jquery.cookie/jquery.cookie.js"> </scrip
     <script src="../../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
     <script src="../../resource/js/front.js"></script>
     <!-- include summernote css/js-->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.15/summernote.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.15/summernote.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote-lite.min.js"></script>
     <!-- include summernote-ko-KR -->
     <script src="../../resource/js/summernote-ko-KR.js"></script>
 

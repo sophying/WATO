@@ -101,6 +101,15 @@ public class AdminController {
 
 		return "/admin/admin_qna_read";
 	}
+	// 삭제(보내기 및 받기)
+	@RequestMapping(value = "/admin_qna_delete/{QNA_BNO}", method = RequestMethod.GET)
+	public String admin_qna_read(@PathVariable int QNA_BNO) throws Exception {
+		logger.info("admin_qna_read");
+		System.out.println("QNA_BNO : " + QNA_BNO);
+		service.QnaDelete(QNA_BNO);
+
+		return "redirect:/admin/admin_qna_list";
+	}
 /*	// 글 수정(수정폼 받기)
 	@RequestMapping(value = "/admin_qna_get_modify/{QNA_BNO}", method = RequestMethod.GET)
 	public String admin_qna_get_modify(@PathVariable int QNA_BNO, Model model) throws Exception {
