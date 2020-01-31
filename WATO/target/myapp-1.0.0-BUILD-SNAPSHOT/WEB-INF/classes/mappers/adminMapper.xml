@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.king.myapp.mappers.adminMapper">
+
+	<!-- admin 페이지에서 승인 안 된 강사 목록 불러오기 -->
+	<select id="adminmanage" resultType="com.king.myapp.domain.ApprovalVO">
+		SELECT
+			app_Profile, app_Resume, app_Gender, 
+			app_Phone1, app_Phone2, app_Phone3, 
+			User_Email,
+			app_Addr1, app_Addr2, app_Addr3
+		FROM Approval
+	</select>	
+	
+		<!-- admin 페이지에서 승인 안 된 강사 목록 불러오기 -->
+	<select id="management" resultType="com.king.myapp.domain.AdminVO">
+		SELECT
+			No, User_Id, User_Gender, User_Email
+		FROM management
+	</select>
+		
+	<!-- 로그인 -> 개인정보수정에서 값을 다 가져와야 하기 때문에 select 에서 모든 컬럼명을 가져온 것임 -->
+	<select id="login1" resultType="com.king.myapp.domain.StdVO"> 
+		select No, User_Id, User_Pwd, Std_Gender, 
+				 Std_Phone1, Std_Phone2, Std_Phone3, 
+				 User_Email,
+				 Std_Addr1, Std_Addr2, Std_Addr3
+		from std_info
+		where User_Id = #{User_Id} and User_Pwd = #{User_Pwd}
+	</select>
+	
+	<!-- 로그인 -> 개인정보수정에서 값을 다 가져와야 하기 때문에 select 에서 모든 컬럼명을 가져온 것임 -->
+	<select id="login2" resultType="com.king.myapp.domain.TeachVO">
+		select No, User_Id, User_Pwd, Teach_Gender, 
+				 Teach_Phone1, Teach_Phone2, Teach_Phone3, 
+				 User_Email,
+				 Teach_Addr1, Teach_Addr2, Teach_Addr3 
+		from teach_info
+		where User_Id = #{User_Id} and User_Pwd = #{User_Pwd}
+	</select>
+	
+	
+	<!-- 비밀번호 찾기에서 아이디와 이메일이 있는 지 확인 강사 -->
+	<select id="findT_pwd" resultType="com.king.myapp.domain.TeachVO"> 
+		SELECT * FROM teach_info WHERE User_Id = #{User_Id} and User_Email = #{User_Email}
+	</select>
+	
+	<!-- 강사 임시비밀번호발급(비밀번호 변경) -->
+	<update id="changeT_pwd" parameterType="com.king.myapp.domain.TeachVO"> 
+		UPDATE teach_info
+		set User_Pwd = #{User_Pwd} where User_Id = #{User_Id} and User_Email = #{User_Email}
+	</update>
+	
+	<!-- 비밀번호 찾기에서 아이디와 이메일이 있는 지 확인 학생 -->
+	<select id="findS_pwd" resultType="com.king.myapp.domain.StdVO"> 
+		SELECT * FROM std_info WHERE User_ID = #{User_Id} and User_Email = #{User_Email}
+	</select>
+	
+	<!-- 학생 임시비밀번호발급(비밀번호 변경) -->
+	<update id="changeS_pwd" parameterType="com.king.myapp.domain.StdVO"> 
+		UPDATE std_info
+		set User_Pwd = #{User_Pwd} where User_Id = #{User_Id} and User_Email = #{User_Email}
+	</update>
+	
+	<!-- 학생 아이디 찾기 -->
+	<select id="findS_id" resultType="com.king.myapp.domain.StdVO">
+		SELECT * FROM std_info WHERE User_Email = #{User_Email}
+	</select>
+	
+	<!-- 강사 아이디 찾기 -->
+	<select id="findT_id" resultType="com.king.myapp.domain.TeachVO">
+		SELECT * FROM teach_info WHERE User_Email = #{User_Email}
+	</select>
+	
+</mapper>
