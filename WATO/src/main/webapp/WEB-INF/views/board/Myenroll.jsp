@@ -11,26 +11,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="../resource/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="../resource/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/resource/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
-    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="/resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="/resource/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="../resource/css/style.default.css" id="theme-stylesheet"> 
+    <link rel="stylesheet" href="/resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
-    <link rel="stylesheet" href="../resource/css/custom.css">
+    <link rel="stylesheet" href="/resource/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
-    <link rel="icon" type="image/png" href="../resource/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="/resource/images/icons/favicon.ico"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	 <script src="/resource/vendor/jquery/jquery.min.js"></script> 
 </head>
 <style>
     #top{
@@ -50,21 +51,16 @@
         margin-right: auto;
         width: 53.8%;
     }
-
-
     #new{
         position: static;
         margin-left: auto;
         margin-right: auto;
         width: 53.8%;
     }
-
     #content{
         margin-left: auto;
         margin-right: auto;
         width: 53.8%;
-        text-align: center;
-        background-color: #fff;
     }
     #footer {
         position: static;
@@ -80,7 +76,6 @@
         margin-right: auto;
         width: 100%;
     }
-
     .cate_list{
         padding-bottom: 10px;
     }
@@ -137,14 +132,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -172,46 +167,45 @@
 	.close-button:hover {
 	    background-color: tomato;
 	    color: #fff;
+	} 
+	.button2 {
+	  display: inline-block; 
+	  font-size: 20px;  
+	  padding:0px .5em;  
+	  border-radius: 5px;
+	  transition: all .5s; 
+	  filter: hue-rotate(0deg);
+	  color: #FFF;
+	  text-decoration: none;
 	}
-	
-		table.table_main {
-            border-top: 1px solid;
-            border-bottom: 1px solid;
-            margin: auto;
-        }
-
-        th {
-            padding-right: 20px;
-            /*margin-right: 5px;*/
-        }
-
-        td {
-
-        }
-
-        table.table_sub {
-            border-top: 1px solid;
-            border-bottom: 1px solid;
-            margin: auto;
-        }
-
-        input {
-            padding: 10px;
-        }
-
-
+  .b-orange, .b-orange:before {
+    background: rgba(255,193,7,1);
+    background: -moz-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,193,7,1)), color-stop(100%, rgba(255,87,34,1)));
+    background: -webkit-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc107', endColorstr='#ff5722', GradientType=1 );
+  }
+  .rot-135:hover {
+  filter: hue-rotate(135deg);
+}
+.img-fluid{
+	max-height: 140px;
+}
 </style>
 <body>
-<!-- navbar-->
+<!-- navbar--> 
 <header class="header mb-0">
     <!--
     *** TOPBAR ***
     _________________________________________________________
     -->
     <div id="top">
-        <%@ include file="../include/index_header_MS.jsp" %> 
+       <%@ include file="../include/index_header_MS.jsp" %>  
         <div class="row">
-	        <div id="myModal" class="modal fade" tabindex="-1">
+	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
 	        	<div class="modal-dialog modal-lg">
 	            	<div class="modal-content" style="background: none; border: 0px">
 	            		<div class="modal-body"> 
@@ -230,7 +224,7 @@
  
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
-        <div class="container"><a href="/" class="navbar-brand home"><img src="../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container"><a href="/" class="navbar-brand home"><img src="/resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="/resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -243,10 +237,17 @@
                                 <div class="row"> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>친목도모</h5>
-                                        <ul class="list-unstyled mb-3">
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
+                                         <ul class="list-unstyled mb-3">
+                                            <c:choose>
+	                                            <c:when test="${std != null  }">
+	                                            	<li class="nav-item"><a href="/study/studentEnroll" class="nav-link">일반스터디등록</a></li>
+	                                            </c:when>
+	                                            <c:when test="${teach != null  }">
+	                                            	<li class="nav-item"><a href="/study/teacherEnroll" class="nav-link">강의등록</a></li>
+	                                            </c:when>
+                                            </c:choose>
+                                            <li class="nav-item"><a href="/study/studyBoard" class="nav-link">스터디탐방</a></li>
+                                            <li class="nav-item"><a href="/study/classBoard" class="nav-link">강의탐방</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
@@ -297,9 +298,9 @@
                                         <ul class="list-unstyled mb-3">
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">스터디</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">과외</a></li>
-                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&A</a></li>
+                                            <li class="nav-item"><a href="category.jsp" class="nav-link">Q&amp;A</a></li>
                                         </ul>
-                                    </div>
+                                    </div> 
                                     <div class="col-md-6 col-lg-3">
                                         <h5>동영상 강의</h5>
                                         <ul class="list-unstyled mb-3">
@@ -307,11 +308,11 @@
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">비주얼베이직</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">자바</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">기타</a></li>
-                                        </ul>
+                                         </ul>
                                     </div>
                                     <div class="col-md-6 col-lg-3">
                                         <h5>IT공부</h5>
-                                        <ul class="list-unstyled mb-3">
+                                        <ul class="list-unstyled mb-3"> 
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">프로그래밍 언어</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">서버, 시스템</a></li>
                                             <li class="nav-item"><a href="category.jsp" class="nav-link">네트워크</a></li>
@@ -321,8 +322,8 @@
                         </ul>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="banner"><a href="#"><img src="../resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
-                <div class="banner"><a href="#"><img src="../resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="/resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="/resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
             </div>
         </div>
                             </li>
@@ -376,6 +377,7 @@
                     </li>
                     <li class="nav-item menu-large"><a href="/board/studylist"  class="nav-link" >스터디찾기<b class="caret"></b></a> 
                 </ul>    
+                <!-- 메인 search 폼  -->
                 <form role="search" class="ml-auto" method="post" action="/board/searchResult">
                     <div class="input-group">     
                         <input type="text" placeholder="Search" class="form-control" name="searchKey" id="searchKey"> 
@@ -388,99 +390,137 @@
         </div>
     </nav>
 </header>
+<!-- 메인페이지 슬라이드쇼 -->
 <div id="all">
     <div id="content">
-<!-- 최지혜 추가 -->  <div style="width: 100%; text-align: center;">
-                    <form name="infoForm" onsubmit="return infoCheck()" role="form" method="post" autocomplete="off">
-			        <div><img src="../resource/images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div>
-			        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">회원 정보 수정</div>
-			        <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
-			            <p style="float: left; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
-			            <div>저희 스터디어스를 이용해 주셔서 감사합니다. <span>${std.user_Id}</span>님은 학생이십니다.
-			            <br>회원정보를 수정해주세요.
-			                <p style="float: right; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
-			            </div>
-			        </div>
-			        <div style="font-size: 17px;">기본정보</div>
-			        <div>
-			            <table class="table_main" style="text-align: left;">
-			                <caption style="text-align: right;"><img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"> 필수입력사항</caption>
-			                <tr>
-			                    <th>아이디 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="text" name="User_Id" value="${std.user_Id}" readonly="readonly"></td>
-			                </tr>
-			                <tr>
-			                    <th>새 비밀번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="password" id="User_Pwd" name="User_Pwd" placeholder="새 비밀번호 입력"></td>
-			                </tr>
-			                <tr>
-			                    <th>새 비밀번호 확인 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="password" id="User_Pwd_ok" placeholder="새 비밀번호 확인"></td>
-			                </tr>
-			                <tr>
-			                    <th>성별 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><span>${std.std_Gender}</span></td>
-			                </tr>
-			                <tr>
-			                    <th>휴대폰 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td>
-			                    <input type="text" id="Std_Phone1" name="Std_Phone1" value="${std.std_Phone1}" />
-			                    -
-			                    <input type="text" id="Std_Phone2" name="Std_Phone2" value="${std.std_Phone2}" />
-			                    -
-			                    <input type="text" id="Std_Phone3" name="Std_Phone3" value="${std.std_Phone3}" />
-			                    </td>
-			                </tr>
-			                <tr>
-				                <th>이메일 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-				                    <td><input type="text" id="User_Email" name="User_Email" value="${std.user_Email}" /></td>            
-				            </tr>
-			                <tr>
-			                    <th>우편번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="text" id="sample3_postcode" name="Std_Addr1" value="${std.std_Addr1}" placeholder="우편번호">
-			                    <input type="button" onclick="sample3_execDaumPostcode()" value="우편번호 찾기"
-			                     style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; width: 150px; height: 50px;"></td>
-			                </tr>
-			                <tr>
-			                    <th>주소 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="text" id="sample3_address" name="Std_Addr2" value="${std.std_Addr2}" placeholder="도로명주소"></td>
-			                </tr>
-			                <tr>
-			                    <th>상세주소 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="text" id="sample3_detailAddress" name="Std_Addr3" value="${std.std_Addr3}" placeholder="상세주소">
-			                    <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
-								<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
-								</div>
-			                    </td>
-			                </tr>
-			            </table>
-			        </div>
-		                <input type="submit" value="회원정보수정" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
-		                <button type="reset" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; width: 150px; height: 50px;">취소</button><br><br><br>
-		        </form>
+        <header>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <!-- Slide One - Set the background image for this slide in the line below -->
+                    <div class="carousel-item active" style="background-image: url('/resource/images/javascriptlogo.jpg">
+                    </div>
+                    <!-- Slide Two - Set the background image for this slide in the line below -->
+                    <div class="carousel-item" style="background-image: url('/resource/images/pythonlogo.png">
+                    </div>
+                    <!-- Slide Three - Set the background image for this slide in the line below -->
+                    <div class="carousel-item" style="background-image: url('/resource/images/Golang_main.png')">
                     </div>
                 </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-<!-- 최지혜 추가 -->   		
-        <!-- 아이콘 -->
-
+        </header>
         <!--
         *** HOT PRODUCT SLIDESHOW ***
         _________________________________________________________
         -->
-
+        <!-- 메인페이지 language rank  -->
+        <div  id="hot">
+            <div class="box py-4 mt-0">
+                <div class="container">
+                    <div class="row">
+                            <nav id="studyusnav" class="navbar w-100 pb-3 ">  
+								<div class="container w-100 my-auto" style="text-align: center;">
+									<iframe style="width: 100%;  border: none;" src="/board/clock"></iframe> 
+								</div>
+							</nav> 
+                    </div>
+                </div> 
+            </div>
+              <div class="box py-4 mt-0">
+	            <div class="container"> 
+		            <div class="col-md-12 mt-4"> 
+	                      <h2 class="mb-0 text-center"><span style="font-weight: bold;">내가 만든 스터디</span></h2>
+	                 </div> 
+	                <c:if test="${std != null }">
+	                <div id="updatehtml">
+	                	<table class="table table-hover">
+	                		<thead>
+	                			<tr>
+	                				<th>글 번호</th><th>글 제목</th><th>시작날짜</th><th>종료예정날짜</th><th>수정하기	</th>
+	                			</tr>
+	                		</thead> 
+	                		<tbody>
+	                			<c:forEach items="${mystudy}" var="mystudy">
+	                			<tr>
+	                				<td>${mystudy.s_no}</td>
+	                				<td>${mystudy.s_title}</td>
+	                				<td>${mystudy.s_startDate}</td>
+	                				<td>${mystudy.s_endDate}</td> 
+	                				<td>
+	                					<form>
+	                						<input type="hidden" name="s_no" value="${mystudy.s_no}"> 
+	                						<input type="hidden" name="s_userId" value="${mystudy.s_userId}"> 
+	                						<input type="hidden" name="s_category" value="${mystudy.s_category}"> 
+	                						<input type="hidden" name="s_title" value="${mystudy.s_title}"> 
+	                						<input type="hidden" name="s_startDate" value="${mystudy.s_startDate}"> 
+	                						<input type="hidden" name="s_endDate" value="${mystudy.s_endDate}"> 
+	                						<input type="hidden" name="s_day" value="${mystudy.s_day}"> 
+	                						<input type="hidden" name="s_postnum" value="${mystudy.s_postnum}"> 
+	                						<input type="hidden" name="s_place" value="${mystudy.s_place}"> 
+	                						<input type="hidden" name="s_intro" value="${mystudy.s_intro}"> 
+	                						<input type="hidden" name="s_photo" value="${mystudy.s_photo}"> 
+	                						<input type="hidden" name="s_level" value="${mystudy.s_level}"> 
+	                						<input type="hidden" name="s_people" value="${mystudy.s_people}"> 
+	                						<input type="hidden" name="s_parti" value="${mystudy.s_parti}"> 
+	                						<input type="hidden" name="s_profile" value="${mystudy.s_profile}"> 
+	                					</form>
+	                					<button onclick="sendupdateform(this)" type="button">수정</button>
+	                				</td>	
+	                			</tr>
+	                		</c:forEach>
+	                		</tbody>
+	                	</table>
+	                	</div>
+	                </c:if>	
+	                <c:if test="${teach != null }">
+	                	<table class="table table-hover">
+	                		<thead>
+	                			<tr>
+	                				<th>글 번호</th><th>글 제목</th><th>시작날짜</th><th>종료예정날짜</th><th>수정하기	</th>
+	                			</tr>
+	                		</thead>
+	                		<tbody>
+	                		<c:forEach items="${mystudy}" var="mystudy">
+	                			<tr>
+	                				<td>${mystudy.t_no}</td>
+	                				<td>${mystudy.t_title}</td>
+	                				<td>${mystudy.t_startDate}</td>
+	                				<td>${mystudy.t_endDate}</td> 
+	                				<td><button>수정</button></td>	
+	                			</tr>
+	                		</c:forEach>
+	                		</tbody>
+	                	</table>
+	                </c:if>	
+	            </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!--
    *** BLOG HOMEPAGE ***
    _________________________________________________________
    -->
-<!-- <div id="new" class="box text-center mb-0">
+<div id="new" class="box text-center mb-0">
     <div class="container">
         <div class="col-md-12">
             <h3 class="text-uppercase">From our blog</h3>
             <p class="lead mb-0">What's new in the world of fashion? <a href="blog.jsp">Check our blog!</a></p>
         </div>
     </div>
-</div> -->
+</div>
 <div id="blog-homepage" class="box row mb-0">
     <div class="container">
         <div class="post">
@@ -497,16 +537,7 @@
     </div>
     <!-- /#blog-homepage-->
 </div>
-<!-- /.container-->
-<!-- *** BLOG HOMEPAGE END ***-->
-<!--
-*** FOOTER ***
-_________________________________________________________
--->
-<!--
-*** FOOTER ***
-_________________________________________________________
--->
+
 <div class="box text-center mb-3" id="footer">
     <div class="container">
         <div class="row">
@@ -516,7 +547,7 @@ _________________________________________________________
                     <li><a href="text.html">회사소개</a></li>
                     <li><a href="text.html">이용약관</a></li>
                     <li><a href="faq.jsp">FAQ</a></li>
-                    <li><a href="contact.jsp">문의하기</a></li>
+                    <li><a href="/qna/getQnaList">문의하기</a></li>
                 </ul>
                 <hr>
                 <h4 class="mb-3">회원</h4>
@@ -559,7 +590,7 @@ _________________________________________________________
                     </div>
                     <!-- /input-group--> 
                 </form>
-                <hr>
+                <hr> 
                 <h4 class="mb-3">더보기 사이트</h4>
                 <p class="social"><a href="#" class="facebook external"><i class="fa fa-facebook"></i></a><a href="#" class="twitter external"><i class="fa fa-twitter"></i></a><a href="#" class="instagram external"><i class="fa fa-instagram"></i></a><a href="#" class="gplus external"><i class="fa fa-google-plus"></i></a><a href="#" class="email external"><i class="fa fa-envelope"></i></a></p>
             </div>
@@ -571,145 +602,11 @@ _________________________________________________________
 </div>
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
-<script type="text/javascript">
-
- // 회원정보 null 파악_____________________________________
-	
-	function infoCheck() {
-		if(!document.infoForm.User_Pwd.value) {
-			alert("새 비밀번호를 입력해주세요.");
-			document.infoForm.User_Pwd.focus();
-			return false;
-		}
-		
-		if(!document.infoForm.User_Pwd_ok.value) {
-			alert("새 비밀번호 확인을 입력해주세요.");
-			document.infoForm.User_Pwd_ok.focus();
-			return false;
-		}
-		
-		if(!document.infoForm.Std_Phone1.value) {
-			alert("휴대폰 번호를 입력해주세요.");
-			document.infoForm.Std_Phone1.focus();
-			return false;
-		}
-		
-		if(!document.infoForm.Std_Phone2.value) {
-			alert("휴대폰 번호를 입력해주세요.");
-			document.infoForm.Std_Phone2.focus();
-			return false;
-		}
-		
-		if(!document.infoForm.Std_Phone3.value) {
-			alert("휴대폰 번호를 입력해주세요.");
-			document.infoForm.Std_Phone3.focus();
-			return false;
-		}
-		
-		if(!document.infoForm.User_Email.value) {
-			alert("이메일을 입력해주세요.");
-			document.infoForm.User_Email.focus();
-			return false;
-		}
-		
-		if(!document.infoForm.Std_Addr1.value) {
-			alert("우편번호를 입력해주세요.");
-			document.infoForm.Std_Addr1.focus();
-			return false;
-		}
-		
-		if(!document.infoForm.Std_Addr2.value) {
-			alert("주소를 입력해주세요.");
-			document.infoForm.Std_Addr2.focus();
-			return false;
-		}
-		
-		if(!document.infoForm.Std_Addr3.value) {
-			alert("상세주소를 입력해주세요.");
-			document.infoForm.Std_Addr3.focus();
-			return false;
-		}
-		
-		alert("회원정보가 정상적으로 변경완료 되었습니다.")
-	}
-    
- // 우편번호찾기_________________________________________________________________________________
-    
-    // 우편번호 찾기 찾기 화면을 넣을 element
-    var element_wrap = document.getElementById('wrap');
-
-    function foldDaumPostcode() {
-        // iframe을 넣은 element를 안보이게 한다.
-        element_wrap.style.display = 'none';
-    }
-
-    function sample3_execDaumPostcode() {
-        // 현재 scroll 위치를 저장해놓는다.
-        var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample3_postcode').value = data.zonecode;
-                document.getElementById("sample3_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample3_detailAddress").focus();
-
-                // iframe을 넣은 element를 안보이게 한다.
-                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
-                element_wrap.style.display = 'none';
-
-                // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
-                document.body.scrollTop = currentScroll;
-            },
-            // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
-            onresize : function(size) {
-                element_wrap.style.height = size.height+'px';
-            },
-            width : '100%',
-            height : '100%'
-        }).embed(element_wrap);
-
-        // iframe을 넣은 element를 보이게 한다.
-        element_wrap.style.display = 'block';
-    }
-      
-
-</script>
 <!-- JavaScript files--> 
-<script src="../resource/vendor/jquery/jquery.min.js"></script>
-<script src="../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="../resource/js/front.js"></script> 
+<script src="/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="/resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="/resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="/resource/js/front.js"></script> 
 </body>
 </html>

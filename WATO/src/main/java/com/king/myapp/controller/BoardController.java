@@ -625,6 +625,52 @@ public class BoardController {
 		public String clock() {
 			return "/include/clock";
 		}
+		@RequestMapping(value = "/Myenroll")
+		public String getMyenroll (Model model,HttpSession session) throws Exception {
+			if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+				return "redirect:/";
+			}
+			StdVO std = (StdVO) session.getAttribute("std");
+			TeachVO tech = (TeachVO) session.getAttribute("teach");
+			
+			if (std != null) {
+				String stduserid =  std.getUser_Id();
+				List<StudyEnrollVO> studylist = service.studylistAll();
+				List<StudyEnrollVO> mystudy = new ArrayList<StudyEnrollVO>();
+				for (StudyEnrollVO studyEnrollVO : studylist) {
+					if (studyEnrollVO.getS_userId().equals(stduserid)) {
+						mystudy.add(studyEnrollVO);
+					}
+				}
+				model.addAttribute("mystudy",mystudy);
+			}
+			if (tech != null) {
+				String techuserid =  tech.getUser_Id();
+				List<TeacherEnrollVO> studylist = service.TearchlistAll();
+				List<TeacherEnrollVO> mystudy = new ArrayList<TeacherEnrollVO>();
+				for (TeacherEnrollVO teacherEnrollVO : studylist) {
+					if (teacherEnrollVO.getT_userId().equals(techuserid)) {
+						mystudy.add(teacherEnrollVO);
+					}
+				}
+				model.addAttribute("mystudy",mystudy);
+			}
+			return "/board/Myenroll";
+		}
+		
+		@RequestMapping(value="/Myenrollupdate", method = RequestMethod.POST)
+		public String Myenrollupdate (StudyEnrollVO studentstudy,TeacherEnrollVO teachstudy, Model model, HttpSession session) {
+			logger.info("여기는 자신의 스터디를 수정하는곳");
+			
+			if (session.getAttribute("std") != null) {
+				model.addAttribute("studentstudy",studentstudy);
+			}
+			if (session.getAttribute("teach") != null) {
+				model.addAttribute("teachstudy",teachstudy);
+			}
+			
+			return "/board/MyenrollUpdate";
+		}
 		
 		
 	
