@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.king.myapp.domain.MainLangugeRankVO;
 import com.king.myapp.domain.StudyEnrollVO;
+import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.service.BoardService;
 
 /**
@@ -45,6 +47,17 @@ public class HomeController {
 		
 		List<MainLangugeRankVO> languagerank =  service.langugerank();
 		List<StudyEnrollVO> listRank = service.listRank();
+		List<TeacherEnrollVO> teachlist = service.TearchlistAll();
+		if (teachlist.size() != 0 && !teachlist.equals("")) {
+			if (teachlist.size() >= 10) {
+				List<TeacherEnrollVO> tearstudy = teachlist.subList(0, 10);
+				model.addAttribute("tearstudy",tearstudy);
+			}else {
+				model.addAttribute("tearstudy",teachlist);
+			}
+		}else {
+			model.addAttribute("tearstudy",teachlist);
+		}
 		model.addAttribute("languagerank",languagerank); 
 		model.addAttribute("listRank",listRank); //스터디 랭크
 		model.addAttribute("serverTime", formattedDate );
