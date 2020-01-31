@@ -522,8 +522,16 @@
 											<tr>
 												<th id="s_people"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">장소 : </label></font></th>
 												<td colspan="3">${listOne.s_place }</td>
-											</tr>	
+											</tr>
 										</table>
+										
+										<!-- kakao map 히든 버튼을 통한 메소드 실행.-->
+										<div id="map" style="width: 100%; height: 300px;"></div>
+										<input type="text" value="" id="mapVal2" style="display: none;">
+										<button type="button" style="display: none;"  onclick="readAddress()" id="showMap">클릭!</button>
+										<input type="text" value="${listOne.s_place}" id="mapVal" style="display: none;">
+										<!-- kakao map 히든 버튼을 통한 메소드 실행.-->
+										
 									</div>
 								</div>
 							</div>
@@ -630,7 +638,7 @@
 					</div>    
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
 	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
-				<aside class="d-inline-block rounded-sm " style="width: 350px;" >
+				<aside class="d-inline-block rounded-sm " style="width: 350px; z-index: 1000" >
 					<div  class="form-group container-fluid" style="height: auto;">
 							<div class="cols-sm-1 d-inline-block d-flex justify-content-center"> 
 								<div class="card-body">
@@ -764,6 +772,91 @@
 <script src="../resource/js/front.js"></script>
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
-<script src="../resource/js/hr/student_detailRead.js"></script> 
+<script src="../resource/js/hr/student_detailRead.js"></script>
+<!-- kakao map api key (최성웅 appkey)-->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
+
+<!-- kakao map api 시작 -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript">
+ // 주소 분리하여 추출(db의 주소는 도로명+/+상세주소가 합쳐져 있음)										
+	window.onload = function s_placeMapValCut() {
+		var mapVal = $("#mapVal").val();
+	
+		if(mapVal != "") {
+			var keyWordAddress = mapVal.substring(0,mapVal.indexOf("/",0));
+			$("#mapVal2").val(keyWordAddress);
+			$("#showMap").trigger("click");
+			}else{
+				alert("주소를 다시 확인하여 주시기 바랍니다.");
+			}
+		}
+
+	//좌표검색
+	var $coords ={};
+	
+	$coords.userAddress = $("#mapVal2");
+	$coords.tmpField1 = $("#tmpField1");
+	$coords.tmpField2 = $("#tmpField2");
+	
+	function readAddress() {
+	var address = $coords.userAddress.val();
+	if (address == ""){
+		alert('주소를 확인하여 주시기 바랍니다.');
+		$coords.userAddress.focus();
+	}else {
+		
+	// 주소로 좌표를 검색합니다
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+			mapOption = {
+				center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				level: 3 // 지도의 확대 레벨
+			};
+	// 지도를 생성합니다
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+
+	geocoder.addressSearch(address, function(result, status) {
+
+		// 정상적으로 검색이 완료됐으면
+		if (status === kakao.maps.services.Status.OK) {
+
+			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+				
+			console.log('실행 확인');
+			console.log(coords);
+				
+			// 결과값으로 받은 위치를 마커로 표시합니다
+			var marker = new kakao.maps.Marker({
+				map: map,
+				position: coords
+			});
+
+			//마커에 이벤트 발생.
+			kakao.maps.event.addListener(marker,'onclick',function (data) {
+			});
+
+			//마커 객체에 등록한 사용자 이벤트 발생
+			kakao.maps.event.trigger(marker,'onclick','사용자 이벤트')
+
+			// 인포윈도우로 장소에 대한 설명을 표시합니다
+			var infowindow = new kakao.maps.InfoWindow({
+				content: '<div style="width:150px;text-align:center;padding:6px 0;">김코알라 출몰장소</div>'
+			});
+			infowindow.open(map, marker);
+
+			// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+			map.setCenter(coords);
+			} else {
+				alert('검색 결과가 없어요~~.');
+			}
+		});
+	}
+return false;
+};
+</script>
+<!-- kakao map api 시작 끝~~~~~~~~~~-->
 </body>
 </html>		

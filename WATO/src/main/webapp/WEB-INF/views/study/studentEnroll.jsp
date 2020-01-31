@@ -564,8 +564,6 @@
 <!-- // 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
 
 
-
-
 <!-- <2> Study Info Enroll -->
     <div class="col-md-7 d-inline-block">
       <div class="card">
@@ -611,42 +609,75 @@
                       </div>
 
 
-                   <!-- 우편번호 찾기 API -->
+                   <%--kakao map API (카카오 지도)--%>
                    <div class="form-group">
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
-                       		&nbsp;&nbsp;&nbsp;&nbsp;<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
-                       </label>
-
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                       <div class="d-inline row mx-md-n6">
-                                <span class="input-group-addon"></span>
-                               <!--  <input type="text" class="form-control" name="schedule" id="schedule" placeholder="함께 모일 장소를 알려주세요!" /> -->
-                                <input type="button" class="btn btn-primary box " id="execDaumPostcode" value="우편번호 찾기">
-                         </div>
-
-                          <div class="cols-sm-10">
+                       	<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
+      					</label>              
+                   </div>
+                                          	<input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
+                   
+                          <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
-                            <span class="input-group-addon"></span>
-  <!-- s_postnum -->            <input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" required>
+                            
+							<!--  post 우편번호 -->            
+  							<input type="text" class="form-control" id="postcode" name="s_postnum" placeholder="우편번호" required>
+  							  </div>
                             </div>
-                          </div>
+                          
+						  <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
-                                <input type="text"  class="form-control" id="roadAddress" placeholder="도로명주소" required>
+                                <input type="text"  class="form-control" id="roadAddress" placeholder="도로명/지번주소" required>
                             </div>
                           </div>
+                          
+						  <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
-                                <input type="text" class="form-control" id="jibunAddress" placeholder="지번주소" required>
+                                 <input type="text" class="form-control" id="jibunAddress" placeholder="상세주소(건물명 등)를 입력해주세요" required>
                            </div>
                           </div>
+                          
+						  <!-- 참고항목 -->                         
+                          <div class="cols-sm-10 mb-1">
+                            <div class="input-group">
+                              <span class="input-group-addon"></span>
+                                <input type="text" class="form-control" id="extraAddress" placeholder="참고항목" required>
+                           </div>
+                          </div>
+                          
+						  <%--주소 검색 iframe wrap 공간--%>
+                          <div class="cols-sm-10 mb-1">
+                       	 	<div class="input-group">
+								<div id="wrap" style="display:none;
+											border:1px solid;
+											width:500px;
+											height:300px;
+											margin:5px 0;
+											position:relative">
+    						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
+    							 style="cursor:pointer;
+    							 position:absolute;
+    							 right:0px;
+    							 top:-1px;
+    							 z-index:1" 
+    							 onclick="foldDaumPostcode()" alt="접기 버튼">
+    							</div>
+							</div>
+                          </div>
+    
+    					<%--kakao map API (카카오 지도 담는 영역)--%>
+                    	<div class="cols-sm-10 mb-1">
+                    		<div class="input-group">
+								<div id="map" style="width: 100%; height: 300px;"></div>
+							</div>
+						</div>  
                     </div>
-                    <!-- // 우편번호 찾기 API -->
+<%--kakao map API (카카오 지도)--%>
+
                     <div class="form-group">
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">그룹장의 소개를 해주세요!!!&nbsp;&nbsp;&nbsp;<span id="cnttxt1"></span></label>
                            <div class="cols-sm-10">
@@ -772,11 +803,123 @@ _________________________________________________________
 <script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
 <script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
 <script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="./resource/js/front.js"></script> 
+<script src="./resource/js/front.js"></script>
+<!-- kakao map api key (최성웅 key)-->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
+ 
 </body>
 <!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<!-- kakao 우편번호 검색 api -->
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript">
+//kakao map관련 script 시작
+
+//kakao map컨테이너 생성 : 위의 div태그 (id='map')
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+        mapOption = {
+            center: new daum.maps.LatLng(37.53591291785309, 127.1336680908981), // 지도의 중심좌표
+            level: 3 // 지도의 확대 레벨
+        };
+    //지도를 미리 생성
+    var map = new daum.maps.Map(mapContainer, mapOption);
+    
+    //주소-좌표 변환 객체를 생성
+    var geocoder = new daum.maps.services.Geocoder();
+    
+    //마커를 미리 생성
+    var marker = new daum.maps.Marker({
+        position: new daum.maps.LatLng(37.53591291785309, 127.1336680908981),
+        map: map
+    });
+    
+    // 우편번호 찾기 찾기 화면을 넣을 element
+    var element_wrap = document.getElementById('wrap');
+    function foldDaumPostcode() {
+        // iframe을 넣은 element를 안보이게 한다.
+        element_wrap.style.display = 'none';
+    }
+    
+    /* 주소 검색 버튼 클릭 시 실행할 메소드 */
+    function execDaumPostcode() {
+        // 현재 scroll 위치를 저장해놓는다.
+        var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = data.roadAddress; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+                // 주소로 상세 정보를 검색
+                geocoder.addressSearch(data.address, function(results, status) {
+                    // 정상적으로 검색이 완료됐으면
+                    if (status === daum.maps.services.Status.OK) {
+                        var result = results[0]; //첫번째 결과의 값을 활용
+                        // 해당 주소에 대한 좌표를 받아서
+                        var coords = new daum.maps.LatLng(result.y, result.x);
+                        
+                        // 지도를 보여준다.
+                        mapContainer.style.display = "block";
+                        map.relayout();
+                        // 지도 중심을 변경한다.
+                        map.setCenter(coords);
+                        // 마커를 결과값으로 받은 위치로 옮긴다.
+                        marker.setPosition(coords)
+                    }
+                });
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("extraAddress").value = extraAddr;
+                } else {
+                    document.getElementById("extraAddress").value = '';
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("roadAddress").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("jibunAddress").focus();
+                // iframe을 넣은 element를 안보이게 한다.
+                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+                element_wrap.style.display = 'none';
+                // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
+                document.body.scrollTop = currentScroll;
+            },
+            // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
+            onresize : function(size) {
+                element_wrap.style.height ='300px';
+                //element_wrap.style.height = size.height+'px';
+            },
+            width : '100%',
+            height : '100%'
+        }).embed(element_wrap);
+        // iframe을 넣은 element를 보이게 한다.
+        element_wrap.style.display = 'block';
+    }
+</script>
+<!-- kakao map관련 script 끝~~~~~~~~~~ -->
+
 <script type="text/javascript"> 
 
 $(document).ready(function($){
@@ -811,14 +954,15 @@ $("#s_content").keyup(function (event) {
 
 $('#enroll_btn').click(function(){
 
-
-   var road =  document.getElementById('roadAddress').value;
-   var jibun =  document.getElementById('jibunAddress').value;
-
+	 var road =  document.getElementById('roadAddress').value; 
+	 var jibun =  document.getElementById('jibunAddress').value;
+	  
    var s_place = road+"/"+jibun;
+   
    document.getElementById('Place').value = s_place;
 
-
+ 
+ 
 /* null 확인  */
   var s_category = document.getElementById('category');
   var s_title = document.getElementById('stitle');
@@ -852,65 +996,6 @@ $('#enroll_btn').click(function(){
  }
 
 });
-
-
-
-// 우편번호 검색 ___________________________________________________________
-
-	  $("#execDaumPostcode").click(function sample4_execDaumPostcode() {
-	      new daum.Postcode(
-	              {
-	                  oncomplete : function(data) {
-
-	                	  // 도로명 주소 변수
-	                      var fullRoadAddr = data.roadAddress;
-	                      // 도로명 조합형 주소 변수
-	                      var extraRoadAddr = '';
-
-	                      // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-	                      // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-	                      if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
-	                          extraRoadAddr += data.bname;
-	                      }
-	                      // 건물명이 있고, 공동주택일 경우 추가한다.
-	                      if (data.buildingName !== ''
-	                              && data.apartment === 'Y') {
-	                          extraRoadAddr += (extraRoadAddr !== '' ? ', '
-	                                  + data.buildingName : data.buildingName);
-	                      }
-	                      // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-	                      if (extraRoadAddr !== '') {
-	                          extraRoadAddr = ' (' + extraRoadAddr + ')';
-	                      }
-	                      // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
-	                      if (fullRoadAddr !== '') {
-	                          fullRoadAddr += extraRoadAddr;
-	                      }
-
-	                      // 우편번호와 주소 정보를 해당 필드에 넣는다.
-	                      document.getElementById('postcode').value = data.zonecode; //5자리 새우편번호 사용
-	                      document.getElementById('roadAddress').value = fullRoadAddr;
-	                      document.getElementById('jibunAddress').value = data.jibunAddress;
-
-	                      // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-	                      if (data.autoRoadAddress) {
-	                          //예상되는 도로명 주소에 조합형 주소를 추가한다.
-	                          var expRoadAddr = data.autoRoadAddress
-	                                  + extraRoadAddr;
-	                          document.getElementById('guide').innerHTML = '(예상 도로명 주소 : '
-	                                  + expRoadAddr + ')';
-
-	                      } else if (data.autoJibunAddress) {
-	                          var expJibunAddr = data.autoJibunAddress;
-	                          document.getElementById('guide').innerHTML = '(예상 지번 주소 : '
-	                                  + expJibunAddr + ')';
-
-	                      } else {
-	                          document.getElementById('guide').innerHTML = '';
-	                      }
-	                  }
-	              }).open();
-	  });
 
 // 요일 선택___________________________________________________________
 

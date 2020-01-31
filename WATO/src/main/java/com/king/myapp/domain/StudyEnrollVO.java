@@ -46,9 +46,7 @@ public class StudyEnrollVO {
 	private String road;
 	private String jibun;
 	
-	
-	
-	
+
 	public final int getS_viewcnt() {
 		return s_viewcnt;
 	}

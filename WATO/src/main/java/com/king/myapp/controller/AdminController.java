@@ -1,7 +1,6 @@
 package com.king.myapp.controller;
 
 import java.io.PrintWriter;
-
 import java.util.List;
 import java.util.Random;
 
@@ -19,11 +18,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.king.myapp.domain.AdminVO;
 import com.king.myapp.domain.ApprovalVO;
+import com.king.myapp.domain.ManagementVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.service.AdminService;
@@ -48,14 +48,14 @@ public class AdminController {
 	@Inject
 	MailService mailservice;
 
-	//어드민 페이지로 이동
+	// 어드민 페이지로 이동
 	    @RequestMapping(value = "/index_admin")
 	    public String admin_main() throws Exception {
 	    	logger.info("admin main 페이지로 이동~~!!");
 			return "admin/index_admin";
 	    }
 	    
-	//  차트 페이지 이동
+	// 차트 페이지 이동
 	    @RequestMapping( value = "/charts")
 	    public String  charts() throws Exception {
 	        logger.info("charts 페이지로 이동~~!!");
@@ -77,7 +77,7 @@ public class AdminController {
 	    }
 	
 	    
-	// 매니지먼트 페이지 이동
+	// 강사승인 페이지 이동
 	    @RequestMapping(value = "/approval")
 	    public String approval(Model model) throws Exception{
 	    	logger.info("approval 페이지로 이동~~!!");
@@ -88,13 +88,31 @@ public class AdminController {
 	    }
 	    
 	// 매니지먼트 페이지 이동
-	    @RequestMapping(value = "/management")
-	    public String management(Model model) throws Exception{
+	    @RequestMapping(value = "/management", method = RequestMethod.GET)
+	    public String getManagement(Model model) throws Exception{
 	    	logger.info("management 페이지로 이동~~!!");
 
-			List<AdminVO> manageList = adminservice.manageList();
-			model.addAttribute("manageList", manageList);
+			List<ManagementVO> studentList = adminservice.studentList();
+			model.addAttribute("studentList", studentList);
+			List<ManagementVO> teachList = adminservice.teachList();
+			model.addAttribute("teachList", teachList);
 			return  "admin/management";
+	    }
+	    
+	// 매니지먼트에서 학생&강사 filter 검색 기능
+	    @RequestMapping(value = "/management", method = RequestMethod.POST)
+	    public String postManagement(Model model, @RequestParam("filter") String filter) throws Exception {
+	    	logger.info("학생&강사 리스트 조회");
+	    	
+	    	if(filter.equals("10")) {
+	    		List<StdVO> studentList = adminservice.studentList2();
+				model.addAttribute("studentList", studentList);
+	    	
+	    	} else if (filter.equals("20")) {
+	    		List<TeachVO> teachList = adminservice.teachList2();
+				model.addAttribute("teachList", teachList);
+	    	}	    	
+	    	return "admin/management";
 	    }
 	    
 	// 로그인 페이지 이동
