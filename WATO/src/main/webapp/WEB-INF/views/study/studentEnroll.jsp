@@ -36,9 +36,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+<!-- 제이쿼리 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <style media="screen">
  #top{
@@ -175,6 +174,29 @@
 	    background-color: tomato;
 	    color: #fff;
 	} 
+	.button2 {
+  display: inline-block; 
+  font-size: 20px;  
+  padding:0px .5em;  
+  border-radius: 5px;
+  transition: all .5s; 
+  filter: hue-rotate(0deg);
+  color: #FFF;
+  text-decoration: none;
+}
+  .b-orange, .b-orange:before {
+    background: rgba(255,193,7,1);
+    background: -moz-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,193,7,1)), color-stop(100%, rgba(255,87,34,1)));
+    background: -webkit-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc107', endColorstr='#ff5722', GradientType=1 );
+  }
+  .rot-135:hover {
+  filter: hue-rotate(135deg);
+}
 	body{
 	 background-color: #e0e0e033;
 	 }
@@ -290,11 +312,10 @@
 	        	</div>
 	    	</div>
     	</div>
-
- 
     </div> 
+    <!-- 메인 시작  -->
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
-        <div class="container"><a href="/" class="navbar-brand home"><img src="../../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container"><a href="/" class="navbar-brand home"><img src="../../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -444,8 +465,7 @@
         </div>
     </nav>
 </header>
-<header class="header mx-auto" >
-<nav id="studyusnav" class="navbar ">  
+<nav id="studyusnav" class="navbar navbar-expand-lg">  
 <form name="studyForm"class="form-horizontal" role="form" method="post" action="/study/studentEnroll">
 <div class="container  mx-auto" >
 <!-- <1> image Enroll -->
@@ -457,7 +477,7 @@
             <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
               <div class="card-body">
                 <div class="input-group d-flex justify-content-center">
-<!-- s_photo -->     <img id="input_img" src="../resource/images/imgs/studyUs.png" alt="이미지">
+<!-- s_photo -->     <img id="input_img" src="../../resource/images/imgs/studyUs.png" alt="이미지">
                 </div>
               </div>
             </div>
@@ -467,12 +487,12 @@
             <div class="form-group"> -->
             <div class="cols-sm-5 pb-5 pr-2 pl-2">
               <div class="input-group d-flex justify-content-center ">
-                <img id="img_btn_0" src="../resource/images/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
-                <img id="img_btn_1" src="../resource/images/imgs/java.jpeg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_2" src="../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_5" src="../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_0" src="../../resource/images/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+                <img id="img_btn_1" src="../../resource/images/imgs/java.jpeg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_2" src="../../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_3" src="../../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_4" src="../../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_5" src="../../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div>
             <!-- </div>
@@ -663,12 +683,9 @@
         </div>
       </div>
     </div> <!-- 2-->
-     
-    
 </div><!--  1 -->
  </form>
  </nav>
-</header> 
  
 <div id="blog-homepage" class="box row mb-0">
     <div class="container">
@@ -755,15 +772,13 @@ _________________________________________________________
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
-<script src="./resource/vendor/jquery/jquery.min.js"></script>
-<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="./resource/js/front.js"></script> 
+<script src="../../resource/vendor/jquery/jquery.min.js"></script>
+<script src="../../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="../../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="../../resource/js/front.js"></script> 
 </body>
-<!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript"> 
 

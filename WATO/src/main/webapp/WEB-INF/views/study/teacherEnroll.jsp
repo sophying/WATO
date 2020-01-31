@@ -31,14 +31,13 @@
     <link rel="icon" type="image/png" href="../../resource/images/icons/favicon.ico"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- 제이쿼리 -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>  
 <title>Insert title here</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <!-- 부가적인 테마 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-
-<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
 
 <style media="screen">
  #top{
@@ -237,7 +236,7 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
@@ -255,7 +254,7 @@
                         </c:if>
                         <c:if test="${teach != null}">
                         	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
 				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
@@ -276,7 +275,7 @@
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                        <li class="list-inline-item"><a href="../admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
                     </ul>
@@ -303,7 +302,7 @@
  
     </div> 
     <nav id="studyusnav" class="navbar navbar-expand-lg">  
-        <div class="container"><a href="/" class="navbar-brand home"><img src="../../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="./resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container"><a href="/" class="navbar-brand home"><img src="../../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>
@@ -386,8 +385,8 @@
                         </ul>
             </div>
             <div class="col-md-6 col-lg-3">
-                <div class="banner"><a href="#"><img src="./resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
-                <div class="banner"><a href="#"><img src="./resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../../resource/images/banner.jpg" alt="" class="img img-fluid"></a></div>
+                <div class="banner"><a href="#"><img src="../../resource/images/banner2.jpg" alt="" class="img img-fluid"></a></div>
             </div>
         </div>
                             </li>
@@ -453,9 +452,7 @@
         </div>
     </nav>
 </header>
-    <div id="content">
-        <header>
-<div class="container  mx-auto">
+<nav id="studyusnav" class="navbar navbar-expand-lg">  
 <form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherEnroll">
 <!-- <1> image Enroll -->
   <div class="row  justify-content-md-center"  style="background:#fff;" >
@@ -466,7 +463,7 @@
             <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
               <div class="card-body">
                 <div class="input-group d-flex justify-content-center">
-<!-- photo -->     <img id="input_img" src="../resource/images/imgs/studyUs.png" alt="이미지">
+<!-- photo -->     <img id="input_img" src="../../resource/images/imgs/studyUs.png" alt="이미지">
                 </div>
               </div>
             </div>
@@ -476,12 +473,12 @@
             <div class="form-group"> -->
             <div class="cols-sm-5 pb-5 pr-2 pl-2">
               <div class="input-group d-flex justify-content-center ">
-                <img id="img_btn_0" src="../resource/images/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
-                <img id="img_btn_1" src="../resource/images/imgs/java.jpeg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_2" src="../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_5" src="../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_0" src="../../resource/images/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+                <img id="img_btn_1" src="../../resource/images/imgs/java.jpeg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_2" src="../../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_3" src="../../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_4" src="../../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_5" src="../../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div>
             <!-- </div>
@@ -712,9 +709,7 @@
       </div>
     </div> <!-- 2-->
     </form>
-</div><!--  1 -->
-</header>
-</div>
+</nav>
 <div id="blog-homepage" class="box row mb-0">
     <div class="container">
         <div class="post">
@@ -800,15 +795,13 @@ _________________________________________________________
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
-<script src="./resource/vendor/jquery/jquery.min.js"></script>
-<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="./resource/js/front.js"></script> 
+<script src="../../resource/vendor/jquery/jquery.min.js"></script>
+<script src="../../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="../../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="../../resource/js/front.js"></script> 
 </body>
-<!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>   
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
 

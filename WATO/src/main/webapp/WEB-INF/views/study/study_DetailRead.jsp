@@ -12,24 +12,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="../resource/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="../resource/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
-    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="../resource/css/style.default.css" id="theme-stylesheet"> 
+    <link rel="stylesheet" href="../../resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
-    <link rel="stylesheet" href="../resource/css/custom.css">
+    <link rel="stylesheet" href="../../resource/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
-    <link rel="icon" type="image/png" href="../resource/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="../../resource/images/icons/favicon.ico"/>
+        <!-- 제이쿼리 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <style>
     #top{
@@ -274,7 +276,7 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
@@ -292,7 +294,7 @@
                         </c:if>
                         <c:if test="${teach != null}">
                         	<li class="list-inline-item">${teach.user_Id}님 환영합니다!</li>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
 				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
@@ -313,10 +315,8 @@
                         <li class="list-inline-item pr-2"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
-                       		 <li class="list-inline-item pr-2"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                       		 <li class="list-inline-item pr-2"><a href="../admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
-                        <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
-                    	
                     </ul>
                 </div>
             </div>
@@ -915,14 +915,12 @@
 <!-- *** BLOG HOMEPAGE END ***-->
 
 <!-- JavaScript files--> 
-<script src="../resource/vendor/jquery/jquery.min.js"></script>
-<script src="../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="../resource/js/front.js"></script>
-<!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
-<script src="../resource/js/hr/student_detailRead.js"></script> 
+<script src="../../resource/vendor/jquery/jquery.min.js"></script>
+<script src="../../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="../../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="../../resource/js/front.js"></script>
+<script src="../../resource/js/hr/student_detailRead.js"></script> 
 </body>
 </html>		

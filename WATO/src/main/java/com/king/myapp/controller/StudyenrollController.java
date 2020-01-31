@@ -366,19 +366,20 @@ public class StudyenrollController {
 			model.addAttribute("classParti",classParti);
 			model.addAttribute("studyParti",studyParti);
 			model.addAttribute("std", std);
+			model.addAttribute("teach", teach);	
 			
 		}else if (teach != null) {
 			
-			//List<TeacherEnrollVO> classParti = participationService.getTeachPartiList(teach);
+			List<TeacherEnrollVO> classParti = participationService.getTeachClassList(teach);
+			
 			System.out.println("여기는 teach ");
 			
-			//model.addAttribute(classParti);
+			model.addAttribute("classParti",classParti);
 			model.addAttribute("teach", teach);	
+			model.addAttribute("std", std);
 		}
-
+		
 		System.out.println("여기는 return 전 !");
-		
-		
 	}
 	
 	// 별점등록 버튼 눌렀을 때  액션 

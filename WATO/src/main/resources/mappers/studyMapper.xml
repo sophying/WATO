@@ -190,6 +190,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where t_no = #{t_no} 
 	</update>
 	
+<!--  강사를 위한 강의 목차  ( 수락 )  -->
+	<select id="t_getTeachClassList" resultType="com.king.myapp.domain.TeacherEnrollVO">
+		select * from t_enroll
+		where t_userid = (select User_Id from teach_info where User_Id= #{User_Id})
+		order by t_startdate desc
+	</select>
 	
 </mapper>
 
+<!-- 
+		select  t.t_no, t.t_level, t.t_category, t.t_title, t.t_startdate , t.t_enddate , t.t_userid, p.starscore_parti 
+		from t_enroll t, t_parti p
+		where t.t_no = p.t_no
+		and t.t_no in (select t_no from t_parti where p_userid= #{User_Id} group by t_no)
+		order by t_startdate desc
+
+
+ -->

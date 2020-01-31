@@ -129,13 +129,6 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 		sql.update("study.t_partiCntMinus",t_no);
 	}
 
-
-	// 학생 강의 참여 리스트 
-	@Override
-	public List<TeacherEnrollVO> t_getTeachPartiList(TeachVO teach) throws Exception {
-		return sql.selectList("parti.t_getTeachPartiList",teach);
-	}
-
 	// 학생 강의 별점평가 유무
 	@Override
 	public void class_checkStarParti(Map<String, Object> t_map) throws Exception {
@@ -143,6 +136,12 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 	}
 
 
+/************************************/
+	// 강사를 위한 강의 목차 ( 수락 )  
+	@Override
+	public List<TeacherEnrollVO> t_getTeachClassList(TeachVO teach) throws Exception {
+		return sql.selectList("study.t_getTeachClassList",teach);
+	}
 
 	
 }

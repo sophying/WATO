@@ -433,7 +433,167 @@ table caption {
   <div class="row ">
     <div class="col-xs-12 ">
       <div class=" mb-5 table-responsive">
-      <h4 class="font-weight-bold">내가 참여한 스터디</h4>
+<!-- ######  ++++++++++++++++ 학생 유저일 경우 ++++++++++++++++++++++++++++++++ -->      
+      <c:if test="${std != null }">
+	      <h4 class="font-weight-bold">내가 참여한 스터디</h4>
+	        <table class="table table-bordered table-hover">
+	          <thead class="text-center " style="width: 100px;">
+	            <tr>
+	              <th>번호</th>
+	              <th>레벨</th>
+	              <th>카테고리</th>
+	              <th>주제</th>
+	              <th>시작날짜</th>
+	              <th>끝날짜</th>
+	              <th>리더</th>
+	              <th colspan="2">별점주기</th>
+	            </tr>
+	          </thead>
+			  	<c:if test="${studyParti != null }">
+		           <c:forEach var="studyParti" items="${studyParti}">
+		          
+			          <tbody>
+			            <tr>
+			              <td class="text-center">${studyParti.s_no }</td>
+			              <td>${studyParti.s_level }</td>
+			              <td class="text-center">${studyParti.s_category }</td>
+			              <td>${studyParti.s_title }</td>
+			              <td>${studyParti.s_startDate }</td>
+			              <td>${studyParti.s_endDate }</td>
+			              <td>${studyParti.s_userId}</td>
+			              <td>
+			   <!--  form  -->           
+				              <form name="starForm"method="post" action="">
+				              	<c:choose>
+			              			<c:when test="${studyParti.starscore_parti == 1  }">
+						              	<div>
+										</div>
+									</c:when>
+									<c:when test="${studyParti.starscore_parti == 0}">
+						              	<div class="text-center"id="star_grade" >
+										        <span>★</span> 
+										        <span>★</span>
+										        <span>★</span>   
+										        <span>★</span>
+										        <span>★</span>   
+										</div>
+									</c:when>
+								</c:choose>		
+		<!-- 스터디 게시글 번호 를 전달하여  별점 & 참여자 카운트   업데이트   -->	              		
+				              	<input type="hidden" name="starScore" id="starScore" >
+								<input type="hidden" name="s_no" value="${studyParti.s_no }" />
+								
+		<!-- 유저에 따른 p_userid 값 전달 어떤 유저가 별점 평가를 하였는지 판단  -->
+								 
+								<c:if test="${std != null }">
+										<input type="hidden" name="p_userid" value="${std.user_Id}" />
+								</c:if>
+								
+		<!-- 현재 로그인 유저가 별점평가에 참여하였는지 판단  -->	              		
+			              		<c:choose>
+			              			<c:when test="${studyParti.starscore_parti == 1 }">   
+			              				<input type="button" id="starBtn" value="별점전달완료!"/>
+							 		</c:when>
+							 		<c:otherwise>
+			              				<input type="button" id="starBtn" onclick="starBtn11(this)" value="별점전달하기!"/>
+							 		</c:otherwise>
+							 	</c:choose>
+							 </form>
+			 <!-- // form  --> 				 	
+			              </td>
+			            </tr>
+			          </tbody>
+			      
+		          </c:forEach>
+		        </c:if>
+	          <tfoot>
+	            <tr>
+	              <td colspan="9" class="text-center h2">스터디는 만족스러우셨나요?</td>
+	            </tr>
+	          </tfoot>
+	        </table>
+	        
+	        
+	        <h4 class="font-weight-bold">내가 참여한 강의</h4>
+	        <table class="table table-bordered table-hover">
+	          <thead class="text-center " style="width: 100px;">
+	            <tr>
+	              <th>번호</th>
+	              <th>레벨</th>
+	              <th>카테고리</th>
+	              <th>주제</th>
+	              <th>시작날짜</th>
+	              <th>끝날짜</th>
+	              <th>리더</th>
+	              <th colspan="2">별점주기</th>
+	            </tr>
+	          </thead>
+		        <c:if test="${classParti != null }">
+		        	<c:forEach var="classParti" items="${classParti}">
+			          <tbody>
+			            <tr>
+			              <td class="text-center">${classParti.t_no }</td>
+			              <td>${classParti.t_level }</td>
+			              <td class="text-center">${classParti.t_category }</td>
+			              <td>${classParti.t_title }</td>
+			              <td>${classParti.t_startDate }</td>
+			              <td>${classParti.t_endDate }</td>
+			              <td>${classParti.t_userId}</td>
+			              <td>
+			   <!--  form  -->           
+				              <form name="class_starForm"method="post" action="./t_user_myList">
+				              	<c:choose>
+			              			<c:when test="${classParti.starscore_parti == 1  }">
+						              	<div>
+										</div>
+									</c:when>
+									<c:when test="${classParti.starscore_parti == 0}">
+						              	<div class="text-center"id="star_grade" >
+										        <span>★</span> 
+										        <span>★</span>
+										        <span>★</span>   
+										        <span>★</span>
+										        <span>★</span>   
+										</div>
+									</c:when>
+								</c:choose>		
+		<!-- 스터디 게시글 번호 를 전달하여  별점 & 참여자 카운트   업데이트   -->	              		
+				              	<input type="hidden" name="starScore" id="starScore" >
+								<input type="hidden" name="t_no" value="${classParti.t_no }" />
+								
+		<!-- 유저에 따른 p_userid 값 전달 어떤 유저가 별점 평가를 하였는지 판단  -->
+								 
+								<c:if test="${std != null }">
+										<input type="hidden" name="p_userid" value="${std.user_Id}" />
+								</c:if>
+								
+		<!-- 현재 로그인 유저가 별점평가에 참여하였는지 판단  -->	              		
+			              		<c:choose>
+			              			<c:when test="${classParti.starscore_parti == 1 }">   
+			              				<input type="button" id="starBtn" value="별점전달완료!"/>
+							 		</c:when>
+							 		<c:otherwise>
+			              				<input type="button" id="starBtn2" onclick="starBtn22(this)" value="별점전달하기!"/>
+							 		</c:otherwise>
+							 	</c:choose>
+							 </form>
+			 <!-- // form  --> 				 	
+			              </td>
+			            </tr>
+			          </tbody>
+		        	</c:forEach>
+		        </c:if>
+	          <tfoot>
+	            <tr>
+	              <td colspan="9" class="text-center h2">강의는 만족스러우셨나요?</td>
+	            </tr>
+	          </tfoot>
+	        </table>
+        </c:if>
+ <!-- ####### ++++++++++++++++++++++++++++ 강사 유저일 경우  ++++++++++++++++++++++++++++ -->       
+        
+        <c:if test="${teach != null }">
+        <h4 class="font-weight-bold">강좌 목록</h4>
         <table class="table table-bordered table-hover">
           <thead class="text-center " style="width: 100px;">
             <tr>
@@ -443,87 +603,8 @@ table caption {
               <th>주제</th>
               <th>시작날짜</th>
               <th>끝날짜</th>
-              <th>리더</th>
-              <th colspan="2">별점주기</th>
-            </tr>
-          </thead>
-		  	<c:if test="${studyParti != null }">
-	           <c:forEach var="studyParti" items="${studyParti}">
-	          
-		          <tbody>
-		            <tr>
-		              <td class="text-center">${studyParti.s_no }</td>
-		              <td>${studyParti.s_level }</td>
-		              <td class="text-center">${studyParti.s_category }</td>
-		              <td>${studyParti.s_title }</td>
-		              <td>${studyParti.s_startDate }</td>
-		              <td>${studyParti.s_endDate }</td>
-		              <td>${studyParti.s_userId}</td>
-		              <td>
-		   <!--  form  -->           
-			              <form name="starForm"method="post" action="">
-			              	<c:choose>
-		              			<c:when test="${studyParti.starscore_parti == 1  }">
-					              	<div>
-									</div>
-								</c:when>
-								<c:when test="${studyParti.starscore_parti == 0}">
-					              	<div class="text-center"id="star_grade" >
-									        <span>★</span> 
-									        <span>★</span>
-									        <span>★</span>   
-									        <span>★</span>
-									        <span>★</span>   
-									</div>
-								</c:when>
-							</c:choose>		
-	<!-- 스터디 게시글 번호 를 전달하여  별점 & 참여자 카운트   업데이트   -->	              		
-			              	<input type="hidden" name="starScore" id="starScore" >
-							<input type="hidden" name="s_no" value="${studyParti.s_no }" />
-							
-	<!-- 유저에 따른 p_userid 값 전달 어떤 유저가 별점 평가를 하였는지 판단  -->
-							 
-							<c:if test="${std != null }">
-									<input type="hidden" name="p_userid" value="${std.user_Id}" />
-							</c:if>
-							
-	<!-- 현재 로그인 유저가 별점평가에 참여하였는지 판단  -->	              		
-		              		<c:choose>
-		              			<c:when test="${studyParti.starscore_parti == 1 }">   
-		              				<input type="button" id="starBtn" value="별점전달완료!"/>
-						 		</c:when>
-						 		<c:otherwise>
-		              				<input type="button" id="starBtn" onclick="starBtn11(this)" value="별점전달하기!"/>
-						 		</c:otherwise>
-						 	</c:choose>
-						 </form>
-		 <!-- // form  --> 				 	
-		              </td>
-		            </tr>
-		          </tbody>
-		      
-	          </c:forEach>
-	        </c:if>
-          <tfoot>
-            <tr>
-              <td colspan="9" class="text-center h2">스터디는 만족스러우셨나요?</td>
-            </tr>
-          </tfoot>
-        </table>
-        
-        
-        <h4 class="font-weight-bold">내가 참여한 강의</h4>
-        <table class="table table-bordered table-hover">
-          <thead class="text-center " style="width: 100px;">
-            <tr>
-              <th>번호</th>
-              <th>레벨</th>
-              <th>카테고리</th>
-              <th>주제</th>
-              <th>시작날짜</th>
-              <th>끝날짜</th>
-              <th>리더</th>
-              <th colspan="2">별점주기</th>
+              <th>강사</th>
+              <th colspan="2">참여확인</th>
             </tr>
           </thead>
 	        <c:if test="${classParti != null }">
@@ -538,57 +619,19 @@ table caption {
 		              <td>${classParti.t_endDate }</td>
 		              <td>${classParti.t_userId}</td>
 		              <td>
-		   <!--  form  -->           
-			              <form name="class_starForm"method="post" action="./t_user_myList">
-			              	<c:choose>
-		              			<c:when test="${classParti.starscore_parti == 1  }">
-					              	<div>
-									</div>
-								</c:when>
-								<c:when test="${classParti.starscore_parti == 0}">
-					              	<div class="text-center"id="star_grade" >
-									        <span>★</span> 
-									        <span>★</span>
-									        <span>★</span>   
-									        <span>★</span>
-									        <span>★</span>   
-									</div>
-								</c:when>
-							</c:choose>		
-	<!-- 스터디 게시글 번호 를 전달하여  별점 & 참여자 카운트   업데이트   -->	              		
-			              	<input type="hidden" name="starScore" id="starScore" >
-							<input type="hidden" name="t_no" value="${classParti.t_no }" />
-							
-	<!-- 유저에 따른 p_userid 값 전달 어떤 유저가 별점 평가를 하였는지 판단  -->
-							 
-							<c:if test="${std != null }">
-									<input type="hidden" name="p_userid" value="${std.user_Id}" />
-							</c:if>
-							
-	<!-- 현재 로그인 유저가 별점평가에 참여하였는지 판단  -->	              		
-		              		<c:choose>
-		              			<c:when test="${classParti.starscore_parti == 1 }">   
-		              				<input type="button" id="starBtn" value="별점전달완료!"/>
-						 		</c:when>
-						 		<c:otherwise>
-		              				<input type="button" id="starBtn2" onclick="starBtn22(this)" value="별점전달하기!"/>
-						 		</c:otherwise>
-						 	</c:choose>
-						 </form>
-		 <!-- // form  --> 				 	
+		              	<input type="button" id="starBtn2" onclick="partiCheck22(this)" value="참여확인"/>
 		              </td>
 		            </tr>
 		          </tbody>
 	        	</c:forEach>
 	        </c:if>
-          <tfoot>
+        <tfoot>
             <tr>
-              <td colspan="9" class="text-center h2">강의는 만족스러우셨나요?</td>
+              <td colspan="9" class="text-center h2">멋진 강의를 선물해주세요!</td>
             </tr>
           </tfoot>
-        </table>
-        
-        
+        </table>	
+        </c:if>
         
         
       </div>

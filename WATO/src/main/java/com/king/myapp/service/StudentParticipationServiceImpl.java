@@ -127,18 +127,21 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 		participationDAO.t_partiCntMinus(t_no);
 	}
 
-
-	@Override
-	public List<TeacherEnrollVO> getTeachPartiList(TeachVO teach) throws Exception {
-		return participationDAO.t_getTeachPartiList(teach);
-	}
-
 	// 강의 별점평가 유무 
 	@Override
 	public void class_checkStarParti(Map<String, Object> t_map) throws Exception {
 		participationDAO.class_checkStarParti(t_map);
 	}
 
+	
+	
+/**************  강사를 위한 목차 ***************/	
+	
+	// 강사를 위한 강의 목차  ( 수락 ) 
+	@Override
+	public List<TeacherEnrollVO> getTeachClassList(TeachVO teach) throws Exception {
+		return participationDAO.t_getTeachClassList(teach);
+	}
 
 
 

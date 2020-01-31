@@ -12,24 +12,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="../resource/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="../resource/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
-    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="../resource/css/style.default.css" id="theme-stylesheet"> 
+    <link rel="stylesheet" href="../../resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
-    <link rel="stylesheet" href="../resource/css/custom.css">
+    <link rel="stylesheet" href="../../resource/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
-    <link rel="icon" type="image/png" href="../resource/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="../../resource/images/icons/favicon.ico"/>
+    <!-- 제이쿼리 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <style>
     #top{
@@ -261,8 +263,6 @@
 				<div class=" justify-content-md-center d-inline-block w-100">
 					<div id="main" class="rounded-sm d-inline-block w-100">  <!-- @@@@@@@@ 메인 시작 @@@@@@@@ -->
 						<div class="form-group container-fluid  w-100">
-								<%-- <input id="listOne_URL"type="hidden" value="#{listOne.t_URL }"/> --%>
-								
 							<c:choose>	
 								<c:when test="${listOne.t_URL != null || listOne != '' }">
 							<div class="embed-responsive embed-responsive-16by9">
@@ -296,7 +296,7 @@
 									</label>
 									<div class="cols-sm-5 pb-5 pr-2 pl-2"  style="height:auto;">
 						              <div class="input-group d-flex justify-content-center ">
-						                <img id="img_btn_0" src="../resource/images/imgs/김혜련_증명.png"  class="img-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+						                <img id="img_btn_0" src="../../resource/images/imgs/김혜련_증명.png"  class="img-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
 						              </div>
            						    </div>
 								</div>
@@ -471,24 +471,22 @@
 											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
 													<form class="updateform" action="./modireply"> 
-													
-			 											<font size="4"><span class="d-flex justify-content-end">     </span></font> 
-														
+			 											<font size="4"><span class="d-flex justify-content-end"></span></font> 
 														<table class="justify-content-center d-inline-block w-100">
 															<tr>
-																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
-																<td colspan="5" > 
-																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly>${reply.r_content}</textarea>
+																<td rowspan="5" class="pl-2 pr-4 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
+																<td class="text1" colspan="5" > 
+																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="90" readonly>${reply.r_content}</textarea>
 																<td> 
 																<td >
 																	<c:choose>
-																	<c:when test="${(reply.t_userid).equals(std.user_Id ) }">
+																	<c:when test="${(reply.r_userid).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
 																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
 																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
 																		<input type="hidden" name="t_no" value="${reply.t_no }"/>
 																	</c:when>
-																	<c:when test="${(reply.t_userid).equals(teach.user_Id ) }">
+																	<c:when test="${(reply.r_userid).equals(teach.user_Id ) }">
 																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
 																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
 																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
@@ -698,16 +696,15 @@
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
-<script src="../resource/vendor/jquery/jquery.min.js"></script>
-<script src="../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="../resource/js/front.js"></script> 
-<!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>  
+<script src="../../resource/vendor/jquery/jquery.min.js"></script>
+<script src="../../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="../../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="../../resource/js/front.js"></script> 
+  
 <!--////// ***** 혜련 js 활용 ****  //////-->
-<script src="../resource/js/hr/teacher_detailRead.js"></script> 
+<script src="../../resource/js/hr/teacher_detailRead.js"></script> 
 
 </body>
 </html>		

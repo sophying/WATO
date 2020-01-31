@@ -25,9 +25,9 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
-                        	<form name="myForm" method="get" action="/student/std_info">
+                        	<form name="myForm" method="get" action="student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
 				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
 				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
@@ -43,9 +43,9 @@
                         </c:if>
                         <c:if test="${teach != null}">
                         	<li class="list-inline-item">${teach.user_Id}님 환영합니다!</li>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
-                        	<form name="myForm2" method="get" action="/teach/teach_info">
+                        	<form name="myForm2" method="get" action="teach/teach_info">
 				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
 				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
@@ -64,7 +64,7 @@
                         <li class="list-inline-item pr-2"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
-                       		 <li class="list-inline-item pr-2"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                       		 <li class="list-inline-item pr-2"><a href="../admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
                     	
@@ -93,7 +93,7 @@
     </div> 
     <div class="container mx-auto"> <!--  *****  mx-auto 설정 -->
     <nav id="studyusnav" class="navbar navbar-expand-lg  w-100 ">   <!-- *****   w-100 설정 -->
-        <div class="container mt-auto"><a href="/" class="navbar-brand home"><img src="../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
+        <div class="container mt-auto"><a href="/" class="navbar-brand home"><img src="../../resource/images/studyus.png" alt="Obaju logo" class="d-none d-md-inline-block"><img src="../../resource/images/logo-small.png" alt="Obaju logo" class="d-inline-block d-md-none"><span class="sr-only">Obaju - go to homepage</span></a>
             <div class="navbar-buttons">
                 <button type="button" data-toggle="collapse" data-target="#navigation" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle navigation</span><i class="fa fa-align-justify"></i></button>
                 <button type="button" data-toggle="collapse" data-target="#search" class="btn btn-outline-secondary navbar-toggler"><span class="sr-only">Toggle search</span><i class="fa fa-search"></i></button><a href="basket.jsp" class="btn btn-outline-secondary navbar-toggler"><i class="fa fa-shopping-cart"></i></a>

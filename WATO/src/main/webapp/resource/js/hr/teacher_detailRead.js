@@ -36,14 +36,31 @@ function resize(obj) {
 // ________________________
  
  
-function updatefun(event) { 
+function clickEvnet(event) { 
 	if ($(event).val() == "수정하기") {
-		$(event).parent().prev().children().attr('readonly',false);
-		$(event).parent().prev().children().css('background','#c995a2');
-		$(event).val("수정완료");
-	}else if ($(event).val() == "수정완료") {
-		$(event).parent().prev().children().attr('readonly',true);
+		alert('수정');
+		$(event).val("수정등록");
+		$(event).parent().parent().children('.text1').attr('readonly', false);
+		$(event).parent().parent().children('.text1').css('background','#c995a255');
+	}else if ($(event).val() == "수정등록") {
 		$(event).val("수정하기");
+		$(event).parent().parent().children('.text1').attr('readonly', true);
+		$('.updateform').submit();
+	}
+	
+}
+
+function clickEvnet2(event){
+	if ($(event).val()== "수정하기") {
+		$(event).val("수정등록");
+		$(event).prev().attr('readonly', false);
+		$(event).prev().css("background-color", "#ddddee33");
+		
+	}else if ($(event).val()== "수정등록") {
+		$(event).val("수정하기");
+		$(event).prev().attr('readonly', true);
+		$(event).prev().css("background-color", "#fff");
+		$(".updateform").attr("action","/study/modireply");
 		$('.updateform').submit();
 	}
 	
@@ -60,16 +77,7 @@ function deleteRe2(obj) {
 
 
  
-$(function(){
-	 var listOne_URL = document.getElementById('listOne_URL').value;
-	
-	if (listOne_URL != null) {
-		
-		document.getElementById("main-iframe").src = listOne_URL;
-	 
-	} 
-	
-});
+
 
 
 $('#modalSubmit').click(function () {

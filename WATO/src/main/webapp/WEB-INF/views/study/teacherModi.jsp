@@ -237,7 +237,7 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<p class="list-inline-item">${std.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
 				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
@@ -257,7 +257,7 @@
                         	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
                         	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
-                        	<form name="myForm2" method="get" action="/teach/teach_info">
+                        	<form name="myForm2" method="get" action="../teach/teach_info">
 				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
 				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
@@ -276,7 +276,7 @@
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
+                        <li class="list-inline-item"><a href="../admin/app_before" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
                     </ul>
@@ -453,9 +453,7 @@
         </div>
     </nav>
 </header>
-<div id="all">
-    <div id="content">
-        <header>
+<nav id="studyusnav" class="navbar navbar-expand-lg"> 
 <div class="container  mx-auto">
 <form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherModi.do">
 <!-- <1> image Enroll -->
@@ -716,9 +714,7 @@
     </div> <!-- 2-->
     </form>
 </div><!--  1 -->
-</header>
-</div>
-</div>
+</nav>
 <div id="blog-homepage" class="box row mb-0">
     <div class="container">
         <div class="post">

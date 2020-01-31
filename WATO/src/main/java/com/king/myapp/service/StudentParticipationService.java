@@ -69,12 +69,13 @@ public interface StudentParticipationService {
 	// 참여신청 카운트 - 
 	void t_partiCntMinus(int t_no) throws Exception;
 
-	// 학생 강의 참여 리스트 
-	List<TeacherEnrollVO> getTeachPartiList(TeachVO teach) throws Exception;
-
 	// 학생 강의 별점평가 유무 
 	void class_checkStarParti(Map<String, Object> t_map) throws Exception;
 
+	
+/*************** 강사를 위한 목차 ******************/	
+	// 강사 강의 목차 
+	List<TeacherEnrollVO> getTeachClassList(TeachVO teach) throws Exception;
 
 
 

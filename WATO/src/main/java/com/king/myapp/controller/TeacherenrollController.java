@@ -352,7 +352,8 @@ public class TeacherenrollController {
 			return "redirect:/study/header_DetailRead?t_no="+t_no;
 		}
 	
-	
+		
+			
 	
 	
 	
