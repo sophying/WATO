@@ -3,6 +3,7 @@ package com.king.myapp.service;
 import java.util.List;
 import java.util.Map;
 
+import com.king.myapp.domain.AttendeeListVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
@@ -76,6 +77,9 @@ public interface StudentParticipationService {
 /*************** 강사를 위한 목차 ******************/	
 	// 강사 강의 목차 
 	List<TeacherEnrollVO> getTeachClassList(TeachVO teach) throws Exception;
+	
+	// 강의 참여신청자 리스트 
+	List<TeacherParticipationVO> getAttendeeList(int t_no) throws Exception;
 
 
 

@@ -19,12 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.king.myapp.domain.AttendeeListVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.service.StudentParticipationService;
 import com.king.myapp.service.StudyEnrollService;
 
@@ -370,11 +372,11 @@ public class StudyenrollController {
 			
 		}else if (teach != null) {
 			
-			List<TeacherEnrollVO> classParti = participationService.getTeachClassList(teach);
+			List<TeacherEnrollVO> classList = participationService.getTeachClassList(teach);
 			
 			System.out.println("여기는 teach ");
 			
-			model.addAttribute("classParti",classParti);
+			model.addAttribute("classParti",classList);
 			model.addAttribute("teach", teach);	
 			model.addAttribute("std", std);
 		}
@@ -493,6 +495,27 @@ public class StudyenrollController {
 		
 		return "redirect:/study/user_myList";
 	}
+	
+	// 강의 참여자 리스트 
+	@RequestMapping(value = "/attendee_List", method = RequestMethod.POST)
+	public String postAttendeeList(@RequestParam("t_no")int t_no, Model model, HttpSession session) throws Exception{
+		
+		System.out.println(t_no);
+		List<TeacherParticipationVO> attendee = participationService.getAttendeeList(t_no);
+		
+		model.addAttribute("attendee",attendee);
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 	
+		
+		model.addAttribute("teach", teach);	
+		model.addAttribute("std", std);
+		
+		return"redirect:/study/user_myList";
+		
+		
+	}
+	
 
 		
 }

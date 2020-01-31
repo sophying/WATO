@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.king.myapp.domain.AttendeeListVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
@@ -142,6 +143,12 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 	public List<TeacherEnrollVO> getTeachClassList(TeachVO teach) throws Exception {
 		return participationDAO.t_getTeachClassList(teach);
 	}
+	
+	// 강의 신청자 리스트 
+	@Override
+	public List<TeacherParticipationVO> getAttendeeList(int t_no) throws Exception {
+		return participationDAO.getAttendeeList(t_no);
+	}	
 
 
 

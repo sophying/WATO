@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.king.myapp.domain.AttendeeListVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
@@ -141,6 +142,12 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 	@Override
 	public List<TeacherEnrollVO> t_getTeachClassList(TeachVO teach) throws Exception {
 		return sql.selectList("study.t_getTeachClassList",teach);
+	}
+
+	// 강의 참여자 리스트 강사를 위함
+	@Override
+	public List<TeacherParticipationVO> getAttendeeList(int t_no) throws Exception {
+		return sql.selectList("study.t_getAttendeeList", t_no);
 	}
 
 	

@@ -4,6 +4,7 @@ package com.king.myapp.persistence;
 import java.util.List;
 import java.util.Map;
 
+import com.king.myapp.domain.AttendeeListVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
@@ -78,6 +79,9 @@ public interface StudentParticipationDAO {
 	
 	// 강사를 위한 강의 목록 
 	List<TeacherEnrollVO> t_getTeachClassList(TeachVO teach) throws Exception;
+
+	// 강의 참여자 목자 강사를 위함 
+	List<TeacherParticipationVO> getAttendeeList(int t_no) throws Exception;
 
 
 

@@ -197,6 +197,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by t_startdate desc
 	</select>
 	
+<!-- 수강생 목차 불러오기  -->	
+	<select id="t_getAttendeeList" resultType="com.king.myapp.domain.TeacherParticipationVO">
+		select * from t_parti where t_no = #{t_no}
+		<!-- select t.t_no as t_no , t.t_level as t_level, t.t_category as t_category, t.t_title as t_title, t.t_startdate as t_startDate , t.t_enddate as t_endDate ,t.t_userid as t_userid, p.p_userid as p_userid, p.p_tell as p_tell ,p.p_intro as p_intro
+		from t_enroll t, t_parti p 
+		where t.t_no in (select t_no from t_parti where t_no = #{t_no}) -->
+	</select>
 </mapper>
 
 <!-- 

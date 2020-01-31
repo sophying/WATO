@@ -62,3 +62,10 @@ function starBtn11(event) {
 function starBtn22(event) {
 	$(event).parent('form[name="class_starForm"]').submit();
 };
+
+
+function partiCheck22(event) {
+	$(event).parent('form[name="attendee_Form"]').submit();
+	
+	
+}

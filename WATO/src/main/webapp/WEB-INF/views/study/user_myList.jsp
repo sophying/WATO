@@ -619,9 +619,41 @@ table caption {
 		              <td>${classParti.t_endDate }</td>
 		              <td>${classParti.t_userId}</td>
 		              <td>
-		              	<input type="button" id="starBtn2" onclick="partiCheck22(this)" value="참여확인"/>
+		              <!--  form  -->           
+				        <form name="attendee_Form"method="post" action="./attendee_List">
+		              		<input type="hidden" name="t_no" value="${classParti.t_no }">
+		              		<input type="button" id="starBtn2" onclick="partiCheck22(this)" value="참여확인"/>
+		              	</form>
 		              </td>
 		            </tr>
+		            <c:choose>
+		            	<c:when test="${attendee != null }">
+				            <tr>
+				            	<td>
+				            		<table>
+				            			<thead>
+					            			<tr>
+					            				<th>참여자 아이디</th>
+					            				<th>전화번호</th>
+					            				<th>한 줄 소개</th>
+					            			</tr>
+				            			</thead>
+				            <c:forEach var="attendee" items="${attendee}">
+					            		<tbody>
+					            			<tr>
+					            				<td>${attendee.p_userid }</td>
+					            				<td>${attendee.p_tell }</td>
+					            				<td>${attendee.p_intro }</td>
+					            			</tr>
+					            		</tbody>		
+				            </c:forEach>
+				            		</table>
+				            	</td>
+				            </tr>
+			            </c:when>
+			            <c:otherwise>
+			            </c:otherwise>
+		            </c:choose>
 		          </tbody>
 	        	</c:forEach>
 	        </c:if>
@@ -632,8 +664,6 @@ table caption {
           </tfoot>
         </table>	
         </c:if>
-        
-        
       </div>
       <!--end of .table-responsive-->
     </div>
