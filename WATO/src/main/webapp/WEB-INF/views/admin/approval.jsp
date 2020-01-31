@@ -161,7 +161,7 @@
                               <%-- <td><img id="Teach_Profile" name="Teach_Prifile" src="../resource/images/${AppVO.app_Orgname}"></td> --%>
                               <td><img id="Teach_Profile" name="Teach_Profile" src="../resource/images/${AppVO.app_Newname}"></td>
                               <%-- <td><img id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Orgname2}"></td> --%>
-                              <td><a href="../resource/images/${AppVO.app_Newname2}" download>이력서 다운로드</a></td>
+                              <td><a id="Teach_Resume" name="Teach_Resume" href="../resource/images/${AppVO.app_Newname2}" download>이력서 다운로드</a></td>
                               <%-- <td><img id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Newname2}"></td> --%>
                               <td><input type="text" class="gh" id="Teach_Gender" name="Teach_Gender" value="${AppVO.app_Gender}" readonly="readonly"></td>
                               <td><input type="text" class="gh" id="Teach_Phone1" name="Teach_Phone1" value="${AppVO.app_Phone1}" readonly="readonly"></td>
@@ -171,7 +171,7 @@
                               <td><input type="text" class="addr1" id="Teach_Addr1" name="Teach_Addr1" value="${AppVO.app_Addr1}" readonly="readonly"></td>
                               <td><input type="text" class="addr2" id="Teach_Addr2" name="Teach_Addr2" value="${AppVO.app_Addr2}" readonly="readonly"></td>
                               <td><input type="text" class="addr3" id="Teach_Addr3" name="Teach_Addr3" value="${AppVO.app_Addr3}" readonly="readonly"></td>
-                              <td><button type="button" onclick="approvalfunction(this)" >승인</button></td>
+                              <td><button type="button" onclick="approvalfunction(this)" class="btn btn-primary">승인</button></td>
                           </tr>
                        </table>
                      </form>  

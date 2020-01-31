@@ -430,7 +430,7 @@
     <div id="content">
 <!-- 최지혜 추가 -->  
 		<div class="table-responsive">
-        	<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
+        	<form name="infoForm" onsubmit="return infoCheck()" role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
             	<table class="table" style="margin: auto; width: 70%;" cellspacing="0"> <!-- 강사 승인신청폼 -->
                 	<tr>
                         <th id="student" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">강사 승인신청폼</th>
@@ -445,7 +445,8 @@
                     </tr>
                     <tr>
                         <th>이력서첨부<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="file" id="app_Resume" name="app_Resume"/></td>
+                        <td colspan="2"><input type="file" id="app_Resume" name="app_Resume"/>
+                        <div><em style="font-size: small;">※PDF 파일만 업로드 가능합니다.</em></div></td>
                     </tr>
                     <tr>
                         <th>성별<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -469,6 +470,7 @@
                             <input type="text" id="app_Phone2" name="app_Phone2" size="15" maxlength="4">
                             -
                             <input type="text" id="app_Phone3" name="app_Phone3" size="15" maxlength="4">
+                            <br><div style="display: inline-block;" id="ph_check"></div>
                         </td>
                     </tr>
                     <tr>
@@ -493,7 +495,7 @@
                     </tr>
                 </table>
                 <div style="margin: 30px;">
-                   <button type="submit" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 120px; height: 50px;">승인신청</button>
+                   <input type="submit" value="승인신청" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
                 </div>
             </form>
 		</div>
@@ -614,53 +616,98 @@ _________________________________________________________
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
 <script type="text/javascript">  
-        // 비밀번호 확인 소스
-        $('#userPw').blur(function() {
-            var userPw = $('#userPw').val();
-            var userPwChk = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
 
-            if (userPw !="" && userPwChk !="" && userPw==userPwChk) {
-                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-            }else if(userPw != "" && userPwChk==""){
-                pwdcheck.text('비밀번호 확인를 입력해주세요').css('color', 'blue');
-            }else if (userPw != userPwChk) {
-                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-            }else if(userPw =="" && userPwChk==""){
-                pwdcheck.text('');
-            }
+//회원가입시 null 파악_____________________________________
 
-        });
+function infoCheck() {
+	if(!document.infoForm.app_Profile.value) {
+		alert("프로필 이미지를 정해주세요.");
+		document.infoForm.app_Profile.focus();
+		return false;
+	}
+	if(!document.infoForm.app_Resume.value) {
+		alert("이력서를 첨부해주세요.");
+		document.infoForm.app_Resume.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Phone1.value) {
+		alert("휴대폰 번호를 입력해주세요.");
+		document.infoForm.app_Phone1.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Phone2.value) {
+		alert("휴대폰 번호를 입력해주세요.");
+		document.infoForm.app_Phone2.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Phone3.value) {
+		alert("휴대폰 번호를 입력해주세요.");
+		document.infoForm.app_Phone3.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.User_Email.value) {
+		alert("이메일을 입력해주세요.");
+		document.infoForm.User_Email.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Addr1.value) {
+		alert("우편번호를 입력해주세요.");
+		document.infoForm.app_Addr1.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Addr2.value) {
+		alert("주소를 입력해주세요.");
+		document.infoForm.app_Addr2.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Addr3.value) {
+		alert("상세주소를 입력해주세요.");
+		document.infoForm.app_Addr3.focus();
+		return false;
+	}
+	
+	alert("승인신청이 완료되었습니다. 관리자가 승인완료를 한 후 활동이 가능합니다.")
+}
 
-        $('#userPwChk').blur(function() {
-            var userPw = $('#userPw').val();
-            var userPwChk = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
+ // 정규표현식 유효성 검사 소스_________________________________________________________
+   
+   // 휴대폰번호 정규식
+   var phJ = /^[0-9]{4,4}$/;
+   
+   
+   $('#app_Phone2').blur(function() {
+	   if (phJ.test($('#app_Phone2').val())) {
+		   console.log('true');
+		   $('#ph_check').text('');
+	   } else {
+		   console.log('false');
+		   $('#ph_check').text('4자리의 숫자만 입력가능합니다.');
+		   $('#ph_check').css('color', 'red');
+	   }
+   })
+   
+   $('#app_Phone3').blur(function() {
+	   if (phJ.test($('#app_Phone3').val())) {
+		   console.log('true');
+		   $('#ph_check').text('');
+	   } else {
+		   console.log('false');
+		   $('#ph_check').text('4자리의 숫자만 입력가능합니다.');
+		   $('#ph_check').css('color', 'red');
+	   }
+   })
+   
 
-            if (userPw !="" && userPw !="" && userPw==userPwChk) {
-                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-            } else if(userPwChk != "" && userPw==""){
-                pwdcheck.text('비밀번호를 입력해주세요').css('color', 'blue');
-            }else if(userPw != userPwChk){
-                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-            }else if(userPw =="" && userPwChk==""){
-                pwdcheck.text('');
-            }
-        });
-
-
-        function checkPw() {
-            var userPw = $('#userPw').val();
-            var userPw = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
-            if (userPw == userPwChk) {
-                joinform.submit();
-            } else {
-                /* pwdcheck.text('비밀번호가 다릅니다').css('color', 'red'); *!/ /!* 위에서 출력하고 있는데 한번더 출력할 필요 없음 */
-                alert('입력하신 비밀번호가 다릅니다 확인해주세요.')
-            }
-        }   
-
+// 정규표현식 유효성 검사 끝 ________________________________________________________________________
+   
+// 파일 업로드 전 이미지 미리보기_____________________________________________________________________
   function readURL(input) {
     if (input.files && input.files[0]) {
        var reader = new FileReader();
@@ -676,12 +723,11 @@ _________________________________________________________
       $("#imgInput").change(function(){
         readURL(this);
   });
-      
-
-      
+   
+     
       function fn_idChk(){
       	$.ajax({
-      		url : "/student/idChk",
+      		url : "/teach/idChk",
       		type : "post",
       		dataType : "json",
       		data : {"User_Id" : $("#User_Id").val()},

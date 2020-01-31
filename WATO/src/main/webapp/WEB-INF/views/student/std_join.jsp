@@ -444,7 +444,7 @@
     <div id="content">
 <!-- 최지혜 추가 -->  
       <div class="table-responsive">
-           <form name="joinform" role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
+           <form name="infoForm" onsubmit="return infoCheck()" role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
                <table class="table" style="margin: auto; width: 70%;" cellspacing="0"> <!-- 일반 회원가입 폼 -->
                    <tr>
                         <th id="student" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">학생 회원가입</th>
@@ -460,7 +460,8 @@
                     
                     <tr>
                         <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
+<!--                         <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" > -->
+                        <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40">
                   <br><div style="display: inline-block;" id="id_check"></div></td>
                         <td><button type="button" class="idCheck" onclick="fn_idChk();" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;">아이디 중복확인</button></td>
                     </tr>
@@ -520,7 +521,7 @@
                         </td>
                     </tr>
                 </table>
-                   <button type="submit" class="button1">회원가입</button>
+                   <input type="submit" value="회원가입" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
             </form>
       </div>
    </div>
@@ -640,6 +641,77 @@ _________________________________________________________
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
 <script type="text/javascript"> 
+
+// 회원가입시 null 파악_____________________________________
+
+function infoCheck() {
+	if(!document.infoForm.Std_Profile.value) {
+		alert("프로필 이미지를 정해주세요.");
+		document.infoForm.Std_Profile.focus();
+		return false;
+	}
+	if(!document.infoForm.User_Id.value) {
+		alert("아이디를 입력해주세요.");
+		document.infoForm.User_Id.focus();
+		return false;
+	}
+	if(!document.infoForm.User_Pwd.value) {
+		alert("비밀번호를 입력해주세요.");
+		document.infoForm.User_Pwd.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.User_Pwd_ok.value) {
+		alert("비밀번호 확인을 입력해주세요.");
+		document.infoForm.User_Pwd_ok.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.Std_Phone1.value) {
+		alert("휴대폰 번호를 입력해주세요.");
+		document.infoForm.Std_Phone1.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.Std_Phone2.value) {
+		alert("휴대폰 번호를 입력해주세요.");
+		document.infoForm.Std_Phone2.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.Std_Phone3.value) {
+		alert("휴대폰 번호를 입력해주세요.");
+		document.infoForm.Std_Phone3.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.User_Email.value) {
+		alert("이메일을 입력해주세요.");
+		document.infoForm.User_Email.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.Std_Addr1.value) {
+		alert("우편번호를 입력해주세요.");
+		document.infoForm.Std_Addr1.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.Std_Addr2.value) {
+		alert("주소를 입력해주세요.");
+		document.infoForm.Std_Addr2.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.Std_Addr3.value) {
+		alert("상세주소를 입력해주세요.");
+		document.infoForm.Std_Addr3.focus();
+		return false;
+	}
+	
+	alert("회원정보가 정상적으로 변경완료 되었습니다.")
+}
+
     // 정규표현식 유효성 검사 소스_________________________________________________________
       
       //아이디 정규식

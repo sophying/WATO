@@ -452,6 +452,7 @@
 			        <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
 			            <p style="float: left; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
 			            <div>저희 스터디어스를 이용해 주셔서 감사합니다. <span>${std.user_Id}</span>님은 학생이십니다.
+			            <br>회원정보를 수정해주세요.
 			                <p style="float: right; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
 			            </div>
 			        </div>

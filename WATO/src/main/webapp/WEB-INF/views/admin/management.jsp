@@ -140,6 +140,8 @@ td {
 											<th>ID</th>
 											<th>Gender</th>
 											<th>Email</th>
+											<th>Modify</th>
+											<th>Delete</th>
 										</tr>
 									</table>
 									<c:forEach var="StdVO" items="${studentList}">
@@ -150,7 +152,8 @@ td {
 													<td><input type="text" class="id" id="Teach_Phone1" name="Teach_Phone1" value="${StdVO.user_Id}" readonly="readonly"></td>
 													<td><input type="text" class="gender" id="Teach_Phone2" name="Teach_Phone2" value="${StdVO.std_Gender}" readonly="readonly"></td>
 													<td><input type="text" class="email" id="Teach_Phone3" name="Teach_Phone3" value="${StdVO.user_Email}" readonly="readonly"></td>
-													<td><button type="submit">정보수정</button></td>
+													<td><input type="submit" value="정보수정" onclick="javascript: form.action='/admin/StdModify'" class="btn btn-primary" /></td>
+													<td><input type="submit" value="회원삭제" onclick="javascript: form.action='/admin/StdDelete'" class="btn btn-primary" /></td>
 												</tr>
 											</table>
 										</form>
@@ -163,8 +166,8 @@ td {
 													<td><input type="text" class="id" id="Teach_Phone1" name="Teach_Phone1" value="${TeachVO.user_Id}" readonly="readonly"></td>
 													<td><input type="text" class="gender" id="Teach_Phone2" name="Teach_Phone2" value="${TeachVO.teach_Gender}" readonly="readonly"></td>
 													<td><input type="text" class="email" id="Teach_Phone3" name="Teach_Phone3" value="${TeachVO.user_Email}" readonly="readonly"></td>
-													<td><button type="submit">정보수정</button></td>
-													<!-- <td><button type="button" onclick="managementfunction(this)">정보수정</button></td> -->
+													<td><input type="submit" value="정보수정" onclick="javascript: form.action='/admin/TeachModify'" class="btn btn-primary" /></td>
+													<td><input type="submit" value="회원삭제" onclick="javascript: form.action='/admin/TeachDelete'" class="btn btn-primary" /></td>
 												</tr>
 											</table>
 										</form>
