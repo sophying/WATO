@@ -741,7 +741,7 @@
                     <li><a href="text.html">회사소개</a></li>
                     <li><a href="text.html">이용약관</a></li>
                     <li><a href="faq.jsp">FAQ</a></li>
-                    <li><a href="contact.jsp">문의하기</a></li>
+                    <li><a href="/qna/getQnaList">문의하기</a></li>
                 </ul>
                 <hr>
                 <h4 class="mb-3">회원</h4>

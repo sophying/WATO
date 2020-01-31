@@ -7,10 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+알로항
 
-<iframe src="../admin/app_before" style="width: 1500px; height: 300px;"></iframe>
 
-<iframe src="http://localhost:8080/admin/app_after" style="width: 1500px; height: 300px;"></iframe>
 
 </body>
 </html>

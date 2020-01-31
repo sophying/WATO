@@ -2,6 +2,7 @@ package com.king.myapp.controller;
 
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.inject.Inject;
@@ -12,10 +13,13 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,10 +28,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.ManagementVO;
+import com.king.myapp.domain.PageMaker;
+import com.king.myapp.domain.QnaBoardVO;
+import com.king.myapp.domain.QnaReplyVO;
+import com.king.myapp.domain.SearchCriteria;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.service.AdminService;
 import com.king.myapp.service.MailService;
+import com.king.myapp.service.QnaBoardService;
+import com.king.myapp.service.QnaReplyService;
 import com.king.myapp.service.StdService;
 import com.king.myapp.service.TeachService;
 
@@ -47,6 +57,11 @@ public class AdminController {
 	JavaMailSender mailSender;
 	@Inject
 	MailService mailservice;
+	
+	@Autowired
+	QnaBoardService service;
+	@Autowired
+	QnaReplyService qnaReplyService;
 
 	// 어드민 페이지로 이동
 	    @RequestMapping(value = "/index_admin")
@@ -54,7 +69,108 @@ public class AdminController {
 	    	logger.info("admin main 페이지로 이동~~!!");
 			return "admin/index_admin";
 	    }
-	    
+	//qna 리스트 페이지로 이동
+		@RequestMapping(value ="/admin_qna_list", method = RequestMethod.GET)
+	    	public String admin_qna_list(Model model, @ModelAttribute("scri") SearchCriteria scri, QnaBoardVO vo) throws Exception{
+	    		logger.info("admin_qna_list 페이지로 이동");
+			model.addAttribute("admin_qna_list",service.getQnaList(scri));
+
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(scri);
+			pageMaker.setTotalCount(service.listCount());
+
+			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("scri", scri);
+
+			return "/admin/admin_qna_list";
+
+	}
+	//qna 글읽기 페이지로 이동
+	@RequestMapping(value = "/admin_qna_read", method = RequestMethod.GET)
+	public String admin_qna_read(@RequestParam("QNA_BNO") int QNA_BNO, Model model, HttpServletResponse response) throws Exception {
+		logger.info("admin_qna_read 페이지로 이동");
+
+		QnaBoardVO vo = service.getQnaRead(QNA_BNO);
+		model.addAttribute("admin_qna_read", vo);
+
+		List<QnaReplyVO> readReply = qnaReplyService.readReply(QNA_BNO);
+		model.addAttribute("repList", readReply);
+
+		List<Map<String, Object>> fileList = service.selectFileList(vo.getQNA_BNO());
+		model.addAttribute("file", fileList);
+
+		return "/admin/admin_qna_read";
+	}
+/*	// 글 수정(수정폼 받기)
+	@RequestMapping(value = "/admin_qna_get_modify/{QNA_BNO}", method = RequestMethod.GET)
+	public String admin_qna_get_modify(@PathVariable int QNA_BNO, Model model) throws Exception {
+		logger.info("get Qna modify");
+
+		QnaBoardVO vo = service.getQnaRead(QNA_BNO);
+		System.out.println(vo.getQNA_BNO());
+		System.out.println(vo.getQNA_WRITER());
+		System.out.println(vo.getQNA_TITLE());
+		System.out.println(vo.getQNA_REGDATE());
+		System.out.println(vo.getQNA_CONTENT());
+		model.addAttribute("admin_qna_get_modify", vo);
+		return "/admin/admin_qna_get_modify";
+	}*/
+
+/*	// 글 수정(수정폼 보내기)
+	@RequestMapping(value = "/admin_qna_post_modify", method = RequestMethod.POST)
+	public String admin_qna_post_modify(QnaBoardVO vo) throws Exception {
+		logger.info("post Qna Modify");
+		service.postQnaModify(vo);
+
+		return "redirect:/admin/admin_qna_read?QNA_BNO="+vo.getQNA_BNO();
+	}*/
+	//admin_qna 댓글 작성
+	@RequestMapping(value = "/admin_qna_reply_write/{QNA_BNO}", method = { RequestMethod.GET, RequestMethod.POST })
+	public String admin_qna_reply_write(@PathVariable int QNA_BNO, QnaReplyVO vo) throws Exception {
+		logger.info("admin_qna_reply_write 실행");
+
+		qnaReplyService.replyWrite(vo);
+		System.out.println(vo.getQNA_WRITER());
+		System.out.println(vo.getQNA_RNO());
+		System.out.println(vo.getQNA_REGDATE());
+		System.out.println(vo.getQNA_CONTENT());
+		System.out.println(vo.getQNA_BNO());
+
+		return "redirect:/admin/admin_qna_read?QNA_BNO="+QNA_BNO;
+	}
+
+	// 댓글 수정 POST
+	@RequestMapping(value = "/admin_qna_reply_update/{QNA_BNO}", method = RequestMethod.POST)
+	public String admin_qna_reply_update(@PathVariable int QNA_BNO, QnaReplyVO vo) throws Exception {
+
+		logger.info("reply update 실행");
+		System.out.println("vo.getQNA_BNO() : " + vo.getQNA_BNO());
+		System.out.println("vo.getRno() : " + vo.getQNA_RNO());
+		System.out.println("vo.getQNA_CONTENT() : " + vo.getQNA_CONTENT());
+
+		qnaReplyService.replyUpdate(vo);
+
+		return "redirect:/admin/admin_qna_read?QNA_BNO=" + QNA_BNO;
+
+	}
+	// 댓글 삭제
+	@RequestMapping(value = "/admin_qna_reply_delete/{QNA_BNO}/{QNA_RNO}", method = RequestMethod.GET)
+	public String admin_qna_reply_delete(@PathVariable int QNA_BNO, @PathVariable int QNA_RNO, QnaReplyVO vo) throws Exception {
+		logger.info("reply Delete 실행");
+
+		qnaReplyService.replyDelete(QNA_RNO);
+
+		System.out.println(vo.getQNA_BNO());
+		System.out.println(vo.getQNA_CONTENT());
+		System.out.println(vo.getQNA_REGDATE());
+		System.out.println(vo.getQNA_RNO());
+		System.out.println(vo.getQNA_WRITER());
+
+		return "redirect:/admin/admin_qna_read?QNA_BNO="+QNA_BNO;
+
+	}
+
+
 	// 차트 페이지 이동
 	    @RequestMapping( value = "/charts")
 	    public String  charts() throws Exception {

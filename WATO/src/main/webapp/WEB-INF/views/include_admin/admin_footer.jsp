@@ -7,12 +7,6 @@
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<html>
-<head>
- <meta charset="utf-8">
-    <title>footer</title>
-</head>
-<body>
 <footer class="footer bg-white shadow align-self-end py-3 px-xl-5 w-100">
     <div class="container-fluid">
         <div class="row">
@@ -28,5 +22,3 @@
     </div>
 </footer>
 
-</body>
-</html>
