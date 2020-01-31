@@ -132,7 +132,7 @@
     </form>
 
        <section class="replyForm">
-           <form role="form" method="post" autocomplete="off" action="/qna/">
+           <form role="form" method="post" autocomplete="off" action="/qna/replyWrite">
               <%-- <input type="hidden" id="page" name="page" value="${scri.page}" readonly="readonly" />
                <input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}" readonly="readonly" />
                <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}" readonly="readonly" />
