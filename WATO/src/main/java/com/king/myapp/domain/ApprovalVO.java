@@ -7,10 +7,8 @@ public class ApprovalVO {
 	private int bno;
 	private MultipartFile app_Profile;
 	private String app_Orgname;
-	private String app_Newname;
 	private MultipartFile app_Resume;
 	private String app_Orgname2;
-	private String app_Newname2;
 	private String app_Gender;
 	private String app_Phone1;
 	private String app_Phone2;
@@ -19,7 +17,6 @@ public class ApprovalVO {
 	private String app_Addr1;
 	private String app_Addr2;
 	private String app_Addr3;
-	private int app_Num;
 	
 	public int getBno() {
 		return bno;
@@ -39,12 +36,6 @@ public class ApprovalVO {
 	public void setApp_Orgname(String app_Orgname) {
 		this.app_Orgname = app_Orgname;
 	}
-	public String getApp_Newname() {
-		return app_Newname;
-	}
-	public void setApp_Newname(String app_Newname) {
-		this.app_Newname = app_Newname;
-	}
 	public MultipartFile getApp_Resume() {
 		return app_Resume;
 	}
@@ -56,12 +47,6 @@ public class ApprovalVO {
 	}
 	public void setApp_Orgname2(String app_Orgname2) {
 		this.app_Orgname2 = app_Orgname2;
-	}
-	public String getApp_Newname2() {
-		return app_Newname2;
-	}
-	public void setApp_Newname2(String app_Newname2) {
-		this.app_Newname2 = app_Newname2;
 	}
 	public String getApp_Gender() {
 		return app_Gender;
@@ -111,10 +96,4 @@ public class ApprovalVO {
 	public void setApp_Addr3(String app_Addr3) {
 		this.app_Addr3 = app_Addr3;
 	}
-	public int getApp_Num() {
-		return app_Num;
-	}
-	public void setApp_Num(int app_Num) {
-		this.app_Num = app_Num;
-	}	
 }

@@ -53,12 +53,10 @@ public class TeachController implements ServletContextAware {
 		MultipartFile f = vo.getApp_Profile();
 		if (!f.isEmpty()) { // 파일 업로드가 됐다면
 			String app_Orgname = f.getOriginalFilename();
-			String app_Newname = app_Orgname + System.currentTimeMillis() + f.getSize();
 			String path = servletContext.getRealPath("/resource/images");
 			System.out.println("path : " + path);
 			File file = new File(path + File.separator + app_Orgname);
 			vo.setApp_Orgname(app_Orgname);
-			vo.setApp_Newname(app_Newname);
 			f.transferTo(file);
 		}
 		
@@ -66,12 +64,10 @@ public class TeachController implements ServletContextAware {
 		MultipartFile f2 = vo.getApp_Resume();
 		if (!f2.isEmpty()) { // 파일 업로드가 됐다면
 			String app_Orgname2 = f2.getOriginalFilename();
-			String app_Newname2 = app_Orgname2;
 			String path = servletContext.getRealPath("/resource/images");
 			System.out.println("path : " + path);
-			File file2 = new File(path + File.separator + app_Newname2);
+			File file2 = new File(path + File.separator + app_Orgname2);
 			vo.setApp_Orgname2(app_Orgname2);
-			vo.setApp_Newname2(app_Newname2);
 			f2.transferTo(file2);
 		}
 		

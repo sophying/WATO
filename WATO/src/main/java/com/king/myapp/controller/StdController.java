@@ -52,13 +52,11 @@ public class StdController implements  ServletContextAware {
 		MultipartFile f = vo.getStd_Profile();
 		if (!f.isEmpty()) { // 파일 업로드가 됐다면
 			String std_Orgname = f.getOriginalFilename();
-			String std_Newname = std_Orgname + System.currentTimeMillis() + f.getSize();
 			String path = servletContext.getRealPath("/resource/images");
 			System.out.println("path : " + path);
-			File org_file = new File(path + File.separator + std_Orgname);
+			File file = new File(path + File.separator + std_Orgname);
 			vo.setStd_Orgname(std_Orgname);
-			vo.setStd_Newname(std_Newname);
-			f.transferTo(org_file);
+			f.transferTo(file);
 		}
 
 		service.std_join(vo);

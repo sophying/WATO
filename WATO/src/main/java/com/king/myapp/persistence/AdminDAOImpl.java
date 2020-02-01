@@ -75,16 +75,16 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	// 전체 리스트 조회(학생)
-	@Override
+/*	@Override
 	public List<ManagementVO> studentList() throws Exception {
 		return sql.selectList(namespace + ".studentList");
-	}
+	}*/
 
 	// 전체 리스트 조회(강사)
-	@Override
+/*	@Override
 	public List<ManagementVO> teachList() throws Exception {
 		return sql.selectList(namespace + ".teachList");
-	}
+	}*/
 
 	// 학생 리스트 조회
 	@Override
@@ -96,6 +96,18 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override
 	public List<TeachVO> teachList2() throws Exception {
 		return sql.selectList(namespace + ".teachList2");
+	}
+
+	// 학생 회원정보 삭제
+	@Override
+	public void StdDelete(StdVO svo) throws Exception {
+		sql.delete(namespace + ".StdDelete", svo);
+	}
+
+	// 강사 회원정보 삭제
+	@Override
+	public void TeachDelete(TeachVO tvo) throws Exception {
+		sql.delete(namespace + ".TeachDelete", tvo);
 	}
 
 	// 회원관리
