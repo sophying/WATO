@@ -681,9 +681,9 @@
                                 </div>
                            </div>
                     </div>
-  
+   
                       <div class="form-group ">
-                      		<input type="hidden" name="teach_orgname" value="${teach.Teach_Orgname}">
+                      		<input type="hidden" name="teach_orgname" value="${teach.teach_Orgname}"> 
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${teach.user_Id}">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >

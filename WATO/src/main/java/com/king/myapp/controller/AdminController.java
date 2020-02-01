@@ -241,6 +241,33 @@ public class AdminController {
 	    	return "admin/management";
 	    }
 
+		// 매니지먼트에서 학생 회원정보 삭제	    
+	    @RequestMapping(value = "/StdDelete", method = RequestMethod.POST)
+	    public void StdDelete(StdVO svo, HttpServletResponse response) throws Exception {
+	    	logger.info("학생 회원정보 삭제");
+	    	
+	    	adminservice.StdDelete(svo);
+	    	logger.info("학생 회원정보 삭제 완료");
+	    	
+	    	response.setContentType("text/html; charset=UTF-8");
+	    	PrintWriter out = response.getWriter();
+			out.println("<script>alert('삭제가 완료되었습니다.'); location.href='http://localhost:8080/admin/management';</script>");
+			out.flush();
+	    }
+	    
+	    // 매니지먼트에서 강사 회원정보 삭제	    
+	    @RequestMapping(value = "/TeachDelete", method = RequestMethod.POST)
+	    public void TeachDelete(TeachVO tvo, HttpServletResponse response) throws Exception {
+	    	logger.info("강사 회원정보 삭제");
+	    	
+	    	adminservice.TeachDelete(tvo);
+	    	logger.info("강사 회원정보 삭제 완료");
+	    	
+	    	response.setContentType("text/html; charset=UTF-8");
+	    	PrintWriter out = response.getWriter();
+	    	out.println("<script>alert('삭제가 완료되었습니다.'); location.href='http://localhost:8080/admin/management';</script>");
+	    	out.flush();
+	    }
 	    
 	// 로그인 페이지 이동
 	/*
@@ -338,8 +365,9 @@ public class AdminController {
 		/*logger.info("승인완료를 위해 num 값을 바꾸어주었습니다.");
 		teachservice.teach_appUpdate(avo);*/
 
-		String setfrom = "choio95634@gamil.com";
+		String setfrom = "choio95634@gamil.com"; 
 		String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
+		System.out.println(tomail);
 		String title = "회원가입 인증 이메일 입니다."; // 제목
 		String content =
 

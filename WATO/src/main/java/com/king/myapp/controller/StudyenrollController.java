@@ -51,7 +51,9 @@ public class StudyenrollController {
 		logger.info(">--------------------[ 일반인 스터디 모집 등록 GET ]---------------------------<");
 		
 		StdVO std =  (StdVO) session.getAttribute("std");
-		TeachVO teach =  (TeachVO) session.getAttribute("teach");
+		TeachVO teach =  (TeachVO) session.getAttribute("teach"); 
+		System.out.println("std.getUser_Id()" +std.getUser_Id());
+		System.out.println("std.getStd_Orgname() : "+std.getStd_Orgname());
 		model.addAttribute("std",std);
 		model.addAttribute("teach",teach);
 		
@@ -62,7 +64,7 @@ public class StudyenrollController {
 	public String postEnroll(@ModelAttribute StudyEnrollVO studyVO, Model model,HttpSession session ) throws Exception{
 
 		logger.info(">--------------------[ 일반인 스터디 모집 등록 POST ]---------------------------<");		
-		
+			System.out.println(studyVO.getStd_orgname());
 			System.out.println(studyVO.getS_category());
 			System.out.println(studyVO.getS_title());
 			System.out.println(studyVO.getS_level());
