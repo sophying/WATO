@@ -55,10 +55,10 @@ public class StdController implements  ServletContextAware {
 			String std_Newname = std_Orgname + System.currentTimeMillis() + f.getSize();
 			String path = servletContext.getRealPath("/resource/images");
 			System.out.println("path : " + path);
-			File file = new File(path + File.separator + std_Newname);
+			File org_file = new File(path + File.separator + std_Orgname);
 			vo.setStd_Orgname(std_Orgname);
 			vo.setStd_Newname(std_Newname);
-			f.transferTo(file);
+			f.transferTo(org_file);
 		}
 
 		service.std_join(vo);

@@ -50,6 +50,8 @@ public class TeacherenrollController {
 		StdVO std =  (StdVO) session.getAttribute("std");
 		TeachVO teach =  (TeachVO) session.getAttribute("teach");
 		
+		System.out.println("teach.getTeach_Orgname() : "+teach.getTeach_Orgname());
+		
 		
 		model.addAttribute("std",std);
 		model.addAttribute("teach",teach);

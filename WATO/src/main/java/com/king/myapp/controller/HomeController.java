@@ -48,7 +48,7 @@ public class HomeController {
 		List<MainLangugeRankVO> languagerank =  service.langugerank();
 		List<StudyEnrollVO> listRank = service.listRank();
 		List<TeacherEnrollVO> teachlist = service.TearchlistAll();
-		if (teachlist.size() != 0 && !teachlist.equals("")) {
+		if (teachlist.size() != 0 && !teachlist.isEmpty()) {
 			if (teachlist.size() >= 10) {
 				List<TeacherEnrollVO> tearstudy = teachlist.subList(0, 10);
 				model.addAttribute("tearstudy",tearstudy);

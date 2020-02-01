@@ -56,7 +56,7 @@ public class TeachController implements ServletContextAware {
 			String app_Newname = app_Orgname + System.currentTimeMillis() + f.getSize();
 			String path = servletContext.getRealPath("/resource/images");
 			System.out.println("path : " + path);
-			File file = new File(path + File.separator + app_Newname);
+			File file = new File(path + File.separator + app_Orgname);
 			vo.setApp_Orgname(app_Orgname);
 			vo.setApp_Newname(app_Newname);
 			f.transferTo(file);
