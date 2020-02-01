@@ -8,7 +8,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.king.myapp.domain.LeaderReVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReReplyVO;
 import com.king.myapp.domain.StudentReplyVO;
@@ -85,11 +84,6 @@ public class StudyEnrollDAOImpl implements StudyEnrollDAO {
 		return sql.selectOne("study.partiCheck",partiVO);
 	}
 
-	// 리더의 답변하기 
-	@Override
-	public void leaderReInsert(LeaderReVO leaderReVO) throws Exception {
-		sql.insert("study.s_leaderReInsert",leaderReVO);
-	}
 
 	// 댓글 불러오기 
 	@Override
