@@ -365,8 +365,9 @@ public class AdminController {
 		/*logger.info("승인완료를 위해 num 값을 바꾸어주었습니다.");
 		teachservice.teach_appUpdate(avo);*/
 
-		String setfrom = "choio95634@gamil.com";
+		String setfrom = "choio95634@gamil.com"; 
 		String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
+		System.out.println(tomail);
 		String title = "회원가입 인증 이메일 입니다."; // 제목
 		String content =
 
