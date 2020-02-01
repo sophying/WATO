@@ -240,7 +240,35 @@ public class AdminController {
 	    	}
 	    	return "admin/management";
 	    }
+	    
 
+		// 매니지먼트에서 학생 회원정보 삭제	    
+	    @RequestMapping(value = "/StdDelete", method = RequestMethod.POST)
+	    public void StdDelete(StdVO svo, HttpServletResponse response) throws Exception {
+	    	logger.info("학생 회원정보 삭제");
+	    	
+	    	adminservice.StdDelete(svo);
+	    	logger.info("학생 회원정보 삭제 완료");
+	    	
+	    	response.setContentType("text/html; charset=UTF-8");
+	    	PrintWriter out = response.getWriter();
+			out.println("<script>alert('삭제가 완료되었습니다.'); location.href='http://localhost:8080/admin/management';</script>");
+			out.flush();
+	    }
+	    
+	    // 매니지먼트에서 강사 회원정보 삭제	    
+	    @RequestMapping(value = "/TeachDelete", method = RequestMethod.POST)
+	    public void TeachDelete(TeachVO tvo, HttpServletResponse response) throws Exception {
+	    	logger.info("강사 회원정보 삭제");
+	    	
+	    	adminservice.TeachDelete(tvo);
+	    	logger.info("강사 회원정보 삭제 완료");
+	    	
+	    	response.setContentType("text/html; charset=UTF-8");
+	    	PrintWriter out = response.getWriter();
+	    	out.println("<script>alert('삭제가 완료되었습니다.'); location.href='http://localhost:8080/admin/management';</script>");
+	    	out.flush();
+	    }
 	    
 	// 로그인 페이지 이동
 	/*

@@ -51,4 +51,10 @@ public interface AdminDAO {
 	// 강사 리스트 조회
 	public List<TeachVO> teachList2() throws Exception;
 
+	// 학생 회원정보 삭제
+	public void StdDelete(StdVO svo) throws Exception;
+
+	// 강사 회원정보 삭제
+	public void TeachDelete(TeachVO tvo) throws Exception;
+
 }

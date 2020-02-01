@@ -98,6 +98,18 @@ public class AdminDAOImpl implements AdminDAO {
 		return sql.selectList(namespace + ".teachList2");
 	}
 
+	// 학생 회원정보 삭제
+	@Override
+	public void StdDelete(StdVO svo) throws Exception {
+		sql.delete(namespace + ".StdDelete", svo);
+	}
+
+	// 강사 회원정보 삭제
+	@Override
+	public void TeachDelete(TeachVO tvo) throws Exception {
+		sql.delete(namespace + ".TeachDelete", tvo);
+	}
+
 	// 회원관리
 	/*@Override
 	public List<ManagementVO> manageList() throws Exception {

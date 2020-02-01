@@ -96,6 +96,19 @@ public class AdminServiceImpl implements AdminService {
 		return dao.teachList2();
 	}
 
+	// 학생 회원정보 삭제
+	@Override
+	public void StdDelete(StdVO svo) throws Exception {
+		dao.StdDelete(svo);
+		
+	}
+
+	// 강사 회원정보 삭제
+	@Override
+	public void TeachDelete(TeachVO tvo) throws Exception {
+		dao.TeachDelete(tvo);
+	}
+
 	// 회원관리
 	/*@Override
 	public List<ManagementVO> manageList() throws Exception {

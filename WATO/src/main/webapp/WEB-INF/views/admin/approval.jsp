@@ -137,7 +137,7 @@
                   <div class="card-body">
                     <table class="table card-text">
                         <tr>
-                            <th>Profile</th>
+                           <th>Profile</th>
                            <th>Resume</th>
                            <th>Gender</th>
                            <th class="ph1">P.H-1</th>
@@ -159,9 +159,9 @@
                           <table class="table card-text">
                           <tr>
                               <%-- <td><img id="Teach_Profile" name="Teach_Prifile" src="../resource/images/${AppVO.app_Orgname}"></td> --%>
-                              <td><img id="Teach_Profile" name="Teach_Profile" src="../resource/images/${AppVO.app_Newname}"></td>
+                              <td><input type="image" class="gh" id="Teach_Newname" name="Teach_Newname" src="../resource/images/${AppVO.app_Newname}" value="${AppVO.app_Newname}"></td>
                               <%-- <td><img id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Orgname2}"></td> --%>
-                              <td><a id="Teach_Resume" name="Teach_Resume" href="../resource/images/${AppVO.app_Newname2}" download>이력서 다운로드</a></td>
+                              <td><input type="image" class="gh" name="Teach_Newname2" src="../resource/images/${AppVO.app_Newname2}" download>이력서 다운로드</td>
                               <%-- <td><img id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Newname2}"></td> --%>
                               <td><input type="text" class="gh" id="Teach_Gender" name="Teach_Gender" value="${AppVO.app_Gender}" readonly="readonly"></td>
                               <td><input type="text" class="gh" id="Teach_Phone1" name="Teach_Phone1" value="${AppVO.app_Phone1}" readonly="readonly"></td>
