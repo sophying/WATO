@@ -75,16 +75,16 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	// 전체 리스트 조회(학생)
-	@Override
+/*	@Override
 	public List<ManagementVO> studentList() throws Exception {
 		return sql.selectList(namespace + ".studentList");
-	}
+	}*/
 
 	// 전체 리스트 조회(강사)
-	@Override
+/*	@Override
 	public List<ManagementVO> teachList() throws Exception {
 		return sql.selectList(namespace + ".teachList");
-	}
+	}*/
 
 	// 학생 리스트 조회
 	@Override

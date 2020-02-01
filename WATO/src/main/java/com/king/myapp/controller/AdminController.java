@@ -240,7 +240,6 @@ public class AdminController {
 	    	}
 	    	return "admin/management";
 	    }
-	    
 
 		// 매니지먼트에서 학생 회원정보 삭제	    
 	    @RequestMapping(value = "/StdDelete", method = RequestMethod.POST)

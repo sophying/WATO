@@ -7,10 +7,10 @@ public class TeachVO {
 	private String No;
 	/*private MultipartFile Teach_Profile;
 	private String Teach_Orgname;*/
-	private String Teach_Newname;
+	private String Teach_Orgname;
 	/*private MultipartFile Teach_Resume;
 	private String Teach_Orgname2;*/
-	private String Teach_Newname2;
+	private String Teach_Orgname2;
 	private String User_Id;
 	private String User_Pwd;
 	private String Teach_Gender;
@@ -40,11 +40,11 @@ public class TeachVO {
 	public void setTeach_Orgname(String teach_Orgname) {
 		Teach_Orgname = teach_Orgname;
 	}*/
-	public String getTeach_Newname() {
-		return Teach_Newname;
+	public String getTeach_Orgname() {
+		return Teach_Orgname;
 	}
-	public void setTeach_Newname(String teach_Newname) {
-		Teach_Newname = teach_Newname;
+	public void setTeach_Orgname(String teach_Orgname) {
+		Teach_Orgname = teach_Orgname;
 	}
 	/*public MultipartFile getTeach_Resume() {
 		return Teach_Resume;
@@ -58,11 +58,11 @@ public class TeachVO {
 	public void setTeach_Orgname2(String teach_Orgname2) {
 		Teach_Orgname2 = teach_Orgname2;
 	}*/
-	public String getTeach_Newname2() {
-		return Teach_Newname2;
+	public String getTeach_Orgname2() {
+		return Teach_Orgname2;
 	}
-	public void setTeach_Newname2(String teach_Newname2) {
-		Teach_Newname2 = teach_Newname2;
+	public void setTeach_Orgname2(String teach_Orgname2) {
+		Teach_Orgname2 = teach_Orgname2;
 	}
 	public String getUser_Id() {
 		return User_Id;
