@@ -182,87 +182,7 @@
     _________________________________________________________
     -->
     <div id="top">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 offer mb-3 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
-                <div class="col-lg-6 text-center text-lg-right"> 
-                  <ul class="menu list-inline mb-0 w-100 ">
-                    		<li class=" pl-2 list-inline-item pull-left"><a href="#" data-toggle="modal" data-target="#myModal" class="btn btn-success btn-sm">회원가입 하러 가기</a></li> 
-                    	<c:if test="${std == null && teach == null}">
-                        	<li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
-                        </c:if>
-                        <c:if test="${std != null}">
-                        	<li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
-                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">
-                        	<form name="myForm" method="get" action="/student/std_info">
-				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
-				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
-				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone2}" readonly="readonly">
-								<input type="hidden" value="${std.std_Phone3}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr1}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr2}" readonly="readonly">
-								<input type="hidden" value="${std.std_Addr3}" readonly="readonly">
-                        	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
-                        	</a>
-                        		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
-                        			<a href="javascript:document.myForm.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
-                        			 <c:if test="${std != null }">
-			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
-				                    </c:if>
-				                    <c:if test="${teach != null }">
-			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">나의 강좌보러가기</a>
-				                    </c:if>
-								 </div>
-                        	</form>
-                        	</li>
-                        </c:if>
-                        <c:if test="${teach != null}">
-                        	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
-                        	<li class="list-inline-item">
-                        	<form name="myForm2" method="get" action="/teach/teach_info">
-				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
-				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
-				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Phone3}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr1}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr2}" readonly="readonly">
-								<input type="hidden" value="${teach.teach_Addr3}" readonly="readonly">
-                        	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
-                        	</a> 
-                        		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
-                        			<a href="javascript:document.myForm2.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
-                        			 <c:if test="${std != null }">
-			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
-				                    </c:if>
-				                    <c:if test="${teach != null }">
-			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">나의 강좌보러가기</a>
-				                    </c:if>
-								 </div>
-                        	</form>
-                        	</li>
-                        </c:if>
-                        <c:if test="${!std.user_Id.equals('admin')}">
-                        <li class="list-inline-item pr-2"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
-                        </c:if>
-                        <c:if test="${std.user_Id.equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/index_admin" class="text-black-50 font-weight-bold">관리자</a></li>                        
-                        </c:if>
-                        <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
-                    	
-                    </ul>
-                </div>
-            </div>
-        </div>
+       <%@ include file="../include/index_header_MS.jsp" %> 
          <div class="row">  
 			<div class="modal fade" id="myModal" tabindex="-1"> 
 				<div class="modal-dialog modal-lg">  
@@ -513,7 +433,7 @@
 										<tr> 
 											<td id="moremessge">${listStudy.s_no}</td>
 											<td>${listStudy.s_category}</td> 
-											<td><a href="#" style="color: black;">${listStudy.s_title}</a></td>
+											<td><a href="/study/study_DetailRead?s_no=${listStudy.s_no}" style="color: black;">${listStudy.s_title}</a></td>
 											<td><a href="#" style="color: black;">${listStudy.s_userId}</a></td>
 										</tr>
 					                    <% i++; %>
@@ -549,7 +469,7 @@
 										<img alt="3등이미지" src="/resource/images/rank3st.png">
 									<%}else if( j ==4) { %>
 										<img alt="4등이미지" src="/resource/images/rank4st.png">
-									<%}else{ %>
+									<%}else if( j == 5){ %>
 										<img alt="5등이미지" src="/resource/images/rank5st.png">
 									<%} %>
 						</div>
@@ -557,14 +477,14 @@
                         <div class="product">
                             <div class="flip-container">
                                 <div class="flipper">
-                                    <div class="front"><a href="detail.jsp"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
-                                    <div class="back"><a href="detail.jsp"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a></div>
+                                    <div class="front"><a href="/study/header_DetailRead?t_no=${listTeacher.t_no}"><img src="${listTeacher.t_photo}" alt="" class="img-fluid"></a></div>
+                                    <div class="back"><a href="/study/header_DetailRead?t_no=${listTeacher.t_no}"><img src="${listTeacher.t_photo}" alt="" class="img-fluid"></a></div>
                                 </div>
-                            </div><a href="detail.jsp" class="invisible"><img src="/resource/images/cstudy-1.png" alt="" class="img-fluid"></a>
+                            </div><a href="/study/header_DetailRead?t_no=${listTeacher.t_no}" class="invisible"><img src="${listTeacher.t_photo}" alt="" class="img-fluid"></a>
                             <div class="text">
-                                <h3><a href="detail.jsp">${listTeacher.t_title}</a></h3>
+                                <h3><a href="/study/header_DetailRead?t_no=${listTeacher.t_no}">${listTeacher.t_title}</a></h3>
                                 <p class="price"> 
-                                    <del></del><a href="#" class="btn btn-primary" >상세보기</a>
+                                    <del></del><a href="/study/header_DetailRead?t_no=${listTeacher.t_no}" class="button2 b-orange rot-135">Details</a>
                                 </p>
                             </div> 
                         </div>
