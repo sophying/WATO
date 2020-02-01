@@ -40,15 +40,21 @@ public interface AdminDAO {
 	// public List<ManagementVO> manageList() throws Exception;
 
 	// 전체 리스트 조회(학생)
-	public List<ManagementVO> studentList() throws Exception;
+//	public List<ManagementVO> studentList() throws Exception;
 
 	// 전체 리스트 조회(강사)
-	public List<ManagementVO> teachList() throws Exception;
+//	public List<ManagementVO> teachList() throws Exception;
 
 	// 학생 리스트 조회
 	public List<StdVO> studentList2() throws Exception;
 
 	// 강사 리스트 조회
 	public List<TeachVO> teachList2() throws Exception;
+
+	// 학생 회원정보 삭제
+	public void StdDelete(StdVO svo) throws Exception;
+
+	// 강사 회원정보 삭제
+	public void TeachDelete(TeachVO tvo) throws Exception;
 
 }
