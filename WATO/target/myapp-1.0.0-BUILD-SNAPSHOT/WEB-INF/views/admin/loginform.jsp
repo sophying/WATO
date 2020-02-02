@@ -218,6 +218,7 @@
             margin-bottom: 0px;
         }
         #loginform .social-container a {
+			color: black;
             border: 1px solid #DDDDDD;
             border-radius: 50%;
             display: inline-flex;

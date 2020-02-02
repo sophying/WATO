@@ -658,7 +658,7 @@
                            </div>
                     </div>
                      <div class="form-group ">
-                     		<input type="hidden" name="std_orgname" value="${std.Std_Orgname}" readonly="readonly">
+                     		<input type="hidden" name="std_orgname" value="${std.std_Orgname}" readonly="readonly">
   <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="${std.user_Id }"/>
   <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value="">
   <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >

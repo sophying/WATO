@@ -145,29 +145,29 @@ td {
 										</tr>
 									</table>
 									<c:forEach var="StdVO" items="${studentList}">
-										<form id="management" role="form" method="get" action="../student/std_info">
+										<form id="management" role="form" method="post">
 											<table class="table card-text">
 												<tr>
-													<td><input type="text" class="no" id="Std_Gender" name="Teach_Gender" value="${StdVO.no}" readonly="readonly"></td>
-													<td><input type="text" class="id" id="Teach_Phone1" name="Teach_Phone1" value="${StdVO.user_Id}" readonly="readonly"></td>
-													<td><input type="text" class="gender" id="Teach_Phone2" name="Teach_Phone2" value="${StdVO.std_Gender}" readonly="readonly"></td>
-													<td><input type="text" class="email" id="Teach_Phone3" name="Teach_Phone3" value="${StdVO.user_Email}" readonly="readonly"></td>
-													<td><input type="submit" value="정보수정" onclick="javascript: form.action='/admin/StdModify'" class="btn btn-primary" /></td>
-													<td><input type="submit" value="회원삭제" onclick="javascript: form.action='/admin/StdDelete'" class="btn btn-primary" /></td>
+													<td><input type="text" class="no" id="No" name="No" value="${StdVO.no}" readonly="readonly"></td>
+													<td><input type="text" class="id" id="User_Id" name="User_Id" value="${StdVO.user_Id}" readonly="readonly"></td>
+													<td><input type="text" class="gender" id="Std_Gender" name="Std_Gender" value="${StdVO.std_Gender}" readonly="readonly"></td>
+													<td><input type="text" class="email" id="User_Email" name="User_Email" value="${StdVO.user_Email}" readonly="readonly"></td>
+													<td><input type="submit" value="정보수정" onclick="javascript: form.action='/admin/info_modify'" class="btn btn-primary" /></td>
+													<td><input type="submit" value="회원삭제" onclick="if(confirm('정말로 해당 학생을 삭제하시겠습니까?'))javascript: form.action='/admin/StdDelete'" class="btn btn-primary" /></td>
 												</tr>
 											</table>
 										</form>
 									</c:forEach>
 									<c:forEach var="TeachVO" items="${teachList}">
-										<form id="management" role="form" method="get" action="">
+										<form id="management" role="form" method="post" action="">
 											<table class="table card-text">
 												<tr>
-													<td><input type="text" class="no" id="Teach_Gender" name="Teach_Gender" value="${TeachVO.no}" readonly="readonly"></td>
-													<td><input type="text" class="id" id="Teach_Phone1" name="Teach_Phone1" value="${TeachVO.user_Id}" readonly="readonly"></td>
-													<td><input type="text" class="gender" id="Teach_Phone2" name="Teach_Phone2" value="${TeachVO.teach_Gender}" readonly="readonly"></td>
-													<td><input type="text" class="email" id="Teach_Phone3" name="Teach_Phone3" value="${TeachVO.user_Email}" readonly="readonly"></td>
-													<td><input type="submit" value="정보수정" onclick="javascript: form.action='/admin/TeachModify'" class="btn btn-primary" /></td>
-													<td><input type="submit" value="회원삭제" onclick="javascript: form.action='/admin/TeachDelete'" class="btn btn-primary" /></td>
+													<td><input type="text" class="no" id="No" name="No" value="${TeachVO.no}" readonly="readonly"></td>
+													<td><input type="text" class="id" id="User_Id" name="User_Id" value="${TeachVO.user_Id}" readonly="readonly"></td>
+													<td><input type="text" class="gender" id="Teach_Gender" name="Teach_Gender" value="${TeachVO.teach_Gender}" readonly="readonly"></td>
+													<td><input type="text" class="email" id="User_Email" name="User_Email" value="${TeachVO.user_Email}" readonly="readonly"></td>
+													<td><input type="submit" value="정보수정" onclick="javascript: form.action='/admin/info_modify'" class="btn btn-primary" /></td>
+													<td><input type="submit" value="회원삭제" onclick="if(confirm('정말로 해당 강사를 삭제하시겠습니까?'))javascript: form.action='/admin/TeachDelete'" class="btn btn-primary" /></td>
 												</tr>
 											</table>
 										</form>

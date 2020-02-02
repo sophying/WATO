@@ -203,7 +203,9 @@
     _________________________________________________________
     -->
     <div id="top">
+
         <%@ include file="./include/index_header_MS.jsp" %>
+
         <div class="row">
 	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
 	        	<div class="modal-dialog modal-lg">

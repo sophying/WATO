@@ -46,12 +46,9 @@ public class QnaBoardVO {
     public String getQNA_WRITER() {
         return QNA_WRITER;
     }
-
     public void setQNA_WRITER(String QNA_WRITER) {
         this.QNA_WRITER = QNA_WRITER;
     }
-
- 
 
     public int getQNA_VIEWCNT() {
         return QNA_VIEWCNT;
