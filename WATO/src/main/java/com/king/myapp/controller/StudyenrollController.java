@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +26,7 @@ import com.king.myapp.domain.StudentReplyVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.service.StudentParticipationService;
 import com.king.myapp.service.StudyEnrollService;
 
@@ -117,17 +119,22 @@ public class StudyenrollController {
 			StudyEnrollVO listOne = studyService.detailRead(s_no);
 			List<StudentReplyVO> reply = studyService.replyRead(s_no); // 댓글 불러오기
 			
+			DecimalFormat form = new DecimalFormat("#.##");
+			double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
+			form.format(star);
+			
+			
 			if (session.getAttribute("std") == null && session.getAttribute("teach") ==null) {
 				model.addAttribute("teach",null);
 				model.addAttribute("std", null);
 				model.addAttribute("reply",reply);
 				model.addAttribute("listOne",listOne);
 				model.addAttribute("usercheck",null);
-			}else {
 				
-				DecimalFormat form = new DecimalFormat("#.##");
-				double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
-				form.format(star);
+
+				model.addAttribute("starScore",star);
+				
+			}else {
 				
 				model.addAttribute("starScore",star);
 				
@@ -219,21 +226,21 @@ public class StudyenrollController {
 		
 		StudyEnrollVO listOne = studyService.detailRead(s_no);
 		
-		String road;
-		String jibun;
-		String str = listOne.getS_place();
-		String[] arry = str.split("/");
-		
-		for (int i = 0; i < arry.length; i++) {
-			
-			System.out.println(arry[i]);
-		}
-		road = arry[0];
-		jibun = arry[1];
-		
-		listOne.setRoad(road);
-		listOne.setJibun(jibun);
-		
+//		String road;
+//		String jibun;
+//		String str = listOne.getS_place();
+//		String[] arry = str.split("/");
+//		
+//		for (int i = 0; i < arry.length; i++) {
+//			
+//			System.out.println(arry[i]);
+//		}
+//		road = arry[0];
+//		jibun = arry[1];
+//		
+//		listOne.setRoad(road);
+//		listOne.setJibun(jibun);
+//		
 		
 		  String beforeDay = listOne.getS_day(); // DB 문자열
 		  System.out.println(beforeDay); 
@@ -361,7 +368,7 @@ public class StudyenrollController {
 	
 	// 나의 참여 리스트 보러가기 
 	@RequestMapping(value = "/user_myList", method = RequestMethod.GET)
-	public void getMyList(HttpSession session, Model model) throws Exception{
+	public void getMyList( HttpSession session, Model model) throws Exception{
 		
 		logger.info("--------------[ 나의 참여 리스트 보러가기   GET ]-----------------");	
 
@@ -383,11 +390,11 @@ public class StudyenrollController {
 			
 		}else if (teach != null) {
 			
-			List<TeacherEnrollVO> classParti = participationService.getTeachClassList(teach);
+			List<TeacherEnrollVO> myClass = participationService.getTeachClassList(teach);
 			
 			System.out.println("여기는 teach ");
 			
-			model.addAttribute("classParti",classParti);
+			model.addAttribute("classParti",myClass);
 			model.addAttribute("teach", teach);	
 			model.addAttribute("std", std);
 		}
@@ -486,6 +493,7 @@ public class StudyenrollController {
 		
 		participationService.class_checkStarParti(t_map); 
 		
+		
 		if (std != null) {
 			
 			//***** 유저가 가지고 있는 참여 리스트 가져오기 *****  
@@ -506,6 +514,7 @@ public class StudyenrollController {
 		
 		return "redirect:/study/user_myList";
 	}
-
+    
+	
 		
 }

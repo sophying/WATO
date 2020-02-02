@@ -38,6 +38,7 @@
                         		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
                         			<a href="javascript:document.myForm.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
+			                   	 	<a href="/board/Myenroll" class="dropdown-item  text-black-50 font-weight-bold">내가 개설한 스터디 보러가기</a> 
                         			 <c:if test="${std != null }">
 			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
 				                    </c:if>
@@ -78,7 +79,7 @@
                         	</form>
                         	</li>
                         </c:if>
-                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item pr-2"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.equals('admin')}">
@@ -90,6 +91,10 @@
                 </div>
             </div>
         </div> 
+        
+        
+        
+        
         <div class="row">
 	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
 	        	<div class="modal-dialog modal-lg">

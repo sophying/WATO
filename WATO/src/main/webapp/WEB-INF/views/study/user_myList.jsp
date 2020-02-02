@@ -398,7 +398,7 @@ table caption {
 			              <td class="text-center">${studyParti.s_no }</td>
 			              <td>${studyParti.s_level }</td>
 			              <td class="text-center">${studyParti.s_category }</td>
-			              <td>${studyParti.s_title }</td>
+			              <td><a href="./study_DetailRead?s_no=${studyParti.s_no}">${studyParti.s_title }</a></td>
 			              <td>${studyParti.s_startDate }</td>
 			              <td>${studyParti.s_endDate }</td>
 			              <td>${studyParti.s_userId}</td>
@@ -476,7 +476,7 @@ table caption {
 			              <td class="text-center">${classParti.t_no }</td>
 			              <td>${classParti.t_level }</td>
 			              <td class="text-center">${classParti.t_category }</td>
-			              <td>${classParti.t_title }</td>
+			              <td><a href="./header_DetailRead?t_no=${classParti.t_no}">${classParti.t_title }</a></td>
 			              <td>${classParti.t_startDate }</td>
 			              <td>${classParti.t_endDate }</td>
 			              <td>${classParti.t_userId}</td>
@@ -548,22 +548,42 @@ table caption {
               <th colspan="2">참여확인</th>
             </tr>
           </thead>
-	        <c:if test="${classParti != null }">
-	        	<c:forEach var="classParti" items="${classParti}">
+	        <c:if test="${myClass != null }">
+	        	<c:forEach var="myClass" items="${myClass}">
 		          <tbody>
 		            <tr>
-		              <td class="text-center">${classParti.t_no }</td>
-		              <td>${classParti.t_level }</td>
-		              <td class="text-center">${classParti.t_category }</td>
-		              <td>${classParti.t_title }</td>
-		              <td>${classParti.t_startDate }</td>
-		              <td>${classParti.t_endDate }</td>
-		              <td>${classParti.t_userId}</td>
+		              <td class="text-center">${myClass.t_no }</td>
+		              <td>${myClass.t_level }</td>
+		              <td class="text-center">${myClass.t_category }</td>
+		              <td><a href="./header_DetailRead?t_no=${myClass.t_no}">${myClass.t_title }</a></td>
+		              <td>${myClass.t_startDate }</td>
+		              <td>${myClass.t_endDate }</td>
+		              <td>${myClass.t_userId}</td>
 		              <td>
-		              	<input type="button" id="starBtn2" onclick="partiCheck22(this)" value="참여확인"/>
+		              <form action="./myClass_user" method="post">
+		              	<input type="hidden" name="t_no" value="${myClass.t_no}"/>
+		              	<input type="submit" id="starBtn2" value="참여확인"/>
+		              </form>
 		              </td>
 		            </tr>
 		          </tbody>
+		            <c:choose>
+		            <c:when test="${partiPeople != null }">
+		            <tr>
+		            	<td>
+		            		<table>
+		            		<c:forEach var="partiPeople" items="${partiPeople }">
+		            			<tr>
+									<td>${partiPeople.p_userid }</td>		            			
+									<td>${partiPeople.p_intro }</td>		            			
+									<td>${partiPeople.p_tell}</td>		            			
+		            			</tr>
+		            			</c:forEach>
+		            		</table>
+		            	</td>
+		            </tr>
+		            </c:when>
+		            </c:choose>
 	        	</c:forEach>
 	        </c:if>
         <tfoot>

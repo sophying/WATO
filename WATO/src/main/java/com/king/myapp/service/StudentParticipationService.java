@@ -77,6 +77,7 @@ public interface StudentParticipationService {
 	// 강사 강의 목차 
 	List<TeacherEnrollVO> getTeachClassList(TeachVO teach) throws Exception;
 
+	List<TeacherParticipationVO> aprroveByTeach(int t_no) throws Exception;
 
 
 

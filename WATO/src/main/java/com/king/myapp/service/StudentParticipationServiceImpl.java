@@ -143,6 +143,11 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 		return participationDAO.t_getTeachClassList(teach);
 	}
 
+	@Override
+	public List<TeacherParticipationVO> aprroveByTeach(int t_no) throws Exception {
+		return participationDAO.aprroveByTeach(t_no);
+	}
+
 
 
 

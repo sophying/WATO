@@ -3,6 +3,7 @@ package com.king.myapp.service;
 import java.util.List;
 
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.domain.TeacherReplyVO;
 
 public interface TeacherEnrollService {
@@ -34,6 +35,9 @@ public interface TeacherEnrollService {
 
 	// 댓글 삭제 
 	public void DeleteReply(int r_no) throws Exception;
+
+	// 강의 참여자 확인 
+	public List<TeacherParticipationVO> aprroveByTeach(int t_no) throws Exception;
 
 
 }

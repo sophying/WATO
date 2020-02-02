@@ -79,6 +79,8 @@ public interface StudentParticipationDAO {
 	// 강사를 위한 강의 목록 
 	List<TeacherEnrollVO> t_getTeachClassList(TeachVO teach) throws Exception;
 
+	List<TeacherParticipationVO> aprroveByTeach(int t_no) throws Exception;
+
 
 
 

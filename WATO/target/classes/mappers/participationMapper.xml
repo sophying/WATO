@@ -106,5 +106,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where t_no = #{t_no}
 		and p_userid = #{p_userid}
 	</update>
+		
+	<select id="t_aprroveByTeach" resultType="com.king.myapp.domain.TeacherParticipationVO">
+		select * from t_parti 
+		where t_no =#{t_no}
+	</select>
 	
 </mapper>
