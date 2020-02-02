@@ -161,7 +161,7 @@
         </form>
 
         <section class="replyForm">
-            <form role="form" method="post" autocomplete="off">
+            <form method="post" autocomplete="off" id="replyWrite">
                 <input type="hidden" id="page" name="page" value="${scri.page}" readonly="readonly" />
                  <input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}" readonly="readonly" />
                  <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}" readonly="readonly" />
@@ -169,7 +169,14 @@
                 <div class="form-group">
                     <label for="writer" class="col-sm-2 control-label">작성자</label>
                     <div class="col-sm-10">
-                        <input type="text" id="writer1" name="QNA_WRITER"  class="form-control" />
+                        <c:if test="${std != null}">
+                            <p>${std.user_Id}</p>
+                            <input type="hidden" name="QNA_WRITER" value="${std.user_Id}" class="form-control">
+                        </c:if>
+                        <c:if test="${teach != null}">
+                            <p>${teach.user_Id}</p>
+                            <input type="hidden" name="QNA_WRITER" value="${teach.user_Id}" class="form-control">
+                        </c:if>
                     </div>
                 </div>
 
@@ -220,23 +227,21 @@
 
         }
     }
+    var replywrite = $("form[id='replyWrite']");;
     $("#replyWrite_btn").click(function() {
 
         //널 검사
-        if ($("#writer1").val().trim() == "") {
-            alert("작성자를 입력하세요.");
-            $("#writer1").focus();
-            return false;
-        }
+        if ($("#writer1").val()) {
 
+        }
         else if ($("#content1").val().trim() == "") {
             alert("내용을 입력하세요.");
             $("#content1").focus();
             return false;
         }
         else{
-            formObj.attr("action", "/admin/admin_qna_reply_write/${admin_qna_read.QNA_BNO}");
-            formObj.submit();
+            replywrite.attr("action", "/admin/admin_qna_reply_write/${admin_qna_read.QNA_BNO}");
+            replywrite.submit();
         }
     })
 

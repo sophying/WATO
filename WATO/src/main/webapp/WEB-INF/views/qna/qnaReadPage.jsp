@@ -147,7 +147,7 @@
     </form>
 
        <section class="replyForm">
-           <form role="form" method="post" autocomplete="off" action="/qna/replyWrite">
+           <form method="post" autocomplete="off" id="replyWrite">
               <%-- <input type="hidden" id="page" name="page" value="${scri.page}" readonly="readonly" />
                <input type="hidden" id="perPageNum" name="perPageNum" value="${scri.perPageNum}" readonly="readonly" />
                <input type="hidden" id="searchType" name="searchType" value="${scri.searchType}" readonly="readonly" />
@@ -157,11 +157,12 @@
                    <div class="col-sm-10">
                        <c:if test="${std != null}">
                            <p>${std.user_Id}</p>
+                           <input type="hidden" name="QNA_WRITER" value="${std.user_Id}" class="form-control">
                        </c:if>
                        <c:if test="${teach != null}">
                            <p>${teach.user_Id}</p>
+                           <input type="hidden" name="QNA_WRITER" value="${teach.user_Id}" class="form-control">
                        </c:if>
-                       <input type="hidden" id="writer1" name="QNA_WRITE"  class="form-control" />
                    </div>
                </div>
 
@@ -205,24 +206,21 @@
             location.href="/qna/QnaDelete/${getQnaRead.QNA_BNO}";
         }
     }
-
+    var replywrite = $("form[id='replyWrite']");;
     $("#replyWrite_btn").click(function() {
 
         //널 검사
-        if ($("#writer1").val().trim() == "") {
-            alert("작성자를 입력하세요.");
-            $("#writer1").focus();
-            return false;
-        }
+        if ($("#writer1").val()) {
 
+        }
         else if ($("#content1").val().trim() == "") {
             alert("내용을 입력하세요.");
             $("#content1").focus();
             return false;
         }
         else{
-            formObj.attr("action", "/qna/replyWrite/${getQnaRead.QNA_BNO}");
-            formObj.submit();
+            replywrite.attr("action", "/qna/replyWrite/${getQnaRead.QNA_BNO}");
+            replywrite.submit();
         }
     })
    /* $("#replyUpdate_btn").click(function(){

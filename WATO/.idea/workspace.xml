@@ -8,30 +8,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f7d11e33-b154-4874-be2c-c28e34890f25" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/king/myapp/controller/QnaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/king/myapp/controller/QnaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/king/myapp/domain/QnaBoardVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/king/myapp/domain/QnaBoardVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/king/myapp/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/king/myapp/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/loginform.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/loginform.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/include/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaListPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaListPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaModifyPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaModifyPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_read.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_read.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaReadPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaReadPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaWritePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaWritePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/resource/css/style.default.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/resource/css/style.default.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/king/myapp/controller/QnaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/king/myapp/controller/QnaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/king/myapp/domain/QnaBoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/king/myapp/domain/QnaBoardVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/king/myapp/controller/QnaController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/king/myapp/controller/QnaController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/king/myapp/domain/QnaBoardVO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/classes/com/king/myapp/domain/QnaBoardVO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_qna_list.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/admin_qna_list.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/loginform.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/admin/loginform.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/qna/include/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/qna/include/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/qna/qnaListPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/qna/qnaListPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/qna/qnaModifyPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/qna/qnaModifyPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/qna/qnaReadPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/qna/qnaReadPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/qna/qnaWritePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/WEB-INF/views/qna/qnaWritePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/resource/css/style.default.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/myapp-1.0.0-BUILD-SNAPSHOT/resource/css/style.default.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -52,28 +32,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_read.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2247">
-              <caret line="107" column="36" selection-start-line="107" selection-start-column="36" selection-end-line="107" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/king/myapp/controller/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1092">
-              <caret line="91" selection-start-line="91" selection-end-line="91" />
+            <state relative-caret-position="489">
+              <caret line="305" column="64" lean-forward="true" selection-start-line="305" selection-start-column="64" selection-end-line="305" selection-end-column="64" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_list.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="56" selection-start-line="56" selection-end-line="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_read.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="286" lean-forward="true" selection-start-line="286" selection-end-line="286" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaWritePage.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="69" column="68" lean-forward="true" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
+            <state relative-caret-position="252">
+              <caret line="92" column="32" lean-forward="true" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -81,8 +70,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaListPage.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="329">
-              <caret line="71" column="58" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
+            <state relative-caret-position="371">
+              <caret line="73" column="19" lean-forward="true" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -90,26 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaReadPage.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="81" column="54" selection-start-line="81" selection-start-column="54" selection-end-line="81" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="204" column="47" selection-start-line="204" selection-start-column="47" selection-end-line="204" selection-end-column="47" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/include/header.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="48" column="70" lean-forward="true" selection-start-line="48" selection-start-column="56" selection-end-line="48" selection-end-column="70" />
+            <state relative-caret-position="354">
+              <caret line="164" column="30" lean-forward="true" selection-start-line="164" selection-start-column="30" selection-end-line="164" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -117,8 +88,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/king/myapp/controller/QnaController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
+            <state relative-caret-position="392">
+              <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
             </state>
           </provider>
         </entry>
@@ -127,12 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>myModal</find>
-      <find>#myModal</find>
-      <find>modal</find>
-      <find>/logout</find>
-      <find>#modal</find>
-      <find>로그인</find>
       <find>#top</find>
       <find>top</find>
       <find>css</find>
@@ -157,6 +122,12 @@
       <find>Non-members</find>
       <find>Deletefunct</find>
       <find>환영합니다.</find>
+      <find>sss</find>
+      <find>sts</find>
+      <find>replyForm</find>
+      <find>post</find>
+      <find>수정</find>
+      <find>teach</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -166,22 +137,22 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/king/myapp/domain/QnafileUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/king/myapp/controller/AdminController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_read.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/king/myapp/controller/StdController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/resource/css/style.default.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/student/terms.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaModifyPage.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_list.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/loginform.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/include/header.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/king/myapp/domain/QnaBoardVO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/king/myapp/controller/StudyenrollController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/king/myapp/controller/QnaController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaReadPage.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaListPage.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaWritePage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaReadPage.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_read.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/king/myapp/controller/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_list.jsp" />
       </list>
     </option>
   </component>
@@ -470,17 +441,53 @@
       <workItem from="1580457495318" duration="4541000" />
       <workItem from="1580477152543" duration="13007000" />
       <workItem from="1580540075019" duration="23804000" />
-      <workItem from="1580624227798" duration="7550000" />
+      <workItem from="1580624227798" duration="12071000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48902000" />
+    <option name="totallyTimeSpent" value="53423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Designer" order="0" />
+      <window_info id="Image Layers" order="1" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Web" order="5" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.18550107" />
+      <window_info id="Structure" order="7" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Application Servers" order="0" weight="0.32899022" />
+      <window_info anchor="bottom" id="Spring" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="2" />
+      <window_info anchor="bottom" id="Docker" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="5" weight="0.32899022" />
+      <window_info anchor="bottom" id="Java Enterprise" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Message" order="9" />
+      <window_info anchor="bottom" id="Find" order="10" />
+      <window_info anchor="bottom" id="Run" order="11" visible="true" weight="0.21281216" />
+      <window_info anchor="bottom" id="Debug" order="12" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="13" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="14" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="15" />
+      <window_info anchor="right" id="Maven" order="0" />
+      <window_info anchor="right" id="Palette" order="1" />
+      <window_info anchor="right" id="Capture Analysis" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Bean Validation" order="6" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
+    </layout>
+    <layout-to-restore>
       <window_info id="Designer" order="0" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Capture Tool" order="2" />
@@ -515,7 +522,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="7" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="9" weight="0.25" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -526,16 +533,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1449">
           <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="21" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/king/myapp/domain/QnafileUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -567,13 +564,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="48" lean-forward="true" selection-start-column="48" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_list.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -672,31 +662,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_read.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/king/myapp/domain/QnafileUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2247">
-          <caret line="107" column="36" selection-start-line="107" selection-start-column="36" selection-end-line="107" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/king/myapp/controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1092">
-          <caret line="91" selection-start-line="91" selection-end-line="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/king/myapp/controller/QnaController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="204" column="47" selection-start-line="204" selection-start-column="47" selection-end-line="204" selection-end-column="47" />
+        <state relative-caret-position="441">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -707,24 +679,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="204" column="47" selection-start-line="204" selection-start-column="47" selection-end-line="204" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/king/myapp/domain/QnaReplyVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaListPage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="71" column="58" selection-start-line="71" selection-start-column="58" selection-end-line="71" selection-end-column="58" />
+        <state relative-caret-position="371">
+          <caret line="73" column="19" lean-forward="true" selection-start-line="73" selection-start-column="19" selection-end-line="73" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaReadPage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="81" column="54" selection-start-line="81" selection-start-column="54" selection-end-line="81" selection-end-column="54" />
+        <state relative-caret-position="354">
+          <caret line="164" column="30" lean-forward="true" selection-start-line="164" selection-start-column="30" selection-end-line="164" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/qna/qnaWritePage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="69" column="68" lean-forward="true" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
+        <state relative-caret-position="252">
+          <caret line="92" column="32" lean-forward="true" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_read.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="286" lean-forward="true" selection-start-line="286" selection-end-line="286" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/king/myapp/controller/QnaController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/king/myapp/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="305" column="64" lean-forward="true" selection-start-line="305" selection-start-column="64" selection-end-line="305" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/admin_qna_list.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>

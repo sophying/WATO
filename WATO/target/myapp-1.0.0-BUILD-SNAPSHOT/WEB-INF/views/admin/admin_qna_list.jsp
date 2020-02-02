@@ -54,9 +54,7 @@
 <div id="table" class="container" style="margin-left:5%; width:70%; display: inline-block;"> 
     <section style="position: absolute; top: 15%; width: 80%; ">    
         <h2 style="display: inline-table">글목록</h2> 
-        <button style="float: right; margin-bottom: 1px;" class="btn btn-success"> 
-            <a style="color: white;" href="#">글작성</a></button>
-        <table class="table table-hover"> 
+        <table class="table table-hover">
             <thead>
             <tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일자</th></tr>  
             </thead>
