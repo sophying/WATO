@@ -50,5 +50,24 @@ public interface AdminService {
 
 	// 회원관리 페이지
 	// public List<ManagementVO> manageList() throws Exception;
+	
+	//학생 회원 수 카운트
+	public int count_std(StdVO svo) throws Exception;
+	
+	//강사 회원 수 카운트
+	public int count_tech(TeachVO tvo) throws Exception;
+
+	//학생 스터디 글 카운트
+	public int count_s_enroll(StdVO svo) throws Exception;
+
+	//강사 스터디 글 카운트
+	public int count_t_enroll(TeachVO tvo) throws Exception;
+	
+	//문의내역 카운트
+	public int qna_count(StdVO svo)throws Exception;
+
+
+	
+	
  
 }

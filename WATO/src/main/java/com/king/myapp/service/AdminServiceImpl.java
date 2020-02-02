@@ -101,5 +101,42 @@ public class AdminServiceImpl implements AdminService {
 	public List<ManagementVO> manageList() throws Exception {
 		return dao.manageList();
 	}*/
-
+	
+	//학생 회원 수 카운트
+	@Override
+	public int count_std(StdVO svo) throws Exception {
+		int StdCountResult = dao.count_std(svo);
+		return StdCountResult;
+	}
+	
+	//강사 회원 수 카운트
+	@Override
+	public int count_tech(TeachVO tvo) throws Exception {
+		
+		int TechCountResult = dao.count_tech(tvo);
+		return TechCountResult;
+	}
+	
+	//학생 스터디 글 카운트
+	@Override
+	public int count_s_enroll(StdVO svo) throws Exception{
+		
+		int StdEnroll_CountResult = dao.count_s_enroll(svo);
+		return StdEnroll_CountResult;
+	}
+	
+	//강사 스터디 글 카운트
+	@Override
+	public int count_t_enroll(TeachVO tvo) throws Exception{
+		int TechEnroll_CountResult = dao.count_t_enroll(tvo);
+		return TechEnroll_CountResult;
+	}
+	
+	//문의내역 카운트
+	@Override
+	public int qna_count(StdVO svo) throws Exception {
+		int Qna_CountResult = dao.count_qna(svo);
+		return Qna_CountResult;
+	}
+	
 }

@@ -97,11 +97,45 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<TeachVO> teachList2() throws Exception {
 		return sql.selectList(namespace + ".teachList2");
 	}
-
+	
 	// 회원관리
 	/*@Override
 	public List<ManagementVO> manageList() throws Exception {
 		return sql.selectList(namespace + ".management");
 	}*/
+	
+
+	// 학생 회원 수 카운트
+	@Override
+	public int count_std(StdVO svo) throws Exception {
+		int StdCountResult = sql.selectOne(namespace+".count_std");
+		return StdCountResult;
+	}
+	
+	// 강사 회원 수 카운트
+	@Override
+	public int count_tech(TeachVO tvo) throws Exception {
+		int TechCountResult = sql.selectOne(namespace+".count_tech");
+		return TechCountResult;
+	}
+	//학생 스터디 글 카운트
+	@Override
+	public int count_s_enroll(StdVO svo) throws Exception {
+		int StdEnroll_CountResult = sql.selectOne(namespace+".count_std_enroll");
+		return StdEnroll_CountResult;
+	}
+	//강사 스터디 글 카운트
+	@Override
+	public int count_t_enroll(TeachVO tvo) throws Exception {
+		int TechEnroll_CountResult = sql.selectOne(namespace+".count_tech_enroll");
+		return TechEnroll_CountResult;
+	}
+	// 문의내역 카운트
+	@Override
+	public int count_qna(StdVO svo) throws Exception {
+		int Qna_CountResult = sql.selectOne(namespace+".count_qna");
+		return Qna_CountResult;
+	}
+
 
 }

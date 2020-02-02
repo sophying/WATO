@@ -10,7 +10,7 @@
     <div id="sidebar" class="sidebar py-3" ac>
         <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">MAIN</div>
         <ul class="sidebar-menu list-unstyled">
-            <li class="sidebar-list-item"><a href="/admin/" class="sidebar-link text-muted active"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
+            <li class="sidebar-list-item"><a href="/admin/index_admin" class="sidebar-link text-muted active"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
             <li class="sidebar-list-item"><a href="/admin/charts" class="sidebar-link text-muted"><i class="o-sales-up-1 mr-3 text-gray"></i><span>Charts</span></a></li>
             <li class="sidebar-list-item"><a href="/admin/tables" class="sidebar-link text-muted"><i class="o-table-content-1 mr-3 text-gray"></i><span>Tables</span></a></li>
             <li class="sidebar-list-item"><a href="/admin/forms" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray"></i><span>Forms</span></a></li>

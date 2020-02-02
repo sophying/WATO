@@ -69,6 +69,9 @@
 
         <div class="container-fluid px-xl-5">
 
+
+	
+
             <%--메인 상단 종합 정보 요약 영역 (<section class="py-5">) --%>
              <%@ include file="../include_admin/main_info.jsp"%>
             <%--메인 상단 종합 정보 요약 영역 (<section class="py-5">) --%>
