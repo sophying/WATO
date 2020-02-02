@@ -30,6 +30,10 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     <script src="../../../resource/vendor/jquery/jquery.min.js"></script>
+    <script src="../../../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="../../../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="../../../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 
     <title>StudyUs</title>
     <style>
@@ -39,6 +43,7 @@
         li{
             display: inline-block; zoom: 1; display: inline;
         }
+
     </style>
 </head>
 <body>
@@ -49,9 +54,7 @@
 <div id="table" class="container" style="margin-left:5%; width:70%; display: inline-block;"> 
     <section style="position: absolute; top: 15%; width: 80%; ">    
         <h2 style="display: inline-table">글목록</h2> 
-        <button style="float: right; margin-bottom: 1px;" class="btn btn-success"> 
-            <a style="color: white;" href="#">글작성</a></button>
-        <table class="table table-hover"> 
+        <table class="table table-hover">
             <thead>
             <tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일자</th></tr>  
             </thead>
@@ -59,6 +62,11 @@
             <c:forEach items="${admin_qna_list}" var="admin_qna_list">
                 <tr>
                     <td>${admin_qna_list.QNA_BNO}</td>
+
+                    <c:if test="${std == null && teach == null}">
+                        <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
+                    </c:if>
+
                     <td><a href="/admin/admin_qna_read?QNA_BNO=${admin_qna_list.QNA_BNO}">${admin_qna_list.QNA_TITLE}</a></td>
                     <td>${admin_qna_list.QNA_WRITER}</td>
                     <td><fmt:formatDate value="${admin_qna_list.QNA_REGDATE}" pattern="yyyy-MM-dd"/></td>

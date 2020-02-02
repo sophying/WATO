@@ -87,7 +87,7 @@ public class AdminController {
 	}
 	//qna 글읽기 페이지로 이동
 	@RequestMapping(value = "/admin_qna_read", method = RequestMethod.GET)
-	public String admin_qna_read(@RequestParam("QNA_BNO") int QNA_BNO, Model model, HttpServletResponse response) throws Exception {
+	public String admin_qna_read(@RequestParam("QNA_BNO") int QNA_BNO, Model model, HttpServletResponse response, HttpSession session) throws Exception {
 		logger.info("admin_qna_read 페이지로 이동");
 
 		QnaBoardVO vo = service.getQnaRead(QNA_BNO);
@@ -99,7 +99,23 @@ public class AdminController {
 		List<Map<String, Object>> fileList = service.selectFileList(vo.getQNA_BNO());
 		model.addAttribute("file", fileList);
 
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null){
+			return "/admin/admin_qna_read";
+
+		}
+
+
+
 		return "/admin/admin_qna_read";
+	}
+	// 삭제(보내기 및 받기)
+	@RequestMapping(value = "/admin_qna_delete/{QNA_BNO}", method = RequestMethod.GET)
+	public String admin_qna_read(@PathVariable int QNA_BNO) throws Exception {
+		logger.info("admin_qna_read");
+		System.out.println("QNA_BNO : " + QNA_BNO);
+		service.QnaDelete(QNA_BNO);
+
+		return "redirect:/admin/admin_qna_list";
 	}
 /*	// 글 수정(수정폼 받기)
 	@RequestMapping(value = "/admin_qna_get_modify/{QNA_BNO}", method = RequestMethod.GET)
