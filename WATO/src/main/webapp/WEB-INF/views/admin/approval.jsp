@@ -109,8 +109,8 @@
       }
       
       .bigPicture img {
-         width: 300px;
-         height: 400px;
+         width: 200px;
+         height: 300px;
       }
   </style>
   <body>

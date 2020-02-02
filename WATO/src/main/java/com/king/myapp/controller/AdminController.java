@@ -208,10 +208,6 @@ public class AdminController {
 	    public String getManagement(Model model) throws Exception{
 	    	logger.info("management 페이지로 이동~~!!");
 
-		/*	List<ManagementVO> studentList = adminservice.studentList();
-			model.addAttribute("studentList", studentList);
-			List<ManagementVO> teachList = adminservice.teachList();
-			model.addAttribute("teachList", teachList);*/
 	    	List<StdVO> studentList = adminservice.studentList2();
 			model.addAttribute("studentList", studentList);
 			List<TeachVO> teachList = adminservice.teachList2();
@@ -426,7 +422,7 @@ public class AdminController {
 
 	// 아이디 찾기 POST(학생)
 		@RequestMapping(value = "/stdFgId", method = RequestMethod.POST)
-		public ModelAndView postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email)
+		public void postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email, HttpServletResponse response)
 				throws Exception {
 			logger.info("post 학생에게 아이디를 전송합니다.");
 
@@ -459,19 +455,24 @@ public class AdminController {
 
 				mailSender.send(message);
 
+			} else if(!list.getUser_Email().equals(svo.getUser_Email())) {
+				
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('존재하지 않는 이메일입니다.'); location.href='http://localhost:8080/';</script>");
+				out.flush();
+				
 			}
-
+			
 			response_email.setContentType("text/html; charset=UTF-8");
 			PrintWriter out_email = response_email.getWriter();
-			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
+			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
 			out_email.flush();
-
-			return new ModelAndView("admin/forgot_id_pwd");
 		}
 
 		// 아이디 찾기 POST(강사)
 		@RequestMapping(value = "/teachFgId", method = RequestMethod.POST)
-		public ModelAndView postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
+		public void postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
 				HttpServletResponse response_email) throws Exception {
 			logger.info("post 강사에게 아이디를 보낼겁니다.");
 
@@ -509,18 +510,16 @@ public class AdminController {
 					System.out.println(e);
 				}
 			}
-
+			
 			response_email.setContentType("text/html; charset=UTF-8");
 			PrintWriter out_email = response_email.getWriter();
-			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
+			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
 			out_email.flush();
-
-			return new ModelAndView("admin/forgot_id_pwd");
 		}
 
 	// 비밀번호 찾기 POST(학생)
 	@RequestMapping(value = "/stdFgPwd", method = RequestMethod.POST)
-	public ModelAndView postStdpwd(StdVO svo, Model model, HttpServletRequest request,
+	public void postStdpwd(StdVO svo, Model model, HttpServletRequest request,
 			HttpServletResponse response_email) throws Exception {
 		logger.info("post 학생에게 임시비밀번호 발급");
 
@@ -579,23 +578,16 @@ public class AdminController {
 				System.out.println(e);
 			}
 		}
-		ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-		mv.setViewName("admin/forgot_id_pwd"); // 뷰의이름
-		mv.addObject("pw", pw);
-
-		System.out.println("mv : " + mv);
-
+		
 		response_email.setContentType("text/html; charset=UTF-8");
 		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.');</script>");
+		out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
 		out_email.flush();
-
-		return mv;
 	}
 
 	// 비밀번호 찾기 POST(강사)
 	@RequestMapping(value = "/teachFgPwd", method = RequestMethod.POST)
-	public ModelAndView postTeachpwd(TeachVO tvo, Model model, HttpServletRequest request,
+	public void postTeachpwd(TeachVO tvo, Model model, HttpServletRequest request,
 			HttpServletResponse response_email) throws Exception {
 		logger.info("post 강사에게 임시비밀번호 발급");
 
@@ -655,18 +647,10 @@ public class AdminController {
 			}
 		}
 
-		ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-		mv.setViewName("admin/forgot_id_pwd"); // 뷰의이름
-		mv.addObject("pw", pw);
-
-		System.out.println("mv : " + mv);
-
 		response_email.setContentType("text/html; charset=UTF-8");
 		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.');</script>");
+		out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
 		out_email.flush();
-
-		return mv;
 	}
 
 }

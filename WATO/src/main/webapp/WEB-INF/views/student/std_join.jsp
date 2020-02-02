@@ -442,6 +442,7 @@
                             <input type="text" id="Std_Phone2" name="Std_Phone2" size="15" maxlength="4">
                             -
                             <input type="text" id="Std_Phone3" name="Std_Phone3" size="15" maxlength="4">
+                            <br><div style="display: inline-block;" id="ph_check"></div>
                         </td>
                     </tr>
                     <tr>
@@ -663,6 +664,8 @@ function infoCheck() {
       var idJ = /^[a-z0-9]{4,12}$/;
       // 비밀번호 정규식
       var pwJ = /^[A-Za-z0-9]{4,12}$/;
+      // 휴대폰번호 정규식
+      var phJ = /^[0-9]{4,4}$/;
       
       $('#User_Id').blur(function() {
          if (idJ.test($('#User_Id').val())) {
@@ -708,6 +711,31 @@ function infoCheck() {
             $('#pwdcheck2').css('color', 'green');
          }
       });
+
+      
+	// 휴대폰 정규식
+      $('#Std_Phone2').blur(function() {
+   	   if (phJ.test($('#Std_Phone2').val())) {
+   		   console.log('true');
+   		   $('#ph_check').text('');
+   	   } else {
+   		   console.log('false');
+   		   $('#ph_check').text('4자리의 숫자만 입력가능합니다.');
+   		   $('#ph_check').css('color', 'red');
+   	   }
+      })
+      
+      $('#Std_Phone3').blur(function() {
+   	   if (phJ.test($('#Std_Phone3').val())) {
+   		   console.log('true');
+   		   $('#ph_check').text('');
+   	   } else {
+   		   console.log('false');
+   		   $('#ph_check').text('4자리의 숫자만 입력가능합니다.');
+   		   $('#ph_check').css('color', 'red');
+   	   }
+      })
+      
 
    // 정규표현식 유효성 검사 끝 ________________________________________________________________________
       
