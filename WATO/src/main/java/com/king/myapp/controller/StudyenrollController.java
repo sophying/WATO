@@ -1,6 +1,7 @@
 package com.king.myapp.controller;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -27,6 +29,7 @@ import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.domain.TeacherParticipationVO;
+import com.king.myapp.service.BoardService;
 import com.king.myapp.service.StudentParticipationService;
 import com.king.myapp.service.StudyEnrollService;
 
@@ -44,6 +47,8 @@ public class StudyenrollController {
 	@Inject
 	StudentParticipationService participationService;
 	
+	@Autowired 
+	BoardService service; 
 
 	
 	
@@ -368,9 +373,12 @@ public class StudyenrollController {
 	
 	// 나의 참여 리스트 보러가기 
 	@RequestMapping(value = "/user_myList", method = RequestMethod.GET)
-	public void getMyList( HttpSession session, Model model) throws Exception{
+	public String getMyList( HttpSession session, Model model) throws Exception{
 		
 		logger.info("--------------[ 나의 참여 리스트 보러가기   GET ]-----------------");	
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+			return "redirect:/";
+		}
 
 		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
 		StdVO std =  (StdVO) session.getAttribute("std"); 	
@@ -380,6 +388,16 @@ public class StudyenrollController {
 			
 			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
 			List<TeacherEnrollVO> classParti = participationService.getClassPartiList(std);
+			
+			String stduserid =  std.getUser_Id();
+			List<StudyEnrollVO> studylist = service.studylistAll(); //등록되어 있는 학생스터디목록 전체를 불러 온다
+			List<StudyEnrollVO> mystudy = new ArrayList<StudyEnrollVO>(); // 스터디 목록의 작성자가 현재 로그인한 아이디와 같을때 해당 vo를 list에 담는다
+			for (StudyEnrollVO studyEnrollVO : studylist) { 
+				if (studyEnrollVO.getS_userId().equals(stduserid)) {
+					mystudy.add(studyEnrollVO);
+				}
+			}
+			model.addAttribute("mystudy",mystudy); //로그인한 유저가 작성한 리스트를 담아 보낸다.
 			
 			System.out.println("여기는 std ");
 			
@@ -392,6 +410,16 @@ public class StudyenrollController {
 			
 			List<TeacherEnrollVO> myClass = participationService.getTeachClassList(teach);
 			
+			String techuserid =  teach.getUser_Id();
+			List<TeacherEnrollVO> studylist = service.TearchlistAll();
+			List<TeacherEnrollVO> mystudy = new ArrayList<TeacherEnrollVO>();
+			for (TeacherEnrollVO teacherEnrollVO : studylist) {
+				if (teacherEnrollVO.getT_userId().equals(techuserid)) {
+					mystudy.add(teacherEnrollVO);
+				}
+			}
+			model.addAttribute("mystudy",mystudy);
+			
 			System.out.println("여기는 teach ");
 			
 			model.addAttribute("classParti",myClass);
@@ -400,14 +428,17 @@ public class StudyenrollController {
 		}
 		
 		System.out.println("여기는 return 전 !");
+		return "/study/user_myList";
 	}
 	
 	// 별점등록 버튼 눌렀을 때  액션 
 	@RequestMapping(value = "/user_myList", method = RequestMethod.POST)
-	public void postStarScore(@RequestParam("s_no")int s_no,@RequestParam("starScore") int starScore ,@RequestParam("p_userid") String p_userid, Model model,
+	public String postStarScore(@RequestParam("s_no")int s_no,@RequestParam("starScore") int starScore ,@RequestParam("p_userid") String p_userid, Model model,
 								HttpSession session) throws Exception{
-		
 		logger.info("--------------[ 나의 참여 스터디 별점 등록   GET ]-----------------");	 
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+			return "redirect:/";
+		}
 		
 		System.out.println(starScore);
 		Map<String, Object> starScoreUpdate = new HashMap<String, Object>(); 
@@ -455,6 +486,7 @@ public class StudyenrollController {
 					System.out.println("#######  별점 평가한 유저 입니다. ");
 				}
 			
+			
 			model.addAttribute("classParti",classParti);	
 			model.addAttribute("studyParti",studyParti); // 참여한 스터디 목록 
 			
@@ -462,7 +494,7 @@ public class StudyenrollController {
 			
 		}
 			model.addAttribute("teach", teach);	
-		
+			return "/study/user_myList";
 	}
 	// 별점등록 버튼 눌렀을 때  액션 
 	@RequestMapping(value = "/t_user_myList", method = RequestMethod.POST)
@@ -514,6 +546,46 @@ public class StudyenrollController {
 		
 		return "redirect:/study/user_myList";
 	}
+	
+	@RequestMapping(value = "/partiCancle", method = RequestMethod.GET)
+	public String postPartiCancle(@RequestParam("bno") int bno, @RequestParam("user_id") String user_id, Model model, HttpSession session) throws Exception{
+				
+		logger.info("--------------[ MYENROLL 참여신청 취소   GET ]-----------------");		
+				
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+			return "redirect:/";
+		}
+		StdVO std = (StdVO) session.getAttribute("std");
+		TeachVO tech = (TeachVO) session.getAttribute("teach");
+		
+		
+		if (std != null) {
+		//  현재 유저의 참여신청여부 파악  
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("p_userid", user_id);
+			map.put("s_no", bno);
+						
+			participationService.partidelete(map); 
+			participationService.partiCntMinus(bno);
+		}
+		if (tech != null) {
+			System.out.println("user_id : "+user_id);
+			System.out.println("bno : "+bno);
+			//  현재 유저의 참여신청여부 파악  
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("p_userid", user_id);
+			map.put("t_no", bno);
+			
+			participationService.t_partidelete(map); 
+			participationService.t_partiCntMinus(bno);
+		}
+		    // 	
+			
+			return "redirect:/study/user_myList";
+				
+			}	
     
 	
 		

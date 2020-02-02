@@ -8,9 +8,11 @@ import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.BoardVO;
 import com.king.myapp.domain.MainLangugeRankVO;
+import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 
 
 @Repository
@@ -92,7 +94,14 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	@Override
 	public TeacherEnrollVO searchT_no(int s_no) throws Exception {
-		return sql.selectOne("board.searchT_no",s_no);
+		return sql.selectOne("board.searchT_no",s_no); 
 	}
-	
+	@Override
+	public List<StudentParticipationVO> myenrollstudent(int s_no) throws Exception {
+		return sql.selectList("board.myenrollstudent", s_no);
+	}
+	@Override
+	public List<TeacherParticipationVO> myenrollteach(int t_no) throws Exception {
+		return sql.selectList("board.myenrollteach",t_no);
+	}
 }

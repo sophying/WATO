@@ -1,9 +1,7 @@
 package com.king.myapp.controller;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -20,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.king.myapp.domain.BoardVO;
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeachVO;
@@ -666,19 +665,19 @@ public class BoardController {
 		}
 		
 		@RequestMapping(value = "myenrollajax")
-		public String myenrollajax(@RequestParam("bno") int bno, HttpSession session) throws Exception {
+		public String t_myenrollajax(@RequestParam("bno") int bno, HttpSession session, Model model) throws Exception {
 			logger.info("myenrollajax 컨트롤러");
+			System.out.println(bno); 
 			
 			if (session.getAttribute("std") !=null) {
-				StdVO user = (StdVO) session.getAttribute("std");
-				String userid = user.getUser_Id();
-				
-//				List<TeacherParticipationVO> partiuser = service.myenrollstudent(bno);
-				
-				
-				
+				int s_no = bno; 
+				List<StudentParticipationVO> partiuser = service.myenrollstudent(s_no);
+				model.addAttribute("partiuser", partiuser); 
 			}
 			if (session.getAttribute("teach") !=null) {
+				int t_no = bno;
+				List<TeacherParticipationVO> partiuser = service.myenrollteach(t_no);
+				model.addAttribute("partiuser", partiuser); 
 				
 			}
 			

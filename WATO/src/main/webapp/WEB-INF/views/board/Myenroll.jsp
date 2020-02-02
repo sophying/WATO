@@ -444,7 +444,7 @@
 	                      <h2 class="mb-0 text-center"><span style="font-weight: bold;">내가 만든 스터디</span></h2>
 	                 </div> 
 	                <c:if test="${std != null }">
-	                <div id="updatehtml">
+	                <div>
 	                	<table class="table table-hover">
 	                		<thead>
 	                			<tr>
@@ -459,29 +459,8 @@
 	                				<td>${mystudy.s_startDate}</td>
 	                				<td>${mystudy.s_endDate}</td> 
 	                				<td>
-<<<<<<< HEAD
 	                					<input type="hidden" name="s_no" value="${mystudy.s_no}"> 
 	                					<button onclick="sendajaxdata1(this)" type="button">회원관리</button>
-=======
-	                					<form>
-	                						<input type="hidden" name="s_no" value="${mystudy.s_no}"> 
-	                						<input type="hidden" name="s_userId" value="${mystudy.s_userId}"> 
-	                						<input type="hidden" name="s_category" value="${mystudy.s_category}"> 
-	                						<input type="hidden" name="s_title" value="${mystudy.s_title}"> 
-	                						<input type="hidden" name="s_startDate" value="${mystudy.s_startDate}"> 
-	                						<input type="hidden" name="s_endDate" value="${mystudy.s_endDate}"> 
-	                						<input type="hidden" name="s_day" value="${mystudy.s_day}"> 
-	                						<input type="hidden" name="s_postnum" value="${mystudy.s_postnum}"> 
-	                						<input type="hidden" name="s_place" value="${mystudy.s_place}"> 
-	                						<input type="hidden" name="s_intro" value="${mystudy.s_intro}"> 
-	                						<input type="hidden" name="s_photo" value="${mystudy.s_photo}"> 
-	                						<input type="hidden" name="s_level" value="${mystudy.s_level}"> 
-	                						<input type="hidden" name="s_people" value="${mystudy.s_people}"> 
-	                						<input type="hidden" name="s_parti" value="${mystudy.s_parti}"> 
-	                						<input type="hidden" name="s_orgname" value="${mystudy.s_orgname}"> 
-	                					</form>
-	                					<button onclick="sendupdateform(this)" type="button">수정</button>
->>>>>>> branch 'best_HyeRyun' of https://github.com/sophying/WATO.git
 	                				</td>	
 	                			</tr>
 	                		</c:forEach>
@@ -512,7 +491,14 @@
 	                		</tbody>
 	                	</table>
 	                </c:if>	
-	                <script type="text/javascript">
+	            </div>
+            </div>
+            <div id="childrendata">
+            </div>
+        </div> 
+    </div>
+</div>
+					<script type="text/javascript">
 						function sendajaxdata1(event) {
 							var bno = $(event).prev().val();
 							$.ajax({
@@ -524,11 +510,6 @@
 							})
 						}
 	                </script>
-	            </div>
-            </div>
-        </div>
-    </div>
-</div>
 <!--
    *** BLOG HOMEPAGE ***
    _________________________________________________________

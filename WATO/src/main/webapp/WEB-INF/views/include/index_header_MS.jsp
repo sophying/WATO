@@ -38,7 +38,6 @@
                         		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
                         			<a href="javascript:document.myForm.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
-			                   	 	<a href="/board/Myenroll" class="dropdown-item  text-black-50 font-weight-bold">내가 개설한 스터디 보러가기</a> 
                         			 <c:if test="${std != null }">
 			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
 				                    </c:if>

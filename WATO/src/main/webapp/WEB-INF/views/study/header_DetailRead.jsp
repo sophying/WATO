@@ -294,9 +294,16 @@
 									<label for="name" class="row d-flex  pt-3 pb-4 m-0 text-justify   control-label justify-content-center">
 										<font size="6">강사 소개</font>
 									</label>
-									<div class="cols-sm-5 pb-5 pr-2 pl-2"  style="height:auto;">
+									<div class="cols-sm-5 pb-5 pr-2 pl-2"  style="height:auto;"> 
 						              <div class="input-group d-flex justify-content-center ">
-						                <img id="img_btn_0" src="../resources/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+						                <c:choose>
+								          	<c:when test="${listOne.teach_orgname.equals('http://i66.tinypic.com/ng7ue1.jpg') || listOne.teach_orgname.equals('') || listOne.teach_orgname ==null }">
+									           <img id="img_btn_0" src="${listOne.teach_orgname}" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+								          	</c:when>
+								          	<c:otherwise>
+								          	  <img id="img_btn_0" src="/resource/images/${listOne.teach_orgname}"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+								          	</c:otherwise>
+								          </c:choose>
 						              </div>
            						    </div>
 								</div>

@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.BoardVO;
 import com.king.myapp.domain.MainLangugeRankVO;
+import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.persistence.BoardDAO;
 
 
@@ -87,5 +89,13 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public TeacherEnrollVO searchT_no(int s_no) throws Exception {
 		return dao.searchT_no(s_no);
+	}
+	@Override
+	public List<StudentParticipationVO> myenrollstudent(int s_no) throws Exception {
+		return dao.myenrollstudent(s_no);
+	}
+	@Override
+	public List<TeacherParticipationVO> myenrollteach(int t_no) throws Exception {
+		return dao.myenrollteach(t_no);
 	}
 }

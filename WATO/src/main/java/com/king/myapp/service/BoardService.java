@@ -4,9 +4,11 @@ import java.util.List;
 
 import com.king.myapp.domain.BoardVO;
 import com.king.myapp.domain.MainLangugeRankVO;
+import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 
 
 public interface BoardService {
@@ -44,6 +46,10 @@ public interface BoardService {
 	public StudyEnrollVO searchS_no(int s_no) throws Exception;
 
 	public TeacherEnrollVO searchT_no(int s_no) throws Exception;
+
+	public List<StudentParticipationVO> myenrollstudent(int s_no) throws Exception;
+
+	public List<TeacherParticipationVO> myenrollteach(int t_no) throws Exception;
 
 
 

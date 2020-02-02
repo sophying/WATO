@@ -92,7 +92,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="searchT_no" resultType="com.king.myapp.domain.TeacherEnrollVO">
    	   SELECT * FROM T_ENROLL WHERE T_NO = #{s_no}
    </select>
-   
+   <!-- myenroll ajax -->
+   <select id="myenrollstudent" resultType="com.king.myapp.domain.StudentParticipationVO">
+   		SELECT * FROM S_PARTI WHERE S_NO = #{s_no}   
+   </select> 
+   <select id="myenrollteach" resultType="com.king.myapp.domain.TeacherParticipationVO">
+   		SELECT * FROM T_PARTI WHERE T_NO = #{t_no}
+   </select>
    
    
    

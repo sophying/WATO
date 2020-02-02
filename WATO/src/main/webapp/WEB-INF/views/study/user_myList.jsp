@@ -530,6 +530,38 @@ table caption {
 	            </tr>
 	          </tfoot>
 	        </table>
+	        <div class="box py-4 mt-0">
+	            <div class="container"> 
+		            <div class="col-md-12 mt-4"> 
+	                      <h2 class="mb-0 text-center"><span style="font-weight: bold;">내가 만든 스터디</span></h2>
+	                 </div> 
+	                <div>
+	                	<table class="table table-hover">
+	                		<thead>
+	                			<tr>
+	                				<th>글 번호</th><th>글 제목</th><th>시작날짜</th><th>종료예정날짜</th><th>수정하기	</th>
+	                			</tr>
+	                		</thead> 
+	                		<tbody>
+	                			<c:forEach items="${mystudy}" var="mystudy">
+	                			<tr>
+	                				<td>${mystudy.s_no}</td>
+	                				<td><a href="/study/study_DetailRead?s_no=${mystudy.s_no}">${mystudy.s_title}</a></td>
+	                				<td>${mystudy.s_startDate}</td>
+	                				<td>${mystudy.s_endDate}</td> 
+	                				<td>
+	                					<input type="hidden" value="${mystudy.s_no}"> 
+	                					<button onclick="sendajaxdata1(this)" type="button">회원관리</button>
+	                				</td>	
+	                			</tr>
+	                		</c:forEach>
+	                		</tbody>
+	                	</table>
+	                	</div>
+	            </div>
+            </div>
+            <div id="childrendata">
+            </div>
         </c:if>
  <!-- ####### ++++++++++++++++++++++++++++ 강사 유저일 경우  ++++++++++++++++++++++++++++ -->       
         
@@ -591,7 +623,39 @@ table caption {
               <td colspan="9" class="text-center h2">멋진 강의를 선물해주세요!</td>
             </tr>
           </tfoot>
-        </table>	
+        </table>
+        <div class="box py-4 mt-0">
+	            <div class="container"> 
+		            <div class="col-md-12 mt-4"> 
+	                      <h2 class="mb-0 text-center"><span style="font-weight: bold;">내가 만든 스터디</span></h2>
+	                 </div> 
+	                <div>
+	                	<table class="table table-hover">
+	                		<thead>
+	                			<tr>
+	                				<th>글 번호</th><th>글 제목</th><th>시작날짜</th><th>종료예정날짜</th><th>수정하기	</th>
+	                			</tr>
+	                		</thead>
+	                		<tbody>
+	                		<c:forEach items="${mystudy}" var="mystudy">
+	                			<tr>
+	                				<td>${mystudy.t_no}</td>
+	                				<td><a href="/study/header_DetailRead?t_no=${mystudy.t_no}">${mystudy.t_title}</a></td>
+	                				<td>${mystudy.t_startDate}</td>
+	                				<td>${mystudy.t_endDate}</td> 
+	                				<td>
+	                					<input type="hidden" value="${mystudy.t_no}"> 
+	                					<button onclick="sendajaxdata1(this)" type="button">회원관리</button>
+	                				</td>	
+	                			</tr>
+	                		</c:forEach>
+	                		</tbody>
+	                	</table>
+	                	</div>
+	            </div>
+            </div>
+            <div id="childrendata">
+            </div>
         </c:if>
         
         
@@ -681,7 +745,18 @@ table caption {
     </div>
     <!-- /.container-->  
 </div>
-<!-- /#footer-->
+<script type="text/javascript">
+function sendajaxdata1(event) {
+	var bno = $(event).prev().val();
+	$.ajax({
+		type:"get",
+		url:"/board/myenrollajax?bno="+bno,
+		success: function(data) {
+			$('#childrendata').html(data);
+		}
+	})
+}
+</script><!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <script src="/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/resource/vendor/jquery.cookie/jquery.cookie.js"> </script>

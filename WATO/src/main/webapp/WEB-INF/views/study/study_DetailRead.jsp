@@ -466,7 +466,14 @@
 									</label>
 									<div class="cols-sm-5 pb-5 pr-2 pl-2">
 						              <div class="input-group d-flex justify-content-center ">
-						                <img id="img_btn_0" src="../../resource/images/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+						                <c:choose>
+								          	<c:when test="${listOne.std_orgname.equals('http://i66.tinypic.com/ng7ue1.jpg') }">
+									           <img id="img_btn_0" src="${listOne.std_orgname}" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+								          	</c:when>
+								          	<c:otherwise>
+								          	  <img id="img_btn_0" src="/resource/images/${listOne.std_orgname}"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+								          	</c:otherwise>
+								          </c:choose>
 						              </div>
            						    </div>
 								</div>
