@@ -19,8 +19,8 @@
 										<tr> 
 											<td id="moremessge">${listStudy.s_no}</td> 
 											<td>${listStudy.s_category}</td> 
-											<td><a href="#" style="color: black;">${listStudy.s_title}</a></td>
-											<td><a href="#" style="color: black;">${listStudy.s_userId}</a></td>  
+											<td><a href="/study/study_DetailRead?s_no=${listStudy.s_no}" style="color: black;">${listStudy.s_title}</a></td>
+											<td>${listStudy.s_userId}</td>  
 										</tr>
 				                    </c:forEach>
 				                    <tr> 

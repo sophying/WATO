@@ -3,7 +3,6 @@ package com.king.myapp.controller;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
@@ -27,7 +26,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.king.myapp.domain.ApprovalVO;
-import com.king.myapp.domain.ManagementVO;
 import com.king.myapp.domain.PageMaker;
 import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.QnaReplyVO;
@@ -65,10 +63,21 @@ public class AdminController {
 
 	// 어드민 페이지로 이동
 	    @RequestMapping(value = "/index_admin")
-	    public String admin_main() throws Exception {
+	    public String admin_main(HttpServletResponse response, HttpSession session , Model model) throws Exception {
 	    	logger.info("admin main 페이지로 이동~~!!");
-			return "admin/index_admin";
+	    	
+	    	/* 세션에 부여된 아이디 : admin check */
+			StdVO std =  (StdVO) session.getAttribute("std");
+			//String adminIdCheck = std.getUser_Id();
+			if (!std.getUser_Id().equals("admin")||std.getUser_Id().equals("")) {
+					 response.setContentType("text/html; charset=UTF-8");
+					 PrintWriter out = response.getWriter();
+				 out.println("<script>alert('잘못된 접근입니다, 메인화면으로 돌아갑니다.'); location.href='/';</script>"		 );
+				 out.flush();
+			}
+	    	 return "admin/index_admin";
 	    }
+	    
 	//qna 리스트 페이지로 이동
 		@RequestMapping(value ="/admin_qna_list", method = RequestMethod.GET)
 	    	public String admin_qna_list(Model model, @ModelAttribute("scri") SearchCriteria scri, QnaBoardVO vo) throws Exception{
