@@ -1,8 +1,11 @@
 package com.king.myapp.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -21,7 +24,9 @@ import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.service.BoardService;
+import com.king.myapp.service.StudentParticipationService;
 
 
 
@@ -33,6 +38,8 @@ public class BoardController {
 	
 	@Autowired 
 	BoardService service; 
+	@Inject
+	StudentParticipationService participationService;
 	
 	/*
 	 * @Autowired ReplyService RepService;
@@ -658,18 +665,26 @@ public class BoardController {
 			return "/board/Myenroll";
 		}
 		
-		@RequestMapping(value="/Myenrollupdate", method = RequestMethod.POST)
-		public String Myenrollupdate (StudyEnrollVO studentstudy,TeacherEnrollVO teachstudy, Model model, HttpSession session) {
-			logger.info("여기는 자신의 스터디를 수정하는곳");
+		@RequestMapping(value = "myenrollajax")
+		public String myenrollajax(@RequestParam("bno") int bno, HttpSession session) throws Exception {
+			logger.info("myenrollajax 컨트롤러");
 			
-			if (session.getAttribute("std") != null) {
-				model.addAttribute("studentstudy",studentstudy);
+			if (session.getAttribute("std") !=null) {
+				StdVO user = (StdVO) session.getAttribute("std");
+				String userid = user.getUser_Id();
+				
+//				List<TeacherParticipationVO> partiuser = service.myenrollstudent(bno);
+				
+				
+				
 			}
-			if (session.getAttribute("teach") != null) {
-				model.addAttribute("teachstudy",teachstudy);
+			if (session.getAttribute("teach") !=null) {
+				
 			}
 			
-			return "/board/MyenrollUpdate";
+			
+			
+			return "/board/myenrollajax";
 		}
 		
 		

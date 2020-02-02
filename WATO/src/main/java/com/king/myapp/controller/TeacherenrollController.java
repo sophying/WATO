@@ -160,6 +160,22 @@ public class TeacherenrollController {
 					model.addAttribute("partiOne",partiOne);
 				}
 			}
+			if (teach != null) {
+				
+				String user_id = teach.getUser_Id();
+				
+				Map<String, Object> map = new HashMap<String, Object>();
+				
+				map.put("p_userid", user_id);
+				map.put("t_no",t_no);
+				
+				TeacherParticipationVO partiOne = participationService.t_partiCheck(map);
+				// 	
+				
+				if (partiOne != null) {
+					model.addAttribute("partiOne",partiOne);
+				}
+			}
 			model.addAttribute("usercheck","usercheck");
 			model.addAttribute("std",std);
 			model.addAttribute("teach",teach);
