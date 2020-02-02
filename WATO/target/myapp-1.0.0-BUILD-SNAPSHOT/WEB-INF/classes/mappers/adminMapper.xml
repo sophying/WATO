@@ -90,4 +90,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM teach_info WHERE User_Email = #{User_Email}
 	</select>
 	
+	<!-- 학생 회원 수 조회 -->
+	<select id="count_std" resultType="int">
+		select COUNT * FROM std_info
+	</select>
+	
+	<!-- 강사 회원 수 조회 -->
+	<select id="count_tech" resultType="int">
+		select COUNT * FROM teach_info
+	</select>
+	
+	
+	
+	
+	
 </mapper>
