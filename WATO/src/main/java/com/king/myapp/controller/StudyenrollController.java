@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -156,10 +155,14 @@ public class StudyenrollController {
 					map.put("s_no", s_no);
 					
 					StudentParticipationVO partiOne = participationService.partiCheck(map);
+					StudentParticipationVO particompleOne = participationService.partiCheck2(map);
 					// 	
 					
 					if (partiOne != null) {
 						model.addAttribute("partiOne",partiOne);
+					}
+					if (particompleOne !=null) {
+						model.addAttribute("particompleOne",particompleOne);
 					}
 				}
 				
@@ -210,8 +213,10 @@ public class StudyenrollController {
 					
 					map.put("p_userid", user_id);
 					map.put("s_no", s_no);
+					map.put("study", true);
 					
-					participationService.partidelete(map); 
+					
+					participationService.waitngstudydelete(map); 
 					participationService.partiCntMinus(s_no);
 				    // 	
 					TeachVO teach =  (TeachVO) session.getAttribute("teach");		
@@ -385,11 +390,13 @@ public class StudyenrollController {
 		
 		
 		if (std != null) {
-			
+			String stduserid =  std.getUser_Id();
 			List<StudyEnrollVO> studyParti = participationService.getStudyPartiList(std);
 			List<TeacherEnrollVO> classParti = participationService.getClassPartiList(std);
+			List<StudyEnrollVO> waitingstudy = participationService.getwaitingstudy(stduserid);
+			List<TeacherEnrollVO> waitingclass = participationService.getwaitingclass(stduserid);
+			System.out.println("classParti.size() : "+classParti.size());
 			
-			String stduserid =  std.getUser_Id();
 			List<StudyEnrollVO> studylist = service.studylistAll(); //등록되어 있는 학생스터디목록 전체를 불러 온다
 			List<StudyEnrollVO> mystudy = new ArrayList<StudyEnrollVO>(); // 스터디 목록의 작성자가 현재 로그인한 아이디와 같을때 해당 vo를 list에 담는다
 			for (StudyEnrollVO studyEnrollVO : studylist) { 
@@ -397,6 +404,8 @@ public class StudyenrollController {
 					mystudy.add(studyEnrollVO);
 				}
 			}
+			model.addAttribute("waitingstudy",waitingstudy);
+			model.addAttribute("waitingclass",waitingclass);
 			model.addAttribute("mystudy",mystudy); //로그인한 유저가 작성한 리스트를 담아 보낸다.
 			
 			System.out.println("여기는 std ");
@@ -586,7 +595,147 @@ public class StudyenrollController {
 			return "redirect:/study/user_myList";
 				
 			}	
+	@RequestMapping(value = "/particompletecencle", method = RequestMethod.GET)
+	public String particompletecencle(@RequestParam("bno") int bno, @RequestParam("user_id") String user_id, Model model, HttpSession session) throws Exception{
+		
+		logger.info("--------------[ MYENROLL 철회하기   GET ]-----------------");		
+		
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+			return "redirect:/";
+		}
+		StdVO std = (StdVO) session.getAttribute("std");
+		TeachVO tech = (TeachVO) session.getAttribute("teach");
+		
+		
+		if (std != null) {
+			//  현재 유저의 참여신청여부 파악  
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("p_userid", user_id);
+			map.put("s_no", bno);
+			map.put("study", true);
+			
+			participationService.waitngstudydelete(map);
+			participationService.partiCntMinus(bno);
+		}
+		if (tech != null) {
+			System.out.println("user_id : "+user_id);
+			System.out.println("bno : "+bno);
+			//  현재 유저의 참여신청여부 파악  
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("p_userid", user_id);
+			map.put("t_no", bno);
+			map.put("study", false);
+			
+			participationService.waitngstudydelete(map);
+			participationService.t_partiCntMinus(bno);
+		}
+		// 	
+		
+		return "redirect:/study/user_myList";
+		
+	}	
     
+	
+	@RequestMapping(value = "/partiusercomplete", method = RequestMethod.GET)
+	public String partiusercomplete(@RequestParam("bno") int bno, @RequestParam("user_id") String user_id, Model model, HttpSession session) throws Exception{
+		
+		logger.info("--------------[ MYENROLL 참여신청 승인   GET ]-----------------");		
+		
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+			return "redirect:/";
+		}
+		StdVO std = (StdVO) session.getAttribute("std");
+		TeachVO tech = (TeachVO) session.getAttribute("teach");
+		
+		
+		if (std != null) {
+			System.out.println("MYENROLL 참여신청 승인   GET : 학생");
+			//  현재 유저의 참여신청여부 파악  
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("p_userid", user_id);
+			map.put("s_no", bno);
+			
+			StudentParticipationVO user = participationService.partiCheck(map);
+			if (user != null) {
+				System.out.println(user.getS_no());
+				System.out.println(user.getP_userid());
+				participationService.partiusercomplete(user);
+				participationService.partidelete(map); 
+				participationService.partiCntMinus(bno);
+			}
+		}
+		if (tech != null) {
+			System.out.println("MYENROLL 참여신청 승인   GET : 선생");
+			System.out.println("user_id : "+user_id);
+			System.out.println("bno : "+bno);
+			//  현재 유저의 참여신청여부 파악  
+			Map<String, Object> map = new HashMap<String, Object>();
+			
+			map.put("p_userid", user_id);
+			map.put("t_no", bno);
+			
+			TeacherParticipationVO user = participationService.t_partiCheck(map);
+			System.out.println(user.getT_no());
+			System.out.println(user.getP_userid());
+			if (user != null) {
+				participationService.t_partiusercomplete(user);
+				participationService.t_partidelete(map); 
+				participationService.t_partiCntMinus(bno);
+			}
+			
+			
+		}
+		// 	
+		return "redirect:/study/user_myList";
+	}	
+	
+	@RequestMapping("waitngstudydelete")
+	public String waitngstudydelete(@RequestParam("bno") int bno,@RequestParam("study") boolean study ,HttpSession session) throws Exception {
+		logger.info("waitngstudydelete 는 요기로");
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null) {
+			return "redirect:/";
+		}
+		
+		if (session.getAttribute("std") != null) {
+			System.out.println("waitngstudydelete bno = "+bno);
+			System.out.println("waitngstudydelete : 학생");
+			System.out.println("study : "+study);
+			StdVO user = (StdVO) session.getAttribute("std");
+			String user_id = user.getUser_Id();
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("p_userid", user_id);
+			if (study ==true) {
+				map.put("s_no", bno);
+				participationService.partidelete(map);
+			}else {
+				map.put("t_no", bno);
+				participationService.t_partidelete(map);
+			}
+			
+			
+		}
+		if (session.getAttribute("teach") != null) {
+			System.out.println("waitngstudydelete : 선생");
+			TeachVO user = (TeachVO) session.getAttribute("teach");
+			String user_id = user.getUser_Id();
+			
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("p_userid", user_id);
+			map.put("t_no", bno);
+			if (study ==false) {
+				map.put("t_no", bno);
+				participationService.t_partidelete(map);
+			}
+		}
+		
+		
+		return "redirect:/study/user_myList";
+	}
+	
 	
 		
 }

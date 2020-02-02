@@ -624,10 +624,13 @@
 								</c:when>
 								<c:otherwise>
 									<c:choose>
-										<c:when test="${(partiOne.p_userid).equals(std.user_Id)}">    
-											<div class="successBtn"id="success" >참여신청완료</div> 
+										<c:when test="${(partiOne.p_userid).equals(std.user_Id )}">    
+											<div class="successBtn"id="success" >참여신청 대기중</div>
+										</c:when> 
+										<c:when test="${particompleOne.p_userid.equals(std.user_Id ) }">
+											<div class="successBtn"id="success" >참여신청요청이 승인됨</div>
 											<input type="button" class="goButton mt-4"id="partiBnt"  data-toggle="modal" data-target="#t_cancle-modal"  value="참여신청취소하기"/> 
-										</c:when>  
+										</c:when>
 										<c:otherwise>
 											<c:choose>
 												<c:when test="${usercheck == null }">

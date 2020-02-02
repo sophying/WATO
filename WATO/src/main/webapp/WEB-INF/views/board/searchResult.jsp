@@ -523,7 +523,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
          </div>
         <table class="table table-hover">
         	<tr>
@@ -531,7 +531,16 @@
         	</tr>
         	<c:forEach items="${listQna}" var="listQna">
         	<tr>
-        		<td>${listQna.bno}</td><td>${listQna.title}</td><td>${listQna.writer}</td><td><fmt:formatDate value="${listQna.regDate}" pattern=""/></td>
+        		<td>${listQna.QNA_BNO}</td>
+        		<c:choose>
+					<c:when test="${std == null && teach == null }">
+						<td><a style="color: black;" href="javascript:alert('로그인 후 이용 가능합니다.')">${listQna.QNA_TITLE}</a></td>
+					</c:when>        		
+					<c:otherwise>
+						<td><a href="/qna/getQnaRead?QNA_BNO=${listQna.QNA_BNO}">${listQna.QNA_TITLE}</a></td>
+					</c:otherwise>
+        		</c:choose>
+        		<td>${listQna.QNA_WRITER}</td><td><fmt:formatDate value="${listQna.QNA_REGDATE}" pattern=""/></td>
         	</tr>
         	</c:forEach>
         </table>

@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 				<!-- Modal -->
 					<div  class="modal fade" id="Form-modal" role="dialog">
 					  <div class="modal-dialog  mt-5">
@@ -32,8 +33,15 @@
 						        </div>  
 						        <div class="modal-footer"style="background: #5a7fa2;">     
 						          <input type="hidden" name="s_no" id="s_no" value="${listOne.s_no }"/>    
-						          <input type="hidden" name="p_userid" id="p_userid" value="${std.user_Id }"/>  
-						          <font size="4"><input type="button" id="modalSubmit" class="btn btn-default" style="color:#fff;" value="참여완료하기"></font>
+						         <c:choose>
+						           		<c:when test="${std != null }">
+								          <input type="hidden" name="p_userid" id="p_userid" value="${std.user_Id}"/>  
+								          <font size="4"><input type="button" id="modalSubmit" class="btn btn-default" style="color:#fff;" value="참여완료하기"></font>
+						           		</c:when>
+						           		<c:otherwise>
+						           			<span>강사님은 스터디에 참여 하실 수 없습니다.</span>
+						           		</c:otherwise>
+						           </c:choose>
 						        </div>
 						      </div>
 					      </form>

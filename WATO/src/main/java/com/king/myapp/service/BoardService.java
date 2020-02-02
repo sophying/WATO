@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.king.myapp.domain.BoardVO;
 import com.king.myapp.domain.MainLangugeRankVO;
+import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
@@ -17,9 +18,9 @@ public interface BoardService {
 
 	public List<StudyEnrollVO> searchResultStudy(String searchKey) throws Exception;
 
-	public List<BoardVO> searchResultTeacher(String searchKey) throws Exception;
+	public List<TeacherEnrollVO> searchResultTeacher(String searchKey) throws Exception;
 
-	public List<TeacherEnrollVO> searchResultQna(String searchKey) throws Exception;
+	public List<QnaBoardVO> searchResultQna(String searchKey) throws Exception;
 
 	public List<StudyEnrollVO> studylistAll() throws Exception;
 

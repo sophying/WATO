@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.king.myapp.domain.BoardVO;
+import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
@@ -65,8 +66,8 @@ public class BoardController {
 				model.addAttribute("listStudy",listStudy);  
 			}
 			
-			List<BoardVO> listTeacher = service.searchResultTeacher(searchKey); 
-			List<TeacherEnrollVO> listQna = service.searchResultQna(searchKey);
+			List<TeacherEnrollVO> listTeacher = service.searchResultTeacher(searchKey); 
+			List<QnaBoardVO> listQna = service.searchResultQna(searchKey);
 			
 			model.addAttribute("listTeacher",listTeacher); 
 			model.addAttribute("listQna",listQna);  
@@ -93,8 +94,8 @@ public class BoardController {
 				model.addAttribute("listStudy",listStudy);  
 			}
 			
-			List<BoardVO> listTeacher = service.searchResultTeacher(searchKey); 
-			List<TeacherEnrollVO> listQna = service.searchResultQna(searchKey);
+			List<TeacherEnrollVO> listTeacher = service.searchResultTeacher(searchKey); 
+			List<QnaBoardVO> listQna = service.searchResultQna(searchKey);
 			
 			model.addAttribute("listTeacher",listTeacher); 
 			model.addAttribute("listQna",listQna);  
@@ -562,22 +563,23 @@ public class BoardController {
 				
 				List<StudyEnrollVO> heartcheck = service.seleteheartbutton(std); // 로그인된 아이디로 즐겨찾기를 한것이 있는지 검색하고
 				List<StudyEnrollVO> likecheck = service.seletelikebutton(std); // 로그인된 아이디로 좋아요를 한것이 있는지 검색하고
-				List<StudyEnrollVO> s_heartlist = null;
-				List<TeacherEnrollVO> t_heartlist = null;
-				List<StudyEnrollVO> s_likelist = null;
-				List<StudyEnrollVO> t_likelist = null;
 				
+				List<StudyEnrollVO> s_heartlist = new ArrayList<StudyEnrollVO>();
+				List<TeacherEnrollVO> t_heartlist = new ArrayList<TeacherEnrollVO>();
+				List<StudyEnrollVO> s_likelist = new ArrayList<StudyEnrollVO>();
+				List<TeacherEnrollVO> t_likelist = new ArrayList<TeacherEnrollVO>();
+				 
 				if (heartcheck.size() != 0) { 
 					for (int i = 0; i < heartcheck.size(); i++) {
-						
+						 
 						int s_no = heartcheck.get(i).getS_no();
-						StudyEnrollVO study =service.searchS_no(s_no);
+						StudyEnrollVO s_study =service.searchS_no(s_no);
 						TeacherEnrollVO t_study =service.searchT_no(s_no);
-						if (study != null) {
-							s_heartlist.add(study);
+						if (s_study != null && !s_study.equals("")) {
+							s_heartlist.add(s_study);
 						}
-						if (t_study != null) {
-							t_heartlist.add(t_study);						
+						if (t_study != null && !t_study.equals("")) {
+							t_heartlist.add(t_study);						 
 						}
 					}
 					if (s_heartlist.size() != 0) {
@@ -602,10 +604,10 @@ public class BoardController {
 						StudyEnrollVO study =service.searchS_no(s_no);
 						TeacherEnrollVO t_study =service.searchT_no(s_no);
 						if (study != null) {
-							s_heartlist.add(study);
+							s_likelist.add(study);
 						}
 						if (t_study != null) { 
-							t_heartlist.add(t_study);						
+							t_likelist.add(t_study);			 			
 						} 
 					}	
 					if (s_heartlist.size() != 0) {
@@ -659,7 +661,7 @@ public class BoardController {
 						mystudy.add(teacherEnrollVO);
 					}
 				}
-				model.addAttribute("mystudy",mystudy);
+				model.addAttribute("mystudy",mystudy); 
 			}
 			return "/board/Myenroll";
 		}
@@ -668,16 +670,20 @@ public class BoardController {
 		public String t_myenrollajax(@RequestParam("bno") int bno, HttpSession session, Model model) throws Exception {
 			logger.info("myenrollajax 컨트롤러");
 			System.out.println(bno); 
-			
+			 
 			if (session.getAttribute("std") !=null) {
 				int s_no = bno; 
 				List<StudentParticipationVO> partiuser = service.myenrollstudent(s_no);
+				List<StudentParticipationVO> particomplete = participationService.selectparticomplete(s_no);
 				model.addAttribute("partiuser", partiuser); 
+				model.addAttribute("particomplete",particomplete);
 			}
 			if (session.getAttribute("teach") !=null) {
 				int t_no = bno;
 				List<TeacherParticipationVO> partiuser = service.myenrollteach(t_no);
+				List<TeacherParticipationVO> particomplete = participationService.t_selectparticomplete(t_no);
 				model.addAttribute("partiuser", partiuser); 
+				model.addAttribute("particomplete", particomplete); 
 				
 			}
 			

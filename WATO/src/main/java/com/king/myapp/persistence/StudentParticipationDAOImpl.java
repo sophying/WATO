@@ -85,6 +85,30 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 	public List<TeacherEnrollVO> getClassPartiList(StdVO std) throws Exception {
 		return sql.selectList("parti.t_getStudyPartiList",std);
 	}
+	@Override
+	public StudentParticipationVO partiCheck2(Map<String, Object> map) throws Exception {
+		return sql.selectOne("parti.partiCheck2",map);
+	}
+	@Override
+	public TeacherParticipationVO t_partiCheck2(Map<String, Object> map) throws Exception {
+		return sql.selectOne("parti.t_partiCheck2",map);
+	}
+	@Override
+	public List<TeacherEnrollVO> getwaitingclass(String stduserid) throws Exception {
+		return sql.selectList("parti.getwaitingclass",stduserid);
+	}
+	@Override
+	public List<StudyEnrollVO> getwaitingstudy(String stduserid) throws Exception {
+		return sql.selectList("parti.getwaitingstudy",stduserid);
+	}
+	@Override
+	public void waitngstudydelete(Map<String, Object> map) throws Exception {
+		if ((boolean)map.get("study") == true) {
+			sql.delete("parti.waitngstudydelete",map);
+		}else {
+			sql.delete("parti.waitngteachdelete",map);
+		}
+	}
 
 
 
@@ -133,6 +157,22 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 	@Override
 	public void class_checkStarParti(Map<String, Object> t_map) throws Exception {
 		sql.update("parti.t_checkStarParti",t_map);
+	}
+	@Override
+	public void partiusercomplete(StudentParticipationVO user) throws Exception {
+		sql.insert("parti.s_partiusercomplete",user);
+	}
+	@Override
+	public List<StudentParticipationVO> selectparticomplete(int s_no) throws Exception {
+		return  sql.selectList("parti.selectparticomplete",s_no);
+	}
+	@Override
+	public void t_partiusercomplete(TeacherParticipationVO user) throws Exception {
+		sql.insert("parti.t_partiusercomplete",user);
+	}
+	@Override
+	public List<TeacherParticipationVO> t_selectparticomplete(int t_no) throws Exception {
+		return sql.selectList("parti.t_selectparticomplete", t_no);
 	}
 
 

@@ -160,9 +160,13 @@ public class TeacherenrollController {
 				map.put("t_no",t_no);
 				
 				TeacherParticipationVO partiOne = participationService.t_partiCheck(map);
+				TeacherParticipationVO particompleOne = participationService.t_partiCheck2(map);
 				
 				if (partiOne != null) {
 					model.addAttribute("partiOne",partiOne);
+				}
+				if (particompleOne != null) {
+					model.addAttribute("particompleOne",particompleOne);
 				}
 			}
 			if (teach != null) {
@@ -231,8 +235,9 @@ public class TeacherenrollController {
 						
 			map.put("p_userid", user_id);
 			map.put("t_no", t_no);
+			map.put("study", false);
 						
-			participationService.t_partidelete(map); 
+			participationService.waitngstudydelete(map); 
 			participationService.t_partiCntMinus(t_no);
 		    // 	
 						

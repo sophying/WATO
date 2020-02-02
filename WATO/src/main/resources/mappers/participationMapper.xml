@@ -29,9 +29,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--  학생 스터디 참여 리스트  -->
 	<select id="s_getStudyPartiList" resultType="com.king.myapp.domain.StudyEnrollVO" parameterType="com.king.myapp.domain.StdVO">
 	select  s.s_no,s.s_level, s.s_category, s.s_title, s.s_startdate , s.s_enddate , s.s_userid, p.starscore_parti 
-	from s_enroll s, s_parti p
+	from s_enroll s, s_parti_complete p
 	where s.s_no = p.s_no
-	and s.s_no in (select s_no from s_parti where p_userid= #{User_Id} group by s_no)
+	and s.s_no in (select s_no from s_parti_complete where p_userid= #{User_Id} group by s_no)
 	order by s_startdate desc
 
 <!-- 		select s_no, s_category,s_level, s_title, s_startdate ,s_enddate, s_userid 
@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 참여학생 평점등록 시 값부여  -->
 	<update id="s_checkStarParti">
-		update s_parti
+		update s_parti_complete
 		set starscore_parti = 1
 		where s_no = #{s_no}
 		and p_userid = #{p_userid}
@@ -50,17 +50,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 <!-- 별점 평가 유저 확인  -->
 	<select id="s_getCheckStarParti" resultType="com.king.myapp.domain.StudentParticipationVO" >
-		select *from s_parti
+		select *from s_parti_complete
 		where s_no = #{s_no}
 		and p_userid = #{p_userid}
 	</select>
 
 <!-- 참여 리스트 & 별점 참여 유저 불러오기 -->
 	<select id="s_getStarPartiUser" resultType="com.king.myapp.domain.StudentParticipationVO">
-		select * from s_parti 
+		select * from s_parti_complete 
 		where p_userid = #{User_Id}
 	</select>
-
+	
+	
+	<insert id="s_partiusercomplete">
+		insert into s_parti_complete select * from s_parti where s_no = #{s_no} and p_userid = #{p_userid}
+	</insert>
+	<select id="selectparticomplete" resultType="com.king.myapp.domain.StudentParticipationVO">
+		SELECT * FROM s_parti_complete WHERE s_no = #{s_no}
+	</select>
+	<select id="getwaitingstudy" resultType="com.king.myapp.domain.StudyEnrollVO">
+		SELECT * FROM S_ENROLL WHERE S_NO = (SELECT S_NO FROM S_PARTI WHERE P_USERID = #{p_userid})
+	</select>
+	<select id="getwaitingclass" resultType="com.king.myapp.domain.TeacherEnrollVO">
+	 	SELECT * FROM T_ENROLL WHERE T_NO = (SELECT T_NO FROM T_PARTI WHERE P_USERID = #{p_userid})
+	</select>
+	
+	
+	<delete id="waitngstudydelete">
+		delete from S_PARTI_COMPLETE WHERE S_NO = #{s_no} and P_USERID = #{p_userid}
+	</delete>
+	<delete id="waitngteachdelete">
+		delete from T_PARTI_COMPLETE WHERE T_NO = #{t_no} and P_USERID = #{p_userid}
+	</delete>
 	
 
 
@@ -93,15 +114,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--  학생 강의 참여 리스트  -->
 	<select id="t_getStudyPartiList" resultType="com.king.myapp.domain.TeacherEnrollVO" >
 		select  t.t_no, t.t_level, t.t_category, t.t_title, t.t_startdate , t.t_enddate , t.t_userid, p.starscore_parti 
-		from t_enroll t, t_parti p
+		from t_enroll t, t_parti_complete p
 		where t.t_no = p.t_no
-		and t.t_no in (select t_no from t_parti where p_userid= #{User_Id} group by t_no)
+		and t.t_no in (select t_no from t_parti_complete where p_userid= #{User_Id} group by t_no)
 		order by t_startdate desc
 	</select>
 
 <!-- 참여학생 강의 평점등록 시 값부여  -->
 	<update id="t_checkStarParti">
-		update t_parti
+		update t_parti_complete
 		set starscore_parti = 1
 		where t_no = #{t_no}
 		and p_userid = #{p_userid}
@@ -112,4 +133,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where t_no =#{t_no}
 	</select>
 	
+	<insert id="t_partiusercomplete">
+		insert into t_parti_complete select * from t_parti where t_no = #{t_no} and p_userid = #{p_userid}
+	</insert>
+	<select id="t_selectparticomplete" resultType="com.king.myapp.domain.TeacherParticipationVO" >
+		SELECT * FROM t_parti_complete WHERE t_no = #{t_no}
+	</select>
+	
+	<select id="partiCheck2"  resultType="com.king.myapp.domain.StudentParticipationVO" >
+		select s.s_no, p.p_userid 
+		from s_enroll s, s_parti_complete p
+		where  s.s_no = p.s_no
+		and s.s_no = #{s_no}
+		and p.p_userid = #{p_userid}
+	</select>	
+	<select id="t_partiCheck2" resultType="com.king.myapp.domain.TeacherParticipationVO">
+		select t.t_no, p.p_userid 
+		from t_enroll t, t_parti_complete p
+		where  t.t_no = p.t_no
+		and t.t_no = #{t_no}
+		and p.p_userid = #{p_userid}
+	</select>
 </mapper>

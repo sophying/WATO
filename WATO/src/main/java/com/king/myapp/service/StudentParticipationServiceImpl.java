@@ -83,8 +83,26 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 	public List<TeacherEnrollVO> getClassPartiList(StdVO std) throws Exception {
 		return participationDAO.getClassPartiList(std);
 	}
-	
-	
+	@Override
+	public void partiusercomplete(StudentParticipationVO user) throws Exception {
+		participationDAO.partiusercomplete(user);
+	}
+	@Override
+	public List<StudentParticipationVO> selectparticomplete(int s_no) throws Exception {
+		return participationDAO.selectparticomplete(s_no);
+	}
+	@Override
+	public List<TeacherEnrollVO> getwaitingclass(String stduserid) throws Exception {
+		return participationDAO.getwaitingclass(stduserid);
+	}
+	@Override
+	public List<StudyEnrollVO> getwaitingstudy(String stduserid) throws Exception {
+		return participationDAO.getwaitingstudy(stduserid);
+	}
+	@Override
+	public void waitngstudydelete(Map<String, Object> map) throws Exception {
+		participationDAO.waitngstudydelete(map);
+	}
 	
 	
 	
@@ -132,8 +150,23 @@ public class StudentParticipationServiceImpl  implements StudentParticipationSer
 	public void class_checkStarParti(Map<String, Object> t_map) throws Exception {
 		participationDAO.class_checkStarParti(t_map);
 	}
+	@Override
+	public void t_partiusercomplete(TeacherParticipationVO user) throws Exception {
+		participationDAO.t_partiusercomplete(user);
+	}
+	@Override
+	public List<TeacherParticipationVO> t_selectparticomplete(int t_no) throws Exception {
+		return participationDAO.t_selectparticomplete(t_no);
+	}
 
-	
+	@Override
+	public StudentParticipationVO partiCheck2(Map<String, Object> map) throws Exception {
+		return participationDAO.partiCheck2(map);
+	}
+	@Override
+	public TeacherParticipationVO t_partiCheck2(Map<String, Object> map) throws Exception {
+		return participationDAO.t_partiCheck2(map);
+	}
 	
 /**************  강사를 위한 목차 ***************/	
 	

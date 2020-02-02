@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.BoardVO;
 import com.king.myapp.domain.MainLangugeRankVO;
+import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
@@ -36,11 +37,11 @@ public class BoardDAOImpl implements BoardDAO{
 		return sql.selectList("board.searchResultStudy",searchKey);
 	}
 	@Override
-	public List<BoardVO> searchResultTeacher(String searchKey) throws Exception {
+	public List<TeacherEnrollVO> searchResultTeacher(String searchKey) throws Exception {
 		return sql.selectList("board.searchResultTeacher",searchKey);
 	}
 	@Override
-	public List<TeacherEnrollVO> searchResultQna(String searchKey) throws Exception {
+	public List<QnaBoardVO> searchResultQna(String searchKey) throws Exception {
 		return sql.selectList("board.searchResultQna",searchKey);
 	}
 	@Override

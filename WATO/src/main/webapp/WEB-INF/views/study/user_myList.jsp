@@ -376,9 +376,53 @@ table caption {
       <div class=" mb-5 table-responsive">
 <!-- ######  ++++++++++++++++ 학생 유저일 경우 ++++++++++++++++++++++++++++++++ -->      
       <c:if test="${std != null }">
+      	<div class="box py-4 mt-0">
+	            <div class="container"> 
+		            <h4 class="font-weight-bold">승인 대기 중인 스터디</h4>
+	                <div>
+	                	<table class="table table-hover">
+	                		<thead>
+	                			<tr>
+	                				<th>글 번호</th><th>글 제목</th><th>시작날짜</th><th>종료예정날짜</th><th>수정하기	</th>
+	                			</tr>
+	                		</thead> 
+	                		<tbody>
+		                		<c:forEach items="${waitingstudy}" var="waitingstudy">
+		                			<tr>
+		                				<td>${waitingstudy.s_no}</td>
+		                				<td><a href="/study/study_DetailRead?s_no=${waitingstudy.s_no}">${waitingstudy.s_title}</a></td>
+		                				<td>${waitingstudy.s_startDate}</td>
+		                				<td>${waitingstudy.s_endDate}</td> 
+		                				<td>
+		                					<input type="hidden" value="true">
+		                					<input type="hidden" value="${waitingstudy.s_no}"> 
+		                					<button onclick="studycencle(this)" type="button" >취소하기</button>
+		                				</td>	
+		                			</tr>
+	                			</c:forEach>
+	                			<c:forEach items="${waitingclass}" var="waitingclass">
+	                			<tr>
+	                				<td>${waitingclass.t_no}</td>
+	                				<td><a href="/study/study_DetailRead?s_no=${waitingclass.t_no}">${waitingclass.t_title}</a></td>
+	                				<td>${waitingclass.t_startDate}</td>
+	                				<td>${waitingclass.t_endDate}</td> 
+	                				<td>
+	                					<input type="hidden" value="false">
+	                					<input type="hidden" value="${waitingclass.t_no}"> 
+	                					<button onclick="studycencle(this)" type="button">취소하기</button>
+	                				</td>	
+	                			</tr>
+	                			</c:forEach>
+	                		</tbody>
+	                	</table>
+	                	</div>
+	            </div>
+            </div>
+            <div class="box py-4 mt-0">
+	            <div class="container">
 	      <h4 class="font-weight-bold">내가 참여한 스터디</h4>
-	        <table class="table table-bordered table-hover">
-	          <thead class="text-center " style="width: 100px;">
+	        <table class="table table-hover">
+	          <thead  style="width: 100px;">
 	            <tr>
 	              <th>번호</th>
 	              <th>레벨</th>
@@ -392,7 +436,6 @@ table caption {
 	          </thead>
 			  	<c:if test="${studyParti != null }">
 		           <c:forEach var="studyParti" items="${studyParti}">
-		          
 			          <tbody>
 			            <tr>
 			              <td class="text-center">${studyParti.s_no }</td>
@@ -444,7 +487,6 @@ table caption {
 			              </td>
 			            </tr>
 			          </tbody>
-			      
 		          </c:forEach>
 		        </c:if>
 	          <tfoot>
@@ -453,10 +495,12 @@ table caption {
 	            </tr>
 	          </tfoot>
 	        </table>
-	        
-	        
+	        </div>
+	        </div>
+	        <div class="box py-4 mt-0">
+	            <div class="container">
 	        <h4 class="font-weight-bold">내가 참여한 강의</h4>
-	        <table class="table table-bordered table-hover">
+	        <table class="table table-hover">
 	          <thead class="text-center " style="width: 100px;">
 	            <tr>
 	              <th>번호</th>
@@ -530,6 +574,8 @@ table caption {
 	            </tr>
 	          </tfoot>
 	        </table>
+	        </div>
+	        </div>
 	        <div class="box py-4 mt-0">
 	            <div class="container"> 
 		            <div class="col-md-12 mt-4"> 
@@ -746,6 +792,17 @@ table caption {
     <!-- /.container-->  
 </div>
 <script type="text/javascript">
+function studycencle(event){
+	var bno = $(event).prev().val();
+	var study = $(event).prev().prev().val()
+	var check = confirm('정말로 취소하시겠습니까');
+	if(check == true){
+		location.href='/study/waitngstudydelete?bno='+bno+'&study='+study;
+	}else{
+		return false;
+	}
+}
+
 function sendajaxdata1(event) {
 	var bno = $(event).prev().val();
 	$.ajax({
