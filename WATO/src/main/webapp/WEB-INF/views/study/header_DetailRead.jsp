@@ -552,7 +552,7 @@
 													<tr>
 														<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
 														<td colspan="5" >
-															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
 														<td>    
 													</tr>   
 													<tr>
@@ -617,7 +617,7 @@
 								</c:when>
 								<c:otherwise>
 									<c:choose>
-										<c:when test="${(partiOne.p_userid).equals(teach.user_Id)}">    
+										<c:when test="${(partiOne.p_userid).equals(std.user_Id)}">    
 											<div class="successBtn"id="success" >참여신청완료</div> 
 											<input type="button" class="goButton mt-4"id="partiBnt"  data-toggle="modal" data-target="#t_cancle-modal"  value="참여신청취소하기"/> 
 										</c:when>  

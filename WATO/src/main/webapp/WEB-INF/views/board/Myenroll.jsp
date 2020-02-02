@@ -474,7 +474,7 @@
 	                						<input type="hidden" name="s_level" value="${mystudy.s_level}"> 
 	                						<input type="hidden" name="s_people" value="${mystudy.s_people}"> 
 	                						<input type="hidden" name="s_parti" value="${mystudy.s_parti}"> 
-	                						<input type="hidden" name="s_profile" value="${mystudy.s_orgname}"> 
+	                						<input type="hidden" name="s_orgname" value="${mystudy.s_orgname}"> 
 	                					</form>
 	                					<button onclick="sendupdateform(this)" type="button">수정</button>
 	                				</td>	

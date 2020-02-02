@@ -443,7 +443,7 @@
 		          </c:choose>
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		       		<a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${studylistAll.s_no}'" >${studylistAll.s_title}</a>
+		       		<a style="color: black;" href="javascript:parent.location.href='../study/study_DetailRead?s_no=${studylistAll.s_no}'" >${studylistAll.s_title}</a>
 		        </h6> 
 		        <h6 class="description">   
 		                ${studylistAll.s_userId}    

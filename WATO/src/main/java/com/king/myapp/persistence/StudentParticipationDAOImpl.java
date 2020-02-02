@@ -142,6 +142,9 @@ public class StudentParticipationDAOImpl implements StudentParticipationDAO  {
 	public List<TeacherEnrollVO> t_getTeachClassList(TeachVO teach) throws Exception {
 		return sql.selectList("study.t_getTeachClassList",teach);
 	}
-
+	@Override
+	public List<TeacherParticipationVO> aprroveByTeach(int t_no) throws Exception {
+		return sql.selectList("parti.t_aprroveByTeach",t_no);
+	}
 	
 }
