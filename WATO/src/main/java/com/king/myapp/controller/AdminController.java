@@ -428,7 +428,7 @@ public class AdminController {
 
 			StdVO list = adminservice.findS_id(svo);
 
-			if (list.getUser_Email().equals(svo.getUser_Email())) {
+			if (list != null) {
 
 				String setfrom = "choio95634@gamil.com";
 				String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
@@ -454,31 +454,31 @@ public class AdminController {
 				messageHelper.setText(content); // 메일 내용
 
 				mailSender.send(message);
+				
+				response_email.setContentType("text/html; charset=UTF-8");
+				PrintWriter out_email = response_email.getWriter();
+				out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
+				out_email.flush();
 
-			} else if(!list.getUser_Email().equals(svo.getUser_Email())) {
+			} else {
 				
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('존재하지 않는 이메일입니다.'); location.href='http://localhost:8080/';</script>");
+				out.println("<script>alert('존재하지 않는 이메일입니다.'); location.href='http://localhost:8080/admin/forgot_id_pwd ';</script>");
 				out.flush();
 				
 			}
-			
-			response_email.setContentType("text/html; charset=UTF-8");
-			PrintWriter out_email = response_email.getWriter();
-			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
-			out_email.flush();
 		}
 
 		// 아이디 찾기 POST(강사)
 		@RequestMapping(value = "/teachFgId", method = RequestMethod.POST)
 		public void postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
-				HttpServletResponse response_email) throws Exception {
+				HttpServletResponse response_email, HttpServletResponse response) throws Exception {
 			logger.info("post 강사에게 아이디를 보낼겁니다.");
 
 			TeachVO list = adminservice.findT_id(tvo);
 
-			if (list.getUser_Email().equals(tvo.getUser_Email())) {
+			if (list != null) {
 
 				String setfrom = "choio95634@gamil.com";
 				String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
@@ -509,18 +509,26 @@ public class AdminController {
 				} catch (Exception e) {
 					System.out.println(e);
 				}
+				
+				response_email.setContentType("text/html; charset=UTF-8");
+				PrintWriter out_email = response_email.getWriter();
+				out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
+				out_email.flush();
+				
+			} else {
+				
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('존재하지 않는 이메일입니다.'); location.href='http://localhost:8080/admin/forgot_id_pwd ';</script>");
+				out.flush();
+				
 			}
-			
-			response_email.setContentType("text/html; charset=UTF-8");
-			PrintWriter out_email = response_email.getWriter();
-			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
-			out_email.flush();
 		}
 
 	// 비밀번호 찾기 POST(학생)
 	@RequestMapping(value = "/stdFgPwd", method = RequestMethod.POST)
 	public void postStdpwd(StdVO svo, Model model, HttpServletRequest request,
-			HttpServletResponse response_email) throws Exception {
+			HttpServletResponse response_email, HttpServletResponse response) throws Exception {
 		logger.info("post 학생에게 임시비밀번호 발급");
 
 		StdVO list = adminservice.findS_pwd(svo);
@@ -530,7 +538,7 @@ public class AdminController {
 			pw += (char) ((Math.random() * 26) + 97);
 		} // 이메일로 받는 인증코드(난수)
 
-		if (list.getUser_Email().equals(svo.getUser_Email())) {
+		if (list != null) {
 
 			svo.setUser_Pwd(pw);
 
@@ -577,18 +585,26 @@ public class AdminController {
 			} catch (Exception e) {
 				System.out.println(e);
 			}
+			
+			response_email.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_email = response_email.getWriter();
+			out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
+			out_email.flush();
+			
+		} else {
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('존재하지 않는 아이디 혹은 이메일 입니다.'); location.href='http://localhost:8080/admin/forgot_id_pwd ';</script>");
+			out.flush();
+			
 		}
-		
-		response_email.setContentType("text/html; charset=UTF-8");
-		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
-		out_email.flush();
 	}
 
 	// 비밀번호 찾기 POST(강사)
 	@RequestMapping(value = "/teachFgPwd", method = RequestMethod.POST)
 	public void postTeachpwd(TeachVO tvo, Model model, HttpServletRequest request,
-			HttpServletResponse response_email) throws Exception {
+			HttpServletResponse response_email, HttpServletResponse response) throws Exception {
 		logger.info("post 강사에게 임시비밀번호 발급");
 
 		TeachVO list = adminservice.findT_pwd(tvo);
@@ -598,7 +614,7 @@ public class AdminController {
 			pw += (char) ((Math.random() * 26) + 97);
 		} // 이메일로 받는 인증코드(난수)
 
-		if (list.getUser_Email().equals(tvo.getUser_Email())) {
+		if (list != null) {
 
 			tvo.setUser_Pwd(pw);
 
@@ -645,12 +661,20 @@ public class AdminController {
 			} catch (Exception e) {
 				System.out.println(e);
 			}
+			
+			response_email.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_email = response_email.getWriter();
+			out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
+			out_email.flush();
+			
+		} else {
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('존재하지 않는 아이디 혹은 이메일입니다.'); location.href='http://localhost:8080/admin/forgot_id_pwd ';</script>");
+			out.flush();
+			
 		}
-
-		response_email.setContentType("text/html; charset=UTF-8");
-		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
-		out_email.flush();
 	}
 
 }
