@@ -7,7 +7,7 @@
   Time: PM 10:31
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
     <!-- Bootstrap CSS-->
@@ -51,6 +51,7 @@
         .card-header{
             display: none;
         }
+
     </style>
 </head>
 <body>
@@ -80,7 +81,13 @@
         <div class="form-group">
             <label for="writer" class="col-sm-2 control-label">작성자</label>
             <div class="col-sm-12">
-                <input type="text" id="writer" name="QNA_WRITER" class="form-control" value="${getQnaRead.QNA_WRITER}" readonly="readonly" />
+                <c:if test="${std != null}">
+                    <p>${std.user_Id}</p>
+                </c:if>
+                <c:if test="${teach != null}">
+                    <p>${teach.user_Id}</p>
+                </c:if>
+                <input type="hidden" id="writer" name="QNA_WRITER" class="form-control" value="${getQnaRead.QNA_WRITER}" readonly="readonly" />
             </div>
         </div>
 
@@ -114,8 +121,16 @@
         <c:forEach items="${repList}" var="repList">
             <li>
                 <p>
-                    <span class="glyphicon glyphicon-user"></span>
-                        ${repList.QNA_WRITER}
+                    <c:if test="${!repList.QNA_WRITER.equals('admin')}">
+                         <span id="repList_QNA_WRITER" class="glyphicon glyphicon-user">
+                                 ${repList.QNA_WRITER}
+                         </span>
+                    </c:if>
+                    <c:if test="${repList.QNA_WRITER.equals('admin')}">
+                         <span id="repList_QNA_WRITER" class="glyphicon glyphicon-user">
+                                 관리자
+                         </span>
+                    </c:if>
                     (<fmt:formatDate value="${repList.QNA_REGDATE}" pattern="yyyy-MM-dd" />)
                 </p>
                  <textarea name="QNA_CONTENT" class="form-control" readonly >${repList.QNA_CONTENT}</textarea>
@@ -140,7 +155,13 @@
                <div class="form-group">
                    <label for="writer" class="col-sm-2 control-label">작성자</label>
                    <div class="col-sm-10">
-                       <input type="text" id="writer1" name="QNA_WRITE"  class="form-control" />
+                       <c:if test="${std != null}">
+                           <p>${std.user_Id}</p>
+                       </c:if>
+                       <c:if test="${teach != null}">
+                           <p>${teach.user_Id}</p>
+                       </c:if>
+                       <input type="hidden" id="writer1" name="QNA_WRITE"  class="form-control" />
                    </div>
                </div>
 

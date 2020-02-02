@@ -245,7 +245,7 @@
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
                         <c:if test="${!std.user_Id.equals('admin')}">
-                        <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
+                        <li class="list-inline-item"><a href="/qna/getQnaList" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="/admin/index_admin" class="text-black-50 font-weight-bold">관리자</a></li>                        

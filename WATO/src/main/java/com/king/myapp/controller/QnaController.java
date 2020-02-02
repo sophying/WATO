@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.List;
@@ -49,11 +50,12 @@ public class QnaController {
 		return "index";
 	}
 
+
 	// 글 목록
 	@RequestMapping(value = "/getQnaList", method = RequestMethod.GET)
-	public String getQnaList(Model model, @ModelAttribute("scri") SearchCriteria scri,QnaBoardVO vo ) throws Exception {
+	public String getQnaList(Model model, @ModelAttribute("scri") SearchCriteria scri, QnaBoardVO vo, HttpSession session) throws Exception {
 		logger.info("get Qna List");
-		model.addAttribute("getQnaList",service.getQnaList(scri));
+		model.addAttribute("getQnaList", service.getQnaList(scri));
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
@@ -62,13 +64,18 @@ public class QnaController {
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("scri", scri);
 
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null){
+			return "/qna/qnaListPage";
+
+		}
 
 		return "/qna/qnaListPage";
+
 	}
 
 	// 글 읽기(디테일)
 	@RequestMapping(value = "/getQnaRead", method = RequestMethod.GET)
-	public String getQnaRead(@RequestParam("QNA_BNO") int QNA_BNO, Model model, HttpServletResponse response) throws Exception {
+	public String getQnaRead(@RequestParam("QNA_BNO") int QNA_BNO, Model model, HttpServletResponse response, HttpSession session) throws Exception {
 		logger.info("get Qna Read");
 
 		QnaBoardVO vo = service.getQnaRead(QNA_BNO);
@@ -79,6 +86,11 @@ public class QnaController {
 
 		List<Map<String, Object>> fileList = service.selectFileList(vo.getQNA_BNO());
 		model.addAttribute("file", fileList);
+
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null){
+			return "/qna/qnaReadPage";
+
+		}
 
 		return "/qna/qnaReadPage";
 	}
@@ -243,8 +255,19 @@ public class QnaController {
 		System.out.println(vo.getQNA_RNO());
 		System.out.println(vo.getQNA_WRITER());
 
+
+
 		return "redirect:/qna/getQnaRead?QNA_BNO="+QNA_BNO;
 
+	}
+	// 로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) throws Exception {
+		logger.info("get logout");
+
+		session.invalidate();
+
+		return "redirect:/";
 	}
 
 	/*@PostMapping(value = "/image", produces = "text/html; charset=UTF-8")
