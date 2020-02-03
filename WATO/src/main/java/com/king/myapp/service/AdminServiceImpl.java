@@ -164,7 +164,7 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<Map<String, Object>> t_apply_month() throws Exception {
+	public List<Object> t_apply_month() throws Exception {
 		return dao.t_apply_month();
 	}
 

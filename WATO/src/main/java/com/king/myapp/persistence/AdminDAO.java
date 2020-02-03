@@ -80,7 +80,7 @@ public interface AdminDAO {
 
 	public int board_this_month_Count(QnaBoardVO qvo) throws Exception;
 
-	public List<Map<String, Object>> t_apply_month() throws Exception;
+	public List<Object> t_apply_month() throws Exception;
 
 	public List<Map<String, Object>> s_apply_month() throws Exception;
 
