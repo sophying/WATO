@@ -480,7 +480,13 @@
                     <tr>
                         <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td><input type="text" id="sample3_postcode" name="app_Addr1" placeholder="우편번호"></td>
-                        <td><input type="button" onclick="sample3_execDaumPostcode()" value="우편번호찾기" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;"></td>
+                        <td><input type="button" onclick="sample3_execDaumPostcode()" value="우편번호찾기" style="border-radius: 10px; 
+																						                        background-color: #77bbc2; 
+																						                        border: 0; 
+																						                        outline: 0; 
+																						                        color: #fff; 
+																						                        width: 130px; 
+																						                        height: 40px;"></td>
                     </tr>
                     <tr>
                         <th>주소<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -494,9 +500,15 @@
                         </td>
                     </tr>
                 </table>
-                <div style="margin: 30px;">
-                   <input type="submit" value="승인신청" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
-                </div>
+                   <input type="submit" value="승인신청" style="border-radius: 10px; 
+											                   background-color: #77bbc2; 
+											                   border: 0; 
+											                   outline: 0; 
+											                   color: #fff; 
+											                   width: 130px; 
+											                   height: 40px;
+											                   margin-top: 30px;
+											                   margin-bottom: 60px;">
             </form>
 		</div>
 	</div>

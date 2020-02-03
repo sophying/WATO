@@ -1,64 +1,80 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-    <%
-        // 인코딩
-        request.setCharacterEncoding("UTF-8");
-    %>
+<%
+	// 인코딩
+	request.setCharacterEncoding("UTF-8");
+%>
 
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="../resource/admin/vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <!-- Google fonts - Popppins for copy-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,800">
-    <!-- orion icons-->
-    <link rel="stylesheet" href="../resource/admin/css/custom.css">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="../resource/admin/css/style.default.css" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="../resource/admin/css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="../resource/admin/admin/img/favicon.png?3">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+<!-- Bootstrap CSS-->
+<link rel="stylesheet"
+	href="../resource/admin/vendor/bootstrap/css/bootstrap.min.css">
+<!-- Font Awesome CSS-->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+	integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+	crossorigin="anonymous">
+<!-- Google fonts - Popppins for copy-->
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Poppins:300,400,800">
+<!-- orion icons-->
+<link rel="stylesheet" href="../resource/admin/css/custom.css">
+<!-- theme stylesheet-->
+<link rel="stylesheet" href="../resource/admin/css/style.default.css"
+	id="theme-stylesheet">
+<!-- Custom stylesheet - for your changes-->
+<link rel="stylesheet" href="../resource/admin/css/custom.css">
+<!-- Favicon-->
+<link rel="shortcut icon"
+	href="../resource/admin/admin/img/favicon.png?3">
+<!-- Tweaks for older IEs-->
+<!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-    <script src="../../../resource/vendor/jquery/jquery.min.js"></script>
-    <script src="../../../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../../../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="../../../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="../../../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="../resource/vendor/jquery/jquery.min.js"></script>
+<script src="../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../resource/vendor/jquery.cookie/jquery.cookie.js">
+	
+</script>
+<script src="../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script
+	src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
 
-    <title>StudyUs</title>
-    <style>
+<title>StudyUs</title>
+
+<style type="text/css">
         #pagecount {
             text-align: center;
         }
         li{
             display: inline-block; zoom: 1; display: inline;
         }
+</style>
 
-    </style>
+
 </head>
 <body>
-<%@include file="../include_admin/admin_navbar.jsp"%> 
-    <div class="pull-left" style="display: inline-block; width: 200px;"> 
-   	  	<%@include file="../include_admin/admin_sidebar.jsp"%>
-    </div>  
-<div id="table" class="container" style="margin-left:5%; width:70%; display: inline-block;"> 
-    <section style="position: absolute; top: 15%; width: 80%; ">    
+
+	<%@include file="../include_admin/admin_navbar.jsp"%>
+
+	<div class="d-flex align-items-stretch">
+		<%@ include file="../include_admin/admin_sidebar.jsp"%>
+
+		<div class="page-holder w-100 d-flex flex-wrap">
+			<div class="container-fluid px-xl-5">
+			<div id="table" class="container" style="margin-left:5%; width:70%; display: inline-block;"> 
+    <section class="py-5" style="position: absolute; top: 15%; width: 80%; ">    
         <h2 style="display: inline-table">글목록</h2> 
         <table class="table table-hover">
             <thead>
             <tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일자</th></tr>  
             </thead>
-            <!-- 목록 시작 -->
+            <!-- 목록 시작 --> 
             <c:forEach items="${admin_qna_list}" var="admin_qna_list">
                 <tr>
                     <td>${admin_qna_list.QNA_BNO}</td>
@@ -100,7 +116,7 @@
                 </c:if>
 
                 <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-                    <li><a href="admin_qna_list${pageMaker.makeSearch(idx)}">${idx}</a></li>
+                    <li id="test1"><a href="admin_qna_list${pageMaker.makeSearch(idx)}">${idx}</a></li>
                 </c:forEach>
 
                 <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
@@ -109,9 +125,10 @@
             </ul>
         </div>
     </section>
-</div> 
-<div style="position: fixed; bottom: 0px; width: 100%;">
-<%@include file="../include_admin/admin_footer.jsp"%>
 </div>
+		</div>
+		<%@include file="../include_admin/admin_footer.jsp"%>
+	</div>
+</div>	
 </body>
 </html>

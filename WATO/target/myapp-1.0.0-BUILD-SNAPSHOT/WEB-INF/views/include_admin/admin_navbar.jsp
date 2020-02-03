@@ -67,7 +67,7 @@
             <li class="nav-item dropdown ml-auto"><a id="userInfo" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle"><img src="https://pbs.twimg.com/profile_images/856832673045762049/C7B3regz_400x400.jpg" alt="Jason Doe" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
                 <div aria-labelledby="userInfo" class="dropdown-menu"><a href="#" class="dropdown-item"><strong class="d-block text-uppercase headings-font-family">${std.user_Id}</strong><small>${std.user_Email}</small></a>
                     <div class="dropdown-divider"></div><a href="#" class="dropdown-item">설정</a><a href="#" class="dropdown-item">활동 로그</a>
-                    <div class="dropdown-divider"></div><a href="student/logout" class="dropdown-item">로그아웃</a>
+                    <div class="dropdown-divider"></div><a href="/student/logout" class="dropdown-item">로그아웃</a>
                 </div>
             </li>
         </ul>
