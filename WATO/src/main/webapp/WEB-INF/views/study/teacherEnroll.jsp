@@ -970,7 +970,7 @@ function isNumber(checkValue) {
 
 
 
-
+var submitclick = true;
 
 // 등록 버튼  					
  $('#enroll_btn').click(function(){
@@ -1062,10 +1062,13 @@ function isNumber(checkValue) {
 		$('#price-Text').text('합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])');
 		
 	}
- 
-	 if (t_day.value != null && t_day.value !="" && !($('#start').val() > $('#end').val()) && t_day.value !="구체적인 날짜를 정해주십시오." && t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
-		document.classForm.submit();
+	 if (submitclick) {
+		 if (t_day.value != null && t_day.value !="" && !($('#start').val() > $('#end').val()) && t_day.value !="구체적인 날짜를 정해주십시오." && t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
+			 submitclick = !submitclick;
+			document.classForm.submit();
+		}
 	}
+ 
  
  });
 

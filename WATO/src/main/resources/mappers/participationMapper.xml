@@ -69,10 +69,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM s_parti_complete WHERE s_no = #{s_no}
 	</select>
 	<select id="getwaitingstudy" resultType="com.king.myapp.domain.StudyEnrollVO">
-		SELECT * FROM S_ENROLL WHERE S_NO = (SELECT S_NO FROM S_PARTI WHERE P_USERID = #{p_userid})
+		SELECT * FROM S_ENROLL WHERE S_NO IN (SELECT S_NO FROM S_PARTI WHERE P_USERID = #{p_userid})
 	</select>
 	<select id="getwaitingclass" resultType="com.king.myapp.domain.TeacherEnrollVO">
-	 	SELECT * FROM T_ENROLL WHERE T_NO = (SELECT T_NO FROM T_PARTI WHERE P_USERID = #{p_userid})
+	 	SELECT * FROM T_ENROLL WHERE T_NO IN (SELECT T_NO FROM T_PARTI WHERE P_USERID = #{p_userid})
 	</select>
 	
 	
