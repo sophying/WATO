@@ -1,9 +1,11 @@
 package com.king.myapp.controller;
 
 import java.io.File;
+import java.io.PrintWriter;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -91,15 +93,43 @@ public class TeachController implements ServletContextAware {
 	
 	// 강사 회원 가입2 POST
 	@RequestMapping(value = "/teach_join_2", method = RequestMethod.POST)
-	public String postRegister2(TeachVO vo) throws Exception {
+	public void postRegister2(TeachVO vo, HttpServletResponse response) throws Exception {
 		logger.info("post teach_join");
 		
-		service.teach_join3(vo);
+		int result = service.idChk(vo);
 		
-		service.admin_mng2(vo);
-		logger.info("강사정보 회원관리에 추가");
+		try {
+			if (result == 1) {
+				
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('중복된 아이디입니다. 새로 입력해주세요.'); location.href='http://localhost:8080/student/std_join?terms1=on&terms2=on';</script>");
+				out.flush();
+			} else if (result == 0) {
+				
+				service.teach_join3(vo);
+				
+				service.admin_mng2(vo);
+				logger.info("강사정보 회원관리에 추가");
+			}
+				
+		} catch (Exception e) {
+			throw new RuntimeException();
+		}		
+
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('회원가입이 완료되었습니다.'); location.href='http://localhost:8080/';</script>");
+		out.flush();
 		
-		return "redirect:/";
+	}
+	
+	// 아이디 중복 체크
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(TeachVO vo) throws Exception {
+		int result = service.idChk(vo);
+		return result;
 	}
 	
 	// 강사 회원정보 수정 get
@@ -119,14 +149,6 @@ public class TeachController implements ServletContextAware {
 		
 		return "redirect:/";
 		
-	}
-	
-	// 아이디 중복 체크
-	@ResponseBody
-	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
-	public int idChk(TeachVO vo) throws Exception {
-		int result = service.idChk(vo);
-		return result;
 	}
 
 	
