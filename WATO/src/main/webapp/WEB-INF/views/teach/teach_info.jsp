@@ -198,6 +198,10 @@
         input {
             padding: 10px;
         }
+                
+        input.idNGender {
+        	border: 0px;
+        }
 
 
 </style>
@@ -222,7 +226,6 @@
                         	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
-				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
 				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
 				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
 								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
@@ -240,7 +243,6 @@
                         	<li class="list-inline-item"><a href="../teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
-				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
 				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
@@ -451,8 +453,9 @@
 			        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">회원 정보 수정</div>
 			        <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
 			            <p style="float: left; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
-			            <div>저희 스터디어스를 이용해 주셔서 감사합니다. <span>${teach.user_Id}</span>님은 강사이십니다.
+			            <div>저희 스터디어스를 이용해 주셔서 감사합니다.
 			                <p style="float: right; margin: 0px;"><img src="../resource/images/book_main_icon.png" width="70px;"></p>
+			                <br> <span>${teach.user_Id}</span>님은 강사이십니다.
 			            </div>
 			        </div>
 			        <div style="font-size: 17px;">기본정보</div>
@@ -461,19 +464,21 @@
 			                <caption style="text-align: right;"><img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"> 필수입력사항</caption>
 			                <tr>
 			                    <th>아이디 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="text" name="User_Id" value="${teach.user_Id}" readonly="readonly"></td>
+			                    <td><input class="idNGender" type="text" name="User_Id" value="${teach.user_Id}" readonly="readonly"></td>
 			                </tr>
 			                <tr>
 			                    <th>새 비밀번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="password" id="User_Pwd" name="User_Pwd" placeholder="새 비밀번호 입력"></td>
+			                    <td><input type="password" id="userPw" name="User_Pwd" placeholder="새 비밀번호 입력">
+			                    <br><div style="display: inline-block;" id="pwdcheck1"></div></td>
 			                </tr>
 			                <tr>
 			                    <th>새 비밀번호 확인 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="password" id="User_Pwd_ok" placeholder="새 비밀번호 확인"></td>
+			                    <td><input type="password" id="userPwChk" placeholder="새 비밀번호 확인">
+			                    <br><div style="display: inline-block;" id="pwdcheck2"></div></td>
 			                </tr>
 			                <tr>
 			                    <th>성별 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><span>${teach.teach_Gender}</span></td>
+			                    <td><input class="idNGender" type="text" name="User_Id" value="${teach.teach_Gender}" readonly="readonly"></td>
 			                </tr>
 			                <tr>
 			                    <th>휴대폰 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -483,6 +488,7 @@
 			                    <input type="text" id="Teach_Phone2" name="Teach_Phone2" value="${teach.teach_Phone2}" />
 			                    -
 			                    <input type="text" id="Teach_Phone3" name="Teach_Phone3" value="${teach.teach_Phone3}" />
+			                    <br><div style="display: inline-block;" id="ph_check"></div>
 			                    </td>
 			                </tr>
 			                <tr>
@@ -686,6 +692,91 @@ _________________________________________________________
 		
 		alert("회원정보가 정상적으로 변경완료 되었습니다.")
 	}
+
+
+
+	
+	// 정규표현식 유효성 검사 소스_________________________________________________________
+	    
+	    // 비밀번호 정규식
+	    var pwJ = /^[A-Za-z0-9]{4,12}$/;
+
+	    // 휴대폰번호 정규식
+	    var phJ = /^[0-9]{4,4}$/;
+	    
+
+	    $('#userPw').blur(function() {
+	       
+	       if (pwJ.test($('#userPw').val())) {
+	          console.log('true');
+	          $('#pwdcheck1').text('사용하실 수 있는 비밀번호 입니다.');
+	          $('#pwdcheck1').css('color', 'green');
+	          } else if ($('#userPw').val() == $(this).val()){
+	          console.log('false');
+	          $('#pwdcheck1').text('숫자 또는 문자로만 4~12자리를 입력해주십시오.');
+	          $('#pwdcheck1').css('color', 'red');
+	       } else if($('#userPw').val() != "" && $('#userPwChk').val() == ""){
+	          $('#pwdcheck2').text('비밀번호 확인를 입력해주세요.');
+	          $('#pwdcheck2').css('color', 'blue');
+	       }
+	    });
+	    
+	    
+	    // 패스워드 일치 확인
+	    $('#userPwChk').blur(function() {
+	             
+	       if ($('#userPw').val() != $(this).val()) {
+	          $('#pwdcheck2').text('비밀번호가 일치하지 않습니다.');
+	          $('#pwdcheck2').css('color', 'red');
+	       } else if($('#userPw').val() != "" && $('#userPwChk').val() == ""){
+	          $('#pwdcheck2').text('비밀번호 확인를 입력해주세요.');
+	          $('#pwdcheck2').css('color', 'blue');
+	          } else if ($('#userPw').val() == $(this).val()) {
+	          $('#pwdcheck2').text('비밀번호가 일치합니다');
+	          $('#pwdcheck2').css('color', 'green');
+	       }
+	    });
+
+	    // 휴대폰 번호 유효성 검사______________________________________________________
+	    
+	    $('#Teach_Phone1').blur(function() {
+	 	   if (phJ.test($('#Teach_Phone1').val())) {
+	 		   console.log('true');
+	 		   $('#ph_check').text('');
+	 	   } else {
+	 		   console.log('false');
+	 		   $('#ph_check').text('"01"로 시작하는 3자리의 숫자만 입력가능합니다.');
+	 		   $('#ph_check').css('color', 'red');
+	 	   }
+	    })
+	    
+	    
+	    $('#Teach_Phone2').blur(function() {
+	 	   if (phJ.test($('#Teach_Phone2').val())) {
+	 		   console.log('true');
+	 		   $('#ph_check').text('');
+	 	   } else {
+	 		   console.log('false');
+	 		   $('#ph_check').text('4자리의 숫자만 입력가능합니다.');
+	 		   $('#ph_check').css('color', 'red');
+	 	   }
+	    })
+	    
+	    $('#Teach_Phone3').blur(function() {
+	 	   if (phJ.test($('#Teach_Phone3').val())) {
+	 		   console.log('true');
+	 		   $('#ph_check').text('');
+	 	   } else {
+	 		   console.log('false');
+	 		   $('#ph_check').text('4자리의 숫자만 입력가능합니다.');
+	 		   $('#ph_check').css('color', 'red');
+	 	   }
+	    })
+
+	 // 정규표현식 유효성 검사 끝 ________________________________________________________________________
+	    
+	    
+	
    
  // 우편번호찾기_________________________________________________________________________________
     
