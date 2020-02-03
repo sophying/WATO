@@ -379,6 +379,7 @@ $(function () {
     // ------------------------------------------------------- //
     // Doughnut Chart
     // ------------------------------------------------------ //
+    
     var DOUGHNUTCHARTEXMPLE  = $('#doughnutChartExample');
     var pieChartExample = new Chart(DOUGHNUTCHARTEXMPLE, {
         type: 'doughnut',
@@ -464,6 +465,15 @@ $(function () {
     // Pie Chart
     // ------------------------------------------------------ //
     var PIECHARTEXMPLE    = $('#pieChartExample');
+    
+    //학생 가입자 변수
+    var std_count = {};
+    std_count = $('#std_count').val();
+    
+    //강사 가입자 변수
+    var Tech_count = {};
+    Tech_count = $('#Tech_count').val();
+    
     var pieChartExample = new Chart(PIECHARTEXMPLE, {
         type: 'pie',
         data: {
@@ -473,7 +483,7 @@ $(function () {
             ],
             datasets: [
                 {
-                    data: [60, 70],
+                    data: [std_count,Tech_count],
                     borderWidth: 0,
                     backgroundColor: [
                         green,red,
@@ -537,6 +547,5 @@ $(function () {
         responsive: true
     };
 
-
-
 });
+

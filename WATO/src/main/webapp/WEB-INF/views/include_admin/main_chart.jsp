@@ -46,6 +46,10 @@
                     <div class="row align-items-center flex-row">
                         <div class="col-lg-5">
                             <h2 class="mb-0 d-flex align-items-center"><span>회원유형</span><span class="dot bg-violet d-inline-block ml-3"></span></h2><span class="text-muted text-uppercase small">회원가입한 회원의 유형</span>
+                            
+                            <input id="std_count" type="hidden" value="${Std_count}">
+                            <input id="Tech_count" type="hidden" value="${Tech_count}">
+                            
                             <!-- <hr><small class="text-muted">학생 / 강사</small> -->
                         </div>
                         <div class="col-lg-7">
@@ -111,5 +115,9 @@
     <script src="../resource/admin/js/js.cookie.min.js?v=<%=System.currentTimeMillis() %>"></script>
     <script src="../resource/admin/js/charts-custom.js?v=<%=System.currentTimeMillis() %>"></script>
     <script src="../resource/admin/js/front.js?v=<%=System.currentTimeMillis() %>"></script>
+    
+    
+    
+    
 </body>
 </html>
