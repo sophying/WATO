@@ -137,14 +137,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -196,10 +196,15 @@
         }
 
         input {
-            padding: 10px;            
+            padding: 10px;
         	border-radius: 2px;
 			border-radius: 10px;
-			outline: none;
+			box-shadow: none;
+  			border: 1px solid #19646a; 
+        }
+        
+        input:focus {
+        	outline: none;
         }
         
         input.idNGender {
@@ -459,7 +464,12 @@
 			                    <th>상세주소 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 			                    <td><input type="text" id="sample3_detailAddress" name="Std_Addr3" value="${std.std_Addr3}" placeholder="상세주소">
 			                    <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
-								<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+								<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" 
+								style="cursor:pointer;
+										position:absolute;
+										right:0px;
+										top:-1px;
+										z-index:1;" onclick="foldDaumPostcode()" alt="접기 버튼">
 								</div>
 			                    </td>
 			                </tr>

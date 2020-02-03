@@ -1,9 +1,11 @@
 package com.king.myapp.controller;
 
 import java.io.File;
+import java.io.PrintWriter;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -17,6 +19,7 @@ import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.TeachVO;
 import com.king.myapp.service.StdService;
 
 @Controller
@@ -45,28 +48,56 @@ public class StdController implements  ServletContextAware {
 
 	// 학생 약관동의 및 회원가입 폼POST
 	@RequestMapping(value = "/std_join", method = RequestMethod.POST)
-	public String postRegister(StdVO vo) throws Exception {
+	public void postRegister(StdVO vo, HttpServletResponse response) throws Exception {
 		logger.info("post std_join");
 		
-		// 파일 업로드 체크
-		MultipartFile f = vo.getStd_Profile();
-		if (!f.isEmpty()) { // 파일 업로드가 됐다면
-			String std_Orgname = f.getOriginalFilename();
-			String std_Newname = std_Orgname;
-			String path = servletContext.getRealPath("/resource/images");
-			System.out.println("path : " + path);
-			File file = new File(path + File.separator + std_Newname);
-			vo.setStd_Orgname(std_Orgname);
-			vo.setStd_Newname(std_Newname);
-			f.transferTo(file);
+		int result = service.idChk(vo);
+		
+		try {
+			if (result == 1) {
+				
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('중복된 아이디입니다. 새로 입력해주세요.'); location.href='http://localhost:8080/student/std_join?terms1=on&terms2=on';</script>");
+				out.flush();
+				
+			} else if(result == 0) {
+				
+				// 파일 업로드 체크
+				MultipartFile f = vo.getStd_Profile();
+				if (!f.isEmpty()) { // 파일 업로드가 됐다면
+					String std_Orgname = f.getOriginalFilename();
+					String std_Newname = std_Orgname;
+					String path = servletContext.getRealPath("/resource/images");
+					System.out.println("path : " + path);
+					File file = new File(path + File.separator + std_Newname);
+					vo.setStd_Orgname(std_Orgname);
+					vo.setStd_Newname(std_Newname);
+					f.transferTo(file);
+				}
+				
+				service.std_join(vo);
+				
+				service.admin_mng(vo);
+				logger.info("학생정보 회원관리에 추가 됨");				
+			}
+		} catch (Exception e) {
+			throw new RuntimeException();
 		}
 
-		service.std_join(vo);
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('회원가입이 완료되었습니다.'); location.href='http://localhost:8080/';</script>");
+		out.flush();
 		
-		service.admin_mng(vo);
-		logger.info("학생정보 회원관리에 추가 됨");
-
-		return "redirect:/";
+	}
+	
+	// 아이디 중복 체크
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(StdVO vo) throws Exception {
+		int result = service.idChk(vo);
+		return result;
 	}
 
 	// 회원정보 수정 get
@@ -87,14 +118,6 @@ public class StdController implements  ServletContextAware {
 
 		return "redirect:/";
 
-	}
-
-	// 아이디 중복 체크
-	@ResponseBody
-	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
-	public int idChk(StdVO vo) throws Exception {
-		int result = service.idChk(vo);
-		return result;
 	}
 
 	

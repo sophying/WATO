@@ -138,19 +138,19 @@
        z-index: 10;
     }
     .container-login100 { 
-     width: 100%;  
-     min-height: 60vh; 
-     display: -webkit-box; 
-     display: -webkit-flex; 
-     display: -moz-box; 
-     display: -ms-flexbox; 
-     display: flex;  
-     flex-wrap: wrap;  
-     justify-content: center;  
-     align-items: center; 
-     padding: 15px;
-     background: none; 
-   }
+	  width: 100%;  
+	  min-height: 80vh; 
+	  display: -webkit-box; 
+	  display: -webkit-flex; 
+	  display: -moz-box; 
+	  display: -ms-flexbox; 
+	  display: flex;  
+	  flex-wrap: wrap;  
+	  justify-content: center;   
+	  align-items: center; 
+	  padding: 15px;
+	  background: none; 
+	}
    .limiter {
      width: 100%;
      margin: 0 auto;
@@ -698,7 +698,7 @@ function infoCheck() {
             $('#id_check').text('소문자와 대문자로만 4~12자리를 입력해주십시오.');
             $('#id_check').css('color', 'red');
          }
-      });      
+      });
       
 
       $('#userPw').blur(function() {

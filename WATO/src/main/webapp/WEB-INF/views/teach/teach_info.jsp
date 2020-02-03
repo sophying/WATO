@@ -137,14 +137,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -197,8 +197,16 @@
 
         input {
             padding: 10px;
+        	border-radius: 2px;
+			border-radius: 10px;
+			box-shadow: none;
+  			border: 1px solid #19646a; 
         }
-                
+        
+        input:focus {
+        	outline: none;
+        }
+        
         input.idNGender {
         	border: 0px;
         }
@@ -258,11 +266,7 @@
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
                         <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
-                        </c:if>
-                        <c:if test="${!std.user_Id.equals('admin')}">
-                        <li class="list-inline-item"><a href="/admin/adminmanage" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
-                        </c:if>
-                        <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
+                        </c:if>                      
                     </ul>
                 </div>
             </div>
@@ -493,13 +497,19 @@
 			                </tr>
 			                <tr>
 				                <th>이메일 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-				                    <td><input type="text" id="User_Email" name="User_Email" value="${teach.user_Email}" /></td>            
+				                    <td><input type="text" id="User_Email" name="User_Email" value="${teach.user_Email}" /></td>         
 				            </tr>
 			                <tr>
 			                    <th>우편번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 			                    <td><input type="text" id="sample3_postcode" name="Teach_Addr1" value="${teach.teach_Addr1}" placeholder="우편번호">
 			                    <input type="button" onclick="sample3_execDaumPostcode()" value="우편번호찾기" 
-			                    style="border-radius: 10px; background-color: #77bbc2; border: 0; outline: 0; color: #fff; width: 130px; height: 40px;"></td>
+			                    style="border-radius: 10px;
+					                    background-color: #77bbc2; 
+					                    border: 0; 
+					                    outline: 0; 
+					                    color: #fff; 
+					                    width: 130px; 
+					                    height: 40px;"></td>
 			                </tr>
 			                <tr>
 			                    <th>주소 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
