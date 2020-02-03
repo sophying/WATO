@@ -1,6 +1,7 @@
 package com.king.myapp.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,15 +160,12 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public Object t_apply_month(TeacherEnrollVO tevo) throws Exception {
-		Object t_apply_month = sql.selectList(namespace+".t_apply_month");
-		return t_apply_month;
+	public List<Map<String, Object>> t_apply_month() throws Exception {
+		return sql.selectList(namespace+".t_apply_month");
 	}
-
 	@Override
-	public Object s_apply_month(StudyEnrollVO sevo) throws Exception {
-		Object s_apply_month = sql.selectList(namespace+".s_apply_month");
-		return s_apply_month;
+	public List<Map<String, Object>> s_apply_month() throws Exception {
+	return sql.selectList(namespace+".s_apply_month");
 	}
 
 

@@ -134,12 +134,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
 	<!-- 월별 등록된 학생 스터디 -->
-	<select id="s_apply_month" resultType="com.king.myapp.domain.StudyEnrollVO">
-		select TO_CHAR(S_CREADATE,'mm'), COUNT(*) FROM S_enroll GROUP BY TO_CHAR(S_CREADATE,'mm')
+	<select id="s_apply_month" resultType="map">
+		select count(*)as studycnt,substr(s_creadate,4,2)as month from s_enroll group by substr(s_creadate,4,2) ORDER by month
 	</select>
 	<!-- 월별 등록된 선생 스터디 -->
-	<select id="t_apply_month" resultType="com.king.myapp.domain.TeacherEnrollVO">
-		select TO_CHAR(T_CREADATE,'mm'), COUNT(*) FROM T_enroll GROUP BY TO_CHAR(T_CREADATE,'mm')
+	<select id="t_apply_month" resultType="map">
+		select count(*)as studycnt,substr(t_creadate,4,2)as month from t_enroll group by substr(t_creadate,4,2) ORDER by month
 	</select>
 
 	

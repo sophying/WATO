@@ -1,6 +1,7 @@
 package com.king.myapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -163,15 +164,13 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Object t_apply_month(TeacherEnrollVO tevo) throws Exception {
-		Object t_apply_month = dao.t_apply_month(tevo);
-		return t_apply_month;
+	public List<Map<String, Object>> t_apply_month() throws Exception {
+		return dao.t_apply_month();
 	}
 
 	@Override
-	public Object s_apply_month(StudyEnrollVO sevo) throws Exception {
-		Object s_apply_month = dao.s_apply_month(sevo);
-		return s_apply_month;
+	public List<Map<String, Object>> s_apply_month() throws Exception {
+		return dao.s_apply_month();
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.king.myapp.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import com.king.myapp.domain.ManagementVO;
 import com.king.myapp.domain.QnaBoardVO;
@@ -79,8 +80,8 @@ public interface AdminDAO {
 
 	public int board_this_month_Count(QnaBoardVO qvo) throws Exception;
 
-	public Object t_apply_month(TeacherEnrollVO tevo) throws Exception;
+	public List<Map<String, Object>> t_apply_month() throws Exception;
 
-	public Object s_apply_month(StudyEnrollVO sevo) throws Exception;
+	public List<Map<String, Object>> s_apply_month() throws Exception;
 
 }

@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.king.myapp.domain.ApprovalVO;
@@ -66,7 +65,7 @@ public class AdminController {
 
 	// 어드민 페이지로 이동
 	@RequestMapping(value = "/index_admin")
-	public String admin_main(HttpServletResponse response, HttpSession session, Model model, StdVO svo, TeachVO tvo, QnaBoardVO qvo, StudyEnrollVO sevo, TeacherEnrollVO tevo, Object s_apply_month, Object t_apply_month)
+	public String admin_main(HttpServletResponse response, HttpSession session, Model model, StdVO svo, TeachVO tvo, QnaBoardVO qvo, StudyEnrollVO sevo, TeacherEnrollVO tevo)
 			throws Exception {
 		logger.info("admin main 페이지로 이동~~!!");
 
@@ -139,11 +138,26 @@ public class AdminController {
 			model.addAttribute("board_this_month_Count", board_this_month_Count);
 		
 		// 강사의 월별 스터디수
-		t_apply_month = adminservice.t_apply_month(tevo);
+
+		List<Map<String, Object>> t_apply_month = adminservice.t_apply_month();
+			System.out.println("t_apply_month");
+		
+			for (int i = 0; i < t_apply_month.size(); i++) {
+				System.out.println(t_apply_month.get(i).get("STUDYCNT"));
+				System.out.println(t_apply_month.get(i).get("MONTH"));
+			}
+		
 		model.addAttribute("t_apply_month",t_apply_month);
 
 		// 학생의 월별 스터디수
-		s_apply_month = adminservice.s_apply_month(sevo);
+
+		List<Map<String, Object>> s_apply_month = adminservice.s_apply_month();
+			System.out.println("s_apply_month");
+			for (int i = 0; i < s_apply_month.size(); i++) {
+				System.out.println(s_apply_month.get(i).get("STUDYCNT"));
+				System.out.println(s_apply_month.get(i).get("MONTH"));
+			}
+			
 		model.addAttribute("s_apply_month",s_apply_month);
 
 		System.out.println(s_apply_month);
