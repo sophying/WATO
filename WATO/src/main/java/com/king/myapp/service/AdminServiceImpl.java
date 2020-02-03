@@ -1,15 +1,19 @@
 package com.king.myapp.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.ManagementVO;
+import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.persistence.AdminDAO;
 
 @Service
@@ -150,6 +154,23 @@ public class AdminServiceImpl implements AdminService {
 	public int qna_count(StdVO svo) throws Exception {
 		int Qna_CountResult = dao.count_qna(svo);
 		return Qna_CountResult;
+	}
+
+	//최근 30일 문의내역 카운트
+	@Override
+	public int board_this_month_Count(QnaBoardVO qvo) throws Exception {
+		int board_this_month_Count = dao.board_this_month_Count(qvo);
+		return board_this_month_Count;
+	}
+
+	@Override
+	public List<Map<String, Object>> t_apply_month() throws Exception {
+		return dao.t_apply_month();
+	}
+
+	@Override
+	public List<Map<String, Object>> s_apply_month() throws Exception {
+		return dao.s_apply_month();
 	}
 	
 }

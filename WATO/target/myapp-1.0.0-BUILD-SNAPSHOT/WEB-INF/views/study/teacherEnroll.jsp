@@ -688,7 +688,21 @@
                     </div>
    
                       <div class="form-group ">
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                      		<input type="hidden" name="teach_orgname" value="${teach.teach_Orgname}"> 
+=======
+<<<<<<< HEAD
+                      		<input type="hidden" name="teach_orgname" value="${teach.teach_Orgname}"> 
+=======
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
                             <input type="hidden" name="teach_orgname" value="${teach.teach_Orgname}"> 
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${teach.user_Id}">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
