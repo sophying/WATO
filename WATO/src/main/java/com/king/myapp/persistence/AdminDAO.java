@@ -3,9 +3,12 @@ package com.king.myapp.persistence;
 import java.util.List;
 
 import com.king.myapp.domain.ManagementVO;
+import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 
 public interface AdminDAO {
 
@@ -73,5 +76,11 @@ public interface AdminDAO {
 
 	// 강사 회원정보 삭제
 	public void TeachDelete(TeachVO tvo) throws Exception;
+
+	public int board_this_month_Count(QnaBoardVO qvo) throws Exception;
+
+	public Object t_apply_month(TeacherEnrollVO tevo) throws Exception;
+
+	public Object s_apply_month(StudyEnrollVO sevo) throws Exception;
 
 }

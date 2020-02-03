@@ -32,7 +32,9 @@ import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.QnaReplyVO;
 import com.king.myapp.domain.SearchCriteria;
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.service.AdminService;
 import com.king.myapp.service.MailService;
 import com.king.myapp.service.QnaBoardService;
@@ -64,7 +66,7 @@ public class AdminController {
 
 	// 어드민 페이지로 이동
 	@RequestMapping(value = "/index_admin")
-	public String admin_main(HttpServletResponse response, HttpSession session, Model model, StdVO svo, TeachVO tvo)
+	public String admin_main(HttpServletResponse response, HttpSession session, Model model, StdVO svo, TeachVO tvo, QnaBoardVO qvo, StudyEnrollVO sevo, TeacherEnrollVO tevo, Object s_apply_month, Object t_apply_month)
 			throws Exception {
 		logger.info("admin main 페이지로 이동~~!!");
 
@@ -125,14 +127,27 @@ public class AdminController {
 		 int t_enroll_count = adminservice.count_t_enroll(tvo);
 			model.addAttribute("t_enroll_count", t_enroll_count);
 		
-		//스터디 합계
+		//(학생+강사) 스터디 합계
 			int enroll_sum = s_enroll_count+t_enroll_count;
 			model.addAttribute("sum_enroll_count", enroll_sum);
 		
-		// 문의내역
+		// 총 문의내역
 			int qna_count = adminservice.qna_count(svo);
 			model.addAttribute("qna_count", qna_count);
-			
+		// 최근 30일 문의내역
+			int board_this_month_Count = adminservice.board_this_month_Count(qvo);
+			model.addAttribute("board_this_month_Count", board_this_month_Count);
+		
+		// 강사의 월별 스터디수
+		t_apply_month = adminservice.t_apply_month(tevo);
+		model.addAttribute("t_apply_month",t_apply_month);
+
+		// 학생의 월별 스터디수
+		s_apply_month = adminservice.s_apply_month(sevo);
+		model.addAttribute("s_apply_month",s_apply_month);
+
+		System.out.println(s_apply_month);
+		System.out.println(t_apply_month);
 		return "admin/index_admin";
 
 	}

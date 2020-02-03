@@ -127,4 +127,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select count (*) from QNA_MYBOARD
 	</select>
 	
+	
+	<!-- 30일 이전 문의내역 -->
+	<select id="board_this_month_Count" resultType="int">
+    SELECT COUNT(*) FROM QNA_MYBOARD WHERE QNA_REGDATE between SYSDATE-30 and SYSDATE
+    </select>
+
+	<!-- 월별 등록된 학생 스터디 -->
+	<select id="s_apply_month" resultType="com.king.myapp.domain.StudyEnrollVO">
+		select TO_CHAR(S_CREADATE,'mm'), COUNT(*) FROM S_enroll GROUP BY TO_CHAR(S_CREADATE,'mm')
+	</select>
+	<!-- 월별 등록된 선생 스터디 -->
+	<select id="t_apply_month" resultType="com.king.myapp.domain.TeacherEnrollVO">
+		select TO_CHAR(T_CREADATE,'mm'), COUNT(*) FROM T_enroll GROUP BY TO_CHAR(T_CREADATE,'mm')
+	</select>
+
+	
 </mapper>

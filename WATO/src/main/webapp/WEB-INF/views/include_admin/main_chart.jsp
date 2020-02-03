@@ -16,16 +16,16 @@
     <div class="row mb-4">
         <div class="col-lg-7 mb-4 mb-lg-0">
             <div class="card">
-                <div class="card-header">
-                    <h2 class="h6 text-uppercase mb-0">실시간 코알라 수분 보충량</h2>
-                </div>
-                <div class="card-body">
-                    <p class="text-gray">코알라가 수분이 부족하여 목이 마릅니다. 애미야 물좀 다오.</p>
-                    <div class="chart-holder">
-                        <canvas id="lineChart1" style="max-height: 14rem !important;" class="w-100"></canvas>
-                    </div>
+            <div class="card-header">
+                <h2 class="h6 mb-0 text-uppercase">Bar chart Example</h2>
+            </div>
+            <div class="card-body">
+                <p class="mb-5 text-gray">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                <div class="chart-holder mt-5 mb-5">
+                    <canvas id="barChartExample1"></canvas>
                 </div>
             </div>
+        </div>
         </div>
         <div class="col-lg-5 mb-4 mb-lg-0 pl-lg-0">
             <div class="card mb-3">
@@ -101,4 +101,13 @@
     </div>
 </section>
 </body>
+ <!-- JavaScript files-->
+    <script src="../resource/admin/vendor/jquery/jquery.min.js"></script>
+    <script src="../resource/admin/vendor/popper.js/umd/popper.min.js"> </script>
+    <script src="../resource/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js?v=<%=System.currentTimeMillis() %>"> </script>
+    <script src="../resource/admin/vendor/chart.js/Chart.min.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/js.cookie.min.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/charts-custom.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/front.js?v=<%=System.currentTimeMillis() %>"></script>
 </html>

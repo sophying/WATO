@@ -484,7 +484,13 @@
 	                        <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40">
 	                        <br><div style="display: inline-block;" id="id_check"></div>
 							</td>
-	                        <td><button type="button" class="idCheck" onclick="fn_idChk();">아이디 중복확인</button></td>
+	                        <td><button type="button" class="idCheck" onclick="fn_idChk();" style="border-radius: 10px; 
+																									background-color: #77bbc2; 
+																									border: 0; 
+																									outline: 0; 
+																									color: #fff; 
+																									width: 130px; 
+																									height: 40px;">아이디 중복확인</button></td>
                     	</tr>
                         <tr>
 	                        <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -505,10 +511,25 @@
                     </table>
                 </div>
             
-            <div style="margin: 30px;">
-                <input type="submit" value="회원가입" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
-                <button type="reset" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 120px; height: 50px;">취소</button>
-            </div>
+                <input type="submit" value="회원가입" style="border-radius: 10px; 
+													       background-color: #77bbc2; 
+													       border: 0; 
+													       outline: 0; 
+													       color: #fff; 
+													       width: 130px; 
+													       height: 40px;
+													       margin-right: 30px;
+													       margin-top: 30px;
+													       margin-bottom: 60px;">
+                <button type="reset" style="border-radius: 10px; 
+											background-color: #77bbc2; 
+											border: 0; 
+											outline: 0; 
+											color: #fff; 
+											width: 130px; 
+											height: 40px;
+											margin-top: 30px;
+											margin-bottom: 60px;">취소</button>
             </form>
             </c:if>
 		</div>

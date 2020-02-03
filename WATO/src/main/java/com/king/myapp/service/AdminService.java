@@ -3,11 +3,16 @@ package com.king.myapp.service;
 import java.util.List;
 
 import com.king.myapp.domain.ManagementVO;
+import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 
 public interface AdminService {
+
+
 
 	// 강사 이력서 승인페이지
 	public List<ApprovalVO> teachlist() throws Exception;
@@ -71,6 +76,12 @@ public interface AdminService {
 	
 	//문의내역 카운트
 	public int qna_count(StdVO svo)throws Exception;
+
+	public int board_this_month_Count(QnaBoardVO qvo) throws Exception;
+
+	public Object t_apply_month(TeacherEnrollVO tevo) throws Exception;
+
+	public Object s_apply_month(StudyEnrollVO sevo) throws Exception;
 
 
 	

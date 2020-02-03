@@ -7,9 +7,12 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.ManagementVO;
+import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.persistence.AdminDAO;
 
 @Service
@@ -150,6 +153,25 @@ public class AdminServiceImpl implements AdminService {
 	public int qna_count(StdVO svo) throws Exception {
 		int Qna_CountResult = dao.count_qna(svo);
 		return Qna_CountResult;
+	}
+
+	//최근 30일 문의내역 카운트
+	@Override
+	public int board_this_month_Count(QnaBoardVO qvo) throws Exception {
+		int board_this_month_Count = dao.board_this_month_Count(qvo);
+		return board_this_month_Count;
+	}
+
+	@Override
+	public Object t_apply_month(TeacherEnrollVO tevo) throws Exception {
+		Object t_apply_month = dao.t_apply_month(tevo);
+		return t_apply_month;
+	}
+
+	@Override
+	public Object s_apply_month(StudyEnrollVO sevo) throws Exception {
+		Object s_apply_month = dao.s_apply_month(sevo);
+		return s_apply_month;
 	}
 	
 }
