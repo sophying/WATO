@@ -39,4 +39,7 @@ public interface TeachDAO {
 	// 강사 정보 회원관리에 추가2
 	public void admin_mng2(TeachVO vo) throws Exception;
 
+	// 강사 회원가입 이메일 존재 체크
+	public TeachVO mailCheck(TeachVO vo) throws Exception;
+
 }

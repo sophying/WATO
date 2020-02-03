@@ -39,4 +39,7 @@ public interface TeachService {
 	// 강사정보 회원관리에 추가(ID)
 	public void admin_mng2(TeachVO vo) throws Exception;
 
+	// 강사 회원가입 아이디 존재 체크
+	public TeachVO mailCheck(TeachVO vo) throws Exception;
+
 }

@@ -750,10 +750,10 @@ function infoCheck() {
   });
       
 
-      
+   // 아이디 중복 체크___________________________________________________________
       function fn_idChk(){
       	$.ajax({
-      		url : "/student/idChk",
+      		url : "/teach/idChk",
       		type : "post",
       		dataType : "json",
       		data : {"User_Id" : $("#User_Id").val()},
