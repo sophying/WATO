@@ -698,7 +698,7 @@ function infoCheck() {
             $('#id_check').text('소문자와 대문자로만 4~12자리를 입력해주십시오.');
             $('#id_check').css('color', 'red');
          }
-      });      
+      });
       
 
       $('#userPw').blur(function() {

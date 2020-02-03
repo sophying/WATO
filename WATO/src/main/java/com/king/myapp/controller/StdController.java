@@ -19,6 +19,7 @@ import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.TeachVO;
 import com.king.myapp.service.StdService;
 
 @Controller
