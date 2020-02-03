@@ -496,17 +496,14 @@
                   </div>
              
                   <label id="nullText" class="cols-sm-2 pt-2 control-label d-flex justify-content-center font-weight-bold"></label>
-                  <!-- <div id="nullText" class=" d-flex pt-2 d-flex justify-content-center"></div> -->
-                  
-                  
               </div>
            </div>
         </div>
       </div>
     </div>
-        <div class="form-group container-fluid">
+        <div class="form-group container-fluid d-inline-block">
       <div class="card">
-        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
+        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-3  control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
           <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
            <div class="card-body">
              <div class="input-group d-flex justify-content-center">
@@ -571,19 +568,17 @@
                              <div class="cols-sm-10">
                                 <div class="input-group">
                                  <span class="input-group-addon"></span>
- <!-- title 주제 -->               <input type="text" class="form-control" name="t_title" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
+ <!-- title 주제 -->               <input type="text" class="form-control" name="t_title" id="stitle" placeholder="강의 주제를 알려주세요!" />
                                 </div>
                              </div>
                       </div>
 
                    <%--kakao map API (카카오 지도)--%>
                    <div class="form-group">
-                       <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
-                       	<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
+                       <label for="username" class="cols-sm-2 control-label font-weight-bold">강의 장소
+                       	<small>장소를 알려주세요!</small>
       					</label>              
-                   </div>
-                                          	<input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
-                   
+                            <input type="button" class="btn btn-primary box pull-right" value="주소 검색" onclick="execDaumPostcode()">
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
                             
@@ -690,10 +685,9 @@
  <!-- day -->               <input type="hidden" class="form-control" name="t_day" id="schedule" value="" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
-          </div> 
-        </div> 
       </div>
     </div> <!-- 2-->
+    </div>
     </form>
 </nav>
 <div id="blog-homepage" class="box row mb-0">

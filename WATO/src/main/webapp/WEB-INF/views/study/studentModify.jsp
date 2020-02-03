@@ -575,11 +575,9 @@
                    <!-- kakao map api(카카오 지도) -->
                    <div class="form-group">
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
-                       	<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
+                       	<small>그룹원과 함께할 장소를 알려주세요!</small>
       					</label>              
-                   </div>
-                   
-                        <input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
+                        <input type="button" class="btn btn-primary box pull-right" value="주소 검색" onclick="execDaumPostcode()">
                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
@@ -669,11 +667,9 @@
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
 
-          </div>
         </div>
       </div>
     </div> <!-- 2-->
-</div><!--  1 -->
  </form>
 </nav>
  <div id="blog-homepage" class="box row mb-0">

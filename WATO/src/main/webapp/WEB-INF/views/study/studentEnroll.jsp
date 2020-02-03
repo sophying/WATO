@@ -561,7 +561,7 @@
                          </div>
                       </div>
                       <div class="form-group">
-                          <label for="s_title" class="cols-sm-2 control-label font-weight-bold">강의 주제</label>
+                          <label for="s_title" class="cols-sm-2 control-label font-weight-bold">스터디 주제</label>
                           <label id="s_title" class="cols-sm-2 control-label font-weight-bold"></label>
                              <div class="cols-sm-10">
                                 <div class="input-group">
@@ -575,11 +575,9 @@
                    <%--kakao map API (카카오 지도)--%>
                    <div class="form-group">
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
-                       	<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
+                       	<small>그룹원과 함께할 장소를 알려주세요!</small>
       					</label>              
-                   </div>
-                                          	<input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
-                   
+                              <input type="button" class="btn btn-primary box pull-right" value="주소 검색" onclick="execDaumPostcode()">
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
                             
@@ -665,12 +663,9 @@
   <!-- s_day -->			<input type="hidden" name="s_day"  class="form-control" id="schedule" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
-
-          </div>
         </div>
       </div>
     </div> <!-- 2-->
-</div><!--  1 -->
  </form>
  </nav>
  

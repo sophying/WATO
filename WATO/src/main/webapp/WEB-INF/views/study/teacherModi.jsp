@@ -399,8 +399,8 @@
     </nav>
 </header>
 <nav id="studyusnav" class="navbar navbar-expand-lg"> 
-<div class="container  mx-auto">
 <form  name="classForm"class="form-horizontal" role="form" method="post" action="/study/teacherModi.do">
+<div class="container  mx-auto">
 <!-- <1> image Enroll -->
   <div class="row mt-3 justify-content-md-center"  style="background:#fff;" >
     <div class="col-sm-5 d-inline-block"> <!-- 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
@@ -505,9 +505,9 @@
         </div>
       </div>
     </div>
-        <div class="form-group container-fluid">
+        <div class="form-group container-fluid d-inline-block">
       <div class="card">
-        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
+        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-3 control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
           <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
            <div class="card-body">
              <div class="input-group d-flex justify-content-center">
@@ -571,7 +571,7 @@
                              <div class="cols-sm-10">
                                 <div class="input-group">
                                  <span class="input-group-addon"></span>
- <!-- title 주제 -->               <input type="text" class="form-control" name="t_title"  value="${listOne.t_title }" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
+ <!-- title 주제 -->               <input type="text" class="form-control" name="t_title"  value="${listOne.t_title }" id="stitle" placeholder="강의 주제를 알려주세요!" />
                                 </div>
                              </div>
                       </div>
@@ -580,12 +580,10 @@
 
                        <!-- kakao map api(카카오 지도) -->
                    <div class="form-group">
-                       <label for="sPlace" class="cols-sm-2 control-label font-weight-bold">스터디 장소
-                       	<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
+                       <label for="sPlace" class="cols-sm-2 control-label font-weight-bold">강의 장소
+                       	<small>장소를 알려주세요!</small>
       					</label>              
-                   </div>
-                   
-                        <input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
+                        <input type="button" class="btn btn-primary box pull-right" value="주소 검색" onclick="execDaumPostcode()">
                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
@@ -695,12 +693,10 @@
  							<input type="hidden" name="t_no" value="${listOne.t_no }"/>
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
-          </div> 
-        </div> 
+             </div>
       </div>
     </div> <!-- 2-->
     </form>
-</div><!--  1 -->
 </nav>
 <div id="blog-homepage" class="box row mb-0">
     <div class="container">
