@@ -686,6 +686,12 @@ function infoCheck() {
    // 비밀번호 정규식
    var pwJ = /^[A-Za-z0-9]{4,12}$/;
    
+   $( function(){
+		$( '#User_Id' ).on("blur keyup", function() {
+			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+		});
+	})
+   
    $('#User_Id').blur(function() {
       if (idJ.test($('#User_Id').val())) {
          console.log('true');
@@ -696,7 +702,7 @@ function infoCheck() {
          $('#id_check').text('소문자와 대문자로만 4~12자리를 입력해주십시오.');
          $('#id_check').css('color', 'red');
       }
-   });      
+   });
    
 
    $('#userPw').blur(function() {

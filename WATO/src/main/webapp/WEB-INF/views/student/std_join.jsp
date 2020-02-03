@@ -696,6 +696,14 @@ function infoCheck() {
       // 휴대폰번호 정규식
       var phJ = /^[0-9]{4,4}$/;
       
+      
+      $( function(){
+   		$( '#User_Id' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      
       $('#User_Id').blur(function() {
          if (idJ.test($('#User_Id').val())) {
             console.log('true');
