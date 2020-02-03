@@ -498,7 +498,8 @@
 			                <tr>
 			                    <th>우편번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 			                    <td><input type="text" id="sample3_postcode" name="Teach_Addr1" value="${teach.teach_Addr1}" placeholder="우편번호">
-			                    <input type="button" onclick="sample3_execDaumPostcode()" value="우편번호찾기" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;"></td>
+			                    <input type="button" onclick="sample3_execDaumPostcode()" value="우편번호찾기" 
+			                    style="border-radius: 10px; background-color: #77bbc2; border: 0; outline: 0; color: #fff; width: 130px; height: 40px;"></td>
 			                </tr>
 			                <tr>
 			                    <th>주소 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -513,8 +514,23 @@
 			                </tr>
 			            </table>
 			        </div>
-		                <input type="submit" value="회원정보수정" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
-		                <button type="reset" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; width: 150px; height: 50px;">취소</button><br><br><br>
+		                <input type="submit" value="회원정보수정" style="border-radius: 10px; 
+													                   background-color: #77bbc2; 
+													                   border: 0; 
+													                   outline: 0; 
+													                   color: #fff; 
+													                   width: 130px; 
+													                   height: 40px;
+													                   margin-right: 30px;
+													                   margin-bottom: 40px;">
+		                <button type="reset" style="border-radius: 10px; 
+											background-color: #77bbc2; 
+											border: 0; 
+											outline: 0; 
+											color: #fff; 
+											width: 130px; 
+											height: 40px;
+											margin-bottom: 40px;">취소</button><br><br><br>
 		        </form>
                     </div>
                 </div>

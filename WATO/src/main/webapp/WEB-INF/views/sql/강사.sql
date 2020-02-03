@@ -59,22 +59,6 @@
    teach_addr3 varchar2(50)
 );*/
 
-create table teach_info(
-   No varchar2(10) DEFAULT 20,
-   teach_orgname varchar2(2000),
-   teach_orgname2 varchar2(2000),
-   user_id varchar2(20),   
-   user_pwd varchar2(30),
-   teach_gender varchar2(20),
-   teach_phone1 varchar2(20),
-   teach_phone2 varchar2(20),
-   teach_phone3 varchar2(20),
-   user_email varchar2(100),
-   teach_addr1 varchar2(50),
-   teach_addr2 varchar2(200),
-   teach_addr3 varchar2(50)
-);
-
 /*create table teach_info(
    No varchar2(10) DEFAULT 20,
    teach_orgname varchar2(2000),
@@ -90,6 +74,22 @@ create table teach_info(
    teach_addr2 varchar2(200),
    teach_addr3 varchar2(50)
 );*/
+
+create table teach_info(
+   No varchar2(10) DEFAULT 20,
+   teach_orgname varchar2(2000),
+   teach_orgname2 varchar2(2000),
+   user_id varchar2(20),   
+   user_pwd varchar2(30),
+   teach_gender varchar2(20),
+   teach_phone1 varchar2(20),
+   teach_phone2 varchar2(20),
+   teach_phone3 varchar2(20),
+   user_email varchar2(100),
+   teach_addr1 varchar2(50),
+   teach_addr2 varchar2(200),
+   teach_addr3 varchar2(50)
+);
 
 select * from teach_info;
 
