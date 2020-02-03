@@ -510,8 +510,8 @@
 	                    </tr>
                     </table>
                 </div>
-            
-                <input type="submit" value="회원가입" style="border-radius: 10px; 
+            	
+                <input id="submitjoin" type="button" value="회원가입" style="border-radius: 10px; 
 													       background-color: #77bbc2; 
 													       border: 0; 
 													       outline: 0; 
@@ -651,6 +651,14 @@ _________________________________________________________
 <script type="text/javascript"> 
 
 //회원가입시 null 파악_____________________________________
+var check = true;
+
+$("#submitjoin").click(function() {
+	if (check) { 
+		check = !check;
+		infoForm.submit();
+	}
+})
 
 function infoCheck() {
 	if(!document.infoForm.User_Id.value) {
