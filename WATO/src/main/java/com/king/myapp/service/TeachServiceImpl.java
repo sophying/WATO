@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.ApprovalVO;
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.persistence.TeachDAO;
 
@@ -30,6 +31,13 @@ public class TeachServiceImpl implements TeachService {
 	@Override
 	public int idChk(TeachVO vo) throws Exception {
 		int result = dao.idChk(vo);
+		return result;
+	}
+	
+	// 이메일 중복 체크
+	@Override
+	public int emailChk(TeachVO vo) throws Exception {
+		int result = dao.emailChk(vo);
 		return result;
 	}
 
@@ -73,6 +81,12 @@ public class TeachServiceImpl implements TeachService {
 	@Override
 	public void admin_mng2(TeachVO vo) throws Exception {
 		dao.admin_mng2(vo);
+	}
+
+	// 강사 회원가입 이메일 존재 체크
+	@Override
+	public TeachVO mailCheck(TeachVO vo) throws Exception {
+		return dao.mailCheck(vo);
 	}
 
 }

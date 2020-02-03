@@ -38,4 +38,11 @@ public class StdServiceImpl implements StdService {
 		dao.admin_mng(vo);
 	}
 
+	// 이메일 중복 체크
+	@Override
+	public int emailChk(StdVO vo) throws Exception {
+		int result = dao.emailChk(vo);
+		return result;
+	}
+
 }

@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	<!-- 아파치 DBCP 설정 --> 
+	<!-- 아파치 DBCP 설정 -->  
 	
 	<!-- Gmail -->
 	  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">  
@@ -31,10 +31,15 @@
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
+<<<<<<< HEAD
 		<property name="url" value="jdbc:oracle:thin:@alfo3-15-pc:1521:orcl"></property>
+=======
+		<property name="url" value="jdbc:oracle:thin:@alfo3-15-PC:1521:orcl"></property>
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
 		<property name="username" value="scott"></property>
 		<property name="password" value="tiger"></property> 
 	</bean> 
+		
 	
 	<!-- 마이바티스연동 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

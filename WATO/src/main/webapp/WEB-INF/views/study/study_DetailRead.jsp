@@ -466,7 +466,14 @@
 									</label>
 									<div class="cols-sm-5 pb-5 pr-2 pl-2">
 						              <div class="input-group d-flex justify-content-center ">
-						                <img id="img_btn_0" src="../../resource/images/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+						                <c:choose>
+								          	<c:when test="${listOne.std_orgname.equals('http://i66.tinypic.com/ng7ue1.jpg') }">
+									           <img id="img_btn_0" src="${listOne.std_orgname}" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+								          	</c:when>
+								          	<c:otherwise>
+								          	  <img id="img_btn_0" src="/resource/images/${listOne.std_orgname}"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+								          	</c:otherwise>
+								          </c:choose>
 						              </div>
            						    </div>
 								</div>
@@ -474,7 +481,7 @@
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-2  pl-5 pr-5 justify-content-center container-fluid ">
 									<div  style=" word-break:break-all;"class="row h-50 w-100 d-inline-block d-flex pt-2 " >
 										
-										<pre><font size="4"><c:out value="${listOne.s_intro }" /></font></pre>
+										<pre style="  white-space: pre-wrap;"><font size="4"><c:out value="${listOne.s_intro }" /></font></pre>
 									</div>
 								</div>
 							</div>
@@ -599,7 +606,7 @@
 								
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-3 pl-5 pr-5 pt-3 container-fluid justify-content-center  border-top">
 									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-3" >
-										<pre><font size="4"><c:out value="${listOne.s_content }" /></font></pre>
+										<pre style="  white-space: pre-wrap;"><font size="4"><c:out value="${listOne.s_content }" /></font></pre>
 									</div>
 								</div>
 							</div>
@@ -735,7 +742,7 @@
 					</div>    
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
 	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
-				<aside class="d-inline-block rounded-sm " style="width: 350px; z-index: 1000" >
+				<aside class="d-inline-block rounded-sm " style="width: 350px; z-index: 10" >
 					<div  class="form-group container-fluid" style="height: auto;">
 							<div class="cols-sm-1 d-inline-block d-flex justify-content-center"> 
 								<div class="card-body">
@@ -776,9 +783,12 @@
 								<c:otherwise>
 								<c:choose>
 										<c:when test="${(partiOne.p_userid).equals(std.user_Id )}">    
-											<div class="successBtn"id="success" >    참여신청완료</div>
-											<input type="button" class="goButton mt-4" id="cancle"  data-toggle="modal" data-target="#cancle-modal"  value="참여신청취소하기"/> 
+											<div class="successBtn"id="success" >참여신청 대기중</div>
 										</c:when> 
+										<c:when test="${particompleOne.p_userid.equals(std.user_Id ) }">
+											<div class="successBtn"id="success" >참여신청요청이 승인됨</div>
+											<input type="button" class="goButton mt-4" id="cancle"  data-toggle="modal" data-target="#cancle-modal"  value="참여신청취소하기"/> 
+										</c:when>
 										<c:otherwise>
 											<c:choose>
 												<c:when test="${usercheck == null }">

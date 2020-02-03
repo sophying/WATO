@@ -184,7 +184,7 @@ $(function () {
                 "Third"
             ],
             datasets: [{
-                data: [250, 200],
+                data: [10, 50],
                 borderWidth: [0, 0],
                 backgroundColor: [
                     green,

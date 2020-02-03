@@ -44,9 +44,16 @@
   height: 250px;  
 }  
 .studylistviewbody #about .card-header img.user {
-  width: 100%;
+  width: 100%; 
   max-width:130px; 
   min-height:130px;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  max-height:130px;
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
   display: block;  
   margin: auto;
   border-radius: 100px;
@@ -394,7 +401,7 @@
 		          </c:choose>
 		        </div>  
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		              <a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TearchlistAll.t_no}'" >${TearchlistAll.t_title}</a>
+		              <a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TearchlistAll.t_no}'"  title="${TearchlistAll.t_title}">${TearchlistAll.t_title}</a>
 		        </h6>  
 		        <h6 class="description">    
 		                ${TearchlistAll.t_userId} <i class="fa fa-id-badge" aria-hidden="true"></i> 
@@ -443,7 +450,7 @@
 		          </c:choose>
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		       		<a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${studylistAll.s_no}'" >${studylistAll.s_title}</a>
+		       		<a title="${studylistAll.s_title}" style="color: black;" href="javascript:parent.location.href='../study/study_DetailRead?s_no=${studylistAll.s_no}'" >${studylistAll.s_title}</a>
 		        </h6> 
 		        <h6 class="description">   
 		                ${studylistAll.s_userId}    
@@ -492,7 +499,7 @@
 		          </c:choose>
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			<a style="color: black;" href="javascript:parent.location.href='../study/study_DetailRead?s_no=${StudyListFilterdata.s_no}'" >${StudyListFilterdata.s_title}</a>
+		        			<a title="${StudyListFilterdata.s_title}" style="color: black;" href="javascript:parent.location.href='../study/study_DetailRead?s_no=${StudyListFilterdata.s_no}'" >${StudyListFilterdata.s_title}</a>
 		        </h6>  
 		        <h6 class="description">  
 		                ${StudyListFilterdata.s_userId} 
@@ -541,7 +548,7 @@
 		          </c:choose>
 		        </div> 
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			<a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TeacherListFilter.t_no}'" >${TeacherListFilter.t_title}</a>
+		        			<a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TeacherListFilter.t_no}'" title="${TeacherListFilter.t_title}">${TeacherListFilter.t_title}</a>
 		        </h6>  
 		        <h6 class="description">  
 		                ${TeacherListFilter.t_userId}<i class="fa fa-id-badge" aria-hidden="true"></i>

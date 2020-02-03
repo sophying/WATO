@@ -97,7 +97,7 @@ public class TeacherenrollController {
 		
 		StdVO std =  (StdVO) session.getAttribute("std"); 		 
 		TeachVO teach = (TeachVO) session.getAttribute("teach");
-		StdVO student = (StdVO) session.getAttribute("std");
+		//StdVO student = (StdVO) session.getAttribute("std");
 		
 		if (std == null && teach== null ) {
 			
@@ -126,27 +126,52 @@ public class TeacherenrollController {
 		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
 		List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
 		
+		DecimalFormat form = new DecimalFormat("#.##");
+		double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
+		form.format(star);
+
+		
 		if (session.getAttribute("std") == null && session.getAttribute("teach") ==null) {
 			model.addAttribute("usercheck",null);
 			model.addAttribute("std",null);
 			model.addAttribute("teach",null);
 			model.addAttribute("reply", reply); 
 			model.addAttribute("listOne",listOne);
-		}else {
-			DecimalFormat form = new DecimalFormat("#.##");
-			double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
-			form.format(star);
+			
 			
 			model.addAttribute("starScore",star);
 			
+		}else {
+	
 			
 			//  현재 유저의 참여신청여부 파악  
 			StdVO std = (StdVO) session.getAttribute("std");
 			TeachVO teach =  (TeachVO) session.getAttribute("teach");
 			
+			model.addAttribute("starScore",star);
+			
 			if (std != null) {
 				
 				String user_id = std.getUser_Id();
+				
+				Map<String, Object> map = new HashMap<String, Object>();
+				
+				map.put("p_userid", user_id);
+				map.put("t_no",t_no);
+				
+				TeacherParticipationVO partiOne = participationService.t_partiCheck(map);
+				TeacherParticipationVO particompleOne = participationService.t_partiCheck2(map);
+				
+				if (partiOne != null) {
+					model.addAttribute("partiOne",partiOne);
+				}
+				if (particompleOne != null) {
+					model.addAttribute("particompleOne",particompleOne);
+				}
+			}
+			if (teach != null) {
+				
+				String user_id = teach.getUser_Id();
 				
 				Map<String, Object> map = new HashMap<String, Object>();
 				
@@ -210,8 +235,9 @@ public class TeacherenrollController {
 						
 			map.put("p_userid", user_id);
 			map.put("t_no", t_no);
+			map.put("study", false);
 						
-			participationService.t_partidelete(map); 
+			participationService.waitngstudydelete(map); 
 			participationService.t_partiCntMinus(t_no);
 		    // 	
 						
@@ -232,22 +258,22 @@ public class TeacherenrollController {
 			
 		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
 		
-		String road;
-		String jibun;
-		String str = listOne.getT_place();
-		String[] arry = str.split("/");
-		
-		for (int i = 0; i < arry.length; i++) {
-			
-			System.out.println(arry[i]);
-			
-			
-		}
-		road = arry[0];
-		jibun = arry[1];
-		
-		listOne.setRoad(road);
-		listOne.setJibun(jibun);
+//		String road;
+//		String jibun;
+//		String str = listOne.getT_place();
+//		String[] arry = str.split("/");
+//		
+//		for (int i = 0; i < arry.length; i++) {
+//			
+//			System.out.println(arry[i]);
+//			
+//			
+//		}
+//		road = arry[0];
+//		jibun = arry[1];
+//		
+//		listOne.setRoad(road);
+//		listOne.setJibun(jibun);
 		
 		
 		  String beforeDay = listOne.getT_day(); // DB 문자열
@@ -356,19 +382,37 @@ public class TeacherenrollController {
 			
 			logger.info("--------------[ 강의 댓글 내용 삭제]-----------------");		
 			
-			teacherService.DeleteReply(r_no);
-			
 			TeachVO teach =  (TeachVO) session.getAttribute("teach");		
 			StdVO std =  (StdVO) session.getAttribute("std"); 		 
+			
+			teacherService.DeleteReply(r_no);
 			model.addAttribute("std",std);
 			model.addAttribute("teach",teach);	
 			return "redirect:/study/header_DetailRead?t_no="+t_no;
 		}
-	
 		
+		@RequestMapping(value = "/myClass_user", method = RequestMethod.POST)
+		public String postMyClass_user(@RequestParam("t_no")int t_no,Model model, HttpSession session) throws Exception{
 			
-	
-	
-	
+			TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+			StdVO std =  (StdVO) session.getAttribute("std"); 	
+			
+			if (teach != null) {
+				
+				List<TeacherEnrollVO> myClass = participationService.getTeachClassList(teach);
+				List<TeacherParticipationVO> partiPeople = participationService.aprroveByTeach(t_no);
+				
+				System.out.println("여기는 teach ");
+				
+				model.addAttribute("partiPeople",partiPeople);
+				model.addAttribute("classParti",myClass);
+			}
+			model.addAttribute("teach", teach);	
+			model.addAttribute("std", std);
+			
+			return "redirect:/study/user_myList";
+		}
+		
+
 }
 

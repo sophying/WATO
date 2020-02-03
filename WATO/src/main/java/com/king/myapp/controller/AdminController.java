@@ -419,7 +419,6 @@ public class AdminController {
 		HttpSession session = req.getSession();
 
 		TeachVO login2 = adminservice.login2(tvo);
-
 		if (login2 == null) { // login 값이 null 일 때 member 값은 null 이고
 
 			session.setAttribute("teach", null);
@@ -433,6 +432,7 @@ public class AdminController {
 			session.setAttribute("teach", login2); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
 			logger.info("강사 로그인 완료");
 			response.setContentType("text/html; charset=UTF-8");
+			System.out.println(login2.getTeach_Orgname());
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('로그인이 완료되었습니다.'); location.href='http://localhost:8080/';</script>");
 			out.flush();

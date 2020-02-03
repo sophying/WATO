@@ -294,9 +294,16 @@
 									<label for="name" class="row d-flex  pt-3 pb-4 m-0 text-justify   control-label justify-content-center">
 										<font size="6">강사 소개</font>
 									</label>
-									<div class="cols-sm-5 pb-5 pr-2 pl-2"  style="height:auto;">
+									<div class="cols-sm-5 pb-5 pr-2 pl-2"  style="height:auto;"> 
 						              <div class="input-group d-flex justify-content-center ">
-						                <img id="img_btn_0" src="../resources/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+						                <c:choose>
+								          	<c:when test="${listOne.teach_orgname.equals('http://i66.tinypic.com/ng7ue1.jpg') || listOne.teach_orgname.equals('') || listOne.teach_orgname ==null }">
+									           <img id="img_btn_0" src="${listOne.teach_orgname}" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+								          	</c:when>
+								          	<c:otherwise>
+								          	  <img id="img_btn_0" src="/resource/images/${listOne.teach_orgname}"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+								          	</c:otherwise>
+								          </c:choose>
 						              </div>
            						    </div>
 								</div>
@@ -305,7 +312,7 @@
 								
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-2  pl-5 pr-5 justify-content-center container-fluid " >
 									<div  style="word-break:break-all;"class="row d-block d-flex pt-2 "  >
-										<pre style="padding: 50px; height: auto; width:auto;  overflow: auto; word-break: break-all; "><font size="4"><c:out value="${listOne.t_intro }" /></font></pre>
+										<pre style="   white-space: pre-wrap; padding: 50px; height: auto; width:auto;  overflow: auto; word-break: break-all; "><font size="4"><c:out value="${listOne.t_intro }" /></font></pre>
 									</div>
 								</div>
 							</div>
@@ -436,7 +443,7 @@
 								
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-3 pl-5 pr-5 pt-3 container-fluid justify-content-center  border-top">
 									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-3" >
-										<pre><font size="4"><c:out value="${listOne.t_content }" /></font></pre>
+										<pre style="  white-space: pre-wrap;"><font size="4"><c:out value="${listOne.t_content }" /></font></pre>
 									</div>
 								</div>
 							</div>
@@ -552,7 +559,7 @@
 													<tr>
 														<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
 														<td colspan="5" >
-															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
 														<td>    
 													</tr>   
 													<tr>
@@ -576,7 +583,7 @@
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->  
 						
 	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->	 
-				<aside class="d-inline-block rounded-sm" style="z-index: 1000;" >     
+				<aside class="d-inline-block rounded-sm" style="z-index: 10;" >     
 					<div  class="form-group container-fluid" style="height: auto;">
 							<div class="cols-sm-1 d-inline-block d-flex justify-content-center"> 
 								<div class="card-body">
@@ -617,10 +624,13 @@
 								</c:when>
 								<c:otherwise>
 									<c:choose>
-										<c:when test="${(partiOne.p_userid).equals(teach.user_Id)}">    
-											<div class="successBtn"id="success" >참여신청완료</div> 
+										<c:when test="${(partiOne.p_userid).equals(std.user_Id )}">    
+											<div class="successBtn"id="success" >참여신청 대기중</div>
+										</c:when> 
+										<c:when test="${particompleOne.p_userid.equals(std.user_Id ) }">
+											<div class="successBtn"id="success" >참여신청요청이 승인됨</div>
 											<input type="button" class="goButton mt-4"id="partiBnt"  data-toggle="modal" data-target="#t_cancle-modal"  value="참여신청취소하기"/> 
-										</c:when>  
+										</c:when>
 										<c:otherwise>
 											<c:choose>
 												<c:when test="${usercheck == null }">

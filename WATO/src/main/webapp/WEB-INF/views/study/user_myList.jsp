@@ -376,9 +376,53 @@ table caption {
       <div class=" mb-5 table-responsive">
 <!-- ######  ++++++++++++++++ 학생 유저일 경우 ++++++++++++++++++++++++++++++++ -->      
       <c:if test="${std != null }">
+      	<div class="box py-4 mt-0">
+	            <div class="container"> 
+		            <h4 class="font-weight-bold">승인 대기 중인 스터디</h4>
+	                <div>
+	                	<table class="table table-hover">
+	                		<thead>
+	                			<tr>
+	                				<th>글 번호</th><th>글 제목</th><th>시작날짜</th><th>종료예정날짜</th><th>수정하기	</th>
+	                			</tr>
+	                		</thead> 
+	                		<tbody>
+		                		<c:forEach items="${waitingstudy}" var="waitingstudy">
+		                			<tr>
+		                				<td>${waitingstudy.s_no}</td>
+		                				<td><a href="/study/study_DetailRead?s_no=${waitingstudy.s_no}">${waitingstudy.s_title}</a></td>
+		                				<td>${waitingstudy.s_startDate}</td>
+		                				<td>${waitingstudy.s_endDate}</td> 
+		                				<td>
+		                					<input type="hidden" value="true">
+		                					<input type="hidden" value="${waitingstudy.s_no}"> 
+		                					<button onclick="studycencle(this)" type="button" >취소하기</button>
+		                				</td>	
+		                			</tr>
+	                			</c:forEach>
+	                			<c:forEach items="${waitingclass}" var="waitingclass">
+	                			<tr>
+	                				<td>${waitingclass.t_no}</td>
+	                				<td><a href="./header_DetailRead?t_no=${waitingclass.t_no}">${waitingclass.t_title}</a></td>
+	                				<td>${waitingclass.t_startDate}</td>
+	                				<td>${waitingclass.t_endDate}</td> 
+	                				<td>
+	                					<input type="hidden" value="false">
+	                					<input type="hidden" value="${waitingclass.t_no}"> 
+	                					<button onclick="studycencle(this)" type="button">취소하기</button>
+	                				</td>	
+	                			</tr>
+	                			</c:forEach>
+	                		</tbody>
+	                	</table>
+	                	</div>
+	            </div>
+            </div>
+            <div class="box py-4 mt-0">
+	            <div class="container">
 	      <h4 class="font-weight-bold">내가 참여한 스터디</h4>
-	        <table class="table table-bordered table-hover">
-	          <thead class="text-center " style="width: 100px;">
+	        <table class="table table-hover">
+	          <thead  style="width: 100px;">
 	            <tr>
 	              <th>번호</th>
 	              <th>레벨</th>
@@ -392,13 +436,12 @@ table caption {
 	          </thead>
 			  	<c:if test="${studyParti != null }">
 		           <c:forEach var="studyParti" items="${studyParti}">
-		          
 			          <tbody>
 			            <tr>
 			              <td class="text-center">${studyParti.s_no }</td>
 			              <td>${studyParti.s_level }</td>
 			              <td class="text-center">${studyParti.s_category }</td>
-			              <td>${studyParti.s_title }</td>
+			              <td><a href="./study_DetailRead?s_no=${studyParti.s_no}">${studyParti.s_title }</a></td>
 			              <td>${studyParti.s_startDate }</td>
 			              <td>${studyParti.s_endDate }</td>
 			              <td>${studyParti.s_userId}</td>
@@ -444,7 +487,6 @@ table caption {
 			              </td>
 			            </tr>
 			          </tbody>
-			      
 		          </c:forEach>
 		        </c:if>
 	          <tfoot>
@@ -453,10 +495,12 @@ table caption {
 	            </tr>
 	          </tfoot>
 	        </table>
-	        
-	        
+	        </div>
+	        </div>
+	        <div class="box py-4 mt-0">
+	            <div class="container">
 	        <h4 class="font-weight-bold">내가 참여한 강의</h4>
-	        <table class="table table-bordered table-hover">
+	        <table class="table table-hover">
 	          <thead class="text-center " style="width: 100px;">
 	            <tr>
 	              <th>번호</th>
@@ -476,7 +520,7 @@ table caption {
 			              <td class="text-center">${classParti.t_no }</td>
 			              <td>${classParti.t_level }</td>
 			              <td class="text-center">${classParti.t_category }</td>
-			              <td>${classParti.t_title }</td>
+			              <td><a href="./header_DetailRead?t_no=${classParti.t_no}">${classParti.t_title }</a></td>
 			              <td>${classParti.t_startDate }</td>
 			              <td>${classParti.t_endDate }</td>
 			              <td>${classParti.t_userId}</td>
@@ -530,6 +574,40 @@ table caption {
 	            </tr>
 	          </tfoot>
 	        </table>
+	        </div>
+	        </div>
+	        <div class="box py-4 mt-0">
+	            <div class="container"> 
+		            <div class="col-md-12 mt-4"> 
+	                      <h2 class="mb-0 text-center"><span style="font-weight: bold;">내가 만든 스터디</span></h2>
+	                 </div> 
+	                <div>
+	                	<table class="table table-hover">
+	                		<thead>
+	                			<tr>
+	                				<th>글 번호</th><th>글 제목</th><th>시작날짜</th><th>종료예정날짜</th><th>수정하기	</th>
+	                			</tr>
+	                		</thead> 
+	                		<tbody>
+	                			<c:forEach items="${mystudy}" var="mystudy">
+	                			<tr>
+	                				<td>${mystudy.s_no}</td>
+	                				<td><a href="/study/study_DetailRead?s_no=${mystudy.s_no}">${mystudy.s_title}</a></td>
+	                				<td>${mystudy.s_startDate}</td>
+	                				<td>${mystudy.s_endDate}</td> 
+	                				<td>
+	                					<input type="hidden" value="${mystudy.s_no}"> 
+	                					<button onclick="sendajaxdata1(this)" type="button">회원관리</button>
+	                				</td>	
+	                			</tr>
+	                		</c:forEach>
+	                		</tbody>
+	                	</table>
+	                	</div>
+	            </div>
+            </div>
+            <div id="childrendata">
+            </div>
         </c:if>
  <!-- ####### ++++++++++++++++++++++++++++ 강사 유저일 경우  ++++++++++++++++++++++++++++ -->       
         
@@ -548,22 +626,42 @@ table caption {
               <th colspan="2">참여확인</th>
             </tr>
           </thead>
-	        <c:if test="${classParti != null }">
-	        	<c:forEach var="classParti" items="${classParti}">
+	        <c:if test="${myClass != null }">
+	        	<c:forEach var="myClass" items="${myClass}">
 		          <tbody>
 		            <tr>
-		              <td class="text-center">${classParti.t_no }</td>
-		              <td>${classParti.t_level }</td>
-		              <td class="text-center">${classParti.t_category }</td>
-		              <td>${classParti.t_title }</td>
-		              <td>${classParti.t_startDate }</td>
-		              <td>${classParti.t_endDate }</td>
-		              <td>${classParti.t_userId}</td>
+		              <td class="text-center">${myClass.t_no }</td>
+		              <td>${myClass.t_level }</td>
+		              <td class="text-center">${myClass.t_category }</td>
+		              <td><a href="./header_DetailRead?t_no=${myClass.t_no}">${myClass.t_title }</a></td>
+		              <td>${myClass.t_startDate }</td>
+		              <td>${myClass.t_endDate }</td>
+		              <td>${myClass.t_userId}</td>
 		              <td>
-		              	<input type="button" id="starBtn2" onclick="partiCheck22(this)" value="참여확인"/>
+		              <form action="./myClass_user" method="post">
+		              	<input type="hidden" name="t_no" value="${myClass.t_no}"/>
+		              	<input type="submit" id="starBtn2" value="참여확인"/>
+		              </form>
 		              </td>
 		            </tr>
 		          </tbody>
+		            <c:choose>
+		            <c:when test="${partiPeople != null }">
+		            <tr>
+		            	<td>
+		            		<table>
+		            		<c:forEach var="partiPeople" items="${partiPeople }">
+		            			<tr>
+									<td>${partiPeople.p_userid }</td>		            			
+									<td>${partiPeople.p_intro }</td>		            			
+									<td>${partiPeople.p_tell}</td>		            			
+		            			</tr>
+		            			</c:forEach>
+		            		</table>
+		            	</td>
+		            </tr>
+		            </c:when>
+		            </c:choose>
 	        	</c:forEach>
 	        </c:if>
         <tfoot>
@@ -571,7 +669,39 @@ table caption {
               <td colspan="9" class="text-center h2">멋진 강의를 선물해주세요!</td>
             </tr>
           </tfoot>
-        </table>	
+        </table>
+        <div class="box py-4 mt-0">
+	            <div class="container"> 
+		            <div class="col-md-12 mt-4"> 
+	                      <h2 class="mb-0 text-center"><span style="font-weight: bold;">내가 만든 스터디</span></h2>
+	                 </div> 
+	                <div>
+	                	<table class="table table-hover">
+	                		<thead>
+	                			<tr>
+	                				<th>글 번호</th><th>글 제목</th><th>시작날짜</th><th>종료예정날짜</th><th>수정하기	</th>
+	                			</tr>
+	                		</thead>
+	                		<tbody>
+	                		<c:forEach items="${mystudy}" var="mystudy">
+	                			<tr>
+	                				<td>${mystudy.t_no}</td>
+	                				<td><a href="/study/header_DetailRead?t_no=${mystudy.t_no}">${mystudy.t_title}</a></td>
+	                				<td>${mystudy.t_startDate}</td>
+	                				<td>${mystudy.t_endDate}</td> 
+	                				<td>
+	                					<input type="hidden" value="${mystudy.t_no}"> 
+	                					<button onclick="sendajaxdata1(this)" type="button">회원관리</button>
+	                				</td>	
+	                			</tr>
+	                		</c:forEach>
+	                		</tbody>
+	                	</table>
+	                	</div>
+	            </div>
+            </div>
+            <div id="childrendata">
+            </div>
         </c:if>
         
         
@@ -661,7 +791,29 @@ table caption {
     </div>
     <!-- /.container-->  
 </div>
-<!-- /#footer-->
+<script type="text/javascript">
+function studycencle(event){
+	var bno = $(event).prev().val();
+	var study = $(event).prev().prev().val()
+	var check = confirm('정말로 취소하시겠습니까');
+	if(check == true){
+		location.href='/study/waitngstudydelete?bno='+bno+'&study='+study;
+	}else{
+		return false;
+	}
+}
+
+function sendajaxdata1(event) {
+	var bno = $(event).prev().val();
+	$.ajax({
+		type:"get",
+		url:"/board/myenrollajax?bno="+bno,
+		success: function(data) {
+			$('#childrendata').html(data);
+		}
+	})
+}
+</script><!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <script src="/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/resource/vendor/jquery.cookie/jquery.cookie.js"> </script>

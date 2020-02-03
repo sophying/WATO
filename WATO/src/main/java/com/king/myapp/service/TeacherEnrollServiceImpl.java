@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.domain.TeacherReplyVO;
 import com.king.myapp.persistence.TeacherEnrollDAO;
 
@@ -73,6 +74,11 @@ public class TeacherEnrollServiceImpl implements TeacherEnrollService {
 	@Override
 	public void DeleteReply(int r_no) throws Exception {
 		teacherDAO.DeleteReply(r_no);
+	}
+
+	@Override
+	public List<TeacherParticipationVO> aprroveByTeach(int t_no) throws Exception {
+		return teacherDAO.aprroveByTeach(t_no);
 	}
 
 

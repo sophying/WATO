@@ -27,9 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select> 
    
    <!-- NAV바에 있는 검색 창 에서 검색 후 Q&A VIEWCNT 순으로 10개 -->
-   <select id="searchResultQna" resultType="com.king.myapp.domain.BoardVO">
+   <select id="searchResultQna" resultType="com.king.myapp.domain.QnaBoardVO">
    	  <![CDATA[ 
-   	  SELECT * FROM (SELECT * FROM MYBOARD ORDER BY VIEWCNT DESC) WHERE ROWNUM<=10 AND TITLE LIKE '%' || #{searchKey} || '%' OR CONTENT like '%' || #{keyword} || '%'
+   	  SELECT * FROM (SELECT * FROM Qna_myBoard ORDER BY QNA_VIEWCNT DESC) WHERE ROWNUM<=10 AND QNA_TITLE LIKE '%' || #{searchKey} || '%' OR QNA_CONTENT like '%' || #{keyword} || '%'
    	 ]]> 
    </select>
    
@@ -92,7 +92,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="searchT_no" resultType="com.king.myapp.domain.TeacherEnrollVO">
    	   SELECT * FROM T_ENROLL WHERE T_NO = #{s_no}
    </select>
-   
+   <!-- myenroll ajax -->
+   <select id="myenrollstudent" resultType="com.king.myapp.domain.StudentParticipationVO">
+   		SELECT * FROM S_PARTI WHERE S_NO = #{s_no}   
+   </select> 
+   <select id="myenrollteach" resultType="com.king.myapp.domain.TeacherParticipationVO">
+   		SELECT * FROM T_PARTI WHERE T_NO = #{t_no}
+   </select>
    
    
    
