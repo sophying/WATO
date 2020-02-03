@@ -403,7 +403,7 @@ table caption {
 	                			<c:forEach items="${waitingclass}" var="waitingclass">
 	                			<tr>
 	                				<td>${waitingclass.t_no}</td>
-	                				<td><a href="/study/study_DetailRead?s_no=${waitingclass.t_no}">${waitingclass.t_title}</a></td>
+	                				<td><a href="./header_DetailRead?t_no=${waitingclass.t_no}">${waitingclass.t_title}</a></td>
 	                				<td>${waitingclass.t_startDate}</td>
 	                				<td>${waitingclass.t_endDate}</td> 
 	                				<td>

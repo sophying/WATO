@@ -59,7 +59,7 @@ public class BoardController {
 			
 			List<StudyEnrollVO> listStudy = service.searchResultStudy(searchKey);
 			
-			if (listStudy.size() != 0) {
+			if (listStudy.size() != 0 && listStudy.size() >=4) {
 				List<StudyEnrollVO> Studylist = listStudy.subList(0, 4);
 				model.addAttribute("listStudy",Studylist);
 			}else {
@@ -87,7 +87,7 @@ public class BoardController {
 			 
 			List<StudyEnrollVO> listStudy = service.searchResultStudy(searchKey);
 			
-			if (listStudy.size() != 0) {
+			if (listStudy.size() != 0 && listStudy.size() >= 4) {
 				List<StudyEnrollVO> Studylist = listStudy.subList(0, 4);
 				model.addAttribute("listStudy",Studylist);
 			}else {
