@@ -86,5 +86,10 @@ public class QnaBoardDAOImpl implements QnaBoardDAO {
 		return sql.selectOne("qna.listCount");
 	}
 
+	@Override
+	public int board_this_month_Count() throws Exception {
+		return sql.selectOne("qna.board_this_month_Count");
+	}
+
 
 }

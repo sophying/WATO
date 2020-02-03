@@ -237,10 +237,10 @@
                         	</li>
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
-                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
-                        <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="/admin/adminmanage" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
@@ -430,7 +430,7 @@
     <div id="content">
 <!-- 최지혜 추가 -->  
 		<div class="table-responsive">
-        	<form role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
+        	<form name="infoForm" onsubmit="return infoCheck()" role="form" method="post" autocomplete="off" enctype="multipart/form-data"><br><br>
             	<table class="table" style="margin: auto; width: 70%;" cellspacing="0"> <!-- 강사 승인신청폼 -->
                 	<tr>
                         <th id="student" colspan="3" style="background-color: #eeeeee; height: 50px; color: #888888;">강사 승인신청폼</th>
@@ -445,7 +445,8 @@
                     </tr>
                     <tr>
                         <th>이력서첨부<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="file" id="app_Resume" name="app_Resume"/></td>
+                        <td colspan="2"><input type="file" id="app_Resume" name="app_Resume"/>
+                        <div><em style="font-size: small;">※PDF 파일만 업로드 가능합니다.</em></div></td>
                     </tr>
                     <tr>
                         <th>성별<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -469,6 +470,7 @@
                             <input type="text" id="app_Phone2" name="app_Phone2" size="15" maxlength="4">
                             -
                             <input type="text" id="app_Phone3" name="app_Phone3" size="15" maxlength="4">
+                            <br><div style="display: inline-block;" id="ph_check"></div>
                         </td>
                     </tr>
                     <tr>
@@ -477,20 +479,23 @@
                     </tr>
                     <tr>
                         <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td><input type="text" id="sample4_postcode" id="app_Addr1" name="app_Addr1" placeholder="우편번호"></td>
-                        <td><input type="button" onclick="sample4_execDaumPostcode()" value="우편번호찾기" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;"></td>
+                        <td><input type="text" id="sample3_postcode" name="app_Addr1" placeholder="우편번호"></td>
+                        <td><input type="button" onclick="sample3_execDaumPostcode()" value="우편번호찾기" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;"></td>
                     </tr>
                     <tr>
                         <th>주소<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="text"  id="sample4_roadAddress" id="app_Addr2" name="app_Addr2" size="55" placeholder="도로명주소"></td>
+                        <td colspan="2"><input type="text"  id="sample3_address" name="app_Addr2" size="55" placeholder="도로명주소"></td>
                     </tr>
                     <tr>
                         <th>상세주소<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                        <td colspan="2"><input type="text" id="app_addr_sub" id="app_Addr3" name="app_Addr3" size="55" maxlength="12"  placeholder="상세주소"></td>
+                        <td colspan="2"><input type="text" id="sample3_detailAddress" name="app_Addr3" size="55" maxlength="12"  placeholder="상세주소"><div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+						</div>
+                        </td>
                     </tr>
                 </table>
                 <div style="margin: 30px;">
-                   <button type="submit" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 120px; height: 50px;">승인신청</button>
+                   <input type="submit" value="승인신청" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
                 </div>
             </form>
 		</div>
@@ -608,55 +613,101 @@ _________________________________________________________
 <!-- *** FOOTER END ***-->
 <script type="text/javascript" src="../resource/js/std_join.js"></script>
 
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
-<script type="text/javascript"> 
-        // 비밀번호 확인 소스
-        $('#userPw').blur(function() {
-            var userPw = $('#userPw').val();
-            var userPwChk = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
+<script type="text/javascript">  
 
-            if (userPw !="" && userPwChk !="" && userPw==userPwChk) {
-                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-            }else if(userPw != "" && userPwChk==""){
-                pwdcheck.text('비밀번호 확인를 입력해주세요').css('color', 'blue');
-            }else if (userPw != userPwChk) {
-                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-            }else if(userPw =="" && userPwChk==""){
-                pwdcheck.text('');
-            }
+//회원가입시 null 파악_____________________________________
 
-        });
+function infoCheck() {
+	if(!document.infoForm.app_Profile.value) {
+		alert("프로필 이미지를 정해주세요.");
+		document.infoForm.app_Profile.focus();
+		return false;
+	}
+	if(!document.infoForm.app_Resume.value) {
+		alert("이력서를 첨부해주세요.");
+		document.infoForm.app_Resume.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Phone1.value) {
+		alert("휴대폰 번호를 입력해주세요.");
+		document.infoForm.app_Phone1.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Phone2.value) {
+		alert("휴대폰 번호를 입력해주세요.");
+		document.infoForm.app_Phone2.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Phone3.value) {
+		alert("휴대폰 번호를 입력해주세요.");
+		document.infoForm.app_Phone3.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.User_Email.value) {
+		alert("이메일을 입력해주세요.");
+		document.infoForm.User_Email.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Addr1.value) {
+		alert("우편번호를 입력해주세요.");
+		document.infoForm.app_Addr1.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Addr2.value) {
+		alert("주소를 입력해주세요.");
+		document.infoForm.app_Addr2.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.app_Addr3.value) {
+		alert("상세주소를 입력해주세요.");
+		document.infoForm.app_Addr3.focus();
+		return false;
+	}
+	
+	alert("승인신청이 완료되었습니다. 관리자가 승인완료를 한 후 활동이 가능합니다.")
+}
 
-        $('#userPwChk').blur(function() {
-            var userPw = $('#userPw').val();
-            var userPwChk = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
+ // 정규표현식 유효성 검사 소스_________________________________________________________
+   
+   // 휴대폰번호 정규식
+   var phJ = /^[0-9]{4,4}$/;
+   
+   
+   $('#app_Phone2').blur(function() {
+	   if (phJ.test($('#app_Phone2').val())) {
+		   console.log('true');
+		   $('#ph_check').text('');
+	   } else {
+		   console.log('false');
+		   $('#ph_check').text('4자리의 숫자만 입력가능합니다.');
+		   $('#ph_check').css('color', 'red');
+	   }
+   })
+   
+   $('#app_Phone3').blur(function() {
+	   if (phJ.test($('#app_Phone3').val())) {
+		   console.log('true');
+		   $('#ph_check').text('');
+	   } else {
+		   console.log('false');
+		   $('#ph_check').text('4자리의 숫자만 입력가능합니다.');
+		   $('#ph_check').css('color', 'red');
+	   }
+   })
+   
 
-            if (userPw !="" && userPw !="" && userPw==userPwChk) {
-                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-            } else if(userPwChk != "" && userPw==""){
-                pwdcheck.text('비밀번호를 입력해주세요').css('color', 'blue');
-            }else if(userPw != userPwChk){
-                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-            }else if(userPw =="" && userPwChk==""){
-                pwdcheck.text('');
-            }
-        });
-
-
-        function checkPw() {
-            var userPw = $('#userPw').val();
-            var userPw = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
-            if (userPw == userPwChk) {
-                joinform.submit();
-            } else {
-                /* pwdcheck.text('비밀번호가 다릅니다').css('color', 'red'); *!/ /!* 위에서 출력하고 있는데 한번더 출력할 필요 없음 */
-                alert('입력하신 비밀번호가 다릅니다 확인해주세요.')
-            }
-        }   
-
+// 정규표현식 유효성 검사 끝 ________________________________________________________________________
+   
+// 파일 업로드 전 이미지 미리보기_____________________________________________________________________
   function readURL(input) {
     if (input.files && input.files[0]) {
        var reader = new FileReader();
@@ -672,12 +723,11 @@ _________________________________________________________
       $("#imgInput").change(function(){
         readURL(this);
   });
-      
-
-      
+   
+     
       function fn_idChk(){
       	$.ajax({
-      		url : "/student/idChk",
+      		url : "/teach/idChk",
       		type : "post",
       		dataType : "json",
       		data : {"User_Id" : $("#User_Id").val()},
@@ -690,6 +740,73 @@ _________________________________________________________
       			}
       		}
       	})
+      }
+      
+   // 우편번호찾기_________________________________________________________________________________
+      
+      // 우편번호 찾기 찾기 화면을 넣을 element
+      var element_wrap = document.getElementById('wrap');
+
+      function foldDaumPostcode() {
+          // iframe을 넣은 element를 안보이게 한다.
+          element_wrap.style.display = 'none';
+      }
+
+      function sample3_execDaumPostcode() {
+          // 현재 scroll 위치를 저장해놓는다.
+          var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
+          new daum.Postcode({
+              oncomplete: function(data) {
+                  // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                  // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                  // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                  var addr = ''; // 주소 변수
+                  var extraAddr = ''; // 참고항목 변수
+
+                  //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                  if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                      addr = data.roadAddress;
+                  } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                      addr = data.jibunAddress;
+                  }
+
+                  // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                  if(data.userSelectedType === 'R'){
+                      // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                      // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                      if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                          extraAddr += data.bname;
+                      }
+                      // 건물명이 있고, 공동주택일 경우 추가한다.
+                      if(data.buildingName !== '' && data.apartment === 'Y'){
+                          extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                      }
+                  }
+
+                  // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                  document.getElementById('sample3_postcode').value = data.zonecode;
+                  document.getElementById("sample3_address").value = addr;
+                  // 커서를 상세주소 필드로 이동한다.
+                  document.getElementById("sample3_detailAddress").focus();
+
+                  // iframe을 넣은 element를 안보이게 한다.
+                  // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+                  element_wrap.style.display = 'none';
+
+                  // 우편번호 찾기 화면이 보이기 이전으로 scroll 위치를 되돌린다.
+                  document.body.scrollTop = currentScroll;
+              },
+              // 우편번호 찾기 화면 크기가 조정되었을때 실행할 코드를 작성하는 부분. iframe을 넣은 element의 높이값을 조정한다.
+              onresize : function(size) {
+                  element_wrap.style.height = size.height+'px';
+              },
+              width : '100%',
+              height : '100%'
+          }).embed(element_wrap);
+
+          // iframe을 넣은 element를 보이게 한다.
+          element_wrap.style.display = 'block';
       }
 </script>
 <!-- JavaScript files--> 

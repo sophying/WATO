@@ -36,30 +36,48 @@ function resize(obj) {
 // ________________________
  
  
-function updatefun(event) { 
+function clickEvnet(event) { 
 	if ($(event).val() == "수정하기") {
-		$(event).parent().parent().prev().children().next().children().attr('readonly',false);
-		$(event).parent().parent().prev().children().next().children().css('background','#c995a2');
-		$(event).val("수정완료");
-	}else if ($(event).val() == "수정완료") {
-		$(event).parent().parent().prev().children().next().children().attr('readonly',true);
+		alert('수정');
+		$(event).val("수정등록");
+		$(event).parent().parent().children('.text1').attr('readonly', false);
+		$(event).parent().parent().children('.text1').css('background','#c995a255');
+	}else if ($(event).val() == "수정등록") {
 		$(event).val("수정하기");
+		$(event).parent().parent().children('.text1').attr('readonly', true);
 		$('.updateform').submit();
 	}
 	
 }
 
- 
-$(function(){
-	 var listOne_URL = document.getElementById('listOne_URL').value;
-	
-	if (listOne_URL != null) {
+function clickEvnet2(event){
+	if ($(event).val()== "수정하기") {
+		$(event).val("수정등록");
+		$(event).prev().attr('readonly', false);
+		$(event).prev().css("background-color", "#ddddee33");
 		
-		document.getElementById("main-iframe").src = listOne_URL;
-	 
-	} 
+	}else if ($(event).val()== "수정등록") {
+		$(event).val("수정하기");
+		$(event).prev().attr('readonly', true);
+		$(event).prev().css("background-color", "#fff");
+		$(".updateform").attr("action","/study/modireply");
+		$('.updateform').submit();
+	}
 	
-});
+}
+
+function deleteRe(obj) {
+	$('.updateform').attr("action","./t_replyDelete");
+	$('.updateform').submit();
+}
+function deleteRe2(obj) {
+	$('.updateform').attr("action","./t_replyDelete");
+	$('.updateform').submit();
+}
+
+
+ 
+
 
 
 $('#modalSubmit').click(function () {
@@ -67,5 +85,10 @@ $('#modalSubmit').click(function () {
 });
 $('#cancleSubmit').click(function () {
 	$('#cancleForm').submit();
+});
+
+
+$('#deleteSubmit').click(function () {
+	$('#deleteForm').submit();
 });
 	

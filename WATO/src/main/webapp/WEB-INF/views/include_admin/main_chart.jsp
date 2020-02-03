@@ -9,7 +9,7 @@
          pageEncoding="UTF-8"%>
 <html>
 <head>
-    <title>메인 중앙 차트 영역 (<div class="row mb-4">)</title>
+    <title>메인 중앙 차트 영역 (<div class="row mb-4">)</title> 
 </head>
 <body>
 <section>

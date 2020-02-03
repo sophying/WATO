@@ -80,6 +80,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="searchType == 'tc'.toString()">AND (QNA_TITLE LIKE '%' || #{keyword} || '%') or (QNA_CONTENT LIKE '%' || #{keyword} || '%')</if>
         </if>
     </sql>
+    <select id="board_this_month_Count" resultType="int">
+    SELECT COUNT(*) FROM QNA_MYBOARD WHERE QNA_REGDATE between SYSDATE-30 and SYSDATE
+    </select>
 
    
 </mapper>

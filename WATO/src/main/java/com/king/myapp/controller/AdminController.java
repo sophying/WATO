@@ -57,24 +57,30 @@ public class AdminController {
 	JavaMailSender mailSender;
 	@Inject
 	MailService mailservice;
-	
+	  
 	@Autowired
 	QnaBoardService service;
 	@Autowired
 	QnaReplyService qnaReplyService;
 
 	// 어드민 페이지로 이동
-	    @RequestMapping(value = "/index_admin")
-	    public String admin_main() throws Exception {
+	    @RequestMapping(value = "/index_admin", method = RequestMethod.GET)
+	    public String admin_main(Model model, QnaBoardVO vo) throws Exception {
 	    	logger.info("admin main 페이지로 이동~~!!");
+ 
+	    int qnacount =  service.board_this_month_Count();
+	    System.out.println("qnacount : "+qnacount);
+		model.addAttribute("index_admin", qnacount); 
+		 
+
 			return "admin/index_admin";
-	    }
+	    } 
 	//qna 리스트 페이지로 이동
 		@RequestMapping(value ="/admin_qna_list", method = RequestMethod.GET)
 	    	public String admin_qna_list(Model model, @ModelAttribute("scri") SearchCriteria scri, QnaBoardVO vo) throws Exception{
 	    		logger.info("admin_qna_list 페이지로 이동");
 			model.addAttribute("admin_qna_list",service.getQnaList(scri));
-
+ 
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(scri);
 			pageMaker.setTotalCount(service.listCount());

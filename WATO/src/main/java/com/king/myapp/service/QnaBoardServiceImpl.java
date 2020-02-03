@@ -76,6 +76,11 @@ public class QnaBoardServiceImpl implements QnaBoardService {
 	}
 
 	@Override
+	public int board_this_month_Count() throws Exception {
+		return dao.board_this_month_Count();
+	}
+
+	@Override
 	public void QnaDelete(int bno) throws Exception {
 		dao.QnaDelete(bno);
 	}

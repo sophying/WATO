@@ -6,7 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>         
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>메인 상단 종합 정보 요약 영역 (<section class="py-5">)</title>
@@ -19,9 +21,12 @@
                 <div class="bg-white shadow roundy p-4 h-100 d-flex align-items-center justify-content-between">
                     <div class="flex-grow-1 d-flex align-items-center">
                         <div class="dot mr-3 bg-violet"></div>
-                        <div class="text">
-                            <h6 class="mb-0">Data consumed</h6><span class="text-gray">145,14 GB</span>
-                        </div>
+	            		<div class="text">
+	                            <h6 class="mb-0">Data consumed</h6>
+	                   
+	                            <span class="text-gray">${index_admin}</span>
+	                  
+	                        </div>
                     </div>
                     <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
                 </div>

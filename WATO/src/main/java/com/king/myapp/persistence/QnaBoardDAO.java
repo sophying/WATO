@@ -43,4 +43,6 @@ public interface QnaBoardDAO {
 	public void insertFile(Map<String, Object> map) throws Exception;
 
 	public int listCount() throws Exception;
+
+    public int board_this_month_Count() throws Exception;
 }

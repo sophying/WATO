@@ -19,7 +19,18 @@
   <thead>
   <tr>	
   	<td>
-  		현재 로그인 사용자 : &nbsp;&nbsp;&nbsp;${std.user_Id }
+  		<c:choose>
+	  	<c:when test="${teach == null}&&${std == null}">
+	  		로그인을 하십시오.
+	  	</c:when>
+	  	<c:when test="${teach != null}">
+	  		현재 사용자 : ${teach.user_Id}
+	  	</c:when>
+	  	<c:when test="${std != null}">
+	  		현재 사용자 : ${std.user_Id}
+	  	</c:when>
+
+	  </c:choose>
   	</td>
   </tr>
     <tr>

@@ -477,7 +477,7 @@ $(function () {
             ],
             datasets: [
                 {
-                    data: [300, 50, 100, 80],
+                    data: [290, 50, 100, 80],
                     borderWidth: 0,
                     backgroundColor: [
                         green,

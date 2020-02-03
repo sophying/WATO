@@ -39,4 +39,6 @@ public interface QnaBoardService {
 	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
 
 	public int listCount() throws Exception;
+
+    public int board_this_month_Count() throws Exception;
 }

@@ -19,7 +19,6 @@
 create table std_info(
    No varchar2(10) DEFAULT 10,
    std_orgname varchar2(2000),
-   std_newname varchar2(2000),
    user_id varchar2(20),   
    user_pwd varchar2(30),
    std_gender varchar2(20),
