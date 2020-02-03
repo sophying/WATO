@@ -8,9 +8,12 @@ import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.BoardVO;
 import com.king.myapp.domain.MainLangugeRankVO;
+import com.king.myapp.domain.QnaBoardVO;
+import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.StudyListFilter;
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 
 
 @Repository
@@ -34,11 +37,11 @@ public class BoardDAOImpl implements BoardDAO{
 		return sql.selectList("board.searchResultStudy",searchKey);
 	}
 	@Override
-	public List<BoardVO> searchResultTeacher(String searchKey) throws Exception {
+	public List<TeacherEnrollVO> searchResultTeacher(String searchKey) throws Exception {
 		return sql.selectList("board.searchResultTeacher",searchKey);
 	}
 	@Override
-	public List<TeacherEnrollVO> searchResultQna(String searchKey) throws Exception {
+	public List<QnaBoardVO> searchResultQna(String searchKey) throws Exception {
 		return sql.selectList("board.searchResultQna",searchKey);
 	}
 	@Override
@@ -92,7 +95,14 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 	@Override
 	public TeacherEnrollVO searchT_no(int s_no) throws Exception {
-		return sql.selectOne("board.searchT_no",s_no);
+		return sql.selectOne("board.searchT_no",s_no); 
 	}
-	
+	@Override
+	public List<StudentParticipationVO> myenrollstudent(int s_no) throws Exception {
+		return sql.selectList("board.myenrollstudent", s_no);
+	}
+	@Override
+	public List<TeacherParticipationVO> myenrollteach(int t_no) throws Exception {
+		return sql.selectList("board.myenrollteach",t_no);
+	}
 }

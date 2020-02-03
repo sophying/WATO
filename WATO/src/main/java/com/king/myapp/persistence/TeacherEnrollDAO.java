@@ -3,6 +3,7 @@ package com.king.myapp.persistence;
 import java.util.List;
 
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.domain.TeacherReplyVO;
 
 public interface TeacherEnrollDAO {
@@ -32,14 +33,17 @@ public interface TeacherEnrollDAO {
 	// 댓글 등록
 	public void replyInsert(TeacherReplyVO replyVO) throws Exception;
 
-	// 삭제
+	// 강의 삭제
 	public void classDelete(int t_no) throws Exception;
 
-
+    // 댓글 수정
 	public void replyUpdate(TeacherReplyVO replyVO) throws Exception;
 
-
+    // 댓글 삭제
 	public void DeleteReply(int r_no) throws Exception;
+
+	// 강의 참여자 확인 
+	public List<TeacherParticipationVO> aprroveByTeach(int t_no) throws Exception;
 
 
 
