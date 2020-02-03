@@ -291,6 +291,10 @@ $(function () {
     // Bar Chart
     // ------------------------------------------------------ //
     var BARCHARTEXMPLE    = $('#barChartExample1');
+    
+    
+    
+    
     var barChartExample = new Chart(BARCHARTEXMPLE, {
         type: 'bar',
         options: {
@@ -373,92 +377,6 @@ $(function () {
             ]
         }
     });
-
-
-
-    // ------------------------------------------------------- //
-    // Doughnut Chart
-    // ------------------------------------------------------ //
-    
-    var DOUGHNUTCHARTEXMPLE  = $('#doughnutChartExample');
-    var pieChartExample = new Chart(DOUGHNUTCHARTEXMPLE, {
-        type: 'doughnut',
-        options: {
-            cutoutPercentage: 80,
-        },
-        data: {
-            labels: [
-                "학생",
-                "강사",
-            ],
-            datasets: [
-                {
-                    data: [250, 50, 100, 40],
-                    borderWidth: 0,
-                    backgroundColor: [
-                        '#df99ca',
-                        '#c374ab',
-                        "#a44e8a",
-                        "#81376a"
-                    ],
-                    hoverBackgroundColor: [
-                        '#df99ca',
-                        '#c374ab',
-                        "#a44e8a",
-                        "#81376a"
-                    ]
-                }]
-            }
-    });
-
-    var pieChartExample = {
-        responsive: true
-    };
-
-
-
-    // ------------------------------------------------------- //
-    // Polar Chart
-    // ------------------------------------------------------ //
-    var POLARCHARTEXMPLE  = $('#polarChartExample');
-    var polarChartExample = new Chart(POLARCHARTEXMPLE, {
-        type: 'polarArea',
-        options: {
-            elements: {
-                arc: {
-                    borderWidth: 0,
-                    borderColor: '#aaa'
-                }
-            }
-        },
-        data: {
-            datasets: [{
-                data: [
-                    7,
-                    16,
-                    12,
-                    11
-                ],
-                backgroundColor: [
-                    green,
-                    "#6adf8a",
-                    "#50c670",
-                    "#3fac5c"
-                ],
-                label: 'My dataset' // for legend
-            }],
-            labels: [
-                "A",
-                "B",
-                "C",
-                "D"
-            ]
-        }
-    });
-
-    var polarChartExample = {
-        responsive: true
-    };
 
 
     // ------------------------------------------------------- //
@@ -549,3 +467,86 @@ $(function () {
 
 });
 
+//------------------------------------------------------- //
+// Doughnut Chart
+// ------------------------------------------------------ //
+
+var DOUGHNUTCHARTEXMPLE  = $('#doughnutChartExample');
+var pieChartExample = new Chart(DOUGHNUTCHARTEXMPLE, {
+    type: 'doughnut',
+    options: {
+        cutoutPercentage: 80,
+    },
+    data: {
+        labels: [
+            "a",
+            "b",
+        ],
+        datasets: [
+            {
+                data: [250, 50, 100, 40],
+                borderWidth: 0,
+                backgroundColor: [
+                    '#df99ca',
+                    '#c374ab',
+                    "#a44e8a",
+                    "#81376a"
+                ],
+                hoverBackgroundColor: [
+                    '#df99ca',
+                    '#c374ab',
+                    "#a44e8a",
+                    "#81376a"
+                ]
+            }]
+        }
+});
+
+var pieChartExample = {
+    responsive: true
+};
+
+
+
+// ------------------------------------------------------- //
+// Polar Chart
+// ------------------------------------------------------ //
+var POLARCHARTEXMPLE  = $('#polarChartExample');
+var polarChartExample = new Chart(POLARCHARTEXMPLE, {
+    type: 'polarArea',
+    options: {
+        elements: {
+            arc: {
+                borderWidth: 0,
+                borderColor: '#aaa'
+            }
+        }
+    },
+    data: {
+        datasets: [{
+            data: [
+                7,
+                16,
+                12,
+                11
+            ],
+            backgroundColor: [
+                green,
+                "#6adf8a",
+                "#50c670",
+                "#3fac5c"
+            ],
+            label: 'My dataset' // for legend
+        }],
+        labels: [
+            "A",
+            "B",
+            "C",
+            "D"
+        ]
+    }
+});
+
+var polarChartExample = {
+    responsive: true
+};
