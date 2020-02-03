@@ -7,6 +7,7 @@ public class StdVO {
 	private String No;
 	private MultipartFile Std_Profile;
 	private String Std_Orgname;
+	private String Std_Newname;
 	private String User_Id;
 	private String User_Pwd;
 	private String Std_Gender;
@@ -35,6 +36,12 @@ public class StdVO {
 	}
 	public void setStd_Orgname(String std_Orgname) {
 		Std_Orgname = std_Orgname;
+	}
+	public String getStd_Newname() {
+		return Std_Newname;
+	}
+	public void setStd_Newname(String std_Newname) {
+		Std_Newname = std_Newname;
 	}
 	public String getUser_Id() {
 		return User_Id;
