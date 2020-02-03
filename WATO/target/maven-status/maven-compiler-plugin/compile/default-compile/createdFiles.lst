@@ -57,7 +57,6 @@ com\king\myapp\service\QnaReplyService.class
 com\king\myapp\controller\StudyenrollController.class
 com\king\myapp\controller\MyWebAppInitializer.class
 com\king\myapp\service\StudentParticipationServiceImpl.class
-com\king\myapp\domain\LeaderReVO.class
 com\king\myapp\domain\BoardVO.class
 com\king\myapp\service\BoardServiceImpl.class
 com\king\myapp\persistence\StdDAOImpl.class

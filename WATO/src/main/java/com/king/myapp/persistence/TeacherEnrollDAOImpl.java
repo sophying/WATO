@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.TeacherEnrollVO;
+import com.king.myapp.domain.TeacherParticipationVO;
 import com.king.myapp.domain.TeacherReplyVO;
 
 @Repository
@@ -73,6 +74,12 @@ public class TeacherEnrollDAOImpl implements TeacherEnrollDAO {
 	@Override
 	public void DeleteReply(int r_no) throws Exception {
 		sql.delete("study.r_delete",r_no);
+	}
+
+
+	@Override
+	public List<TeacherParticipationVO> aprroveByTeach(int t_no) throws Exception {
+		return sql.selectList("study.t_aprroveByTeach",t_no);
 	}
 
 

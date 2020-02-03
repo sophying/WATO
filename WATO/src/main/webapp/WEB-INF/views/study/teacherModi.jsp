@@ -505,28 +505,28 @@
         </div>
       </div>
     </div>
-        <div class="form-group container-fluid">
+       <div class="form-group container-fluid d-inline-block">
       <div class="card">
-        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
+        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-3 control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
           <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
            <div class="card-body">
              <div class="input-group d-flex justify-content-center">
-				<span class="input-group-addon"></span>
-	          	<label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">자격증 </label>&nbsp;&nbsp;
-					<select name="t_license" class="selectpicker form-control">
-					  <option value="ocjp" selected="selected">OCJP</option>
-					  <option value="리눅스마스터">리눅스마스터</option>
-					  <option value="네트워크관리사">네트워크 관리사</option>
-					  <option value="정보보안기사">정보 보안 기사</option>
-					  <option value="정보보안산업기사">정보 보안 산업기사</option>
-					  <option value="정보처리기사">정보처리기사</option>
-					  <option value="정보처리산업기사">정보처리 산업기사</option>
-					</select>
+            <span class="input-group-addon"></span>
+                <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">자격증 </label>&nbsp;&nbsp;
+               <select name="t_license" class="selectpicker form-control">
+                 <option value="ocjp" selected="selected">OCJP</option>
+                 <option value="리눅스마스터">리눅스마스터</option>
+                 <option value="네트워크관리사">네트워크 관리사</option>
+                 <option value="정보보안기사">정보 보안 기사</option>
+                 <option value="정보보안산업기사">정보 보안 산업기사</option>
+                 <option value="정보처리기사">정보처리기사</option>
+                 <option value="정보처리산업기사">정보처리 산업기사</option>
+               </select>
              </div> 
            </div>
          </div>
       </div>
-  	</div>
+     </div>
   </div>       
 <!-- // 스터디 기간 설정  -->
 <!-- // 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
@@ -539,27 +539,27 @@
           <div class="card-body">
                     <div class="form-group">
                         <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
-                          		<label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
-	                                 <span class="input-group-addon"></span>
-	 									<select name="t_level" id="select-box" class="selectpicker form-control w-50" >
-										  <option value="입문">입문</option>
-										  <option value="초급">초급</option>
-										  <option value="중급">중급</option> 
-										  <option value="고급">고급</option> 
-										</select> 
-                          		<label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
-	                                 <span class="input-group-addon"></span>
-<!-- t_people --> 	       			<input type="text" class="form-control"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="t_people" id="t_people" value="${listOne.t_people }" placeholder="숫자를 사용해주세요!" />
-	               	
-                      	 </div> 
+                                <label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
+                                    <span class="input-group-addon"></span>
+                               <select name="t_level" id="select-box" class="selectpicker form-control w-50" >
+                                <option value="입문">입문</option>
+                                <option value="초급">초급</option>
+                                <option value="중급">중급</option> 
+                                <option value="고급">고급</option> 
+                              </select> 
+                                <label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
+                                    <span class="input-group-addon"></span>
+<!-- t_people -->                    <input type="text" class="form-control"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="t_people" id="t_people" value="${listOne.t_people }" placeholder="숫자를 사용해주세요!" />
+                     
+                          </div> 
                       </div>
                       <div class="form-group">
                           <label for="category" class="cols-sm-2 control-label font-weight-bold">카테고리</label>
                           <label id="t_category" class="cols-sm-2 control-label font-weight-bold"></label>
                           <div class="cols-sm-10">
                             <div class="input-group">
-	                           <span class="input-group-addon"></span>
- <!-- category 주제 -->	       <input type="text" class="form-control" name="t_category" id="category" value="${listOne.t_category }"placeholder="과목 카테고리를 알려주세요!" />
+                              <span class="input-group-addon"></span>
+ <!-- category 주제 -->          <input type="text" class="form-control" name="t_category" id="category" value="${listOne.t_category }"placeholder="과목 카테고리를 알려주세요!" />
                         </div>
                       </div>
                       </div>
@@ -571,7 +571,7 @@
                              <div class="cols-sm-10">
                                 <div class="input-group">
                                  <span class="input-group-addon"></span>
- <!-- title 주제 -->               <input type="text" class="form-control" name="t_title"  value="${listOne.t_title }" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
+ <!-- title 주제 -->               <input type="text" class="form-control" name="t_title"  value="${listOne.t_title }" id="stitle" placeholder="강의 주제를 알려주세요!" />
                                 </div>
                              </div>
                       </div>
@@ -580,22 +580,20 @@
 
                        <!-- kakao map api(카카오 지도) -->
                    <div class="form-group">
-                       <label for="sPlace" class="cols-sm-2 control-label font-weight-bold">스터디 장소
-                       	<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
-      					</label>              
-                   </div>
-                   
-                        <input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
+                       <label for="sPlace" class="cols-sm-2 control-label font-weight-bold">강의 장소
+                          <small>장소를 알려주세요!</small>
+                     </label>              
+                        <input type="button" class="btn btn-primary box pull-right" value="주소 검색" onclick="execDaumPostcode()">
                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
                             
-								<!--  post 우편번호 -->            
-            					<input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" value="${listOne.t_postnum }" required>
-  							  </div>
+                        <!--  post 우편번호 -->            
+                           <input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" value="${listOne.t_postnum }" required>
+                         </div>
                             </div>
                             
-						  <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
+                    <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -603,7 +601,7 @@
                             </div>
                           </div>
                           
-						  <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
+                    <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -611,7 +609,7 @@
                            </div>
                           </div>
                           
- 						  <!-- 참고항목 -->                         
+                     <!-- 참고항목 -->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -619,33 +617,33 @@
                            </div>
                           </div>
                           
-					      <%--주소 검색 iframe wrap 공간--%>
+                     <%--주소 검색 iframe wrap 공간--%>
                           <div class="cols-sm-10 mb-1">
-                       	 	<div class="input-group">
-								<div id="wrap" style="display:none;
-											border:1px solid;
-											width:500px;
-											height:300px;
-											margin:5px 0;
-											position:relative">
-    						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
-    							 style="cursor:pointer;
-    							 position:absolute;
-    							 right:0px;
-    							 top:-1px;
-    							 z-index:1" 
-    							 onclick="foldDaumPostcode()" alt="접기 버튼">
-    							</div>
-							</div>
+                              <div class="input-group">
+                        <div id="wrap" style="display:none;
+                                 border:1px solid;
+                                 width:500px;
+                                 height:300px;
+                                 margin:5px 0;
+                                 position:relative">
+                      <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
+                          style="cursor:pointer;
+                          position:absolute;
+                          right:0px;
+                          top:-1px;
+                          z-index:1" 
+                          onclick="foldDaumPostcode()" alt="접기 버튼">
+                         </div>
+                     </div>
                           </div>
     
     
-    					<%--kakao map API (카카오 지도 담는 영역)--%>
-                    	<div class="cols-sm-10 mb-1">
-                    		<div class="input-group">
-								<div id="map" style="width: 100%; height: 300px;"></div>
-							</div>
-						</div>  
+                   <%--kakao map API (카카오 지도 담는 영역)--%>
+                       <div class="cols-sm-10 mb-1">
+                          <div class="input-group">
+                        <div id="map" style="width: 100%; height: 300px;"></div>
+                     </div>
+                  </div>  
                     </div>
 <%--kakao map API (카카오 지도) 끝--%>
                     
@@ -653,7 +651,7 @@
                         <label for="info" class="cols-sm-2 control-label font-weight-bold">강사님을 소개해주세요!</label>
                            <div class="cols-sm-10 " >
                              <div class="md-form" id="inputHtml">
-	 <!-- t_intro -->               <textarea name="t_intro" class="md-textarea form-control" rows="10" placeholder="편하게 나를 어필해주세요!">${listOne.t_intro }</textarea>
+    <!-- t_intro -->               <textarea name="t_intro" class="md-textarea form-control" rows="10" placeholder="편하게 나를 어필해주세요!">${listOne.t_intro }</textarea>
                              </div>
                            </div>
                     </div>
@@ -661,22 +659,22 @@
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">상세내용</label>
                            <div class="cols-sm-10">
                              <div class="md-form">
-	 <!-- t_content -->               <textarea id="form7" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!">
-	 									${listOne.t_content }
-	 								  </textarea>
+    <!-- t_content -->               <textarea id="form7" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!">
+                               ${listOne.t_content }
+                              </textarea>
                              </div>
                            </div>
                     </div>
                     
                     <div class="form-group">
  <!-- t_price -->      <label for="t_price" class="cols-sm-2 control-label font-weight-bold">수강 참여비</label>
- 					   <label id="price-Text" class="cols-sm-2 control-label font-weight-bold"></label>
+                   <label id="price-Text" class="cols-sm-2 control-label font-weight-bold"></label>
                         <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
-	                            <span class="input-group-addon"></span>
-	                            <input type="text" class="form-control mr-3" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="t_price" id="t_price" value="${listOne.t_price }" placeholder="합리적인 참여비를 작성해주세요" />     
-                          		<label class="pt-1 mt-1 control-label font-weight-bold w-25">&nbsp;&nbsp;&nbsp;원</label>
-	                                 
-                      	 </div>
+                               <span class="input-group-addon"></span>
+                               <input type="text" class="form-control mr-3" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="t_price" id="t_price" value="${listOne.t_price }" placeholder="합리적인 참여비를 작성해주세요" />     
+                                <label class="pt-1 mt-1 control-label font-weight-bold w-25">&nbsp;&nbsp;&nbsp;원</label>
+                                    
+                          </div>
                       </div>
                     <div class="form-group">
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">영상  URL 등록 </label>
@@ -692,15 +690,13 @@
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${teach.user_Id }">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
- 							<input type="hidden" name="t_no" value="${listOne.t_no }"/>
+                      <input type="hidden" name="t_no" value="${listOne.t_no }"/>
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
-          </div> 
-        </div> 
+             </div>
       </div>
     </div> <!-- 2-->
     </form>
-</div><!--  1 -->
 </nav>
 <div id="blog-homepage" class="box row mb-0">
     <div class="container">
@@ -1211,6 +1207,7 @@ function AddComma(dataValue) {
 
 		  $('#img_btn_0').on({'click': function(){
 		        $('#input_img').attr('src',img0);
+		        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
 		        document.getElementById("category").value = "직접입력";
 		     }
 		 });

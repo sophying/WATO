@@ -77,6 +77,26 @@ public interface StudentParticipationService {
 	// 강사 강의 목차 
 	List<TeacherEnrollVO> getTeachClassList(TeachVO teach) throws Exception;
 
+	List<TeacherParticipationVO> aprroveByTeach(int t_no) throws Exception;
+
+	void partiusercomplete(StudentParticipationVO user) throws Exception;
+
+	List<StudentParticipationVO> selectparticomplete(int s_no) throws Exception;
+
+	void t_partiusercomplete(TeacherParticipationVO user) throws Exception;
+
+	List<TeacherParticipationVO> t_selectparticomplete(int t_no) throws Exception;
+
+	StudentParticipationVO partiCheck2(Map<String, Object> map) throws Exception;
+
+	TeacherParticipationVO t_partiCheck2(Map<String, Object> map) throws Exception;
+
+	List<StudyEnrollVO> getwaitingstudy(String stduserid) throws Exception;
+
+	List<TeacherEnrollVO> getwaitingclass(String stduserid) throws Exception;
+
+	void waitngstudydelete(Map<String, Object> map) throws Exception;
+
 
 
 

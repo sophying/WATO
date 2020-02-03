@@ -25,7 +25,7 @@ S_INTRO                  VARCHAR2(3000)
 S_VIEWCNT                NUMBER         
 S_PARTI                  NUMBER         
 S_BNO_LIKECNT            NUMBER         
-S_PROFILE                VARCHAR2(300)  
+S_ORGNAME                VARCHAR2(300)  
 STARSCORE                NUMBER         
 STARSCORE_PARTI          NUMBER   
 

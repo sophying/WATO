@@ -3,7 +3,6 @@ package com.king.myapp.persistence;
 import java.util.List;
 import java.util.Map;
 
-import com.king.myapp.domain.LeaderReVO;
 import com.king.myapp.domain.StudentParticipationVO;
 import com.king.myapp.domain.StudentReReplyVO;
 import com.king.myapp.domain.StudentReplyVO;
@@ -44,8 +43,6 @@ public interface StudyEnrollDAO {
 
 	public StudentParticipationVO partiCheck(StudentParticipationVO partiVO)throws Exception;
 
-	// 리더의 답변하기 
-	public void leaderReInsert(LeaderReVO leaderReVO) throws Exception;
 
 	// 댓글 불러오기 
 	public List<StudentReReplyVO> reReplyRead(int s_no) throws Exception;
