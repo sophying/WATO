@@ -703,6 +703,30 @@ function infoCheck() {
    		});
    	})
       
+      $( function(){
+   		$( '#userPw' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#userPwChk' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#Std_Phone2' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#Std_Phone3' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
       
       $('#User_Id').blur(function() {
          if (idJ.test($('#User_Id').val())) {

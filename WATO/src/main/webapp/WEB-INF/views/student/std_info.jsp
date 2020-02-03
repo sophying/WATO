@@ -438,11 +438,11 @@
 			                <tr>
 			                    <th>휴대폰 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 			                    <td>
-			                    <input type="text" id="app_Phone1" name="Std_Phone1" value="${std.std_Phone1}" size="15" maxlength="3"/>
+			                    <input type="text" id="Std_Phone1" name="Std_Phone1" value="${std.std_Phone1}" size="15" maxlength="3"/>
 			                    -
-			                    <input type="text" id="app_Phone3" name="Std_Phone2" value="${std.std_Phone2}" size="15" maxlength="4"/>
+			                    <input type="text" id="Std_Phone2" name="Std_Phone2" value="${std.std_Phone2}" size="15" maxlength="4"/>
 			                    -
-			                    <input type="text" id="app_Phone3" name="Std_Phone3" value="${std.std_Phone3}" size="15" maxlength="4"/>
+			                    <input type="text" id="Std_Phone3" name="Std_Phone3" value="${std.std_Phone3}" size="15" maxlength="4"/>
 			                    <br><div style="display: inline-block;" id="ph_check"></div>
 			                    </td>
 			                </tr>
@@ -677,9 +677,38 @@ _________________________________________________________
     // 비밀번호 정규식
     var pwJ = /^[A-Za-z0-9]{4,12}$/;
 
-    // 휴대폰번호 정규식
+    // 휴대폰번호 정규식___________________________________________________________________________
     var phJ = /^[0-9]{4,4}$/;
     
+    $( function(){
+ 		$( '#userPw' ).on("blur keyup", function() {
+ 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+ 		});
+ 	})
+    
+    $( function(){
+ 		$( '#userPwChk' ).on("blur keyup", function() {
+ 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+ 		});
+ 	})
+    
+    $( function(){
+ 		$( '#Std_Phone1' ).on("blur keyup", function() {
+ 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+ 		});
+ 	})
+    
+    $( function(){
+ 		$( '#Std_Phone2' ).on("blur keyup", function() {
+ 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+ 		});
+ 	})
+    
+    $( function(){
+ 		$( '#Std_Phone3' ).on("blur keyup", function() {
+ 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+ 		});
+ 	})
 
     $('#userPw').blur(function() {
        
@@ -698,7 +727,7 @@ _________________________________________________________
     });
     
     
-    // 패스워드 일치 확인
+    // 패스워드 일치 확인___________________________________________________________________________
     $('#userPwChk').blur(function() {
              
        if ($('#userPw').val() != $(this).val()) {

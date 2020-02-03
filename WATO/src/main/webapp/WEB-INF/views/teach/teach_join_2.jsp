@@ -691,7 +691,20 @@ function infoCheck() {
 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
 		});
 	})
-   
+         
+      $( function(){
+   		$( '#userPw' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#userPwChk' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+   	
+      
    $('#User_Id').blur(function() {
       if (idJ.test($('#User_Id').val())) {
          console.log('true');

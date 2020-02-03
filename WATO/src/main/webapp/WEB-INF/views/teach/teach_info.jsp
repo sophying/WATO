@@ -730,6 +730,35 @@ _________________________________________________________
 	    // 휴대폰번호 정규식
 	    var phJ = /^[0-9]{4,4}$/;
 	    
+	    $( function(){
+	 		$( '#userPw' ).on("blur keyup", function() {
+	 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+	 		});
+	 	})
+	    
+	    $( function(){
+	 		$( '#userPwChk' ).on("blur keyup", function() {
+	 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+	 		});
+	 	})
+	    
+	    $( function(){
+	 		$( '#Teach_Phone1' ).on("blur keyup", function() {
+	 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+	 		});
+	 	})
+	    
+	    $( function(){
+	 		$( '#Teach_Phone2' ).on("blur keyup", function() {
+	 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+	 		});
+	 	})
+	    
+	    $( function(){
+	 		$( '#Teach_Phone3' ).on("blur keyup", function() {
+	 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+	 		});
+	 	})
 
 	    $('#userPw').blur(function() {
 	       

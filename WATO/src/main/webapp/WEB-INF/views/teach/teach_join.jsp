@@ -700,6 +700,19 @@ function infoCheck() {
    var phJ = /^[0-9]{4,4}$/;
    
    
+   $( function(){
+		$( '#app_Phone2' ).on("blur keyup", function() {
+			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+		});
+	})
+   
+   $( function(){
+		$( '#app_Phone3' ).on("blur keyup", function() {
+			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+		});
+	})
+   
+   
    $('#app_Phone2').blur(function() {
 	   if (phJ.test($('#app_Phone2').val())) {
 		   console.log('true');
