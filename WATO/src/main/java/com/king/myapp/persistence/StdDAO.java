@@ -16,4 +16,7 @@ public interface StdDAO {
 	// 학생 정보 회원관리로
 	public void admin_mng(StdVO vo) throws Exception;
 
+	// 이메일 중복체크
+	public int emailChk(StdVO vo) throws Exception;
+
 }

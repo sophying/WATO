@@ -19,6 +19,7 @@ import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.king.myapp.domain.ApprovalVO;
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 import com.king.myapp.service.TeachService;
 
@@ -48,41 +49,62 @@ public class TeachController implements ServletContextAware {
 
 	// 강사 회원 가입 POST
 	@RequestMapping(value = "/teach_join", method = RequestMethod.POST)
-	public String postRegister(ApprovalVO vo) throws Exception {
+	public void postRegister(ApprovalVO vo, TeachVO tvo, HttpServletResponse response) throws Exception {
 		logger.info("post teach_join");
+		
+		int result = service.emailChk(tvo);
+		
+		try {
+			if (result == 1) {
 
-		// 파일 업로드 체크
-		MultipartFile f = vo.getApp_Profile();
-		if (!f.isEmpty()) { // 파일 업로드가 됐다면
-			String app_Orgname = f.getOriginalFilename();
-			String app_Newname = app_Orgname;
-			String path = servletContext.getRealPath("/resource/images");
-			System.out.println("path : " + path);
-			File file = new File(path + File.separator + app_Newname);
-			vo.setApp_Orgname(app_Orgname);
-			vo.setApp_Orgname(app_Newname);
-			f.transferTo(file);
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('중복된 이메일입니다. 새로 입력해주세요.'); location.href='http://localhost:8080/teach/teach_join?terms1=on&terms2=on';</script>");
+				out.flush();
+				
+			} else if (result == 0) {
+				
+				// 파일 업로드 체크
+				MultipartFile f = vo.getApp_Profile();
+				if (!f.isEmpty()) { // 파일 업로드가 됐다면
+					String app_Orgname = f.getOriginalFilename();
+					String app_Newname = app_Orgname;
+					String path = servletContext.getRealPath("/resource/images");
+					System.out.println("path : " + path);
+					File file = new File(path + File.separator + app_Newname);
+					vo.setApp_Orgname(app_Orgname);
+					vo.setApp_Orgname(app_Newname);
+					f.transferTo(file);
+				}
+				
+				// 파일 업로드 체크2
+				MultipartFile f2 = vo.getApp_Resume();
+				if (!f2.isEmpty()) { // 파일 업로드가 됐다면
+					String app_Orgname2 = f2.getOriginalFilename();
+					String app_Newname2 = app_Orgname2;
+					String path = servletContext.getRealPath("/resource/images");
+					System.out.println("path : " + path);
+					File file2 = new File(path + File.separator + app_Newname2);
+					vo.setApp_Orgname2(app_Orgname2);
+					vo.setApp_Newname2(app_Newname2);
+					f2.transferTo(file2);
+				}
+				
+				service.teach_join(vo);
+				
+				service.admin_mng1(vo);
+				logger.info("강사정보 회원관리에 추가");
+				
+			}
+		} catch (Exception e) {
+			throw new RuntimeException();
 		}
-		
-		// 파일 업로드 체크2
-		MultipartFile f2 = vo.getApp_Resume();
-		if (!f2.isEmpty()) { // 파일 업로드가 됐다면
-			String app_Orgname2 = f2.getOriginalFilename();
-			String app_Newname2 = app_Orgname2;
-			String path = servletContext.getRealPath("/resource/images");
-			System.out.println("path : " + path);
-			File file2 = new File(path + File.separator + app_Newname2);
-			vo.setApp_Orgname2(app_Orgname2);
-			vo.setApp_Newname2(app_Newname2);
-			f2.transferTo(file2);
-		}
-		
-		service.teach_join(vo);
-		
-		service.admin_mng1(vo);
-		logger.info("강사정보 회원관리에 추가");
 
-		return "redirect:/";
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		out.println("<script>alert('승인신청이 완료되었습니다. 관리자의 승인을 기다려주세요.'); location.href='http://localhost:8080/';</script>");
+		out.flush();
+		
 	}
 	
 	// 강사 회원 가입2 get
@@ -103,7 +125,7 @@ public class TeachController implements ServletContextAware {
 				
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('중복된 아이디입니다. 새로 입력해주세요.'); location.href='http://localhost:8080/student/std_join?terms1=on&terms2=on';</script>");
+				out.println("<script>alert('중복된 아이디입니다. 새로 입력해주세요.'); location.href='http://localhost:8080/teach/teach_join_2?terms1=on&terms2=on&terms3=on';</script>");
 				out.flush();
 			} else if (result == 0) {
 				
@@ -129,6 +151,14 @@ public class TeachController implements ServletContextAware {
 	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
 	public int idChk(TeachVO vo) throws Exception {
 		int result = service.idChk(vo);
+		return result;
+	}
+	
+	// 이메일 중복 체크
+	@ResponseBody
+	@RequestMapping(value = "/emailChk", method = RequestMethod.POST)
+	public int emailChk(TeachVO vo) throws Exception {
+		int result = service.emailChk(vo);
 		return result;
 	}
 	

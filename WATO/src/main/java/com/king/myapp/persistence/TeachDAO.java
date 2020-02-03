@@ -1,6 +1,7 @@
 package com.king.myapp.persistence;
 
 import com.king.myapp.domain.ApprovalVO;
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 
 public interface TeachDAO {
@@ -16,6 +17,9 @@ public interface TeachDAO {
 	
 	// 아이디 중복체크
 	public int idChk(TeachVO vo) throws Exception;
+	
+	// 이메일 중복체크
+	public int emailChk(TeachVO vo) throws Exception;
 
 	// 로그인
 	public TeachVO login(TeachVO vo) throws Exception;

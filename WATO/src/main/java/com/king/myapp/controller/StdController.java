@@ -52,6 +52,7 @@ public class StdController implements  ServletContextAware {
 		logger.info("post std_join");
 		
 		int result = service.idChk(vo);
+		int result2 = service.emailChk(vo);
 		
 		try {
 			if (result == 1) {
@@ -61,7 +62,14 @@ public class StdController implements  ServletContextAware {
 				out.println("<script>alert('중복된 아이디입니다. 새로 입력해주세요.'); location.href='http://localhost:8080/student/std_join?terms1=on&terms2=on';</script>");
 				out.flush();
 				
-			} else if(result == 0) {
+			} else if (result2 == 1) {
+				
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('중복된 이메일입니다. 새로 입력해주세요.'); location.href='http://localhost:8080/student/std_join?terms1=on&terms2=on';</script>");
+				out.flush();
+				
+			} else if (result == 0 && result2 == 0) {
 				
 				// 파일 업로드 체크
 				MultipartFile f = vo.getStd_Profile();
@@ -97,6 +105,14 @@ public class StdController implements  ServletContextAware {
 	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
 	public int idChk(StdVO vo) throws Exception {
 		int result = service.idChk(vo);
+		return result;
+	}
+	
+	// 이메일 중복 체크
+	@ResponseBody
+	@RequestMapping(value = "/emailChk", method = RequestMethod.POST)
+	public int emailChk(StdVO vo) throws Exception {
+		int result = service.emailChk(vo);
 		return result;
 	}
 
