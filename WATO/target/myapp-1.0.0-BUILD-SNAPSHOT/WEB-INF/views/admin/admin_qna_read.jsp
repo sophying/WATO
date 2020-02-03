@@ -115,7 +115,6 @@
             <div class="form-group">
                 <button type="button" id="list_btn" class="btn btn-primary">
                     <a style="color: white;" href="/admin/admin_qna_list">목록</a></button>
-                <a href="#" onclick="modify_btn()" class="btn btn-warning" style="color: white;">수정</a>
                 <a href="#" onclick="Deletefunct()" class="btn btn-danger" style="color: white;">삭제</a>
             </div>
             <span>파일 목록</span>

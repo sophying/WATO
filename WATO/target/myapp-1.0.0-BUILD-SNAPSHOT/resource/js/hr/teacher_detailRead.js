@@ -1,8 +1,6 @@
-// 조건  _______________________
-
-
-
 // Q&A 작성시 글자 수 제한 
+
+
 $("#r_content").keyup(function (event) {
 	var content1 = $(this).val();
 	$('#cnttxt1').html("("+content1.length+" / 최대 200 자)");
@@ -14,18 +12,7 @@ $("#r_content").keyup(function (event) {
 		$('#cnttxt1').html("(200 / 최대 200 자)");
 	}
 });
-$("#r_content2").keyup(function (event) {
-	var content1 = $(this).val();
-	$('#cnttxt2').html("("+content1.length+" / 최대 200 자)");
-	
-	if (content1.length > 200) {
-		alert("최대 200자까지 입력 가능합니다.");
-		
-		$(this).val(content1.substring(0, 200));
-		$('#cnttxt2').html("(200 / 최대 200 자)");
-	}
-});
- 
+
  
 // textarea 자동 높이 조절 
 function resize(obj) {
@@ -53,13 +40,13 @@ function clickEvnet(event) {
 function clickEvnet2(event){
 	if ($(event).val()== "수정하기") {
 		$(event).val("수정등록");
-		$(event).prev().attr('readonly', false);
-		$(event).prev().css("background-color", "#ddddee33");
+		$(event).parent().children().attr('readonly', false);
+		$(event).parent().children().css("background-color", "#ddddee33");
 		
 	}else if ($(event).val()== "수정등록") {
 		$(event).val("수정하기");
-		$(event).prev().attr('readonly', true);
-		$(event).prev().css("background-color", "#fff");
+		$(event).parent().children().attr('readonly', true);
+		$(event).parent().children().css("background-color", "#fff");
 		$(".updateform").attr("action","/study/modireply");
 		$('.updateform').submit();
 	}
@@ -76,7 +63,7 @@ function deleteRe2(obj) {
 }
 
 
-  
+ 
 
 
 

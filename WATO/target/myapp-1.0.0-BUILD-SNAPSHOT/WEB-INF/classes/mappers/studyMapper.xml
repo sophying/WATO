@@ -7,9 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- +++++++++++++++++++++++++++[ ↓↓↓↓↓↓↓↓↓  학생 테이블  쿼리   ↓↓↓↓↓↓↓↓ ]++++++++++++++++++++++++++++++++++ -->	
 
 <!-- 1. 모집글 등록 -->
-	<insert id="s_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO">
-	insert into S_ENROLL (S_NO, S_USERID, S_CATEGORY , S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT, S_PHOTO, S_LEVEL, S_PEOPLE, S_PARTI, S_CREADATE, S_INTRO)
-	values( S_ENROLL_SEQ.nextval , #{s_userId}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_photo},#{s_level}, #{s_people} , #{s_parti}, SYSDATE, #{s_intro} )
+	<insert id="s_enroll" parameterType="com.king.myapp.domain.StudyEnrollVO"> 
+	insert into S_ENROLL (S_NO, S_USERID, S_CATEGORY , S_TITLE, S_STARTDATE, S_ENDDATE, S_DAY, S_POSTNUM, S_PLACE, S_CONTENT, S_PHOTO, S_LEVEL, S_PEOPLE, S_PARTI, S_CREADATE, S_INTRO,STD_ORGNAME) 
+	values( S_ENROLL_SEQ.nextval , #{s_userId}, #{s_category}, #{s_title}, #{s_startDate}, #{s_endDate}, #{s_day}, #{s_postnum}, #{s_place}, #{s_content}, #{s_photo},#{s_level}, #{s_people} , #{s_parti}, SYSDATE, #{s_intro}, #{std_orgname} )
 <!-- 		insert into studytest_1 (bno, userid, category, title, regdate, place, content, photo)
 		values((select nvl(max(bno)+1, 1) from studytest_1), #{userId}, #{category}, #{title}, #{regDate}, #{place}, #{content}, #{photo}) -->
 	</insert>
@@ -110,8 +110,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 <!-- 1. 강의 글 등록  -->
 	<insert id="t_enroll" parameterType="com.king.myapp.domain.TeacherEnrollVO">
-		insert into T_ENROLL (T_NO, T_USERID, T_CATEGORY, T_TITLE, T_STARTDATE, T_ENDDATE, T_DAY, T_POSTNUM, T_PLACE, T_CONTENT,T_PRICE, T_URL, T_PHOTO, T_LICENSE, T_LEVEL, T_PEOPLE ,T_CREADATE, T_INTRO)
-		values (T_ENROLL_SEQ.nextval, #{t_userId}, #{t_category}, #{t_title}, #{t_startDate}, #{t_endDate}, #{t_day}, #{t_postnum}, #{t_place}, #{t_content}, #{t_price}, #{t_URL}, #{t_photo}, #{t_license},#{t_level},#{t_people}, sysdate, #{t_intro}) 
+		insert into T_ENROLL (T_NO, T_USERID, T_CATEGORY, T_TITLE, T_STARTDATE, T_ENDDATE, T_DAY, T_POSTNUM, T_PLACE, T_CONTENT,T_PRICE, T_URL, T_PHOTO, T_LICENSE, T_LEVEL, T_PEOPLE ,T_CREADATE, T_INTRO, TEACH_ORGNAME)
+		values (T_ENROLL_SEQ.nextval, #{t_userId}, #{t_category}, #{t_title}, #{t_startDate}, #{t_endDate}, #{t_day}, #{t_postnum}, #{t_place}, #{t_content}, #{t_price}, #{t_URL}, #{t_photo}, #{t_license},#{t_level},#{t_people}, sysdate, #{t_intro}, #{teach_orgname}) 
 	</insert>
 	
 <!-- 2. 강의 글 list 목록 -->	
@@ -196,7 +196,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where t_userid = (select User_Id from teach_info where User_Id= #{User_Id})
 		order by t_startdate desc
 	</select>
-	
+
+
 </mapper>
 
 <!-- 

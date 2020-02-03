@@ -109,8 +109,8 @@
       }
       
       .bigPicture img {
-         width: 300px;
-         height: 400px;
+         width: 200px;
+         height: 300px;
       }
   </style>
   <body>
@@ -137,7 +137,7 @@
                   <div class="card-body">
                     <table class="table card-text">
                         <tr>
-                            <th>Profile</th>
+                           <th>Profile</th>
                            <th>Resume</th>
                            <th>Gender</th>
                            <th class="ph1">P.H-1</th>
@@ -159,9 +159,11 @@
                           <table class="table card-text">
                           <tr>
                               <%-- <td><img id="Teach_Profile" name="Teach_Prifile" src="../resource/images/${AppVO.app_Orgname}"></td> --%>
-                              <td><img id="Teach_Profile" name="Teach_Profile" src="../resource/images/${AppVO.app_Newname}"></td>
+                              <td><img id="Teach_Orgname" name="Teach_Orgname" src="../resource/images/${AppVO.app_Orgname}"></td>
+                              <td><input type="hidden" id="Teach_Orgname" name="Teach_Orgname" value="${AppVO.app_Orgname}"></td>
                               <%-- <td><img id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Orgname2}"></td> --%>
-                              <td><a id="Teach_Resume" name="Teach_Resume" href="../resource/images/${AppVO.app_Newname2}" download>이력서 다운로드</a></td>
+                              <td><a id="Teach_Orgname2" name="Teach_Orgname2" href="../resource/images/${AppVO.app_Orgname2}" download>이력서 다운로드</a></td>
+                              <td><input type="hidden" name="Teach_Orgname2" value="${AppVO.app_Orgname2}"></td>
                               <%-- <td><img id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Newname2}"></td> --%>
                               <td><input type="text" class="gh" id="Teach_Gender" name="Teach_Gender" value="${AppVO.app_Gender}" readonly="readonly"></td>
                               <td><input type="text" class="gh" id="Teach_Phone1" name="Teach_Phone1" value="${AppVO.app_Phone1}" readonly="readonly"></td>
@@ -223,9 +225,9 @@
     <!-- JavaScript files-->
     <script src="../resource/admin/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="../resource/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="../resource/admin/vendor/chart.js/Chart.min.js"></script>
-    <script src="../resource/admin/js/js.cookie.min.js"></script>
-    <script src="../resource/admin/js/front.js"></script>
+    <script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js?v=<%=System.currentTimeMillis() %>"> </script>
+    <script src="../resource/admin/vendor/chart.js/Chart.min.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/js.cookie.min.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/front.js?v=<%=System.currentTimeMillis() %>"></script>
   </body>
 </html>

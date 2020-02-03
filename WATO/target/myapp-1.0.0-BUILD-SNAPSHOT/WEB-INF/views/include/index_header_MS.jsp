@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,10 +21,10 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
-                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="/student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
-				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Orgname}" readonly="readonly">
 				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
 				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
 								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
@@ -35,10 +36,9 @@
                         	<a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         		<i class="fa fa-home" aria-hidden="true" style="color:black; font-size: 20px;"></i>
                         	</a>
-                        		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+                        		<div style="z-index: 20;" class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
                         			<a href="javascript:document.myForm.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
-			                   	 	<a href="/board/Myenroll" class="dropdown-item  text-black-50 font-weight-bold">내가 개설한 스터디 보러가기</a> 
                         			 <c:if test="${std != null }">
 			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
 				                    </c:if>
@@ -51,10 +51,10 @@
                         </c:if>
                         <c:if test="${teach != null}">
                         	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="/teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
-				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Orgname}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
 				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
@@ -80,7 +80,7 @@
                         	</li>
                         </c:if>
                         <c:if test="${!std.user_Id.equals('admin')}">
-                        <li class="list-inline-item pr-2"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
+                        <li class="list-inline-item pr-2"><a href="/qna/getQnaList" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="/admin/index_admin" class="text-black-50 font-weight-bold">관리자</a></li>                        

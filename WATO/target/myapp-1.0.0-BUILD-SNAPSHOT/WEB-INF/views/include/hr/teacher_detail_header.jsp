@@ -20,10 +20,10 @@
                         </c:if>
                         <c:if test="${std != null}">
                         	<li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
-                        	<li class="list-inline-item"><a href="../student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="/student/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm" method="get" action="/student/std_info">
-				                <input type="hidden" value="${std.std_Profile}" readonly="readonly">
+				                <input type="hidden" value="${std.std_Orgname}" readonly="readonly">
 				                <input type="hidden" value="${std.std_Gender}" readonly="readonly">
 				                <input type="hidden" value="${std.user_Email}" readonly="readonly">
 								<input type="hidden" value="${std.std_Phone1}" readonly="readonly">
@@ -38,6 +38,7 @@
                         		<div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
 								    <a  class="dropdown-item  text-black-50 font-weight-bold" href="/board/myinformation">즐겨찾기/좋아요</a> 
                         			<a href="javascript:document.myForm.submit();" class="dropdown-item  text-black-50 font-weight-bold">내정보 수정</a>
+			                   	 	<a href="/board/Myenroll" class="dropdown-item  text-black-50 font-weight-bold">내가 개설한 스터디 보러가기</a> 
                         			 <c:if test="${std != null }">
 			                   	 		<a href="/study/user_myList" class="dropdown-item  text-black-50 font-weight-bold">참여한 스터디 보러가기</a> 
 				                    </c:if>
@@ -50,10 +51,10 @@
                         </c:if>
                         <c:if test="${teach != null}">
                         	<p class="list-inline-item">${teach.user_Id}님 환영합니다!</p>
-                        	<li class="list-inline-item"><a href="teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
+                        	<li class="list-inline-item"><a href="/teach/logout" class="text-black-50 font-weight-bold">로그아웃</a></li>
                         	<li class="list-inline-item">
                         	<form name="myForm2" method="get" action="/teach/teach_info">
-				                <input type="hidden" value="${teach.teach_Profile}" readonly="readonly">
+				                <input type="hidden" value="${teach.teach_Orgname}" readonly="readonly">
 				                <input type="hidden" value="${teach.teach_Gender}" readonly="readonly">
 				                <input type="hidden" value="${teach.user_Email}" readonly="readonly">
 								<input type="hidden" value="${teach.teach_Phone1}" readonly="readonly">
@@ -78,7 +79,7 @@
                         	</form>
                         	</li>
                         </c:if>
-                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item pr-2"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
                         <c:if test="${std.user_Id.equals('admin')}">
@@ -90,6 +91,10 @@
                 </div>
             </div>
         </div> 
+        
+        
+        
+        
         <div class="row">
 	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
 	        	<div class="modal-dialog modal-lg">

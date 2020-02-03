@@ -16,11 +16,11 @@
 <script src="../resource/admin/vendor/jquery/jquery.min.js"></script>
 <script src="../resource/admin/vendor/popper.js/umd/popper.min.js"> </script>
 <script src="../resource/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="../resource/admin/vendor/chart.js/Chart.min.js"></script>
-<script src="../resource/admin/js/js.cookie.min.js"></script>
-<script src="../resource/admin/js/charts-home.js"></script>
-<script src="../resource/admin/js/front.js"></script>
+<script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js?v=<%=System.currentTimeMillis() %>"> </script>
+<script src="../resource/admin/vendor/chart.js/Chart.min.js?v=<%=System.currentTimeMillis() %>"></script>
+<script src="../resource/admin/js/js.cookie.min.js?v=<%=System.currentTimeMillis() %>"></script>
+<script src="../resource/admin/js/charts-home.js?v=<%=System.currentTimeMillis() %>"></script>
+<script src="../resource/admin/js/front.js?v=<%=System.currentTimeMillis() %>"></script>
 
 <html>
 <head>
@@ -68,9 +68,6 @@
     <div class="page-holder w-100 d-flex flex-wrap">
 
         <div class="container-fluid px-xl-5">
-
-
-	
 
             <%--메인 상단 종합 정보 요약 영역 (<section class="py-5">) --%>
              <%@ include file="../include_admin/main_info.jsp"%>

@@ -506,10 +506,10 @@ public class BoardController {
 						int s_no = heartcheck.get(i).getS_no();
 						StudyEnrollVO s_study =service.searchS_no(s_no);
 						TeacherEnrollVO t_study =service.searchT_no(s_no);
-						if (s_study != null && !s_study.equals("")) {
+						if (s_study != null) {
 							s_heartlist.add(s_study);
 						}
-						if (t_study != null && !t_study.equals("")) {
+						if (t_study != null) {
 							t_heartlist.add(t_study);						 
 						}
 					}
@@ -575,10 +575,10 @@ public class BoardController {
 						int s_no = heartcheck.get(i).getS_no();
 						StudyEnrollVO s_study =service.searchS_no(s_no);
 						TeacherEnrollVO t_study =service.searchT_no(s_no);
-						if (s_study != null && !s_study.equals("")) {
+						if (s_study != null) {
 							s_heartlist.add(s_study);
 						}
-						if (t_study != null && !t_study.equals("")) {
+						if (t_study != null) {
 							t_heartlist.add(t_study);						 
 						}
 					}

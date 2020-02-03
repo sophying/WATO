@@ -62,3 +62,7 @@ function starBtn11(event) {
 function starBtn22(event) {
 	$(event).parent('form[name="class_starForm"]').submit();
 };
+
+
+
+
