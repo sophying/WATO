@@ -408,7 +408,14 @@
 <!--                         <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" > -->
                         <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40">
                   <br><div style="display: inline-block;" id="id_check"></div></td>
-                        <td><button type="button" class="idCheck" onclick="fn_idChk();" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;">아이디 중복확인</button></td>
+                        <td><button type="button" class="idCheck" onclick="fn_idChk();" 
+                        style="border-radius: 10px; 
+		                        background-color: #77bbc2; 
+		                        border: 0; 
+		                        outline: 0; 
+		                        color: #fff; 
+		                        width: 130px; 
+		                        height: 40px;">아이디 중복확인</button></td>
                     </tr>
                     <tr>
                         <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -452,7 +459,13 @@
                     <tr>
                         <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td><input type="text" id="sample3_postcode" name="Std_Addr1" placeholder="우편번호"></td>
-                        <td><input type="button" onclick="sample3_execDaumPostcode()" value="우편번호찾기" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;"></td>
+                        <td><input type="button" onclick="sample3_execDaumPostcode()" value="우편번호찾기" style="border-radius: 10px; 
+																						                        background-color: #77bbc2; 
+																						                        border: 0; 
+																						                        outline: 0; 
+																						                        color: #fff; 
+																						                        width: 130px; 
+																						                        height: 40px;"></td>
                     </tr>
                     <tr>
                         <th>주소<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -461,13 +474,21 @@
                     <tr>
                         <th>상세주소<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td colspan="2"><input type="text" id="sample3_detailAddress" name="Std_Addr3" size="55" maxlength="12"  placeholder="상세주소">
-                        <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+                        <div id="wrap" style="display:none; border:1px solid; width:500px; height:300px; margin:5px 0; position:relative">
 						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
 						</div>
                         </td>
                     </tr>
                 </table>
-                   <input type="submit" value="회원가입" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
+                   <input type="submit" value="회원가입" style="border-radius: 10px; 
+											                   background-color: #77bbc2; 
+											                   border: 0; 
+											                   outline: 0; 
+											                   color: #fff; 
+											                   width: 130px; 
+											                   height: 40px;
+											                   margin-top: 30px;
+											                   margin-bottom: 60px;">
             </form>
       </div>
    </div>
