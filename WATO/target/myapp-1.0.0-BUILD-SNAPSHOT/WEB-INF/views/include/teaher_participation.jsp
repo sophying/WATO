@@ -31,9 +31,16 @@
 						          <p class="text-center text-muted">스터디 상황에 따른  <strong>참여 비용</strong>이 발생될 수 있습니다.</p>
 						        </div>  
 						        <div class="modal-footer"style="background: #5a7fa2;">     
-						          <input type="hidden" name="t_no" id="t_no" value="${listOne.t_no }"/>    
-						          <input type="hidden" name="p_userid" id="p_userid" value="${teach.user_Id }"/>  
-						          <font size="4"><input type="button" id="modalSubmit" class="btn btn-default" style="color:#fff;" value="참여완료하기"></font>
+						          <input type="hidden" name="t_no" id="t_no" value="${listOne.t_no }"/>
+						          <c:choose>
+						           		<c:when test="${std != null }">
+								          <input type="hidden" name="p_userid" id="p_userid" value="${std.user_Id}"/>  
+								          <font size="4"><input type="button" id="modalSubmit" class="btn btn-default" style="color:#fff;" value="참여완료하기"></font>
+						           		</c:when>
+						           		<c:otherwise>
+						           			<span>강사님은 스터디에 참여 하실 수 없습니다.</span>
+						           		</c:otherwise>
+						           </c:choose>
 						        </div>
 						      </div>
 					      </form>

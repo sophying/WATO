@@ -20,7 +20,7 @@
                     <div class="flex-grow-1 d-flex align-items-center">
                         <div class="dot mr-3 bg-violet"></div>
                         <div class="text">
-                            <h6 class="mb-0">Data consumed</h6><span class="text-gray">145,14 GB</span>
+                            <h6 class="mb-0">회원 가입자</h6><span class="text-gray">전체 : ${sum_member} (학생 : ${Std_count}/강사 : ${Tech_count})</span>
                         </div>
                     </div>
                     <div class="icon text-white bg-violet"><i class="fas fa-server"></i></div>
@@ -31,7 +31,7 @@
                     <div class="flex-grow-1 d-flex align-items-center">
                         <div class="dot mr-3 bg-green"></div>
                         <div class="text">
-                            <h6 class="mb-0">Open cases</h6><span class="text-gray">32</span>
+                            <h6 class="mb-0">접속 중 회원</h6><span class="text-gray">${Session_count}</span>
                         </div>
                     </div>
                     <div class="icon text-white bg-green"><i class="far fa-clipboard"></i></div>
@@ -42,7 +42,7 @@
                     <div class="flex-grow-1 d-flex align-items-center">
                         <div class="dot mr-3 bg-blue"></div>
                         <div class="text">
-                            <h6 class="mb-0">Work orders</h6><span class="text-gray">400</span>
+                            <h6 class="mb-0">등록된 스터디</h6><span class="text-gray">전체 : ${sum_enroll_count} (학생 : ${s_enroll_count}/강사 : ${t_enroll_count})</span>
                         </div>
                     </div>
                     <div class="icon text-white bg-blue"><i class="fa fa-dolly-flatbed"></i></div>
@@ -53,7 +53,12 @@
                     <div class="flex-grow-1 d-flex align-items-center">
                         <div class="dot mr-3 bg-red"></div>
                         <div class="text">
-                            <h6 class="mb-0">New invoices</h6><span class="text-gray">123</span>
+<<<<<<< HEAD
+                            <h6 class="mb-0">총 문의 내역</h6><span class="text-gray">${qna_count}</span>
+                            <h6 class="mb-0">최근 30일 문의 내역</h6><span class="text-gray">${board_this_month_Count}</span>
+=======
+                            <h6 class="mb-0">문의 내역</h6><span class="text-gray">${qna_count}</span>
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
                         </div>
                     </div>
                     <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>

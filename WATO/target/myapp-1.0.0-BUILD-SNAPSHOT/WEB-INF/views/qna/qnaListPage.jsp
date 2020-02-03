@@ -30,7 +30,7 @@
   Time: PM 4:06
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
     <title>Title</title>
@@ -49,11 +49,6 @@
     li{
         display: inline-block; zoom: 1; display: inline;
     }
-
-
-
-
-
   </style>
 </head>
 <body>
@@ -68,10 +63,15 @@
             <tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일자</th></tr>
             </thead>
             <!-- 목록 시작 -->
-        <c:forEach items="${getQnaList}" var="getQnaList">
+        <c:forEach items="${getQnaList}" var="getQnaList" varStatus="status">
         <tr>
             <td>${getQnaList.QNA_BNO}</td>
-            <td><a href="/qna/getQnaRead?QNA_BNO=${getQnaList.QNA_BNO}">${getQnaList.QNA_TITLE}</a></td>
+            <c:if test="${std != null || teach != null}">
+                <td><a href="/qna/getQnaRead?QNA_BNO=${getQnaList.QNA_BNO}">${getQnaList.QNA_TITLE}</a></td>
+            </c:if>
+            <c:if test="${teach == null && std == null }">
+            <td><a href="#" onclick="NonMembers()">${getQnaList.QNA_TITLE}</a></td>
+            </c:if>
             <td>${getQnaList.QNA_WRITER}</td>
             <td><fmt:formatDate value="${getQnaList.QNA_REGDATE}" pattern="yyyy-MM-dd"/></td>
         </tr>
@@ -116,4 +116,11 @@
 </div>
 <%@include file="include/footer.jsp"%>
 </body>
+<script>
+    function NonMembers(){
+        alert("회원 전용 게시판입니다. 로그인해주세요");
+    }
+
+
+</script>
 </html>

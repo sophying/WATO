@@ -136,14 +136,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -484,7 +484,13 @@
 	                        <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40">
 	                        <br><div style="display: inline-block;" id="id_check"></div>
 							</td>
-	                        <td><button type="button" class="idCheck" onclick="fn_idChk();">아이디 중복확인</button></td>
+	                        <td><button type="button" class="idCheck" onclick="fn_idChk();" style="border-radius: 10px; 
+																									background-color: #77bbc2; 
+																									border: 0; 
+																									outline: 0; 
+																									color: #fff; 
+																									width: 130px; 
+																									height: 40px;">아이디 중복확인</button></td>
                     	</tr>
                         <tr>
 	                        <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -504,11 +510,26 @@
 	                    </tr>
                     </table>
                 </div>
-            
-            <div style="margin: 30px;">
-                <input type="submit" value="회원가입" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
-                <button type="reset" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 120px; height: 50px;">취소</button>
-            </div>
+            	
+                <input id="submitjoin" type="button" value="회원가입" style="border-radius: 10px; 
+													       background-color: #77bbc2; 
+													       border: 0; 
+													       outline: 0; 
+													       color: #fff; 
+													       width: 130px; 
+													       height: 40px;
+													       margin-right: 30px;
+													       margin-top: 30px;
+													       margin-bottom: 60px;">
+                <button type="reset" style="border-radius: 10px; 
+											background-color: #77bbc2; 
+											border: 0; 
+											outline: 0; 
+											color: #fff; 
+											width: 130px; 
+											height: 40px;
+											margin-top: 30px;
+											margin-bottom: 60px;">취소</button>
             </form>
             </c:if>
 		</div>
@@ -630,6 +651,14 @@ _________________________________________________________
 <script type="text/javascript"> 
 
 //회원가입시 null 파악_____________________________________
+var check = true;
+
+$("#submitjoin").click(function() {
+	if (check) { 
+		check = !check;
+		infoForm.submit();
+	}
+})
 
 function infoCheck() {
 	if(!document.infoForm.User_Id.value) {
@@ -665,6 +694,25 @@ function infoCheck() {
    // 비밀번호 정규식
    var pwJ = /^[A-Za-z0-9]{4,12}$/;
    
+   $( function(){
+		$( '#User_Id' ).on("blur keyup", function() {
+			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+		});
+	})
+         
+      $( function(){
+   		$( '#userPw' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#userPwChk' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+   	
+      
    $('#User_Id').blur(function() {
       if (idJ.test($('#User_Id').val())) {
          console.log('true');
@@ -675,7 +723,7 @@ function infoCheck() {
          $('#id_check').text('소문자와 대문자로만 4~12자리를 입력해주십시오.');
          $('#id_check').css('color', 'red');
       }
-   });      
+   });
    
 
    $('#userPw').blur(function() {
@@ -729,10 +777,10 @@ function infoCheck() {
   });
       
 
-      
+   // 아이디 중복 체크___________________________________________________________
       function fn_idChk(){
       	$.ajax({
-      		url : "/student/idChk",
+      		url : "/teach/idChk",
       		type : "post",
       		dataType : "json",
       		data : {"User_Id" : $("#User_Id").val()},

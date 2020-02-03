@@ -138,14 +138,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -469,7 +469,15 @@
                         </p>
                         </div>
                         <input class="gaip" id="joinb" type="submit" 
-                        style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;" value="회원가입">
+                        style="border-radius: 10px; 
+								background-color: #77bbc2; 
+								border: 0; 
+								outline: 0; 
+								color: #fff; 
+								width: 130px; 
+								height: 40px;
+								margin-top: 30px;
+								margin-bottom: 60px;" value="회원가입">
                     </form>
                     </div>
                 </div>

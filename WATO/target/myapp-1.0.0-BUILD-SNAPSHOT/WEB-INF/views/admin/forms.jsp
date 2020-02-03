@@ -442,9 +442,9 @@
     <script src="../resource/admin/vendor/jquery/jquery.min.js"></script>
     <script src="../resource/admin/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="../resource/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="../resource/admin/vendor/chart.js/Chart.min.js"></script>
-    <script src="../resource/admin/js/js.cookie.min.js"></script>
-    <script src="../resource/admin/js/front.js"></script>
+    <script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js?v=<%=System.currentTimeMillis() %>"> </script>
+    <script src="../resource/admin/vendor/chart.js/Chart.min.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/js.cookie.min.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/front.js?v=<%=System.currentTimeMillis() %>"></script>
   </body>
 </html>

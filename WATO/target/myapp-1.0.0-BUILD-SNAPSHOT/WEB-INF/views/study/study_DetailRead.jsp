@@ -12,24 +12,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="../resource/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="../resource/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../resource/vendor/font-awesome/css/font-awesome.min.css">
     <!-- Google fonts - Roboto -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700">
     <!-- owl carousel-->
-    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
-    <link rel="stylesheet" href="../resource/vendor/owl.carousel/assets/owl.theme.default.css">
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.carousel.css"> 
+    <link rel="stylesheet" href="../../resource/vendor/owl.carousel/assets/owl.theme.default.css">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="../resource/css/style.default.css" id="theme-stylesheet"> 
+    <link rel="stylesheet" href="../../resource/css/style.default.css" id="theme-stylesheet"> 
     <!-- Custom stylesheet - for your changes--> 
-    <link rel="stylesheet" href="../resource/css/custom.css">
+    <link rel="stylesheet" href="../../resource/css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="favicon.png">
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]--> 
-    <link rel="icon" type="image/png" href="../resource/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="../../resource/images/icons/favicon.ico"/>
+        <!-- 제이쿼리 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 <style>
     #top{
@@ -256,53 +258,23 @@
     _________________________________________________________
     -->
     <div id="top">
-        <div class="container ">
-            <div class="row">
-                <div class="col-lg-6 offer mb-0 mb-lg-0"><a href="#" class="btn btn-success btn-sm">회원가입 하러 가기</a><a href="#" class="ml-1 text-black-50 font-weight-bold">지금 회원가입하면 500원</a></div>
-                <div class="col-lg-6 text-center text-lg-right"> 
-                    <ul class="menu list-inline mb-0">
-                     <c:choose>
-                  		    <c:when test="${std != null}">
-                        <li class="list-inline-item">${std.user_Id  } 님 환영합니다.</li>
-                        <li class="list-inline-item"><a href="login/logout"class="text-black-50 font-weight-bold">로그아웃</a></li>
-                    		</c:when>
-                    		<c:otherwise>
-                        <li class="list-inline-item"><a href="login/login" data-toggle="modal" data-target="#modal" class="text-black-50 font-weight-bold">로그인</a></li>
-                    		</c:otherwise>
-                    </c:choose>
-                        <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li>
-                        <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
-                        <li class="list-inline-item"><a href="#" class="text-black-50 font-weight-bold">내정보수정</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" class="modal fade">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Customer login</h5>
-                        <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="customer-orders.jsp" method="post">
-                            <div class="form-group">
-                                <input id="email-modal" type="text" placeholder="email" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <input id="password-modal" type="password" placeholder="password" class="form-control">
-                            </div>
-                            <p class="text-center">
-                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i>로그인</button>
-                            </p>
-                        </form>
-                        <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="register.jsp"><strong>Register now</strong></a>! It is easy and done in 1 minute and gives you access to special discounts and much more!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- *** TOP BAR END ***-->
+        <%@ include file="../include/index_header_MS.jsp" %> 
+        <div class="row">
+	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
+	        	<div class="modal-dialog modal-lg">
+	            	<div class="modal-content" style="background: none; border: 0px">
+	            		<div class="modal-body"> 
+							<div class="limiter">
+								<!-- <button class="close-button" data-dismiss="myModal">&times;</button>  -->
+								<div class="container-login100">   
+									<%@ include  file="../admin/loginform.jsp"%> 
+								</div>
+							</div>  
+						</div> 	                		
+	            	</div>
+	        	</div>
+	    	</div>
+    	</div>
 
  
     </div> 
@@ -469,11 +441,16 @@
 									<label for="name" class="pb-3 row m-0 text-justify w-100  cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
 										<font size="8">${listOne.s_title }</font>
 									</label>
-								<c:if test="${(std.user_Id ).equals(listOne.s_userId) }">
-	<!--  내용 수정 -->				<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>
-	<!--  내용 삭제 -->				<input type="submit" id="delete_enroll"  data-toggle="modal" data-target="#delete-modal"class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/>	
-								<%@include file="../include/s_delete_enroll.jsp" %>
-								</c:if>	
+									<c:choose>
+									<c:when test="${std != null}">
+										<c:if test="${(std.user_Id ).equals(listOne.s_userId) }">
+			<!--  내용 수정 -->				<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>
+			<!--  내용 삭제 -->				<input type="submit" id="delete_enroll"  data-toggle="modal" data-target="#delete-modal"class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="삭제"/>	
+										<%@include file="../include/s_delete_enroll.jsp" %>
+										</c:if>
+									</c:when>
+									</c:choose>
+								
 							</div>	
 							<div class="h-75 container d-inline-block border-top"> 
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center">
@@ -489,7 +466,14 @@
 									</label>
 									<div class="cols-sm-5 pb-5 pr-2 pl-2">
 						              <div class="input-group d-flex justify-content-center ">
-						                <img id="img_btn_0" src="../../resource/images/imgs/김혜련_증명.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+						                <c:choose>
+								          	<c:when test="${listOne.std_orgname.equals('http://i66.tinypic.com/ng7ue1.jpg') }">
+									           <img id="img_btn_0" src="${listOne.std_orgname}" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+								          	</c:when>
+								          	<c:otherwise>
+								          	  <img id="img_btn_0" src="/resource/images/${listOne.std_orgname}"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+								          	</c:otherwise>
+								          </c:choose>
 						              </div>
            						    </div>
 								</div>
@@ -497,32 +481,107 @@
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-2  pl-5 pr-5 justify-content-center container-fluid ">
 									<div  style=" word-break:break-all;"class="row h-50 w-100 d-inline-block d-flex pt-2 " >
 										
-										<pre><font size="4"><c:out value="${listOne.s_intro }" /></font></pre>
+										<pre style="  white-space: pre-wrap;"><font size="4"><c:out value="${listOne.s_intro }" /></font></pre>
 									</div>
+								</div>
+							</div>
+							
+					<!-- 별점 평가 통계  -->
+							<div class="h-75 row d-flex  p-2  m-0 container d-inline-block">
+								<div class=" h-100 w-25 d-inline-block">
+									<label for="name" class="row d-flex  pt-3 pb-2 m-0 text-justify   control-label justify-content-center">
+										<font class="font-weight-bold"size="5">스터디 별점</font>
+									</label> 
+								</div>
+								<div  class="cols-sm-5 d-inline-block w-75 pt-2 pl-5 pr-5 justify-content-center container-fluid  border-top">
+									<div  style=" word-break:break-all;"class="row h-50 w-100 d-inline-block d-flex pt-2 " >
+										<c:if test="${(starScore == 0 && starScore < 1)|| (starScore == 'NaN') }">
+											<div id="star_grade" class="h2" >
+										        <span>★</span> 
+										        <span>★</span>  
+										        <span>★</span>    
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 0 && starScore < 1 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>  
+										        <span>★</span>    
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 1  && starScore <= 2 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>    
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 2  && starScore <= 3 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore > 3  && starScore <= 4 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span>★</span>   
+											</div>
+										</c:if>
+										<c:if test="${starScore> 4  && starScore <= 5 }">
+											<div id="star_grade" class="h2" >
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+										        <span style="color: #feba63;">★</span> 
+											</div>
+										</c:if>
+										<c:choose>
+											<c:when test="${starScore == 'NaN' }">
+												<span class="h3 mt-2 ml-4">00.00</span>
+											</c:when>
+											<c:otherwise>
+												<span class="h3 mt-2 ml-4">${starScore}</span>
+											</c:otherwise>
+										</c:choose>
+									</div> 
 								</div>
 							</div>
 							
 							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block ">
 								<div class=" h-100 w-25 d-inline-block">
-									<label for="name" class="row d-flex  pt-5 m-0 text-justify   control-label justify-content-center">
-										<font color="#787878" size="4">상세 내용</font>
+									<label for="name" class="row d-flex  pt-5 m-0 text-justify  control-label justify-content-center">
+										<font class="font-weight-bold"color="#787878" size="5">상세 내용</font>
 									</label>
 								</div>
 								
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5  pl-5 pr-5 justify-content-center container-fluid border-top">
 									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-5" >
 										
-										<table style="width:600px;">
+										<table style="width:700px;">
 											<tr>
-												<th id="s_level"><font color="#a0a0a0" > <label class=" d-flex p-2 pr-0 control-label ">난이도 : </label></font></th>
-												<td>${listOne.s_level }</td>
-												<th id="s_people"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">인원수 : </label></font></th>
-												<td> ${listOne.s_people }</td>
+												<th id="s_level"  style="width:80px;"><font size="3"color="#a0a0a0" ><label class=" d-flex p-2 pr-0 control-label ">난이도 : </label></font></th>
+												<td  style="width:80px;">${listOne.s_level }</td>
+												<th id="s_people" style="width:80px;"><font  size="3" color="#a0a0a0" ><label class="d-flex  control-label">인원수 : </label></font></th>
+												<td  style="width:80px;"><span  class="pull-left">${listOne.s_people }</span></td>
 											</tr>	
 											<tr>
-												<th id="s_people"><font color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">장소 : </label></font></th>
-												<td colspan="3">${listOne.s_place }</td>
-											</tr>
+												<th id="s_people"><font size="3"color="#a0a0a0" > <label class="d-flex p-2 pr-0 control-label">장소 : </label></font></th>
+												<td colspan="4" >${listOne.s_place }</td>
+											</tr>	
 										</table>
 										
 										<!-- kakao map 히든 버튼을 통한 메소드 실행.-->
@@ -547,7 +606,7 @@
 								
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-3 pl-5 pr-5 pt-3 container-fluid justify-content-center  border-top">
 									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-3" >
-										<pre><font size="4"><c:out value="${listOne.s_content }" /></font></pre>
+										<pre style="  white-space: pre-wrap;"><font size="4"><c:out value="${listOne.s_content }" /></font></pre>
 									</div>
 								</div>
 							</div>
@@ -567,15 +626,22 @@
 																		
 																		<textarea name="r_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="100"  readonly="readonly" style="border:none; ">${reply.r_content}</textarea>
 																	
-																	<c:if test="${(listOne.s_userId).equals(std.user_Id ) }">
+																	<c:choose>
+																	<c:when test="${(listOne.s_userId).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
 																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
 																		<%-- <a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a> --%>
 																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
 																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
-																	</c:if>
-																	<td> 
-																	<a href="studentModify?s_no=${listOne.s_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>
+																	</c:when>
+																	<c:when test="${(listOne.s_userId).equals(teach.user_Id ) }">
+																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
+																		<%-- <a href="./replyDelete/${reply.s_no}/${reply.r_no }">삭제하기</a> --%>
+																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>																	
+																	</c:when>
+																	</c:choose>
 																</tr>
 															</table>
 													</div>
@@ -595,12 +661,20 @@
 																		<textarea  name="r_content" onkeydown="resize(this)" onkeyup="resize(this)" cols="90"  readonly="readonly">${reply.r_content}</textarea>
 																	</td> 
 																	<td >
-																	<c:if test="${(reply.r_userid).equals(std.user_Id ) }">
+																	<c:choose>
+																	<c:when test="${(reply.r_userid).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
 																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
 																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
 																		<input type="hidden" name="s_no" value="${reply.s_no }"/>
-																	</c:if>
+																	</c:when>
+																	<c:when test="${(reply.r_userid).equals(teach.user_Id ) }">
+																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
+																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
+																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
+																		<input type="hidden" name="s_no" value="${reply.s_no }"/>																	
+																	</c:when>
+																	</c:choose>
 																	</td>
 																</tr>
 															</table>
@@ -610,35 +684,65 @@
 										</form>
 									</c:otherwise>
 								</c:choose> 
-							</c:forEach> 
-							<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
-								<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-									<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
-										<form role="from" method="post" action="./s_detailReply.do"> 
-											<font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font>
-											<table class="justify-content-center d-inline-block w-100">
-												<tr>
-													<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
-													<td colspan="5" >
-														<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
-													<td>    
-												</tr>   
-												<tr>
-													<td>
-														<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
-													</td> 
-												</tr>
-											</table>
-											<input type="hidden" name="s_no" value="${listOne.s_no}" />
-											<input type="hidden" name="r_userid" value="${std.user_Id  }"/>
-										</form>
-									</div>
-								</div>		
-							</div> 
+							</c:forEach>
+							<c:choose>
+							<c:when test="${std.user_Id != null && teach.user_Id == null }">
+								<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
+									<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
+										<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
+											<form role="from" method="post" action="./s_detailReply.do"> 
+												<font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font>
+												<table class="justify-content-center d-inline-block w-100">
+													<tr>
+														<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
+														<td colspan="5" >
+															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+														<td>    
+													</tr>   
+													<tr>
+														<td>
+															<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
+														</td> 
+													</tr>
+												</table>
+												<input type="hidden" name="s_no" value="${listOne.s_no}" />
+												<input type="hidden" name="r_userid" value="${std.user_Id  }"/>
+											</form>
+										</div>
+									</div>		
+								</div>
+							</c:when> 
+							<c:otherwise>
+								<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
+									<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
+										<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
+											<form role="from" method="post" action="./s_detailReply.do"> 
+												<font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font>
+												<table class="justify-content-center d-inline-block w-100">
+													<tr>
+														<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="7">Q &amp; A</font></td>
+														<td colspan="5" >
+															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+														<td>    
+													</tr>   
+													<tr>
+														<td>
+															<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
+														</td> 
+													</tr>
+												</table>
+												<input type="hidden" name="s_no" value="${listOne.s_no}" />
+												<input type="hidden" name="r_userid" value="${teach.user_Id  }"/>
+											</form>
+										</div>
+									</div>		
+								</div>
+							</c:otherwise>
+							</c:choose> 
 					</div>    
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
 	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
-				<aside class="d-inline-block rounded-sm " style="width: 350px; z-index: 1000" >
+				<aside class="d-inline-block rounded-sm " style="width: 350px; z-index: 10" >
 					<div  class="form-group container-fluid" style="height: auto;">
 							<div class="cols-sm-1 d-inline-block d-flex justify-content-center"> 
 								<div class="card-body">
@@ -679,11 +783,21 @@
 								<c:otherwise>
 								<c:choose>
 										<c:when test="${(partiOne.p_userid).equals(std.user_Id )}">    
-											<div class="successBtn"id="success" >    참여신청완료</div>
-											<input type="button" class="goButton mt-4" id="cancle"  data-toggle="modal" data-target="#cancle-modal"  value="참여신청취소하기"/> 
+											<div class="successBtn"id="success" >참여신청 대기중</div>
 										</c:when> 
+										<c:when test="${particompleOne.p_userid.equals(std.user_Id ) }">
+											<div class="successBtn"id="success" >참여신청요청이 승인됨</div>
+											<input type="button" class="goButton mt-4" id="cancle"  data-toggle="modal" data-target="#cancle-modal"  value="참여신청취소하기"/> 
+										</c:when>
 										<c:otherwise>
-											<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/> 
+											<c:choose>
+												<c:when test="${usercheck == null }">
+													<input type="button" class="goButton" onclick="alert('로그인 후 이용하실 수 있습니다.')" value="참여신청"/> 
+												</c:when>
+												<c:otherwise>
+													<input type="button" class="goButton"id="partiBnt"  data-toggle="modal" data-target="#Form-modal"  value="참여신청"/> 
+												</c:otherwise>
+											</c:choose>
 										</c:otherwise>
 								</c:choose>
 								</c:otherwise>
@@ -764,15 +878,14 @@
 <!-- *** BLOG HOMEPAGE END ***-->
 
 <!-- JavaScript files--> 
-<script src="../resource/vendor/jquery/jquery.min.js"></script>
-<script src="../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="../resource/js/front.js"></script>
-<!-- 제이쿼리 -->
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
-<script src="../resource/js/hr/student_detailRead.js"></script>
+<script src="../../resource/vendor/jquery/jquery.min.js"></script>
+<script src="../../resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="../../resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="../../resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="../../resource/js/front.js"></script>
+<script src="../../resource/js/hr/student_detailRead.js"></script> 
+
 <!-- kakao map api key (최성웅 appkey)-->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
 

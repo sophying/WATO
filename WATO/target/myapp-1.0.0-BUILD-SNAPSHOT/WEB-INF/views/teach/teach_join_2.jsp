@@ -272,10 +272,10 @@
                         	</li>
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
-                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
-                        <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="/admin/adminmanage" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
@@ -475,34 +475,61 @@
                     </div>
                 </div>
                 <c:if test="${teach == null}">
-            <form role="form" method="post" autocomplete="off">
+            <form name="infoForm" onsubmit="return infoCheck()" role="form" method="post" autocomplete="off">
                 <div>
                     <table class="table" style="margin: auto; width: 70%;" cellspacing="0">
                         <tr>
 	                        <th>아이디<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" >
+<!-- 	                        <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" > -->
+	                        <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40">
+	                        <br><div style="display: inline-block;" id="id_check"></div>
 							</td>
-	                        <td><button type="button" class="idCheck" onclick="fn_idChk();">아이디 중복확인</button></td>
+	                        <td><button type="button" class="idCheck" onclick="fn_idChk();" style="border-radius: 10px; 
+																									background-color: #77bbc2; 
+																									border: 0; 
+																									outline: 0; 
+																									color: #fff; 
+																									width: 130px; 
+																									height: 40px;">아이디 중복확인</button></td>
                     	</tr>
                         <tr>
 	                        <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td colspan="2"><input type="password" id="userPw" id="User_Pwd" name="User_Pwd" size="55" maxlength="12" placeholder="비밀번호" ></td>
+	                        <td colspan="2"><input type="password" id="userPw" id="User_Pwd" name="User_Pwd" size="55" maxlength="12" placeholder="비밀번호" >
+	                        <br><div style="display: inline-block;" id="pwdcheck1"></div>
+	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>비밀번호 확인<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td colspan="2"><input type="password" id="userPwChk" size="55" maxlength="12" placeholder="비밀번호 확인"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+	                        <td colspan="2"><input type="password" id="userPwChk" size="55" maxlength="12" placeholder="비밀번호 확인">
+	                        <br><div style="display: inline-block;" id="pwdcheck2"></div>
+	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-	                        <td colspan="2"><input type="text" id="User_Email" name="User_Email" size="55" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
+	                        <td colspan="2"><input type="email" id="User_Email" name="User_Email" size="55" maxlength="50"><br><div style="display: inline-block;" id="pwdcheck"></div></td>
 	                    </tr>
                     </table>
                 </div>
             
-            <div style="margin: 30px;">
-                <button type="submit" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 120px; height: 50px;">회원가입</button>
-                <button type="reset" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 120px; height: 50px;">취소</button>
-            </div>
+                <input type="submit" value="회원가입" style="border-radius: 10px; 
+													       background-color: #77bbc2; 
+													       border: 0; 
+													       outline: 0; 
+													       color: #fff; 
+													       width: 130px; 
+													       height: 40px;
+													       margin-right: 30px;
+													       margin-top: 30px;
+													       margin-bottom: 60px;">
+                <button type="reset" style="border-radius: 10px; 
+											background-color: #77bbc2; 
+											border: 0; 
+											outline: 0; 
+											color: #fff; 
+											width: 130px; 
+											height: 40px;
+											margin-top: 30px;
+											margin-bottom: 60px;">취소</button>
             </form>
             </c:if>
 		</div>
@@ -622,53 +649,90 @@ _________________________________________________________
 
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> <!-- if script tag don't have src="jquery", password text can't see. -->
 <script type="text/javascript"> 
-        // 비밀번호 확인 소스
-        $('#userPw').blur(function() {
-            var userPw = $('#userPw').val();
-            var userPwChk = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
 
-            if (userPw !="" && userPwChk !="" && userPw==userPwChk) {
-                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-            }else if(userPw != "" && userPwChk==""){
-                pwdcheck.text('비밀번호 확인를 입력해주세요').css('color', 'blue');
-            }else if (userPw != userPwChk) {
-                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-            }else if(userPw =="" && userPwChk==""){
-                pwdcheck.text('');
-            }
+//회원가입시 null 파악_____________________________________
 
-        });
+function infoCheck() {
+	if(!document.infoForm.User_Id.value) {
+		alert("아이디를 입력해주세요.");
+		document.infoForm.User_Id.focus();
+		return false;
+	}
+	if(!document.infoForm.User_Pwd.value) {
+		alert("비밀번호를 입력해주세요.");
+		document.infoForm.User_Pwd.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.User_Pwd_ok.value) {
+		alert("비밀번호 확인을 입력해주세요.");
+		document.infoForm.User_Pwd_ok.focus();
+		return false;
+	}
+	
+	if(!document.infoForm.User_Email.value) {
+		alert("이메일을 입력해주세요.");
+		document.infoForm.User_Email.focus();
+		return false;
+	}
+	
+	alert("최종회원가입이 완료되었습니다.")
+}
 
-        $('#userPwChk').blur(function() {
-            var userPw = $('#userPw').val();
-            var userPwChk = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
+ // 정규표현식 유효성 검사 소스_________________________________________________________
+   
+   //아이디 정규식
+   var idJ = /^[a-z0-9]{4,12}$/;
+   // 비밀번호 정규식
+   var pwJ = /^[A-Za-z0-9]{4,12}$/;
+   
+   $('#User_Id').blur(function() {
+      if (idJ.test($('#User_Id').val())) {
+         console.log('true');
+         $('#id_check').text('알맞은 형식입니다.');
+         $('#id_check').css('color', 'green');
+      } else {
+         console.log('false');
+         $('#id_check').text('소문자와 대문자로만 4~12자리를 입력해주십시오.');
+         $('#id_check').css('color', 'red');
+      }
+   });      
+   
 
-            if (userPw !="" && userPw !="" && userPw==userPwChk) {
-                pwdcheck.text('비밀번호가 동일합니다.').css('color', 'green');
-            } else if(userPwChk != "" && userPw==""){
-                pwdcheck.text('비밀번호를 입력해주세요').css('color', 'blue');
-            }else if(userPw != userPwChk){
-                pwdcheck.text('비밀번호가 다릅니다').css('color', 'red');
-            }else if(userPw =="" && userPwChk==""){
-                pwdcheck.text('');
-            }
-        });
+   $('#userPw').blur(function() {
+      
+      if (pwJ.test($('#userPw').val())) {
+         console.log('true');
+         $('#pwdcheck1').text('사용하실 수 있는 비밀번호 입니다.');
+         $('#pwdcheck1').css('color', 'green');
+         } else if ($('#userPw').val() == $(this).val()){
+         console.log('false');
+         $('#pwdcheck1').text('숫자 또는 문자로만 4~12자리를 입력해주십시오.');
+         $('#pwdcheck1').css('color', 'red');
+      } else if($('#userPw').val() != "" && $('#userPwChk').val() == ""){
+         $('#pwdcheck2').text('비밀번호 확인를 입력해주세요.');
+         $('#pwdcheck2').css('color', 'blue');
+      }
+   });
+   
+   
+   // 패스워드 일치 확인
+   $('#userPwChk').blur(function() {
+            
+      if ($('#userPw').val() != $(this).val()) {
+         $('#pwdcheck2').text('비밀번호가 일치하지 않습니다.');
+         $('#pwdcheck2').css('color', 'red');
+      } else if($('#userPw').val() != "" && $('#userPwChk').val() == ""){
+         $('#pwdcheck2').text('비밀번호 확인를 입력해주세요.');
+         $('#pwdcheck2').css('color', 'blue');
+         } else if ($('#userPw').val() == $(this).val()) {
+         $('#pwdcheck2').text('비밀번호가 일치합니다');
+         $('#pwdcheck2').css('color', 'green');
+      }
+   });
 
-
-        function checkPw() {
-            var userPw = $('#userPw').val();
-            var userPw = $('#userPwChk').val();
-            var pwdcheck = $('#pwdcheck');
-            if (userPw == userPwChk) {
-                joinform.submit();
-            } else {
-                /* pwdcheck.text('비밀번호가 다릅니다').css('color', 'red'); *!/ /!* 위에서 출력하고 있는데 한번더 출력할 필요 없음 */
-                alert('입력하신 비밀번호가 다릅니다 확인해주세요.')
-            }
-        }   
-
+// 정규표현식 유효성 검사 끝 ________________________________________________________________________
+   
   function readURL(input) {
     if (input.files && input.files[0]) {
        var reader = new FileReader();

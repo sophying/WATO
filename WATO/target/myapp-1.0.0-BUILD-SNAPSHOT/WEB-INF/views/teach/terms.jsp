@@ -255,10 +255,10 @@
                         	</li>
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="register.jsp" class="text-black-50 font-weight-bold">회원가입</a></li> -->
-                        <c:if test="${!std.user_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="contact.jsp" class="text-black-50 font-weight-bold">문의하기</a></li>
                         </c:if>
-                        <c:if test="${std.user_Id.substring(0,5).equals('admin')}">
+                        <c:if test="${!std.user_Id.equals('admin')}">
                         <li class="list-inline-item"><a href="/admin/adminmanage" class="text-black-50 font-weight-bold">MANAGEMENT</a></li>                        
                         </c:if>
                         <!-- <li class="list-inline-item"><a href="/admin/terms2" class="text-black-50 font-weight-bold">이용약관</a></li> -->                       
@@ -524,7 +524,15 @@
                         </p>
                         </div>
                         <input class="gaip" id="joinb" type="submit" 
-                        style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;" value="회원가입">
+                        style="border-radius: 10px; 
+								background-color: #77bbc2; 
+								border: 0; 
+								outline: 0; 
+								color: #fff; 
+								width: 130px; 
+								height: 40px;
+								margin-top: 30px;
+								margin-bottom: 60px;" value="회원가입">
                     </form>
                     </div>
                 </div>

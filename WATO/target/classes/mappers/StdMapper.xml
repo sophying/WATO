@@ -33,6 +33,12 @@
 		where User_Id = #{User_Id}
 	</select>
 	
+	<!-- 이메일 중복확인 -->
+	<select id="emailChk" resultType="int">
+		select count(*) from std_info
+		where User_Email = #{User_Email}
+	</select>
+	
 	<!-- 회원정보 수정 -->
 	<update id="info_modify">
 		update std_info

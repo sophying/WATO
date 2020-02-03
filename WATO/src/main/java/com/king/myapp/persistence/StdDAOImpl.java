@@ -42,4 +42,11 @@ public class StdDAOImpl implements StdDAO {
 		sql.insert(namespace + ".admin_mng", vo);
 	}
 
+	// 이메일 중복 체크
+	@Override
+	public int emailChk(StdVO vo) throws Exception {
+		int result = sql.selectOne(namespace + ".emailChk", vo);
+		return result;
+	}
+
 }

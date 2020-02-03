@@ -17,6 +17,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script> 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- 제이쿼리 -->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head> 
 <style> 
 .studylistviewbody #about {
@@ -39,12 +41,20 @@
 
 .studylistviewbody #about .card-header img.background {
   width: 100%;
-}
-
+  height: 250px;  
+}  
 .studylistviewbody #about .card-header img.user {
-  width: 100%;
+  width: 100%; 
   max-width:130px; 
-  display: block; 
+  min-height:130px;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+  max-height:130px;
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
+  display: block;  
   margin: auto;
   border-radius: 100px;
   position: relative;
@@ -374,18 +384,24 @@
 	<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style="font-size: 20px; font-weight: bold;">${TearchlistAll.size()+studylistAll.size()+StudyListFilterdata.size()+TeacherListFilter.size()}개의 스터디</font>
 	<br><br> 
 	<div class="studylistviewbody">  
-	  <div class="valign-wrapper">    
-	  	<div class="row">   
-		  <% int cnt = 0; %>  
+	  <div class="valign-wrapper">     
+	  	<div class="row" style="width: 100%">   
 	  		<c:forEach items="${TearchlistAll}" var="TearchlistAll">
 		    <div class="col s12 m4">
 		      <div class="card" id="about">  
 		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		          <img class="background" src="${TearchlistAll.t_photo}">
+		          <c:choose>
+		          	<c:when test="${TearchlistAll.teach_orgname.equals('http://i66.tinypic.com/ng7ue1.jpg') }">
+			          <img class="user" src="${TearchlistAll.teach_orgname}" >
+		          	</c:when>
+		          	<c:otherwise>
+		          	  <img class="user" src="/resource/images/${TearchlistAll.teach_orgname}">
+		          	</c:otherwise>
+		          </c:choose>
 		        </div>  
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		           ${TearchlistAll.t_title} 
+		              <a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TearchlistAll.t_no}'"  title="${TearchlistAll.t_title}">${TearchlistAll.t_title}</a>
 		        </h6>  
 		        <h6 class="description">    
 		                ${TearchlistAll.t_userId} <i class="fa fa-id-badge" aria-hidden="true"></i> 
@@ -394,56 +410,96 @@
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
 		        <div class='wrap'>
-		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          <div class='content' style="top: 24%;">
+		             <p> 
+		            	<input type="hidden" value="${TearchlistAll.t_no}">
+		            	<a onclick="heartbuttonfunct(this)" href="/board/heartbuttoninsert/${TearchlistAll.t_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
+		            		</i>
+		            	</a>
+					</p>
+		            <p>
+		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${TearchlistAll.t_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-thumbs-o-up">
+		            		</i>
+		            	</a>
+		            </p>
+		            <p>
+		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-user-o">
+		            		</i>
+		            	</a>
+		            </p>
 		          </div> 
 		        </div>
 		      </div> 
 		    </div>
-			<% cnt++; %> 
 		  </c:forEach>
-		  <% int cnt1 = 0; %>   
 	  		<c:forEach items="${studylistAll}" var="studylistAll">
-		    <div class="col s12 m4">
+		    <div class="col s12 m4"> 
 		      <div class="card" id="about"> 
 		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		          <img class="background" src="${studylistAll.s_photo}">
+		           <c:choose>
+		          	<c:when test="${studylistAll.std_orgname.equals('http://i66.tinypic.com/ng7ue1.jpg') }">
+			           <img class="user" src="${studylistAll.std_orgname}">
+		          	</c:when>
+		          	<c:otherwise>
+		          	  <img class="user" src="../resource/images/${studylistAll.std_orgname}">
+		          	</c:otherwise>
+		          </c:choose>
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${studylistAll.s_title}  
+		       		<a title="${studylistAll.s_title}" style="color: black;" href="javascript:parent.location.href='../study/study_DetailRead?s_no=${studylistAll.s_no}'" >${studylistAll.s_title}</a>
 		        </h6> 
 		        <h6 class="description">   
-		                ${studylistAll.s_userId}   
+		                ${studylistAll.s_userId}    
 		        </h6>
 		        <div class="social">
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
 		        <div class='wrap'>
-		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          <div class='content' style="top: 24%;">  
+		            <p> 
+		            	<input type="hidden" value="${studylistAll.s_no}">
+		            	<a onclick="heartbuttonfunct(this)" href='/board/heartbuttoninsert/${studylistAll.s_no}' class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
+		            		</i>
+		            	</a>
+					</p>
+		            <p>
+		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${studylistAll.s_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-thumbs-o-up">
+		            		</i>
+		            	</a>
+		            </p> 
+		            <p>
+		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-user-o">
+		            		</i>
+		            	</a>
+		            </p>
 		          </div> 
 		        </div>
 		      </div>  
 		    </div>
-			<% cnt1++; %> 
 		  </c:forEach>
-		  <% int cnt2 = 0; %>
 		  <c:forEach items="${StudyListFilterdata}" var="StudyListFilterdata">
 		    <div class="col s12 m4"> 
 		      <div class="card" id="about">  
 		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		          <img class="background" src="${StudyListFilterdata.s_photo}">
+		          <c:choose>
+		          	<c:when test="${StudyListFilterdata.std_orgname.equals('http://i66.tinypic.com/ng7ue1.jpg') }">
+			           <img class="user" src="${StudyListFilterdata.std_orgname}">
+		          	</c:when>
+		          	<c:otherwise>
+		          	  <img class="user" src="/resource/images/${StudyListFilterdata.std_orgname}">
+		          	</c:otherwise>
+		          </c:choose>
 		        </div>
 		       <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${StudyListFilterdata.s_title}  
+		        			<a title="${StudyListFilterdata.s_title}" style="color: black;" href="javascript:parent.location.href='../study/study_DetailRead?s_no=${StudyListFilterdata.s_no}'" >${StudyListFilterdata.s_title}</a>
 		        </h6>  
 		        <h6 class="description">  
 		                ${StudyListFilterdata.s_userId} 
@@ -452,27 +508,47 @@
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
 		        <div class='wrap'>  
-		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		          <div class='content' style="top: 24%;">
+		           	<p> 
+		            	<input type="hidden" value="${StudyListFilterdata.s_no}">
+		            	<a onclick="heartbuttonfunct(this)" href='/board/heartbuttoninsert/${StudyListFilterdata.s_no}' class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
+		            		</i>
+		            	</a>
+					</p>
+		            <p>
+		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${StudyListFilterdata.s_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-thumbs-o-up">
+		            		</i>
+		            	</a>
+		            </p> 
+		            <p>
+		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-user-o">
+		            		</i>
+		            	</a>
+		            </p>
 		          </div> 
 		        </div>
 		      </div> 
 		    </div>
-			<% cnt2++; %>
 		  </c:forEach>
-		  <% int cnt3 = 0; %>
 		  <c:forEach items="${TeacherListFilter}" var="TeacherListFilter">
-		    <div class="col s12 m4"> 
+			 <div class="col s12 m4"> 
 		      <div class="card" id="about">  
 		        <div class="card-header">
-		          <img class="background" src="https://images.unsplash.com/uploads/14128434147336bfb286b/e76494ac?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=0d14ef0b6c5eeee1561a0e340d48ae41">
-		          <img class="user" src="http://i66.tinypic.com/ng7ue1.jpg">
+		          <img class="background" src="${TeacherListFilter.t_photo}">
+		           <c:choose>
+		          	<c:when test="${TeacherListFilter.teach_orgname.equals('http://i66.tinypic.com/ng7ue1.jpg') }">
+			          <img class="user" src="${TeacherListFilter.teach_orgname}" >
+		          	</c:when>
+		          	<c:otherwise>
+		          	  <img class="user" src="/resource/images/${TeacherListFilter.teach_orgname}" >
+		          	</c:otherwise>
+		          </c:choose>
 		        </div> 
 		        <h6 class="card-title" id="listalltitle" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; width: 100%; height: 30px;">
-		        			${TeacherListFilter.t_title}  
+		        			<a style="color: black;" href="javascript:parent.location.href='../study/header_DetailRead?t_no=${TeacherListFilter.t_no}'" title="${TeacherListFilter.t_title}">${TeacherListFilter.t_title}</a>
 		        </h6>  
 		        <h6 class="description">  
 		                ${TeacherListFilter.t_userId}<i class="fa fa-id-badge" aria-hidden="true"></i>
@@ -480,32 +556,81 @@
 		        <div class="social">
 		          <a class="btn-floating btn-large waves-effect waves-light teal more z-depth-2" onclick="togglefunction(this)"><i class="material-icons">add</i></a>
 		        </div>
-		        <div class='wrap'>  
-		          <div class='content'>
-		            <span>Follow me:</span>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://github.com/rommetv" target="_blank"><i class="fa fa-github"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://codepen.io/Rommetv/" target="_blank"><i class="fa fa-codepen"></i></a></p>
-		            <p><a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" href="https://rommetevelde.nl" target="_blank"><i class="fa fa-globe"></i></a></p>
+		        <div class='wrap'>   
+		          <div class='content' style="top: 24%;"> 
+		           <p> 
+		            	<input type="hidden" value="${TeacherListFilter.t_no}">
+		            	<a onclick="heartbuttonfunct(this)" href="/board/heartbuttoninsert/${TeacherListFilter.t_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links" >
+		            		<i class="fa fa-heart-o" aria-hidden="true" style="color: white;">
+		            		</i>
+		            	</a>
+					</p>
+		            <p>
+		            	<a onclick="likebuttonfunct(this)" href="/board/likebuttoninsert/${TeacherListFilter.t_no}" class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-thumbs-o-up"> 
+		            		</i>
+		            	</a>
+		            </p>
+		            <p>
+		            	<a class="btn-floating btn-sm waves-effect waves-light teal z-depth-2 social-links">
+		            		<i class="fa fa-user-o">
+		            		</i>
+		            	</a>
+		            </p>
 		          </div> 
 		        </div>
 		      </div> 
-		    </div>
-			<% cnt3++; %>
+		    </div> 
 		  </c:forEach>  
 		  <c:if test="${TeacherListFilter.size()+StudyListFilterdata.size()+TearchlistAll.size()+studylistAll.size() == 0}"> 
 		  	<h3>해당 조건에 대한 검색결과가 없습니다.</h3>
 		  </c:if>  
 		  <br> <br> <br> <br> <br> <br> <br> <br> <br>   
-		  </div>  
+		  </div>   
 		</div>
 	</div>  
   
 <script type="text/javascript">
- 	
+	function heartbuttonfunct(event) {
+		var loginplase = "${loginplase}"; 
+		if (loginplase != null && loginplase != "") { 
+			alert(loginplase);
+			return false; 
+		}
+	}
 	
-	function togglefunction (event) { 
-		$(event).toggleClass('active'); 
-		$(event).parent().next().toggleClass('active');  
+	function likebuttonfunct(event) {
+		var loginplase = "${loginplase}"; 
+		if (loginplase != null && loginplase != "") { 
+			alert(loginplase);
+			return false;  
+		}
+	}
+	
+	
+
+
+//__________________________________
+	function togglefunction (event) {  
+		$(event).toggleClass('active');  
+		$(event).parent().next().toggleClass('active');
+		 var heartbutton = "${heartbutton}";
+		 var likebutton = "${likebutton}";
+		 var s_no = $(event).parent().next().children().children().children().val();
+	  
+		 if (heartbutton != null && heartbutton !="" && heartbutton.length != 0) { 
+				if(heartbutton.indexOf(s_no) != -1){
+					$(event).parent().next().children().children().children().next().children().attr("class","fa fa-heart");
+					$(event).parent().next().children().children().children().next().attr("href", "/board/heartbuttondelete/"+s_no+"?myinfo=false");
+	    		}
+		}
+		 if (likebutton != null && likebutton !="" && likebutton.length != 0) {
+				if(likebutton.indexOf(s_no) != -1){
+					  $(event).parent().next().children().children().next().children().children('.fa-thumbs-o-up').attr("class","fa fa-thumbs-up");
+				      $(event).parent().next().children().children().next().children().attr("href", "/board/likebuttondelete/"+s_no+"?myinfo=false");
+	    		}
+		 }
+		
 		return false;
 	}
 

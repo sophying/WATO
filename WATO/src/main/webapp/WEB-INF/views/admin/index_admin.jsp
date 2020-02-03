@@ -16,11 +16,11 @@
 <script src="../resource/admin/vendor/jquery/jquery.min.js"></script>
 <script src="../resource/admin/vendor/popper.js/umd/popper.min.js"> </script>
 <script src="../resource/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
-<script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="../resource/admin/vendor/chart.js/Chart.min.js"></script>
-<script src="../resource/admin/js/js.cookie.min.js"></script>
-<script src="../resource/admin/js/charts-home.js"></script>
-<script src="../resource/admin/js/front.js"></script>
+<script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js?v=<%=System.currentTimeMillis() %>"> </script>
+<script src="../resource/admin/vendor/chart.js/Chart.min.js?v=<%=System.currentTimeMillis() %>"></script>
+<script src="../resource/admin/js/js.cookie.min.js?v=<%=System.currentTimeMillis() %>"></script>
+<script src="../resource/admin/js/charts-home.js?v=<%=System.currentTimeMillis() %>"></script>
+<script src="../resource/admin/js/front.js?v=<%=System.currentTimeMillis() %>"></script>
 
 <html>
 <head>
@@ -77,31 +77,31 @@
              <%@ include file="../include_admin/main_chart.jsp"%>
             <%--메인 중앙 차트 영역 <div class="row mb-4">--%>
 
-            <%--메인 결제 영역 (<section class="py-5">) --%>
+<%--             메인 결제 영역 (<section class="py-5">)
             <%@include file="../include_admin/main_pay.jsp"%>
-            <%--메인 결제 영역 (<section class="py-5">) --%>
+            메인 결제 영역 (<section class="py-5">)
 
-            <%--메인 트렌젝션 히스토리 영역 --%>
+            메인 트렌젝션 히스토리 영역
             <section>
                 <div class="row">
-                    <%-- main_transaction_up 영역(<div class="col-lg-8">) --%>
+                    main_transaction_up 영역(<div class="col-lg-8">)
                     <%@include file="../include_admin/main_transaction_up.jsp"%>
-                    <%-- main_transaction_ 영역(<div class="col-lg-8">) --%>
+                    main_transaction_ 영역(<div class="col-lg-8">)
 
-                    <%-- main_transaction_middle 영역(<div class="col-lg-4"> --%>
+                    main_transaction_middle 영역(<div class="col-lg-4">
                     <%@ include file="../include_admin/main_transaction_middle.jsp"%>
-                    <%-- main_transaction_middle 영역(<div class="col-lg-4"> --%>
+                    main_transaction_middle 영역(<div class="col-lg-4">
 
-                    <%--main_transaction_row 영역(<div class="card px-5 py-4">)--%>
+                    main_transaction_row 영역(<div class="card px-5 py-4">)
                     <%@ include file="../include_admin/main_transaction_row.jsp"%>
-                    <%--main_transaction_row 영역(<div class="card px-5 py-4">)--%>
+                    main_transaction_row 영역(<div class="card px-5 py-4">)
                 </div>
             </section>
-        <%--메인 트렌젝션 히스토리 영역 --%>
+        메인 트렌젝션 히스토리 영역
 
-        <%--담당자 영역 (<section class="py-5">)--%>
+        담당자 영역 (<section class="py-5">)
         <%@include file="../include_admin/main_member.jsp"%>
-        <%--담당자 영역 (<section class="py-5">)--%>
+        담당자 영역 (<section class="py-5">) --%>
 
     </div>
 

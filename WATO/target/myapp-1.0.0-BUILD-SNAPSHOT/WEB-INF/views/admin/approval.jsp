@@ -83,35 +83,35 @@
      }
      
      th.ph1 {
-     	margin-left: 10px;
+        margin-left: 10px;
      }
      
      td {
         text-align: center;
      }
      .bigPictureWrapper {
-			position: absolute;
-			display: none;
-			justify-content: center;
-			align-items: center;
-			top:0%;
-			width:100%;
-			height:100%;
-			background-color: gray; 
-			z-index: 100;
-			background:rgba(255,255,255,0.5);
-		}
-		.bigPicture {
-			position: relative;
-			display:flex;
-			justify-content: center;
-			align-items: center;
-		}
-		
-		.bigPicture img {
-			width: 600px;
-			height: 800px;
-		}
+         position: absolute;
+         display: none;
+         justify-content: center;
+         align-items: center;
+         top:0%;
+         width:100%;
+         height:100%;
+         background-color: gray; 
+         z-index: 100;
+         background:rgba(255,255,255,0.5);
+      }
+      .bigPicture {
+         position: relative;
+         display:flex;
+         justify-content: center;
+         align-items: center;
+      }
+      
+      .bigPicture img {
+         width: 200px;
+         height: 300px;
+      }
   </style>
   <body>
 
@@ -137,31 +137,33 @@
                   <div class="card-body">
                     <table class="table card-text">
                         <tr>
-                            <th>Profile</th>
-	                        <th>Resume</th>
-	                        <th>Gender</th>
-	                        <th class="ph1">P.H-1</th>
-	                        <th>P.H-2</th>
-	                        <th>P.H-3</th>
-	                        <th>Email</th>
-	                        <th>Addr-1</th>
-	                        <th>Addr-2</th>
-	                        <th>Addr-3</th>
-	                        <th>Approval</th>
+                           <th>Profile</th>
+                           <th>Resume</th>
+                           <th>Gender</th>
+                           <th class="ph1">P.H-1</th>
+                           <th>P.H-2</th>
+                           <th>P.H-3</th>
+                           <th>Email</th>
+                           <th>Addr-1</th>
+                           <th>Addr-2</th>
+                           <th>Addr-3</th>
+                           <th>Approval</th>
                         </tr>
                   </table>
                         <c:forEach var="AppVO" items="${list}">
                         <div class='bigPictureWrapper'>
-							<div class='bigPicture'>
-							</div>
-						</div>
+                     <div class='bigPicture'>
+                     </div>
+                  </div>
                         <form id="approvalform" role="form" method="post" action="">
                           <table class="table card-text">
                           <tr>
                               <%-- <td><img id="Teach_Profile" name="Teach_Prifile" src="../resource/images/${AppVO.app_Orgname}"></td> --%>
-                              <td><img id="Teach_Profile" name="Teach_Profile" src="../resource/images/${AppVO.app_Newname}"></td>
+                              <td><img id="Teach_Orgname" name="Teach_Orgname" src="../resource/images/${AppVO.app_Orgname}"></td>
+                              <td><input type="hidden" id="Teach_Orgname" name="Teach_Orgname" value="${AppVO.app_Orgname}"></td>
                               <%-- <td><img id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Orgname2}"></td> --%>
-                              <td><a href="../resource/images/${AppVO.app_Newname2}" download>이력서 다운로드</a></td>
+                              <td><a id="Teach_Orgname2" name="Teach_Orgname2" href="../resource/images/${AppVO.app_Orgname2}" download>이력서 다운로드</a></td>
+                              <td><input type="hidden" name="Teach_Orgname2" value="${AppVO.app_Orgname2}"></td>
                               <%-- <td><img id="Teach_Resume" name="Teach_Resume" src="../resource/images/${AppVO.app_Newname2}"></td> --%>
                               <td><input type="text" class="gh" id="Teach_Gender" name="Teach_Gender" value="${AppVO.app_Gender}" readonly="readonly"></td>
                               <td><input type="text" class="gh" id="Teach_Phone1" name="Teach_Phone1" value="${AppVO.app_Phone1}" readonly="readonly"></td>
@@ -171,7 +173,7 @@
                               <td><input type="text" class="addr1" id="Teach_Addr1" name="Teach_Addr1" value="${AppVO.app_Addr1}" readonly="readonly"></td>
                               <td><input type="text" class="addr2" id="Teach_Addr2" name="Teach_Addr2" value="${AppVO.app_Addr2}" readonly="readonly"></td>
                               <td><input type="text" class="addr3" id="Teach_Addr3" name="Teach_Addr3" value="${AppVO.app_Addr3}" readonly="readonly"></td>
-                              <td><button type="button" onclick="approvalfunction(this)" >승인</button></td>
+                              <td><button type="button" onclick="approvalfunction(this)" class="btn btn-primary">승인</button></td>
                           </tr>
                        </table>
                      </form>  
@@ -179,34 +181,34 @@
                     <script type="text/javascript"> 
                        function approvalfunction(event) { 
                            $(event).parent().parent().parent().parent().parent().submit();
-                  		}
+                        }
                     </script>
                     <script type="text/javascript">
-						$(document).ready(function (e){
-							
-							$(document).on("click","img",function(){
-								var path = $(this).attr('src')
-								showImage(path);
-							});//end click event
-							
-							function showImage(fileCallPath){
-							    
-							    $(".bigPictureWrapper").css("display","flex").show();
-							    
-							    $(".bigPicture")
-							    .html("<img src='"+fileCallPath+"' >")
-							    .animate({width:'150%', height: '250%'}, 1000);
-							    
-							  }//end fileCallPath
-							  
-							$(".bigPictureWrapper").on("click", function(e){
-							    $(".bigPicture").animate({width:'0%', height: '0%'}, 1000);
-							    setTimeout(function(){
-							      $('.bigPictureWrapper').hide();
-							    }, 1000);
-							  });//end bigWrapperClick event
-						});
-					</script>
+                  $(document).ready(function (e){
+                     
+                     $(document).on("click","img",function(){
+                        var path = $(this).attr('src')
+                        showImage(path);
+                     });//end click event
+                     
+                     function showImage(fileCallPath){
+                         
+                         $(".bigPictureWrapper").css("display","flex").show();
+                         
+                         $(".bigPicture")
+                         .html("<img src='"+fileCallPath+"' >")
+                         .animate({width:'150%', height: '250%'}, 1000);
+                         
+                       }//end fileCallPath
+                       
+                     $(".bigPictureWrapper").on("click", function(e){
+                         $(".bigPicture").animate({width:'0%', height: '0%'}, 1000);
+                         setTimeout(function(){
+                           $('.bigPictureWrapper').hide();
+                         }, 1000);
+                       });//end bigWrapperClick event
+                  });
+               </script>
                   </div>
                 </div>
               </div>
@@ -223,9 +225,9 @@
     <!-- JavaScript files-->
     <script src="../resource/admin/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="../resource/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="../resource/admin/vendor/chart.js/Chart.min.js"></script>
-    <script src="../resource/admin/js/js.cookie.min.js"></script>
-    <script src="../resource/admin/js/front.js"></script>
+    <script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js?v=<%=System.currentTimeMillis() %>"> </script>
+    <script src="../resource/admin/vendor/chart.js/Chart.min.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/js.cookie.min.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/front.js?v=<%=System.currentTimeMillis() %>"></script>
   </body>
 </html>

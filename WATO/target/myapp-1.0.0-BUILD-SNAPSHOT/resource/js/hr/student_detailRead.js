@@ -1,4 +1,6 @@
 //Q&A 작성시 글자 수 제한 
+
+
 $("#r_content").keyup(function (event) {
 	var content1 = $(this).val();
 	$('#cnttxt1').html("("+content1.length+" / 최대 200 자)");
@@ -24,7 +26,7 @@ function resize(obj) {
 			if ($(obj).val()== "수정하기") {
 				$(obj).val("수정등록");
 				$(obj).parent().prev().children().attr('readonly', false);
-				$(obj).parent().prev().children().css("background-color", "#ddddee33");
+				$(obj).parent().prev().children().css("background-color", "#ddddee55");
 				
 			}else if ($(obj).val()== "수정등록") {
 				$(obj).val("수정하기");

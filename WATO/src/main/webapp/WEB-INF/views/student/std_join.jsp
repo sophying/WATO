@@ -138,19 +138,19 @@
        z-index: 10;
     }
     .container-login100 { 
-     width: 100%;  
-     min-height: 60vh; 
-     display: -webkit-box; 
-     display: -webkit-flex; 
-     display: -moz-box; 
-     display: -ms-flexbox; 
-     display: flex;  
-     flex-wrap: wrap;  
-     justify-content: center;  
-     align-items: center; 
-     padding: 15px;
-     background: none; 
-   }
+	  width: 100%;  
+	  min-height: 80vh; 
+	  display: -webkit-box; 
+	  display: -webkit-flex; 
+	  display: -moz-box; 
+	  display: -ms-flexbox; 
+	  display: flex;  
+	  flex-wrap: wrap;  
+	  justify-content: center;   
+	  align-items: center; 
+	  padding: 15px;
+	  background: none; 
+	}
    .limiter {
      width: 100%;
      margin: 0 auto;
@@ -408,7 +408,14 @@
 <!--                         <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40" required oninvalid="this.setCustomValidity('필수입력사항 입니다.')" > -->
                         <td><input type="text" id="User_Id" name="User_Id" size="37" maxlength="40">
                   <br><div style="display: inline-block;" id="id_check"></div></td>
-                        <td><button type="button" class="idCheck" onclick="fn_idChk();" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;">아이디 중복확인</button></td>
+                        <td><button type="button" class="idCheck" onclick="fn_idChk();" 
+                        style="border-radius: 10px; 
+		                        background-color: #77bbc2; 
+		                        border: 0; 
+		                        outline: 0; 
+		                        color: #fff; 
+		                        width: 130px; 
+		                        height: 40px;">아이디 중복확인</button></td>
                     </tr>
                     <tr>
                         <th>비밀번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -442,16 +449,31 @@
                             <input type="text" id="Std_Phone2" name="Std_Phone2" size="15" maxlength="4">
                             -
                             <input type="text" id="Std_Phone3" name="Std_Phone3" size="15" maxlength="4">
+                            <br><div style="display: inline-block;" id="ph_check"></div>
                         </td>
                     </tr>
                     <tr>
                        <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                       <td colspan="2"><input type="email" id="email" id="User_Email" name="User_Email" size="55" maxlength="80" onfocus="focus()"></td>
+                       <td><input type="email" id="User_Email" name="User_Email" size="37" maxlength="50" onfocus="focus()"></td>
+                       <td><button type="button" class="emailChk" onclick="fn_emailChk();" 
+                        style="border-radius: 10px; 
+		                        background-color: #77bbc2; 
+		                        border: 0; 
+		                        outline: 0; 
+		                        color: #fff; 
+		                        width: 130px; 
+		                        height: 40px;">이메일 중복확인</button></td>
                     </tr>
                     <tr>
                         <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td><input type="text" id="sample3_postcode" name="Std_Addr1" placeholder="우편번호"></td>
-                        <td><input type="button" onclick="sample3_execDaumPostcode()" value="우편번호찾기" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff;"></td>
+                        <td><input type="button" onclick="sample3_execDaumPostcode()" value="우편번호찾기" style="border-radius: 10px; 
+																						                        background-color: #77bbc2; 
+																						                        border: 0; 
+																						                        outline: 0; 
+																						                        color: #fff; 
+																						                        width: 130px; 
+																						                        height: 40px;"></td>
                     </tr>
                     <tr>
                         <th>주소<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -460,13 +482,21 @@
                     <tr>
                         <th>상세주소<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
                         <td colspan="2"><input type="text" id="sample3_detailAddress" name="Std_Addr3" size="55" maxlength="12"  placeholder="상세주소">
-                        <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
+                        <div id="wrap" style="display:none; border:1px solid; width:500px; height:300px; margin:5px 0; position:relative">
 						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
 						</div>
                         </td>
                     </tr>
                 </table>
-                   <input type="submit" value="회원가입" style="border-radius: 10px; background-color: #5fa29480; border: 0; outline: 0; color: #fff; margin-right: 30px; width: 150px; height: 50px;">
+                   <input type="submit" value="회원가입" style="border-radius: 10px; 
+											                   background-color: #77bbc2; 
+											                   border: 0; 
+											                   outline: 0; 
+											                   color: #fff; 
+											                   width: 130px; 
+											                   height: 40px;
+											                   margin-top: 30px;
+											                   margin-bottom: 60px;">
             </form>
       </div>
    </div>
@@ -654,7 +684,7 @@ function infoCheck() {
 		return false;
 	}
 	
-	alert("회원정보가 정상적으로 변경완료 되었습니다.")
+	alert("회원가입이 완료되었습니다.")
 }
 
     // 정규표현식 유효성 검사 소스_________________________________________________________
@@ -663,6 +693,40 @@ function infoCheck() {
       var idJ = /^[a-z0-9]{4,12}$/;
       // 비밀번호 정규식
       var pwJ = /^[A-Za-z0-9]{4,12}$/;
+      // 휴대폰번호 정규식
+      var phJ = /^[0-9]{4,4}$/;
+      
+      
+      $( function(){
+   		$( '#User_Id' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#userPw' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#userPwChk' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#Std_Phone2' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#Std_Phone3' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
       
       $('#User_Id').blur(function() {
          if (idJ.test($('#User_Id').val())) {
@@ -674,7 +738,7 @@ function infoCheck() {
             $('#id_check').text('소문자와 대문자로만 4~12자리를 입력해주십시오.');
             $('#id_check').css('color', 'red');
          }
-      });      
+      });
       
 
       $('#userPw').blur(function() {
@@ -709,6 +773,31 @@ function infoCheck() {
          }
       });
 
+      
+	// 휴대폰 정규식
+      $('#Std_Phone2').blur(function() {
+   	   if (phJ.test($('#Std_Phone2').val())) {
+   		   console.log('true');
+   		   $('#ph_check').text('');
+   	   } else {
+   		   console.log('false');
+   		   $('#ph_check').text('4자리의 숫자만 입력가능합니다.');
+   		   $('#ph_check').css('color', 'red');
+   	   }
+      })
+      
+      $('#Std_Phone3').blur(function() {
+   	   if (phJ.test($('#Std_Phone3').val())) {
+   		   console.log('true');
+   		   $('#ph_check').text('');
+   	   } else {
+   		   console.log('false');
+   		   $('#ph_check').text('4자리의 숫자만 입력가능합니다.');
+   		   $('#ph_check').css('color', 'red');
+   	   }
+      })
+      
+
    // 정규표현식 유효성 검사 끝 ________________________________________________________________________
       
    // 파일 업로드 전 이미지 미리보기_____________________________________________________________________
@@ -742,6 +831,25 @@ function infoCheck() {
                }else if(data == 0){
                   $("#idChk").attr("value", "Y");
                   alert("사용가능한 아이디입니다.");
+               }
+            }
+         })
+      }
+      
+
+   // 이메일 중복 체크_______________________________________________________________________________
+      function fn_emailChk(){
+         $.ajax({
+            url : "/student/emailChk",
+            type : "post",
+            dataType : "json",
+            data : {"User_Email" : $("#User_Email").val()},
+            success : function(data){
+               if(data == 1){
+                  alert("중복된 이메일입니다.");
+               }else if(data == 0){
+                  $("#emailChk").attr("value", "Y");
+                  alert("사용가능한 이메일입니다.");
                }
             }
          })

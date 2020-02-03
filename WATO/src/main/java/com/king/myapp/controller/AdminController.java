@@ -1,9 +1,9 @@
 package com.king.myapp.controller;
 
 import java.io.PrintWriter;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import javax.inject.Inject;
 import javax.mail.internet.MimeMessage;
@@ -27,13 +27,14 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.king.myapp.domain.ApprovalVO;
-import com.king.myapp.domain.ManagementVO;
 import com.king.myapp.domain.PageMaker;
 import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.QnaReplyVO;
 import com.king.myapp.domain.SearchCriteria;
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 import com.king.myapp.service.AdminService;
 import com.king.myapp.service.MailService;
 import com.king.myapp.service.QnaBoardService;
@@ -57,37 +58,121 @@ public class AdminController {
 	JavaMailSender mailSender;
 	@Inject
 	MailService mailservice;
-	
+
 	@Autowired
 	QnaBoardService service;
 	@Autowired
 	QnaReplyService qnaReplyService;
 
 	// 어드민 페이지로 이동
-	    @RequestMapping(value = "/index_admin")
-	    public String admin_main() throws Exception {
-	    	logger.info("admin main 페이지로 이동~~!!");
-			return "admin/index_admin";
-	    }
-	//qna 리스트 페이지로 이동
-		@RequestMapping(value ="/admin_qna_list", method = RequestMethod.GET)
-	    	public String admin_qna_list(Model model, @ModelAttribute("scri") SearchCriteria scri, QnaBoardVO vo) throws Exception{
-	    		logger.info("admin_qna_list 페이지로 이동");
-			model.addAttribute("admin_qna_list",service.getQnaList(scri));
+	@RequestMapping(value = "/index_admin")
+	public String admin_main(HttpServletResponse response, HttpSession session, Model model, StdVO svo, TeachVO tvo, QnaBoardVO qvo, StudyEnrollVO sevo, TeacherEnrollVO tevo, Object s_apply_month, Object t_apply_month)
+			throws Exception {
+		logger.info("admin main 페이지로 이동~~!!");
 
-			PageMaker pageMaker = new PageMaker();
-			pageMaker.setCri(scri);
-			pageMaker.setTotalCount(service.listCount());
+		/* 세션에 부여된 아이디 : admin check */
+		StdVO std = (StdVO) session.getAttribute("std");
 
-			model.addAttribute("pageMaker", pageMaker);
-			model.addAttribute("scri", scri);
+		System.out.println("std~~~~" + std);
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html; charset=UTF-8");
 
-			return "/admin/admin_qna_list";
+		if (std != null) {
+
+			String admin_Id_Check = std.getUser_Id();
+
+			if (!admin_Id_Check.equals("admin") || admin_Id_Check.equals("")) {
+				out.println("<script>alert('잘못된 접근입니다, 메인화면으로 돌아갑니다.'); location.href='/';</script>");
+				out.flush();
+				out.close();
+			}
+
+		} else {
+			out.println("<script>alert('잘못된 접근입니다, 메인화면으로 돌아갑니다.'); location.href='/';</script>");
+			out.flush();
+			out.close();
+		}
+
+		// 메인화면 통계 데이터 값 전달.
+
+		// 학생 가입자수
+		int Std_count = adminservice.count_std(svo);
+		model.addAttribute("Std_count", Std_count);
+
+		// 강사 가입자수
+		int Tech_count = adminservice.count_tech(tvo);
+		model.addAttribute("Tech_count", Tech_count);
+
+		// 총 가입자수(학생+강사) 합계
+		int sum_member = Std_count + Tech_count;
+		model.addAttribute("sum_member", sum_member);
+
+		// 현재 로그인한 접속자 수(세션)
+		Enumeration se = session.getAttributeNames();
+		int Session_count = 0;
+		while (se.hasMoreElements()) {
+			String getse = se.nextElement() + "";
+			// System.out.println("@@@@@@@ session : " + getse + " : " +
+			// session.getAttribute(getse));
+			Session_count++;
+		}
+		System.out.println("세션 수~~ 확인" + Session_count);
+		model.addAttribute("Session_count", Session_count);
+
+		// 학생이 만든 스터디 수
+		 int s_enroll_count = adminservice.count_s_enroll(svo);
+			model.addAttribute("s_enroll_count", s_enroll_count);
+
+		// 강사가 만든 스터디 수
+		 int t_enroll_count = adminservice.count_t_enroll(tvo);
+			model.addAttribute("t_enroll_count", t_enroll_count);
+		
+		//(학생+강사) 스터디 합계
+			int enroll_sum = s_enroll_count+t_enroll_count;
+			model.addAttribute("sum_enroll_count", enroll_sum);
+		
+		// 총 문의내역
+			int qna_count = adminservice.qna_count(svo);
+			model.addAttribute("qna_count", qna_count);
+		// 최근 30일 문의내역
+			int board_this_month_Count = adminservice.board_this_month_Count(qvo);
+			model.addAttribute("board_this_month_Count", board_this_month_Count);
+		
+		// 강사의 월별 스터디수
+		t_apply_month = adminservice.t_apply_month(tevo);
+		model.addAttribute("t_apply_month",t_apply_month);
+
+		// 학생의 월별 스터디수
+		s_apply_month = adminservice.s_apply_month(sevo);
+		model.addAttribute("s_apply_month",s_apply_month);
+
+		System.out.println(s_apply_month);
+		System.out.println(t_apply_month);
+		return "admin/index_admin";
 
 	}
-	//qna 글읽기 페이지로 이동
+
+	// qna 리스트 페이지로 이동
+	@RequestMapping(value = "/admin_qna_list", method = RequestMethod.GET)
+	public String admin_qna_list(Model model, @ModelAttribute("scri") SearchCriteria scri, QnaBoardVO vo)
+			throws Exception {
+		logger.info("admin_qna_list 페이지로 이동");
+		model.addAttribute("admin_qna_list", service.getQnaList(scri));
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service.listCount());
+
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("scri", scri);
+
+		return "/admin/admin_qna_list";
+
+	}
+
+	// qna 글읽기 페이지로 이동
 	@RequestMapping(value = "/admin_qna_read", method = RequestMethod.GET)
-	public String admin_qna_read(@RequestParam("QNA_BNO") int QNA_BNO, Model model, HttpServletResponse response) throws Exception {
+	public String admin_qna_read(@RequestParam("QNA_BNO") int QNA_BNO, Model model, HttpServletResponse response, HttpSession session) throws Exception {
 		logger.info("admin_qna_read 페이지로 이동");
 
 		QnaBoardVO vo = service.getQnaRead(QNA_BNO);
@@ -99,32 +184,41 @@ public class AdminController {
 		List<Map<String, Object>> fileList = service.selectFileList(vo.getQNA_BNO());
 		model.addAttribute("file", fileList);
 
+		if (session.getAttribute("std") == null && session.getAttribute("teach") == null){
+			return "/admin/admin_qna_read";
+
+		}
+
+
+
 		return "/admin/admin_qna_read";
+	}
+
+	// 삭제(보내기 및 받기)
+	@RequestMapping(value = "/admin_qna_delete/{QNA_BNO}", method = RequestMethod.GET)
+	public String admin_qna_read(@PathVariable int QNA_BNO) throws Exception {
+		logger.info("admin_qna_read");
+		System.out.println("QNA_BNO : " + QNA_BNO);
+		service.QnaDelete(QNA_BNO);
+
+		return "redirect:/admin/admin_qna_list";
 	}
 /*	// 글 수정(수정폼 받기)
 	@RequestMapping(value = "/admin_qna_get_modify/{QNA_BNO}", method = RequestMethod.GET)
 	public String admin_qna_get_modify(@PathVariable int QNA_BNO, Model model) throws Exception {
 		logger.info("get Qna modify");
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
 
-		QnaBoardVO vo = service.getQnaRead(QNA_BNO);
-		System.out.println(vo.getQNA_BNO());
-		System.out.println(vo.getQNA_WRITER());
-		System.out.println(vo.getQNA_TITLE());
-		System.out.println(vo.getQNA_REGDATE());
-		System.out.println(vo.getQNA_CONTENT());
-		model.addAttribute("admin_qna_get_modify", vo);
-		return "/admin/admin_qna_get_modify";
-	}*/
-
-/*	// 글 수정(수정폼 보내기)
-	@RequestMapping(value = "/admin_qna_post_modify", method = RequestMethod.POST)
-	public String admin_qna_post_modify(QnaBoardVO vo) throws Exception {
-		logger.info("post Qna Modify");
-		service.postQnaModify(vo);
-
-		return "redirect:/admin/admin_qna_read?QNA_BNO="+vo.getQNA_BNO();
-	}*/
-	//admin_qna 댓글 작성
+	/*
+	 * // 글 수정(수정폼 보내기)
+	 * 
+	 * @RequestMapping(value = "/admin_qna_post_modify", method =
+	 * RequestMethod.POST) public String admin_qna_post_modify(QnaBoardVO vo) throws
+	 * Exception { logger.info("post Qna Modify"); service.postQnaModify(vo);
+	 * 
+	 * return "redirect:/admin/admin_qna_read?QNA_BNO="+vo.getQNA_BNO(); }
+	 */
+	// admin_qna 댓글 작성
 	@RequestMapping(value = "/admin_qna_reply_write/{QNA_BNO}", method = { RequestMethod.GET, RequestMethod.POST })
 	public String admin_qna_reply_write(@PathVariable int QNA_BNO, QnaReplyVO vo) throws Exception {
 		logger.info("admin_qna_reply_write 실행");
@@ -136,7 +230,7 @@ public class AdminController {
 		System.out.println(vo.getQNA_CONTENT());
 		System.out.println(vo.getQNA_BNO());
 
-		return "redirect:/admin/admin_qna_read?QNA_BNO="+QNA_BNO;
+		return "redirect:/admin/admin_qna_read?QNA_BNO=" + QNA_BNO;
 	}
 
 	// 댓글 수정 POST
@@ -153,9 +247,11 @@ public class AdminController {
 		return "redirect:/admin/admin_qna_read?QNA_BNO=" + QNA_BNO;
 
 	}
+
 	// 댓글 삭제
 	@RequestMapping(value = "/admin_qna_reply_delete/{QNA_BNO}/{QNA_RNO}", method = RequestMethod.GET)
-	public String admin_qna_reply_delete(@PathVariable int QNA_BNO, @PathVariable int QNA_RNO, QnaReplyVO vo) throws Exception {
+	public String admin_qna_reply_delete(@PathVariable int QNA_BNO, @PathVariable int QNA_RNO, QnaReplyVO vo)
+			throws Exception {
 		logger.info("reply Delete 실행");
 
 		qnaReplyService.replyDelete(QNA_RNO);
@@ -166,80 +262,79 @@ public class AdminController {
 		System.out.println(vo.getQNA_RNO());
 		System.out.println(vo.getQNA_WRITER());
 
-		return "redirect:/admin/admin_qna_read?QNA_BNO="+QNA_BNO;
+		return "redirect:/admin/admin_qna_read?QNA_BNO=" + QNA_BNO;
 
 	}
 
-
 	// 차트 페이지 이동
-	    @RequestMapping( value = "/charts")
-	    public String  charts() throws Exception {
-	        logger.info("charts 페이지로 이동~~!!");
-	        return "admin/charts";
-	    }
-	
-	// 테이블 페이지 이동
-	    @RequestMapping(value = "/tables")
-	    public String tables() throws Exception{
-	        logger.info("tables 페이지로 이동~~!!");
-	        return  "admin/tables";
-	    }
-	
-	// 폼 페이지 이동
-	    @RequestMapping(value = "/forms")
-	    public String forms() throws Exception{
-	        logger.info("forms 페이지로 이동~~!!");
-	        return  "admin/forms";
-	    }
-	
-	    
-	// 강사승인 페이지 이동
-	    @RequestMapping(value = "/approval")
-	    public String approval(Model model) throws Exception{
-	    	logger.info("approval 페이지로 이동~~!!");
-	    	
-	    	List<ApprovalVO> teachlist = adminservice.teachlist();
-	    	model.addAttribute("list", teachlist);
-	    	return  "admin/approval";
-	    }
-	    
-	// 매니지먼트 페이지 이동
-	    @RequestMapping(value = "/management", method = RequestMethod.GET)
-	    public String getManagement(Model model) throws Exception{
-	    	logger.info("management 페이지로 이동~~!!");
+	@RequestMapping(value = "/charts")
+	public String charts() throws Exception {
+		logger.info("charts 페이지로 이동~~!!");
+		return "admin/charts";
+	}
 
-		/*	List<ManagementVO> studentList = adminservice.studentList();
+	// 테이블 페이지 이동
+	@RequestMapping(value = "/tables")
+	public String tables() throws Exception {
+		logger.info("tables 페이지로 이동~~!!");
+		return "admin/tables";
+	}
+
+	// 폼 페이지 이동
+	@RequestMapping(value = "/forms")
+	public String forms() throws Exception {
+		logger.info("forms 페이지로 이동~~!!");
+		return "admin/forms";
+	}
+
+	// 강사승인 페이지 이동
+	@RequestMapping(value = "/approval")
+	public String approval(Model model) throws Exception {
+		logger.info("approval 페이지로 이동~~!!");
+
+		List<ApprovalVO> teachlist = adminservice.teachlist();
+		model.addAttribute("list", teachlist);
+		return "admin/approval";
+	}
+
+	// 매니지먼트 페이지 이동
+	@RequestMapping(value = "/management", method = RequestMethod.GET)
+	public String getManagement(Model model) throws Exception {
+		logger.info("management 페이지로 이동~~!!");
+
+		/*
+		 * List<ManagementVO> studentList = adminservice.studentList();
+		 * model.addAttribute("studentList", studentList); List<ManagementVO> teachList
+		 * = adminservice.teachList(); model.addAttribute("teachList", teachList);
+		 */
+		List<StdVO> studentList = adminservice.studentList2();
+		model.addAttribute("studentList", studentList);
+		List<TeachVO> teachList = adminservice.teachList2();
+		model.addAttribute("teachList", teachList);
+		return "admin/management";
+	}
+
+	// 매니지먼트에서 학생&강사 filter 검색 기능
+	@RequestMapping(value = "/management", method = RequestMethod.POST)
+	public String postManagement(Model model, @RequestParam("filter") String filter) throws Exception {
+		logger.info("학생&강사 리스트 조회");
+
+		if (filter.equals("10")) {
+			List<StdVO> studentList = adminservice.studentList2();
 			model.addAttribute("studentList", studentList);
-			List<ManagementVO> teachList = adminservice.teachList();
-			model.addAttribute("teachList", teachList);*/
-	    	List<StdVO> studentList = adminservice.studentList2();
+
+		} else if (filter.equals("20")) {
+			List<TeachVO> teachList = adminservice.teachList2();
+			model.addAttribute("teachList", teachList);
+
+		} else if (filter.equals("30")) {
+			List<StdVO> studentList = adminservice.studentList2();
 			model.addAttribute("studentList", studentList);
 			List<TeachVO> teachList = adminservice.teachList2();
 			model.addAttribute("teachList", teachList);
-			return  "admin/management";
-	    }
-	    
-	// 매니지먼트에서 학생&강사 filter 검색 기능
-	    @RequestMapping(value = "/management", method = RequestMethod.POST)
-	    public String postManagement(Model model, @RequestParam("filter") String filter) throws Exception {
-	    	logger.info("학생&강사 리스트 조회");
-	    	
-	    	if(filter.equals("10")) {
-	    		List<StdVO> studentList = adminservice.studentList2();
-				model.addAttribute("studentList", studentList);
-	    	
-	    	} else if (filter.equals("20")) {
-	    		List<TeachVO> teachList = adminservice.teachList2();
-				model.addAttribute("teachList", teachList);
-				
-	    	} else if (filter.equals("30")) {
-	    		List<StdVO> studentList = adminservice.studentList2();
-				model.addAttribute("studentList", studentList);
-				List<TeachVO> teachList = adminservice.teachList2();
-				model.addAttribute("teachList", teachList);
-	    	}
-	    	return "admin/management";
-	    }
+		}
+		return "admin/management";
+	}
 
 		// 매니지먼트에서 학생 회원정보 삭제	    
 	    @RequestMapping(value = "/StdDelete", method = RequestMethod.POST)
@@ -274,19 +369,22 @@ public class AdminController {
 	 * @RequestMapping(value = "/login") public String login() throws Exception{
 	 * logger.info("login 페이지로 이동~~!!"); return "admin/login"; }
 	 */
-	    
-	    
-	/*=================================================================================*/
+
+	/*
+	 * =============================================================================
+	 * ====
+	 */
 
 	// 로그인 get
 	@RequestMapping(value = "/loginform", method = RequestMethod.GET)
 	public void getlogin() throws Exception {
 		logger.info("get 학생 또는 강사가 로그인");
 	}
- 
+
 	// 학생 로그인 post
 	@RequestMapping(value = "/loginstd", method = RequestMethod.POST)
-	public void postStd(StdVO svo, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse response)throws Exception {
+	public void postStd(StdVO svo, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse response)
+			throws Exception {
 		logger.info("post 학생 로그인 시도");
 
 		HttpSession session = req.getSession();
@@ -314,13 +412,13 @@ public class AdminController {
 
 	// 강사 로그인 post
 	@RequestMapping(value = "/logintch", method = RequestMethod.POST)
-	public void postTch(TeachVO tvo, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse response) throws Exception {
+	public void postTch(TeachVO tvo, HttpServletRequest req, RedirectAttributes rttr, HttpServletResponse response)
+			throws Exception {
 		logger.info("post 강사 로그인 시도");
 
 		HttpSession session = req.getSession();
 
 		TeachVO login2 = adminservice.login2(tvo);
-
 		if (login2 == null) { // login 값이 null 일 때 member 값은 null 이고
 
 			session.setAttribute("teach", null);
@@ -334,6 +432,7 @@ public class AdminController {
 			session.setAttribute("teach", login2); // login 값이 null 이 아니라면 member 값은 login 이다.(== vo 값을 불러와서 쓸 수 있게 한다)
 			logger.info("강사 로그인 완료");
 			response.setContentType("text/html; charset=UTF-8");
+			System.out.println(login2.getTeach_Orgname());
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('로그인이 완료되었습니다.'); location.href='http://localhost:8080/';</script>");
 			out.flush();
@@ -361,9 +460,10 @@ public class AdminController {
 		logger.info("post 강사의 정보를 확인하고 승인버튼을 클릭했습니다.");
 
 		teachservice.teach_join2(tvo); // 값이 teach_info 테이블로 삽입
-		
-		/*logger.info("승인완료를 위해 num 값을 바꾸어주었습니다.");
-		teachservice.teach_appUpdate(avo);*/
+
+		/*
+		 * logger.info("승인완료를 위해 num 값을 바꾸어주었습니다."); teachservice.teach_appUpdate(avo);
+		 */
 
 		String setfrom = "choio95634@gamil.com"; 
 		String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
@@ -406,14 +506,14 @@ public class AdminController {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		 
+
 		response_email.setContentType("text/html; charset=UTF-8");
 
 		PrintWriter out = response_email.getWriter();
 
 		out.println("<script>alert('승인이 완료되었습니다.'); location.href='/admin/approval';</script>");
-		
-		teachservice.app_delete(avo); 
+
+		teachservice.app_delete(avo);
 		logger.info("강사 로그인 승인 후, 승인 테이블에서 삭제 완료");
 
 		out.flush();
@@ -427,13 +527,13 @@ public class AdminController {
 
 	// 아이디 찾기 POST(학생)
 		@RequestMapping(value = "/stdFgId", method = RequestMethod.POST)
-		public ModelAndView postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email)
+		public void postStdid(StdVO svo, HttpServletRequest request, HttpServletResponse response_email, HttpServletResponse response)
 				throws Exception {
 			logger.info("post 학생에게 아이디를 전송합니다.");
 
 			StdVO list = adminservice.findS_id(svo);
 
-			if (list.getUser_Email().equals(svo.getUser_Email())) {
+			if (list != null) {
 
 				String setfrom = "choio95634@gamil.com";
 				String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
@@ -459,26 +559,31 @@ public class AdminController {
 				messageHelper.setText(content); // 메일 내용
 
 				mailSender.send(message);
+				
+				response_email.setContentType("text/html; charset=UTF-8");
+				PrintWriter out_email = response_email.getWriter();
+				out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
+				out_email.flush();
 
+			} else {
+				
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('존재하지 않는 이메일입니다.'); location.href='http://localhost:8080/admin/forgot_id_pwd ';</script>");
+				out.flush();
+				
 			}
-
-			response_email.setContentType("text/html; charset=UTF-8");
-			PrintWriter out_email = response_email.getWriter();
-			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
-			out_email.flush();
-
-			return new ModelAndView("admin/forgot_id_pwd");
 		}
 
 		// 아이디 찾기 POST(강사)
 		@RequestMapping(value = "/teachFgId", method = RequestMethod.POST)
-		public ModelAndView postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
-				HttpServletResponse response_email) throws Exception {
+		public void postTeachid(TeachVO tvo, Model model, HttpServletRequest request,
+				HttpServletResponse response_email, HttpServletResponse response) throws Exception {
 			logger.info("post 강사에게 아이디를 보낼겁니다.");
 
 			TeachVO list = adminservice.findT_id(tvo);
 
-			if (list.getUser_Email().equals(tvo.getUser_Email())) {
+			if (list != null) {
 
 				String setfrom = "choio95634@gamil.com";
 				String tomail = request.getParameter("User_Email"); // 받는 사람 이메일
@@ -509,20 +614,27 @@ public class AdminController {
 				} catch (Exception e) {
 					System.out.println(e);
 				}
+				
+				response_email.setContentType("text/html; charset=UTF-8");
+				PrintWriter out_email = response_email.getWriter();
+				out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
+				out_email.flush();
+				
+			} else {
+				
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('존재하지 않는 이메일입니다.'); location.href='http://localhost:8080/admin/forgot_id_pwd ';</script>");
+				out.flush();
+				
 			}
-
-			response_email.setContentType("text/html; charset=UTF-8");
-			PrintWriter out_email = response_email.getWriter();
-			out_email.println("<script>alert('기재하신 이메일로 아이디가 발송되었습니다.');</script>");
-			out_email.flush();
-
-			return new ModelAndView("admin/forgot_id_pwd");
 		}
+
 
 	// 비밀번호 찾기 POST(학생)
 	@RequestMapping(value = "/stdFgPwd", method = RequestMethod.POST)
-	public ModelAndView postStdpwd(StdVO svo, Model model, HttpServletRequest request,
-			HttpServletResponse response_email) throws Exception {
+	public void postStdpwd(StdVO svo, Model model, HttpServletRequest request,
+			HttpServletResponse response_email, HttpServletResponse response) throws Exception {
 		logger.info("post 학생에게 임시비밀번호 발급");
 
 		StdVO list = adminservice.findS_pwd(svo);
@@ -532,7 +644,7 @@ public class AdminController {
 			pw += (char) ((Math.random() * 26) + 97);
 		} // 이메일로 받는 인증코드(난수)
 
-		if (list.getUser_Email().equals(svo.getUser_Email())) {
+		if (list != null) {
 
 			svo.setUser_Pwd(pw);
 
@@ -579,25 +691,26 @@ public class AdminController {
 			} catch (Exception e) {
 				System.out.println(e);
 			}
+			
+			response_email.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_email = response_email.getWriter();
+			out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
+			out_email.flush();
+			
+		} else {
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('존재하지 않는 아이디 혹은 이메일 입니다.'); location.href='http://localhost:8080/admin/forgot_id_pwd ';</script>");
+			out.flush();
+			
 		}
-		ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-		mv.setViewName("admin/forgot_id_pwd"); // 뷰의이름
-		mv.addObject("pw", pw);
-
-		System.out.println("mv : " + mv);
-
-		response_email.setContentType("text/html; charset=UTF-8");
-		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.');</script>");
-		out_email.flush();
-
-		return mv;
 	}
 
 	// 비밀번호 찾기 POST(강사)
 	@RequestMapping(value = "/teachFgPwd", method = RequestMethod.POST)
-	public ModelAndView postTeachpwd(TeachVO tvo, Model model, HttpServletRequest request,
-			HttpServletResponse response_email) throws Exception {
+	public void postTeachpwd(TeachVO tvo, Model model, HttpServletRequest request,
+			HttpServletResponse response_email, HttpServletResponse response) throws Exception {
 		logger.info("post 강사에게 임시비밀번호 발급");
 
 		TeachVO list = adminservice.findT_pwd(tvo);
@@ -607,7 +720,7 @@ public class AdminController {
 			pw += (char) ((Math.random() * 26) + 97);
 		} // 이메일로 받는 인증코드(난수)
 
-		if (list.getUser_Email().equals(tvo.getUser_Email())) {
+		if (list != null) {
 
 			tvo.setUser_Pwd(pw);
 
@@ -654,20 +767,20 @@ public class AdminController {
 			} catch (Exception e) {
 				System.out.println(e);
 			}
+			
+			response_email.setContentType("text/html; charset=UTF-8");
+			PrintWriter out_email = response_email.getWriter();
+			out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.'); location.href='http://localhost:8080/';</script>");
+			out_email.flush();
+			
+		} else {
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('존재하지 않는 아이디 혹은 이메일입니다.'); location.href='http://localhost:8080/admin/forgot_id_pwd ';</script>");
+			out.flush();
+			
 		}
-
-		ModelAndView mv = new ModelAndView(); // ModelAndView로 보낼 페이지를 지정하고, 보낼 값을 지정한다.
-		mv.setViewName("admin/forgot_id_pwd"); // 뷰의이름
-		mv.addObject("pw", pw);
-
-		System.out.println("mv : " + mv);
-
-		response_email.setContentType("text/html; charset=UTF-8");
-		PrintWriter out_email = response_email.getWriter();
-		out_email.println("<script>alert('기재하신 이메일로 임시 비밀번호가 발송되었습니다.');</script>");
-		out_email.flush();
-
-		return mv;
 	}
 
 }

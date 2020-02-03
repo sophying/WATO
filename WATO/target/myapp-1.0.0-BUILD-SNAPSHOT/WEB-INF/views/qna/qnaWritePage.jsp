@@ -7,7 +7,7 @@
   Time: PM 1:33
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -56,13 +56,20 @@
     <section>
         <form role="form" action="/qna/postQnaWrite" method="post" enctype="multipart/form-data">
 
+            <p style="margin-bottom: 5px; margin-top: 10px; margin-left: 20px;">이름</p>
+            <div class="col-sm-12">
+                <c:if test="${std != null}">
+                    <p>${std.user_Id}</p>
+                    <input type="hidden" name="QNA_WRITER" value="${std.user_Id}" class="form-control">
+                </c:if>
+                <c:if test="${teach != null}">
+                    <p>${teach.user_Id}</p>
+                    <input type="hidden" name="QNA_WRITER" value="${teach.user_Id}" class="form-control">
+                </c:if>
+            </div>
             <p style="margin-bottom: 5px; margin-left: 20px;">제목</p>
             <div class="col-sm-12">
                 <input type="text" id="title" name="QNA_TITLE" class="form-control" placeholder="제목을 입력하세요" />
-            </div>
-            <p style="margin-bottom: 5px; margin-top: 10px; margin-left: 20px;">이름</p>
-            <div class="col-sm-12">
-                <input type="text" id="writer" name="QNA_WRITER" class="form-control" placeholder="이름을 입력하세요"/>
             </div>
             <p style="margin-bottom: 5px; margin-top: 10px; margin-left: 20px;">내용</p>
             <div class="col-sm-12">

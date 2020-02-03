@@ -31,7 +31,7 @@ $(function () {
             }
         },
         data: {
-            labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
+            labels: ["1", "2", "3", "4", "5", "6", "100", "200", "9", "10", "2000", "1000"],
             datasets: [{
                 label: "Page Visitors",
                 fill: true,
@@ -52,7 +52,7 @@ $(function () {
                 pointHoverBorderWidth: 1,
                 pointRadius: 0,
                 pointHitRadius: 1,
-                data: [20, 14, 21, 15, 22, 8, 18, 13, 21, 13, 17, 13, 20, 15],
+                data: [20, 14, 21, 15, 22, 8, 18, 13, 21, 13, 17, 13, 100, 1000],
                 spanGaps: false
             }]
         }
@@ -105,7 +105,7 @@ $(function () {
                 pointHoverBorderWidth: 1,
                 pointRadius: 0,
                 pointHitRadius: 1,
-                data: [20, 14, 21, 15, 22, 8, 18, 13, 21, 13, 17, 13, 20, 15],
+                data: [20, 1000, 21, 15, 22, 8, 40, 13, 50, 13, 17, 13, 99, 15],
                 spanGaps: false
             }]
         }
@@ -184,7 +184,7 @@ $(function () {
                 "Third"
             ],
             datasets: [{
-                data: [250, 200],
+                data: [10, 50],
                 borderWidth: [0, 0],
                 backgroundColor: [
                     green,

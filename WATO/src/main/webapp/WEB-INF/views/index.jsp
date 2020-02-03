@@ -203,7 +203,9 @@
     _________________________________________________________
     -->
     <div id="top">
+
         <%@ include file="./include/index_header_MS.jsp" %>
+
         <div class="row">
 	        <div id="myModal" class="modal fade" tabindex="-1"> <!-- tabindex -1 는 클로즈 키 -->
 	        	<div class="modal-dialog modal-lg">
@@ -467,7 +469,7 @@
                                     <div class="back"><a><img src='${languagerank.language_image}' alt="" class="img-fluid"></a></div>
                                 </div>
                                 <span style="display: none;">${languagerank.language_name}</span>
-                            </div><a href="detail.jsp" class="invisible"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a>
+                            </div><a href="/board/searchResult/${languagerank.language_name}" class="invisible"><img src='${languagerank.language_image}' alt="" class="img-fluid"></a>
                             <div class="text">  
                                 <h3><span>${languagerank.language_name}</span></h3> 
                                 

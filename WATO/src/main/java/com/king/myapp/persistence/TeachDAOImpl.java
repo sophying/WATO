@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.ApprovalVO;
+import com.king.myapp.domain.StdVO;
 import com.king.myapp.domain.TeachVO;
 
 @Repository
@@ -34,6 +35,12 @@ public class TeachDAOImpl implements TeachDAO {
 	@Override
 	public int idChk(TeachVO vo) throws Exception {
 		int result = sql.selectOne(namespace + ".idChk", vo);
+		return result;
+	}
+	
+	@Override
+	public int emailChk(TeachVO vo) throws Exception {
+		int result = sql.selectOne(namespace + ".emailChk", vo);
 		return result;
 	}
 
@@ -77,6 +84,12 @@ public class TeachDAOImpl implements TeachDAO {
 	@Override
 	public void admin_mng2(TeachVO vo) throws Exception {
 		sql.update(namespace + ".admin_mng2", vo);
+	}
+
+	// 강사회원가입 이메일 존재 체크
+	@Override
+	public TeachVO mailCheck(TeachVO vo) throws Exception {
+		return sql.selectOne(namespace + ".mailCheck", vo);
 	}
 	
 }

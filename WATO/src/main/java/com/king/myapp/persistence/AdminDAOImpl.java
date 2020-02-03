@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.ManagementVO;
+import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -115,5 +118,57 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<ManagementVO> manageList() throws Exception {
 		return sql.selectList(namespace + ".management");
 	}*/
+	
+
+	// 학생 회원 수 카운트
+	@Override
+	public int count_std(StdVO svo) throws Exception {
+		int StdCountResult = sql.selectOne(namespace+".count_std");
+		return StdCountResult;
+	}
+	
+	// 강사 회원 수 카운트
+	@Override
+	public int count_tech(TeachVO tvo) throws Exception {
+		int TechCountResult = sql.selectOne(namespace+".count_tech");
+		return TechCountResult;
+	}
+	//학생 스터디 글 카운트
+	@Override
+	public int count_s_enroll(StdVO svo) throws Exception {
+		int StdEnroll_CountResult = sql.selectOne(namespace+".count_std_enroll");
+		return StdEnroll_CountResult;
+	}
+	//강사 스터디 글 카운트
+	@Override
+	public int count_t_enroll(TeachVO tvo) throws Exception {
+		int TechEnroll_CountResult = sql.selectOne(namespace+".count_tech_enroll");
+		return TechEnroll_CountResult;
+	}
+	// 문의내역 카운트
+	@Override
+	public int count_qna(StdVO svo) throws Exception {
+		int Qna_CountResult = sql.selectOne(namespace+".count_qna");
+		return Qna_CountResult;
+	}
+
+	@Override
+	public int board_this_month_Count(QnaBoardVO qvo) throws Exception {
+		int board_this_month_Count = sql.selectOne(namespace+".board_this_month_Count");
+		return board_this_month_Count;
+	}
+
+	@Override
+	public Object t_apply_month(TeacherEnrollVO tevo) throws Exception {
+		Object t_apply_month = sql.selectList(namespace+".t_apply_month");
+		return t_apply_month;
+	}
+
+	@Override
+	public Object s_apply_month(StudyEnrollVO sevo) throws Exception {
+		Object s_apply_month = sql.selectList(namespace+".s_apply_month");
+		return s_apply_month;
+	}
+
 
 }

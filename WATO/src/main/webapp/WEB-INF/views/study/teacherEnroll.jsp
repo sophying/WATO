@@ -424,6 +424,13 @@
                 <img id="img_btn_3" src="../../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_4" src="../../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_5" src="../../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_6" src="../../resource/images/imgs/c.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_7" src="../../resource/images/imgs/go.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_8" src="../../resource/images/imgs/ruby.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_9" src="../../resource/images/imgs/swift.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_10" src="../../resource/images/imgs/sql.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_11" src="../../resource/images/imgs/visualbasic.jpg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_12" src="../../resource/images/imgs/cs.jpg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div>
             <!-- </div>
@@ -504,29 +511,29 @@
         </div>
       </div>
     </div>
-        <div class="form-group container-fluid">
+       <div class="form-group container-fluid d-inline-block">
       <div class="card">
-        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-2 control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
+        <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-3  control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
           <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
            <div class="card-body">
              <div class="input-group d-flex justify-content-center">
-				<span class="input-group-addon"></span>
-	          	<label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">자격증 </label>&nbsp;&nbsp;
-					<select name="t_license" class="selectpicker form-control">
-					  <option value="ocjp" selected="selected">OCJP</option>
-					  <option value="리눅스마스터">리눅스마스터</option>
-					  <option value="네트워크관리사">네트워크 관리사</option>
-					  <option value="정보보안기사">정보 보안 기사</option>
-					  <option value="정보보안산업기사">정보 보안 산업기사</option>
-					  <option value="정보처리기사">정보처리기사</option>
-					  <option value="정보처리산업기사">정보처리 산업기사</option>
-					</select>
+            <span class="input-group-addon"></span>
+                <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">자격증 </label>&nbsp;&nbsp;
+               <select name="t_license" class="selectpicker form-control">
+                 <option value="ocjp" selected="selected">OCJP</option>
+                 <option value="리눅스마스터">리눅스마스터</option>
+                 <option value="네트워크관리사">네트워크 관리사</option>
+                 <option value="정보보안기사">정보 보안 기사</option>
+                 <option value="정보보안산업기사">정보 보안 산업기사</option>
+                 <option value="정보처리기사">정보처리기사</option>
+                 <option value="정보처리산업기사">정보처리 산업기사</option>
+               </select>
              </div> 
            </div>
          </div>
       </div>
-  	</div>
-  </div>       
+     </div>
+  </div>  
 <!-- // 스터디 기간 설정  -->
 <!-- // 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
 
@@ -538,28 +545,28 @@
           <div class="card-body">
                     <div class="form-group">
                         <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
-                          		<label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
-	                                 <span class="input-group-addon"></span>
-	 <!-- t_level -->               	<select name="t_level" class="selectpicker form-control w-50" >
-										  <option value="입문"selected="selected">입문</option>
-										  <option value="초급">초급</option>
-										  <option value="중급">중급</option>
-										  <option value="고급">고급</option>
-										</select>
-										
-                          		<label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
-	                                 <span class="input-group-addon"></span>
-<!-- t_people --> 	       			<input type="text" class="form-control"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"name="t_people" id="t_people" placeholder="숫자를 사용해주세요!" />
-	               	
-                      	 </div>
+                                <label for="level" class="pt-1 mt-1 control-label font-weight-bold w-25">난이도</label>
+                                    <span class="input-group-addon"></span>
+    <!-- t_level -->                  <select name="t_level" class="selectpicker form-control w-50" >
+                                <option value="입문"selected="selected">입문</option>
+                                <option value="초급">초급</option>
+                                <option value="중급">중급</option>
+                                <option value="고급">고급</option>
+                              </select>
+                              
+                                <label for="people" class="pt-1 mt-1 pl-4 control-label font-weight-bold w-25">인원수</label>
+                                    <span class="input-group-addon"></span>
+<!-- t_people -->                    <input type="text" class="form-control"  onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"name="t_people" id="t_people" placeholder="숫자를 사용해주세요!" />
+                     
+                          </div>
                       </div>
                       <div class="form-group">
                           <label for="t_category" class="cols-sm-2 control-label font-weight-bold">카테고리</label>
                           <label id="t_category" class="cols-sm-2 control-label font-weight-bold"></label>
                           <div class="cols-sm-10">
                             <div class="input-group">
-	                           <span class="input-group-addon"></span>
- <!-- category 주제 -->	       <input type="text" class="form-control" name="t_category" id="category" placeholder="과목 카테고리를 알려주세요!" />
+                              <span class="input-group-addon"></span>
+ <!-- category 주제 -->          <input type="text" class="form-control" name="t_category" id="category" placeholder="과목 카테고리를 알려주세요!" />
                         </div>
                       </div>
                       </div>
@@ -571,28 +578,26 @@
                              <div class="cols-sm-10">
                                 <div class="input-group">
                                  <span class="input-group-addon"></span>
- <!-- title 주제 -->               <input type="text" class="form-control" name="t_title" id="stitle" placeholder="그룹의 스터디 주제를 알려주세요!" />
+ <!-- title 주제 -->               <input type="text" class="form-control" name="t_title" id="stitle" placeholder="강의 주제를 알려주세요!" />
                                 </div>
                              </div>
                       </div>
 
                    <%--kakao map API (카카오 지도)--%>
                    <div class="form-group">
-                       <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
-                       	<small><kbd>그룹원과 함께할 장소를 알려주세요!</kbd></small>
-      					</label>              
-                   </div>
-                                          	<input type="button" class="btn btn-primary box " value="주소 검색" onclick="execDaumPostcode()">
-                   
+                       <label for="username" class="cols-sm-2 control-label font-weight-bold">강의 장소
+                          <small>장소를 알려주세요!</small>
+                     </label>              
+                            <input type="button" class="btn btn-primary box pull-right" value="주소 검색" onclick="execDaumPostcode()">
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
                             
-							<!--  post 우편번호 -->            
-  							<input type="text" class="form-control" id="postcode" name="t_postnum" placeholder="우편번호" required>
-  							  </div>
+                     <!--  post 우편번호 -->            
+                       <input type="text" class="form-control" id="postcode" name="t_postnum" placeholder="우편번호" required>
+                         </div>
                             </div>
                           
-						  <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
+                    <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -600,7 +605,7 @@
                             </div>
                           </div>
                           
-						  <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
+                    <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -608,7 +613,7 @@
                            </div>
                           </div>
                           
-						  <!-- 참고항목 -->                         
+                    <!-- 참고항목 -->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -616,32 +621,32 @@
                            </div>
                           </div>
                           
-						  <%--주소 검색 iframe wrap 공간--%>
+                    <%--주소 검색 iframe wrap 공간--%>
                           <div class="cols-sm-10 mb-1">
-                       	 	<div class="input-group">
-								<div id="wrap" style="display:none;
-											border:1px solid;
-											width:500px;
-											height:300px;
-											margin:5px 0;
-											position:relative">
-    						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
-    							 style="cursor:pointer;
-    							 position:absolute;
-    							 right:0px;
-    							 top:-1px;
-    							 z-index:1" 
-    							 onclick="foldDaumPostcode()" alt="접기 버튼">
-    							</div>
-							</div>
+                              <div class="input-group">
+                        <div id="wrap" style="display:none;
+                                 border:1px solid;
+                                 width:500px;
+                                 height:300px;
+                                 margin:5px 0;
+                                 position:relative">
+                      <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
+                          style="cursor:pointer;
+                          position:absolute;
+                          right:0px;
+                          top:-1px;
+                          z-index:1" 
+                          onclick="foldDaumPostcode()" alt="접기 버튼">
+                         </div>
+                     </div>
                           </div>
     
-    					<%--kakao map API (카카오 지도 담는 영역)--%>
-                    	<div class="cols-sm-10 mb-1">
-                    		<div class="input-group">
-								<div id="map" style="width: 100%; height: 300px;"></div>
-							</div>
-						</div>  
+                   <%--kakao map API (카카오 지도 담는 영역)--%>
+                       <div class="cols-sm-10 mb-1">
+                          <div class="input-group">
+                        <div id="map" style="width: 100%; height: 300px;"></div>
+                     </div>
+                  </div>  
                     </div>
 <%--kakao map API (카카오 지도)--%>
                     
@@ -649,7 +654,7 @@
                         <label for="info" class="cols-sm-2 control-label font-weight-bold">강사님을 소개해주세요!&nbsp;&nbsp;<span id="cnttxt1"></span></label>
                            <div class="cols-sm-10 " >
                              <div class="md-form" id="inputHtml">
-	 <!-- t_intro -->               <textarea id="t_intro" name="t_intro" class="md-textarea form-control" rows="10" placeholder="편하게 나를 어필해주세요!"></textarea>
+    <!-- t_intro -->               <textarea id="t_intro" name="t_intro" class="md-textarea form-control" rows="10" placeholder="편하게 나를 어필해주세요!"></textarea>
                              </div>
                            </div>
                     </div>
@@ -657,20 +662,20 @@
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">강의 상세내용&nbsp;&nbsp;<span id="cnttxt2"></span></label>
                            <div class="cols-sm-10">
                              <div class="md-form">
-	 <!-- t_content -->               <textarea id="t_content" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
+    <!-- t_content -->               <textarea id="t_content" onkeydown="if(event.keyCode===9){var v=this.value,s=this.selectionStart,e=this.selectionEnd;this.value=v.substring(0, s)+'\t'+v.substring(e);this.selectionStart=this.selectionEnd=s+1;return false;}" name="t_content" class="md-textarea form-control" rows="10" placeholder="강의 내용을 상세히 설명해주시면 더욱 확실한 그룹원을 모집할 수 있어요!"></textarea>
                              </div>
                            </div>
                     </div>
                     
                     <div class="form-group">
  <!-- t_price -->      <label for="t_price" class="cols-sm-2 control-label font-weight-bold">수강 참여비</label>
- 					   <label id="price-Text" class="cols-sm-2 control-label font-weight-bold"></label>
+                   <label id="price-Text" class="cols-sm-2 control-label font-weight-bold"></label>
                         <div class="form-group d-inline-block m-0 p-0 d-flex justify-content-between ">
-	                            <span class="input-group-addon"></span>
-	                            <input type="text" class="form-control mr-3" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="t_price" id="t_price" placeholder="합리적인 참여비를 작성해주세요" />     
-                          		<label class="pt-1 mt-1 control-label font-weight-bold w-25">&nbsp;&nbsp;&nbsp;원</label>
-	                                 
-                      	 </div>
+                               <span class="input-group-addon"></span>
+                               <input type="text" class="form-control mr-3" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" name="t_price" id="t_price" placeholder="합리적인 참여비를 작성해주세요" />     
+                                <label class="pt-1 mt-1 control-label font-weight-bold w-25">&nbsp;&nbsp;&nbsp;원</label>
+                                    
+                          </div>
                       </div>
                     <div class="form-group">
                         <label for="username" class="cols-sm-2 control-label font-weight-bold">영상  URL 등록 </label>
@@ -683,17 +688,17 @@
                     </div>
    
                       <div class="form-group ">
-                      		<input type="hidden" name="teach_orgname" value="${teach.teach_Orgname}"> 
+                            <input type="hidden" name="teach_orgname" value="${teach.teach_Orgname}"> 
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${teach.user_Id}">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
  <!-- day -->               <input type="hidden" class="form-control" name="t_day" id="schedule" value="" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
-          </div> 
-        </div> 
       </div>
     </div> <!-- 2-->
+    </div>
+     </div>
     </form>
 </nav>
 <div id="blog-homepage" class="box row mb-0">
@@ -965,7 +970,7 @@ function isNumber(checkValue) {
 
 
 
-
+var submitclick = true;
 
 // 등록 버튼  					
  $('#enroll_btn').click(function(){
@@ -1057,10 +1062,13 @@ function isNumber(checkValue) {
 		$('#price-Text').text('합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])');
 		
 	}
- 
-	 if (t_day.value != null && t_day.value !="" && !($('#start').val() > $('#end').val()) && t_day.value !="구체적인 날짜를 정해주십시오." && t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
-		document.classForm.submit();
+	 if (submitclick) {
+		 if (t_day.value != null && t_day.value !="" && !($('#start').val() > $('#end').val()) && t_day.value !="구체적인 날짜를 정해주십시오." && t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
+			 submitclick = !submitclick;
+			document.classForm.submit();
+		}
 	}
+ 
  
  });
 
@@ -1151,6 +1159,13 @@ function isNumber(checkValue) {
 		  var img3 = $('#img_btn_3').attr('src');
 		  var img4 = $('#img_btn_4').attr('src');
 		  var img5 = $('#img_btn_5').attr('src');
+		  var img6 = $('#img_btn_6').attr('src');
+		  var img7 = $('#img_btn_7').attr('src');
+		  var img8 = $('#img_btn_8').attr('src');
+		  var img9 = $('#img_btn_9').attr('src');
+		  var img10 = $('#img_btn_10').attr('src');
+		  var img11 = $('#img_btn_11').attr('src');
+		  var img12 = $('#img_btn_12').attr('src');
 
 		  $('#img_btn_0').on({'click': function(){
 		        $('#input_img').attr('src',img0);
@@ -1174,7 +1189,7 @@ function isNumber(checkValue) {
 		$('#img_btn_3').on({'click': function(){
 		       $('#input_img').attr('src',img3);
 		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-		       document.getElementById("category").value = "C";
+		       document.getElementById("category").value = "C++";
 		   }
 		});
 
@@ -1189,6 +1204,48 @@ function isNumber(checkValue) {
 		       $('#input_img').attr('src',img5);
 		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
 		       document.getElementById("category").value = "Android";
+		   }
+		});
+		$('#img_btn_6').on({'click': function(){
+		       $('#input_img').attr('src',img6);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "C";
+		   }
+		});
+		$('#img_btn_7').on({'click': function(){
+		       $('#input_img').attr('src',img7);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Go";
+		   }
+		});
+		$('#img_btn_8').on({'click': function(){
+		       $('#input_img').attr('src',img8);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Ruby";
+		   }
+		});
+		$('#img_btn_9').on({'click': function(){
+		       $('#input_img').attr('src',img9);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Swift";
+		   }
+		});
+		$('#img_btn_10').on({'click': function(){
+		       $('#input_img').attr('src',img10);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "SQL";
+		   }
+		});
+		$('#img_btn_11').on({'click': function(){
+		       $('#input_img').attr('src',img11);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Visual Basic";
+		   }
+		});
+		$('#img_btn_12').on({'click': function(){
+		       $('#input_img').attr('src',img12);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "C#";
 		   }
 		});
 

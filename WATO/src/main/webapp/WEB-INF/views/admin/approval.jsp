@@ -109,8 +109,8 @@
       }
       
       .bigPicture img {
-         width: 300px;
-         height: 400px;
+         width: 200px;
+         height: 300px;
       }
   </style>
   <body>
@@ -136,6 +136,7 @@
                   </div>
                   <div class="card-body">
                     <table class="table card-text">
+                    <thead>
                         <tr>
                            <th>Profile</th>
                            <th>Resume</th>
@@ -149,6 +150,7 @@
                            <th>Addr-3</th>
                            <th>Approval</th>
                         </tr>
+                  </thead>
                   </table>
                         <c:forEach var="AppVO" items="${list}">
                         <div class='bigPictureWrapper'>
@@ -225,9 +227,9 @@
     <!-- JavaScript files-->
     <script src="../resource/admin/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="../resource/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="../resource/admin/vendor/chart.js/Chart.min.js"></script>
-    <script src="../resource/admin/js/js.cookie.min.js"></script>
-    <script src="../resource/admin/js/front.js"></script>
+    <script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js?v=<%=System.currentTimeMillis() %>"> </script>
+    <script src="../resource/admin/vendor/chart.js/Chart.min.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/js.cookie.min.js?v=<%=System.currentTimeMillis() %>"></script>
+    <script src="../resource/admin/js/front.js?v=<%=System.currentTimeMillis() %>"></script>
   </body>
 </html>
