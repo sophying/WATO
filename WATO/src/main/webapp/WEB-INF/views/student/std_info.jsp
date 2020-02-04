@@ -619,9 +619,9 @@ _________________________________________________________
 			return false;
 		}
 		
-		if(!document.infoForm.User_Pwd_ok.value) {
+		if(!document.infoForm.userPwChk.value) {
 			alert("새 비밀번호 확인을 입력해주세요.");
-			document.infoForm.User_Pwd_ok.focus();
+			document.infoForm.userPwChk.focus();
 			return false;
 		}
 		

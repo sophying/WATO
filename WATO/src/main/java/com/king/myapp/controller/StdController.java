@@ -119,7 +119,7 @@ public class StdController implements  ServletContextAware {
 	// 회원정보 수정 get
 	@RequestMapping(value = "/std_info", method = RequestMethod.GET)
 	public void getInfo() throws Exception {
-		logger.info("get 학생 회원정보수정");
+		logger.info("=========학생의 회원정보를 수정합니다==========");
 	}
 
 	// 회원정보 수정 post
@@ -130,7 +130,8 @@ public class StdController implements  ServletContextAware {
 		service.info_modify(vo);
 		/* logout(session); */
 
-		session.invalidate(); // 기존의 세션값을 없애고 새 것을 만들겠다는 뜻
+		/* session.invalidate(); */ // 기존의 세션값을 없애고 새 것을 만들겠다는 뜻
+		logger.info("asdfsadf");
 
 		return "redirect:/";
 
