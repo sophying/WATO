@@ -368,10 +368,10 @@ table caption {
         </div>
     </nav>
 </header>
- 
-<nav id="studyusnav" class="navbar ">  
-<div class="  mt-4 container w-100 mx-auto d-flex justify-content-center" >
-  <div class="row ">
+
+<nav id="studyusnav" class="navbar navbar-expand-lg">   
+<div class="  mt-4 container w-100 mx-auto d-flex justify-content-center" > 
+  <div class="row "> 
     <div class="col-xs-12 ">
       <div class=" mb-5 table-responsive">
 <!-- ######  ++++++++++++++++ 학생 유저일 경우 ++++++++++++++++++++++++++++++++ -->      
