@@ -15,4 +15,7 @@ public interface QnaReplyService {
     public void replyUpdate(QnaReplyVO vo) throws Exception;
 
     public void replyDelete(int QNA_RNO) throws Exception;
+
+    public String readReply1(QnaReplyVO replyVO) throws Exception;
+	public List<Object> check() throws Exception;
 }

@@ -136,14 +136,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -510,8 +510,8 @@
 	                    </tr>
                     </table>
                 </div>
-            
-                <input type="submit" value="회원가입" style="border-radius: 10px; 
+            	
+                <input id="submitjoin" type="button" value="회원가입" style="border-radius: 10px; 
 													       background-color: #77bbc2; 
 													       border: 0; 
 													       outline: 0; 
@@ -651,6 +651,14 @@ _________________________________________________________
 <script type="text/javascript"> 
 
 //회원가입시 null 파악_____________________________________
+var check = true;
+
+$("#submitjoin").click(function() {
+	if (check) { 
+		check = !check;
+		infoForm.submit();
+	}
+})
 
 function infoCheck() {
 	if(!document.infoForm.User_Id.value) {
@@ -686,6 +694,25 @@ function infoCheck() {
    // 비밀번호 정규식
    var pwJ = /^[A-Za-z0-9]{4,12}$/;
    
+   $( function(){
+		$( '#User_Id' ).on("blur keyup", function() {
+			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+		});
+	})
+         
+      $( function(){
+   		$( '#userPw' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#userPwChk' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+   	
+      
    $('#User_Id').blur(function() {
       if (idJ.test($('#User_Id').val())) {
          console.log('true');
@@ -696,7 +723,7 @@ function infoCheck() {
          $('#id_check').text('소문자와 대문자로만 4~12자리를 입력해주십시오.');
          $('#id_check').css('color', 'red');
       }
-   });      
+   });
    
 
    $('#userPw').blur(function() {
@@ -750,10 +777,10 @@ function infoCheck() {
   });
       
 
-      
+   // 아이디 중복 체크___________________________________________________________
       function fn_idChk(){
       	$.ajax({
-      		url : "/student/idChk",
+      		url : "/teach/idChk",
       		type : "post",
       		dataType : "json",
       		data : {"User_Id" : $("#User_Id").val()},
