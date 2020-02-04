@@ -17,7 +17,6 @@ $(function () {
     gradient2.addColorStop(0, 'rgba(252, 117, 176, 0.84)');
     gradient2.addColorStop(1, 'rgba(250, 199, 106, 0.92)');
 
-
     
     // ------------------------------------------------------- //
     // Bar Chart
@@ -212,31 +211,39 @@ var BARCHARTEXMPLE    = $('#barChartExample2');
     var BARCHARTEXMPLE    = $('#barChartExample');
     
   //qna
-    
     var qna_month = {};
     qna_month = $('#qna_month').val();
     var q_apply = qna_month.substring(1,qna_month.length-1);
     var q =q_apply.split(',');
-    
-    //alert(q);
-    
     
     var barChartExample = new Chart(BARCHARTEXMPLE, {
         type: 'bar',
         options: {
             scales: {
                 xAxes: [{
-                    display: false,
+                    display: true,
                     gridLines: {
                         color: '#fff'
                     }
                 }],
                 yAxes: [{
-                    display: false,
+                    display: true,
                     gridLines: {
                         color: '#fff'
                     }
-                }]
+                }],
+                
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        max: 6,
+                        min: 0
+                    },
+                    gridLines: {
+                        color: '#fff'
+                    }
+                }]                
+                
             },
             legend: false
         },
@@ -294,7 +301,7 @@ var BARCHARTEXMPLE    = $('#barChartExample2');
                         gradient2
                     ],
                     borderWidth: 1,
-                    data: t,
+                    data: q,
                 }
             ]
         }
