@@ -511,7 +511,7 @@
                     </table>
                 </div>
             	
-                <input id="submitjoin" type="button" value="회원가입" style="border-radius: 10px; 
+                <input type="submit" value="회원가입" style="border-radius: 10px; 
 													       background-color: #77bbc2; 
 													       border: 0; 
 													       outline: 0; 
