@@ -42,6 +42,7 @@
         margin-right: auto;
         width: 53.8%;
     }
+
     #search{
         margin-left: auto;
         margin-right: auto;
@@ -368,16 +369,15 @@ table caption {
         </div>
     </nav>
 </header>
-
+ 
 <nav id="studyusnav" class="navbar ">  
-<div class="  mt-4 container w-100 mx-auto d-flex justify-content-center" >
+<div class="mt-4 container w-100 mx-auto d-flex justify-content-center" >
   <div class="row ">
     <div class="col-xs-12 ">
       <div class=" mb-5 table-responsive">
 <!-- ######  ++++++++++++++++ 학생 유저일 경우 ++++++++++++++++++++++++++++++++ -->      
-      <c:if test="${std != null }">
-      	<div class="box py-4 mt-0">
-	            <div class="container"> 
+      <c:if test="${std != null }">     
+	            <div id="WaitingStudy" class="container box"> 
 		            <h4 class="font-weight-bold">승인 대기 중인 스터디</h4>
 	                <div>
 	                	<table class="table table-hover">
@@ -417,7 +417,6 @@ table caption {
 	                	</table>
 	                	</div>
 	            </div>
-            </div>
             <div class="box py-4 mt-0">
 	            <div class="container">
 	      <h4 class="font-weight-bold">내가 참여한 스터디</h4>
