@@ -43,7 +43,7 @@
 	<update id="info_modify">
 		update std_info
 		set
-			User_Pwd = #{User_Pwd},
+			User_Pwd = #{user_Pwd},
 			Std_Phone1 = #{Std_Phone1},
 			Std_Phone2 = #{Std_Phone2},
 			Std_Phone3 = #{Std_Phone3},
@@ -52,7 +52,7 @@
 			Std_Addr2 = #{Std_Addr2},
 			Std_Addr3 = #{Std_Addr3}
 		where
-			User_Id = #{User_Id}
+			User_Id = #{user_Id}
 	</update>
 
   </mapper>	

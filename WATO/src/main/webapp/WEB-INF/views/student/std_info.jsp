@@ -403,7 +403,7 @@
 <div id="all">
     <div id="content">
 <!-- 최지혜 추가 -->  <div style="width: 100%; text-align: center;">
-                    <form name="infoForm" onsubmit="return infoCheck()" role="form" method="post" autocomplete="off">
+                    <form name="infoForm" role="form" method="post" autocomplete="off" onsubmit="return infoCheck()">
 			        <div><img src="../resource/images/facebook_cover_photo_1.png" width="500px;" style="margin-top: 30px;"></div>
 			        <div class="std_info1" style="margin-bottom: 30px; padding: 10px; background-color: #ffee76;">회원 정보 수정</div>
 			        <div class="std_exp1" style="background-color: #dadeeb; border-top: 1px solid #999999; border-bottom: 1px solid #999999; margin-bottom: 30px;">
@@ -423,7 +423,7 @@
 			                </tr>
 			                <tr>
 			                    <th>새 비밀번호 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input type="password" id="userPw" name="User_Pwd" placeholder="새 비밀번호 입력">
+			                    <td><input type="password" name="User_Pwd" id="userPw" placeholder="새 비밀번호 입력">
 			                    <br><div style="display: inline-block;" id="pwdcheck1"></div></td>
 			                </tr>
 			                <tr>
@@ -433,7 +433,7 @@
 			                </tr>
 			                <tr>
 			                    <th>성별 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input class="idNGender" type="text" name="User_Id" value="${std.std_Gender}" readonly="readonly"></td>
+			                    <td><input class="idNGender" type="text" value="${std.std_Gender}" readonly="readonly"></td>
 			                </tr>
 			                <tr>
 			                    <th>휴대폰 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>

@@ -482,7 +482,7 @@
 			                </tr>
 			                <tr>
 			                    <th>성별 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-			                    <td><input class="idNGender" type="text" name="User_Id" value="${teach.teach_Gender}" readonly="readonly"></td>
+			                    <td><input class="idNGender" type="text" value="${teach.teach_Gender}" readonly="readonly"></td>
 			                </tr>
 			                <tr>
 			                    <th>휴대폰 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>

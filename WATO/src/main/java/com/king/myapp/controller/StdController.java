@@ -126,11 +126,12 @@ public class StdController implements  ServletContextAware {
 	@RequestMapping(value = "/std_info", method = RequestMethod.POST)
 	public String postInfo(HttpSession session, StdVO vo) throws Exception {
 		logger.info("============학생의 회원정보를 수정완료했습니다================");
-
+		System.out.println(vo.getUser_Id());
 		service.info_modify(vo);
 		/* logout(session); */
 
 		session.invalidate(); // 기존의 세션값을 없애고 새 것을 만들겠다는 뜻
+		logger.info(vo.getUser_Pwd());
 
 		return "redirect:/";
 

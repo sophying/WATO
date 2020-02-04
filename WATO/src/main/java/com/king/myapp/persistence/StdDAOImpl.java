@@ -26,6 +26,7 @@ public class StdDAOImpl implements StdDAO {
 	// 회원정보수정
 	@Override
 	public void info_modify(StdVO vo) {
+		System.out.println("daoimpl pwd : "+vo.getUser_Pwd());
 		sql.update(namespace + ".info_modify", vo);
 	}
 	
