@@ -139,16 +139,16 @@ public class AdminController {
 		
 		// 강사의 월별 스터디수
 
-		List<Map<String, Object>> t_apply_month = adminservice.t_apply_month();
+			List<Object> t_apply_month = adminservice.t_apply_month();
 			System.out.println("t_apply_month");
-		
-			for (int i = 0; i < t_apply_month.size(); i++) {
-				System.out.println(t_apply_month.get(i).get("STUDYCNT"));
-				System.out.println(t_apply_month.get(i).get("MONTH"));
-			}
-		
+			
 		model.addAttribute("t_apply_month",t_apply_month);
 
+		
+		
+		
+		
+		
 		// 학생의 월별 스터디수
 
 		List<Map<String, Object>> s_apply_month = adminservice.s_apply_month();

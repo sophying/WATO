@@ -23,8 +23,8 @@
                     <p class="text-gray">단위 : 개</p>
                     <div class="chart-holder">
                        <canvas id="barChartExample1" style="max-height: 14rem !important;"></canvas>
-						<input id="S_studyCount" type="hidden" value="${s_apply_month}">
-						<input id="T_studyCount" type="hidden" value="${t_apply_month}">
+						<input id="s_apply_month" type="hidden" value="${s_apply_month}">
+						<input id="t_apply_month" type="hidden" value="${t_apply_month}">
                     </div>
                 </div>
             </div>
