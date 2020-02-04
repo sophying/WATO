@@ -164,9 +164,13 @@ public class AdminDAOImpl implements AdminDAO {
 		return sql.selectList(namespace+".t_apply_month");
 	}
 	@Override
-	public List<Map<String, Object>> s_apply_month() throws Exception {
+	public List<Object> s_apply_month() throws Exception {
 	return sql.selectList(namespace+".s_apply_month");
 	}
 
+	@Override
+	public List<Object> qna_month() throws Exception {
+		return sql.selectList(namespace+".qna_month");
+	}
 
 }
