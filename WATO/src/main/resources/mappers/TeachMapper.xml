@@ -65,10 +65,10 @@
 	</select>	
 	
 	<!-- 이메일 중복확인2 -->
-	<!-- <select id="emailChk2" resultType="com.king.myapp.domain.Approval">
+	<select id="emailChk2" resultType="int">
 		select count(*) from approval
 		where User_Email = #{User_Email}
-	</select>	 -->
+	</select>
 	
 	<!-- 강사 회원가입 이메일 존재여부 체크 -->
 	<select id="mailCheck" resultType="com.king.myapp.domain.TeachVO">

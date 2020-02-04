@@ -42,4 +42,7 @@ public interface TeachService {
 	// 강사 회원가입 아이디 존재 체크
 	public TeachVO mailCheck(TeachVO vo) throws Exception;
 
+	// 강사승인 테이블에서 이메일 조회
+	public int emailChk2(ApprovalVO avo) throws Exception;
+
 }

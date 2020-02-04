@@ -33,13 +33,6 @@ public class TeachServiceImpl implements TeachService {
 		int result = dao.idChk(vo);
 		return result;
 	}
-	
-	// 이메일 중복 체크
-	@Override
-	public int emailChk(TeachVO vo) throws Exception {
-		int result = dao.emailChk(vo);
-		return result;
-	}
 
 	// 로그인
 	@Override
@@ -87,6 +80,20 @@ public class TeachServiceImpl implements TeachService {
 	@Override
 	public TeachVO mailCheck(TeachVO vo) throws Exception {
 		return dao.mailCheck(vo);
+	}
+	
+	// 이메일 중복 체크
+	@Override
+	public int emailChk(TeachVO vo) throws Exception {
+		int result = dao.emailChk(vo);
+		return result;
+	}
+
+	// 강사승인 페이지에서 이메일 조회
+	@Override
+	public int emailChk2(ApprovalVO avo) throws Exception {
+		int result = dao.emailChk2(avo);
+		return result;
 	}
 
 }

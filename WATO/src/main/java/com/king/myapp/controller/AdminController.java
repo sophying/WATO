@@ -275,7 +275,7 @@ public class AdminController {
 	// 강사승인 페이지 이동
 	@RequestMapping(value = "/approval")
 	public String approval(Model model) throws Exception {
-		logger.info("approval 페이지로 이동~~!!");
+		logger.info("==========관리자의 강사승인 페이지로 이동==========");
 
 		List<ApprovalVO> teachlist = adminservice.teachlist();
 		model.addAttribute("list", teachlist);

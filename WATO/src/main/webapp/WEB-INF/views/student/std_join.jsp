@@ -690,7 +690,7 @@ function infoCheck() {
     // 정규표현식 유효성 검사 소스_________________________________________________________
       
       //아이디 정규식
-      var idJ = /^[a-z0-9]{4,12}$/;
+      var idJ = /^[a-zA-Z0-9]{4,12}$/;
       // 비밀번호 정규식
       var pwJ = /^[A-Za-z0-9]{4,12}$/;
       // 휴대폰번호 정규식
@@ -728,17 +728,22 @@ function infoCheck() {
    	})
       
       
+   	
       $('#User_Id').blur(function() {
+    	  
          if (idJ.test($('#User_Id').val())) {
             console.log('true');
             $('#id_check').text('알맞은 형식입니다.');
             $('#id_check').css('color', 'green');
+            
          } else {
             console.log('false');
             $('#id_check').text('소문자와 대문자로만 4~12자리를 입력해주십시오.');
             $('#id_check').css('color', 'red');
          }
       });
+      
+      
       
 
       $('#userPw').blur(function() {
@@ -747,10 +752,12 @@ function infoCheck() {
             console.log('true');
             $('#pwdcheck1').text('사용하실 수 있는 비밀번호 입니다.');
             $('#pwdcheck1').css('color', 'green');
-            } else if ($('#userPw').val() == $(this).val()){
+            
+         } else if ($('#userPw').val() == $(this).val()){
             console.log('false');
-            $('#pwdcheck1').text('숫자 또는 문자로만 4~12자리를 입력해주십시오.');
+            $('#pwdcheck1').text('숫자 또는 대소문자로만 4~12자리를 입력해주십시오.');
             $('#pwdcheck1').css('color', 'red');
+            
          } else if($('#userPw').val() != "" && $('#userPwChk').val() == ""){
             $('#pwdcheck2').text('비밀번호 확인를 입력해주세요.');
             $('#pwdcheck2').css('color', 'blue');

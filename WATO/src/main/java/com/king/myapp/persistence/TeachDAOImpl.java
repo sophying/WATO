@@ -91,5 +91,11 @@ public class TeachDAOImpl implements TeachDAO {
 	public TeachVO mailCheck(TeachVO vo) throws Exception {
 		return sql.selectOne(namespace + ".mailCheck", vo);
 	}
+
+	@Override
+	public int emailChk2(ApprovalVO avo) throws Exception {
+		int result = sql.selectOne(namespace + ".emailChk2", avo);
+		return result;
+	}
 	
 }

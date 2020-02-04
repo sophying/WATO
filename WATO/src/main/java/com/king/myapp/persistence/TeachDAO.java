@@ -42,4 +42,7 @@ public interface TeachDAO {
 	// 강사 회원가입 이메일 존재 체크
 	public TeachVO mailCheck(TeachVO vo) throws Exception;
 
+	// 강사 승인페이지에서 이메일 중복 체크
+	public int emailChk2(ApprovalVO avo) throws Exception;
+
 }

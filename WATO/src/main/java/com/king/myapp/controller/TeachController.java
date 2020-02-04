@@ -164,8 +164,9 @@ public class TeachController implements ServletContextAware {
 	// 이메일 중복 체크
 	@ResponseBody
 	@RequestMapping(value = "/emailChk", method = RequestMethod.POST)
-	public int emailChk(TeachVO vo) throws Exception {
+	public int emailChk(TeachVO vo, ApprovalVO avo) throws Exception {
 		int result = service.emailChk(vo);
+		int result1 = service.emailChk2(avo);
 		return result;
 	}
 	

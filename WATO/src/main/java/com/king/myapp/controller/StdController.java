@@ -59,8 +59,8 @@ public class StdController implements  ServletContextAware {
 				
 				response.setContentType("text/html; charset=UTF-8");
 				PrintWriter out = response.getWriter();
-				out.println("<script>alert('중복된 아이디입니다. 새로 입력해주세요.'); location.href='http://localhost:8080/student/std_join?terms1=on&terms2=on';</script>");
-				out.flush();
+				out.println("<script>alert('중복된 아이디입니다. 새로 입력해주세요.'); location.href='return';</script>");
+				return;
 				
 			} else if (result2 == 1) {
 				
