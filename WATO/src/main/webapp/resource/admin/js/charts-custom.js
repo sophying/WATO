@@ -24,15 +24,11 @@ $(function () {
     // ------------------------------------------------------ //
     var BARCHARTEXMPLE    = $('#barChartExample1');
     
-    
-    /*var data =[스터디학생 , 강사수]
-    data : data*/
-    
-    var t_apply_month = {};
-    t_apply_month = $('#t_apply_month').val();
-    
-    //alert(t_apply_month);
-    
+    //학생
+    var s_apply_month = {};
+    s_apply_month = $('#s_apply_month').val();
+    var s_apply = s_apply_month.substring(1,s_apply_month.length-1);
+    var s =s_apply.split(',');
     
     
     var barChartExample = new Chart(BARCHARTEXMPLE, {
@@ -62,22 +58,22 @@ $(function () {
             labels: ["Jnu", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [
                 {
-                    label: "Data Set 1",
+                    label: "건수",
                     backgroundColor: [
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1
                     ],
                     hoverBackgroundColor: [
                         gradient2,
@@ -112,7 +108,7 @@ $(function () {
                         gradient2
                     ],
                     borderWidth: 1,
-                    data: [1,2,3,4,5,6],
+                    data: s,
                 }
             ]
         }
@@ -120,10 +116,112 @@ $(function () {
     
     
     
+    
+var BARCHARTEXMPLE    = $('#barChartExample2');
+    //강사
+    var t_apply_month = {};
+    t_apply_month = $('#t_apply_month').val();
+    var t_apply = t_apply_month.substring(1,t_apply_month.length-1);
+    var t =t_apply.split(',');
+   	
+    
+    var barChartExample = new Chart(BARCHARTEXMPLE, {
+        type: 'bar',
+        options: {
+            scales: {
+                xAxes: [{
+                    display: true,
+                    gridLines: {
+                        color: '#fff'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        max: 10,
+                        min: 0
+                    },
+                    gridLines: {
+                        color: '#fff'
+                    }
+                }]
+            },
+            legend: false
+        },
+        data: {
+            labels: ["Jnu", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [
+                {
+                    label: "건수",
+                    backgroundColor: [
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2
+                    ],
+                    hoverBackgroundColor: [
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1
+                    ],
+                    borderColor: [
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                    	gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1,
+                        gradient1
+                    ],
+                    borderWidth: 1,
+                    data: t,
+                }
+            ]
+        }
+    }); 
+    
  // ------------------------------------------------------- //
     // Bar Chart
     // ------------------------------------------------------ //
     var BARCHARTEXMPLE    = $('#barChartExample');
+    
+  //qna
+    var qna_month = {};
+    qna_month = $('#qna_month').val();
+    var q_apply = qna_month.substring(1,qna_month.length-1);
+    var qqq =q_apply.split(',');
+    
+    alert(qqq);
+    
+    
     var barChartExample = new Chart(BARCHARTEXMPLE, {
         type: 'bar',
         options: {
@@ -147,7 +245,7 @@ $(function () {
             labels: ["Jnu", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [
                 {
-                    label: "Data Set 1",
+                    label: "건수",
                     backgroundColor: [
                         gradient2,
                         gradient2,
@@ -197,7 +295,7 @@ $(function () {
                         gradient2
                     ],
                     borderWidth: 1,
-                    data: [65, 59, 79, 81, 56, 55, 40, 30, 45, 80, 44, 36, 66, 58],
+                    data: qqq,
                 }
             ]
         }
@@ -213,7 +311,7 @@ $(function () {
     var std_count = {};
     std_count = $('#std_count').val();
     
-    alert(std_count);
+    //alert(std_count);
     
     
     //강사 가입자 변수

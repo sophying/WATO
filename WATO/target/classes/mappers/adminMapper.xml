@@ -134,16 +134,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
 
 	<!-- 월별 등록된 학생 스터디 -->
-	<select id="s_apply_month" resultType="map">
-		select count(*)as studycnt,substr(s_creadate,4,2)as month from s_enroll group by substr(s_creadate,4,2) ORDER by month
+	<select id="s_apply_month" resultType="int">
+		select count(*) from s_enroll group by SUBSTR(s_creadate,4,2) order by SUBSTR(s_creadate,4,2)
 	</select>
 	
 	<!-- 월별 등록된 선생 스터디 -->
 	<select id="t_apply_month" resultType="int">
-select count(*) from t_enroll group by substr(t_creadate,4,2) order by substr(t_creadate,4,2)
+		select count(*) from t_enroll group by SUBSTR(t_creadate,4,2) order by SUBSTR(t_creadate,4,2)
 	</select>
 
-	
+	<!-- 월별 문의내역 -->	
+	<select id="qna_month" resultType="int">
+		select count(*) from qna_myboard group by SUBSTR(qna_regdate,4,2) order by SUBSTR(qna_regdate,4,2)
+	</select>
 	
 	
 	

@@ -82,7 +82,9 @@ public interface AdminService {
 
 	public List<Object> t_apply_month() throws Exception;
 
-	public List<Map<String, Object>> s_apply_month() throws Exception;
+	public List<Object> s_apply_month() throws Exception;
+
+	public List<Object> qna_month() throws Exception;
 
 
 	
