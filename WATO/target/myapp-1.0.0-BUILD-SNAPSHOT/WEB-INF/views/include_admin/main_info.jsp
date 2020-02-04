@@ -53,12 +53,8 @@
                     <div class="flex-grow-1 d-flex align-items-center">
                         <div class="dot mr-3 bg-red"></div>
                         <div class="text">
-<<<<<<< HEAD
                             <h6 class="mb-0">총 문의 내역</h6><span class="text-gray">${qna_count}</span>
                             <h6 class="mb-0">최근 30일 문의 내역</h6><span class="text-gray">${board_this_month_Count}</span>
-=======
-                            <h6 class="mb-0">문의 내역</h6><span class="text-gray">${qna_count}</span>
->>>>>>> branch 'master' of https://github.com/sophying/WATO.git
                         </div>
                     </div>
                     <div class="icon text-white bg-red"><i class="fas fa-receipt"></i></div>

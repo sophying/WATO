@@ -168,17 +168,32 @@ public class AdminController {
 
 	// qna 리스트 페이지로 이동
 	@RequestMapping(value = "/admin_qna_list", method = RequestMethod.GET)
-	public String admin_qna_list(Model model, @ModelAttribute("scri") SearchCriteria scri, QnaBoardVO vo)
+	public String admin_qna_list(QnaReplyVO replyVO, Model model, @ModelAttribute("scri") SearchCriteria scri, QnaBoardVO vo, HttpSession session)
 			throws Exception {
 		logger.info("admin_qna_list 페이지로 이동");
 		model.addAttribute("admin_qna_list", service.getQnaList(scri));
 
+		String test = qnaReplyService.readReply1(replyVO);
+		System.out.println(test);
+        //model.addAttribute("readReply1", replyVO);
+        //System.out.println(replyVO.getQNA_WRITER());
+		
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.listCount());
-
+		
+		List<Object> checklist = qnaReplyService.check();
+		
+		if (checklist.size() != 0) {
+			model.addAttribute("check",checklist);
+		}
+		
+		
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("scri", scri);
+
+
 
 		return "/admin/admin_qna_list";
 

@@ -47,19 +47,7 @@
   width: 100%; 
   max-width:130px; 
   min-height:130px;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
->>>>>>> branch 'master' of https://github.com/sophying/WATO.git
   max-height:130px;
-<<<<<<< HEAD
-=======
->>>>>>> branch 'master' of https://github.com/sophying/WATO.git
->>>>>>> branch 'master' of https://github.com/sophying/WATO.git
->>>>>>> branch 'master' of https://github.com/sophying/WATO.git
   display: block;  
   margin: auto;
   border-radius: 100px;
