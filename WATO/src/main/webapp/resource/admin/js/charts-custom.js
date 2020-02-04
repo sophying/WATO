@@ -18,6 +18,250 @@ $(function () {
     gradient2.addColorStop(1, 'rgba(250, 199, 106, 0.92)');
 
 
+    
+    // ------------------------------------------------------- //
+    // Bar Chart
+    // ------------------------------------------------------ //
+    var BARCHARTEXMPLE    = $('#barChartExample1');
+    
+    
+    /*var data =[스터디학생 , 강사수]
+    data : data*/
+    
+    var t_apply_month = {};
+    t_apply_month = $('#t_apply_month').val();
+    
+    //alert(t_apply_month);
+    
+    
+    
+    var barChartExample = new Chart(BARCHARTEXMPLE, {
+        type: 'bar',
+        options: {
+            scales: {
+                xAxes: [{
+                    display: true,
+                    gridLines: {
+                        color: '#fff'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        max: 10,
+                        min: 0
+                    },
+                    gridLines: {
+                        color: '#fff'
+                    }
+                }]
+            },
+            legend: false
+        },
+        data: {
+            labels: ["Jnu", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [
+                {
+                    label: "Data Set 1",
+                    backgroundColor: [
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2
+                    ],
+                    hoverBackgroundColor: [
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2
+                    ],
+                    borderColor: [
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2
+                    ],
+                    borderWidth: 1,
+                    data: [1,2,3,4,5,6],
+                }
+            ]
+        }
+    });
+    
+    
+    
+ // ------------------------------------------------------- //
+    // Bar Chart
+    // ------------------------------------------------------ //
+    var BARCHARTEXMPLE    = $('#barChartExample');
+    var barChartExample = new Chart(BARCHARTEXMPLE, {
+        type: 'bar',
+        options: {
+            scales: {
+                xAxes: [{
+                    display: false,
+                    gridLines: {
+                        color: '#fff'
+                    }
+                }],
+                yAxes: [{
+                    display: false,
+                    gridLines: {
+                        color: '#fff'
+                    }
+                }]
+            },
+            legend: false
+        },
+        data: {
+            labels: ["Jnu", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [
+                {
+                    label: "Data Set 1",
+                    backgroundColor: [
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2
+                    ],
+                    hoverBackgroundColor: [
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2
+                    ],
+                    borderColor: [
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2,
+                        gradient2
+                    ],
+                    borderWidth: 1,
+                    data: [65, 59, 79, 81, 56, 55, 40, 30, 45, 80, 44, 36, 66, 58],
+                }
+            ]
+        }
+    });
+    
+    
+    // ------------------------------------------------------- //
+    // Pie Chart
+    // ------------------------------------------------------ //
+    var PIECHARTEXMPLE    = $('#pieChartExample');
+    
+    //학생 가입자 변수
+    var std_count = {};
+    std_count = $('#std_count').val();
+    
+    alert(std_count);
+    
+    
+    //강사 가입자 변수
+    var Tech_count = {};
+    Tech_count = $('#Tech_count').val();
+    
+    var pieChartExample = new Chart(PIECHARTEXMPLE, {
+        type: 'pie',
+        data: {
+            labels: [
+                "학생",
+                "강사",
+            ],
+            datasets: [
+                {
+                    data: [std_count,Tech_count],
+                    borderWidth: 0,
+                    backgroundColor: [
+                        green,red,
+                        "#6adf8a",
+                        "#50c670",
+                        "#3fac5c",
+                        "#2a9346"
+                    ],
+                    hoverBackgroundColor: [
+                        green,red,
+                        "#6adf8a",
+                        "#50c670",
+                        "#3fac5c",
+                        "#2a9346"
+                    ]
+                }]
+            }
+    });
+
+    var pieChartExample = {
+        responsive: true
+    };
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // ------------------------------------------------------- //
    // Pie Chart
    // ------------------------------------------------------ //
@@ -202,183 +446,18 @@ $(function () {
 
 
 
-    // ------------------------------------------------------- //
-    // Bar Chart
-    // ------------------------------------------------------ //
-    var BARCHARTEXMPLE    = $('#barChartExample');
-    var barChartExample = new Chart(BARCHARTEXMPLE, {
-        type: 'bar',
-        options: {
-            scales: {
-                xAxes: [{
-                    display: false,
-                    gridLines: {
-                        color: '#fff'
-                    }
-                }],
-                yAxes: [{
-                    display: false,
-                    gridLines: {
-                        color: '#fff'
-                    }
-                }]
-            },
-            legend: false
-        },
-        data: {
-            labels: ["Jnu", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            datasets: [
-                {
-                    label: "Data Set 1",
-                    backgroundColor: [
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2
-                    ],
-                    hoverBackgroundColor: [
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2
-                    ],
-                    borderColor: [
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2
-                    ],
-                    borderWidth: 1,
-                    data: [65, 59, 80, 81, 56, 55, 40, 30, 45, 80, 44, 36, 66, 58],
-                }
-            ]
-        }
-    });
+    
 
 
 
-    // ------------------------------------------------------- //
-    // Bar Chart
-    // ------------------------------------------------------ //
-    var BARCHARTEXMPLE    = $('#barChartExample1');
-    var barChartExample = new Chart(BARCHARTEXMPLE, {
-        type: 'bar',
-        options: {
-            scales: {
-                xAxes: [{
-                    display: true,
-                    gridLines: {
-                        color: '#fff'
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    ticks: {
-                        max: 100,
-                        min: 20
-                    },
-                    gridLines: {
-                        color: '#fff'
-                    }
-                }]
-            },
-            legend: false
-        },
-        data: {
-            labels: ["Jnu", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            datasets: [
-                {
-                    label: "Data Set 1",
-                    backgroundColor: [
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2
-                    ],
-                    hoverBackgroundColor: [
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2
-                    ],
-                    borderColor: [
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2,
-                        gradient2
-                    ],
-                    borderWidth: 1,
-                    data: [65, 59, 80, 81, 56, 55, 40, 30, 45, 80, 44, 36, 66, 58],
-                }
-            ]
-        }
-    });
+   
 
 
 
     // ------------------------------------------------------- //
     // Doughnut Chart
     // ------------------------------------------------------ //
+    
     var DOUGHNUTCHARTEXMPLE  = $('#doughnutChartExample');
     var pieChartExample = new Chart(DOUGHNUTCHARTEXMPLE, {
         type: 'doughnut',
@@ -387,8 +466,8 @@ $(function () {
         },
         data: {
             labels: [
-                "학생",
-                "강사",
+                "a",
+                "b",
             ],
             datasets: [
                 {
@@ -461,45 +540,6 @@ $(function () {
 
 
     // ------------------------------------------------------- //
-    // Pie Chart
-    // ------------------------------------------------------ //
-    var PIECHARTEXMPLE    = $('#pieChartExample');
-    var pieChartExample = new Chart(PIECHARTEXMPLE, {
-        type: 'pie',
-        data: {
-            labels: [
-                "학생",
-                "강사",
-            ],
-            datasets: [
-                {
-                    data: [60, 70],
-                    borderWidth: 0,
-                    backgroundColor: [
-                        green,red,
-                        "#6adf8a",
-                        "#50c670",
-                        "#3fac5c",
-                        "#2a9346"
-                    ],
-                    hoverBackgroundColor: [
-                        green,red,
-                        "#6adf8a",
-                        "#50c670",
-                        "#3fac5c",
-                        "#2a9346"
-                    ]
-                }]
-            }
-    });
-
-    var pieChartExample = {
-        responsive: true
-    };
-
-
-
-    // ------------------------------------------------------- //
     // Radar Chart
     // ------------------------------------------------------ //
     var RADARCHARTEXMPLE  = $('#radarChartExample');
@@ -537,6 +577,5 @@ $(function () {
         responsive: true
     };
 
-
-
 });
+

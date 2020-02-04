@@ -424,6 +424,13 @@
                 <img id="img_btn_3" src="../../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_4" src="../../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_5" src="../../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_6" src="../../resource/images/imgs/c.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_7" src="../../resource/images/imgs/go.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_8" src="../../resource/images/imgs/ruby.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_9" src="../../resource/images/imgs/swift.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_10" src="../../resource/images/imgs/sql.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_11" src="../../resource/images/imgs/visualbasic.jpg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_12" src="../../resource/images/imgs/cs.jpg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div>
             <!-- </div>
@@ -526,7 +533,7 @@
          </div>
       </div>
      </div>
-  </div>       
+  </div>  
 <!-- // 스터디 기간 설정  -->
 <!-- // 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
 
@@ -682,9 +689,19 @@
    
                       <div class="form-group ">
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
                       		<input type="hidden" name="teach_orgname" value="${teach.teach_Orgname}"> 
 =======
+<<<<<<< HEAD
+                      		<input type="hidden" name="teach_orgname" value="${teach.teach_Orgname}"> 
+=======
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
                             <input type="hidden" name="teach_orgname" value="${teach.teach_Orgname}"> 
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
 >>>>>>> branch 'master' of https://github.com/sophying/WATO.git
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${teach.user_Id}">
  <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
@@ -695,6 +712,7 @@
       </div>
     </div> <!-- 2-->
     </div>
+     </div>
     </form>
 </nav>
 <div id="blog-homepage" class="box row mb-0">
@@ -966,7 +984,7 @@ function isNumber(checkValue) {
 
 
 
-
+var submitclick = true;
 
 // 등록 버튼  					
  $('#enroll_btn').click(function(){
@@ -1058,10 +1076,13 @@ function isNumber(checkValue) {
 		$('#price-Text').text('합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])');
 		
 	}
- 
-	 if (t_day.value != null && t_day.value !="" && !($('#start').val() > $('#end').val()) && t_day.value !="구체적인 날짜를 정해주십시오." && t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
-		document.classForm.submit();
+	 if (submitclick) {
+		 if (t_day.value != null && t_day.value !="" && !($('#start').val() > $('#end').val()) && t_day.value !="구체적인 날짜를 정해주십시오." && t_price.value != null && t_price.value != "합리적인 가격을 작성해주세요. (작성시 숫자만 입력 [ , 쉽표 사용 불가 ])" &&t_category.value != null && t_category.value != "카테고리를 작성하십시오." && t_category.value != "" && t_title.value != "강의주제를 작성하십시오."&& t_title.value != null && t_title.value !="" ) {
+			 submitclick = !submitclick;
+			document.classForm.submit();
+		}
 	}
+ 
  
  });
 
@@ -1152,6 +1173,13 @@ function isNumber(checkValue) {
 		  var img3 = $('#img_btn_3').attr('src');
 		  var img4 = $('#img_btn_4').attr('src');
 		  var img5 = $('#img_btn_5').attr('src');
+		  var img6 = $('#img_btn_6').attr('src');
+		  var img7 = $('#img_btn_7').attr('src');
+		  var img8 = $('#img_btn_8').attr('src');
+		  var img9 = $('#img_btn_9').attr('src');
+		  var img10 = $('#img_btn_10').attr('src');
+		  var img11 = $('#img_btn_11').attr('src');
+		  var img12 = $('#img_btn_12').attr('src');
 
 		  $('#img_btn_0').on({'click': function(){
 		        $('#input_img').attr('src',img0);
@@ -1175,7 +1203,7 @@ function isNumber(checkValue) {
 		$('#img_btn_3').on({'click': function(){
 		       $('#input_img').attr('src',img3);
 		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-		       document.getElementById("category").value = "C";
+		       document.getElementById("category").value = "C++";
 		   }
 		});
 
@@ -1190,6 +1218,48 @@ function isNumber(checkValue) {
 		       $('#input_img').attr('src',img5);
 		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
 		       document.getElementById("category").value = "Android";
+		   }
+		});
+		$('#img_btn_6').on({'click': function(){
+		       $('#input_img').attr('src',img6);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "C";
+		   }
+		});
+		$('#img_btn_7').on({'click': function(){
+		       $('#input_img').attr('src',img7);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Go";
+		   }
+		});
+		$('#img_btn_8').on({'click': function(){
+		       $('#input_img').attr('src',img8);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Ruby";
+		   }
+		});
+		$('#img_btn_9').on({'click': function(){
+		       $('#input_img').attr('src',img9);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Swift";
+		   }
+		});
+		$('#img_btn_10').on({'click': function(){
+		       $('#input_img').attr('src',img10);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "SQL";
+		   }
+		});
+		$('#img_btn_11').on({'click': function(){
+		       $('#input_img').attr('src',img11);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Visual Basic";
+		   }
+		});
+		$('#img_btn_12').on({'click': function(){
+		       $('#input_img').attr('src',img12);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "C#";
 		   }
 		});
 

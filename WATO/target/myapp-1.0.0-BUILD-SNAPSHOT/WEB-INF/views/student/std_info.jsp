@@ -137,14 +137,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -196,10 +196,15 @@
         }
 
         input {
-            padding: 10px;            
+            padding: 10px;
         	border-radius: 2px;
 			border-radius: 10px;
-			outline: none;
+			box-shadow: none;
+  			border: 1px solid #19646a; 
+        }
+        
+        input:focus {
+        	outline: none;
         }
         
         input.idNGender {
@@ -433,11 +438,11 @@
 			                <tr>
 			                    <th>휴대폰 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 			                    <td>
-			                    <input type="text" id="app_Phone1" name="Std_Phone1" value="${std.std_Phone1}" size="15" maxlength="3"/>
+			                    <input type="text" id="Std_Phone1" name="Std_Phone1" value="${std.std_Phone1}" size="15" maxlength="3"/>
 			                    -
-			                    <input type="text" id="app_Phone3" name="Std_Phone2" value="${std.std_Phone2}" size="15" maxlength="4"/>
+			                    <input type="text" id="Std_Phone2" name="Std_Phone2" value="${std.std_Phone2}" size="15" maxlength="4"/>
 			                    -
-			                    <input type="text" id="app_Phone3" name="Std_Phone3" value="${std.std_Phone3}" size="15" maxlength="4"/>
+			                    <input type="text" id="Std_Phone3" name="Std_Phone3" value="${std.std_Phone3}" size="15" maxlength="4"/>
 			                    <br><div style="display: inline-block;" id="ph_check"></div>
 			                    </td>
 			                </tr>
@@ -459,7 +464,12 @@
 			                    <th>상세주소 <img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
 			                    <td><input type="text" id="sample3_detailAddress" name="Std_Addr3" value="${std.std_Addr3}" placeholder="상세주소">
 			                    <div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 0;position:relative">
-								<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼">
+								<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap" 
+								style="cursor:pointer;
+										position:absolute;
+										right:0px;
+										top:-1px;
+										z-index:1;" onclick="foldDaumPostcode()" alt="접기 버튼">
 								</div>
 			                    </td>
 			                </tr>
@@ -667,9 +677,38 @@ _________________________________________________________
     // 비밀번호 정규식
     var pwJ = /^[A-Za-z0-9]{4,12}$/;
 
-    // 휴대폰번호 정규식
+    // 휴대폰번호 정규식___________________________________________________________________________
     var phJ = /^[0-9]{4,4}$/;
     
+    $( function(){
+ 		$( '#userPw' ).on("blur keyup", function() {
+ 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+ 		});
+ 	})
+    
+    $( function(){
+ 		$( '#userPwChk' ).on("blur keyup", function() {
+ 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+ 		});
+ 	})
+    
+    $( function(){
+ 		$( '#Std_Phone1' ).on("blur keyup", function() {
+ 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+ 		});
+ 	})
+    
+    $( function(){
+ 		$( '#Std_Phone2' ).on("blur keyup", function() {
+ 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+ 		});
+ 	})
+    
+    $( function(){
+ 		$( '#Std_Phone3' ).on("blur keyup", function() {
+ 			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|a-z|A-Z|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+ 		});
+ 	})
 
     $('#userPw').blur(function() {
        
@@ -688,7 +727,7 @@ _________________________________________________________
     });
     
     
-    // 패스워드 일치 확인
+    // 패스워드 일치 확인___________________________________________________________________________
     $('#userPwChk').blur(function() {
              
        if ($('#userPw').val() != $(this).val()) {

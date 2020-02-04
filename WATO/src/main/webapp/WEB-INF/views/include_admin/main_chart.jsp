@@ -22,7 +22,9 @@
                 <div class="card-body">
                     <p class="text-gray">단위 : 개</p>
                     <div class="chart-holder">
-                    	<canvas id="barChartExample1" style="max-height: 14rem !important;"></canvas>
+                       <canvas id="barChartExample1" style="max-height: 14rem !important;"></canvas>
+						<input id="s_apply_month" type="hidden" value="${s_apply_month}">
+						<input id="t_apply_month" type="hidden" value="${t_apply_month}">
                     </div>
                 </div>
             </div>
@@ -46,7 +48,9 @@
                     <div class="row align-items-center flex-row">
                         <div class="col-lg-5">
                             <h2 class="mb-0 d-flex align-items-center"><span>회원유형</span><span class="dot bg-violet d-inline-block ml-3"></span></h2><span class="text-muted text-uppercase small">회원가입한 회원의 유형</span>
-                            <!-- <hr><small class="text-muted">학생 / 강사</small> -->
+		  <input id="std_count" type="hidden" value="${Std_count}">
+                            <input id="Tech_count" type="hidden" value="${Tech_count}">                          
+		<!-- <hr><small class="text-muted">학생 / 강사</small> -->
                         </div>
                         <div class="col-lg-7">
                             <canvas id="pieChartExample"></canvas>

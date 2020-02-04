@@ -78,11 +78,9 @@
             <c:forEach items="${admin_qna_list}" var="admin_qna_list">
                 <tr>
                     <td>${admin_qna_list.QNA_BNO}</td>
-
                     <c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                     </c:if>
-
                     <td><a href="/admin/admin_qna_read?QNA_BNO=${admin_qna_list.QNA_BNO}">${admin_qna_list.QNA_TITLE}</a></td>
                     <td>${admin_qna_list.QNA_WRITER}</td>
                     <td><fmt:formatDate value="${admin_qna_list.QNA_REGDATE}" pattern="yyyy-MM-dd"/></td>

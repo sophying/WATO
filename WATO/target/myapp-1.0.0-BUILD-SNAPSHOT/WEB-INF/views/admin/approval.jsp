@@ -136,6 +136,7 @@
                   </div>
                   <div class="card-body">
                     <table class="table card-text">
+                    <thead>
                         <tr>
                            <th>Profile</th>
                            <th>Resume</th>
@@ -149,6 +150,7 @@
                            <th>Addr-3</th>
                            <th>Approval</th>
                         </tr>
+                  </thead>
                   </table>
                         <c:forEach var="AppVO" items="${list}">
                         <div class='bigPictureWrapper'>

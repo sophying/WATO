@@ -445,6 +445,7 @@
                 <img id="img_btn_10" src="../../resource/images/imgs/sql.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_11" src="../../resource/images/imgs/visualbasic.jpg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_12" src="../../resource/images/imgs/cs.jpg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_13" src="../../resource/images/imgs/python1.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div> 
             <!-- </div>
@@ -664,9 +665,19 @@
                     </div>
                      <div class="form-group ">
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
                      		<input type="hidden" name="std_orgname" value="${std.std_Orgname}" readonly="readonly">
 =======
+<<<<<<< HEAD
+                     		<input type="hidden" name="std_orgname" value="${std.std_Orgname}" readonly="readonly">
+=======
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
                            <input type="hidden" name="std_orgname" value="${std.std_Orgname}" readonly="readonly">
+<<<<<<< HEAD
+=======
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
 >>>>>>> branch 'master' of https://github.com/sophying/WATO.git
   <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="${std.user_Id }"/>
   <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value="">
@@ -917,7 +928,7 @@ $("#s_content").keyup(function (event) {
 });
 
 
-
+var submitclick = true;
 $('#enroll_btn').click(function(){
 
 
@@ -956,9 +967,12 @@ $('#enroll_btn').click(function(){
  if ($('#start').val() > $('#end').val()) {
 		alert('날짜를 다시 입력해주세요'); 
 	}
-  if (s_day.value != null &&s_day.value != "" && s_day.value !="구체적인 날짜를 정해주십시오."&& s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "스터디주제를 작성하십시오."&& s_title.value != null && s_title.value !="" && !($('#start').val() > $('#end').val())) {
-   document.studyForm.submit();
- }
+ if (submitclick) {
+	  if (s_day.value != null &&s_day.value != "" && s_day.value !="구체적인 날짜를 정해주십시오."&& s_category.value != null && s_category.value != "카테고리를 작성하십시오." && s_category.value != "" && s_title.value != "스터디주제를 작성하십시오."&& s_title.value != null && s_title.value !="" && !($('#start').val() > $('#end').val())) {
+		  submitclick = !submitclick;
+	   document.studyForm.submit();
+	 }
+}
 
 });
 
@@ -996,6 +1010,7 @@ $('#enroll_btn').click(function(){
 	  var img10 = $('#img_btn_10').attr('src');
 	  var img11 = $('#img_btn_11').attr('src');
 	  var img12 = $('#img_btn_12').attr('src');
+	  var img13 = $('#img_btn_13').attr('src');
 
 	  $('#img_btn_0').on({'click': function(){
 	        $('#input_img').attr('src',img0);
@@ -1026,7 +1041,7 @@ $('#enroll_btn').click(function(){
 	$('#img_btn_4').on({'click': function(){
 	       $('#input_img').attr('src',img4);
 	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-	       document.getElementById("category").value = "Python";
+	       document.getElementById("category").value = "PHP";
 	   }
 	 });
 
@@ -1068,7 +1083,7 @@ $('#enroll_btn').click(function(){
 	});
 	$('#img_btn_11').on({'click': function(){
 	       $('#input_img').attr('src',img11);
-	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src'); 
 	       document.getElementById("category").value = "Visual Basic";
 	   }
 	});
@@ -1076,6 +1091,12 @@ $('#enroll_btn').click(function(){
 	       $('#input_img').attr('src',img12);
 	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
 	       document.getElementById("category").value = "C#";
+	   }
+	});
+	$('#img_btn_13').on({'click': function(){
+	       $('#input_img').attr('src',img13);
+	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+	       document.getElementById("category").value = "Python";
 	   }
 	});
 

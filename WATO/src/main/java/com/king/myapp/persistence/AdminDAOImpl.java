@@ -1,15 +1,19 @@
 package com.king.myapp.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.king.myapp.domain.ManagementVO;
+import com.king.myapp.domain.QnaBoardVO;
 import com.king.myapp.domain.ApprovalVO;
 import com.king.myapp.domain.StdVO;
+import com.king.myapp.domain.StudyEnrollVO;
 import com.king.myapp.domain.TeachVO;
+import com.king.myapp.domain.TeacherEnrollVO;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -147,6 +151,21 @@ public class AdminDAOImpl implements AdminDAO {
 	public int count_qna(StdVO svo) throws Exception {
 		int Qna_CountResult = sql.selectOne(namespace+".count_qna");
 		return Qna_CountResult;
+	}
+
+	@Override
+	public int board_this_month_Count(QnaBoardVO qvo) throws Exception {
+		int board_this_month_Count = sql.selectOne(namespace+".board_this_month_Count");
+		return board_this_month_Count;
+	}
+
+	@Override
+	public List<Object> t_apply_month() throws Exception {
+		return sql.selectList(namespace+".t_apply_month");
+	}
+	@Override
+	public List<Map<String, Object>> s_apply_month() throws Exception {
+	return sql.selectList(namespace+".s_apply_month");
 	}
 
 

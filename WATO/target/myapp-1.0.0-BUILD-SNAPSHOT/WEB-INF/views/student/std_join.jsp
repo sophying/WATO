@@ -138,19 +138,19 @@
        z-index: 10;
     }
     .container-login100 { 
-     width: 100%;  
-     min-height: 60vh; 
-     display: -webkit-box; 
-     display: -webkit-flex; 
-     display: -moz-box; 
-     display: -ms-flexbox; 
-     display: flex;  
-     flex-wrap: wrap;  
-     justify-content: center;  
-     align-items: center; 
-     padding: 15px;
-     background: none; 
-   }
+	  width: 100%;  
+	  min-height: 80vh; 
+	  display: -webkit-box; 
+	  display: -webkit-flex; 
+	  display: -moz-box; 
+	  display: -ms-flexbox; 
+	  display: flex;  
+	  flex-wrap: wrap;  
+	  justify-content: center;   
+	  align-items: center; 
+	  padding: 15px;
+	  background: none; 
+	}
    .limiter {
      width: 100%;
      margin: 0 auto;
@@ -454,7 +454,15 @@
                     </tr>
                     <tr>
                        <th>이메일<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
-                       <td colspan="2"><input type="email" id="email" id="User_Email" name="User_Email" size="55" maxlength="80" onfocus="focus()"></td>
+                       <td><input type="email" id="User_Email" name="User_Email" size="37" maxlength="50" onfocus="focus()"></td>
+                       <td><button type="button" class="emailChk" onclick="fn_emailChk();" 
+                        style="border-radius: 10px; 
+		                        background-color: #77bbc2; 
+		                        border: 0; 
+		                        outline: 0; 
+		                        color: #fff; 
+		                        width: 130px; 
+		                        height: 40px;">이메일 중복확인</button></td>
                     </tr>
                     <tr>
                         <th>우편번호<img src="//img.echosting.cafe24.com/skin/base/common/ico_required_blue.gif"></th>
@@ -676,7 +684,7 @@ function infoCheck() {
 		return false;
 	}
 	
-	alert("회원정보가 정상적으로 변경완료 되었습니다.")
+	alert("회원가입이 완료되었습니다.")
 }
 
     // 정규표현식 유효성 검사 소스_________________________________________________________
@@ -688,6 +696,38 @@ function infoCheck() {
       // 휴대폰번호 정규식
       var phJ = /^[0-9]{4,4}$/;
       
+      
+      $( function(){
+   		$( '#User_Id' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#userPw' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#userPwChk' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#Std_Phone2' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      $( function(){
+   		$( '#Std_Phone3' ).on("blur keyup", function() {
+   			$(this).val( $(this).val().replace( /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣|\s|!|@|#|$|%|^|&|*]/g, '' ) );
+   		});
+   	})
+      
+      
       $('#User_Id').blur(function() {
          if (idJ.test($('#User_Id').val())) {
             console.log('true');
@@ -698,7 +738,7 @@ function infoCheck() {
             $('#id_check').text('소문자와 대문자로만 4~12자리를 입력해주십시오.');
             $('#id_check').css('color', 'red');
          }
-      });      
+      });
       
 
       $('#userPw').blur(function() {
@@ -791,6 +831,25 @@ function infoCheck() {
                }else if(data == 0){
                   $("#idChk").attr("value", "Y");
                   alert("사용가능한 아이디입니다.");
+               }
+            }
+         })
+      }
+      
+
+   // 이메일 중복 체크_______________________________________________________________________________
+      function fn_emailChk(){
+         $.ajax({
+            url : "/student/emailChk",
+            type : "post",
+            dataType : "json",
+            data : {"User_Email" : $("#User_Email").val()},
+            success : function(data){
+               if(data == 1){
+                  alert("중복된 이메일입니다.");
+               }else if(data == 0){
+                  $("#emailChk").attr("value", "Y");
+                  alert("사용가능한 이메일입니다.");
                }
             }
          })

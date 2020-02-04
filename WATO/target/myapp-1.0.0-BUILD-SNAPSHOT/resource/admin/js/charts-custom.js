@@ -115,7 +115,7 @@ $(function () {
             },
         },
         data: {
-            labels: ["11", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: ["Jnu", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [
                 {
                     label: "Data Set One",
@@ -226,7 +226,7 @@ $(function () {
             legend: false
         },
         data: {
-            labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
+            labels: ["Jnu", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [
                 {
                     label: "Data Set 1",
@@ -315,7 +315,7 @@ $(function () {
             legend: false
         },
         data: {
-            labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14"],
+            labels: ["Jnu", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [
                 {
                     label: "Data Set 1",
@@ -387,10 +387,8 @@ $(function () {
         },
         data: {
             labels: [
-                "A",
-                "B",
-                "C",
-                "D"
+                "학생",
+                "강사",
             ],
             datasets: [
                 {
@@ -470,24 +468,22 @@ $(function () {
         type: 'pie',
         data: {
             labels: [
-                "A",
-                "B",
-                "C",
-                "D"
+                "학생",
+                "강사",
             ],
             datasets: [
                 {
-                    data: [300, 50, 100, 80],
+                    data: [60, 70],
                     borderWidth: 0,
                     backgroundColor: [
-                        green,
+                        green,red,
                         "#6adf8a",
                         "#50c670",
                         "#3fac5c",
                         "#2a9346"
                     ],
                     hoverBackgroundColor: [
-                        green,
+                        green,red,
                         "#6adf8a",
                         "#50c670",
                         "#3fac5c",
