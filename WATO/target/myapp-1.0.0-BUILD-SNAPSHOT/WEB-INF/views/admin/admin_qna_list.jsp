@@ -72,18 +72,19 @@
         <h2 style="display: inline-table">글목록</h2> 
         <table class="table table-hover">
             <thead>
-            <tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일자</th></tr>  
+            <tr><th>번호</th><th>제목</th><th>작성자</th><th>작성일자</th></tr>
             </thead>
-            <!-- 목록 시작 --> 
+            <!-- 목록 시작 -->
             <c:forEach items="${admin_qna_list}" var="admin_qna_list">
                 <tr>
                     <td>${admin_qna_list.QNA_BNO}</td>
-
                     <c:if test="${std == null && teach == null}">
                         <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal" class="text-black-50 font-weight-bold">로그인</a></li>
                     </c:if>
-
-                    <td><a href="/admin/admin_qna_read?QNA_BNO=${admin_qna_list.QNA_BNO}">${admin_qna_list.QNA_TITLE}</a></td>
+                    <td><a href="/admin/admin_qna_read?QNA_BNO=${admin_qna_list.QNA_BNO}">${admin_qna_list.QNA_TITLE}</a>
+                    <c:if test="${readReply1.QNA_WRITER == 'admin'}"><a>관리자 답글 완료</a></c:if>
+                    <c:if test="${readReply1.QNA_WRITER != 'admin'}"><a>관리자 답글 대기중</a></c:if>
+                    </td>
                     <td>${admin_qna_list.QNA_WRITER}</td>
                     <td><fmt:formatDate value="${admin_qna_list.QNA_REGDATE}" pattern="yyyy-MM-dd"/></td>
                 </tr>

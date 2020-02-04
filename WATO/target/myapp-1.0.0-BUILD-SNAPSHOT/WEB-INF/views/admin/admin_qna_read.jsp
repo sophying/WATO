@@ -37,18 +37,19 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
 <script src="../../../resource/vendor/jquery/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <!-- include summernote css/js -->
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.15/dist/summernote.min.js"></script>
-<!-- include summernote-ko-KR -->
 <script src="../../../resource/js/summernote-ko-KR.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <title>StudyUs</title>
     <title>Title</title>
 <style>
-    .note-toolbar
-    {
+    .card-header{
         display: none;
     }
 </style>
@@ -93,9 +94,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="summernote" class="col-sm-2 control-label">글 내용</label>
+                <label for="content" class="col-sm-2 control-label">글 내용</label>
                 <div class="col-sm-12">
-                    <textarea id="summernote" name="QNA_CONTENT" class="summernote" readonly="readonly">${admin_qna_read.QNA_CONTENT}</textarea>
+                    <textarea id="content" style="width: 800px;" name="QNA_CONTENT" class="summernote" readonly="readonly">${admin_qna_read.QNA_CONTENT}</textarea>
                 </div>
             </div>
             <div class="form-group">
@@ -284,8 +285,6 @@
     }
 </script>
 <script type="text/javascript">
-
-
     $('.summernote').summernote({
         height: 500,
         minHeight: 400,
@@ -299,4 +298,5 @@
     // 서머노트 쓰기 비활성화
     $('.summernote').summernote('disable');
 </script>
+
 </html>

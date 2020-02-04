@@ -34,7 +34,6 @@
     </div>
 
     <!-- JavaScript files-->
-    <script src="../resource/admin/vendor/jquery/jquery.min.js"></script>
     <script src="../resource/admin/vendor/popper.js/umd/popper.min.js"> </script>
     <script src="../resource/admin/vendor/bootstrap/js/bootstrap.min.js"></script>
     <script src="../resource/admin/vendor/jquery.cookie/jquery.cookie.js?v=<%=System.currentTimeMillis() %>"> </script>
