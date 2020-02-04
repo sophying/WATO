@@ -40,6 +40,6 @@ public interface TeachService {
 	public void admin_mng2(TeachVO vo) throws Exception;
 
 	// 강사 회원가입 아이디 존재 체크
-	public TeachVO mailCheck(TeachVO vo) throws Exception;
+	public int mailCheck(TeachVO vo) throws Exception;
 
 }

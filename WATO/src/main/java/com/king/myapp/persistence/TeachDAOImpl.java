@@ -88,7 +88,7 @@ public class TeachDAOImpl implements TeachDAO {
 
 	// 강사회원가입 이메일 존재 체크
 	@Override
-	public TeachVO mailCheck(TeachVO vo) throws Exception {
+	public int mailCheck(TeachVO vo) throws Exception {
 		return sql.selectOne(namespace + ".mailCheck", vo);
 	}
 	
