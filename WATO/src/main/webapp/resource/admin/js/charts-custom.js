@@ -115,8 +115,6 @@ $(function () {
     });
     
     
-    
-    
 var BARCHARTEXMPLE    = $('#barChartExample2');
     //강사
     var t_apply_month = {};
@@ -214,12 +212,13 @@ var BARCHARTEXMPLE    = $('#barChartExample2');
     var BARCHARTEXMPLE    = $('#barChartExample');
     
   //qna
+    
     var qna_month = {};
     qna_month = $('#qna_month').val();
     var q_apply = qna_month.substring(1,qna_month.length-1);
-    var qqq =q_apply.split(',');
+    var q =q_apply.split(',');
     
-    alert(qqq);
+    //alert(q);
     
     
     var barChartExample = new Chart(BARCHARTEXMPLE, {
@@ -295,7 +294,7 @@ var BARCHARTEXMPLE    = $('#barChartExample2');
                         gradient2
                     ],
                     borderWidth: 1,
-                    data: qqq,
+                    data: t,
                 }
             ]
         }
