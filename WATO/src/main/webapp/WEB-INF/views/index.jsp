@@ -428,7 +428,7 @@
         _________________________________________________________ 
         -->
         <!-- 메인페이지 language rank  -->
-        <div  id="hot">
+        <div id="hot">
             <div class="box py-4 mt-0">
                 <div class="container">
                     <div class="row">

@@ -65,9 +65,9 @@
 	</select>	
 	
 	<!-- 강사 회원가입 이메일 존재여부 체크 -->
-	<select id="mailCheck" resultType="com.king.myapp.domain.TeachVO">
+	<select id="mailCheck" resultType="int">
 		select count(*) from teach_info
-		where User_Email = #{User_Email}
+		WHERE User_Email = #{User_Email}
 	</select>	
 	
 	<!-- 회원정보 수정 -->

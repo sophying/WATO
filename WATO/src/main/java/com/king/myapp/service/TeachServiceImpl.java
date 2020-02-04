@@ -85,8 +85,9 @@ public class TeachServiceImpl implements TeachService {
 
 	// 강사 회원가입 이메일 존재 체크
 	@Override
-	public TeachVO mailCheck(TeachVO vo) throws Exception {
-		return dao.mailCheck(vo);
+	public int mailCheck(TeachVO vo) throws Exception {
+		int result = dao.mailCheck(vo);
+		return result;
 	}
 
 }

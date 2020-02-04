@@ -369,8 +369,8 @@ table caption {
     </nav>
 </header>
 
-<nav id="studyusnav" class="navbar navbar-expand-lg">   
-<div class="  mt-4 container w-100 mx-auto d-flex justify-content-center" > 
+<nav id="studyusnav" class="navbar navbar-expand-lg">  
+<div class="mt-4 container w-100 mx-auto d-flex justify-content-center" > 
   <div class="row "> 
     <div class="col-xs-12 ">
       <div class=" mb-5 table-responsive">
