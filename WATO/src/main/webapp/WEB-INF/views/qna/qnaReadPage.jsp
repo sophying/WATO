@@ -101,8 +101,20 @@
         <div class="form-group">
             <button type="button" id="list_btn" class="btn btn-primary">
                 <a style="color: white;" href="/qna/getQnaList">목록</a></button>
-           <a href="#" onclick="modify_btn()" class="btn btn-warning" style="color: white;">수정</a>
-            <a href="#" onclick="Deletefunct()" class="btn btn-danger" style="color: white;">삭제</a>
+                <c:choose>
+                	<c:when test="${std != null }">
+                		<c:if test="${ std.user_Id == getQnaRead.QNA_WRITER}">
+				           <a href="#" onclick="modify_btn()" class="btn btn-warning" style="color: white;">수정</a>
+				            <a href="#" onclick="Deletefunct()" class="btn btn-danger" style="color: white;">삭제</a>
+			            </c:if>
+                	</c:when>
+                	<c:otherwise>
+                		<c:if test="${ teach.user_Id == getQnaRead.QNA_WRITER}">
+				           <a href="#" onclick="modify_btn()" class="btn btn-warning" style="color: white;">수정</a>
+				            <a href="#" onclick="Deletefunct()" class="btn btn-danger" style="color: white;">삭제</a>
+                		</c:if>
+                	</c:otherwise>
+                </c:choose>
         </div>
         <span>파일 목록</span>
         <div class="form-group" style="border: 1px solid #dbdbdb;">
@@ -137,9 +149,29 @@
                 <div class="form-group">
                     <input type="hidden" name="QNA_BNO" value="${repList.QNA_BNO}">
                     <input type="hidden" name="QNA_RNO" value="${repList.QNA_RNO}">
-                    <button type="button" style="color: white;" onclick="replyUpdate_btn(this)" class="btn btn-warning">수정</button>
+                    
+                      <c:choose>
+                	<c:when test="${std != null }">
+                		<c:if test="${ std.user_Id == repList.QNA_WRITER}">
+				              <button type="button" style="color: white;" onclick="replyUpdate_btn(this)" class="btn btn-warning">수정
+				              </button>
                     <button type="button"  class="btn btn-danger">
-                        <a style="color: white;" href="/qna/replyDelete/${getQnaRead.QNA_BNO}/${repList.QNA_RNO}" onclick="replyDelete_btn()">삭제</a></button>
+                        <a style="color: white;" 
+                        href="/qna/replyDelete/${getQnaRead.QNA_BNO}/${repList.QNA_RNO}" onclick="replyDelete_btn()">
+                        삭제</a></button>
+			            </c:if>
+                	</c:when>
+                	<c:otherwise>
+                		<c:if test="${ teach.user_Id == repList.QNA_WRITER}">
+				            <button type="button" style="color: white;" onclick="replyUpdate_btn(this)" class="btn btn-warning">수정</button>
+                    <button type="button"  class="btn btn-danger">
+                        <a style="color: white;" 
+                        href="/qna/replyDelete/${getQnaRead.QNA_BNO}/${repList.QNA_RNO}" onclick="replyDelete_btn()">삭제</a></button>
+                		</c:if>
+                	</c:otherwise>
+                </c:choose>
+                    
+                 
                 </div>
             </li>
         </c:forEach>
