@@ -125,13 +125,12 @@ public class StdController implements  ServletContextAware {
 	// 회원정보 수정 post
 	@RequestMapping(value = "/std_info", method = RequestMethod.POST)
 	public String postInfo(HttpSession session, StdVO vo) throws Exception {
-		logger.info("post 학생 회원정보수정 완료!");
+		logger.info("============학생의 회원정보를 수정완료했습니다================");
 
 		service.info_modify(vo);
 		/* logout(session); */
 
-		/* session.invalidate(); */ // 기존의 세션값을 없애고 새 것을 만들겠다는 뜻
-		logger.info("asdfsadf");
+		session.invalidate(); // 기존의 세션값을 없애고 새 것을 만들겠다는 뜻
 
 		return "redirect:/";
 
