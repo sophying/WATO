@@ -9,8 +9,8 @@
 <style type="text/css">
 html, body {
     margin: 0;
-    padding:0;
-    height: 100%;
+    padding:0; 
+    height: 80%;
     color: #fff;
     font: 11px/normal sans-serif;
     background-image: url('https://github.com/gokercebeci/flipclock/raw/master/css/background.jpg');
