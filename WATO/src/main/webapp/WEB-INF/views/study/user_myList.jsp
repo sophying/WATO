@@ -368,7 +368,7 @@ table caption {
         </div>
     </nav>
 </header>
-
+ 
 <nav id="studyusnav" class="navbar ">  
 <div class="  mt-4 container w-100 mx-auto d-flex justify-content-center" >
   <div class="row ">
