@@ -55,7 +55,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	WHERE FILE_NO = #{FILE_NO}
     </select>
     <delete id="QnaDelete">
-        delete from QNA_MYBOARD where QNA_BNO = #{QNA_BNO}
+        delete from QNA_MYBOARD WHERE QNA_BNO = #{QNA_BNO}
     </delete>
     <insert id="insertFile" parameterType="hashMap">
     	insert into QNA_FILE(FILE_NO, QNA_BNO, ORG_FILE_NAME, STORED_FILE_NAME, FILE_SIZE)
