@@ -134,6 +134,11 @@ public class TeachController implements ServletContextAware {
 				PrintWriter out = response.getWriter();
 				out.println("<script>alert('존재하지 않는 이메일입니다.'); location.href='http://localhost:8080/teach/teach_join_2?terms1=on&terms2=on&terms3=on';</script>");
 				
+			} else if (mailCheck == 1) { 
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				out.println("<script>alert('중복된 이메일입니다.'); location.href='http://localhost:8080/teach/teach_join_2?terms1=on&terms2=on&terms3=on';</script>");
+				
 			} else if (result == 0) {
 				
 				service.teach_join3(vo);
