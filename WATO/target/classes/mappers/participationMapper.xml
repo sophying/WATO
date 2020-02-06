@@ -112,7 +112,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 <!--  학생 강의 참여 리스트  -->
-	<select id="t_getStudyPartiList" resultType="com.king.myapp.domain.TeacherEnrollVO" >
+	<select id="t_getStudyPartiList" resultType="com.king.myapp.domain.TeacherEnrollVO"  parameterType="com.king.myapp.domain.StdVO">
 		select  t.t_no, t.t_level, t.t_category, t.t_title, t.t_startdate , t.t_enddate , t.t_userid, p.starscore_parti 
 		from t_enroll t, t_parti_complete p
 		where t.t_no = p.t_no

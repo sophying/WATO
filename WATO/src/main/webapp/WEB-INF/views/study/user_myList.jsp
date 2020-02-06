@@ -514,8 +514,8 @@ table caption {
 	            </tr>
 	          </thead>
 		        <c:if test="${classParti != null }">
-		        	<c:forEach var="classParti" items="${classParti}">
 			          <tbody>
+		        	<c:forEach var="classParti" items="${classParti}">
 			            <tr>
 			              <td class="text-center">${classParti.t_no }</td>
 			              <td>${classParti.t_level }</td>
@@ -565,8 +565,8 @@ table caption {
 			 <!-- // form  --> 				 	
 			              </td>
 			            </tr>
-			          </tbody>
 		        	</c:forEach>
+			          </tbody>
 		        </c:if>
 	          <tfoot>
 	            <tr>

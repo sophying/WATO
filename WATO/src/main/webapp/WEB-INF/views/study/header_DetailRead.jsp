@@ -498,6 +498,7 @@
 								</div>
 							</div>
 							
+							
 	<!-- @@@@@@@@ //// 댓글 ( Q & A ) 작성  /// @@@@@@@@ -->	
 							<c:forEach var="reply" items="${reply}">
 								<c:choose>
@@ -511,7 +512,7 @@
 															<tr>
 																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
 																<td colspan="5" >
-																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly style="overflow-x:hidden; overflow-y:hidden;  ">${reply.r_content}</textarea>
+																	<textarea name="r_content" class="r_content"  onfocus="resize(this)" cols="100" readonly style="overflow-x:hidden; overflow-y:hidden;  ">${reply.r_content}</textarea>
 																<c:choose>
 																	<c:when test="${(listOne.t_userId).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>

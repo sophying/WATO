@@ -404,7 +404,7 @@
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('./resource/images/study.png">
+                    <div class="carousel-item active" style="background-image: url('./resource/images/study.png')">
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
                     <div class="carousel-item" style="background-image: url('./resource/images/pythonlogo.png">
