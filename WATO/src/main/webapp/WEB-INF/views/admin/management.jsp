@@ -151,7 +151,7 @@ td {
 													<td><input type="text" class="id" id="User_Id" name="User_Id" value="${StdVO.user_Id}" readonly="readonly"></td>
 													<td><input type="text" class="gender" id="Std_Gender" name="Std_Gender" value="${StdVO.std_Gender}" readonly="readonly"></td>
 													<td><input type="text" class="email" id="User_Email" name="User_Email" value="${StdVO.user_Email}" readonly="readonly"></td>
-													<td><input type="submit" value="회원삭제" onclick="if(confirm('정말로 해당 학생을 삭제하시겠습니까?'))javascript: form.action='/admin/StdDelete'" class="btn btn-primary" /></td>
+													<td><input type="submit" value="회원삭제" onclick="if(!confirm('정말로 해당 학생을 삭제하시겠습니까?')){return false}javascript: form.action='/admin/StdDelete'" class="btn btn-primary" /></td>
 												</tr>
 											</table>
 										</form>
@@ -164,7 +164,7 @@ td {
 													<td><input type="text" class="id" id="User_Id" name="User_Id" value="${TeachVO.user_Id}" readonly="readonly"></td>
 													<td><input type="text" class="gender" id="Teach_Gender" name="Teach_Gender" value="${TeachVO.teach_Gender}" readonly="readonly"></td>
 													<td><input type="text" class="email" id="User_Email" name="User_Email" value="${TeachVO.user_Email}" readonly="readonly"></td>
-													<td><input type="submit" value="회원삭제" onclick="if(confirm('정말로 해당 강사를 삭제하시겠습니까?'))javascript: form.action='/admin/TeachDelete'" class="btn btn-primary" /></td>
+													<td><input type="submit" value="회원삭제" onclick="if(!confirm('정말로 해당 강사를 삭제하시겠습니까?')){return false}javascript: form.action='/admin/TeachDelete'" class="btn btn-primary" /></td>
 												</tr>
 											</table>
 										</form>
