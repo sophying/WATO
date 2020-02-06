@@ -460,10 +460,11 @@ $(function () {
     };
 
 
-    // ------------------------------------------------------- //
+ // ------------------------------------------------------- //
     // Pie Chart
     // ------------------------------------------------------ //
     var PIECHARTEXMPLE    = $('#pieChartExample');
+
     var pieChartExample = new Chart(PIECHARTEXMPLE, {
         type: 'pie',
         data: {
@@ -473,7 +474,7 @@ $(function () {
             ],
             datasets: [
                 {
-                    data: [60, 70],
+                    data: [100,200],
                     borderWidth: 0,
                     backgroundColor: [
                         green,red,
