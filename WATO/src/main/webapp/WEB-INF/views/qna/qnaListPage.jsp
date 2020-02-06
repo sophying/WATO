@@ -55,6 +55,20 @@
         border: none;
         margin-bottom: 0;
     }
+    .container-login100 { 
+	  width: 100%;  
+	  min-height: 80vh; 
+	  display: -webkit-box; 
+	  display: -webkit-flex; 
+	  display: -moz-box; 
+	  display: -ms-flexbox; 
+	  display: flex;  
+	  flex-wrap: wrap;  
+	  justify-content: center;   
+	  align-items: center; 
+	  padding: 15px;
+	  background: none; 
+	}
     #pagecount {
         text-align: center;
     }
