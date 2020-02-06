@@ -1,6 +1,7 @@
 package com.king.myapp.controller;
 
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.Map;
@@ -133,52 +134,60 @@ public class AdminController {
 		// 총 문의내역
 			int qna_count = adminservice.qna_count(svo);
 			model.addAttribute("qna_count", qna_count);
+			
 		// 최근 30일 문의내역
 			int board_this_month_Count = adminservice.board_this_month_Count(qvo);
 			model.addAttribute("board_this_month_Count", board_this_month_Count);
 		
 		// 강사의 월별 스터디수
+			List<Object> t_apply_month = adminservice.t_apply_month();
+			System.out.println("t_apply_month : " + t_apply_month);
+			model.addAttribute("t_apply_month",t_apply_month);
 
-		List<Map<String, Object>> t_apply_month = adminservice.t_apply_month();
-			System.out.println("t_apply_month");
+		//학생의 월별 스터디수
+			List<Object> s_apply_month = adminservice.s_apply_month();
+			System.out.println("s_apply_month"+s_apply_month);
+			model.addAttribute("s_apply_month",s_apply_month);
 		
-			for (int i = 0; i < t_apply_month.size(); i++) {
-				System.out.println(t_apply_month.get(i).get("STUDYCNT"));
-				System.out.println(t_apply_month.get(i).get("MONTH"));
-			}
-		
-		model.addAttribute("t_apply_month",t_apply_month);
+		// 월별 문의내역	
+			List<Object> qna_month = adminservice.qna_month();
+			System.out.println("qna_month"+qna_month);
 
-		// 학생의 월별 스터디수
+			model.addAttribute("qna_month",qna_month);
 
-		List<Map<String, Object>> s_apply_month = adminservice.s_apply_month();
-			System.out.println("s_apply_month");
-			for (int i = 0; i < s_apply_month.size(); i++) {
-				System.out.println(s_apply_month.get(i).get("STUDYCNT"));
-				System.out.println(s_apply_month.get(i).get("MONTH"));
-			}
 			
-		model.addAttribute("s_apply_month",s_apply_month);
-
-		System.out.println(s_apply_month);
-		System.out.println(t_apply_month);
-		return "admin/index_admin";
+			return "admin/index_admin";
 
 	}
 
 	// qna 리스트 페이지로 이동
 	@RequestMapping(value = "/admin_qna_list", method = RequestMethod.GET)
-	public String admin_qna_list(Model model, @ModelAttribute("scri") SearchCriteria scri, QnaBoardVO vo)
+	public String admin_qna_list(QnaReplyVO replyVO, Model model, @ModelAttribute("scri") SearchCriteria scri, QnaBoardVO vo, HttpSession session)
 			throws Exception {
 		logger.info("admin_qna_list 페이지로 이동");
 		model.addAttribute("admin_qna_list", service.getQnaList(scri));
 
+		String test = qnaReplyService.readReply1(replyVO);
+		System.out.println(test);
+        //model.addAttribute("readReply1", replyVO);
+        //System.out.println(replyVO.getQNA_WRITER());
+		
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.listCount());
-
+		
+		List<Object> checklist = qnaReplyService.check();
+		
+		if (checklist.size() != 0) {
+			model.addAttribute("check",checklist);
+		}
+		
+		
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("scri", scri);
+
+
 
 		return "/admin/admin_qna_list";
 

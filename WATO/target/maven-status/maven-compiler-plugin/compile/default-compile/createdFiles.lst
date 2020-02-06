@@ -1,5 +1,7 @@
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 com\king\myapp\controller\WebConfig.class
 com\king\myapp\service\StdService.class
 com\king\myapp\service\QnaBoardServiceImpl.class
@@ -68,4 +70,5 @@ com\king\myapp\controller\HomeController.class
 com\king\myapp\domain\TeacherReplyVO.class
 com\king\myapp\service\MailService.class
 com\king\myapp\service\TeachServiceImpl.class
+>>>>>>> branch 'master' of https://github.com/sophying/WATO.git
 >>>>>>> branch 'master' of https://github.com/sophying/WATO.git

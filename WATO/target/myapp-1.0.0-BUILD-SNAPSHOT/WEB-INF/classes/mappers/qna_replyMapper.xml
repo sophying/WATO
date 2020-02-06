@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="reply">
 <!-- 댓글 조회 -->
 <select id="readReply" resultType="com.king.myapp.domain.QnaReplyVO">
-	SELECT QNA_RNO, QNA_CONTENT, QNA_WRITER, QNA_REGDATE FROM QNA_MYREPLY WHERE QNA_BNO = #{QNA_RNO}
+    	SELECT QNA_RNO, QNA_CONTENT, QNA_WRITER, QNA_REGDATE FROM QNA_MYREPLY WHERE QNA_BNO = #{QNA_RNO}
 </select>
 <!-- 댓글 작성 -->
 <insert id="replyWrite">
@@ -22,5 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- <select id="readReplySelect" resultType="com.king.myapp.domain.ReplyVO">
  	SELECT QNA_BNO, QNA_RNO, QNA_CONTENT, QNA_WRITER, QNA_REGDATE FROM QNA_MYREPLY WHERE QNA_RNO = #{QNA_RNO}
  </select>-->
+<select id="readReply1" resultType="com.king.myapp.domain.QnaReplyVO">
+    select * from QNA_MYREPLY where QNA_BNO  in (select QNA_BNO from QNA_MYBOARD where QNA_BNO = #{QNA_BNO})
+</select>
+
+
 
 </mapper>

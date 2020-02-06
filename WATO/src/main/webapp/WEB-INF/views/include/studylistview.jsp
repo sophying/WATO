@@ -215,7 +215,13 @@
 							<option value="">Show All</option>    
 							<option value="서울">서울</option>   
 							<option value="인천">인천</option>   
+							<option value="부산">부산</option>   
+							<option value="대구">대구</option>   
+							<option value="광주">광주</option>   
+							<option value="대전">대전</option>   
+							<option value="울산">울산</option>   
 							<option value="세종">세종</option>  
+							<option value="제주">제주</option>  
 						</select>  
 					</div>
 					<div class="form-group col-sm-2 col-xs-6">
@@ -224,13 +230,23 @@
 							<option value="">Show All</option>  
 							<option value="JAVA">자바</option>  
 							<option value="C">C</option>  
-							<option value="파이선">파이선</option>  
+							<option value="Android">안드로이드</option>  
+							<option value="SQL">SQL</option>  
+							<option value="C++">C++</option>  
+							<option value="C#">C#</option>  
+							<option value="JavaScript">JavaScript</option>  
+							<option value="Python">Python</option>  
+							<option value="Go">Go</option>  
+							<option value="PHP">PHP</option>  
+							<option value="Swift">Swift</option>  
+							<option value="Ruby">Ruby</option>  
 						</select> 
 					</div>
 					<div class="form-group col-sm-2 col-xs-6">
 						<select class="form-control" name="level" id="level"> 
 							<option value="">레벨</option> 
 							<option value="">Show All</option> 
+							<option value="입문">입문</option> 
 							<option value="초급">초급</option> 
 							<option value="중급">중급</option> 
 							<option value="고급">고급</option>  
@@ -258,7 +274,7 @@
 			</div>  
 		</form> 
 					<script type="text/javascript"> 
-						window.onload = function () {
+						window.onload = function () { 
 							/* 검색 했을때 필터에 그 값을 다시 입력시켜준다.  */
 							$("#filetertype").val("${getFiletertype}");
 							$("#level").val("${getRank}");

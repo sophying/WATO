@@ -34,4 +34,14 @@ public class QnaReplyServiceimpl implements QnaReplyService {
     public void replyDelete(int QNA_RNO) throws Exception {
         dao.replyDelete(QNA_RNO);
     }
+
+    @Override
+    public String readReply1(QnaReplyVO replyVO) throws Exception {
+         return dao.readReply1(replyVO);
+    }
+    @Override
+    public List<Object> check() throws Exception {
+    	return dao.check();
+    }
+
 }

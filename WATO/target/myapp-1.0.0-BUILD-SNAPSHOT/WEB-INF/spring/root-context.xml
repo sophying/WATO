@@ -31,18 +31,11 @@
 	
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
-<<<<<<< HEAD
 		<property name="url" value="jdbc:oracle:thin:@alfo3-15-pc:1521:orcl"></property>
-=======
-<<<<<<< HEAD
-		<property name="url" value="jdbc:oracle:thin:alfo3-15-PC:1521:orcl"></property>
-=======
-		<property name="url" value="jdbc:oracle:thin:alfo3-15-pc:1521:orcl"></property>
->>>>>>> branch 'master' of https://github.com/sophying/WATO.git
->>>>>>> branch 'master' of https://github.com/sophying/WATO.git
 		<property name="username" value="scott"></property>
 		<property name="password" value="tiger"></property> 
 	</bean> 
+		
 	
 	<!-- 마이바티스연동 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

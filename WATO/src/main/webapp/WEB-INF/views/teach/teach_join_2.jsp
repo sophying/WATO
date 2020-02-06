@@ -511,7 +511,7 @@
                     </table>
                 </div>
             	
-                <input id="submitjoin" type="button" value="회원가입" style="border-radius: 10px; 
+                <input type="submit" value="회원가입" style="border-radius: 10px; 
 													       background-color: #77bbc2; 
 													       border: 0; 
 													       outline: 0; 
@@ -690,7 +690,7 @@ function infoCheck() {
  // 정규표현식 유효성 검사 소스_________________________________________________________
    
    //아이디 정규식
-   var idJ = /^[a-z0-9]{4,12}$/;
+   var idJ = /^[A-Za-z0-9]{4,12}$/;
    // 비밀번호 정규식
    var pwJ = /^[A-Za-z0-9]{4,12}$/;
    

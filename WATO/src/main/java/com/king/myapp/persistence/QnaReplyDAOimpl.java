@@ -32,4 +32,15 @@ public class QnaReplyDAOimpl implements QnaReplyDAO {
     public void replyDelete(int QNA_RNO) throws Exception {
         sql.delete("reply.replyDelete", QNA_RNO);
     }
+
+    @Override
+    public String readReply1(QnaReplyVO replyVO) throws Exception {
+        return sql.selectOne("reply.readReply1", replyVO);
+    }
+    @Override
+    public List<Object> check() throws Exception {
+    	return sql.selectList("reply.check");
+    }
+
+
 }

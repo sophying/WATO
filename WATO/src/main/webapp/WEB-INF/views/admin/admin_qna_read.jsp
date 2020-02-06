@@ -201,10 +201,8 @@
 </div>
 </section>
 </div>
-<%@include file="../include_admin/admin_footer.jsp"%>
 </div>
 </div>
-
 </body>
 
 <script>

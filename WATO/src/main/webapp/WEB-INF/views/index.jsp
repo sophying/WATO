@@ -397,14 +397,14 @@
     <div id="content">
         <header>
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
+                <ol class="carousel-indicators"> 
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner" role="listbox">
                     <!-- Slide One - Set the background image for this slide in the line below -->
-                    <div class="carousel-item active" style="background-image: url('./resource/images/javascriptlogo.jpg">
+                    <div class="carousel-item active" style="background-image: url('./resource/images/study.png')">
                     </div>
                     <!-- Slide Two - Set the background image for this slide in the line below -->
                     <div class="carousel-item" style="background-image: url('./resource/images/pythonlogo.png">
@@ -425,26 +425,26 @@
         </header>
         <!--
         *** HOT PRODUCT SLIDESHOW ***
-        _________________________________________________________
+        _________________________________________________________ 
         -->
         <!-- 메인페이지 language rank  -->
-        <div  id="hot">
+        <div id="hot">
             <div class="box py-4 mt-0">
                 <div class="container">
                     <div class="row">
                             <nav id="studyusnav" class="navbar w-100 pb-3 ">  
 								<div class="container w-100 my-auto" style="text-align: center;">
-									<iframe style="width: 100%;  border: none;" src="/board/clock"></iframe> 
+									<iframe style="width: 100%; height:150px;  border: none;" src="/board/clock"></iframe> 
 								</div>
 							</nav> 
-                        <div class="col-md-12 mt-4">
+                        <div class="col-md-12 mt-4"> 
                             <h2 class="mb-0 text-center"><span style="font-weight: bold;">Best Programming Language</span></h2>
                         </div> 
                     </div>
                 </div> 
             </div>
             <div class="container"> 
-                <div class="product-slider owl-carousel owl-theme">
+                <div class="product-slider owl-carousel owl-theme"> 
                 	<%int q = 1;%>
                 	<c:forEach items="${languagerank}" var="languagerank"> 
                 	<div style="position: relative;"> 

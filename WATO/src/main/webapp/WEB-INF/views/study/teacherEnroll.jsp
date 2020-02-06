@@ -690,7 +690,7 @@
                       <div class="form-group ">
                             <input type="hidden" name="teach_orgname" value="${teach.teach_Orgname}"> 
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${teach.user_Id}">
- <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
+ <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="/resource/images/imgs/studyUs.png">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
  <!-- day -->               <input type="hidden" class="form-control" name="t_day" id="schedule" value="" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>

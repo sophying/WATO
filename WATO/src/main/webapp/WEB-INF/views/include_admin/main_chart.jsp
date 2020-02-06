@@ -13,26 +13,53 @@
 </head>
 <body>
 <section>
-    <div class="row mb-4">
-        <div class="col-lg-7 mb-4 mb-lg-0">
+    <div class="row mb-3">
+    
+        <div class="col-lg-6 mb-8 mb-lg-0">
+        
             <div class="card">
+            
                 <div class="card-header">
-                    <h2 class="h6 text-uppercase mb-0">월별 스터디 게시글 등록 건</h2>
+                    <h2 class="h6 text-uppercase mb-0">학생 스터디 게시글 등록 건</h2>
                 </div>
+                
                 <div class="card-body">
-                    <p class="text-gray">단위 : 개</p>
+                    <p class="text-gray" align="right">단위 : 개</p>
                     <div class="chart-holder">
-                    	<canvas id="barChartExample1" style="max-height: 14rem !important;"></canvas>
+                       <canvas id="barChartExample1" style="max-height: 14rem !important;"></canvas>
+						<input id="s_apply_month" type="hidden" value="${s_apply_month}">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-5 mb-4 mb-lg-0 pl-lg-0">
+        
+        <div class="col-lg-6 mb-8 mb-lg-0">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="h6 text-uppercase mb-0">강사 스터디 게시글 등록 건</h2>
+                </div>
+                
+                <div class="card-body">
+                   <p class="text-gray" align="right">단위 : 개</p>
+                    <div class="chart-holder">
+                       <canvas id="barChartExample2" style="max-height: 14rem !important;"></canvas>
+						<input id="t_apply_month" type="hidden" value="${t_apply_month}">
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+        
+    <div class="row mb-3">
+    
+        <div class="col-lg-6 mb-8 mb-lg-0">
+        
             <div class="card mb-3">
                 <div class="card-body">
                     <div class="row align-items-center flex-row">
                         <div class="col-lg-5">
                             <h2 class="mb-0 d-flex align-items-center"><span>QNA</span><span class="dot bg-green d-inline-block ml-3"></span></h2><span class="text-muted text-uppercase small">월별 QNA 등록 건수</span>
+                             <input id="qna_month" type="hidden" value="${qna_month}">                          
                             <hr><small class="text-muted"></small>
                         </div>
                         <div class="col-lg-7">
@@ -41,16 +68,16 @@
                     </div>
                 </div>
             </div>
-            <div class="card">
+         </div>
+         
+       <div class="col-lg-6 mb-8 mb-lg-0">
+         <div class="card" mb-3>
                 <div class="card-body">
                     <div class="row align-items-center flex-row">
                         <div class="col-lg-5">
                             <h2 class="mb-0 d-flex align-items-center"><span>회원유형</span><span class="dot bg-violet d-inline-block ml-3"></span></h2><span class="text-muted text-uppercase small">회원가입한 회원의 유형</span>
-                            
-                            <input id="std_count" type="hidden" value="${Std_count}">
-                            <input id="Tech_count" type="hidden" value="${Tech_count}">
-                            
-                            <!-- <hr><small class="text-muted">학생 / 강사</small> -->
+		  <input id="std_count" type="hidden" value="${Std_count}">
+                            <input id="Tech_count" type="hidden" value="${Tech_count}">                          
                         </div>
                         <div class="col-lg-7">
                             <canvas id="pieChartExample"></canvas>
@@ -60,6 +87,18 @@
             </div>
         </div>
     </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     <!-- <div class="row">
         <div class="col-lg-5 mb-4 mb-lg-0">
@@ -115,9 +154,5 @@
     <script src="../resource/admin/js/js.cookie.min.js?v=<%=System.currentTimeMillis() %>"></script>
     <script src="../resource/admin/js/charts-custom.js?v=<%=System.currentTimeMillis() %>"></script>
     <script src="../resource/admin/js/front.js?v=<%=System.currentTimeMillis() %>"></script>
-    
-    
-    
-    
 </body>
 </html>

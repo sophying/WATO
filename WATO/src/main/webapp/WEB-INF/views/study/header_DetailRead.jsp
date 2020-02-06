@@ -328,64 +328,114 @@
 									<div  style=" word-break:break-all;"class="row h-50 w-100 d-inline-block d-flex pt-2 " >
 										<c:if test="${(starScore == 0 && starScore < 1)|| (starScore == 'NaN')}">
 											<div id="star_grade" class="h2" >
-										        <span>★</span> 
-										        <span>★</span>  
-										        <span>★</span>    
-										        <span>★</span>
-										        <span>★</span>   
+										       <span><i class="fa fa-star-o"></i></span> 
+										       <span><i class="fa fa-star-o"></i></span> 
+										       <span><i class="fa fa-star-o"></i></span> 
+										       <span><i class="fa fa-star-o"></i></span> 
+										       <span><i class="fa fa-star-o"></i></span> 
 											</div>
 										</c:if>
 										<c:if test="${starScore > 0 && starScore < 1 }">
 											<div id="star_grade" class="h2" >
-										        <span style="color: #feba63;">★</span> 
-										        <span>★</span>  
-										        <span>★</span>    
-										        <span>★</span>
-										        <span>★</span>   
+										        <span style="color: #feba63;"><i class="fa fa-star"></i> </span> 
+										        <span><i class="fa fa-star-o"></i></span>
+										        <span><i class="fa fa-star-o"></i></span>
+										        <span><i class="fa fa-star-o"></i></span>
+										        <span><i class="fa fa-star-o"></i></span>
 											</div>
 										</c:if>
 										<c:if test="${starScore > 1  && starScore <= 2 }">
-											<div id="star_grade" class="h2" >
-										        <span style="color: #feba63;">★</span> 
-										        <span style="color: #feba63;">★</span> 
-										        <span>★</span>    
-										        <span>★</span>
-										        <span>★</span>   
-											</div>
+											<c:choose>
+												<c:when test="${starScore == 2}">
+													<div id="star_grade" class="h2" >
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+												        <span><i class="fa fa-star-o"></i></span>   
+												        <span><i class="fa fa-star-o"></i></span>   
+												        <span><i class="fa fa-star-o"></i></span>   
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div id="star_grade" class="h2" >
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star-half-o"></i></span> 
+												        <span><i class="fa fa-star-o"></i></span>   
+												        <span><i class="fa fa-star-o"></i></span>   
+												        <span><i class="fa fa-star-o"></i></span>   
+													</div>
+												</c:otherwise>
+											</c:choose>
 										</c:if>
 										<c:if test="${starScore > 2  && starScore <= 3 }">
-											<div id="star_grade" class="h2" >
-										        <span style="color: #feba63;">★</span> 
-										        <span style="color: #feba63;">★</span> 
-										        <span style="color: #feba63;">★</span> 
-										        <span>★</span>
-										        <span>★</span>   
-											</div>
+											<c:choose>
+												<c:when test="${starScore == 3}">
+													<div id="star_grade" class="h2" >
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+												        <span><i class="fa fa-star-o"></i></span>   
+												        <span><i class="fa fa-star-o"></i></span>   
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div id="star_grade" class="h2" >
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star-half-o"></i></span> 
+												        <span><i class="fa fa-star-o"></i></span>   
+												        <span><i class="fa fa-star-o"></i></span>   
+													</div>
+												</c:otherwise>
+											</c:choose>
 										</c:if>
 										<c:if test="${starScore > 3  && starScore <= 4 }">
-											<div id="star_grade" class="h2" >
-										        <span style="color: #feba63;">★</span> 
-										        <span style="color: #feba63;">★</span> 
-										        <span style="color: #feba63;">★</span> 
-										        <span style="color: #feba63;">★</span> 
-										        <span>★</span>   
-											</div>
+											<c:choose>
+												<c:when test="${starScore == 4}">
+													<div id="star_grade" class="h2" >
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+												        <span><i class="fa fa-star-o"></i></span>   
+													</div>
+												</c:when>
+												<c:otherwise>
+													<div id="star_grade" class="h2" >
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span>
+														<span style="color: #feba63;"><i class="fa fa-star-half-o"></i></span> 
+												        <span><i class="fa fa-star-o"></i></span>   
+													</div>
+												</c:otherwise>
+											</c:choose>
 										</c:if>
 										<c:if test="${starScore> 4  && starScore <= 5 }">
-											<div id="star_grade" class="h2" >
-										        <span style="color: #feba63;">★</span> 
-										        <span style="color: #feba63;">★</span> 
-										        <span style="color: #feba63;">★</span> 
-										        <span style="color: #feba63;">★</span> 
-										        <span style="color: #feba63;">★</span> 
-											</div>
-										</c:if>
+											<c:choose>
+												<c:when test="${starScore == 5}">
+														<span style="color: #feba63;"><i class="fa fa-star"></i> </span> 
+												        <span style="color: #feba63;"><i class="fa fa-star"></i> </span> 
+												        <span style="color: #feba63;"><i class="fa fa-star"></i> </span>  
+												        <span style="color: #feba63;"><i class="fa fa-star"></i> </span> 					
+												        <span style="color: #feba63;"><i class="fa fa-star"></i> </span> 					
+												</c:when>
+												<c:otherwise>
+													<div id="star_grade" class="h2" >
+												        <span style="color: #feba63;"><i class="fa fa-star"></i> </span> 
+												        <span style="color: #feba63;"><i class="fa fa-star"></i> </span> 
+												        <span style="color: #feba63;"><i class="fa fa-star"></i> </span>  
+												        <span style="color: #feba63;"><i class="fa fa-star"></i> </span> 
+												        <span style="color: #feba63;"><i class="fa fa-star-half-o"></i></span> 
+													</div>
+												</c:otherwise>
+											</c:choose>
+										</c:if> 
 										<c:choose>
 											<c:when test="${starScore == 'NaN' }">
 												<span class="h3 mt-2 ml-4">00.00</span>
 											</c:when>
 											<c:otherwise>
-												<span class="h3 mt-2 ml-4">${starScore}</span>
+												<span class="h3 mt-2 ml-4">${String.format("%.2f",starScore)}</span>
 											</c:otherwise>
 										</c:choose>
 									</div> 
@@ -448,6 +498,7 @@
 								</div>
 							</div>
 							
+							
 	<!-- @@@@@@@@ //// 댓글 ( Q & A ) 작성  /// @@@@@@@@ -->	
 							<c:forEach var="reply" items="${reply}">
 								<c:choose>
@@ -461,7 +512,7 @@
 															<tr>
 																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
 																<td colspan="5" >
-																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly style="overflow-x:hidden; overflow-y:hidden;  ">${reply.r_content}</textarea>
+																	<textarea name="r_content" class="r_content"  onfocus="resize(this)" cols="100" readonly style="overflow-x:hidden; overflow-y:hidden;  ">${reply.r_content}</textarea>
 																<c:choose>
 																	<c:when test="${(listOne.t_userId).equals(std.user_Id ) }">
 																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>

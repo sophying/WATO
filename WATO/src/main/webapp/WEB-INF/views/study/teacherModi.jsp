@@ -410,7 +410,7 @@
             <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
               <div class="card-body">
                 <div class="input-group d-flex justify-content-center">
-<!-- photo -->     <img id="input_img" src="${listOne.t_photo }" alt="이미지">
+<!-- photo -->     <img id="input_img" src="${listOne.t_photo}" alt="이미지">
                 </div>
               </div>
             </div>
@@ -419,13 +419,21 @@
             <!-- <div class="cols-sm-5">
             <div class="form-group"> -->
             <div class="cols-sm-5 pb-5 pr-2 pl-2">
-              <div class="input-group d-flex justify-content-center ">
-                <img id="img_btn_0" src="../resource/images/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
-                <img id="img_btn_1" src="../resource/images/imgs/java.jpeg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_2" src="../resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_3" src="../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_4" src="../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
-                <img id="img_btn_5" src="../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+             <div class="input-group d-flex justify-content-center ">
+                <img id="img_btn_0" src="/resource/images/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
+                <img id="img_btn_1" src="/resource/images/imgs/java.jpeg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_2" src="/resource/images/imgs/javascript.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_3" src="/resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_4" src="/resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_5" src="/resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_6" src="/resource/images/imgs/c.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_7" src="/resource/images/imgs/go.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_8" src="/resource/images/imgs/ruby.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_9" src="/resource/images/imgs/swift.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_10" src="/resource/images/imgs/sql.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_11" src="/resource/images/imgs/visualbasic.jpg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_12" src="/resource/images/imgs/cs.jpg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_13" src="/resource/images/imgs/python1.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
             </div>
             <!-- </div>
@@ -688,7 +696,7 @@
   
                       <div class="form-group ">
  <!-- t_userId -->          <input type="hidden" name="t_userId" id="t_userId" value="${teach.user_Id }">
- <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="">
+ <!-- t_photo -->           <input type="hidden" name="t_photo" id="photoval" value="${listOne.t_photo}">
  <!-- t_place -->           <input type="hidden" name="t_place" id="Place" value="" >
                       <input type="hidden" name="t_no" value="${listOne.t_no }"/>
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
@@ -1204,48 +1212,95 @@ function AddComma(dataValue) {
 		  var img3 = $('#img_btn_3').attr('src');
 		  var img4 = $('#img_btn_4').attr('src');
 		  var img5 = $('#img_btn_5').attr('src');
+		  var img6 = $('#img_btn_6').attr('src');
+		  var img7 = $('#img_btn_7').attr('src');
+		  var img8 = $('#img_btn_8').attr('src');
+		  var img9 = $('#img_btn_9').attr('src');
+		  var img10 = $('#img_btn_10').attr('src');
+		  var img11 = $('#img_btn_11').attr('src');
+		  var img12 = $('#img_btn_12').attr('src');
 
 		  $('#img_btn_0').on({'click': function(){
 		        $('#input_img').attr('src',img0);
-		        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
 		        document.getElementById("category").value = "직접입력";
 		     }
 		 });
 		  $('#img_btn_1').on({'click': function(){
 		        $('#input_img').attr('src',img1);
 		        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-		        document.getElementById("category").value = "자바";
+		        document.getElementById("category").value = "JAVA";
 		     }
 		 });
 
 		 $('#img_btn_2').on({'click': function(){
 		        $('#input_img').attr('src',img2);
 		        document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-		        document.getElementById("category").value = "자바스크립트";
+		        document.getElementById("category").value = "JavaScript";
 		    } 
 		});
 
 		$('#img_btn_3').on({'click': function(){
 		       $('#input_img').attr('src',img3);
 		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-		       document.getElementById("category").value = "C언어";
+		       document.getElementById("category").value = "C++";
 		   }
 		});
 
 		$('#img_btn_4').on({'click': function(){
 		       $('#input_img').attr('src',img4);
 		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-		       document.getElementById("category").value = "파이썬";
+		       document.getElementById("category").value = "Python";
 		   }
 		 });
 
 		$('#img_btn_5').on({'click': function(){
 		       $('#input_img').attr('src',img5);
 		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-		       document.getElementById("category").value = "안드로이드";
+		       document.getElementById("category").value = "Android";
 		   }
 		});
-
+		$('#img_btn_6').on({'click': function(){
+		       $('#input_img').attr('src',img6);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "C";
+		   }
+		});
+		$('#img_btn_7').on({'click': function(){
+		       $('#input_img').attr('src',img7);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Go";
+		   }
+		});
+		$('#img_btn_8').on({'click': function(){
+		       $('#input_img').attr('src',img8);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Ruby";
+		   }
+		});
+		$('#img_btn_9').on({'click': function(){
+		       $('#input_img').attr('src',img9);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Swift";
+		   }
+		});
+		$('#img_btn_10').on({'click': function(){
+		       $('#input_img').attr('src',img10);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "SQL";
+		   }
+		});
+		$('#img_btn_11').on({'click': function(){
+		       $('#input_img').attr('src',img11);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "Visual Basic";
+		   }
+		});
+		$('#img_btn_12').on({'click': function(){
+		       $('#input_img').attr('src',img12);
+		       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+		       document.getElementById("category").value = "C#";
+		   }
+		});
 });
 </script>
 </body>

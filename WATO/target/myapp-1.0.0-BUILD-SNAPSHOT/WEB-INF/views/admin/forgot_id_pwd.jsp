@@ -138,14 +138,14 @@
 	 }
 	 .container-login100 { 
 	  width: 100%;  
-	  min-height: 60vh; 
+	  min-height: 80vh; 
 	  display: -webkit-box; 
 	  display: -webkit-flex; 
 	  display: -moz-box; 
 	  display: -ms-flexbox; 
 	  display: flex;  
 	  flex-wrap: wrap;  
-	  justify-content: center;  
+	  justify-content: center;   
 	  align-items: center; 
 	  padding: 15px;
 	  background: none; 
@@ -681,8 +681,10 @@ $('#Fg_Id').click(function() {
 
     } else if(null != radioval && radioval == 20) {
         $('form[name="Fg_Id"]').attr('action',"/admin/teachFgId");
-    }
-});
+    } else {
+		alert('학생 혹은 강사 중 선택해주세요.');
+		return false;
+}});
 
 
 // Password 찾기 (학생 or 강사)______________________________________________________
@@ -695,8 +697,10 @@ $('#Fg_Pwd').click(function() {
 
     } else if(null != radioval && radioval == 20) {
         $('form[name="Fg_Pwd"]').attr('action',"/admin/teachFgPwd");
-    }
-});
+    } else {
+		alert('학생 혹은 강사 중 선택해주세요.');
+		return false;
+}});
 </script>
 <!-- JavaScript files--> 
 <script src="../resource/vendor/jquery/jquery.min.js"></script>

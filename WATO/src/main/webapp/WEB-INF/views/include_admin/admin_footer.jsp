@@ -15,8 +15,8 @@
             </div>
             <div class="col-md-6 text-center text-md-right text-gray-400">
                 <p class="mb-0">Copyright &copy; 2020.Company name All rights reserved.More Templates
-                    <a href="http://www.mrhi.or.kr/" target="_blank" title="미래">스터디어스</a>
-                    - Collect from <a href="http://www.mrhi.or.kr/" title="미래" target="_blank">헬로우</a></p>
+                    <a href="http://www.mrhi.or.kr/" target="_blank" title="미래">StudyUs</a>
+                    - Collect from <a href="http://www.mrhi.or.kr/" title="미래" target="_blank">http://www.mrhi.or.kr/</a></p>
             </div>
         </div>
     </div>

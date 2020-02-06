@@ -564,7 +564,7 @@
                           <div class="cols-sm-10">
                             <div class="input-group">
 	                           <span class="input-group-addon"></span>
-<!-- s_category -->	             <input type="text" name="s_category" class="form-control"  id="category" placeholder="과목 카테고리를 알려주세요!" />
+<!-- s_category -->	             <input type="text" name="s_category" class="form-control"  id="category" placeholder="과목 카테고리를 알려주세요!"/>
                            </div>
                          </div>
                       </div>
@@ -666,7 +666,7 @@
                      <div class="form-group ">
                            <input type="hidden" name="std_orgname" value="${std.std_Orgname}" readonly="readonly">
   <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="${std.user_Id }"/>
-  <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value="">
+  <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value="/resource/images/imgs/studyUs.png">
   <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >
   <!-- s_day -->         <input type="hidden" name="s_day"  class="form-control" id="schedule" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
