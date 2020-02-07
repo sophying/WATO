@@ -33,6 +33,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<!-- 제이쿼리 -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>  
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <title>Insert title here</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -514,29 +515,68 @@
        <div class="form-group container-fluid d-inline-block">
       <div class="card">
         <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-3  control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
-          <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">
+          <div id="img-border" class="cols-sm-1 d-inline-block d-flex justify-content-center">
            <div class="card-body">
              <div class="input-group d-flex justify-content-center">
             <span class="input-group-addon"></span>
                 <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">자격증 </label>&nbsp;&nbsp;
-               <select name="t_license" class="selectpicker form-control">
-                 <option value="ocjp" selected="selected">OCJP</option>
+               <select class="selectpicker form-control" id="t_license" onchange="t_licenseinput()">
+                 <option value="OCJP" selected="selected">OCJP</option> 
                  <option value="리눅스마스터">리눅스마스터</option>
                  <option value="네트워크관리사">네트워크 관리사</option>
                  <option value="정보보안기사">정보 보안 기사</option>
                  <option value="정보보안산업기사">정보 보안 산업기사</option>
                  <option value="정보처리기사">정보처리기사</option>
-                 <option value="정보처리산업기사">정보처리 산업기사</option>
+                 <option value="정보처리산업기사">정보처리 산업기사</option> 
                </select>
-             </div> 
-           </div>
+             </div>  
+             <div> 
+             	 <table id="t_licenselist" class="table table-hover">
+             	 
+             	 </table>
+             </div>
+           </div> 
          </div>
       </div>
-     </div>
+     </div> 
   </div>  
+  <script>
+	  function t_licenseDelete(event) { 
+		 $(event).parent().parent().remove(); 
+	}
+	
+	/*$('#LicenceList').append(
+						"<tr><td>"+$('#searchKey').val()+"</td><td><button onclick='LicenceDelete(this)'>delete</button></td><tr>"		
+				); */	 
+	function t_licenseinput() {
+		$('#t_licenselist').append(
+			"<tr><td><input name='t_license' type='hidden' value='"+$('#t_license').val()+"' />"+$('#t_license').val()+"</td><td><button onclick='t_licenseDelete(this)'>삭제</button></td></tr>" 
+		);					
+	}
+	 (function($) { // Begin jQuery
+		  $(function() {  
+			  	
+				$.getJSON('/resource/json/Licence.json', function (data, textStatus) { 
+					/* for (var i = 0; i < data.fields.length; i++) {
+						$('#tablehead').append("<th>"+data.fields[i].id+"</th>");  
+						
+					} */
+						console.log(data) 
+						$.each(data.records , function() { 
+							$('#t_license').append(
+							"<option value='"+this.jmfldnm+"'>"+this.jmfldnm+"</option>"		
+							);
+						})
+				});
+				
+				  // If a link has a dropdown, add sub menu toggle.
+			    
+		  }); // end DOM ready
+		})(jQuery); // end jQuery
+</script>
 <!-- // 스터디 기간 설정  -->
 <!-- // 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
-
+ 
 
 <!-- <2> Study Info Enroll -->
     <div class="col-md-7 d-inline-block">

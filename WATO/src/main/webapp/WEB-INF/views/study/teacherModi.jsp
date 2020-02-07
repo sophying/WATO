@@ -521,21 +521,60 @@
              <div class="input-group d-flex justify-content-center">
             <span class="input-group-addon"></span>
                 <label for="end" class="cols-sm-2 d-flex p-2 control-label font-weight-bold">자격증 </label>&nbsp;&nbsp;
-               <select name="t_license" class="selectpicker form-control">
+               <select class="selectpicker form-control" id="t_license" onchange="t_licenseinput()">
                  <option value="ocjp" selected="selected">OCJP</option>
                  <option value="리눅스마스터">리눅스마스터</option>
                  <option value="네트워크관리사">네트워크 관리사</option>
                  <option value="정보보안기사">정보 보안 기사</option>
                  <option value="정보보안산업기사">정보 보안 산업기사</option>
                  <option value="정보처리기사">정보처리기사</option>
-                 <option value="정보처리산업기사">정보처리 산업기사</option>
+                 <option value="정보처리산업기사">정보처리 산업기사</option> 
                </select>
-             </div> 
-           </div>
+             </div>  
+             <div>
+             	 <table id="t_licenselist" class="table table-hover">
+             	 
+             	 </table>
+             </div>
+           </div> 
          </div>
       </div>
-     </div>
-  </div>       
+     </div> 
+  </div>        
+  <script>
+	  function t_licenseDelete(event) { 
+		 $(event).parent().parent().remove(); 
+	}
+	
+	/*$('#LicenceList').append(
+						"<tr><td>"+$('#searchKey').val()+"</td><td><button onclick='LicenceDelete(this)'>delete</button></td><tr>"		
+				); */	 
+	function t_licenseinput() {
+		$('#t_licenselist').append(
+			"<tr><td><input name='t_license' type='hidden' value='"+$('#t_license').val()+"' />"+$('#t_license').val()+"</td><td><button onclick='t_licenseDelete(this)'>삭제</button></td></tr>" 
+		);					
+	}
+	 (function($) { // Begin jQuery
+		  $(function() {  
+			  	
+				$.getJSON('/resource/json/Licence.json', function (data, textStatus) { 
+					/* for (var i = 0; i < data.fields.length; i++) {
+						$('#tablehead').append("<th>"+data.fields[i].id+"</th>");  
+						
+					} */
+						console.log(data) 
+						$.each(data.records , function() { 
+							$('#t_license').append(
+							"<option value='"+this.jmfldnm+"'>"+this.jmfldnm+"</option>"		
+							);
+						})
+				});
+				
+				  // If a link has a dropdown, add sub menu toggle.
+			    
+		  }); // end DOM ready
+		})(jQuery); // end jQuery
+</script>
 <!-- // 스터디 기간 설정  -->
 <!-- // 왼쪽 영역 div ( 이미지, 날짜 선택 ) -->
 
@@ -786,17 +825,17 @@ _________________________________________________________
         </div> 
         <!-- /.row-->  
     </div>
-    <!-- /.container-->  
+    <!-- /.container-->   
 </div>
 <!-- /#footer-->
 <!-- *** FOOTER END ***-->
 <!-- JavaScript files--> 
-<script src="./resource/vendor/jquery/jquery.min.js"></script>
-<script src="./resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="./resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
-<script src="./resource/vendor/owl.carousel/owl.carousel.min.js"></script>
-<script src="./resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
-<script src="./resource/js/front.js"></script>
+<script src="/resource/vendor/jquery/jquery.min.js"></script>
+<script src="/resource/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/resource/vendor/jquery.cookie/jquery.cookie.js"> </script>
+<script src="/resource/vendor/owl.carousel/owl.carousel.min.js"></script>
+<script src="/resource/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.js"></script>
+<script src="/resource/js/front.js"></script>
 <!-- kakao map api key (최성웅 key)-->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6576765d075a8eced9a1dab97cad004a&libraries=services"></script>
 </body>
@@ -807,9 +846,21 @@ _________________________________________________________
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <script type="text/javascript">
-							
-	//기존 지도 불러오는 readMap()메소드 호출
+							 
+	//기존 지도 불러오는 readMap()메소드 호출 
 	window.onload = function hello() {
+		var license = "${listOne.t_license}" 
+		var licenselist = license.split(','); 
+		console.log(licenselist); 
+		for (var i = 0; i < licenselist.length; i++) { 
+			if (licenselist[i] != null && licenselist[i] != "") { 
+				$('#t_licenselist').append(
+					"<tr><td><input name='t_license' type='hidden' value='"+licenselist[i]+"' />"+licenselist[i]+"</td><td><button onclick='t_licenseDelete(this)'>삭제</button></td></tr>" 
+				);			
+			}
+		}
+		
+	  	console.log(license); 
 		readMap();
 	}
 
