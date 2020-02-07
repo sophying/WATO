@@ -59,6 +59,20 @@ z    <script src="../../resource/vendor/jquery.cookie/jquery.cookie.js"> </scrip
         width: 53.8%;
         background-color: #e0e0e0;
     }
+    .container-login100 { 
+	  width: 100%;  
+	  min-height: 80vh; 
+	  display: -webkit-box; 
+	  display: -webkit-flex; 
+	  display: -moz-box; 
+	  display: -ms-flexbox; 
+	  display: flex;  
+	  flex-wrap: wrap;  
+	  justify-content: center;   
+	  align-items: center; 
+	  padding: 15px;
+	  background: none; 
+	}
 
     </style>
 </head>
