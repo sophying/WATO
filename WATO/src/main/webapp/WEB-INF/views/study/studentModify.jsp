@@ -599,7 +599,7 @@
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
-                                <input type="text"  class="form-control" id="roadAddress" placeholder="도로명/지번주소" value="${listOne.road }" required>
+                                <input type="text"  class="form-control" id="roadAddress" placeholder="도로명/지번주소" value="${listOne.road}" required>
                             </div>
                           </div>
                           
@@ -607,7 +607,7 @@
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
-                                <input type="text" class="form-control" id="jibunAddress" placeholder="상세주소" value="${listOne.jibun }" required>
+                                <input type="text" class="form-control" id="jibunAddress" placeholder="상세주소" value="${listOne.jibun}" required>
                            </div>
                           </div>
                           

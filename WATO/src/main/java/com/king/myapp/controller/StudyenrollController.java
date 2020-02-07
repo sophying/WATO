@@ -236,20 +236,20 @@ public class StudyenrollController {
 		
 		StudyEnrollVO listOne = studyService.detailRead(s_no);
 		
-//		String road;
-//		String jibun;
-//		String str = listOne.getS_place();
-//		String[] arry = str.split("/");
-//		
-//		for (int i = 0; i < arry.length; i++) {
-//			
-//			System.out.println(arry[i]);
-//		}
-//		road = arry[0];
-//		jibun = arry[1];
-//		
-//		listOne.setRoad(road);
-//		listOne.setJibun(jibun);
+		String road;
+		String jibun;
+		String str = listOne.getS_place();
+		String[] arry = str.split("/");
+		
+		for (int i = 0; i < arry.length; i++) {
+			
+			System.out.println(arry[i]);
+		}
+		road = arry[0];
+		jibun = arry[1];
+		  
+		listOne.setRoad(road);
+		listOne.setJibun(jibun);
 //		
 		
 		  String beforeDay = listOne.getS_day(); // DB 문자열

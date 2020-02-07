@@ -258,22 +258,22 @@ public class TeacherenrollController {
 			
 		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
 		
-//		String road;
-//		String jibun;
-//		String str = listOne.getT_place();
-//		String[] arry = str.split("/");
-//		
-//		for (int i = 0; i < arry.length; i++) {
-//			
-//			System.out.println(arry[i]);
-//			
-//			
-//		}
-//		road = arry[0];
-//		jibun = arry[1];
-//		
-//		listOne.setRoad(road);
-//		listOne.setJibun(jibun);
+		String road; 
+		String jibun;
+		String str = listOne.getT_place();
+		String[] arry = str.split("/");
+		
+		for (int i = 0; i < arry.length; i++) {
+			
+			System.out.println(arry[i]); 
+			
+			
+		}
+		road = arry[0];
+		jibun = arry[1];
+		
+		listOne.setRoad(road);
+		listOne.setJibun(jibun);
 		
 		
 		  String beforeDay = listOne.getT_day(); // DB 문자열
