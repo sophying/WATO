@@ -124,7 +124,7 @@ public class TeacherenrollController {
 		
 		teacherService.viewCount(t_no);
 		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
-		List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
+		//List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
 		
 		DecimalFormat form = new DecimalFormat("#.##");
 		double star = ((double)listOne.getStarScore() / listOne.getStarscore_parti());
@@ -135,7 +135,7 @@ public class TeacherenrollController {
 			model.addAttribute("usercheck",null);
 			model.addAttribute("std",null);
 			model.addAttribute("teach",null);
-			model.addAttribute("reply", reply); 
+			//model.addAttribute("reply", reply); 
 			model.addAttribute("listOne",listOne);
 			
 			
@@ -188,8 +188,8 @@ public class TeacherenrollController {
 			model.addAttribute("usercheck","usercheck");
 			model.addAttribute("std",std);
 			model.addAttribute("teach",teach);
-			model.addAttribute("reply", reply); 
-			model.addAttribute("listOne",listOne);
+//			model.addAttribute("reply", reply); 
+			model.addAttribute("listOne",listOne); 
 			
 		}
 	}
@@ -258,22 +258,22 @@ public class TeacherenrollController {
 			
 		TeacherEnrollVO listOne = teacherService.detailRead(t_no);
 		
-//		String road;
-//		String jibun;
-//		String str = listOne.getT_place();
-//		String[] arry = str.split("/");
-//		
-//		for (int i = 0; i < arry.length; i++) {
-//			
-//			System.out.println(arry[i]);
-//			
-//			
-//		}
-//		road = arry[0];
-//		jibun = arry[1];
-//		
-//		listOne.setRoad(road);
-//		listOne.setJibun(jibun);
+		String road;
+		String jibun;
+		String str = listOne.getT_place();
+		String[] arry = str.split("/");
+		
+		for (int i = 0; i < arry.length; i++) {
+			
+			System.out.println(arry[i]);
+			
+			
+		}
+		road = arry[0];
+		jibun = arry[1];
+		
+		listOne.setRoad(road);
+		listOne.setJibun(jibun);
 		
 		
 		  String beforeDay = listOne.getT_day(); // DB 문자열
@@ -328,6 +328,7 @@ public class TeacherenrollController {
 		 
 	}
 	// 7. 상세페이지 댓글등록
+	/*
 	@RequestMapping(value = "/t_detailReply.do", method = RequestMethod.POST)
 	public String postReply(@RequestParam("t_no") int t_no, TeacherReplyVO replyVO, TeacherEnrollVO teacherVO,HttpSession session, Model model) throws Exception{
 		
@@ -343,7 +344,50 @@ public class TeacherenrollController {
 		return "redirect:/study/header_DetailRead?t_no="+t_no;
 		
 	}
-
+*/
+	
+	@RequestMapping(value = "/t_detailReply.do",method = RequestMethod.GET)
+	public String getRly(@RequestParam("t_no") int t_no, TeacherReplyVO replyVO, TeacherEnrollVO teacherVO,HttpSession session, Model model) throws Exception{
+		
+		logger.info("--------------[ 강의 댓글 내용 등록  Ajax GET ]-----------------");	
+		
+		List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
+		
+		model.addAttribute("reply", reply); 
+		
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach); 
+		
+		
+		return "/study/replyAjax"; 
+		
+	}
+	@RequestMapping(value = "/t_detailReply.do",method = RequestMethod.POST)
+	public String postReply(@RequestParam("t_no") int t_no, TeacherReplyVO replyVO, TeacherEnrollVO teacherVO,HttpSession session, Model model) throws Exception{
+		
+		logger.info("--------------[ 강의 댓글 내용 등록  Ajax POST ]-----------------");	
+		
+		System.out.println(replyVO.getR_userid());
+		System.out.println(replyVO.getR_content());
+		System.out.println(replyVO.getT_no());
+		
+		teacherService.replyInsert(replyVO); 
+		List<TeacherReplyVO> reply = teacherService.replyRead(t_no);
+		model.addAttribute("reply", reply); 
+		
+		TeachVO teach =  (TeachVO) session.getAttribute("teach");		
+		StdVO std =  (StdVO) session.getAttribute("std"); 		 
+		model.addAttribute("std",std);
+		model.addAttribute("teach",teach);
+		
+		
+		return "/study/replyAjax"; 
+	
+	}
+	
 	// 상세페이지 삭제 
 
 	@RequestMapping(value = "/teacherDelete", method = RequestMethod.GET)

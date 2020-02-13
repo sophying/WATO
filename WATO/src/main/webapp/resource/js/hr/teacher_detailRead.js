@@ -22,6 +22,7 @@ function resize(obj) {
  
 // ________________________
  
+
  
 function clickEvnet(event) { 
 	if ($(event).val() == "수정하기") {
@@ -52,14 +53,21 @@ function clickEvnet2(event){
 	}
 	
 }
-
-function deleteRe(obj) {
-	$('.updateform').attr("action","./t_replyDelete");
-	$('.updateform').submit();
-}
-function deleteRe2(obj) {
-	$('.updateform').attr("action","./t_replyDelete");
-	$('.updateform').submit();
+   
+function deleteRe(obj) {  
+	alert("삭제눌렀음");     
+	alert($(obj).parent().parent().parent().parent().parent().attr("class")); 
+	$(obj).parent().parent().parent().parent().parent().attr("action","/study/t_replyDelete");
+	$(obj).parent().parent().parent().parent().parent().submit();
+//	$('.updateform').attr("action","/t_replyDelete");
+//	$('.updateform').submit();
+} 
+function deleteRe2(obj) { 
+	alert("삭제눌렀음")
+	$(obj).parent().parent().parent().parent().parent().attr("action","/study/t_replyDelete");
+	$(obj).parent().parent().parent().parent().parent().submit();
+//	$('.updateform').attr("action","/t_replyDelete");
+//	$('.updateform').submit(); 
 }
 
 
@@ -67,7 +75,7 @@ function deleteRe2(obj) {
 
 
 
-$('#modalSubmit').click(function () {
+$('#modalSubmit').click(function () { 
 	$('#participationForm').submit();
 });
 $('#cancleSubmit').click(function () {

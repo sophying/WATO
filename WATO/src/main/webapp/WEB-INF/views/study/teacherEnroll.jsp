@@ -501,11 +501,8 @@
         </div>
       </div>
     </div>
-<<<<<<< HEAD
-        <div class="form-group container-fluid d-inline-block">
-=======
+
        <div class="form-group container-fluid d-inline-block">
->>>>>>> branch 'best_HyeRyun' of https://github.com/sophying/WATO.git
       <div class="card">
         <label for="name" class="pb-1 row m-0 text-justify card-header cols-sm-3  control-label d-flex justify-content-center"><font size="5">자격증 정보</font></label>
           <div id="img-border"class="cols-sm-1 d-inline-block d-flex justify-content-center">

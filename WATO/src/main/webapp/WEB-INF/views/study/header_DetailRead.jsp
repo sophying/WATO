@@ -274,7 +274,7 @@
 							</c:choose>	
 															
 									<label for="name" class="pb-3 row m-0 text-justify w-100 border-top cols-sm-2 p-2 pl-5 pr-5 control-label d-flex justify-content-center pt-3">
-										<font size="8">${listOne.t_title }</font>
+										<font size="8">${listOne.t_title }</font> 
 									</label>
 								<c:if test="${(teach.user_Id).equals(listOne.t_userId) }">	
 	<!--  내용 수정 -->				<a href="teacherModi?t_no=${listOne.t_no}" ><input type="submit" id="infoModi" class="infoModi align-self-end d-inline-block justify-content-center mt-2 mb-2" value="수정"/></a>			
@@ -285,8 +285,8 @@
 							<div class="h-75 container d-inline-block border-top">
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center">
 								</div>		
-							</div>
-							
+							</div> 
+							 
 							
 
 							<div class="h-75 row d-flex  p-2  m-0 container d-inline-block" >
@@ -447,85 +447,14 @@
 									</div>
 								</div>
 							</div>
-							
-	<!-- @@@@@@@@ //// 댓글 ( Q & A ) 작성  /// @@@@@@@@ -->	
-							<c:forEach var="reply" items="${reply}">
-								<c:choose>
-									<c:when test="${(listOne.t_userId).equals(reply.r_userid)}">
-										<form class="updateform" action="./modireply"> 
-										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top " style="background: #f1dfe955;">
-											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
-													 <font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font> 
-														<table class="justify-content-center ml-2 d-inline-block w-100">
-															<tr>
-																<td rowspan="5" class="pr-5 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">리더</font></td>
-																<td colspan="5" >
-																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="100" readonly style="overflow-x:hidden; overflow-y:hidden;  ">${reply.r_content}</textarea>
-																<c:choose>
-																	<c:when test="${(listOne.t_userId).equals(std.user_Id ) }">
-																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
-																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
-																		<input type="hidden" name="t_no" value="${reply.t_no }"/>
-																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
-																	</c:when>
-																	<c:when test="${(listOne.t_userId).equals(teach.user_Id ) }">
-																		<input type="button" id="modiReButton" onclick="clickEvnet2(this)" class="modiReButton d-inline-block" value="수정하기"/>
-																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe2(this)">
-																		<input type="hidden" name="t_no" value="${reply.t_no }"/>
-																		<input type="hidden" name="r_no" value="${reply.r_no }"/>																	
-																	</c:when>
-																</c:choose>
-															</tr> 
-														</table> 
-												</div> 
-											</div>		
-										</div>
-										</form>
-									</c:when>
-									<c:otherwise>
-										<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top "> 
-											<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
-												<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 " >
-													<form class="updateform" action="./modireply"> 
-			 											<font size="4"><span class="d-flex justify-content-end"></span></font> 
-														<table class="justify-content-center d-inline-block w-100">
-															<tr>
-																<td rowspan="5" class="pl-2 pr-4 w-25 text-center justify-content-center"><font class=" font-weight-bold " size="5">${reply.r_userid }</font><font size="4"> 님</font></td>
-																<td class="text1" colspan="5" > 
-																	<textarea name="r_content" class="r_content"  onkeydown="resize(this)" onkeyup="resize(this)" cols="90" readonly>${reply.r_content}</textarea>
-																<td> 
-																<td >
-																	<c:choose>
-																	<c:when test="${(reply.r_userid).equals(std.user_Id ) }">
-																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
-																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
-																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
-																		<input type="hidden" name="t_no" value="${reply.t_no }"/>
-																	</c:when>
-																	<c:when test="${(reply.r_userid).equals(teach.user_Id ) }">
-																		<input type="button" id="modiReButton" class="modiReButton d-inline-block" onclick="clickEvnet(this)" value="수정하기"/>
-																		<input type="button" class="modiReButton d-inline-block" value="삭제하기" onclick="deleteRe(this)">
-																		<input type="hidden" name="r_no" value="${reply.r_no }"/>
-																		<input type="hidden" name="t_no" value="${reply.t_no }"/>																	
-																	</c:when>
-																	</c:choose>
-																</td>
-															</tr> 
-														</table>
-													</form>
-												</div>
-											</div>		
-										</div>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach> 
+								<div id="replyContain">
+								</div>
 							<c:choose>
 							<c:when test="${std.user_Id == null && teach.user_Id != null }">
 								<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
 									<div  class="cols-sm-5 d-inline-block w-100 mb-1 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 										<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
-											<form role="from" method="post" action="./t_detailReply.do"> 
+											<form id="replyajaxform"> 
 											<font size="4"><span id="cnttxt2" class="d-flex justify-content-end"></span></font>
 												<table class="ml-2 justify-content-center d-inline-block w-100">
 													<tr>
@@ -538,22 +467,23 @@
 													</tr>   
 													<tr>
 														<td>
-															<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
+															<button class="qnaButton" onclick="qnaButton_ajax(this)">질문하기</button>
+															<!-- <input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/> -->
 														</td> 
 													</tr>
 												</table>
-												<input type="hidden" name="t_no" value="${listOne.t_no}" />
-												<input type="hidden" name="r_userid" value="${teach.user_Id }"/>
+												<input type="hidden" id="t_no" name="t_no" value="${listOne.t_no}" />
+												<input type="hidden" id="r_userid"name="r_userid" value="${teach.user_Id }"/>
 											</form>
-										</div>
+										</div>  
 									</div>		
-								</div>
-							</c:when>
+								</div>   
+							</c:when>   
 							<c:otherwise>
 								<div class="h-75 row d-flex p-2 pb-1 m-0 container d-inline-block border-top ">
 									<div  class="cols-sm-5 d-inline-block w-100 mb-0 pb-5 pt-3 pl-5 pr-5 container-fluid justify-content-center ">
 										<div  style=" word-break:break-all; width: 300px;"class="row h-50 w-100 d-block d-flex pt-3 "  >
-											<form role="from" method="post" action="./t_detailReply.do"> 
+											<form id="replyajaxform"> 
 												<font size="4"><span id="cnttxt1" class="d-flex justify-content-end"></span></font>
 												<table class="justify-content-center d-inline-block w-100">
 													<tr>
@@ -562,9 +492,9 @@
 															<textarea id="r_content" name="r_content" rows="10" cols="100" placeholder="현재 스터디에 대한 궁금한 점이 있으십니까??물어봐 주세요~!!"></textarea>
 														<td>    
 													</tr>   
-													<tr>
-														<td>
-															<input type="submit" id="qnaButton" class="qnaButton" value="질문하기"/>
+													<tr>  
+														<td> 
+															<button class="qnaButton" onclick="qnaButton_ajax(this)">질문하기</button>
 														</td> 
 													</tr>
 												</table>
@@ -576,7 +506,7 @@
 								</div>							
 							
 							</c:otherwise>
-							</c:choose>
+							</c:choose>	
 							</div> 
 							
 					</div>    
@@ -741,6 +671,18 @@
 
  // 주소 분리하여 추출(db의 주소는 도로명+/+상세주소가 합쳐져 있음)										
 	window.onload = function t_placeMapValCut() {
+		var t_no = $('#t_no').val();
+		$.ajax({
+			type:"get",
+			url:"/study/t_detailReply.do?t_no="+t_no,
+			success:function(data){
+				$("#replyContain").html(data);
+			},
+			error:function(e){
+				alert("에러");
+			}
+			
+		});
 		var mapVal = $("#mapVal").val();
 	
 		if(mapVal != "") {
@@ -751,6 +693,38 @@
 				alert("주소를 다시 확인하여 주시기 바랍니다.");
 			}
 		}
+ 
+	function qnaButton_ajax(event){
+		/*	var text = $(event).parent().parent().prev().children("#r_content").val();
+			var t_no = $(evnet).parent().parent().parent().next().val();
+			var r_userid = $(event).parent().parent().parent().next().next().val();*/
+			alert("등록하기 버튼클릭")
+			var replyajaxform = $('#replyajaxform').serialize();
+			 
+			$.ajax({
+				/*type:"get",
+				url:"study/t_detailReply.do?t_no="+t_no+"&r_userid="+r_userid+"&r_content="+text,
+				success: function(data){
+					$("#replyContain").html(data);
+				},*/
+				type:"POST",
+				url:"/study/t_detailReply.do",
+//				data:{"t_no":t_no, "r_userid":r_userid, "r_content": text},
+				data:replyajaxform, 
+//				async:false,
+//				dataType:"html",  
+				success:function(data) {
+					$("#replyContain").html(data);
+					alert("json");
+				},
+				error:function(e){
+//					alert("에러");
+					
+				}
+				
+			});
+			
+		} 
 
 	//좌표검색
 	var $coords ={};
