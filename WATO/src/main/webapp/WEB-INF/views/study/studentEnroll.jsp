@@ -429,7 +429,7 @@
 
 <!-- button Enroll -->
             <!-- <div class="cols-sm-5">
-            <div class="form-group"> -->
+            <div class="form-group"> --> 
             <div class="cols-sm-5 pb-5 pr-2 pl-2">
               <div class="input-group d-flex justify-content-center ">
                 <img id="img_btn_0" src="../../resource/images/imgs/studyUs.png"  class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="studyUs">&nbsp;&nbsp;
@@ -438,8 +438,15 @@
                 <img id="img_btn_3" src="../../resource/images/imgs/cpplus.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_4" src="../../resource/images/imgs/php.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
                 <img id="img_btn_5" src="../../resource/images/imgs/Android.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_6" src="../../resource/images/imgs/c.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_7" src="../../resource/images/imgs/go.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_8" src="../../resource/images/imgs/ruby.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_9" src="../../resource/images/imgs/swift.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_10" src="../../resource/images/imgs/sql.png" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_11" src="../../resource/images/imgs/visualbasic.jpg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
+                <img id="img_btn_12" src="../../resource/images/imgs/cs.jpg" class="img-circle btn btn-outline-secondary btn-circle btn-xl w-1" alt="Cinque Terre">&nbsp;&nbsp;
               </div>
-            </div>
+            </div> 
             <!-- </div>
           </div> -->
           </div>
@@ -575,18 +582,23 @@
                    <%--kakao map API (카카오 지도)--%>
                    <div class="form-group">
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
+<<<<<<< HEAD
                        	<small>그룹원과 함께할 장소를 알려주세요!</small>
       					</label>              
+=======
+                          <small>그룹원과 함께할 장소를 알려주세요!</small>
+                     </label>              
+>>>>>>> branch 'best_HyeRyun' of https://github.com/sophying/WATO.git
                               <input type="button" class="btn btn-primary box pull-right" value="주소 검색" onclick="execDaumPostcode()">
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
                             
-							<!--  post 우편번호 -->            
-  							<input type="text" class="form-control" id="postcode" name="s_postnum" placeholder="우편번호" required>
-  							  </div>
+                     <!--  post 우편번호 -->            
+                       <input type="text" class="form-control" id="postcode" name="s_postnum" placeholder="우편번호" required>
+                         </div>
                             </div>
                           
-						  <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
+                    <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -594,7 +606,7 @@
                             </div>
                           </div>
                           
-						  <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
+                    <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -602,7 +614,7 @@
                            </div>
                           </div>
                           
-						  <!-- 참고항목 -->                         
+                    <!-- 참고항목 -->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -610,32 +622,32 @@
                            </div>
                           </div>
                           
-						  <%--주소 검색 iframe wrap 공간--%>
+                    <%--주소 검색 iframe wrap 공간--%>
                           <div class="cols-sm-10 mb-1">
-                       	 	<div class="input-group">
-								<div id="wrap" style="display:none;
-											border:1px solid;
-											width:500px;
-											height:300px;
-											margin:5px 0;
-											position:relative">
-    						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
-    							 style="cursor:pointer;
-    							 position:absolute;
-    							 right:0px;
-    							 top:-1px;
-    							 z-index:1" 
-    							 onclick="foldDaumPostcode()" alt="접기 버튼">
-    							</div>
-							</div>
+                              <div class="input-group">
+                        <div id="wrap" style="display:none;
+                                 border:1px solid;
+                                 width:500px;
+                                 height:300px;
+                                 margin:5px 0;
+                                 position:relative">
+                      <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
+                          style="cursor:pointer;
+                          position:absolute;
+                          right:0px;
+                          top:-1px;
+                          z-index:1" 
+                          onclick="foldDaumPostcode()" alt="접기 버튼">
+                         </div>
+                     </div>
                           </div>
     
-    					<%--kakao map API (카카오 지도 담는 영역)--%>
-                    	<div class="cols-sm-10 mb-1">
-                    		<div class="input-group">
-								<div id="map" style="width: 100%; height: 300px;"></div>
-							</div>
-						</div>  
+                   <%--kakao map API (카카오 지도 담는 영역)--%>
+                       <div class="cols-sm-10 mb-1">
+                          <div class="input-group">
+                        <div id="map" style="width: 100%; height: 300px;"></div>
+                     </div>
+                  </div>  
                     </div>
 <%--kakao map API (카카오 지도)--%>
 
@@ -656,11 +668,11 @@
                            </div>
                     </div>
                      <div class="form-group ">
-                     		<input type="hidden" name="std_orgname" value="${std.std_Orgname}" readonly="readonly">
+                           <input type="hidden" name="std_orgname" value="${std.std_Orgname}" readonly="readonly">
   <!-- s_userId -->         <input type="hidden"name="s_userId" class="form-control"  id="userId"  value="${std.user_Id }"/>
   <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value="">
   <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >
-  <!-- s_day -->			<input type="hidden" name="s_day"  class="form-control" id="schedule" />
+  <!-- s_day -->         <input type="hidden" name="s_day"  class="form-control" id="schedule" />
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>
         </div>
@@ -668,6 +680,7 @@
     </div> <!-- 2-->
  </form>
  </nav>
+
  
 <div id="blog-homepage" class="box row mb-0">
     <div class="container">
@@ -977,6 +990,13 @@ $('#enroll_btn').click(function(){
 	  var img3 = $('#img_btn_3').attr('src');
 	  var img4 = $('#img_btn_4').attr('src');
 	  var img5 = $('#img_btn_5').attr('src');
+	  var img6 = $('#img_btn_6').attr('src');
+	  var img7 = $('#img_btn_7').attr('src');
+	  var img8 = $('#img_btn_8').attr('src');
+	  var img9 = $('#img_btn_9').attr('src');
+	  var img10 = $('#img_btn_10').attr('src');
+	  var img11 = $('#img_btn_11').attr('src');
+	  var img12 = $('#img_btn_12').attr('src');
 
 	  $('#img_btn_0').on({'click': function(){
 	        $('#input_img').attr('src',img0);
@@ -1000,7 +1020,7 @@ $('#enroll_btn').click(function(){
 	$('#img_btn_3').on({'click': function(){
 	       $('#input_img').attr('src',img3);
 	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
-	       document.getElementById("category").value = "C";
+	       document.getElementById("category").value = "C++";
 	   }
 	});
 
@@ -1015,6 +1035,48 @@ $('#enroll_btn').click(function(){
 	       $('#input_img').attr('src',img5);
 	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
 	       document.getElementById("category").value = "Android";
+	   }
+	});
+	$('#img_btn_6').on({'click': function(){
+	       $('#input_img').attr('src',img6);
+	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+	       document.getElementById("category").value = "C";
+	   }
+	});
+	$('#img_btn_7').on({'click': function(){
+	       $('#input_img').attr('src',img7);
+	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+	       document.getElementById("category").value = "Go";
+	   }
+	});
+	$('#img_btn_8').on({'click': function(){
+	       $('#input_img').attr('src',img8);
+	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+	       document.getElementById("category").value = "Ruby";
+	   }
+	});
+	$('#img_btn_9').on({'click': function(){
+	       $('#input_img').attr('src',img9);
+	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+	       document.getElementById("category").value = "Swift";
+	   }
+	});
+	$('#img_btn_10').on({'click': function(){
+	       $('#input_img').attr('src',img10);
+	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+	       document.getElementById("category").value = "SQL";
+	   }
+	});
+	$('#img_btn_11').on({'click': function(){
+	       $('#input_img').attr('src',img11);
+	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+	       document.getElementById("category").value = "Visual Basic";
+	   }
+	});
+	$('#img_btn_12').on({'click': function(){
+	       $('#input_img').attr('src',img12);
+	       document.getElementById('photoval').value = document.getElementById('input_img').getAttribute('src');
+	       document.getElementById("category").value = "C#";
 	   }
 	});
 

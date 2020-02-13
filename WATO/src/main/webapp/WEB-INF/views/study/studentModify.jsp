@@ -575,19 +575,24 @@
                    <!-- kakao map api(카카오 지도) -->
                    <div class="form-group">
                        <label for="username" class="cols-sm-2 control-label font-weight-bold">스터디 장소
+<<<<<<< HEAD
                        	<small>그룹원과 함께할 장소를 알려주세요!</small>
       					</label>              
+=======
+                          <small>그룹원과 함께할 장소를 알려주세요!</small>
+                     </label>              
+>>>>>>> branch 'best_HyeRyun' of https://github.com/sophying/WATO.git
                         <input type="button" class="btn btn-primary box pull-right" value="주소 검색" onclick="execDaumPostcode()">
                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group mt-1 mb-1">
                             
-								<!--  post 우편번호 -->            
-            					<input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" value="${listOne.s_postnum }" required>
-  							  </div>
+                        <!--  post 우편번호 -->            
+                           <input type="text"  name="s_postnum" class="form-control" id="postcode"  placeholder="우편번호" value="${listOne.s_postnum }" required>
+                         </div>
                             </div>
                             
-						  <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
+                    <!-- 주소 (주소 검색 후 사용자 선택에 따라 지번 or 도로명 주소가 입력됨)-->
                           <div class="cols-sm-10 mb-1 ">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -595,7 +600,7 @@
                             </div>
                           </div>
                           
-						  <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
+                    <!-- 상세주소 (주소 검색 후 focus이동하여 사용자가 직접 입력하게 함)-->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -603,7 +608,7 @@
                            </div>
                           </div>
                           
- 						  <!-- 참고항목 -->                         
+                     <!-- 참고항목 -->                         
                           <div class="cols-sm-10 mb-1">
                             <div class="input-group">
                               <span class="input-group-addon"></span>
@@ -611,33 +616,33 @@
                            </div>
                           </div>
                           
-					      <%--주소 검색 iframe wrap 공간--%>
+                     <%--주소 검색 iframe wrap 공간--%>
                           <div class="cols-sm-10 mb-1">
-                       	 	<div class="input-group">
-								<div id="wrap" style="display:none;
-											border:1px solid;
-											width:500px;
-											height:300px;
-											margin:5px 0;
-											position:relative">
-    						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
-    							 style="cursor:pointer;
-    							 position:absolute;
-    							 right:0px;
-    							 top:-1px;
-    							 z-index:1" 
-    							 onclick="foldDaumPostcode()" alt="접기 버튼">
-    							</div>
-							</div>
+                              <div class="input-group">
+                        <div id="wrap" style="display:none;
+                                 border:1px solid;
+                                 width:500px;
+                                 height:300px;
+                                 margin:5px 0;
+                                 position:relative">
+                      <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnFoldWrap"
+                          style="cursor:pointer;
+                          position:absolute;
+                          right:0px;
+                          top:-1px;
+                          z-index:1" 
+                          onclick="foldDaumPostcode()" alt="접기 버튼">
+                         </div>
+                     </div>
                           </div>
     
     
-    					<%--kakao map API (카카오 지도 담는 영역)--%>
-                    	<div class="cols-sm-10 mb-1">
-                    		<div class="input-group">
-								<div id="map" style="width: 100%; height: 300px;"></div>
-							</div>
-						</div>  
+                   <%--kakao map API (카카오 지도 담는 영역)--%>
+                       <div class="cols-sm-10 mb-1">
+                          <div class="input-group">
+                        <div id="map" style="width: 100%; height: 300px;"></div>
+                     </div>
+                  </div>  
                     </div>
 <%--kakao map API (카카오 지도) 끝--%>
                     
@@ -662,7 +667,7 @@
   <!-- s_photo -->          <input type="hidden" name="s_photo" id="photoval" value=""> 
   <!-- s_place -->          <input type="hidden" name="s_place" id="Place" value="" >
   <!-- s_no -->          <input type="hidden" name="s_no" id="s_no" value="${listOne.s_no }" >
-  <!-- s_day -->			<input type="hidden" name="s_day"  class="form-control" id="schedule"  value="${listOne.s_day }" />
+  <!-- s_day -->         <input type="hidden" name="s_day"  class="form-control" id="schedule"  value="${listOne.s_day }" />
   
                           <button type="button" id="enroll_btn" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                       </div>

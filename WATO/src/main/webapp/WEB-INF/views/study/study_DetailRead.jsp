@@ -481,7 +481,7 @@
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-2  pl-5 pr-5 justify-content-center container-fluid ">
 									<div  style=" word-break:break-all;"class="row h-50 w-100 d-inline-block d-flex pt-2 " >
 										
-										<pre><font size="4"><c:out value="${listOne.s_intro }" /></font></pre>
+										<pre style="  white-space: pre-wrap;"><font size="4"><c:out value="${listOne.s_intro }" /></font></pre>
 									</div>
 								</div>
 							</div>
@@ -606,7 +606,7 @@
 								
 								<div  class="cols-sm-5 d-inline-block w-75 mb-1 pb-3 pl-5 pr-5 pt-3 container-fluid justify-content-center  border-top">
 									<div  style=" word-break:break-all;"class="row h-50 d-block d-flex pt-3" >
-										<pre><font size="4"><c:out value="${listOne.s_content }" /></font></pre>
+										<pre style="  white-space: pre-wrap;"><font size="4"><c:out value="${listOne.s_content }" /></font></pre>
 									</div>
 								</div>
 							</div>
@@ -742,7 +742,7 @@
 					</div>    
 					<!-- @@@@@@@@ 메인 끝 @@@@@@@@ -->
 	<!-- @@@@@@@@ //// 참여신청 시작 /// @@@@@@@@ -->					
-				<aside class="d-inline-block rounded-sm " style="width: 350px; z-index: 1000" >
+				<aside class="d-inline-block rounded-sm " style="width: 350px; z-index: 10" >
 					<div  class="form-group container-fluid" style="height: auto;">
 							<div class="cols-sm-1 d-inline-block d-flex justify-content-center"> 
 								<div class="card-body">
